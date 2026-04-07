@@ -7,10 +7,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Directory_type
     {
-        [EnumMember(Value = "pending")]
-        #pragma warning disable CS1591
-        Pending,
-        #pragma warning restore CS1591
         [EnumMember(Value = "azure scim v2.0")]
         #pragma warning disable CS1591
         AzureScimV20,
@@ -94,14 +90,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "workday")]
         #pragma warning disable CS1591
         Workday,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "gusto")]
-        #pragma warning disable CS1591
-        Gusto,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "rippling")]
-        #pragma warning disable CS1591
-        Rippling,
         #pragma warning restore CS1591
     }
 }

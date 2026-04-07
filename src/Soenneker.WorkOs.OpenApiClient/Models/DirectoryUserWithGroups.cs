@@ -41,6 +41,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Email { get; set; }
 #endif
         /// <summary>A list of email addresses for the user.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_emails>? Emails { get; set; }
@@ -81,6 +82,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string IdpId { get; set; }
 #endif
         /// <summary>The job title of the user.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? JobTitle { get; set; }
@@ -113,6 +115,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>The raw attributes received from the directory provider.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_raw_attributes? RawAttributes { get; set; }
@@ -141,6 +144,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The username of the user.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Username { get; set; }

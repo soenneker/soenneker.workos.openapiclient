@@ -10,6 +10,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// <summary>
     /// The raw attributes received from the directory provider.
     /// </summary>
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DirectoryUserWithGroups_raw_attributes : IAdditionalDataHolder, IParsable
     {

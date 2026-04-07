@@ -7,10 +7,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Directory_state
     {
-        [EnumMember(Value = "requires_type")]
-        #pragma warning disable CS1591
-        Requires_type,
-        #pragma warning restore CS1591
         [EnumMember(Value = "linked")]
         #pragma warning disable CS1591
         Linked,

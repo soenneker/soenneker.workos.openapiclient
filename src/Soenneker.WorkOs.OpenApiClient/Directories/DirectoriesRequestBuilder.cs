@@ -126,6 +126,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories
             public string Before { get; set; }
 #endif
             /// <summary>Filter Directories by their associated domain.</summary>
+            [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("domain")]

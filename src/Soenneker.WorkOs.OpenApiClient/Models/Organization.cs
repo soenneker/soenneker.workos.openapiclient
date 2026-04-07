@@ -15,6 +15,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the Organization allows profiles outside of its managed domains.</summary>
+        [Obsolete("")]
         public bool? AllowProfilesOutsideOrganization { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
