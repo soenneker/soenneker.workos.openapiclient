@@ -30,6 +30,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>The slug of the resource type the role is scoped to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResourceTypeSlug { get; set; }
+#nullable restore
+#else
+        public string ResourceTypeSlug { get; set; }
+#endif
         /// <summary>A unique identifier for the role within the organization. When provided, must begin with &apos;org-&apos; and contain only lowercase letters, numbers, hyphens, and underscores. When omitted, a slug is auto-generated from the role name and a random suffix.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,6 +73,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "resource_type_slug", n => { ResourceTypeSlug = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
             };
         }
@@ -77,6 +86,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("resource_type_slug", ResourceTypeSlug);
             writer.WriteStringValue("slug", Slug);
             writer.WriteAdditionalData(AdditionalData);
         }

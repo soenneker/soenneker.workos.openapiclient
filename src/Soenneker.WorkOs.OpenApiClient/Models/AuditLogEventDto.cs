@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto> Targets { get; set; }
 #endif
         /// <summary>What schema version the event is associated with.</summary>
-        public double? Version { get; set; }
+        public int? Version { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto"/> and sets the default values.
         /// </summary>
@@ -96,7 +96,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata.CreateFromDiscriminatorValue); } },
                 { "occurred_at", n => { OccurredAt = n.GetStringValue(); } },
                 { "targets", n => { Targets = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "version", n => { Version = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -112,7 +112,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata>("metadata", Metadata);
             writer.WriteStringValue("occurred_at", OccurredAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto>("targets", Targets);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

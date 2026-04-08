@@ -138,7 +138,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories
 #endif
             /// <summary>Upper limit on the number of objects to return, between `1` and `100`.</summary>
             [QueryParameter("limit")]
-            public double? Limit { get; set; }
+            public int? Limit { get; set; }
             /// <summary>Order the results by the creation time.</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Directories.GetOrderQueryParameterType? Order { get; set; }

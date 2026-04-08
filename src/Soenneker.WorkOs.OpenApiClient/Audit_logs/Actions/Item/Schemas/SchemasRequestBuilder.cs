@@ -161,7 +161,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
 #endif
             /// <summary>Upper limit on the number of objects to return, between `1` and `100`.</summary>
             [QueryParameter("limit")]
-            public double? Limit { get; set; }
+            public int? Limit { get; set; }
             /// <summary>Order the results by the creation time.</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas.GetOrderQueryParameterType? Order { get; set; }
