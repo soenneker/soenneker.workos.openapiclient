@@ -25,13 +25,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Timestamp of when the API Key was last used.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LastUsedAt { get; set; }
-#nullable restore
-#else
-        public string LastUsedAt { get; set; }
-#endif
+        public DateTimeOffset? LastUsedAt { get; set; }
         /// <summary>A descriptive name for the API Key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,7 +103,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "last_used_at", n => { LastUsedAt = n.GetStringValue(); } },
+                { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "obfuscated_value", n => { ObfuscatedValue = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
@@ -128,7 +122,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("last_used_at", LastUsedAt);
+            writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("obfuscated_value", ObfuscatedValue);
             writer.WriteStringValue("object", Object);

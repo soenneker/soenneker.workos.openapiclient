@@ -48,13 +48,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata Metadata { get; set; }
 #endif
         /// <summary>ISO-8601 value of when the action occurred.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? OccurredAt { get; set; }
-#nullable restore
-#else
-        public string OccurredAt { get; set; }
-#endif
+        public DateTimeOffset? OccurredAt { get; set; }
         /// <summary>The resources affected by the action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,7 +88,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "actor", n => { Actor = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventActorDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventActorDto.CreateFromDiscriminatorValue); } },
                 { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventContextDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventContextDto.CreateFromDiscriminatorValue); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata.CreateFromDiscriminatorValue); } },
-                { "occurred_at", n => { OccurredAt = n.GetStringValue(); } },
+                { "occurred_at", n => { OccurredAt = n.GetDateTimeOffsetValue(); } },
                 { "targets", n => { Targets = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
@@ -110,7 +104,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventActorDto>("actor", Actor);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventContextDto>("context", Context);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata>("metadata", Metadata);
-            writer.WriteStringValue("occurred_at", OccurredAt);
+            writer.WriteDateTimeOffsetValue("occurred_at", OccurredAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto>("targets", Targets);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
