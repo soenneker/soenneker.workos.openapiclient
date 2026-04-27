@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate
 {
     /// <summary>
-    /// Builds and executes requests for operations under \user_management\organization_memberships\{id}\deactivate
+    /// Builds and executes requests for operations under \user_management\organization_memberships\{-id}\deactivate
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeactivateRequestBuilder : BaseRequestBuilder
@@ -21,7 +21,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DeactivateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/organization_memberships/{id}/deactivate", pathParameters)
+        public DeactivateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/organization_memberships/{%2Did}/deactivate", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DeactivateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/organization_memberships/{id}/deactivate", rawUrl)
+        public DeactivateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/organization_memberships/{%2Did}/deactivate", rawUrl)
         {
         }
         /// <summary>

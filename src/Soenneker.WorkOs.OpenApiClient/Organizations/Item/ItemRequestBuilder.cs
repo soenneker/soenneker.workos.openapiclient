@@ -8,6 +8,7 @@ using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Api_keys;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_log_configuration;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_logs_retention;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.FeatureFlags;
+using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -40,6 +41,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item
         public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.FeatureFlags.FeatureFlagsRequestBuilder FeatureFlags
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.FeatureFlags.FeatureFlagsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The groups property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupsRequestBuilder Groups
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.ItemRequestBuilder"/> and sets the default values.

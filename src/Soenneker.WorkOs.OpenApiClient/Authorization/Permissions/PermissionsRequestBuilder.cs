@@ -70,7 +70,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Permissions
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new permission in your WorkOS environment. The permission can then be assigned to environment roles and organization roles.
+        /// Create a new permission in your WorkOS environment. The permission can then be assigned to environment roles and custom roles.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.PermissionsPostResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -120,7 +120,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Permissions
             return requestInfo;
         }
         /// <summary>
-        /// Create a new permission in your WorkOS environment. The permission can then be assigned to environment roles and organization roles.
+        /// Create a new permission in your WorkOS environment. The permission can then be assigned to environment roles and custom roles.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

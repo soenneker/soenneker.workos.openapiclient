@@ -16,17 +16,53 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
         #pragma warning disable CS1591
         AppleOAuth,
         #pragma warning restore CS1591
+        [EnumMember(Value = "BitbucketOAuth")]
+        #pragma warning disable CS1591
+        BitbucketOAuth,
+        #pragma warning restore CS1591
         [EnumMember(Value = "GitHubOAuth")]
         #pragma warning disable CS1591
         GitHubOAuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GitLabOAuth")]
+        #pragma warning disable CS1591
+        GitLabOAuth,
         #pragma warning restore CS1591
         [EnumMember(Value = "GoogleOAuth")]
         #pragma warning disable CS1591
         GoogleOAuth,
         #pragma warning restore CS1591
+        [EnumMember(Value = "IntuitOAuth")]
+        #pragma warning disable CS1591
+        IntuitOAuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LinkedInOAuth")]
+        #pragma warning disable CS1591
+        LinkedInOAuth,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MicrosoftOAuth")]
         #pragma warning disable CS1591
         MicrosoftOAuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SalesforceOAuth")]
+        #pragma warning disable CS1591
+        SalesforceOAuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SlackOAuth")]
+        #pragma warning disable CS1591
+        SlackOAuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "VercelMarketplaceOAuth")]
+        #pragma warning disable CS1591
+        VercelMarketplaceOAuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "VercelOAuth")]
+        #pragma warning disable CS1591
+        VercelOAuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "XeroOAuth")]
+        #pragma warning disable CS1591
+        XeroOAuth,
         #pragma warning restore CS1591
     }
 }

@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources{?after*,before*,limit*,order*,organization_id*,parent_external_id*,parent_resource_id*,parent_resource_type_slug*,resource_type_slug*,search*}", pathParameters)
+        public ResourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources{?after*,before*,limit*,order*,organization_id*,parent_external_id*,parent_resource_id*,parent_resource_type_slug*,resource_external_id*,resource_type_slug*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources{?after*,before*,limit*,order*,organization_id*,parent_external_id*,parent_resource_id*,parent_resource_type_slug*,resource_type_slug*,search*}", rawUrl)
+        public ResourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources{?after*,before*,limit*,order*,organization_id*,parent_external_id*,parent_resource_id*,parent_resource_type_slug*,resource_external_id*,resource_type_slug*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -83,11 +83,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Resources422Error">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.ResourcesPostResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.ResourcesPostResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.CreateAuthorizationResourceDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.ResourcesPostResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.ResourcesPostResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.CreateAuthorizationResourceDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -127,11 +127,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.CreateAuthorizationResourceDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.CreateAuthorizationResourceDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -192,7 +192,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
 #endif
-            /// <summary>Filter resources by parent external ID.</summary>
+            /// <summary>Filter resources by parent external ID. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("parent_external_id")]
@@ -202,7 +202,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
             [QueryParameter("parent_external_id")]
             public string ParentExternalId { get; set; }
 #endif
-            /// <summary>Filter resources by parent resource ID.</summary>
+            /// <summary>Filter resources by parent resource ID. Mutually exclusive with `parent_resource_type_slug` and `parent_external_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("parent_resource_id")]
@@ -212,7 +212,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
             [QueryParameter("parent_resource_id")]
             public string ParentResourceId { get; set; }
 #endif
-            /// <summary>Filter resources by parent resource type slug.</summary>
+            /// <summary>Filter resources by parent resource type slug. Required with `parent_external_id`. Mutually exclusive with `parent_resource_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("parent_resource_type_slug")]
@@ -221,6 +221,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
 #else
             [QueryParameter("parent_resource_type_slug")]
             public string ParentResourceTypeSlug { get; set; }
+#endif
+            /// <summary>Filter resources by external ID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("resource_external_id")]
+            public string? ResourceExternalId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("resource_external_id")]
+            public string ResourceExternalId { get; set; }
 #endif
             /// <summary>Filter resources by resource type slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

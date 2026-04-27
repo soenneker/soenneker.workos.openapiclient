@@ -78,6 +78,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>The timestamp when the invitation was revoked, or null if not revoked.</summary>
         public DateTimeOffset? RevokedAt { get; set; }
+        /// <summary>Slug of the role the invitee will be assigned on acceptance. Reflects the current role on the invitee&apos;s organization membership. null when the invitation has no associated organization.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RoleSlug { get; set; }
+#nullable restore
+#else
+        public string RoleSlug { get; set; }
+#endif
         /// <summary>The state of the invitation.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite_state? State { get; set; }
         /// <summary>The token used to accept the invitation.</summary>
@@ -126,6 +134,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "revoked_at", n => { RevokedAt = n.GetDateTimeOffsetValue(); } },
+                { "role_slug", n => { RoleSlug = n.GetStringValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite_state>(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -149,6 +158,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteDateTimeOffsetValue("revoked_at", RevokedAt);
+            writer.WriteStringValue("role_slug", RoleSlug);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite_state>("state", State);
             writer.WriteStringValue("token", Token);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item;
 using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResourcesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.authorization.organization_memberships.item.resources.item collection</summary>
+        /// <param name="position">The ID of the authorization resource.</param>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Resource_ItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Resource_ItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("resource_%2Did", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Resource_ItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.ResourcesRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -122,7 +135,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.GetOrderQueryParameterType? Order { get; set; }
-            /// <summary>The application-specific external identifier of the parent resource. Must be provided together with `parent_resource_type_slug`.</summary>
+            /// <summary>The application-specific external identifier of the parent resource. Must be provided together with `parent_resource_type_slug`. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("parent_resource_external_id")]
@@ -132,7 +145,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             [QueryParameter("parent_resource_external_id")]
             public string ParentResourceExternalId { get; set; }
 #endif
-            /// <summary>The WorkOS ID of the parent resource. Provide this or both `parent_resource_external_id` and `parent_resource_type_slug`, but not both.</summary>
+            /// <summary>The WorkOS ID of the parent resource. Provide this or both `parent_resource_external_id` and `parent_resource_type_slug`, but not both. Mutually exclusive with `parent_resource_type_slug` and `parent_resource_external_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("parent_resource_id")]
@@ -142,7 +155,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             [QueryParameter("parent_resource_id")]
             public string ParentResourceId { get; set; }
 #endif
-            /// <summary>The slug of the parent resource type. Must be provided together with `parent_resource_external_id`.</summary>
+            /// <summary>The slug of the parent resource type. Must be provided together with `parent_resource_external_id`. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("parent_resource_type_slug")]

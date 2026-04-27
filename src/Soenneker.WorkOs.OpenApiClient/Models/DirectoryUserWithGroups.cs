@@ -57,7 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string FirstName { get; set; }
 #endif
-        /// <summary>The directory groups the user belongs to.</summary>
+        /// <summary>The directory groups the user belongs to. Use the List Directory Groups endpoint with a user filter instead.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup>? Groups { get; set; }

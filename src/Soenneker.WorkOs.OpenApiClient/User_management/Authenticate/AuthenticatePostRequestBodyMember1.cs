@@ -38,6 +38,14 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authenticate
 #else
         public string Code { get; set; }
 #endif
+        /// <summary>The PKCE code verifier used to derive the code challenge passed to the authorization URL.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CodeVerifier { get; set; }
+#nullable restore
+#else
+        public string CodeVerifier { get; set; }
+#endif
         /// <summary>A unique identifier for the device.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,6 +61,14 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authenticate
 #nullable restore
 #else
         public string GrantType { get; set; }
+#endif
+        /// <summary>An invitation token to accept during authentication.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InvitationToken { get; set; }
+#nullable restore
+#else
+        public string InvitationToken { get; set; }
 #endif
         /// <summary>The IP address of the user&apos;s request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,8 +114,10 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authenticate
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "code", n => { Code = n.GetStringValue(); } },
+                { "code_verifier", n => { CodeVerifier = n.GetStringValue(); } },
                 { "device_id", n => { DeviceId = n.GetStringValue(); } },
                 { "grant_type", n => { GrantType = n.GetStringValue(); } },
+                { "invitation_token", n => { InvitationToken = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
@@ -114,8 +132,10 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authenticate
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("code", Code);
+            writer.WriteStringValue("code_verifier", CodeVerifier);
             writer.WriteStringValue("device_id", DeviceId);
             writer.WriteStringValue("grant_type", GrantType);
+            writer.WriteStringValue("invitation_token", InvitationToken);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteStringValue("user_agent", UserAgent);
             writer.WriteAdditionalData(AdditionalData);

@@ -47,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
         {
         }
         /// <summary>
-        /// Get a list of all roles that apply to an organization. This includes both environment roles and organization-specific roles, returned in priority order.
+        /// Get a list of all roles that apply to an organization. This includes both environment roles and custom roles, returned in priority order.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RoleList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -72,7 +72,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.RoleList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.RoleList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new custom organization role. When slug is omitted, it is auto-generated from the role name.
+        /// Create a new custom role for this organization.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.RolesPostResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -105,7 +105,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.RolesPostResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.RolesPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a list of all roles that apply to an organization. This includes both environment roles and organization-specific roles, returned in priority order.
+        /// Get a list of all roles that apply to an organization. This includes both environment roles and custom roles, returned in priority order.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -124,7 +124,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
             return requestInfo;
         }
         /// <summary>
-        /// Create a new custom organization role. When slug is omitted, it is auto-generated from the role name.
+        /// Create a new custom role for this organization.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

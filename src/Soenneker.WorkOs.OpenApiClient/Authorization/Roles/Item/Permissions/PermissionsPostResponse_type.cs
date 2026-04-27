@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Authorization.Roles.Item.Permissions
 {
-    /// <summary>Whether the role is scoped to the environment or an organization.</summary>
+    /// <summary>Whether the role is scoped to the environment or an organization (custom role).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PermissionsPostResponse_type
     {

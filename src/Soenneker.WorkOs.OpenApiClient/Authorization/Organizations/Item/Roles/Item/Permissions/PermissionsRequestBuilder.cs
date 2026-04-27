@@ -47,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
         {
         }
         /// <summary>
-        /// Add a single permission to an organization role. If the permission is already assigned to the role, this operation has no effect.
+        /// Add a single permission to a custom role. If the permission is already assigned to the role, this operation has no effect.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.PermissionsPostResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.PermissionsPostResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.PermissionsPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Replace all permissions on a role with the provided list.
+        /// Replace all permissions on a custom role with the provided list.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.PermissionsPutResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -107,7 +107,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.PermissionsPutResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.PermissionsPutResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Add a single permission to an organization role. If the permission is already assigned to the role, this operation has no effect.
+        /// Add a single permission to a custom role. If the permission is already assigned to the role, this operation has no effect.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -129,7 +129,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             return requestInfo;
         }
         /// <summary>
-        /// Replace all permissions on a role with the provided list.
+        /// Replace all permissions on a custom role with the provided list.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -156,7 +156,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
             [QueryParameter("organization")]
             public string Organization { get; set; }
 #endif
-            /// <summary>Used to initiate OAuth authentication with Google, Microsoft, GitHub, or Apple.</summary>
+            /// <summary>Used to initiate OAuth authentication with various providers.</summary>
             [QueryParameter("provider")]
             public global::Soenneker.WorkOs.OpenApiClient.Sso.Authorize.GetProviderQueryParameterType? Provider { get; set; }
             /// <summary>Key/value pairs of query parameters to pass to the OAuth provider. Only applicable when using OAuth connections.</summary>
@@ -169,7 +169,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
             [QueryParameter("provider_query_params")]
             public string ProviderQueryParams { get; set; }
 #endif
-            /// <summary>Additional OAuth scopes to request from the identity provider. Only applicable when using OAuth connections.</summary>
+            /// <summary>Additional scopes to request from the identity provider. Applicable when using OAuth or OpenID Connect connections.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("provider_scopes")]

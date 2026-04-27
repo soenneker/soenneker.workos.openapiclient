@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.WorkOs.OpenApiClient.Models;
 using Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -20,14 +19,14 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
     {
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.user_management.organization_memberships.item collection</summary>
         /// <param name="position">The unique ID of the organization membership.</param>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Organization_membershipsItemRequestBuilder"/></returns>
-        public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Organization_membershipsItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.ItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.ItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Organization_membershipsItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("%2Did", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -82,11 +81,11 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_memberships404Error">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.CreateUserlandUserOrganizationMembershipDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.CreateUserlandUserOrganizationMembershipDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -125,11 +124,11 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.CreateUserlandUserOrganizationMembershipDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.CreateUserlandUserOrganizationMembershipDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

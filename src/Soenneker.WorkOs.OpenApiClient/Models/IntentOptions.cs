@@ -15,6 +15,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Domain verification-specific options for the Admin Portal.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions? DomainVerification { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions DomainVerification { get; set; }
+#endif
         /// <summary>SSO-specific options for the Admin Portal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,6 +56,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "domain_verification", n => { DomainVerification = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions>(global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions.CreateFromDiscriminatorValue); } },
                 { "sso", n => { Sso = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions>(global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions.CreateFromDiscriminatorValue); } },
             };
         }
@@ -58,6 +67,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions>("domain_verification", DomainVerification);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions>("sso", Sso);
             writer.WriteAdditionalData(AdditionalData);
         }

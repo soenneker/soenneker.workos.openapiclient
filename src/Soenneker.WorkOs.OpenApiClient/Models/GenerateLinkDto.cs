@@ -14,14 +14,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email addresses of the IT admins to grant access to the Admin Portal for the given organization. Accepts up to 20 emails.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? AdminEmails { get; set; }
-#nullable restore
-#else
-        public List<string> AdminEmails { get; set; }
-#endif
         /// <summary>      The intent of the Admin Portal.        - `sso` - Launch Admin Portal for creating SSO connections        - `dsync` - Launch Admin Portal for creating Directory Sync connections        - `audit_logs` - Launch Admin Portal for viewing Audit Logs        - `log_streams` - Launch Admin Portal for creating Log Streams        - `domain_verification` - Launch Admin Portal for Domain Verification        - `certificate_renewal` - Launch Admin Portal for renewing SAML Certificates        - `bring_your_own_key` - Launch Admin Portal for configuring Bring Your Own Key</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDto_intent? Intent { get; set; }
         /// <summary>Options to configure the Admin Portal based on the intent.</summary>
@@ -31,6 +23,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions IntentOptions { get; set; }
+#endif
+        /// <summary>The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ItContactEmails { get; set; }
+#nullable restore
+#else
+        public List<string> ItContactEmails { get; set; }
 #endif
         /// <summary>An [Organization](/reference/organization) identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,9 +81,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "admin_emails", n => { AdminEmails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "intent", n => { Intent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDto_intent>(); } },
                 { "intent_options", n => { IntentOptions = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions>(global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions.CreateFromDiscriminatorValue); } },
+                { "it_contact_emails", n => { ItContactEmails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "organization", n => { Organization = n.GetStringValue(); } },
                 { "return_url", n => { ReturnUrl = n.GetStringValue(); } },
                 { "success_url", n => { SuccessUrl = n.GetStringValue(); } },
@@ -96,9 +96,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("admin_emails", AdminEmails);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDto_intent>("intent", Intent);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions>("intent_options", IntentOptions);
+            writer.WriteCollectionOfPrimitiveValues<string>("it_contact_emails", ItContactEmails);
             writer.WriteStringValue("organization", Organization);
             writer.WriteStringValue("return_url", ReturnUrl);
             writer.WriteStringValue("success_url", SuccessUrl);

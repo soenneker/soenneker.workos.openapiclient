@@ -140,6 +140,26 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         Email_verificationCreated,
         #pragma warning restore CS1591
+        [EnumMember(Value = "group.created")]
+        #pragma warning disable CS1591
+        GroupCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "group.deleted")]
+        #pragma warning disable CS1591
+        GroupDeleted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "group.member_added")]
+        #pragma warning disable CS1591
+        GroupMember_added,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "group.member_removed")]
+        #pragma warning disable CS1591
+        GroupMember_removed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "group.updated")]
+        #pragma warning disable CS1591
+        GroupUpdated,
+        #pragma warning restore CS1591
         [EnumMember(Value = "flag.created")]
         #pragma warning disable CS1591
         FlagCreated,
@@ -283,6 +303,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "session.revoked")]
         #pragma warning disable CS1591
         SessionRevoked,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "waitlist_user.approved")]
+        #pragma warning disable CS1591
+        Waitlist_userApproved,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "waitlist_user.created")]
+        #pragma warning disable CS1591
+        Waitlist_userCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "waitlist_user.denied")]
+        #pragma warning disable CS1591
+        Waitlist_userDenied,
         #pragma warning restore CS1591
     }
 }

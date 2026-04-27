@@ -7,36 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class UpdateUserlandUserOrganizationMembershipDto : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class UpdateUserlandUserOrganizationMembershipDto : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A single role identifier. Defaults to `member` or the explicit default role. Mutually exclusive with `role_slugs`.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RoleSlug { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1? UpdateUserlandUserOrganizationMembershipDtoMember1 { get; set; }
 #nullable restore
 #else
-        public string RoleSlug { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1 UpdateUserlandUserOrganizationMembershipDtoMember1 { get; set; }
 #endif
-        /// <summary>An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RoleSlugs { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2? UpdateUserlandUserOrganizationMembershipDtoMember2 { get; set; }
 #nullable restore
 #else
-        public List<string> RoleSlugs { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2 UpdateUserlandUserOrganizationMembershipDtoMember2 { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDto"/> and sets the default values.
-        /// </summary>
-        public UpdateUserlandUserOrganizationMembershipDto()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3? UpdateUserlandUserOrganizationMembershipDtoMember3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3 UpdateUserlandUserOrganizationMembershipDtoMember3 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -45,7 +45,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDto();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDto();
+            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.UpdateUserlandUserOrganizationMembershipDtoMember1 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1();
+            }
+            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.UpdateUserlandUserOrganizationMembershipDtoMember2 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2();
+            }
+            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.UpdateUserlandUserOrganizationMembershipDtoMember3 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,11 +67,19 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(UpdateUserlandUserOrganizationMembershipDtoMember1 != null)
             {
-                { "role_slug", n => { RoleSlug = n.GetStringValue(); } },
-                { "role_slugs", n => { RoleSlugs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-            };
+                return UpdateUserlandUserOrganizationMembershipDtoMember1.GetFieldDeserializers();
+            }
+            else if(UpdateUserlandUserOrganizationMembershipDtoMember2 != null)
+            {
+                return UpdateUserlandUserOrganizationMembershipDtoMember2.GetFieldDeserializers();
+            }
+            else if(UpdateUserlandUserOrganizationMembershipDtoMember3 != null)
+            {
+                return UpdateUserlandUserOrganizationMembershipDtoMember3.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -66,9 +88,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("role_slug", RoleSlug);
-            writer.WriteCollectionOfPrimitiveValues<string>("role_slugs", RoleSlugs);
-            writer.WriteAdditionalData(AdditionalData);
+            if(UpdateUserlandUserOrganizationMembershipDtoMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1>(null, UpdateUserlandUserOrganizationMembershipDtoMember1);
+            }
+            else if(UpdateUserlandUserOrganizationMembershipDtoMember2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2>(null, UpdateUserlandUserOrganizationMembershipDtoMember2);
+            }
+            else if(UpdateUserlandUserOrganizationMembershipDtoMember3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3>(null, UpdateUserlandUserOrganizationMembershipDtoMember3);
+            }
         }
     }
 }

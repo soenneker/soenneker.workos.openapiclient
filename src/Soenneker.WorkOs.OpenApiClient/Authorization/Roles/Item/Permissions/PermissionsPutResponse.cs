@@ -72,7 +72,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Roles.Item.Permissions
 #else
         public string Slug { get; set; }
 #endif
-        /// <summary>Whether the role is scoped to the environment or an organization.</summary>
+        /// <summary>Whether the role is scoped to the environment or an organization (custom role).</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Authorization.Roles.Item.Permissions.PermissionsPutResponse_type? Type { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }

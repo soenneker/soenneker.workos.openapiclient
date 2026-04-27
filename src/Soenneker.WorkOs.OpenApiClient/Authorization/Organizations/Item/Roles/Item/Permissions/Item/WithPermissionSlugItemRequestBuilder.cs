@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
         {
         }
         /// <summary>
-        /// Remove a single permission from an organization role by its slug.
+        /// Remove a single permission from a custom role by its slug.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.Role"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Role>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Role.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Remove a single permission from an organization role by its slug.
+        /// Remove a single permission from a custom role by its slug.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

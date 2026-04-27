@@ -40,7 +40,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
         {
         }
         /// <summary>
-        /// Delete an existing custom organization role.
+        /// Delete an existing custom role.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -66,7 +66,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a role that applies to an organization by its slug. This can return either an environment role or an organization-specific role.
+        /// Retrieve a role that applies to an organization by its slug. This can return either an environment role or a custom role.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.WithSlugGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -91,7 +91,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.WithSlugGetResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.WithSlugGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update an existing custom organization role. Only the fields provided in the request body will be updated.
+        /// Update an existing custom role. Only the fields provided in the request body will be updated.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.WithSlugPatchResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -122,7 +122,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.WithSlugPatchResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.WithSlugPatchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete an existing custom organization role.
+        /// Delete an existing custom role.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -141,7 +141,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             return requestInfo;
         }
         /// <summary>
-        /// Retrieve a role that applies to an organization by its slug. This can return either an environment role or an organization-specific role.
+        /// Retrieve a role that applies to an organization by its slug. This can return either an environment role or a custom role.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -160,7 +160,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             return requestInfo;
         }
         /// <summary>
-        /// Update an existing custom organization role. Only the fields provided in the request body will be updated.
+        /// Update an existing custom role. Only the fields provided in the request body will be updated.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
