@@ -2,45 +2,59 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organization_memberships
+namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// The entity that owns the API Key.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class UserlandUserOrganizationMembershipBaseList404Error : ApiException, IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class UserApiKeyWithValue_owner : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The primary error message.</summary>
-        public override string Message { get => MessageEscaped ?? string.Empty; }
-        /// <summary>A human-readable description of the error.</summary>
+        /// <summary>Unique identifier of the API Key owner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MessageEscaped { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string MessageEscaped { get; set; }
+        public string Id { get; set; }
+#endif
+        /// <summary>Unique identifier of the organization the API Key can access.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OrganizationId { get; set; }
+#nullable restore
+#else
+        public string OrganizationId { get; set; }
+#endif
+        /// <summary>The type of the API Key owner.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organization_memberships.UserlandUserOrganizationMembershipBaseList404Error"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValue_owner"/> and sets the default values.
         /// </summary>
-        public UserlandUserOrganizationMembershipBaseList404Error()
+        public UserApiKeyWithValue_owner()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organization_memberships.UserlandUserOrganizationMembershipBaseList404Error"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValue_owner"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organization_memberships.UserlandUserOrganizationMembershipBaseList404Error CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValue_owner CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organization_memberships.UserlandUserOrganizationMembershipBaseList404Error();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValue_owner();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +64,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organizati
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "message", n => { MessageEscaped = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -60,7 +76,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organizati
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("message", MessageEscaped);
+            writer.WriteStringValue("id", Id);
+            writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

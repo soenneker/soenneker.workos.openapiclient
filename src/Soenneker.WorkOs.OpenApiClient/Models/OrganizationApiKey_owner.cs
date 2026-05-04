@@ -11,7 +11,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// The entity that owns the API Key.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ApiKey_owner : IAdditionalDataHolder, IParsable
+    public partial class OrganizationApiKey_owner : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -32,21 +32,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Type { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey_owner"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner"/> and sets the default values.
         /// </summary>
-        public ApiKey_owner()
+        public OrganizationApiKey_owner()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey_owner"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey_owner CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey_owner();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -2,15 +2,14 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships
+namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Organization_membershipsPostResponse : IAdditionalDataHolder, IParsable
+    public partial class UserlandUserOrganizationMembershipBaseWithUser : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -20,10 +19,10 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// <summary>An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse_custom_attributes? CustomAttributes { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser_custom_attributes? CustomAttributes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse_custom_attributes CustomAttributes { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser_custom_attributes CustomAttributes { get; set; }
 #endif
         /// <summary>Whether this organization membership is managed by a directory sync connection.</summary>
         public bool? DirectoryManaged { get; set; }
@@ -59,16 +58,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
 #else
         public string OrganizationName { get; set; }
 #endif
-        /// <summary>The primary role assigned to the user within the organization.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole? Role { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole Role { get; set; }
-#endif
         /// <summary>The status of the organization membership. One of `active`, `inactive`, or `pending`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse_status? Status { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser_status? Status { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The user that belongs to the organization through this membership.</summary>
@@ -88,21 +79,21 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         public string UserId { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser"/> and sets the default values.
         /// </summary>
-        public Organization_membershipsPostResponse()
+        public UserlandUserOrganizationMembershipBaseWithUser()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -113,14 +104,13 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "custom_attributes", n => { CustomAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse_custom_attributes>(global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse_custom_attributes.CreateFromDiscriminatorValue); } },
+                { "custom_attributes", n => { CustomAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser_custom_attributes>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser_custom_attributes.CreateFromDiscriminatorValue); } },
                 { "directory_managed", n => { DirectoryManaged = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "organization_name", n => { OrganizationName = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>(global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser_status>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser.CreateFromDiscriminatorValue); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -134,14 +124,13 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse_custom_attributes>("custom_attributes", CustomAttributes);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser_custom_attributes>("custom_attributes", CustomAttributes);
             writer.WriteBoolValue("directory_managed", DirectoryManaged);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("organization_name", OrganizationName);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>("role", Role);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsPostResponse_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUser_status>("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>("user", User);
             writer.WriteStringValue("user_id", UserId);

@@ -80,6 +80,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string LastName { get; set; }
 #endif
+        /// <summary>The user&apos;s full name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
+#endif
         /// <summary>Distinguishes the profile object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -154,6 +162,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "idp_id", n => { IdpId = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "raw_attributes", n => { RawAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile_raw_attributes>(global::Soenneker.WorkOs.OpenApiClient.Models.Profile_raw_attributes.CreateFromDiscriminatorValue); } },
@@ -177,6 +186,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("idp_id", IdpId);
             writer.WriteStringValue("last_name", LastName);
+            writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile_raw_attributes>("raw_attributes", RawAttributes);

@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ApiKeyWithValue : IAdditionalDataHolder, IParsable
+    public partial class OrganizationApiKey : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -53,10 +53,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The entity that owns the API Key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue_owner? Owner { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner? Owner { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue_owner Owner { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner Owner { get; set; }
 #endif
         /// <summary>The permission slugs assigned to the API Key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -68,30 +68,22 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>The full API Key value. Only returned once at creation time.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Value { get; set; }
-#nullable restore
-#else
-        public string Value { get; set; }
-#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey"/> and sets the default values.
         /// </summary>
-        public ApiKeyWithValue()
+        public OrganizationApiKey()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -107,10 +99,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "obfuscated_value", n => { ObfuscatedValue = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
-                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue_owner>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue_owner.CreateFromDiscriminatorValue); } },
+                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner>(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner.CreateFromDiscriminatorValue); } },
                 { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "value", n => { Value = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -126,10 +117,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("obfuscated_value", ObfuscatedValue);
             writer.WriteStringValue("object", Object);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyWithValue_owner>("owner", Owner);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_owner>("owner", Owner);
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
-            writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

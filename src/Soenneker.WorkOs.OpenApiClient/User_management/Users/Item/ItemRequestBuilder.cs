@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.Models;
+using Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Api_keys;
 using Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Auth_factors;
 using Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_applications;
 using Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts;
@@ -26,6 +27,11 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The api_keys property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Api_keys.Api_keysRequestBuilder Api_keys
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Api_keys.Api_keysRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The auth_factors property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Auth_factors.Auth_factorsRequestBuilder Auth_factors
         {
