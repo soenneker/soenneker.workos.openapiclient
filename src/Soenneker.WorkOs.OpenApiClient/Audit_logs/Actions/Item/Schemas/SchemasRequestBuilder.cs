@@ -164,7 +164,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
             public int? Limit { get; set; }
             /// <summary>Order the results by the creation time.</summary>
             [QueryParameter("order")]
-            public global::Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas.GetOrderQueryParameterType? Order { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
         }
     }
 }

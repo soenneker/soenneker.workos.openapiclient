@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Organization_memberships;
+using Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Role_assignments;
 using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Organization_memberships.Organization_membershipsRequestBuilder Organization_memberships
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Organization_memberships.Organization_membershipsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The role_assignments property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Role_assignments.Role_assignmentsRequestBuilder Role_assignments
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Role_assignments.Role_assignmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_ItemRequestBuilder"/> and sets the default values.

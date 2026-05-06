@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class RoleAssignmentList : IAdditionalDataHolder, IParsable
+    public partial class UserRoleAssignmentList : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -17,18 +17,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The list of records for the current page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignment>? Data { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignment> Data { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment> Data { get; set; }
 #endif
         /// <summary>Pagination cursors for navigating between pages of results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList_list_metadata? ListMetadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList_list_metadata? ListMetadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList_list_metadata ListMetadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList_list_metadata ListMetadata { get; set; }
 #endif
         /// <summary>Indicates this is a list response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,21 +39,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Object { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList"/> and sets the default values.
         /// </summary>
-        public RoleAssignmentList()
+        public UserRoleAssignmentList()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,8 +63,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignment>(global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "list_metadata", n => { ListMetadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList_list_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList_list_metadata.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment>(global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "list_metadata", n => { ListMetadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList_list_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList_list_metadata.CreateFromDiscriminatorValue); } },
                 { "object", n => { Object = n.GetStringValue(); } },
             };
         }
@@ -75,8 +75,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignment>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.RoleAssignmentList_list_metadata>("list_metadata", ListMetadata);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList_list_metadata>("list_metadata", ListMetadata);
             writer.WriteStringValue("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }

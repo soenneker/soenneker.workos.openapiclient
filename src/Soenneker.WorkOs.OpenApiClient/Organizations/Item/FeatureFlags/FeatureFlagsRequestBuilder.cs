@@ -115,7 +115,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.FeatureFlags
             public int? Limit { get; set; }
             /// <summary>Order the results by the creation time.</summary>
             [QueryParameter("order")]
-            public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.FeatureFlags.GetOrderQueryParameterType? Order { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
         }
     }
 }

@@ -162,7 +162,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Auth_factors
             public int? Limit { get; set; }
             /// <summary>Order the results by the creation time.</summary>
             [QueryParameter("order")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Auth_factors.GetOrderQueryParameterType? Order { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
         }
     }
 }

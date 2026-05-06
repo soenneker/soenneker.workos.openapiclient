@@ -166,7 +166,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Api_keys
             public int? Limit { get; set; }
             /// <summary>Order the results by the creation time.</summary>
             [QueryParameter("order")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Api_keys.GetOrderQueryParameterType? Order { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
             /// <summary>The ID of the organization to filter user API keys by. When provided, only API keys created against that organization membership are returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

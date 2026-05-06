@@ -143,7 +143,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections
             public int? Limit { get; set; }
             /// <summary>Order the results by the creation time.</summary>
             [QueryParameter("order")]
-            public global::Soenneker.WorkOs.OpenApiClient.Connections.GetOrderQueryParameterType? Order { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
             /// <summary>Filter Connections by their associated organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

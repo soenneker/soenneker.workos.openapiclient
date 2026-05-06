@@ -10,7 +10,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class RoleAssignment404Error : ApiException, IAdditionalDataHolder, IParsable
+    public partial class UserRoleAssignment422Error : ApiException, IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +26,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         public string MessageEscaped { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.RoleAssignment404Error"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.UserRoleAssignment422Error"/> and sets the default values.
         /// </summary>
-        public RoleAssignment404Error()
+        public UserRoleAssignment422Error()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.RoleAssignment404Error"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.UserRoleAssignment422Error"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.RoleAssignment404Error CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.UserRoleAssignment422Error CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.RoleAssignment404Error();
+            return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.UserRoleAssignment422Error();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -130,7 +130,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_a
             public int? Limit { get; set; }
             /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.</summary>
             [QueryParameter("order")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_applications.GetOrderQueryParameterType? Order { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
         }
     }
 }
