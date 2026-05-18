@@ -126,7 +126,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
             [QueryParameter("domain_hint")]
             public string DomainHint { get; set; }
 #endif
-            /// <summary>Can be used to pre-fill the username/email address field of the IdP sign-in page for the user, if you know their username ahead of time. Currently supported for OAuth, OpenID Connect, Okta, and Entra ID connections.</summary>
+            /// <summary>Can be used to pre-fill the username/email address field of the IdP sign-in page for the user, if you know their username ahead of time. Currently supported for OAuth, OpenID Connect, Okta, Entra ID, and custom SAML connections.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("login_hint")]

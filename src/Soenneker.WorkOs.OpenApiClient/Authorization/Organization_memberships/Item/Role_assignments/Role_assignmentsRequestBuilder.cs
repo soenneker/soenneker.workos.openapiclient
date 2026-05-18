@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Role_assignmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organization_membership_id}/role_assignments{?after*,before*,limit*,order*}", pathParameters)
+        public Role_assignmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organization_membership_id}/role_assignments{?after*,before*,limit*,order*,resource_external_id*,resource_id*,resource_type_slug*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Role_assignmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organization_membership_id}/role_assignments{?after*,before*,limit*,order*}", rawUrl)
+        public Role_assignmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organization_membership_id}/role_assignments{?after*,before*,limit*,order*,resource_external_id*,resource_id*,resource_type_slug*}", rawUrl)
         {
         }
         /// <summary>
@@ -232,6 +232,36 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
+            /// <summary>Filter assignments by the external ID of the resource.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("resource_external_id")]
+            public string? ResourceExternalId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("resource_external_id")]
+            public string ResourceExternalId { get; set; }
+#endif
+            /// <summary>Filter assignments by the ID of the resource.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("resource_id")]
+            public string? ResourceId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("resource_id")]
+            public string ResourceId { get; set; }
+#endif
+            /// <summary>Filter assignments by the slug of the resource type.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("resource_type_slug")]
+            public string? ResourceTypeSlug { get; set; }
+#nullable restore
+#else
+            [QueryParameter("resource_type_slug")]
+            public string ResourceTypeSlug { get; set; }
+#endif
         }
     }
 }

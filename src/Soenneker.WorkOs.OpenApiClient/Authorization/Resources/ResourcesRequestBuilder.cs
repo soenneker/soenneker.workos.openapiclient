@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources{?after*,before*,limit*,order*,organization_id*,parent_external_id*,parent_resource_id*,parent_resource_type_slug*,resource_external_id*,resource_type_slug*,search*}", pathParameters)
+        public ResourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources{?after*,before*,limit*,order*,organization_id*,parent_external_id*,parent_resource_id*,parent_resource_type_slug*,resource_external_id*,resource_type_slug*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources{?after*,before*,limit*,order*,organization_id*,parent_external_id*,parent_resource_id*,parent_resource_type_slug*,resource_external_id*,resource_type_slug*,search*}", rawUrl)
+        public ResourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources{?after*,before*,limit*,order*,organization_id*,parent_external_id*,parent_resource_id*,parent_resource_type_slug*,resource_external_id*,resource_type_slug*}", rawUrl)
         {
         }
         /// <summary>
@@ -241,16 +241,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
 #else
             [QueryParameter("resource_type_slug")]
             public string ResourceTypeSlug { get; set; }
-#endif
-            /// <summary>Search resources by name.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("search")]
-            public string? Search { get; set; }
-#nullable restore
-#else
-            [QueryParameter("search")]
-            public string Search { get; set; }
 #endif
         }
     }
