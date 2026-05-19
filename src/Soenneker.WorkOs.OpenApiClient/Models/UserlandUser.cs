@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// The user that belongs to the organization through this membership.
+    /// The corresponding [user](/reference/authkit/user) object.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserlandUser : IAdditionalDataHolder, IParsable
