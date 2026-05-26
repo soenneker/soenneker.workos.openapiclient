@@ -25,6 +25,7 @@ using Soenneker.WorkOs.OpenApiClient.Portal;
 using Soenneker.WorkOs.OpenApiClient.Radar;
 using Soenneker.WorkOs.OpenApiClient.Sso;
 using Soenneker.WorkOs.OpenApiClient.User_management;
+using Soenneker.WorkOs.OpenApiClient.Vault;
 using Soenneker.WorkOs.OpenApiClient.Webhook_endpoints;
 using Soenneker.WorkOs.OpenApiClient.Widgets;
 using System.Collections.Generic;
@@ -133,6 +134,11 @@ namespace Soenneker.WorkOs.OpenApiClient
         public global::Soenneker.WorkOs.OpenApiClient.User_management.User_managementRequestBuilder User_management
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.User_management.User_managementRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The vault property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Vault.VaultRequestBuilder Vault
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Vault.VaultRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The webhook_endpoints property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Webhook_endpoints.Webhook_endpointsRequestBuilder Webhook_endpoints

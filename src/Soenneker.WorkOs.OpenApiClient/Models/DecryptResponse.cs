@@ -9,53 +9,43 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreateUserApiKeyDto : IAdditionalDataHolder, IParsable
+    public partial class DecryptResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The timestamp when the API key should expire. Must be a future timestamp. If omitted, the key does not expire.</summary>
-        public DateTimeOffset? ExpiresAt { get; set; }
-        /// <summary>A descriptive name for the API key.</summary>
+        /// <summary>Base64-encoded decrypted data key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? DataKey { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string DataKey { get; set; }
 #endif
-        /// <summary>The ID of the organization the user API key is associated with. The user must have an active membership in this organization.</summary>
+        /// <summary>Unique identifier of the decrypted data key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string OrganizationId { get; set; }
-#endif
-        /// <summary>The permission slugs to assign to the API key. Each permission must be enabled for user API keys.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Permissions { get; set; }
-#nullable restore
-#else
-        public List<string> Permissions { get; set; }
+        public string Id { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserApiKeyDto"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DecryptResponse"/> and sets the default values.
         /// </summary>
-        public CreateUserApiKeyDto()
+        public DecryptResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserApiKeyDto"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DecryptResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserApiKeyDto CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.DecryptResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserApiKeyDto();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DecryptResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,10 +55,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "data_key", n => { DataKey = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -78,10 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
+            writer.WriteStringValue("data_key", DataKey);
+            writer.WriteStringValue("id", Id);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

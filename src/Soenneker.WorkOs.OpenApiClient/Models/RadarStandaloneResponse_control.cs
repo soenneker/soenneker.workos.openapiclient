@@ -15,17 +15,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         Brute_force_attack,
         #pragma warning restore CS1591
-        [EnumMember(Value = "credential_stuffing")]
-        #pragma warning disable CS1591
-        Credential_stuffing,
-        #pragma warning restore CS1591
         [EnumMember(Value = "domain_sign_up_rate_limit")]
         #pragma warning disable CS1591
         Domain_sign_up_rate_limit,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "ip_sign_up_rate_limit")]
-        #pragma warning disable CS1591
-        Ip_sign_up_rate_limit,
         #pragma warning restore CS1591
         [EnumMember(Value = "impossible_travel")]
         #pragma warning disable CS1591

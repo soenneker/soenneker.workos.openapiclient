@@ -5,18 +5,29 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets
+namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// A static snapshot of an encrypted object.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class Client_secrets : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class ObjectVersion : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>An ISO 8601 timestamp.</summary>
+        /// <summary>Timestamp when the version was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The unique ID of the client secret.</summary>
+        /// <summary>Whether this is the active version.</summary>
+        public bool? CurrentVersion { get; set; }
+        /// <summary>Hash of the object value.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Etag { get; set; }
+#nullable restore
+#else
+        public string Etag { get; set; }
+#endif
+        /// <summary>Unique identifier of the version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -24,42 +35,24 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secret
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The timestamp when the client secret was last used, or null if never used.</summary>
-        public DateTimeOffset? LastUsedAt { get; set; }
-        /// <summary>Distinguishes the connect application secret object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
-        /// <summary>A hint showing the last few characters of the secret value.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SecretHint { get; set; }
-#nullable restore
-#else
-        public string SecretHint { get; set; }
-#endif
-        /// <summary>An ISO 8601 timestamp.</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+        /// <summary>Number of bytes of stored data.</summary>
+        public int? Size { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ObjectVersion"/> and sets the default values.
         /// </summary>
-        public Client_secrets()
+        public ObjectVersion()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ObjectVersion"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.ObjectVersion CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.ObjectVersion();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,11 +63,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secret
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "current_version", n => { CurrentVersion = n.GetBoolValue(); } },
+                { "etag", n => { Etag = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
-                { "secret_hint", n => { SecretHint = n.GetStringValue(); } },
-                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "size", n => { Size = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -85,11 +77,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secret
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteBoolValue("current_version", CurrentVersion);
+            writer.WriteStringValue("etag", Etag);
             writer.WriteStringValue("id", Id);
-            writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
-            writer.WriteStringValue("object", Object);
-            writer.WriteStringValue("secret_hint", SecretHint);
-            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
+            writer.WriteIntValue("size", Size);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

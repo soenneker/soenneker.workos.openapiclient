@@ -25,13 +25,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The timestamp when the client secret was last used, or null if never used.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LastUsedAt { get; set; }
-#nullable restore
-#else
-        public string LastUsedAt { get; set; }
-#endif
+        public DateTimeOffset? LastUsedAt { get; set; }
         /// <summary>Distinguishes the connect application secret object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +79,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "last_used_at", n => { LastUsedAt = n.GetStringValue(); } },
+                { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "secret", n => { Secret = n.GetStringValue(); } },
                 { "secret_hint", n => { SecretHint = n.GetStringValue(); } },
@@ -101,7 +95,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("last_used_at", LastUsedAt);
+            writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
             writer.WriteStringValue("object", Object);
             writer.WriteStringValue("secret", Secret);
             writer.WriteStringValue("secret_hint", SecretHint);

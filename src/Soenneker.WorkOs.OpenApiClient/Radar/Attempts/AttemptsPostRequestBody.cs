@@ -18,22 +18,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Attempts
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The authentication method being used.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Radar.Attempts.AttemptsPostRequestBody_auth_method? AuthMethod { get; set; }
-        /// <summary>An optional bot detection score for the request.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? BotScore { get; set; }
-#nullable restore
-#else
-        public string BotScore { get; set; }
-#endif
-        /// <summary>An optional device fingerprint for the request.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? DeviceFingerprint { get; set; }
-#nullable restore
-#else
-        public string DeviceFingerprint { get; set; }
-#endif
         /// <summary>The email address of the user making the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,8 +69,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Attempts
             {
                 { "action", n => { Action = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Radar.Attempts.AttemptsPostRequestBody_action>(); } },
                 { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Radar.Attempts.AttemptsPostRequestBody_auth_method>(); } },
-                { "bot_score", n => { BotScore = n.GetStringValue(); } },
-                { "device_fingerprint", n => { DeviceFingerprint = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
@@ -101,8 +83,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Attempts
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Radar.Attempts.AttemptsPostRequestBody_action>("action", Action);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Radar.Attempts.AttemptsPostRequestBody_auth_method>("auth_method", AuthMethod);
-            writer.WriteStringValue("bot_score", BotScore);
-            writer.WriteStringValue("device_fingerprint", DeviceFingerprint);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteStringValue("user_agent", UserAgent);
