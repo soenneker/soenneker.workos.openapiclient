@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The Audit Log Stream currently configured for the organization, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_log_stream? LogStream { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream? LogStream { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_log_stream LogStream { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream LogStream { get; set; }
 #endif
         /// <summary>Unique identifier of the Organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "log_stream", n => { LogStream = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_log_stream>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_log_stream.CreateFromDiscriminatorValue); } },
+                { "log_stream", n => { LogStream = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "retention_period_in_days", n => { RetentionPeriodInDays = n.GetIntValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_state>(); } },
@@ -72,7 +72,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_log_stream>("log_stream", LogStream);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream>("log_stream", LogStream);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteIntValue("retention_period_in_days", RetentionPeriodInDays);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_state>("state", State);

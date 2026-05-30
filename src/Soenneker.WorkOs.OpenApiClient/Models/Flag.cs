@@ -45,20 +45,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the Feature Flag object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.Flag_object? Object { get; set; }
         /// <summary>The owner of the Feature Flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Flag.Flag_owner? Owner { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.FlagOwner? Owner { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Flag.Flag_owner Owner { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.FlagOwner Owner { get; set; }
 #endif
         /// <summary>A unique key to reference the Feature Flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -109,8 +103,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
-                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Flag.Flag_owner>(global::Soenneker.WorkOs.OpenApiClient.Models.Flag.Flag_owner.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Flag_object>(); } },
+                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.FlagOwner>(global::Soenneker.WorkOs.OpenApiClient.Models.FlagOwner.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -129,87 +123,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("object", Object);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Flag.Flag_owner>("owner", Owner);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Flag_object>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.FlagOwner>("owner", Owner);
             writer.WriteStringValue("slug", Slug);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember2"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class Flag_owner : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember1? FlagOwnerMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember1 FlagOwnerMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember2? FlagOwnerMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember2 FlagOwnerMember2 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.Flag.Flag_owner"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.WorkOs.OpenApiClient.Models.Flag.Flag_owner CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.WorkOs.OpenApiClient.Models.Flag.Flag_owner();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.FlagOwnerMember1 = new global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember1();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.FlagOwnerMember2 = new global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember2();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(FlagOwnerMember1 != null)
-                {
-                    return FlagOwnerMember1.GetFieldDeserializers();
-                }
-                else if(FlagOwnerMember2 != null)
-                {
-                    return FlagOwnerMember2.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(FlagOwnerMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember1>(null, FlagOwnerMember1);
-                }
-                else if(FlagOwnerMember2 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Flag_ownerMember2>(null, FlagOwnerMember2);
-                }
-            }
         }
     }
 }

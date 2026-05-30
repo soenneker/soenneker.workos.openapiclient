@@ -43,20 +43,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the Connection object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.Connection_object? Object { get; set; }
         /// <summary>Configuration options for SAML connections. Only present for SAML connection types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Connection_options? Options { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions? Options { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Connection_options Options { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions Options { get; set; }
 #endif
         /// <summary>Unique identifier for the Organization in which the Connection resides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,8 +97,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "domains", n => { Domains = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_domains>(global::Soenneker.WorkOs.OpenApiClient.Models.Connection_domains.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
-                { "options", n => { Options = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_options>(global::Soenneker.WorkOs.OpenApiClient.Models.Connection_options.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_object>(); } },
+                { "options", n => { Options = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_state>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_status>(); } },
@@ -123,8 +117,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_domains>("domains", Domains);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("object", Object);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_options>("options", Options);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_object>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions>("options", Options);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_state>("state", State);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_status>("status", Status);

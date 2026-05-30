@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>
-    /// Options to configure the Admin Portal based on the intent.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class IntentOptions : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Domain verification-specific options for the Admin Portal.</summary>
+        /// <summary>The domain_verification property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions? DomainVerification { get; set; }
@@ -23,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions DomainVerification { get; set; }
 #endif
-        /// <summary>SSO-specific options for the Admin Portal.</summary>
+        /// <summary>The sso property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions? Sso { get; set; }

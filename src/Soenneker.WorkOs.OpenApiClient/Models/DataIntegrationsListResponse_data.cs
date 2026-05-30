@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The user&apos;s [connected account](/reference/pipes/connected-account) for this provider, or `null` if the user has not connected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_connected_account? ConnectedAccount { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_account? ConnectedAccount { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_connected_account ConnectedAccount { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_account ConnectedAccount { get; set; }
 #endif
         /// <summary>The timestamp when the provider was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,22 +98,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the data provider object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_object? Object { get; set; }
         /// <summary>Whether the provider is owned by a user or organization.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_ownership? Ownership { get; set; }
         /// <summary>The OAuth scopes configured for this provider, or `null` if none are configured.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_scopes? Scopes { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopes? Scopes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_scopes Scopes { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopes Scopes { get; set; }
 #endif
         /// <summary>The slug identifier used in API calls (e.g., `github`, `slack`, `notion`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -165,16 +159,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "connected_account", n => { ConnectedAccount = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_connected_account>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_connected_account.CreateFromDiscriminatorValue); } },
+                { "connected_account", n => { ConnectedAccount = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_account>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_account.CreateFromDiscriminatorValue); } },
                 { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
                 { "credentialsType", n => { CredentialsType = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "integrationType", n => { IntegrationType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_object>(); } },
                 { "ownership", n => { Ownership = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_ownership>(); } },
-                { "scopes", n => { Scopes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_scopes>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_scopes.CreateFromDiscriminatorValue); } },
+                { "scopes", n => { Scopes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopes>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopes.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetStringValue(); } },
                 { "created_at", n => { Created_at = n.GetStringValue(); } },
@@ -190,7 +184,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_connected_account>("connected_account", ConnectedAccount);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_account>("connected_account", ConnectedAccount);
             writer.WriteStringValue("created_at", Created_at);
             writer.WriteStringValue("createdAt", CreatedAt);
             writer.WriteStringValue("credentials_type", Credentials_type);
@@ -200,159 +194,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("integration_type", Integration_type);
             writer.WriteStringValue("integrationType", IntegrationType);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_object>("object", Object);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_ownership>("ownership", Ownership);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_scopes>("scopes", Scopes);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopes>("scopes", Scopes);
             writer.WriteStringValue("slug", Slug);
             writer.WriteStringValue("updated_at", Updated_at);
             writer.WriteStringValue("updatedAt", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember2"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataIntegrationsListResponse_data_connected_account : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember1? DataIntegrationsListResponseDataConnectedAccountMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember1 DataIntegrationsListResponseDataConnectedAccountMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember2? DataIntegrationsListResponseDataConnectedAccountMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember2 DataIntegrationsListResponseDataConnectedAccountMember2 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_connected_account"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_connected_account CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_connected_account();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.DataIntegrationsListResponseDataConnectedAccountMember1 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember1();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.DataIntegrationsListResponseDataConnectedAccountMember2 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember2();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataIntegrationsListResponseDataConnectedAccountMember1 != null)
-                {
-                    return DataIntegrationsListResponseDataConnectedAccountMember1.GetFieldDeserializers();
-                }
-                else if(DataIntegrationsListResponseDataConnectedAccountMember2 != null)
-                {
-                    return DataIntegrationsListResponseDataConnectedAccountMember2.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(DataIntegrationsListResponseDataConnectedAccountMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember1>(null, DataIntegrationsListResponseDataConnectedAccountMember1);
-                }
-                else if(DataIntegrationsListResponseDataConnectedAccountMember2 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_connected_accountMember2>(null, DataIntegrationsListResponseDataConnectedAccountMember2);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopesMember1"/>, List&lt;string&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataIntegrationsListResponse_data_scopes : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopesMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopesMember1? DataIntegrationsListResponseDataScopesMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopesMember1 DataIntegrationsListResponseDataScopesMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<string>? String { get; set; }
-#nullable restore
-#else
-            public List<string> String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_scopes"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_scopes CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.DataIntegrationsListResponse_data_scopes();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.DataIntegrationsListResponseDataScopesMember1 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopesMember1();
-                }
-                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataIntegrationsListResponseDataScopesMember1 != null)
-                {
-                    return DataIntegrationsListResponseDataScopesMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(DataIntegrationsListResponseDataScopesMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data_scopesMember1>(null, DataIntegrationsListResponseDataScopesMember1);
-                }
-                else if(String != null)
-                {
-                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
-                }
-            }
         }
     }
 }

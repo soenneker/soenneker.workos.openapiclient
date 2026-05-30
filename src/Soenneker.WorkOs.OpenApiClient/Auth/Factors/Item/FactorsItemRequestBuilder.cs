@@ -42,24 +42,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item
         /// <summary>
         /// Permanently deletes an Authentication Factor. It cannot be undone.
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item.Factors404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerDelete404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item.Factors404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerDelete404.CreateFromDiscriminatorValue },
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Gets an Authentication Factor.
@@ -67,7 +68,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item.AuthenticationFactor404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerGet404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -80,7 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item.AuthenticationFactor404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerGet404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

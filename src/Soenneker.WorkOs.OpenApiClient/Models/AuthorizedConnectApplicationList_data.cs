@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The application property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Authorized_applications? Application { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication? Application { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Authorized_applications Application { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication Application { get; set; }
 #endif
         /// <summary>The scopes granted by the user to the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,13 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OauthResource { get; set; }
 #endif
         /// <summary>Distinguishes the authorized connect application object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data_object? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data"/> and sets the default values.
         /// </summary>
@@ -79,11 +73,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "application", n => { Application = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Authorized_applications>(global::Soenneker.WorkOs.OpenApiClient.Models.Authorized_applications.CreateFromDiscriminatorValue); } },
+                { "application", n => { Application = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication.CreateFromDiscriminatorValue); } },
                 { "granted_scopes", n => { GrantedScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "oauth_resource", n => { OauthResource = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data_object>(); } },
             };
         }
         /// <summary>
@@ -93,11 +87,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Authorized_applications>("application", Application);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication>("application", Application);
             writer.WriteCollectionOfPrimitiveValues<string>("granted_scopes", GrantedScopes);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("oauth_resource", OauthResource);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data_object>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

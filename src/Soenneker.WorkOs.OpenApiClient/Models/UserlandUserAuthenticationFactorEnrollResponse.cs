@@ -14,7 +14,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The [authentication challenge](/reference/authkit/mfa/authentication-challenge) object that is used to complete the authentication process.</summary>
+        /// <summary>The authentication_challenge property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? AuthenticationChallenge { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge AuthenticationChallenge { get; set; }
 #endif
-        /// <summary>The [authentication factor](/reference/authkit/mfa/authentication-factor) object that represents the additional authentication method used on top of the existing authentication strategy.</summary>
+        /// <summary>The authentication_factor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled? AuthenticationFactor { get; set; }

@@ -52,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplicationList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplicationList422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerList422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplicationList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder.ApplicationsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -65,36 +65,36 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplicationList422Error.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerList422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplicationList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplicationList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new Connect Application. Supports both OAuth and Machine-to-Machine (M2M) application types.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplicationPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplication404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplication422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreate404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreate422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplicationPostResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder.ApplicationsPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplicationPostResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder.ApplicationsPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplication404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplication422Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreate404.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreate422.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplicationPostResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ConnectApplicationPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all Connect Applications in the current environment with optional filtering.
@@ -123,11 +123,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder.ApplicationsPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder.ApplicationsPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -145,81 +145,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications
         public global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder(rawUrl, RequestAdapter);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateM2MApplicationDto"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ApplicationsPostRequestBody : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateM2MApplicationDto"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.WorkOs.OpenApiClient.Models.CreateM2MApplicationDto? CreateM2MApplicationDto { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.WorkOs.OpenApiClient.Models.CreateM2MApplicationDto CreateM2MApplicationDto { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto? CreateOAuthApplicationDto { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto CreateOAuthApplicationDto { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder.ApplicationsPostRequestBody"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder.ApplicationsPostRequestBody CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.ApplicationsRequestBuilder.ApplicationsPostRequestBody();
-                if("CreateM2MApplicationDto".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.CreateM2MApplicationDto = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateM2MApplicationDto();
-                }
-                else if("CreateOAuthApplicationDto".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.CreateOAuthApplicationDto = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(CreateM2MApplicationDto != null)
-                {
-                    return CreateM2MApplicationDto.GetFieldDeserializers();
-                }
-                else if(CreateOAuthApplicationDto != null)
-                {
-                    return CreateOAuthApplicationDto.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(CreateM2MApplicationDto != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateM2MApplicationDto>(null, CreateM2MApplicationDto);
-                }
-                else if(CreateOAuthApplicationDto != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto>(null, CreateOAuthApplicationDto);
-                }
-            }
         }
         /// <summary>
         /// List all Connect Applications in the current environment with optional filtering.

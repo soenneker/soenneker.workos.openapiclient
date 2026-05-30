@@ -58,7 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.OrganizationList422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationsControllerList422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.OrganizationsRequestBuilder.OrganizationsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -71,7 +71,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Organizations.OrganizationList422Error.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationsControllerList422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -82,8 +82,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Organization409Error">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Organization422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationsControllerCreate409">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationsControllerCreate422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.Organization?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -97,8 +97,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Organizations.Organization409Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Organizations.Organization422Error.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationsControllerCreate409.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationsControllerCreate422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Organization>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Organization.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

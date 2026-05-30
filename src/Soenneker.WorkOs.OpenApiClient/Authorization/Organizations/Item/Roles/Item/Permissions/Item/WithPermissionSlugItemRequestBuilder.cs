@@ -39,8 +39,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.Role"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.Item.Role403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.Item.Role404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerRemovePermission403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerRemovePermission404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.Role?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -53,8 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.Item.Role403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions.Item.Role404Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerRemovePermission403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerRemovePermission404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Role>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Role.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

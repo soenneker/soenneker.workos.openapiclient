@@ -39,8 +39,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users.Item
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Directory_users.Item.DirectoryUserWithGroups403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Directory_users.Item.DirectoryUserWithGroups404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUsersControllerFind403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUsersControllerFind404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -53,8 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Directory_users.Item.DirectoryUserWithGroups403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Directory_users.Item.DirectoryUserWithGroups404Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUsersControllerFind403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUsersControllerFind404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

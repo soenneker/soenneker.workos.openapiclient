@@ -17,27 +17,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The list of records for the current page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.Events>? Data { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.Events> Data { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema> Data { get; set; }
 #endif
         /// <summary>Pagination cursor for navigating to the next page of results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EventList_list_metadata? ListMetadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EventListListMetadata? ListMetadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EventList_list_metadata ListMetadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EventListListMetadata ListMetadata { get; set; }
 #endif
         /// <summary>Indicates this is a list response.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EventList_object? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.EventList"/> and sets the default values.
         /// </summary>
@@ -63,9 +57,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.Events>(global::Soenneker.WorkOs.OpenApiClient.Models.Events.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "list_metadata", n => { ListMetadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventList_list_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.EventList_list_metadata.CreateFromDiscriminatorValue); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema>(global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "list_metadata", n => { ListMetadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventListListMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.EventListListMetadata.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventList_object>(); } },
             };
         }
         /// <summary>
@@ -75,9 +69,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.Events>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventList_list_metadata>("list_metadata", ListMetadata);
-            writer.WriteStringValue("object", Object);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventListListMetadata>("list_metadata", ListMetadata);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventList_object>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

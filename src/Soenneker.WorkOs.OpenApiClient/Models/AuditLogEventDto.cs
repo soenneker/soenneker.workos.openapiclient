@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>
-    /// The audit log event to create.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class AuditLogEventDto : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Identifier of what happened.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -21,7 +20,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Action { get; set; }
 #endif
-        /// <summary>The entity that performed the action.</summary>
+        /// <summary>The actor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventActorDto? Actor { get; set; }
@@ -31,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Additional context about where and how the action occurred.</summary>
+        /// <summary>The context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventContextDto? Context { get; set; }

@@ -21,7 +21,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1_access_token AccessToken { get; set; }
 #endif
         /// <summary>Indicates whether the access token is valid and ready for use, or if reauthorization is required.</summary>
-        public bool? Active { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1_active? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "access_token", n => { AccessToken = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1_access_token>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1_access_token.CreateFromDiscriminatorValue); } },
-                { "active", n => { Active = n.GetBoolValue(); } },
+                { "active", n => { Active = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1_active>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1_access_token>("access_token", AccessToken);
-            writer.WriteBoolValue("active", Active);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1_active>("active", Active);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

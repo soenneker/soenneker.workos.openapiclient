@@ -52,8 +52,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_a
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_applications.AuthorizedConnectApplicationList404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_applications.AuthorizedConnectApplicationList422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedApplicationsControllerList404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedApplicationsControllerList422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_applications.Authorized_applicationsRequestBuilder.Authorized_applicationsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -66,8 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_a
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_applications.AuthorizedConnectApplicationList404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_applications.AuthorizedConnectApplicationList422Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedApplicationsControllerList404.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedApplicationsControllerList422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

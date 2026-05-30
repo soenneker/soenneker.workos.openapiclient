@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>- `&quot;not_installed&quot;`: The user does not have the integration installed.- `&quot;needs_reauthorization&quot;`: The user needs to reauthorize the integration.</summary>
+    /// <summary>&quot;- `\&quot;not_installed\&quot;`: The user does not have the integration installed.- `\&quot;needs_reauthorization\&quot;`: The user needs to reauthorize the integration.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DataIntegrationAccessTokenResponseMember2_error
     {

@@ -35,18 +35,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Information about the impersonator if this session was created via impersonation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_impersonator? Impersonator { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator? Impersonator { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_impersonator Impersonator { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator Impersonator { get; set; }
 #endif
         /// <summary>The OAuth tokens from the identity provider, if applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_oauth_tokens? OauthTokens { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOauthTokens? OauthTokens { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_oauth_tokens OauthTokens { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOauthTokens OauthTokens { get; set; }
 #endif
         /// <summary>The ID of the organization the user selected to sign in to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string RefreshToken { get; set; }
 #endif
-        /// <summary>The corresponding [user](/reference/authkit/user) object.</summary>
+        /// <summary>The user object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser? User { get; set; }
@@ -100,8 +100,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "access_token", n => { AccessToken = n.GetStringValue(); } },
                 { "authentication_method", n => { AuthenticationMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_authentication_method>(); } },
                 { "authkit_authorization_code", n => { AuthkitAuthorizationCode = n.GetStringValue(); } },
-                { "impersonator", n => { Impersonator = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_impersonator>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_impersonator.CreateFromDiscriminatorValue); } },
-                { "oauth_tokens", n => { OauthTokens = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_oauth_tokens>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_oauth_tokens.CreateFromDiscriminatorValue); } },
+                { "impersonator", n => { Impersonator = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator.CreateFromDiscriminatorValue); } },
+                { "oauth_tokens", n => { OauthTokens = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOauthTokens>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOauthTokens.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "refresh_token", n => { RefreshToken = n.GetStringValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser.CreateFromDiscriminatorValue); } },
@@ -117,8 +117,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("access_token", AccessToken);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_authentication_method>("authentication_method", AuthenticationMethod);
             writer.WriteStringValue("authkit_authorization_code", AuthkitAuthorizationCode);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_impersonator>("impersonator", Impersonator);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponse_oauth_tokens>("oauth_tokens", OauthTokens);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator>("impersonator", Impersonator);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOauthTokens>("oauth_tokens", OauthTokens);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("refresh_token", RefreshToken);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>("user", User);

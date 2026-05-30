@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.- `disconnected`: The connection has been disconnected.</summary>
+    /// <summary>&quot;The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.- `disconnected`: The connection has been disconnected.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ConnectedAccount_state
     {

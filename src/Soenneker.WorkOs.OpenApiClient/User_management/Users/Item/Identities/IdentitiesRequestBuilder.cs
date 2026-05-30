@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities
         /// <returns>A List&lt;global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -51,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet404.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

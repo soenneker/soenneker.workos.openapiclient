@@ -40,25 +40,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.AuthorizationCheck403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.AuthorizationCheck404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.AuthorizationCheck422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCheck?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.CheckAuthorizationDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCheck?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CheckAuthorizationDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCheck> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.CheckAuthorizationDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCheck> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CheckAuthorizationDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.AuthorizationCheck403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.AuthorizationCheck404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.AuthorizationCheck422Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck404.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCheck>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCheck.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -70,11 +70,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.CheckAuthorizationDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.CheckAuthorizationDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Check.CheckAuthorizationDtoPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.CheckAuthorizationDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

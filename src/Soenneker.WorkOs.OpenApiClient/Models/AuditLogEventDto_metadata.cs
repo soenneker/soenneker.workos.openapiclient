@@ -11,8 +11,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// Additional data associated with the event or entity.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AuditLogEventDto_metadata : IParsable
+    public partial class AuditLogEventDto_metadata : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata"/> and sets the default values.
+        /// </summary>
+        public AuditLogEventDto_metadata()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -40,6 +49,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

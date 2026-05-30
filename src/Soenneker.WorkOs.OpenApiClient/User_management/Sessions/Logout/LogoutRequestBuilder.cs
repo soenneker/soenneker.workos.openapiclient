@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -35,24 +36,25 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout
         /// <summary>
         /// Logout a user from the current [session](/reference/authkit/session).
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout.Logout422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerLogout422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout.LogoutRequestBuilder.LogoutRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout.LogoutRequestBuilder.LogoutRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout.LogoutRequestBuilder.LogoutRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout.LogoutRequestBuilder.LogoutRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "422", global::Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout.Logout422Error.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerLogout422.CreateFromDiscriminatorValue },
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Logout a user from the current [session](/reference/authkit/session).

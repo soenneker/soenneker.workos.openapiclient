@@ -52,8 +52,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupList403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupList404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerList403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerList404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.GroupList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupsRequestBuilder.GroupsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -66,8 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupList403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupList404Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerList403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerList404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.GroupList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.GroupList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -78,10 +78,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Group400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Group403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Group404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Group422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.Group?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateGroupDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -95,10 +95,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Group400Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Group403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Group404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Group422Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate400.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate404.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Group>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Group.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

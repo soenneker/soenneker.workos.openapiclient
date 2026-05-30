@@ -23,13 +23,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data> Data { get; set; }
 #endif
         /// <summary>Indicates this is a list response.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_object? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse"/> and sets the default values.
         /// </summary>
@@ -56,7 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_object>(); } },
             };
         }
         /// <summary>
@@ -67,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_data>("data", Data);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse_object>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

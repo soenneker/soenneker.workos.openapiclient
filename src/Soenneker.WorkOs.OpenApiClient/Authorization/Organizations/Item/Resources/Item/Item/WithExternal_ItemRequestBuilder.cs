@@ -48,28 +48,29 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// <summary>
         /// Delete an authorization resource by organization, resource type, and external ID. This also deletes all descendant resources.
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_ItemRequestBuilder.WithExternal_ItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_ItemRequestBuilder.WithExternal_ItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_ItemRequestBuilder.WithExternal_ItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_ItemRequestBuilder.WithExternal_ItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_400Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_404Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId400.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId404.CreateFromDiscriminatorValue },
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve the details of an authorization resource by its external ID, organization, and resource type. This is useful when you only have the external ID from your system and need to fetch the full resource details.
@@ -77,8 +78,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.AuthorizationResource403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.AuthorizationResource404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerGetByExternalId403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerGetByExternalId404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -91,43 +92,43 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.AuthorizationResource403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.AuthorizationResource404Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerGetByExternalId403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerGetByExternalId404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update an existing authorization resource using its external ID.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_PatchResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId200"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_409Error">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId409">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_PatchResponse?> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.UpdateAuthorizationResourceDtoPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId200?> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_PatchResponse> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.UpdateAuthorizationResourceDtoPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId200> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_400Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_404Error.CreateFromDiscriminatorValue },
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_409Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_422Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId400.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId404.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId409.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId422.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_PatchResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternal_PatchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId200>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete an authorization resource by organization, resource type, and external ID. This also deletes all descendant resources.
@@ -175,11 +176,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.UpdateAuthorizationResourceDtoPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.UpdateAuthorizationResourceDtoPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

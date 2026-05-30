@@ -25,28 +25,22 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the authentication factor object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_object? Object { get; set; }
         /// <summary>SMS-based authentication factor details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_sms? Sms { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorSms? Sms { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_sms Sms { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorSms Sms { get; set; }
 #endif
         /// <summary>TOTP-based authentication factor details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_totp? Totp { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorTotp? Totp { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_totp Totp { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorTotp Totp { get; set; }
 #endif
         /// <summary>The type of the factor to enroll.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_type? Type { get; set; }
@@ -87,9 +81,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
-                { "sms", n => { Sms = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_sms>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_sms.CreateFromDiscriminatorValue); } },
-                { "totp", n => { Totp = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_totp>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_totp.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_object>(); } },
+                { "sms", n => { Sms = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorSms>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorSms.CreateFromDiscriminatorValue); } },
+                { "totp", n => { Totp = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorTotp>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorTotp.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_type>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -104,9 +98,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("object", Object);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_sms>("sms", Sms);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_totp>("totp", Totp);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_object>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorSms>("sms", Sms);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorTotp>("totp", Totp);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactor_type>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("user_id", UserId);

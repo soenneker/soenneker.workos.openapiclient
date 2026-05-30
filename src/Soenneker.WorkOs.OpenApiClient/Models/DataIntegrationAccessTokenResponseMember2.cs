@@ -13,10 +13,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Indicates whether the access token is valid and ready for use, or if reauthorization is required.</summary>
-        public bool? Active { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2_active? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>- `&quot;not_installed&quot;`: The user does not have the integration installed.- `&quot;needs_reauthorization&quot;`: The user needs to reauthorize the integration.</summary>
+        /// <summary>&quot;- `\&quot;not_installed\&quot;`: The user does not have the integration installed.- `\&quot;needs_reauthorization\&quot;`: The user needs to reauthorize the integration.&quot;</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2_error? Error { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2"/> and sets the default values.
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active", n => { Active = n.GetBoolValue(); } },
+                { "active", n => { Active = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2_active>(); } },
                 { "error", n => { Error = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2_error>(); } },
             };
         }
@@ -54,7 +54,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("active", Active);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2_active>("active", Active);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2_error>("error", Error);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -45,20 +45,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string ObfuscatedValue { get; set; }
 #endif
         /// <summary>Distinguishes the API Key object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey_object? Object { get; set; }
         /// <summary>The entity that owns the API Key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey_owner? Owner { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyOwner? Owner { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey_owner Owner { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyOwner Owner { get; set; }
 #endif
         /// <summary>The permission slugs assigned to the API Key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -101,8 +95,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "obfuscated_value", n => { ObfuscatedValue = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
-                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey_owner>(global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey_owner.CreateFromDiscriminatorValue); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey_object>(); } },
+                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyOwner>(global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyOwner.CreateFromDiscriminatorValue); } },
                 { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -120,8 +114,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("obfuscated_value", ObfuscatedValue);
-            writer.WriteStringValue("object", Object);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey_owner>("owner", Owner);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey_object>("object", Object);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyOwner>("owner", Owner);
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

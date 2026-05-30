@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Invitations.By_token.It
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Invitations.By_token.Item.UserlandUserInvite404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerGetByToken404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Invitations.By_token.It
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Invitations.By_token.Item.UserlandUserInvite404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerGetByToken404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

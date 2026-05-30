@@ -40,9 +40,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.RedirectUri400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.RedirectUri401Error">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.RedirectUri422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate401">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateRedirectUriDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -56,9 +56,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.RedirectUri400Error.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.RedirectUri401Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.RedirectUri422Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate400.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate401.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

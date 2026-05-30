@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// The corresponding [user](/reference/authkit/user) object.
+    /// The user object.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserlandUser : IAdditionalDataHolder, IParsable
@@ -78,13 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata Metadata { get; set; }
 #endif
         /// <summary>Distinguishes the user object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_object? Object { get; set; }
         /// <summary>A URL reference to an image representing the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -130,7 +124,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "last_sign_in_at", n => { LastSignInAt = n.GetDateTimeOffsetValue(); } },
                 { "locale", n => { Locale = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata.CreateFromDiscriminatorValue); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_object>(); } },
                 { "profile_picture_url", n => { ProfilePictureUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -152,7 +146,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_sign_in_at", LastSignInAt);
             writer.WriteStringValue("locale", Locale);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata>("metadata", Metadata);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_object>("object", Object);
             writer.WriteStringValue("profile_picture_url", ProfilePictureUrl);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

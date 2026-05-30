@@ -36,24 +36,25 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// <summary>
         /// Disconnects WorkOS&apos;s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. This does not revoke access on the provider side.
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlug404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerDeleteUserDataInstallation404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlug404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerDeleteUserDataInstallation404.CreateFromDiscriminatorValue },
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves a user&apos;s [connected account](/reference/pipes/connected-account) for a specific provider.
@@ -61,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.ConnectedAccount404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerGetUserDataInstallation404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -74,7 +75,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.ConnectedAccount404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerGetUserDataInstallation404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

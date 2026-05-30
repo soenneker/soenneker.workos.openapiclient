@@ -39,9 +39,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Item.Permissions.AuthorizationPermissionList403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Item.Permissions.AuthorizationPermissionList404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Item.Permissions.AuthorizationPermissionList422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissionsByExternalId403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissionsByExternalId404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissionsByExternalId422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Item.Permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,9 +54,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Item.Permissions.AuthorizationPermissionList403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Item.Permissions.AuthorizationPermissionList404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Item.Permissions.AuthorizationPermissionList422Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissionsByExternalId403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissionsByExternalId404.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissionsByExternalId422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

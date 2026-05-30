@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>
-    /// SSO-specific options for the Admin Portal.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class SsoIntentOptions : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -24,13 +23,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string BookmarkSlug { get; set; }
 #endif
         /// <summary>The SSO provider type to configure.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ProviderType { get; set; }
-#nullable restore
-#else
-        public string ProviderType { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions_provider_type? ProviderType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions"/> and sets the default values.
         /// </summary>
@@ -57,7 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "bookmark_slug", n => { BookmarkSlug = n.GetStringValue(); } },
-                { "provider_type", n => { ProviderType = n.GetStringValue(); } },
+                { "provider_type", n => { ProviderType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions_provider_type>(); } },
             };
         }
         /// <summary>
@@ -68,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("bookmark_slug", BookmarkSlug);
-            writer.WriteStringValue("provider_type", ProviderType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions_provider_type>("provider_type", ProviderType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

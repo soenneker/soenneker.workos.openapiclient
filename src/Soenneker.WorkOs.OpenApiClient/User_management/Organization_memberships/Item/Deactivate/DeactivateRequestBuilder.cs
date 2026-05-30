@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -35,29 +36,29 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// <summary>
         /// Deactivates an `active` organization membership. Emits an [organization_membership.updated](/events/organization-membership) event upon successful deactivation.- Deactivating an `inactive` membership is a no-op and does not emit an event.- Deactivating a `pending` membership returns an error. This membership should be [deleted](/reference/authkit/organization-membership/delete) instead.See the [membership management documentation](/authkit/users-organizations/organizations/membership-management) for additional details.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.DeactivatePutResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate200"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.Deactivate400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.Deactivate404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.Deactivate422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.DeactivatePutResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate200?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.DeactivatePutResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate200> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.Deactivate400Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.Deactivate404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.Deactivate422Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate400.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate404.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate422.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.DeactivatePutResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Deactivate.DeactivatePutResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate200>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerDeactivate200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deactivates an `active` organization membership. Emits an [organization_membership.updated](/events/organization-membership) event upon successful deactivation.- Deactivating an `inactive` membership is a no-op and does not emit an event.- Deactivating a `pending` membership returns an error. This membership should be [deleted](/reference/authkit/organization-membership/delete) instead.See the [membership management documentation](/authkit/users-organizations/organizations/membership-management) for additional details.

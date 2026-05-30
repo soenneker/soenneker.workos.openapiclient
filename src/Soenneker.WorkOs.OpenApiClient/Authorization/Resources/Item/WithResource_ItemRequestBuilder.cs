@@ -48,28 +48,29 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item
         /// <summary>
         /// Delete an authorization resource and all its descendants.
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerDelete400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerDelete403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerDelete404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_ItemRequestBuilder.WithResource_ItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_ItemRequestBuilder.WithResource_ItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_ItemRequestBuilder.WithResource_ItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_ItemRequestBuilder.WithResource_ItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_400Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_404Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerDelete400.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerDelete403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerDelete404.CreateFromDiscriminatorValue },
             };
-            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve the details of an authorization resource by its ID.
@@ -77,9 +78,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.AuthorizationResource403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.AuthorizationResource404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.AuthorizationResource422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerFindById403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerFindById404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerFindById422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -92,44 +93,44 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.AuthorizationResource403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.AuthorizationResource404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.AuthorizationResource422Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerFindById403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerFindById404.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerFindById422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update an existing authorization resource.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_PatchResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate200"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_409Error">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate403">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate409">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_PatchResponse?> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.UpdateAuthorizationResourceDtoPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate200?> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_PatchResponse> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.UpdateAuthorizationResourceDtoPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate200> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_400Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_404Error.CreateFromDiscriminatorValue },
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_409Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_422Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate400.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate403.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate404.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate409.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate422.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_PatchResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResource_PatchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate200>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerUpdate200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete an authorization resource and all its descendants.
@@ -177,11 +178,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.UpdateAuthorizationResourceDtoPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.UpdateAuthorizationResourceDtoPatchRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuthorizationResourceDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

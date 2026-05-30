@@ -16,7 +16,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>      The intent of the Admin Portal.        - `sso` - Launch Admin Portal for creating SSO connections        - `dsync` - Launch Admin Portal for creating Directory Sync connections        - `audit_logs` - Launch Admin Portal for viewing Audit Logs        - `log_streams` - Launch Admin Portal for creating Log Streams        - `domain_verification` - Launch Admin Portal for Domain Verification        - `certificate_renewal` - Launch Admin Portal for renewing SAML Certificates        - `bring_your_own_key` - Launch Admin Portal for configuring Bring Your Own Key</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDto_intent? Intent { get; set; }
-        /// <summary>Options to configure the Admin Portal based on the intent.</summary>
+        /// <summary>The intent_options property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions? IntentOptions { get; set; }

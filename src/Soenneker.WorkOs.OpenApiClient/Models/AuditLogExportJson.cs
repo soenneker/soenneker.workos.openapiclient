@@ -25,14 +25,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the Audit Log Export object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
-        /// <summary>The state of the export. Possible values: pending, ready, error.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson_object? Object { get; set; }
+        /// <summary>&quot;The state of the export. Possible values: pending, ready, error.&quot;</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson_state? State { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
@@ -71,7 +65,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson_object>(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson_state>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -86,7 +80,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson_object>("object", Object);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson_state>("state", State);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("url", Url);

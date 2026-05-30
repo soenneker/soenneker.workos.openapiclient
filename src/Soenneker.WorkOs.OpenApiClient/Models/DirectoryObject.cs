@@ -43,10 +43,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Aggregate counts of directory users and groups synced from the provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Directory_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Directory_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryMetadata Metadata { get; set; }
 #endif
         /// <summary>The name of the directory.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,13 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the Directory object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.Directory_object? Object { get; set; }
         /// <summary>The unique identifier for the Organization in which the directory resides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -107,9 +101,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "domain", n => { Domain = n.GetStringValue(); } },
                 { "external_key", n => { ExternalKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.Directory_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryMetadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_state>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_type>(); } },
@@ -127,9 +121,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("domain", Domain);
             writer.WriteStringValue("external_key", ExternalKey);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_state>("state", State);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_type>("type", Type);

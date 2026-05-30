@@ -99,7 +99,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.FourZeroFourError">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerDelete0404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -112,7 +112,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.FourZeroFourError.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerDelete0404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -122,7 +122,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UserlandUser404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerGet0404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -135,7 +135,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UserlandUser404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerGet0404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -146,21 +146,21 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UserlandUser422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerUpdate0422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UpdateUserlandUserDtoPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser> PutAsync(global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UpdateUserlandUserDtoPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "422", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UserlandUser422Error.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerUpdate0422.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -210,11 +210,11 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UpdateUserlandUserDtoPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UpdateUserlandUserDtoPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

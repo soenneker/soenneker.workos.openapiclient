@@ -52,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Permissions
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.AuthorizationPermissionList404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerList404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -65,40 +65,40 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Permissions
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.AuthorizationPermissionList404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerList404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new permission in your WorkOS environment. The permission can then be assigned to environment roles and custom roles.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.PermissionsPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate201"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.Permissions400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.Permissions404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.Permissions409Error">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.Permissions422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate409">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate422">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.PermissionsPostResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationPermissionDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate201?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationPermissionDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.PermissionsPostResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationPermissionDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate201> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationPermissionDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.Permissions400Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.Permissions404Error.CreateFromDiscriminatorValue },
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.Permissions409Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.Permissions422Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate400.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate404.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate409.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate422.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.PermissionsPostResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Authorization.Permissions.PermissionsPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate201>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate201.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a list of all permissions in your WorkOS environment.

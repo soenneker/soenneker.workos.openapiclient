@@ -35,13 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the organization membership object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList_data_object? Object { get; set; }
         /// <summary>The ID of the organization which the user belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,7 +93,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "custom_attributes", n => { CustomAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList_data_custom_attributes>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList_data_custom_attributes.CreateFromDiscriminatorValue); } },
                 { "directory_managed", n => { DirectoryManaged = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList_data_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "organization_name", n => { OrganizationName = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList_data_status>(); } },
@@ -118,7 +112,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList_data_custom_attributes>("custom_attributes", CustomAttributes);
             writer.WriteBoolValue("directory_managed", DirectoryManaged);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList_data_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("organization_name", OrganizationName);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList_data_status>("status", Status);

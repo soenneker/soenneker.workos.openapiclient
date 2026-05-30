@@ -190,15 +190,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
             public string RedirectUri { get; set; }
 #endif
             /// <summary>The only valid option for the response type parameter is `&quot;code&quot;`.The `&quot;code&quot;` parameter value initiates an [authorization code grant type](https://tools.ietf.org/html/rfc6749#section-4.1). This grant type allows you to exchange an authorization code for an access token during the redirect that takes place after a user has authenticated with an identity provider.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("response_type")]
-            public string? ResponseType { get; set; }
-#nullable restore
-#else
-            [QueryParameter("response_type")]
-            public string ResponseType { get; set; }
-#endif
+            public global::Soenneker.WorkOs.OpenApiClient.Sso.Authorize.GetResponse_typeQueryParameterType? ResponseType { get; set; }
             /// <summary>An optional parameter that can be used to encode arbitrary information to help restore application state between redirects. If included, the redirect URI received from WorkOS will contain the exact `state` that was passed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

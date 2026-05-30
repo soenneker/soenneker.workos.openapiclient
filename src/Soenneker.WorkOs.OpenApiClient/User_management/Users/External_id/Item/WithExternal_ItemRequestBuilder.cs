@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.External_id.Item
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.External_id.Item.UserlandUser404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerGetByExternalId404">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.External_id.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.External_id.Item.UserlandUser404Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerGetByExternalId404.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

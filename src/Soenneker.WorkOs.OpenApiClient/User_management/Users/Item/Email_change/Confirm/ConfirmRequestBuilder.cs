@@ -36,29 +36,29 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change
         /// <summary>
         /// Confirms an email change using the one-time code received by the user.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.ConfirmPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.Confirm404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.Confirm429Error">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange429">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.ConfirmPostResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConfirmEmailChangeDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConfirmEmailChangeDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.ConfirmPostResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConfirmEmailChangeDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConfirmEmailChangeDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.Confirm404Error.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.Confirm429Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange404.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange429.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.ConfirmPostResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change.Confirm.ConfirmPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Confirms an email change using the one-time code received by the user.

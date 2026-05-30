@@ -25,13 +25,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities
         /// <summary>The type of OAuth provider for the identity.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities_provider? Provider { get; set; }
         /// <summary>The type of the identity.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities"/> and sets the default values.
         /// </summary>
@@ -59,7 +53,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities
             {
                 { "idp_id", n => { IdpId = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities_provider>(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities_type>(); } },
             };
         }
         /// <summary>
@@ -71,7 +65,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("idp_id", IdpId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities_provider>("provider", Provider);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
