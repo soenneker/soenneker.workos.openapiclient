@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Permissions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \authorization\organization_memberships\{organization_membership_id}\resources\{resource_-id}\permissions
+    /// Builds and executes requests for operations under \authorization\organization_memberships\{organizationMembershipId}\resources\{resource-id}\permissions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PermissionsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PermissionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organization_membership_id}/resources/{resource_%2Did}/permissions{?after*,before*,limit*,order*}", pathParameters)
+        public PermissionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/resources/{resource%2Did}/permissions{?after*,before*,limit*,order*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PermissionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organization_membership_id}/resources/{resource_%2Did}/permissions{?after*,before*,limit*,order*}", rawUrl)
+        public PermissionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/resources/{resource%2Did}/permissions{?after*,before*,limit*,order*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,9 +39,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions403">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Permissions.PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,9 +54,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions403.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions422.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListEffectivePermissions422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

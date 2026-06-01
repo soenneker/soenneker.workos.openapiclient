@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Optional JSON schema for target metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDto_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDtoMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDto_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDtoMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The type of the target resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDto_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDtoMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDtoMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDto_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDtoMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -36,25 +36,25 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities
         /// <summary>
         /// Get a list of identities associated with the user. A user can have multiple associated identities after going through [identity linking](/authkit/identity-linking). Currently only OAuth identities are supported. More provider types may be added in the future.
         /// </summary>
-        /// <returns>A List&lt;global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities&gt;</returns>
+        /// <returns>A List&lt;global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseResponseJsonItem&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseResponseJsonItem>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseResponseJsonItem>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet404.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet404Response.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities.Identities.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseResponseJsonItem>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseResponseJsonItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>

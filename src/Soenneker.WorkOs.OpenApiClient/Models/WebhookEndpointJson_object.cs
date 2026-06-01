@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "webhook_endpoint")]
         #pragma warning disable CS1591
-        Webhook_endpoint,
+        WebhookEndpoint,
         #pragma warning restore CS1591
     }
 }

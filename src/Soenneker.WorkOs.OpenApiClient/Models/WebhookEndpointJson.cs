@@ -51,7 +51,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Secret { get; set; }
 #endif
         /// <summary>Whether the Webhook Endpoint is enabled or disabled.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson_status? Status { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJsonStatus? Status { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -85,7 +85,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson_object>(); } },
                 { "secret", n => { Secret = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJsonStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -102,7 +102,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson_object>("object", Object);
             writer.WriteStringValue("secret", Secret);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJsonStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -10,7 +10,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
     {
         [EnumMember(Value = "authorization_code")]
         #pragma warning disable CS1591
-        Authorization_code,
+        AuthorizationCode,
         #pragma warning restore CS1591
     }
 }

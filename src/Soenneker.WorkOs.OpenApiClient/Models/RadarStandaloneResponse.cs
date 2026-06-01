@@ -23,9 +23,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string AttemptId { get; set; }
 #endif
         /// <summary>The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_blocklist_type? BlocklistType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType? BlocklistType { get; set; }
         /// <summary>The Radar control that triggered the verdict. Only present if the verdict is `block` or `challenge`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_control? Control { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl? Control { get; set; }
         /// <summary>A human-readable reason for the verdict.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Reason { get; set; }
 #endif
         /// <summary>The verdict of the risk assessment.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_verdict? Verdict { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict? Verdict { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse"/> and sets the default values.
         /// </summary>
@@ -62,10 +62,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attempt_id", n => { AttemptId = n.GetStringValue(); } },
-                { "blocklist_type", n => { BlocklistType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_blocklist_type>(); } },
-                { "control", n => { Control = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_control>(); } },
+                { "blocklist_type", n => { BlocklistType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType>(); } },
+                { "control", n => { Control = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl>(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
-                { "verdict", n => { Verdict = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_verdict>(); } },
+                { "verdict", n => { Verdict = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict>(); } },
             };
         }
         /// <summary>
@@ -76,10 +76,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("attempt_id", AttemptId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_blocklist_type>("blocklist_type", BlocklistType);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_control>("control", Control);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType>("blocklist_type", BlocklistType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl>("control", Control);
             writer.WriteStringValue("reason", Reason);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse_verdict>("verdict", Verdict);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict>("verdict", Verdict);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

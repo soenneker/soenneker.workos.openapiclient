@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organization_domains.Item.Verify
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainsControllerVerify400">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainsControllerVerify400Response">When receiving a 400 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organization_domains.Item.Verify
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainsControllerVerify400.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainsControllerVerify400Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

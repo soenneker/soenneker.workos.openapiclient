@@ -25,10 +25,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The events that the Webhook Endpoint is subscribed to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDto_events?>? Events { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem?>? Events { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDto_events?> Events { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem?> Events { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDto"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "endpoint_url", n => { EndpointUrl = n.GetStringValue(); } },
-                { "events", n => { Events = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDto_events>()?.AsList(); } },
+                { "events", n => { Events = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("endpoint_url", EndpointUrl);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDto_events>("events", Events);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem>("events", Events);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

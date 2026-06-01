@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Map of values used to determine the encryption key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequest_context? Context { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequestContextProperty? Context { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequest_context Context { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequestContextProperty Context { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequest_context>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequest_context.CreateFromDiscriminatorValue); } },
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequestContextProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequestContextProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequest_context>("context", Context);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyRequestContextProperty>("context", Context);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

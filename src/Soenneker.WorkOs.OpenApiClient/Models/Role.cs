@@ -67,7 +67,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Slug { get; set; }
 #endif
         /// <summary>Whether the role is scoped to the environment or an organization (custom role).</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Role_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RoleType? Type { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -103,7 +103,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "resource_type_slug", n => { ResourceTypeSlug = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Role_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RoleType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -122,7 +122,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
             writer.WriteStringValue("resource_type_slug", ResourceTypeSlug);
             writer.WriteStringValue("slug", Slug);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Role_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RoleType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

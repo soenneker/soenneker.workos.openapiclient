@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "redirect_uri")]
         #pragma warning disable CS1591
-        Redirect_uri,
+        RedirectUri,
         #pragma warning restore CS1591
     }
 }

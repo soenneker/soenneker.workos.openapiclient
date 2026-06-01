@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "audit_log_schema")]
         #pragma warning disable CS1591
-        Audit_log_schema,
+        AuditLogSchema,
         #pragma warning restore CS1591
     }
 }

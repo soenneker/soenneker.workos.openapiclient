@@ -59,10 +59,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Object containing metadata key/value pairs associated with the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata Metadata { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto"/> and sets the default values.
@@ -95,7 +95,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "locale", n => { Locale = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -111,7 +111,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteStringValue("locale", Locale);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

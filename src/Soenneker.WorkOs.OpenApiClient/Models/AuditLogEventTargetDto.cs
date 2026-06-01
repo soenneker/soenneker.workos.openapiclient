@@ -25,10 +25,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Additional data associated with the event or entity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDtoMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDtoMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>Optional target name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,7 +72,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDtoMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDtoMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };
@@ -85,7 +85,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDtoMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);

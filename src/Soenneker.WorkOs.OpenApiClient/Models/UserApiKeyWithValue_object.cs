@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "api_key")]
         #pragma warning disable CS1591
-        Api_key,
+        ApiKey,
         #pragma warning restore CS1591
     }
 }

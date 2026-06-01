@@ -59,9 +59,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Password_reset
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken422">When receiving a 422 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken429">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken429Response">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.PasswordReset?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreatePasswordResetTokenDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -75,9 +75,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Password_reset
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken422.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken429.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken422Response.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken429Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.PasswordReset>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.PasswordReset.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

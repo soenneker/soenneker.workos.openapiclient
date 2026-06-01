@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "role_assignment")]
         #pragma warning disable CS1591
-        Role_assignment,
+        RoleAssignment,
         #pragma warning restore CS1591
     }
 }

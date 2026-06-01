@@ -25,13 +25,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The events that the Webhook Endpoint is subscribed to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto_events?>? Events { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDtoEventsItem?>? Events { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto_events?> Events { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDtoEventsItem?> Events { get; set; }
 #endif
         /// <summary>Whether the Webhook Endpoint is enabled or disabled.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto_status? Status { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDtoStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto"/> and sets the default values.
         /// </summary>
@@ -58,8 +58,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "endpoint_url", n => { EndpointUrl = n.GetStringValue(); } },
-                { "events", n => { Events = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto_events>()?.AsList(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto_status>(); } },
+                { "events", n => { Events = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDtoEventsItem>()?.AsList(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDtoStatus>(); } },
             };
         }
         /// <summary>
@@ -70,8 +70,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("endpoint_url", EndpointUrl);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto_events>("events", Events);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto_status>("status", Status);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDtoEventsItem>("events", Events);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDtoStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

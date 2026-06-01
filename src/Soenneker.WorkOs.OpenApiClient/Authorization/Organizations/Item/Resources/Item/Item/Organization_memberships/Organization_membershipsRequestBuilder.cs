@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Organization_memberships
 {
     /// <summary>
-    /// Builds and executes requests for operations under \authorization\organizations\{organization-id}\resources\{resource_type_slug}\{external_id}\organization_memberships
+    /// Builds and executes requests for operations under \authorization\organizations\{organizationId}\resources\{resourceTypeSlug}\{externalId}\organization_memberships
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Organization_membershipsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Organization_membershipsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organization%2Did}/resources/{resource_type_slug}/{external_id}/organization_memberships?permission_slug={permission_slug}{&after*,assignment*,before*,limit*,order*}", pathParameters)
+        public Organization_membershipsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/resources/{resourceTypeSlug}/{externalId}/organization_memberships?permission_slug={permission_slug}{&after*,assignment*,before*,limit*,order*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Organization_membershipsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organization%2Did}/resources/{resource_type_slug}/{external_id}/organization_memberships?permission_slug={permission_slug}{&after*,assignment*,before*,limit*,order*}", rawUrl)
+        public Organization_membershipsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/resources/{resourceTypeSlug}/{externalId}/organization_memberships?permission_slug={permission_slug}{&after*,assignment*,before*,limit*,order*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,10 +39,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUserList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId400">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId403">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUserList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Organization_memberships.Organization_membershipsRequestBuilder.Organization_membershipsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -55,10 +55,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId400.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId403.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId422.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUserList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUserList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -108,7 +108,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
 #endif
             /// <summary>Filter by assignment type. Use &quot;direct&quot; for direct assignments only, or &quot;indirect&quot; to include inherited assignments.</summary>
             [QueryParameter("assignment")]
-            public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.Organization_memberships.GetAssignmentQueryParameterType? Assignment { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdAssignmentParameter? Assignment { get; set; }
             /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `&quot;obj_123&quot;`, your subsequent call can include `before=&quot;obj_123&quot;` to fetch a new batch of objects before `&quot;obj_123&quot;`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

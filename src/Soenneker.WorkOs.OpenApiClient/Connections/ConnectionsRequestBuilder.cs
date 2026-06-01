@@ -52,8 +52,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerList403">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerList422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerList403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerList422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Connections.ConnectionsRequestBuilder.ConnectionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -66,8 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerList403.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerList422.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerList403Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerList422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -127,7 +127,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections
 #endif
             /// <summary>Filter Connections by their type.</summary>
             [QueryParameter("connection_type")]
-            public global::Soenneker.WorkOs.OpenApiClient.Connections.GetConnection_typeQueryParameterType? ConnectionType { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerListConnectionTypeParameter? ConnectionType { get; set; }
             /// <summary>Filter Connections by their associated domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

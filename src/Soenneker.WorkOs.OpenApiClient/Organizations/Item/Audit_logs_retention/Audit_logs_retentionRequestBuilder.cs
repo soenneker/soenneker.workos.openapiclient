@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_logs_retention
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionJson"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerAuditLogsRetention404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerAuditLogsRetention404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionJson?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_logs_retention
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerAuditLogsRetention404.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerAuditLogsRetention404Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -63,8 +63,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_logs_retention
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerUpdateAuditLogsRetention404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerUpdateAuditLogsRetention422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerUpdateAuditLogsRetention404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerUpdateAuditLogsRetention422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionJson?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -78,8 +78,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_logs_retention
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerUpdateAuditLogsRetention404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerUpdateAuditLogsRetention422.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerUpdateAuditLogsRetention404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionControllerUpdateAuditLogsRetention422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogsRetentionJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

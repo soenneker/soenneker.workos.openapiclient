@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "m2m")]
         #pragma warning disable CS1591
-        M2m,
+        M2M,
         #pragma warning restore CS1591
     }
 }

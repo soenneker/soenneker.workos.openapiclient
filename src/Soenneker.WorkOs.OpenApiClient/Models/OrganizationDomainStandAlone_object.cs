@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "organization_domain")]
         #pragma warning disable CS1591
-        Organization_domain,
+        OrganizationDomain,
         #pragma warning restore CS1591
     }
 }

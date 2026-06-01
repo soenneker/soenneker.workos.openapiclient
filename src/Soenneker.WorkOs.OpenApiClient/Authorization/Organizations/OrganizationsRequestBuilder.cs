@@ -17,14 +17,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations
     {
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.authorization.organizations.item collection</summary>
         /// <param name="position">The ID of the organization.</param>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.OrganizationItemRequestBuilder"/></returns>
-        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.OrganizationItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.WithOrganizationItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.WithOrganizationItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("organization%2Did", position);
-                return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.OrganizationItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("organizationId", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.WithOrganizationItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

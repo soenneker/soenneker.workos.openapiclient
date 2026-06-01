@@ -53,8 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Magic_auth
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn422">When receiving a 422 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn429">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn429Response">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.MagicAuth?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandMagicCodeAndReturnDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -68,8 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Magic_auth
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn422.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn429.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn422Response.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn429Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.MagicAuth>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.MagicAuth.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

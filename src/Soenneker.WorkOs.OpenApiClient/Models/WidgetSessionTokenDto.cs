@@ -25,10 +25,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The scopes to grant the widget session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenDto_scopes?>? Scopes { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenDtoScopesItem?>? Scopes { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenDto_scopes?> Scopes { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenDtoScopesItem?> Scopes { get; set; }
 #endif
         /// <summary>The ID of the user to issue the widget session token for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "scopes", n => { Scopes = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenDto_scopes>()?.AsList(); } },
+                { "scopes", n => { Scopes = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenDtoScopesItem>()?.AsList(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
         }
@@ -76,7 +76,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenDto_scopes>("scopes", Scopes);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenDtoScopesItem>("scopes", Scopes);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);
         }

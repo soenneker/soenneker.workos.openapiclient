@@ -18,10 +18,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Map of values used to determine the encryption key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadata_context? Context { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadataContextProperty? Context { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadata_context Context { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadataContextProperty Context { get; set; }
 #endif
         /// <summary>Environment the object belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -90,7 +90,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadata_context>(global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadata_context.CreateFromDiscriminatorValue); } },
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadataContextProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadataContextProperty.CreateFromDiscriminatorValue); } },
                 { "environment_id", n => { EnvironmentId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "key_id", n => { KeyId = n.GetStringValue(); } },
@@ -106,7 +106,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadata_context>("context", Context);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadataContextProperty>("context", Context);
             writer.WriteStringValue("environment_id", EnvironmentId);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("key_id", KeyId);

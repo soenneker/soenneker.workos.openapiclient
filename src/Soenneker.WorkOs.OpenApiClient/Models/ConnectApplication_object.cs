@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "connect_application")]
         #pragma warning disable CS1591
-        Connect_application,
+        ConnectApplication,
         #pragma warning restore CS1591
     }
 }

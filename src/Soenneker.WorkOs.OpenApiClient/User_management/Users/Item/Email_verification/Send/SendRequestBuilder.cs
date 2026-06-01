@@ -39,9 +39,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_verifi
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0400">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0429">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0429Response">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,9 +54,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_verifi
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0400.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0404.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0429.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0400Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0404Response.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0429Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

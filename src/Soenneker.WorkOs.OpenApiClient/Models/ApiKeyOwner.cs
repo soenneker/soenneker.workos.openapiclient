@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApiKeyOwner : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember1? ApiKeyOwnerMember1 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf1? ApiKeyOwnerOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember1 ApiKeyOwnerMember1 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf1 ApiKeyOwnerOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember2? ApiKeyOwnerMember2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf2? ApiKeyOwnerOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember2 ApiKeyOwnerMember2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf2 ApiKeyOwnerOneOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +39,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwner();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ApiKeyOwnerOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ApiKeyOwnerMember1 = new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember1();
+                result.ApiKeyOwnerOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf1();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ApiKeyOwnerOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ApiKeyOwnerMember2 = new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember2();
+                result.ApiKeyOwnerOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf2();
             }
             return result;
         }
@@ -55,13 +55,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ApiKeyOwnerMember1 != null)
+            if(ApiKeyOwnerOneOf1 != null)
             {
-                return ApiKeyOwnerMember1.GetFieldDeserializers();
+                return ApiKeyOwnerOneOf1.GetFieldDeserializers();
             }
-            else if(ApiKeyOwnerMember2 != null)
+            else if(ApiKeyOwnerOneOf2 != null)
             {
-                return ApiKeyOwnerMember2.GetFieldDeserializers();
+                return ApiKeyOwnerOneOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,13 +72,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ApiKeyOwnerMember1 != null)
+            if(ApiKeyOwnerOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember1>(null, ApiKeyOwnerMember1);
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf1>(null, ApiKeyOwnerOneOf1);
             }
-            else if(ApiKeyOwnerMember2 != null)
+            else if(ApiKeyOwnerOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerMember2>(null, ApiKeyOwnerMember2);
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwnerOneOf2>(null, ApiKeyOwnerOneOf2);
             }
         }
     }

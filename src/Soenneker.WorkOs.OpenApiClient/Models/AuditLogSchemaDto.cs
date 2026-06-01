@@ -25,10 +25,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Optional JSON schema for event metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDto_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDtoMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDto_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDtoMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The list of targets for the schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actor", n => { Actor = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto.CreateFromDiscriminatorValue); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDto_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDtoMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDtoMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "targets", n => { Targets = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDto.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -76,7 +76,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto>("actor", Actor);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDto_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaDtoMetadataProperty>("metadata", Metadata);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaTargetDto>("targets", Targets);
             writer.WriteAdditionalData(AdditionalData);
         }

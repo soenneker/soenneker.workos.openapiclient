@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
 {
     /// <summary>
-    /// Builds and executes requests for operations under \authorization\organizations\{organization-id}\roles
+    /// Builds and executes requests for operations under \authorization\organizations\{organizationId}\roles
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RolesRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RolesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organization%2Did}/roles", pathParameters)
+        public RolesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/roles", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RolesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organization%2Did}/roles", rawUrl)
+        public RolesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/roles", rawUrl)
         {
         }
         /// <summary>
@@ -52,8 +52,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RoleList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerList403">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerList404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerList403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerList404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.RoleList?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -66,43 +66,43 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerList403.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerList404.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerList403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerList404Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.RoleList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.RoleList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new custom role for this organization.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate400">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate403">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate409">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate409Response">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateOrganizationRoleDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201Response?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateOrganizationRoleDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateOrganizationRoleDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201Response> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateOrganizationRoleDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate400.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate403.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate404.CreateFromDiscriminatorValue },
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate409.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate422.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate404Response.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate409Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate422Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerCreate201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a list of all roles that apply to an organization. This includes both environment roles and custom roles, returned in priority order.

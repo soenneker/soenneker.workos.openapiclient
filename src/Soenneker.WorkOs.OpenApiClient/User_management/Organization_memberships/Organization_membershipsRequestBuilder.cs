@@ -49,54 +49,54 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// <summary>
         /// Get a list of all organization memberships matching the criteria specified. At least one of `user_id` or `organization_id` must be provided. By default only active memberships are returned. Use the `statuses` parameter to filter by other statuses.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsRequestBuilder.Organization_membershipsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsRequestBuilder.Organization_membershipsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsRequestBuilder.Organization_membershipsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Organization_membershipsRequestBuilder.Organization_membershipsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList422.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList422Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a new `active` organization membership for the given organization and user.Calling this API with an organization and user that match an `inactive` organization membership will activate the membership with the specified role(s).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate400">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201Response?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201Response> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate400.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate404.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate400Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate404Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a list of all organization memberships matching the criteria specified. At least one of `user_id` or `organization_id` must be provided. By default only active memberships are returned. Use the `statuses` parameter to filter by other statuses.
@@ -194,11 +194,11 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("statuses")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.GetStatusesQueryParameterType[]? Statuses { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerListStatusesParameterItem[]? Statuses { get; set; }
 #nullable restore
 #else
             [QueryParameter("statuses")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.GetStatusesQueryParameterType[] Statuses { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerListStatusesParameterItem[] Statuses { get; set; }
 #endif
             /// <summary>The ID of the [user](/reference/authkit/user).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

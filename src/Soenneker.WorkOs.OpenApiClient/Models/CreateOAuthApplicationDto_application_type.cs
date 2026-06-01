@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "oauth")]
         #pragma warning disable CS1591
-        Oauth,
+        OAuth,
         #pragma warning restore CS1591
     }
 }

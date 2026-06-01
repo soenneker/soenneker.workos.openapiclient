@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>JSON schema for actor metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDtoMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDtoMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDtoMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDtoMetadataProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDtoMetadataProperty>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

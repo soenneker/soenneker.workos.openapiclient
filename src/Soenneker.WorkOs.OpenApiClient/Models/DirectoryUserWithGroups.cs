@@ -19,10 +19,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>An object containing the custom attribute mapping for the Directory Provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_custom_attributes? CustomAttributes { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsCustomAttributesProperty? CustomAttributes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_custom_attributes CustomAttributes { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsCustomAttributesProperty CustomAttributes { get; set; }
 #endif
         /// <summary>The identifier of the Directory the Directory User belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,10 +44,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_emails>? Emails { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsEmailsItem>? Emails { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_emails> Emails { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsEmailsItem> Emails { get; set; }
 #endif
         /// <summary>The first name of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -120,10 +120,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The raw attributes received from the directory provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_raw_attributes? RawAttributes { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsRawAttributesProperty? RawAttributes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_raw_attributes RawAttributes { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsRawAttributesProperty RawAttributes { get; set; }
 #endif
         /// <summary>The primary role assigned to the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -142,7 +142,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole> Roles { get; set; }
 #endif
         /// <summary>The state of the user.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsState? State { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The username of the user.</summary>
@@ -180,10 +180,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "custom_attributes", n => { CustomAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_custom_attributes>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_custom_attributes.CreateFromDiscriminatorValue); } },
+                { "custom_attributes", n => { CustomAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsCustomAttributesProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsCustomAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "directory_id", n => { DirectoryId = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
-                { "emails", n => { Emails = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_emails>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_emails.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "emails", n => { Emails = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsEmailsItem>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsEmailsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "groups", n => { Groups = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -193,10 +193,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "raw_attributes", n => { RawAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_raw_attributes>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_raw_attributes.CreateFromDiscriminatorValue); } },
+                { "raw_attributes", n => { RawAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsRawAttributesProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsRawAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>(global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole.CreateFromDiscriminatorValue); } },
                 { "roles", n => { Roles = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>(global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_state>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsState>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "username", n => { Username = n.GetStringValue(); } },
             };
@@ -209,10 +209,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_custom_attributes>("custom_attributes", CustomAttributes);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsCustomAttributesProperty>("custom_attributes", CustomAttributes);
             writer.WriteStringValue("directory_id", DirectoryId);
             writer.WriteStringValue("email", Email);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_emails>("emails", Emails);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsEmailsItem>("emails", Emails);
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup>("groups", Groups);
             writer.WriteStringValue("id", Id);
@@ -222,10 +222,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_raw_attributes>("raw_attributes", RawAttributes);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsRawAttributesProperty>("raw_attributes", RawAttributes);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>("role", Role);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>("roles", Roles);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_state>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsState>("state", State);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("username", Username);
             writer.WriteAdditionalData(AdditionalData);

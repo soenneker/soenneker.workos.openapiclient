@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "authorization_resource")]
         #pragma warning disable CS1591
-        Authorization_resource,
+        AuthorizationResource,
         #pragma warning restore CS1591
     }
 }

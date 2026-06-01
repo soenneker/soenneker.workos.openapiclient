@@ -33,7 +33,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The number of days Audit Log events will be retained before being permanently deleted.</summary>
         public int? RetentionPeriodInDays { get; set; }
         /// <summary>The current state of the audit log configuration for the organization.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "log_stream", n => { LogStream = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "retention_period_in_days", n => { RetentionPeriodInDays = n.GetIntValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_state>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState>(); } },
             };
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream>("log_stream", LogStream);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteIntValue("retention_period_in_days", RetentionPeriodInDays);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration_state>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

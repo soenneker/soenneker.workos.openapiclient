@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Data_provide
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerGetUserDataIntegrations404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerGetUserDataIntegrations404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Data_providers.Data_providersRequestBuilder.Data_providersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Data_provide
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerGetUserDataIntegrations404.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerGetUserDataIntegrations404Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

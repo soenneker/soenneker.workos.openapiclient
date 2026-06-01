@@ -72,10 +72,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Object containing metadata key/value pairs associated with the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>Distinguishes the user object.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_object? Object { get; set; }
@@ -123,7 +123,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "last_sign_in_at", n => { LastSignInAt = n.GetDateTimeOffsetValue(); } },
                 { "locale", n => { Locale = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_object>(); } },
                 { "profile_picture_url", n => { ProfilePictureUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -145,7 +145,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("last_name", LastName);
             writer.WriteDateTimeOffsetValue("last_sign_in_at", LastSignInAt);
             writer.WriteStringValue("locale", Locale);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserMetadataProperty>("metadata", Metadata);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser_object>("object", Object);
             writer.WriteStringValue("profile_picture_url", ProfilePictureUrl);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

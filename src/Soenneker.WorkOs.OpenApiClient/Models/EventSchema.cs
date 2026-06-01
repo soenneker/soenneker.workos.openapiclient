@@ -18,20 +18,20 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Additional context about the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_context? Context { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaContext? Context { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_context Context { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaContext Context { get; set; }
 #endif
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The event payload.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_data? Data { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaData? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_data Data { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaData Data { get; set; }
 #endif
         /// <summary>The type of event that occurred.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,9 +76,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_context>(global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_context.CreateFromDiscriminatorValue); } },
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaContext>(global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaContext.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_data>(global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_data.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaData>(global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaData.CreateFromDiscriminatorValue); } },
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_object>(); } },
@@ -91,9 +91,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_context>("context", Context);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaContext>("context", Context);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_data>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaData>("data", Data);
             writer.WriteStringValue("event", Event);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_object>("object", Object);

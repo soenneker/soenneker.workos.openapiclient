@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Role_assignments
 {
     /// <summary>
-    /// Builds and executes requests for operations under \authorization\resources\{resource_id}\role_assignments
+    /// Builds and executes requests for operations under \authorization\resources\{resourceId}\role_assignments
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Role_assignmentsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Role_assig
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Role_assignmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources/{resource_id}/role_assignments{?after*,before*,limit*,order*,role_slug*}", pathParameters)
+        public Role_assignmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources/{resourceId}/role_assignments{?after*,before*,limit*,order*,role_slug*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Role_assig
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Role_assignmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources/{resource_id}/role_assignments{?after*,before*,limit*,order*,role_slug*}", rawUrl)
+        public Role_assignmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/resources/{resourceId}/role_assignments{?after*,before*,limit*,order*,role_slug*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,8 +39,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Role_assig
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource403">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Role_assignments.Role_assignmentsRequestBuilder.Role_assignmentsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -53,8 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Role_assig
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource403.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource404.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource404Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

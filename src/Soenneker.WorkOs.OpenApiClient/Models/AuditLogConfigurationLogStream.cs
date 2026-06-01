@@ -34,9 +34,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string LastSyncedAt { get; set; }
 #endif
         /// <summary>The current state of the Audit Log Stream.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStreamState? State { get; set; }
         /// <summary>The type of the Audit Log Stream destination.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStreamType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream"/> and sets the default values.
         /// </summary>
@@ -65,8 +65,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetStringValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream_state>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream_type>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStreamState>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStreamType>(); } },
             };
         }
         /// <summary>
@@ -79,8 +79,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("last_synced_at", LastSyncedAt);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream_state>("state", State);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStreamState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStreamType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

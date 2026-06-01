@@ -15,7 +15,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization).</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ResendUserlandUserInviteOptionsDto_locale? Locale { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ResendUserlandUserInviteOptionsDtoLocale? Locale { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ResendUserlandUserInviteOptionsDto"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "locale", n => { Locale = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ResendUserlandUserInviteOptionsDto_locale>(); } },
+                { "locale", n => { Locale = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ResendUserlandUserInviteOptionsDtoLocale>(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ResendUserlandUserInviteOptionsDto_locale>("locale", Locale);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ResendUserlandUserInviteOptionsDtoLocale>("locale", Locale);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

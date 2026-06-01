@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "email_change")]
         #pragma warning disable CS1591
-        Email_change,
+        EmailChange,
         #pragma warning restore CS1591
     }
 }

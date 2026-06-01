@@ -185,7 +185,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv
             public int? Limit { get; set; }
             /// <summary>Sort direction for results.</summary>
             [QueryParameter("order")]
-            public global::Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.GetOrderQueryParameterType? Order { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.JumpWireWebDataVaultControllerIndexOrderParameter? Order { get; set; }
             /// <summary>Filter results by name or structured search JSON.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "authentication_factor")]
         #pragma warning disable CS1591
-        Authentication_factor,
+        AuthenticationFactor,
         #pragma warning restore CS1591
     }
 }

@@ -158,7 +158,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
 #endif
             /// <summary>Used to initiate OAuth authentication with various providers.</summary>
             [QueryParameter("provider")]
-            public global::Soenneker.WorkOs.OpenApiClient.Sso.Authorize.GetProviderQueryParameterType? Provider { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerAuthorizeProviderParameter? Provider { get; set; }
             /// <summary>Key/value pairs of query parameters to pass to the OAuth provider. Only applicable when using OAuth connections.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

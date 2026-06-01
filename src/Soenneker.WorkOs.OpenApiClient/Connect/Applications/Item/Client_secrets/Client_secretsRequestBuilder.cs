@@ -36,25 +36,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secret
         /// <summary>
         /// List all client secrets associated with a Connect Application.
         /// </summary>
-        /// <returns>A List&lt;global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets&gt;</returns>
+        /// <returns>A List&lt;global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList404">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList404.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList404Response.CreateFromDiscriminatorValue },
             };
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secrets.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
@@ -64,23 +64,23 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secret
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreate404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreate422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreate404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreate422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secretsPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secretsPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreate404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreate422.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreate404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreate422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -111,11 +111,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secret
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secretsPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Connect.Applications.Item.Client_secrets.Client_secretsPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

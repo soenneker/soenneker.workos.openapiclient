@@ -49,7 +49,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<string> Scopes { get; set; }
 #endif
         /// <summary>&quot;The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.- `disconnected`: The connection has been disconnected.&quot;</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState? State { get; set; }
         /// <summary>The timestamp when the connection was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,7 +96,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_state>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
@@ -113,7 +113,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_state>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState>("state", State);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);

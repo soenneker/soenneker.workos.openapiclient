@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Map of values used to determine the new encryption key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequest_context? Context { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequestContextProperty? Context { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequest_context Context { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequestContextProperty Context { get; set; }
 #endif
         /// <summary>Base64-encoded encrypted data key blob to re-encrypt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequest_context>(global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequest_context.CreateFromDiscriminatorValue); } },
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequestContextProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequestContextProperty.CreateFromDiscriminatorValue); } },
                 { "encrypted_keys", n => { EncryptedKeys = n.GetStringValue(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequest_context>("context", Context);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.RekeyRequestContextProperty>("context", Context);
             writer.WriteStringValue("encrypted_keys", EncryptedKeys);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>Verification state of the domain.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAloneState? State { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The prefix used in DNS verification.</summary>
@@ -55,7 +55,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string VerificationPrefix { get; set; }
 #endif
         /// <summary>Strategy used to verify the domain.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone_verification_strategy? VerificationStrategy { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAloneVerificationStrategy? VerificationStrategy { get; set; }
         /// <summary>Validation token to be used in DNS TXT record.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,10 +94,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone_state>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAloneState>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "verification_prefix", n => { VerificationPrefix = n.GetStringValue(); } },
-                { "verification_strategy", n => { VerificationStrategy = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone_verification_strategy>(); } },
+                { "verification_strategy", n => { VerificationStrategy = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAloneVerificationStrategy>(); } },
                 { "verification_token", n => { VerificationToken = n.GetStringValue(); } },
             };
         }
@@ -113,10 +113,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone_state>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAloneState>("state", State);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("verification_prefix", VerificationPrefix);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone_verification_strategy>("verification_strategy", VerificationStrategy);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAloneVerificationStrategy>("verification_strategy", VerificationStrategy);
             writer.WriteStringValue("verification_token", VerificationToken);
             writer.WriteAdditionalData(AdditionalData);
         }

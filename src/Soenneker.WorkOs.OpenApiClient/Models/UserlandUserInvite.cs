@@ -81,7 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string RoleSlug { get; set; }
 #endif
         /// <summary>The state of the invitation.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInviteState? State { get; set; }
         /// <summary>The token used to accept the invitation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -129,7 +129,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "revoked_at", n => { RevokedAt = n.GetDateTimeOffsetValue(); } },
                 { "role_slug", n => { RoleSlug = n.GetStringValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite_state>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInviteState>(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -153,7 +153,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteDateTimeOffsetValue("revoked_at", RevokedAt);
             writer.WriteStringValue("role_slug", RoleSlug);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvite_state>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInviteState>("state", State);
             writer.WriteStringValue("token", Token);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

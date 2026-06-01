@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Map of values used to determine the encryption key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequest_key_context? KeyContext { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequestKeyContextProperty? KeyContext { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequest_key_context KeyContext { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequestKeyContextProperty KeyContext { get; set; }
 #endif
         /// <summary>Unique name for the object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,7 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "key_context", n => { KeyContext = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequest_key_context>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequest_key_context.CreateFromDiscriminatorValue); } },
+                { "key_context", n => { KeyContext = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequestKeyContextProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequestKeyContextProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
@@ -75,7 +75,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequest_key_context>("key_context", KeyContext);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateObjectRequestKeyContextProperty>("key_context", KeyContext);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);

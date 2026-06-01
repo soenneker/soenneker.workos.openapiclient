@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "authentication_challenge")]
         #pragma warning disable CS1591
-        Authentication_challenge,
+        AuthenticationChallenge,
         #pragma warning restore CS1591
     }
 }

@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataIntegrationAccessTokenResponse : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1? DataIntegrationAccessTokenResponseMember1 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1? DataIntegrationAccessTokenResponseOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1 DataIntegrationAccessTokenResponseMember1 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1 DataIntegrationAccessTokenResponseOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2? DataIntegrationAccessTokenResponseMember2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf2? DataIntegrationAccessTokenResponseOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2 DataIntegrationAccessTokenResponseMember2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf2 DataIntegrationAccessTokenResponseOneOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +39,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponse();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("DataIntegrationAccessTokenResponseOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.DataIntegrationAccessTokenResponseMember1 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1();
+                result.DataIntegrationAccessTokenResponseOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("DataIntegrationAccessTokenResponseOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.DataIntegrationAccessTokenResponseMember2 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2();
+                result.DataIntegrationAccessTokenResponseOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf2();
             }
             return result;
         }
@@ -55,13 +55,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DataIntegrationAccessTokenResponseMember1 != null)
+            if(DataIntegrationAccessTokenResponseOneOf1 != null)
             {
-                return DataIntegrationAccessTokenResponseMember1.GetFieldDeserializers();
+                return DataIntegrationAccessTokenResponseOneOf1.GetFieldDeserializers();
             }
-            else if(DataIntegrationAccessTokenResponseMember2 != null)
+            else if(DataIntegrationAccessTokenResponseOneOf2 != null)
             {
-                return DataIntegrationAccessTokenResponseMember2.GetFieldDeserializers();
+                return DataIntegrationAccessTokenResponseOneOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,13 +72,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DataIntegrationAccessTokenResponseMember1 != null)
+            if(DataIntegrationAccessTokenResponseOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember1>(null, DataIntegrationAccessTokenResponseMember1);
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1>(null, DataIntegrationAccessTokenResponseOneOf1);
             }
-            else if(DataIntegrationAccessTokenResponseMember2 != null)
+            else if(DataIntegrationAccessTokenResponseOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseMember2>(null, DataIntegrationAccessTokenResponseMember2);
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf2>(null, DataIntegrationAccessTokenResponseOneOf2);
             }
         }
     }

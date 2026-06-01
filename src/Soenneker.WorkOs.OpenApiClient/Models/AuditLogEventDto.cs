@@ -41,10 +41,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Additional data associated with the event or entity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDtoMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDtoMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>ISO-8601 value of when the action occurred.</summary>
         public DateTimeOffset? OccurredAt { get; set; }
@@ -86,7 +86,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "action", n => { Action = n.GetStringValue(); } },
                 { "actor", n => { Actor = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventActorDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventActorDto.CreateFromDiscriminatorValue); } },
                 { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventContextDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventContextDto.CreateFromDiscriminatorValue); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDtoMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDtoMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "occurred_at", n => { OccurredAt = n.GetDateTimeOffsetValue(); } },
                 { "targets", n => { Targets = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
@@ -102,7 +102,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("action", Action);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventActorDto>("actor", Actor);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventContextDto>("context", Context);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDto_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventDtoMetadataProperty>("metadata", Metadata);
             writer.WriteDateTimeOffsetValue("occurred_at", OccurredAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventTargetDto>("targets", Targets);
             writer.WriteIntValue("version", Version);

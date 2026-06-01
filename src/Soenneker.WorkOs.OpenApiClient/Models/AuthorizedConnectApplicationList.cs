@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The list of records for the current page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data>? Data { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data> Data { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem> Data { get; set; }
 #endif
         /// <summary>Pagination cursors for navigating between pages of results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "list_metadata", n => { ListMetadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListListMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListListMetadata.CreateFromDiscriminatorValue); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_object>(); } },
             };
@@ -69,7 +69,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_data>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem>("data", Data);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListListMetadata>("list_metadata", ListMetadata);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_object>("object", Object);
             writer.WriteAdditionalData(AdditionalData);

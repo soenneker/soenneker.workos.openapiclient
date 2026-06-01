@@ -23,7 +23,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Domain { get; set; }
 #endif
         /// <summary>The verification state of the domain.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDto_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDtoState? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDto"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "domain", n => { Domain = n.GetStringValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDto_state>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDtoState>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("domain", Domain);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDto_state>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDtoState>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

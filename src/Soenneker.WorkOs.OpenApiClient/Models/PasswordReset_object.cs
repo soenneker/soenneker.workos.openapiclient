@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "password_reset")]
         #pragma warning disable CS1591
-        Password_reset,
+        PasswordReset,
         #pragma warning restore CS1591
     }
 }

@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "GoogleSAML")]
         #pragma warning disable CS1591
-        GoogleSAML,
+        GoogleSaml,
         #pragma warning restore CS1591
     }
 }

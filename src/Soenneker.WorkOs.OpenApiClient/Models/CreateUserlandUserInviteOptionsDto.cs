@@ -33,7 +33,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string InviterUserId { get; set; }
 #endif
         /// <summary>The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization).</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDto_locale? Locale { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDtoLocale? Locale { get; set; }
         /// <summary>The ID of the [organization](/reference/organization) that the recipient will join.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,7 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "expires_in_days", n => { ExpiresInDays = n.GetIntValue(); } },
                 { "inviter_user_id", n => { InviterUserId = n.GetStringValue(); } },
-                { "locale", n => { Locale = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDto_locale>(); } },
+                { "locale", n => { Locale = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDtoLocale>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "role_slug", n => { RoleSlug = n.GetStringValue(); } },
             };
@@ -93,7 +93,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteIntValue("expires_in_days", ExpiresInDays);
             writer.WriteStringValue("inviter_user_id", InviterUserId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDto_locale>("locale", Locale);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDtoLocale>("locale", Locale);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("role_slug", RoleSlug);
             writer.WriteAdditionalData(AdditionalData);

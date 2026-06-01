@@ -10,21 +10,21 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources
 {
     /// <summary>
-    /// Builds and executes requests for operations under \authorization\organizations\{organization-id}\resources
+    /// Builds and executes requests for operations under \authorization\organizations\{organizationId}\resources
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResourcesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.authorization.organizations.item.resources.item collection</summary>
         /// <param name="position">The slug of the resource type.</param>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.WithResource_type_slugItemRequestBuilder"/></returns>
-        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.WithResource_type_slugItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.WithResourceTypeSlugItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.WithResourceTypeSlugItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("resource_type_slug", position);
-                return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.WithResource_type_slugItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("resourceTypeSlug", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.WithResourceTypeSlugItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organization%2Did}/resources", pathParameters)
+        public ResourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/resources", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organization%2Did}/resources", rawUrl)
+        public ResourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/resources", rawUrl)
         {
         }
     }

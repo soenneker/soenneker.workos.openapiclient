@@ -27,10 +27,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>OAuth tokens issued by the identity provider, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOauthTokens? OauthTokens { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens? OauthTokens { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOauthTokens OauthTokens { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens OauthTokens { get; set; }
 #endif
         /// <summary>The profile property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,7 +69,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "access_token", n => { AccessToken = n.GetStringValue(); } },
                 { "expires_in", n => { ExpiresIn = n.GetIntValue(); } },
-                { "oauth_tokens", n => { OauthTokens = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOauthTokens>(global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOauthTokens.CreateFromDiscriminatorValue); } },
+                { "oauth_tokens", n => { OauthTokens = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens>(global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens.CreateFromDiscriminatorValue); } },
                 { "profile", n => { Profile = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile>(global::Soenneker.WorkOs.OpenApiClient.Models.Profile.CreateFromDiscriminatorValue); } },
                 { "token_type", n => { TokenType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse_token_type>(); } },
             };
@@ -83,7 +83,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("access_token", AccessToken);
             writer.WriteIntValue("expires_in", ExpiresIn);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOauthTokens>("oauth_tokens", OauthTokens);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens>("oauth_tokens", OauthTokens);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile>("profile", Profile);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse_token_type>("token_type", TokenType);
             writer.WriteAdditionalData(AdditionalData);

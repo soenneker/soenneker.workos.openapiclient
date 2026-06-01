@@ -67,9 +67,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>Describes whether the Directory has been successfully connected to an external provider.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Directory_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryState? State { get; set; }
         /// <summary>The type of external Directory Provider integrated with.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Directory_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryType? Type { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -105,8 +105,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_state>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_type>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryState>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -125,8 +125,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_state>("state", State);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -49,27 +49,27 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions
         /// <summary>
         /// Get a list of all Audit Log actions in the current environment.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.ActionsRequestBuilder.ActionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.ActionsRequestBuilder.ActionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.ActionsRequestBuilder.ActionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.ActionsRequestBuilder.ActionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList422.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList422Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorsControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a list of all Audit Log actions in the current environment.

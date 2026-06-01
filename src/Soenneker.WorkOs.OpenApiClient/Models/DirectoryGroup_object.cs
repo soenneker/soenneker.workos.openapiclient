@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "directory_group")]
         #pragma warning disable CS1591
-        Directory_group,
+        DirectoryGroup,
         #pragma warning restore CS1591
     }
 }

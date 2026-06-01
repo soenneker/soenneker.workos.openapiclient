@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "magic_auth")]
         #pragma warning disable CS1591
-        Magic_auth,
+        MagicAuth,
         #pragma warning restore CS1591
     }
 }

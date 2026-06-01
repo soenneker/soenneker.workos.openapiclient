@@ -15,16 +15,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The type of the SSO Connection used to authenticate the user. The Connection type may be used to dynamically generate authorization URLs.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Connection_connection_type? ConnectionType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionConnectionType? ConnectionType { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>List of Organization Domains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_domains>? Domains { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionDomainsItem>? Domains { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_domains> Domains { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionDomainsItem> Domains { get; set; }
 #endif
         /// <summary>Unique identifier for the Connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -61,10 +61,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>Indicates whether a Connection is able to authenticate users.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Connection_state? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionState? State { get; set; }
         /// <summary>Deprecated. Use `state` instead.</summary>
         [Obsolete("")]
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Connection_status? Status { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionStatus? Status { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -92,16 +92,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "connection_type", n => { ConnectionType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_connection_type>(); } },
+                { "connection_type", n => { ConnectionType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionConnectionType>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "domains", n => { Domains = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_domains>(global::Soenneker.WorkOs.OpenApiClient.Models.Connection_domains.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "domains", n => { Domains = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionDomainsItem>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionDomainsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_object>(); } },
                 { "options", n => { Options = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_state>(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_status>(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionState>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -112,16 +112,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_connection_type>("connection_type", ConnectionType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionConnectionType>("connection_type", ConnectionType);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_domains>("domains", Domains);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionDomainsItem>("domains", Domains);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_object>("object", Object);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions>("options", Options);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_state>("state", State);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionState>("state", State);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

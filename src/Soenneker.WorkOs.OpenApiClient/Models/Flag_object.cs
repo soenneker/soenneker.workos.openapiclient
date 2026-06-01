@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "feature_flag")]
         #pragma warning disable CS1591
-        Feature_flag,
+        FeatureFlag,
         #pragma warning restore CS1591
     }
 }

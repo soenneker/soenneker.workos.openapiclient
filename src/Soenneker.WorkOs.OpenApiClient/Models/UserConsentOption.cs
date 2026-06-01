@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The available choices for this consent option.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_choices>? Choices { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOptionChoicesItem>? Choices { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_choices> Choices { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOptionChoicesItem> Choices { get; set; }
 #endif
         /// <summary>The claim name for this consent option.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,7 +65,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "choices", n => { Choices = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_choices>(global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_choices.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "choices", n => { Choices = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOptionChoicesItem>(global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOptionChoicesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "claim", n => { Claim = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_type>(); } },
@@ -78,7 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_choices>("choices", Choices);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOptionChoicesItem>("choices", Choices);
             writer.WriteStringValue("claim", Claim);
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_type>("type", Type);

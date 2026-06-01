@@ -44,10 +44,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDto_metadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDtoMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDto_metadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDtoMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The name of the organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,7 +94,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "domain_data", n => { DomainData = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDto>(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDto.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "domains", n => { Domains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDto_metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDto_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDtoMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDtoMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "stripe_customer_id", n => { StripeCustomerId = n.GetStringValue(); } },
             };
@@ -110,7 +110,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDto>("domain_data", DomainData);
             writer.WriteCollectionOfPrimitiveValues<string>("domains", Domains);
             writer.WriteStringValue("external_id", ExternalId);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDto_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateOrganizationDtoMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("stripe_customer_id", StripeCustomerId);
             writer.WriteAdditionalData(AdditionalData);

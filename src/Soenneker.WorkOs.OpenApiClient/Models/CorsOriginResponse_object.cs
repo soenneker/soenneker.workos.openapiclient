@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "cors_origin")]
         #pragma warning disable CS1591
-        Cors_origin,
+        CorsOrigin,
         #pragma warning restore CS1591
     }
 }

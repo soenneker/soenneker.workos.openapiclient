@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdateUserlandUserOrganizationMembershipDto : IComposedTypeWrapper, IParsable
@@ -21,21 +21,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1 UpdateUserlandUserOrganizationMembershipDtoMember1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2? UpdateUserlandUserOrganizationMembershipDtoMember2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf2? UpdateUserlandUserOrganizationMembershipDtoOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2 UpdateUserlandUserOrganizationMembershipDtoMember2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf2 UpdateUserlandUserOrganizationMembershipDtoOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3? UpdateUserlandUserOrganizationMembershipDtoMember3 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf3? UpdateUserlandUserOrganizationMembershipDtoOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3 UpdateUserlandUserOrganizationMembershipDtoMember3 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf3 UpdateUserlandUserOrganizationMembershipDtoOneOf3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -51,13 +51,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 result.UpdateUserlandUserOrganizationMembershipDtoMember1 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("UpdateUserlandUserOrganizationMembershipDtoOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UpdateUserlandUserOrganizationMembershipDtoMember2 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2();
+                result.UpdateUserlandUserOrganizationMembershipDtoOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf2();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("UpdateUserlandUserOrganizationMembershipDtoOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UpdateUserlandUserOrganizationMembershipDtoMember3 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3();
+                result.UpdateUserlandUserOrganizationMembershipDtoOneOf3 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf3();
             }
             return result;
         }
@@ -71,13 +71,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 return UpdateUserlandUserOrganizationMembershipDtoMember1.GetFieldDeserializers();
             }
-            else if(UpdateUserlandUserOrganizationMembershipDtoMember2 != null)
+            else if(UpdateUserlandUserOrganizationMembershipDtoOneOf2 != null)
             {
-                return UpdateUserlandUserOrganizationMembershipDtoMember2.GetFieldDeserializers();
+                return UpdateUserlandUserOrganizationMembershipDtoOneOf2.GetFieldDeserializers();
             }
-            else if(UpdateUserlandUserOrganizationMembershipDtoMember3 != null)
+            else if(UpdateUserlandUserOrganizationMembershipDtoOneOf3 != null)
             {
-                return UpdateUserlandUserOrganizationMembershipDtoMember3.GetFieldDeserializers();
+                return UpdateUserlandUserOrganizationMembershipDtoOneOf3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -92,13 +92,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1>(null, UpdateUserlandUserOrganizationMembershipDtoMember1);
             }
-            else if(UpdateUserlandUserOrganizationMembershipDtoMember2 != null)
+            else if(UpdateUserlandUserOrganizationMembershipDtoOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember2>(null, UpdateUserlandUserOrganizationMembershipDtoMember2);
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf2>(null, UpdateUserlandUserOrganizationMembershipDtoOneOf2);
             }
-            else if(UpdateUserlandUserOrganizationMembershipDtoMember3 != null)
+            else if(UpdateUserlandUserOrganizationMembershipDtoOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember3>(null, UpdateUserlandUserOrganizationMembershipDtoMember3);
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf3>(null, UpdateUserlandUserOrganizationMembershipDtoOneOf3);
             }
         }
     }

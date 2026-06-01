@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         [EnumMember(Value = "jwt_template")]
         #pragma warning disable CS1591
-        Jwt_template,
+        JwtTemplate,
         #pragma warning restore CS1591
     }
 }

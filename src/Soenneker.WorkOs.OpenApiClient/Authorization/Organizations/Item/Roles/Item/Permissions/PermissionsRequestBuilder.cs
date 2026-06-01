@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.Item.Permissions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \authorization\organizations\{organization-id}\roles\{slug}\permissions
+    /// Builds and executes requests for operations under \authorization\organizations\{organizationId}\roles\{slug}\permissions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PermissionsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PermissionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organization%2Did}/roles/{slug}/permissions", pathParameters)
+        public PermissionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/roles/{slug}/permissions", pathParameters)
         {
         }
         /// <summary>
@@ -43,68 +43,68 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PermissionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organization%2Did}/roles/{slug}/permissions", rawUrl)
+        public PermissionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/roles/{slug}/permissions", rawUrl)
         {
         }
         /// <summary>
         /// Add a single permission to a custom role. If the permission is already assigned to the role, this operation has no effect.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission400">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission403">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.AddRolePermissionDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200Response?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.AddRolePermissionDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.AddRolePermissionDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200Response> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.AddRolePermissionDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission400.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission403.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission422.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission422Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerAddPermission200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Replace all permissions on a custom role with the provided list.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions403">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions404">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions422">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.SetRolePermissionsDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200Response?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.SetRolePermissionsDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.SetRolePermissionsDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200Response> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.SetRolePermissionsDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions403.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions404.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions422.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions422Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolePermissionsControllerSetPermissions200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Add a single permission to a custom role. If the permission is already assigned to the role, this operation has no effect.

@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The api_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse_api_key? ApiKey { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey? ApiKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse_api_key ApiKey { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey ApiKey { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse_api_key>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse_api_key.CreateFromDiscriminatorValue); } },
+                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse_api_key>("api_key", ApiKey);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>("api_key", ApiKey);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
