@@ -76,6 +76,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         ApiKeyRevoked,
         #pragma warning restore CS1591
+        [EnumMember(Value = "api_key.updated")]
+        #pragma warning disable CS1591
+        ApiKeyUpdated,
+        #pragma warning restore CS1591
         [EnumMember(Value = "connection.activated")]
         #pragma warning disable CS1591
         ConnectionActivated,

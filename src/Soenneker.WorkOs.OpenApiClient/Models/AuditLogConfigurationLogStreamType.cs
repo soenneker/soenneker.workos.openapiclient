@@ -27,6 +27,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         S3,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Snowflake")]
+        #pragma warning disable CS1591
+        Snowflake,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Splunk")]
         #pragma warning disable CS1591
         Splunk,

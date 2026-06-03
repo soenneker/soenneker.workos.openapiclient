@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Role_assignmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/role_assignments{?after*,before*,limit*,order*,resource_external_id*,resource_id*,resource_type_slug*}", pathParameters)
+        public Role_assignmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/role_assignments", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Role_assignmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/role_assignments{?after*,before*,limit*,order*,resource_external_id*,resource_id*,resource_type_slug*}", rawUrl)
+        public Role_assignmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/role_assignments", rawUrl)
         {
         }
         /// <summary>
@@ -230,7 +230,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             /// <summary>Upper limit on the number of objects to return, between `1` and `100`.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.</summary>
+            /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
             /// <summary>Filter assignments by the external ID of the resource.</summary>

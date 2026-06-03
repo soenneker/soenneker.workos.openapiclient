@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Auth_factors
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Auth_factorsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/auth_factors{?after*,before*,limit*,order*}", pathParameters)
+        public Auth_factorsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Auth_factors
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Auth_factorsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/auth_factors{?after*,before*,limit*,order*}", rawUrl)
+        public Auth_factorsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>

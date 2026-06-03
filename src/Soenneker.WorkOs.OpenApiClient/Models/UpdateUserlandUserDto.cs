@@ -64,6 +64,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata Metadata { get; set; }
 #endif
+        /// <summary>The user&apos;s full name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDto"/> and sets the default values.
         /// </summary>
@@ -96,6 +104,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "locale", n => { Locale = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -112,6 +121,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("last_name", LastName);
             writer.WriteStringValue("locale", Locale);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserDtoMetadata>("metadata", Metadata);
+            writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

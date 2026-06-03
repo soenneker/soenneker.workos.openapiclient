@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Organization_membershipsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/organization_memberships{?after*,before*,limit*,order*,organization_id*,statuses,user_id*}", pathParameters)
+        public Organization_membershipsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Organization_membershipsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/organization_memberships{?after*,before*,limit*,order*,organization_id*,statuses,user_id*}", rawUrl)
+        public Organization_membershipsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>
@@ -177,7 +177,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
             /// <summary>Upper limit on the number of objects to return, between `1` and `100`.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.</summary>
+            /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
             /// <summary>The ID of the [organization](/reference/organization) which the user belongs to.</summary>

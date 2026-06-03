@@ -54,6 +54,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserObjectMetadataProperty Metadata { get; set; }
 #endif
+        /// <summary>The user&apos;s full name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserObject"/> and sets the default values.
         /// </summary>
@@ -84,6 +92,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserObjectMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.UserObjectMetadataProperty.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -98,6 +107,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserObjectMetadataProperty>("metadata", Metadata);
+            writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

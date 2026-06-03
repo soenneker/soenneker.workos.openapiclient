@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithExternalItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/resources/{resourceTypeSlug}/{externalId}{?cascade_delete*}", pathParameters)
+        public WithExternalItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/resources/{resourceTypeSlug}/{externalId}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithExternalItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/resources/{resourceTypeSlug}/{externalId}{?cascade_delete*}", rawUrl)
+        public WithExternalItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organizations/{organizationId}/resources/{resourceTypeSlug}/{externalId}", rawUrl)
         {
         }
         /// <summary>

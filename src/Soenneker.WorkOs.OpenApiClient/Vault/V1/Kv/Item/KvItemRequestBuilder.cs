@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public KvItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/vault/v1/kv/{id}{?version_check*}", pathParameters)
+        public KvItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/vault/v1/kv/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public KvItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/vault/v1/kv/{id}{?version_check*}", rawUrl)
+        public KvItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/vault/v1/kv/{id}", rawUrl)
         {
         }
         /// <summary>

@@ -47,11 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDto();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UpdateUserlandUserOrganizationMembershipDtoMember1 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoMember1();
-            }
-            else if("UpdateUserlandUserOrganizationMembershipDtoOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("UpdateUserlandUserOrganizationMembershipDtoOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.UpdateUserlandUserOrganizationMembershipDtoOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateUserlandUserOrganizationMembershipDtoOneOf2();
             }

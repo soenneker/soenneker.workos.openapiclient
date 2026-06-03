@@ -90,7 +90,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LogoutRequestBuilderGetQueryParameters 
         {
-            /// <summary>The URL to redirect the user to after session revocation.</summary>
+            /// <summary>The URL to redirect the user to after logout.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("return_to")]
@@ -100,7 +100,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Sessions.Logout
             [QueryParameter("return_to")]
             public string ReturnTo { get; set; }
 #endif
-            /// <summary>The ID of the session to revoke. This can be extracted from the `sid` claim of the access token.</summary>
+            /// <summary>The ID of the session. This can be extracted from the `sid` claim of the access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("session_id")]

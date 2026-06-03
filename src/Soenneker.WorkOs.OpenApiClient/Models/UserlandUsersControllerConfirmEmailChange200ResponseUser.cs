@@ -77,6 +77,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200ResponseUserMetadata Metadata { get; set; }
 #endif
+        /// <summary>The user&apos;s full name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
+        public string Name { get; set; }
+#endif
         /// <summary>Distinguishes the user object.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200ResponseUser_object? Object { get; set; }
         /// <summary>A URL reference to an image representing the user.</summary>
@@ -124,6 +132,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "last_sign_in_at", n => { LastSignInAt = n.GetDateTimeOffsetValue(); } },
                 { "locale", n => { Locale = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200ResponseUserMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200ResponseUserMetadata.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200ResponseUser_object>(); } },
                 { "profile_picture_url", n => { ProfilePictureUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -146,6 +155,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_sign_in_at", LastSignInAt);
             writer.WriteStringValue("locale", Locale);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200ResponseUserMetadata>("metadata", Metadata);
+            writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200ResponseUser_object>("object", Object);
             writer.WriteStringValue("profile_picture_url", ProfilePictureUrl);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
