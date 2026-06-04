@@ -146,7 +146,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.WithResourceItemRequestBuilder.WithResourceItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/authorization/resources/{resourceId}{?cascade_delete*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

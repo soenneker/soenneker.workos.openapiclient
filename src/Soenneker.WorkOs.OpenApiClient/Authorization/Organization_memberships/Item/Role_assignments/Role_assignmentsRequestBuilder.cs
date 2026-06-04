@@ -165,7 +165,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Role_assignments.Role_assignmentsRequestBuilder.Role_assignmentsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/role_assignments{?after*,before*,limit*,order*,resource_external_id*,resource_id*,resource_type_slug*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

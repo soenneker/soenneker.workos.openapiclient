@@ -116,7 +116,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.Organiza
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.OrganizationMemberships.OrganizationMembershipsRequestBuilder.OrganizationMembershipsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/organizations/{%2Did}/groups/{groupId}/organization-memberships{?after*,before*,limit*,order*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -137,7 +137,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.Organiza
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/organizations/{%2Did}/groups/{groupId}/organization-memberships", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

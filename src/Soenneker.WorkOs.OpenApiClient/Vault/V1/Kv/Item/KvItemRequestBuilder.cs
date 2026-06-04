@@ -138,7 +138,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.Item
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.Item.KvItemRequestBuilder.KvItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/vault/v1/kv/{id}{?version_check*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
