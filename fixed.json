@@ -28288,10 +28288,8 @@
           "department": "Engineering",
           "role": "Developer"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "UserConsentOptionChoicesItem": {
@@ -28428,10 +28426,8 @@
         "example": {
           "tier": "diamond"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "UpdateOrganizationDtoMetadata": {
@@ -28445,10 +28441,8 @@
         "example": {
           "tier": "diamond"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "CreateDataKeyRequestContext": {
@@ -28831,10 +28825,8 @@
         "example": {
           "timezone": "America/New_York"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "UserlandUserOrganizationMembershipBaseWithUserCustomAttributes": {
@@ -29452,10 +29444,8 @@
         "example": {
           "tier": "diamond"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "OrganizationListListMetadata": {
@@ -30010,10 +30000,8 @@
         "example": {
           "timezone": "America/New_York"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "UpdateUserlandUserDtoAllOf1Metadata": {
@@ -30027,10 +30015,8 @@
         "example": {
           "timezone": "America/New_York"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem": {
@@ -36375,10 +36361,8 @@
         "example": {
           "tier": "diamond"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "EventSchemaAllOf2OneOf56DataDomainsItem": {
@@ -36465,10 +36449,8 @@
         "example": {
           "tier": "diamond"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "EventSchemaAllOf2OneOf60DataOrganizationDomain": {
@@ -36650,10 +36632,8 @@
         "example": {
           "tier": "diamond"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "EventSchemaAllOf2OneOf80DataImpersonator": {
@@ -51748,10 +51728,8 @@
         "example": {
           "timezone": "America/New_York"
         },
-        "unrecognizedKeywords": {
-          "propertyNames": {
-            "maxLength": 40
-          }
+        "x-jsonschema-propertyNames": {
+          "maxLength": 40
         }
       },
       "UserlandUserSessionsControllerList200ResponseDataItemImpersonator": {
