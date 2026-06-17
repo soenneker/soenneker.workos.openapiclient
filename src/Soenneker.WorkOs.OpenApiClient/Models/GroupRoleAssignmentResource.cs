@@ -8,45 +8,53 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Pagination cursors for navigating between pages of results.
+    /// The resource the role is assigned on.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UserlandUserInvitesControllerList200ResponseListMetadata : IAdditionalDataHolder, IParsable
+    public partial class GroupRoleAssignmentResource : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.</summary>
+        /// <summary>An identifier you provide to reference the resource in your system.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? After { get; set; }
+        public string? ExternalId { get; set; }
 #nullable restore
 #else
-        public string After { get; set; }
+        public string ExternalId { get; set; }
 #endif
-        /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.</summary>
+        /// <summary>The unique ID of the Resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Before { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string Before { get; set; }
+        public string Id { get; set; }
+#endif
+        /// <summary>The slug of the resource type this resource belongs to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ResourceTypeSlug { get; set; }
+#nullable restore
+#else
+        public string ResourceTypeSlug { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerList200ResponseListMetadata"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentResource"/> and sets the default values.
         /// </summary>
-        public UserlandUserInvitesControllerList200ResponseListMetadata()
+        public GroupRoleAssignmentResource()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerList200ResponseListMetadata"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentResource"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerList200ResponseListMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentResource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerList200ResponseListMetadata();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentResource();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,8 +64,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "after", n => { After = n.GetStringValue(); } },
-                { "before", n => { Before = n.GetStringValue(); } },
+                { "external_id", n => { ExternalId = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "resource_type_slug", n => { ResourceTypeSlug = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -67,8 +76,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("after", After);
-            writer.WriteStringValue("before", Before);
+            writer.WriteStringValue("external_id", ExternalId);
+            writer.WriteStringValue("id", Id);
+            writer.WriteStringValue("resource_type_slug", ResourceTypeSlug);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

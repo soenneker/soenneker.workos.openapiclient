@@ -32,5 +32,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         WidgetsColonAuditLogStreamingColonManage,
         #pragma warning restore CS1591
+        [EnumMember(Value = "widgets:pipes:manage")]
+        #pragma warning disable CS1591
+        WidgetsColonPipesColonManage,
+        #pragma warning restore CS1591
     }
 }

@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_verifi
         {
         }
         /// <summary>
-        /// Sends an email that contains a one-time code used to verify a user’s email address.
+        /// Sends an email that contains a one-time code used to verify a user&apos;s email address.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_verifi
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Sends an email that contains a one-time code used to verify a user’s email address.
+        /// Sends an email that contains a one-time code used to verify a user&apos;s email address.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

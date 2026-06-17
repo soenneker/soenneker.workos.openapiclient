@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris
         {
         }
         /// <summary>
-        /// Creates a new redirect URI for an environment.
+        /// Creates a new redirect URI for an application.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri"/></returns>
         /// <param name="body">The request body</param>
@@ -63,7 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a new redirect URI for an environment.
+        /// Creates a new redirect URI for an application.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

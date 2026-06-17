@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Authorization.Groups;
 using Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships;
 using Soenneker.WorkOs.OpenApiClient.Authorization.Organizations;
 using Soenneker.WorkOs.OpenApiClient.Authorization.Permissions;
@@ -19,6 +20,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AuthorizationRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The groups property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Groups.GroupsRequestBuilder Groups
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Authorization.Groups.GroupsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The organization_memberships property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Organization_membershipsRequestBuilder Organization_memberships
         {

@@ -11,6 +11,7 @@ using Soenneker.WorkOs.OpenApiClient.Audit_logs;
 using Soenneker.WorkOs.OpenApiClient.Auth;
 using Soenneker.WorkOs.OpenApiClient.Authkit;
 using Soenneker.WorkOs.OpenApiClient.Authorization;
+using Soenneker.WorkOs.OpenApiClient.Client;
 using Soenneker.WorkOs.OpenApiClient.Connect;
 using Soenneker.WorkOs.OpenApiClient.Connections;
 using Soenneker.WorkOs.OpenApiClient.DataIntegrations;
@@ -64,6 +65,11 @@ namespace Soenneker.WorkOs.OpenApiClient
         public global::Soenneker.WorkOs.OpenApiClient.Authorization.AuthorizationRequestBuilder Authorization
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Authorization.AuthorizationRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The client property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Client.ClientRequestBuilder Client
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Client.ClientRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The connect property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Connect.ConnectRequestBuilder Connect

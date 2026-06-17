@@ -5,7 +5,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>Indicates this is a list response.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum UserlandUserOrganizationMembershipsControllerList200Response_object
+    public enum UserlandUserInviteList_object
     {
         [EnumMember(Value = "list")]
         #pragma warning disable CS1591

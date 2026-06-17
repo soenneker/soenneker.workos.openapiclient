@@ -977,6 +977,427 @@
         }
       }
     },
+    "/authorization/groups/{groupId}/role_assignments": {
+      "get": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "List role assignments for a group",
+        "description": "List all role assignments granted to a group. Each assignment represents a role granted to the group on a resource.",
+        "operationId": "AuthorizationGroupRoleAssignmentsControllerList",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The ID of the group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "group_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060after=\u0022obj_123\u0022\u0060 to fetch a new batch of objects after \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ987654321KJIHGFEDCBA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Upper limit on the number of objects to return, between \u00601\u0060 and \u0060100\u0060.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10,
+              "example": 10
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records).",
+            "schema": {
+              "$ref": "#/components/schemas/PaginationOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupRoleAssignmentList"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerList403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerList404Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "Assign a role to a group",
+        "description": "Assign a role to a group on a specific resource.",
+        "operationId": "AuthorizationGroupRoleAssignmentsControllerCreate",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The ID of the group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "group_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupRoleAssignmentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupRoleAssignment"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerCreate403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerCreate404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "409 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerCreate409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerCreate422Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "Replace all role assignments for a group",
+        "description": "Replace all role assignments for a group with the provided list. Existing assignments not in the list will be removed.",
+        "operationId": "AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The ID of the group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "group_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplaceGroupRoleAssignmentsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupRoleAssignmentList"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments422Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "Remove group role assignments by criteria",
+        "description": "Remove role assignments from a group that match the provided criteria. Returns 404 when no matching active assignment is found.",
+        "operationId": "AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The ID of the group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "group_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteGroupRoleAssignmentsByCriteriaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authorization/groups/{groupId}/role_assignments/{roleAssignmentId}": {
+      "get": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "Get a group role assignment",
+        "description": "Get a specific role assignment for a group by its ID.",
+        "operationId": "AuthorizationGroupRoleAssignmentsControllerGet",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The ID of the group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "group_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "roleAssignmentId",
+            "in": "path",
+            "description": "The ID of the group role assignment.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "gra_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupRoleAssignment"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerGet403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerGet404Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "Remove a group role assignment",
+        "description": "Remove a specific role assignment from a group by its ID.",
+        "operationId": "AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignment",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The ID of the group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "group_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "roleAssignmentId",
+            "in": "path",
+            "description": "The ID of the group role assignment to remove.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "gra_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignment403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignment404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/authorization/organization_memberships/{organizationMembershipId}/check": {
       "post": {
         "tags": [
@@ -3332,6 +3753,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesControllerList400Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -4295,6 +4726,67 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthorizationRolePermissionsControllerAddPermission422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/client/token": {
+      "post": {
+        "tags": [
+          "client"
+        ],
+        "summary": "Generate a Client API token",
+        "description": "Generate a short-lived, session-bound token for the Client GraphQL API, scoped to an organization and user.",
+        "operationId": "ClientApiTokenControllerIssueClientApiToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientApiTokenDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientApiTokenResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientApiTokenControllerIssueClientApiToken400Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientApiTokenControllerIssueClientApiToken404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientApiTokenControllerIssueClientApiToken422Response"
                 }
               }
             }
@@ -6949,6 +7441,133 @@
         }
       }
     },
+    "/organizations/{organizationId}/data_integration_configurations": {
+      "get": {
+        "tags": [
+          "pipes.provider"
+        ],
+        "summary": "List providers for an organization",
+        "description": "Returns a list of all providers available to the specified organization, along with any configured custom OAuth scopes, enabled state, and organization-managed credentials where applicable.",
+        "operationId": "ProviderControllerListForOrganization",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "An [Organization](/reference/organization) identifier to list provider configurations for.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of provider configurations for the organization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationConfigurationListResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The organization was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderControllerListForOrganization404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/data_integration_configurations/{slug}": {
+      "put": {
+        "tags": [
+          "pipes.provider"
+        ],
+        "summary": "Configure a provider for an organization",
+        "description": "Creates or updates an organization\u0027s provider configuration. Use this endpoint to enable or disable a provider, set custom OAuth scopes, or supply organization-managed OAuth credentials.",
+        "operationId": "ProviderControllerConfigure",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "An [Organization](/reference/organization) identifier to configure the provider for.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the provider to configure (e.g., \u0060github\u0060, \u0060slack\u0060, \u0060notion\u0060).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigureDataIntegrationBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The provider configuration that was created or updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationConfigurationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "\u0022The request body is invalid. Possible reasons: the body is empty (at least one of \u0060enabled\u0060, \u0060scopes\u0060, or \u0060client_id\u0060 must be provided); \u0060client_id\u0060 and \u0060client_secret\u0060 are not provided together; or \u0060client_id\u0060/\u0060client_secret\u0060 were supplied for a provider that does not support organization-managed credentials.\u0022",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderControllerConfigure400Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The organization or provider was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderControllerConfigure404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "One or more of the supplied \u0060scopes\u0060 are not valid for the provider. Only scopes configured on the provider may be used.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderControllerConfigure422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/organizations/{organizationId}/feature-flags": {
       "get": {
         "tags": [
@@ -8933,7 +9552,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserlandUserInvitesControllerList200Response"
+                  "$ref": "#/components/schemas/UserlandUserInviteList"
                 }
               }
             }
@@ -9532,7 +10151,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerList200Response"
+                  "$ref": "#/components/schemas/UserlandUserOrganizationMembershipList"
                 }
               }
             }
@@ -10168,7 +10787,7 @@
           "user-management.redirect-uris"
         ],
         "summary": "Create a redirect URI",
-        "description": "Creates a new redirect URI for an environment.",
+        "description": "Creates a new redirect URI for an application.",
         "operationId": "RedirectUrisControllerCreate",
         "requestBody": {
           "content": {
@@ -10910,7 +11529,7 @@
           "user-management.users"
         ],
         "summary": "Send verification email",
-        "description": "Sends an email that contains a one-time code used to verify a user\u2019s email address.",
+        "description": "Sends an email that contains a one-time code used to verify a user\u0027s email address.",
         "operationId": "UserlandUsersControllerSendVerificationEmail0",
         "parameters": [
           {
@@ -11603,7 +12222,7 @@
         "tags": [
           "user-management.data-providers"
         ],
-        "summary": "List providers",
+        "summary": "List providers for a user",
         "description": "Retrieves a list of available providers and the user\u0027s connection status for each. Returns all providers configured for your environment, along with the user\u0027s [connected account](/reference/pipes/connected-account) information where applicable.",
         "operationId": "DataIntegrationsUserManagementControllerGetUserDataIntegrations",
         "parameters": [
@@ -13339,6 +13958,106 @@
           }
         }
       },
+      "CreateGroupRoleAssignmentDto": {
+        "required": [
+          "role_slug"
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role to assign to the group.",
+            "example": "admin"
+          },
+          "resource_id": {
+            "type": "string",
+            "description": "The ID of the resource. Omit along with the external-id fields to target the organization itself.",
+            "example": "authz_resource_01HXYZ123456789ABCDEFGH"
+          },
+          "resource_external_id": {
+            "type": "string",
+            "description": "The external ID of the resource.",
+            "example": "proj-456"
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The resource type slug.",
+            "example": "project"
+          }
+        }
+      },
+      "ReplaceGroupRoleAssignmentEntryDto": {
+        "required": [
+          "role_slug"
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role to assign to the group.",
+            "example": "admin"
+          },
+          "resource_id": {
+            "type": "string",
+            "description": "The ID of the resource. Omit along with the external-id fields to target the organization itself.",
+            "example": "authz_resource_01HXYZ123456789ABCDEFGH"
+          },
+          "resource_external_id": {
+            "type": "string",
+            "description": "The external ID of the resource.",
+            "example": "proj-456"
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The resource type slug.",
+            "example": "project"
+          }
+        }
+      },
+      "ReplaceGroupRoleAssignmentsDto": {
+        "required": [
+          "role_assignments"
+        ],
+        "type": "object",
+        "properties": {
+          "role_assignments": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReplaceGroupRoleAssignmentEntryDto"
+            },
+            "description": "The list of role assignments that should exist for the group. All existing assignments will be replaced."
+          }
+        }
+      },
+      "DeleteGroupRoleAssignmentsByCriteriaDto": {
+        "required": [
+          "role_slug"
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role to remove assignments for.",
+            "example": "admin"
+          },
+          "resource_id": {
+            "type": "string",
+            "description": "The ID of the resource. Mutually exclusive with \u0060resource_external_id\u0060 and \u0060resource_type_slug\u0060.",
+            "example": "authz_resource_01HXYZ123456789ABCDEFGH"
+          },
+          "resource_external_id": {
+            "type": "string",
+            "description": "The external ID of the resource.",
+            "example": "proj-456"
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The resource type slug.",
+            "example": "project"
+          }
+        }
+      },
       "AssignRoleDto": {
         "required": [
           "role_slug"
@@ -14748,6 +15467,25 @@
               "$ref": "#/components/schemas/WidgetSessionTokenDtoScopesItem"
             },
             "description": "The scopes to grant the widget session."
+          }
+        }
+      },
+      "ClientApiTokenDto": {
+        "required": [
+          "organization_id",
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization to scope the Client API token to.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user to issue the Client API token for.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           }
         }
       },
@@ -16185,6 +16923,102 @@
           }
         },
         "description": "The primary role assigned to the user."
+      },
+      "GroupRoleAssignment": {
+        "required": [
+          "object",
+          "id",
+          "group_id",
+          "role",
+          "resource",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "group_role_assignment"
+            ],
+            "type": "string",
+            "description": "Distinguishes the group role assignment object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "group_role_assignment",
+                  "name": "GroupRoleAssignment"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the group role assignment.",
+            "example": "gra_01HXYZ123456789ABCDEFGH"
+          },
+          "group_id": {
+            "type": "string",
+            "description": "The ID of the group the role is assigned to.",
+            "example": "group_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "role": {
+            "$ref": "#/components/schemas/SlimRole"
+          },
+          "resource": {
+            "$ref": "#/components/schemas/GroupRoleAssignmentResource"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        }
+      },
+      "GroupRoleAssignmentList": {
+        "required": [
+          "object",
+          "data",
+          "list_metadata"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "list"
+            ],
+            "type": "string",
+            "description": "Indicates this is a list response.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "list",
+                  "name": "List"
+                }
+              ]
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupRoleAssignment"
+            },
+            "description": "The list of records for the current page."
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/GroupRoleAssignmentListListMetadata"
+          }
+        }
       },
       "UserRoleAssignment": {
         "required": [
@@ -18724,6 +19558,174 @@
           }
         }
       },
+      "DataIntegrationCredentials": {
+        "required": [
+          "credentials_type",
+          "has_credentials",
+          "client_id",
+          "client_secret_last_four",
+          "redirect_uri"
+        ],
+        "type": "object",
+        "properties": {
+          "credentials_type": {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsCredentialsType"
+          },
+          "has_credentials": {
+            "type": "boolean",
+            "description": "Whether the organization has supplied OAuth credentials for this integration.",
+            "example": true
+          },
+          "client_id": {
+            "type": "string",
+            "description": "The OAuth client ID supplied by the organization, or \u0060null\u0060 when none is configured.",
+            "example": "client_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "client_secret_last_four": {
+            "type": "string",
+            "description": "The last four characters of the organization-supplied OAuth client secret, or \u0060null\u0060 when none is configured.",
+            "example": "1a2b"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "description": "The redirect URI to register with the provider when configuring the organization-managed OAuth application.",
+            "example": "https://api.workos.com/data-integrations/github/dik_01EHZNVPK3SFK441A1RGBFSHRT/callback"
+          }
+        },
+        "description": "Organization-managed OAuth credential configuration. Present only for integrations whose credentials are supplied by the organization; absent otherwise."
+      },
+      "DataIntegrationConfigurationResponse": {
+        "required": [
+          "object",
+          "id",
+          "organization_id",
+          "slug",
+          "name",
+          "enabled",
+          "scopes",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "data_integration_configuration"
+            ],
+            "type": "string",
+            "description": "Distinguishes the data integration configuration object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "data_integration_configuration",
+                  "name": "DataIntegrationConfiguration"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the data integration.",
+            "example": "data_integration_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The [Organization](/reference/organization) this configuration applies to.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "slug": {
+            "type": "string",
+            "description": "The slug identifier of the provider (e.g., \u0060github\u0060, \u0060slack\u0060, \u0060notion\u0060).",
+            "example": "github"
+          },
+          "name": {
+            "type": "string",
+            "description": "The display name of the data integration.",
+            "example": "GitHub"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the integration is enabled for this organization. Reflects the organization override when one exists, otherwise the provider default.",
+            "example": true
+          },
+          "scopes": {
+            "$ref": "#/components/schemas/DataIntegrationConfigurationResponseScopes"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the configuration was created.",
+            "example": "2024-01-15T10:30:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the configuration was last updated.",
+            "example": "2024-01-15T10:30:00.000Z"
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/DataIntegrationCredentials"
+          }
+        }
+      },
+      "DataIntegrationConfigurationListResponse": {
+        "required": [
+          "object",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "list"
+            ],
+            "type": "string",
+            "description": "Indicates this is a list response.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "list",
+                  "name": "List"
+                }
+              ]
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationConfigurationResponse"
+            },
+            "description": "A list of data integration configurations for the organization."
+          }
+        }
+      },
+      "ConfigureDataIntegrationBody": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the provider is enabled for the organization.",
+            "example": true
+          },
+          "scopes": {
+            "$ref": "#/components/schemas/ConfigureDataIntegrationBodyScopes"
+          },
+          "client_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The OAuth client ID of the organization\u0027s own application. Must be provided together with \u0060client_secret\u0060, and only for providers whose credentials are supplied by the organization.",
+            "example": "client_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "client_secret": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The OAuth client secret of the organization\u0027s own application. Must be provided together with \u0060client_id\u0060.",
+            "example": "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
+          }
+        }
+      },
       "DataIntegrationAuthorizeUrlResponse": {
         "required": [
           "url"
@@ -18815,6 +19817,14 @@
               "type": "string"
             },
             "description": "The OAuth scopes granted for this connection."
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/ConnectedAccountAuthMethod"
+          },
+          "api_key_last_4": {
+            "type": "string",
+            "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
+            "example": null
           },
           "state": {
             "$ref": "#/components/schemas/ConnectedAccountState"
@@ -19208,6 +20218,43 @@
           }
         }
       },
+      "UserlandUserInviteList": {
+        "required": [
+          "object",
+          "data",
+          "list_metadata"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "list"
+            ],
+            "type": "string",
+            "description": "Indicates this is a list response.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "list",
+                  "name": "List"
+                }
+              ]
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserlandUserInvite"
+            },
+            "description": "The list of records for the current page."
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/UserlandUserInviteListListMetadata"
+          }
+        }
+      },
       "UserlandUserOrganizationMembership": {
         "required": [
           "object",
@@ -19288,6 +20335,43 @@
           },
           "user": {
             "$ref": "#/components/schemas/UserlandUser"
+          }
+        }
+      },
+      "UserlandUserOrganizationMembershipList": {
+        "required": [
+          "object",
+          "data",
+          "list_metadata"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "list"
+            ],
+            "type": "string",
+            "description": "Indicates this is a list response.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "list",
+                  "name": "List"
+                }
+              ]
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserlandUserOrganizationMembership"
+            },
+            "description": "The list of records for the current page."
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/UserlandUserOrganizationMembershipListListMetadata"
           }
         }
       },
@@ -19958,6 +21042,19 @@
           "token": {
             "type": "string",
             "description": "The widget session token.",
+            "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6InNlc3Npb24..."
+          }
+        }
+      },
+      "ClientApiTokenResponse": {
+        "required": [
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "The Client API token.",
             "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6InNlc3Npb24..."
           }
         }
@@ -27458,6 +28555,30 @@
           }
         }
       },
+      "DataIntegrationConfigurationResponseScopes": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationConfigurationResponseScopesBranch1"
+          },
+          {
+            "type": "object"
+          }
+        ],
+        "description": "The OAuth scopes in effect for this organization. Reflects the organization override when one is set, otherwise the provider scopes, or \u0060null\u0060 when none are configured."
+      },
+      "ConfigureDataIntegrationBodyScopes": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ConfigureDataIntegrationBodyScopesBranch1"
+          },
+          {
+            "type": "object"
+          }
+        ],
+        "description": "The OAuth scopes to request for the organization. Pass \u0060null\u0060 to inherit the provider scopes."
+      },
       "DataIntegrationAccessTokenResponseOneOf1": {
         "required": [
           "active",
@@ -27936,6 +29057,14 @@
               "type": "string"
             },
             "description": "The OAuth scopes granted for this connection."
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod"
+          },
+          "api_key_last_4": {
+            "type": "string",
+            "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
+            "example": null
           },
           "state": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1State"
@@ -28768,6 +29897,52 @@
         },
         "description": "Pagination cursors for navigating between pages of results."
       },
+      "GroupRoleAssignmentResource": {
+        "required": [
+          "id",
+          "external_id",
+          "resource_type_slug"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the Resource.",
+            "example": "authz_resource_01HXYZ123456789ABCDEFGH"
+          },
+          "external_id": {
+            "type": "string",
+            "description": "An identifier you provide to reference the resource in your system.",
+            "example": "proj-456"
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The slug of the resource type this resource belongs to.",
+            "example": "project"
+          }
+        },
+        "description": "The resource the role is assigned on."
+      },
+      "GroupRoleAssignmentListListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "gra_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "gra_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
+      },
       "UserRoleAssignmentResource": {
         "required": [
           "id",
@@ -29574,6 +30749,13 @@
           "scopes": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemScopes"
           },
+          "auth_methods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemAuthMethodsItem"
+            },
+            "description": "The authentication methods supported by this provider (\u0060oauth\u0060, \u0060api_key\u0060, or both). Defaults to \u0060[\u0022oauth\u0022]\u0060 if absent."
+          },
           "ownership": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemOwnership"
           },
@@ -29632,6 +30814,26 @@
         },
         "description": "Pagination cursors for navigating between pages of results."
       },
+      "UserlandUserInviteListListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "invitation_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "invitation_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
+      },
       "UserlandUserOrganizationMembershipCustomAttributes": {
         "type": "object",
         "additionalProperties": {
@@ -29643,6 +30845,26 @@
           "title": "Developer Experience Engineer",
           "location": "Brooklyn"
         }
+      },
+      "UserlandUserOrganizationMembershipListListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "om_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "om_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
       },
       "UserApiKeyOwner": {
         "required": [
@@ -37407,6 +38629,233 @@
           }
         }
       },
+      "AuthorizationGroupRoleAssignmentsControllerList403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerList404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerCreate403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerCreate404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerCreate409Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "duplicate_group_role_assignment"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "duplicate_group_role_assignment",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "duplicate_group_role_assignment",
+                  "name": "DuplicateGroupRoleAssignment"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerCreate422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerGet403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerGet404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignment403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignment404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "AuthorizationControllerCheck403Response": {
         "required": [
           "message"
@@ -39229,6 +40678,38 @@
           }
         }
       },
+      "AuthorizationResourcesControllerList400Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "missing_organization_id_or_resource_type_slug"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "missing_organization_id_or_resource_type_slug",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "missing_organization_id_or_resource_type_slug",
+                  "name": "MissingOrganizationIdOrResourceTypeSlug"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationResourcesControllerList403Response": {
         "required": [
           "message"
@@ -40499,6 +41980,45 @@
         }
       },
       "AuthorizationRolePermissionsControllerAddPermission422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ClientApiTokenControllerIssueClientApiToken400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ClientApiTokenControllerIssueClientApiToken404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ClientApiTokenControllerIssueClientApiToken422Response": {
         "required": [
           "message"
         ],
@@ -41915,6 +43435,58 @@
           }
         }
       },
+      "ProviderControllerListForOrganization404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ProviderControllerConfigure400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ProviderControllerConfigure404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ProviderControllerConfigure422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "OrganizationFeatureFlagsControllerList404Response": {
         "required": [
           "message"
@@ -43018,38 +44590,6 @@
           }
         }
       },
-      "UserlandUserInvitesControllerList200Response": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "enum": [
-              "list"
-            ],
-            "type": "string",
-            "description": "Indicates this is a list response.",
-            "x-ms-enum": {
-              "name": "ObjectValue",
-              "modelAsString": false,
-              "values": [
-                {
-                  "value": "list",
-                  "name": "List"
-                }
-              ]
-            }
-          },
-          "list_metadata": {
-            "$ref": "#/components/schemas/UserlandUserInvitesControllerList200ResponseListMetadata"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserlandUserInvite"
-            },
-            "description": "The list of records for the current page."
-          }
-        }
-      },
       "UserlandUserInvitesControllerList422Response": {
         "required": [
           "code",
@@ -43676,38 +45216,6 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
-          }
-        }
-      },
-      "UserlandUserOrganizationMembershipsControllerList200Response": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "enum": [
-              "list"
-            ],
-            "type": "string",
-            "description": "Indicates this is a list response.",
-            "x-ms-enum": {
-              "name": "ObjectValue",
-              "modelAsString": false,
-              "values": [
-                {
-                  "value": "list",
-                  "name": "List"
-                }
-              ]
-            }
-          },
-          "list_metadata": {
-            "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerList200ResponseListMetadata"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserlandUserOrganizationMembership"
-            },
-            "description": "The list of records for the current page."
           }
         }
       },
@@ -45641,6 +47149,34 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
+      "DataIntegrationConfigurationResponseScopesBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ConfigureDataIntegrationBodyScopesBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "DataIntegrationsListResponseDataItemScopesBranch1": {
         "required": [
           "value"
@@ -46661,7 +48197,6 @@
       "UserlandSessionsControllerAuthenticate0RequestOneOf1": {
         "required": [
           "client_id",
-          "client_secret",
           "grant_type",
           "code"
         ],
@@ -46674,7 +48209,7 @@
           },
           "client_secret": {
             "type": "string",
-            "description": "The client secret of the application.",
+            "description": "The client secret of the application. May be omitted by public clients that authenticate through other means, such as a PKCE \u0060code_verifier\u0060.",
             "example": "sk_test_...."
           },
           "grant_type": {
@@ -46796,7 +48331,6 @@
       "UserlandSessionsControllerAuthenticate0RequestOneOf3": {
         "required": [
           "client_id",
-          "client_secret",
           "grant_type",
           "refresh_token"
         ],
@@ -46809,7 +48343,7 @@
           },
           "client_secret": {
             "type": "string",
-            "description": "The client secret of the application.",
+            "description": "The client secret of the application. May be omitted by public clients that authenticate through other means, such as a PKCE \u0060code_verifier\u0060.",
             "example": "sk_test_...."
           },
           "grant_type": {
@@ -51103,46 +52637,6 @@
           }
         }
       },
-      "UserlandUserInvitesControllerList200ResponseListMetadata": {
-        "required": [
-          "before",
-          "after"
-        ],
-        "type": "object",
-        "properties": {
-          "before": {
-            "type": "string",
-            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
-            "example": "invitation_01HXYZ123456789ABCDEFGHIJ"
-          },
-          "after": {
-            "type": "string",
-            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
-            "example": "invitation_01HXYZ987654321KJIHGFEDCBA"
-          }
-        },
-        "description": "Pagination cursors for navigating between pages of results."
-      },
-      "UserlandUserOrganizationMembershipsControllerList200ResponseListMetadata": {
-        "required": [
-          "before",
-          "after"
-        ],
-        "type": "object",
-        "properties": {
-          "before": {
-            "type": "string",
-            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
-            "example": "om_01HXYZ123456789ABCDEFGHIJ"
-          },
-          "after": {
-            "type": "string",
-            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
-            "example": "om_01HXYZ987654321KJIHGFEDCBA"
-          }
-        },
-        "description": "Pagination cursors for navigating between pages of results."
-      },
       "UserlandUserOrganizationMembershipsControllerCreate201ResponseCustomAttributes": {
         "type": "object",
         "additionalProperties": {
@@ -53618,7 +55112,8 @@
           "widgets:sso:manage",
           "widgets:api-keys:manage",
           "widgets:dsync:manage",
-          "widgets:audit-log-streaming:manage"
+          "widgets:audit-log-streaming:manage",
+          "widgets:pipes:manage"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -53649,6 +55144,10 @@
             {
               "value": "widgets:audit-log-streaming:manage",
               "name": "WidgetsColonAuditLogStreamingColonManage"
+            },
+            {
+              "value": "widgets:pipes:manage",
+              "name": "WidgetsColonPipesColonManage"
             }
           ]
         }
@@ -54441,6 +55940,59 @@
           ]
         }
       },
+      "DataIntegrationCredentialsCredentialsType": {
+        "enum": [
+          "shared",
+          "custom",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The credentials type for this integration (e.g., \u0060shared\u0060, \u0060custom\u0060, or \u0060organization\u0060).",
+        "example": "organization",
+        "x-ms-enum": {
+          "name": "DataIntegrationCredentialsCredentialsType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "shared",
+              "name": "Shared"
+            },
+            {
+              "value": "custom",
+              "name": "Custom"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "ConnectedAccountAuthMethod": {
+        "enum": [
+          "oauth",
+          "api_key"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The authentication method used for this connection (\u0060oauth\u0060 or \u0060api_key\u0060). Defaults to \u0060oauth\u0060 if absent.",
+        "example": "oauth",
+        "x-ms-enum": {
+          "name": "ConnectedAccountAuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
+            }
+          ]
+        }
+      },
       "ConnectedAccountState": {
         "enum": [
           "connected",
@@ -55025,6 +56577,30 @@
           ]
         }
       },
+      "DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod": {
+        "enum": [
+          "oauth",
+          "api_key"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The authentication method used for this connection (\u0060oauth\u0060 or \u0060api_key\u0060). Defaults to \u0060oauth\u0060 if absent.",
+        "example": "oauth",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
+            }
+          ]
+        }
+      },
       "DataIntegrationsListResponseDataItemConnectedAccountOneOf1State": {
         "enum": [
           "connected",
@@ -55191,6 +56767,28 @@
             {
               "value": "invalid",
               "name": "Invalid"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsListResponseDataItemAuthMethodsItem": {
+        "enum": [
+          "oauth",
+          "api_key"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemAuthMethodsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
             }
           ]
         }
@@ -58737,6 +60335,10 @@
       "description": "Authorization and access control."
     },
     {
+      "name": "client",
+      "description": "Client GraphQL API token management."
+    },
+    {
       "name": "connections",
       "description": "Manage SSO connections."
     },
@@ -58799,6 +60401,10 @@
     {
       "name": "pipes",
       "description": "Data integration endpoints."
+    },
+    {
+      "name": "pipes.provider",
+      "description": "Manage organization-scoped provider configurations."
     },
     {
       "name": "radar",
