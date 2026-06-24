@@ -5545,6 +5545,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "The matched installation uses a different auth method than this endpoint expects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthMethodMismatchError"
+                }
+              }
+            }
           }
         }
       }
@@ -5982,6 +5992,24 @@
             "schema": {
               "type": "string",
               "example": "directory_group_01E64QTDNS0EGJ0FMCVY9BWGZT"
+            }
+          },
+          {
+            "name": "idp_id",
+            "in": "query",
+            "description": "Filter Directory Users by the identity provider\u0027s unique identifier (\u0060idp_id\u0060). Requires the \u0060directory\u0060 parameter to also be provided.",
+            "schema": {
+              "type": "string",
+              "example": 2836
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Filter Directory Users by their primary email address. Requires the \u0060directory\u0060 parameter to also be provided.",
+            "schema": {
+              "type": "string",
+              "example": "jane.doe@example.com"
             }
           }
         ],
@@ -18814,6 +18842,9 @@
               },
               {
                 "$ref": "#/components/schemas/EventSchemaAllOf2OneOf98"
+              },
+              {
+                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf99"
               }
             ]
           }
@@ -19766,6 +19797,38 @@
           }
         }
       },
+      "AuthMethodMismatchError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "auth_method_mismatch"
+            ],
+            "type": "string",
+            "description": "Error code indicating the endpoint does not match the installation auth method.",
+            "example": "auth_method_mismatch",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "auth_method_mismatch",
+                  "name": "AuthMethodMismatch"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable explanation of the mismatch.",
+            "example": "This installation uses oauth authentication. Use the POST /:slug/token endpoint instead."
+          }
+        }
+      },
       "ConnectedAccount": {
         "required": [
           "object",
@@ -20266,6 +20329,7 @@
           "created_at",
           "updated_at",
           "role",
+          "roles",
           "user"
         ],
         "type": "object",
@@ -20332,6 +20396,13 @@
           },
           "role": {
             "$ref": "#/components/schemas/SlimRole"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlimRole"
+            },
+            "description": "The list of roles assigned to the user within the organization."
           },
           "user": {
             "$ref": "#/components/schemas/UserlandUser"
@@ -27429,7 +27500,7 @@
           },
           "event": {
             "enum": [
-              "session.revoked"
+              "session.reauthenticated"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -27437,8 +27508,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "session.revoked",
-                  "name": "SessionRevoked"
+                  "value": "session.reauthenticated",
+                  "name": "SessionReauthenticated"
                 }
               ]
             }
@@ -27475,6 +27546,68 @@
         }
       },
       "EventSchemaAllOf2OneOf82": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "enum": [
+              "session.revoked"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "session.revoked",
+                  "name": "SessionRevoked"
+                }
+              ]
+            }
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf82Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "enum": [
+              "event"
+            ],
+            "type": "string",
+            "description": "Distinguishes the Event object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "event",
+                  "name": "EventValue"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf83": {
         "required": [
           "id",
           "event",
@@ -27536,7 +27669,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf83": {
+      "EventSchemaAllOf2OneOf84": {
         "required": [
           "id",
           "event",
@@ -27598,7 +27731,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf84": {
+      "EventSchemaAllOf2OneOf85": {
         "required": [
           "id",
           "event",
@@ -27660,7 +27793,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf85": {
+      "EventSchemaAllOf2OneOf86": {
         "required": [
           "id",
           "event",
@@ -27687,68 +27820,6 @@
                 {
                   "value": "vault.byok_key.deleted",
                   "name": "VaultByokKeyDeleted"
-                }
-              ]
-            }
-          },
-          "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf85Data"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "context": {
-            "$ref": "#/components/schemas/EventContextDto"
-          },
-          "object": {
-            "enum": [
-              "event"
-            ],
-            "type": "string",
-            "description": "Distinguishes the Event object.",
-            "x-ms-enum": {
-              "name": "ObjectValue",
-              "modelAsString": false,
-              "values": [
-                {
-                  "value": "event",
-                  "name": "EventValue"
-                }
-              ]
-            }
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf86": {
-        "required": [
-          "id",
-          "event",
-          "data",
-          "created_at",
-          "object"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the event.",
-            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "event": {
-            "enum": [
-              "vault.byok_key.verification_completed"
-            ],
-            "type": "string",
-            "x-ms-enum": {
-              "name": "EventValue",
-              "modelAsString": false,
-              "values": [
-                {
-                  "value": "vault.byok_key.verification_completed",
-                  "name": "VaultByokKeyVerificationCompleted"
                 }
               ]
             }
@@ -27801,7 +27872,7 @@
           },
           "event": {
             "enum": [
-              "vault.data.created"
+              "vault.byok_key.verification_completed"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -27809,8 +27880,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.data.created",
-                  "name": "VaultDataCreated"
+                  "value": "vault.byok_key.verification_completed",
+                  "name": "VaultByokKeyVerificationCompleted"
                 }
               ]
             }
@@ -27863,7 +27934,7 @@
           },
           "event": {
             "enum": [
-              "vault.data.deleted"
+              "vault.data.created"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -27871,8 +27942,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.data.deleted",
-                  "name": "VaultDataDeleted"
+                  "value": "vault.data.created",
+                  "name": "VaultDataCreated"
                 }
               ]
             }
@@ -27925,7 +27996,7 @@
           },
           "event": {
             "enum": [
-              "vault.data.read"
+              "vault.data.deleted"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -27933,8 +28004,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.data.read",
-                  "name": "VaultDataRead"
+                  "value": "vault.data.deleted",
+                  "name": "VaultDataDeleted"
                 }
               ]
             }
@@ -27987,7 +28058,7 @@
           },
           "event": {
             "enum": [
-              "vault.data.updated"
+              "vault.data.read"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -27995,8 +28066,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.data.updated",
-                  "name": "VaultDataUpdated"
+                  "value": "vault.data.read",
+                  "name": "VaultDataRead"
                 }
               ]
             }
@@ -28049,7 +28120,7 @@
           },
           "event": {
             "enum": [
-              "vault.dek.decrypted"
+              "vault.data.updated"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -28057,8 +28128,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.dek.decrypted",
-                  "name": "VaultDekDecrypted"
+                  "value": "vault.data.updated",
+                  "name": "VaultDataUpdated"
                 }
               ]
             }
@@ -28111,7 +28182,7 @@
           },
           "event": {
             "enum": [
-              "vault.dek.read"
+              "vault.dek.decrypted"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -28119,8 +28190,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.dek.read",
-                  "name": "VaultDekRead"
+                  "value": "vault.dek.decrypted",
+                  "name": "VaultDekDecrypted"
                 }
               ]
             }
@@ -28173,7 +28244,7 @@
           },
           "event": {
             "enum": [
-              "vault.kek.created"
+              "vault.dek.read"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -28181,8 +28252,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.kek.created",
-                  "name": "VaultKekCreated"
+                  "value": "vault.dek.read",
+                  "name": "VaultDekRead"
                 }
               ]
             }
@@ -28235,7 +28306,7 @@
           },
           "event": {
             "enum": [
-              "vault.metadata.read"
+              "vault.kek.created"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -28243,8 +28314,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.metadata.read",
-                  "name": "VaultMetadataRead"
+                  "value": "vault.kek.created",
+                  "name": "VaultKekCreated"
                 }
               ]
             }
@@ -28297,7 +28368,7 @@
           },
           "event": {
             "enum": [
-              "vault.names.listed"
+              "vault.metadata.read"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -28305,8 +28376,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.names.listed",
-                  "name": "VaultNamesListed"
+                  "value": "vault.metadata.read",
+                  "name": "VaultMetadataRead"
                 }
               ]
             }
@@ -28343,6 +28414,68 @@
         }
       },
       "EventSchemaAllOf2OneOf96": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "enum": [
+              "vault.names.listed"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "vault.names.listed",
+                  "name": "VaultNamesListed"
+                }
+              ]
+            }
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf96Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "enum": [
+              "event"
+            ],
+            "type": "string",
+            "description": "Distinguishes the Event object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "event",
+                  "name": "EventValue"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf97": {
         "required": [
           "id",
           "event",
@@ -28404,7 +28537,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf97": {
+      "EventSchemaAllOf2OneOf98": {
         "required": [
           "id",
           "event",
@@ -28466,7 +28599,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf98": {
+      "EventSchemaAllOf2OneOf99": {
         "required": [
           "id",
           "event",
@@ -36375,7 +36508,101 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf85Data": {
+      "EventSchemaAllOf2OneOf82Data": {
+        "required": [
+          "object",
+          "id",
+          "ip_address",
+          "user_agent",
+          "user_id",
+          "auth_method",
+          "status",
+          "expires_at",
+          "ended_at",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "session"
+            ],
+            "type": "string",
+            "description": "Distinguishes the session object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "session",
+                  "name": "Session"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the session.",
+            "example": "session_01H93ZY4F80QPBEZ1R5B2SHQG8"
+          },
+          "impersonator": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf82DataImpersonator"
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address from which the session was created.",
+            "example": "198.51.100.42"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization this session is associated with.",
+            "example": "org_01H945H0YD4F97JN9MATX7BYAG"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The user agent string from the device that created the session.",
+            "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user this session belongs to.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf82DataAuthMethod"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf82DataStatus"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The timestamp when the session expires.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "ended_at": {
+            "type": "string",
+            "description": "The timestamp when the session ended.",
+            "format": "date-time",
+            "example": null
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf86Data": {
         "required": [
           "organization_id",
           "key_provider"
@@ -36393,7 +36620,7 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf86Data": {
+      "EventSchemaAllOf2OneOf87Data": {
         "required": [
           "organization_id",
           "key_provider",
@@ -36417,7 +36644,7 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf87Data": {
+      "EventSchemaAllOf2OneOf88Data": {
         "required": [
           "actor_id",
           "actor_source",
@@ -36425,44 +36652,6 @@
           "kv_name",
           "key_id",
           "key_context"
-        ],
-        "type": "object",
-        "properties": {
-          "actor_id": {
-            "type": "string",
-            "description": "The unique identifier of the actor.",
-            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf87DataActorSource"
-          },
-          "actor_name": {
-            "type": "string",
-            "description": "The name of the actor.",
-            "example": "Jane Doe"
-          },
-          "kv_name": {
-            "type": "string",
-            "description": "The name of the key-value store.",
-            "example": "user-secrets"
-          },
-          "key_id": {
-            "type": "string",
-            "description": "The unique identifier of the encryption key.",
-            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "key_context": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf87DataKeyContextProperty"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf88Data": {
-        "required": [
-          "actor_id",
-          "actor_source",
-          "actor_name",
-          "kv_name"
         ],
         "type": "object",
         "properties": {
@@ -36483,6 +36672,14 @@
             "type": "string",
             "description": "The name of the key-value store.",
             "example": "user-secrets"
+          },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "key_context": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf88DataKeyContextProperty"
           }
         },
         "description": "The event payload."
@@ -36492,8 +36689,7 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "kv_name",
-          "key_id"
+          "kv_name"
         ],
         "type": "object",
         "properties": {
@@ -36514,11 +36710,6 @@
             "type": "string",
             "description": "The name of the key-value store.",
             "example": "user-secrets"
-          },
-          "key_id": {
-            "type": "string",
-            "description": "The unique identifier of the encryption key.",
-            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
           }
         },
         "description": "The event payload."
@@ -36529,8 +36720,7 @@
           "actor_source",
           "actor_name",
           "kv_name",
-          "key_id",
-          "key_context"
+          "key_id"
         ],
         "type": "object",
         "properties": {
@@ -36556,9 +36746,6 @@
             "type": "string",
             "description": "The unique identifier of the encryption key.",
             "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "key_context": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf90DataKeyContextProperty"
           }
         },
         "description": "The event payload."
@@ -36568,7 +36755,9 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "key_id"
+          "kv_name",
+          "key_id",
+          "key_context"
         ],
         "type": "object",
         "properties": {
@@ -36585,10 +36774,18 @@
             "description": "The name of the actor.",
             "example": "Jane Doe"
           },
+          "kv_name": {
+            "type": "string",
+            "description": "The name of the key-value store.",
+            "example": "user-secrets"
+          },
           "key_id": {
             "type": "string",
-            "description": "The unique identifier of the data encryption key.",
+            "description": "The unique identifier of the encryption key.",
             "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "key_context": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf91DataKeyContextProperty"
           }
         },
         "description": "The event payload."
@@ -36598,8 +36795,7 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "key_ids",
-          "key_context"
+          "key_id"
         ],
         "type": "object",
         "properties": {
@@ -36616,6 +36812,37 @@
             "description": "The name of the actor.",
             "example": "Jane Doe"
           },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the data encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf93Data": {
+        "required": [
+          "actor_id",
+          "actor_source",
+          "actor_name",
+          "key_ids",
+          "key_context"
+        ],
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "description": "The unique identifier of the actor.",
+            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "actor_source": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf93DataActorSource"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "The name of the actor.",
+            "example": "Jane Doe"
+          },
           "key_ids": {
             "type": "array",
             "items": {
@@ -36624,12 +36851,12 @@
             "description": "The unique identifiers of the data encryption keys."
           },
           "key_context": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf92DataKeyContextProperty"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf93DataKeyContextProperty"
           }
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf93Data": {
+      "EventSchemaAllOf2OneOf94Data": {
         "required": [
           "actor_id",
           "actor_source",
@@ -36645,7 +36872,7 @@
             "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf93DataActorSource"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf94DataActorSource"
           },
           "actor_name": {
             "type": "string",
@@ -36665,7 +36892,7 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf94Data": {
+      "EventSchemaAllOf2OneOf95Data": {
         "required": [
           "actor_id",
           "actor_source",
@@ -36680,7 +36907,7 @@
             "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf94DataActorSource"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf95DataActorSource"
           },
           "actor_name": {
             "type": "string",
@@ -36695,7 +36922,7 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf95Data": {
+      "EventSchemaAllOf2OneOf96Data": {
         "required": [
           "actor_id",
           "actor_source",
@@ -36709,7 +36936,7 @@
             "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf95DataActorSource"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf96DataActorSource"
           },
           "actor_name": {
             "type": "string",
@@ -37898,19 +38125,39 @@
         },
         "description": "Information about the impersonator if this session was created via impersonation."
       },
-      "EventSchemaAllOf2OneOf87DataKeyContext": {
+      "EventSchemaAllOf2OneOf82DataImpersonator": {
+        "required": [
+          "email",
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the WorkOS Dashboard user who is impersonating the user.",
+            "example": "admin@foocorp.com"
+          },
+          "reason": {
+            "type": "string",
+            "description": "The justification the impersonator gave for impersonating the user.",
+            "example": "Investigating an issue with the customer\u0027s account."
+          }
+        },
+        "description": "Information about the impersonator if this session was created via impersonation."
+      },
+      "EventSchemaAllOf2OneOf88DataKeyContext": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "EventSchemaAllOf2OneOf90DataKeyContext": {
+      "EventSchemaAllOf2OneOf91DataKeyContext": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "EventSchemaAllOf2OneOf92DataKeyContext": {
+      "EventSchemaAllOf2OneOf93DataKeyContext": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -45279,6 +45526,7 @@
           "created_at",
           "updated_at",
           "role",
+          "roles",
           "user"
         ],
         "type": "object",
@@ -45345,6 +45593,13 @@
           },
           "role": {
             "$ref": "#/components/schemas/SlimRole"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlimRole"
+            },
+            "description": "The list of roles assigned to the user within the organization."
           },
           "user": {
             "$ref": "#/components/schemas/UserlandUser"
@@ -45505,6 +45760,7 @@
           "created_at",
           "updated_at",
           "role",
+          "roles",
           "user"
         ],
         "type": "object",
@@ -45571,6 +45827,13 @@
           },
           "role": {
             "$ref": "#/components/schemas/SlimRole"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlimRole"
+            },
+            "description": "The list of roles assigned to the user within the organization."
           },
           "user": {
             "$ref": "#/components/schemas/UserlandUser"
@@ -49569,6 +49832,11 @@
             "type": "string",
             "description": "The email address of the user that must authenticate via SSO.",
             "example": "user@example.com"
+          },
+          "pending_authentication_token": {
+            "type": "string",
+            "description": "A token that links the subsequent SSO authentication back to the pending authentication so the authorization session can be completed.",
+            "example": "pat_01FVYZ..."
           }
         }
       },
@@ -52418,19 +52686,19 @@
         },
         "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
       },
-      "EventSchemaAllOf2OneOf87DataKeyContextProperty": {
+      "EventSchemaAllOf2OneOf88DataKeyContextProperty": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "EventSchemaAllOf2OneOf90DataKeyContextProperty": {
+      "EventSchemaAllOf2OneOf91DataKeyContextProperty": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         }
       },
-      "EventSchemaAllOf2OneOf92DataKeyContextProperty": {
+      "EventSchemaAllOf2OneOf93DataKeyContextProperty": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -54326,6 +54594,7 @@
           "pipes.connected_account.disconnected",
           "pipes.connected_account.reauthorization_needed",
           "session.created",
+          "session.reauthenticated",
           "session.revoked",
           "waitlist_user.approved",
           "waitlist_user.created",
@@ -54646,6 +54915,10 @@
               "name": "SessionCreated"
             },
             {
+              "value": "session.reauthenticated",
+              "name": "SessionReauthenticated"
+            },
+            {
               "value": "session.revoked",
               "name": "SessionRevoked"
             },
@@ -54767,6 +55040,7 @@
           "pipes.connected_account.disconnected",
           "pipes.connected_account.reauthorization_needed",
           "session.created",
+          "session.reauthenticated",
           "session.revoked",
           "waitlist_user.approved",
           "waitlist_user.created",
@@ -55087,6 +55361,10 @@
               "name": "SessionCreated"
             },
             {
+              "value": "session.reauthenticated",
+              "name": "SessionReauthenticated"
+            },
+            {
               "value": "session.revoked",
               "name": "SessionRevoked"
             },
@@ -55156,11 +55434,12 @@
         "enum": [
           "pending",
           "ready",
-          "error"
+          "error",
+          "expired"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "\u0022The state of the export. Possible values: pending, ready, error.\u0022",
+        "description": "\u0022The state of the export. Possible values: pending, ready, error, expired.\u0022",
         "example": "ready",
         "x-ms-enum": {
           "name": "AuditLogExportJsonState",
@@ -55177,6 +55456,10 @@
             {
               "value": "error",
               "name": "Error"
+            },
+            {
+              "value": "expired",
+              "name": "Expired"
             }
           ]
         }
@@ -58645,24 +58928,95 @@
           ]
         }
       },
-      "EventSchemaAllOf2OneOf87DataActorSource": {
+      "EventSchemaAllOf2OneOf82DataAuthMethod": {
         "enum": [
-          "api",
-          "dashboard"
+          "cross_app_auth",
+          "external_auth",
+          "impersonation",
+          "magic_code",
+          "migrated_session",
+          "oauth",
+          "passkey",
+          "password",
+          "sso",
+          "unknown"
         ],
         "type": "string",
         "additionalProperties": false,
+        "description": "The authentication method used to create this session.",
+        "example": "sso",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf87DataActorSource",
+          "name": "EventSchemaAllOf2OneOf82DataAuthMethod",
           "modelAsString": false,
           "values": [
             {
-              "value": "api",
-              "name": "Api"
+              "value": "cross_app_auth",
+              "name": "CrossAppAuth"
             },
             {
-              "value": "dashboard",
-              "name": "Dashboard"
+              "value": "external_auth",
+              "name": "ExternalAuth"
+            },
+            {
+              "value": "impersonation",
+              "name": "Impersonation"
+            },
+            {
+              "value": "magic_code",
+              "name": "MagicCode"
+            },
+            {
+              "value": "migrated_session",
+              "name": "MigratedSession"
+            },
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "passkey",
+              "name": "Passkey"
+            },
+            {
+              "value": "password",
+              "name": "Password"
+            },
+            {
+              "value": "sso",
+              "name": "Sso"
+            },
+            {
+              "value": "unknown",
+              "name": "Unknown"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf82DataStatus": {
+        "enum": [
+          "active",
+          "expired",
+          "revoked"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The current status of the session.",
+        "example": "active",
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf82DataStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "active",
+              "name": "Active"
+            },
+            {
+              "value": "expired",
+              "name": "Expired"
+            },
+            {
+              "value": "revoked",
+              "name": "Revoked"
             }
           ]
         }
@@ -58830,6 +59184,28 @@
         "additionalProperties": false,
         "x-ms-enum": {
           "name": "EventSchemaAllOf2OneOf95DataActorSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api",
+              "name": "Api"
+            },
+            {
+              "value": "dashboard",
+              "name": "Dashboard"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf96DataActorSource": {
+        "enum": [
+          "api",
+          "dashboard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf96DataActorSource",
           "modelAsString": false,
           "values": [
             {

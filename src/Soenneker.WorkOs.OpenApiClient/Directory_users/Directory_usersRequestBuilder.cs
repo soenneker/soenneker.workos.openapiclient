@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Directory_usersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directory_users{?after*,before*,directory*,group*,limit*,order*}", pathParameters)
+        public Directory_usersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directory_users{?after*,before*,directory*,email*,group*,idp_id*,limit*,order*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Directory_usersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directory_users{?after*,before*,directory*,group*,limit*,order*}", rawUrl)
+        public Directory_usersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directory_users{?after*,before*,directory*,email*,group*,idp_id*,limit*,order*}", rawUrl)
         {
         }
         /// <summary>
@@ -137,6 +137,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
             [QueryParameter("directory")]
             public string Directory { get; set; }
 #endif
+            /// <summary>Filter Directory Users by their primary email address. Requires the `directory` parameter to also be provided.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("email")]
+            public string? Email { get; set; }
+#nullable restore
+#else
+            [QueryParameter("email")]
+            public string Email { get; set; }
+#endif
             /// <summary>Unique identifier of the WorkOS Directory Group. This value can be obtained from the WorkOS API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -146,6 +156,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
 #else
             [QueryParameter("group")]
             public string Group { get; set; }
+#endif
+            /// <summary>Filter Directory Users by the identity provider&apos;s unique identifier (`idp_id`). Requires the `directory` parameter to also be provided.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("idp_id")]
+            public string? IdpId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("idp_id")]
+            public string IdpId { get; set; }
 #endif
             /// <summary>Upper limit on the number of objects to return, between `1` and `100`.</summary>
             [QueryParameter("limit")]

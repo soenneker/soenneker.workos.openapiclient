@@ -26,7 +26,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>Distinguishes the Audit Log Export object.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson_object? Object { get; set; }
-        /// <summary>&quot;The state of the export. Possible values: pending, ready, error.&quot;</summary>
+        /// <summary>&quot;The state of the export. Possible values: pending, ready, error, expired.&quot;</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJsonState? State { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }

@@ -42,6 +42,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetUserlandUserToken400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetUserlandUserToken404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetUserlandUserTokenRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -57,6 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetUserlandUserToken400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetUserlandUserToken404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -316,6 +316,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         SessionCreated,
         #pragma warning restore CS1591
+        [EnumMember(Value = "session.reauthenticated")]
+        #pragma warning disable CS1591
+        SessionReauthenticated,
+        #pragma warning restore CS1591
         [EnumMember(Value = "session.revoked")]
         #pragma warning disable CS1591
         SessionRevoked,
