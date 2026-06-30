@@ -28,7 +28,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AuthorizeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type={response_type}{&code_challenge*,code_challenge_method*,connection_id*,domain_hint*,invitation_token*,login_hint*,organization_id*,prompt*,provider*,provider_query_params*,provider_scopes,screen_hint*,state*}", pathParameters)
+        public AuthorizeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type={response_type}{&code_challenge*,code_challenge_method*,connection_id*,domain_hint*,invitation_token*,login_hint*,max_age*,organization_id*,prompt*,provider*,provider_query_params*,provider_scopes,screen_hint*,state*}", pathParameters)
         {
         }
         /// <summary>
@@ -36,7 +36,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AuthorizeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type={response_type}{&code_challenge*,code_challenge_method*,connection_id*,domain_hint*,invitation_token*,login_hint*,organization_id*,prompt*,provider*,provider_query_params*,provider_scopes,screen_hint*,state*}", rawUrl)
+        public AuthorizeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type={response_type}{&code_challenge*,code_challenge_method*,connection_id*,domain_hint*,invitation_token*,login_hint*,max_age*,organization_id*,prompt*,provider*,provider_query_params*,provider_scopes,screen_hint*,state*}", rawUrl)
         {
         }
         /// <summary>
@@ -154,6 +154,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
             [QueryParameter("login_hint")]
             public string LoginHint { get; set; }
 #endif
+            /// <summary>Maximum allowable elapsed time, in seconds, since the user last actively authenticated. If the last authentication is older than this value, the user is prompted to re-authenticate; a value of `0` forces re-authentication. Only supported when the provider is `authkit`.</summary>
+            [QueryParameter("max_age")]
+            public int? MaxAge { get; set; }
             /// <summary>The ID of the organization to authenticate the user against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

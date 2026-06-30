@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Cors_originsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/cors_origins", pathParameters)
+        public Cors_originsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/cors_origins{?after*,before*,limit*,order*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,8 +30,31 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Cors_originsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/cors_origins", rawUrl)
+        public Cors_originsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/cors_origins{?after*,before*,limit*,order*}", rawUrl)
         {
+        }
+        /// <summary>
+        /// Lists the CORS origins for the current environment.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList401Response">When receiving a 401 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Cors_originsRequestBuilder.Cors_originsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Cors_originsRequestBuilder.Cors_originsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "401", global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList401Response.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a new CORS origin for the current environment. CORS origins allow browser-based applications to make requests to the WorkOS API.
@@ -59,6 +82,25 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerCreateCorsOrigin422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Lists the CORS origins for the current environment.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Cors_originsRequestBuilder.Cors_originsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Cors_originsRequestBuilder.Cors_originsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
         }
         /// <summary>
         /// Creates a new CORS origin for the current environment. CORS origins allow browser-based applications to make requests to the WorkOS API.
@@ -90,6 +132,39 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Cors_originsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Cors_originsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Lists the CORS origins for the current environment.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class Cors_originsRequestBuilderGetQueryParameters 
+        {
+            /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `&quot;obj_123&quot;`, your subsequent call can include `after=&quot;obj_123&quot;` to fetch a new batch of objects after `&quot;obj_123&quot;`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("after")]
+            public string? After { get; set; }
+#nullable restore
+#else
+            [QueryParameter("after")]
+            public string After { get; set; }
+#endif
+            /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `&quot;obj_123&quot;`, your subsequent call can include `before=&quot;obj_123&quot;` to fetch a new batch of objects before `&quot;obj_123&quot;`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("before")]
+            public string? Before { get; set; }
+#nullable restore
+#else
+            [QueryParameter("before")]
+            public string Before { get; set; }
+#endif
+            /// <summary>Upper limit on the number of objects to return, between `1` and `100`.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).</summary>
+            [QueryParameter("order")]
+            public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
         }
     }
 }

@@ -7,45 +7,40 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// The origin of the role assignment.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ApiKeyValidationResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class UserRoleAssignmentSource : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ID of the agent registration this API Key was issued for. Present only when the API Key is assigned to an agent registration.</summary>
+        /// <summary>The ID of the group role assignment the role was derived from, or null if direct.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentRegistrationId { get; set; }
+        public string? GroupRoleAssignmentId { get; set; }
 #nullable restore
 #else
-        public string AgentRegistrationId { get; set; }
+        public string GroupRoleAssignmentId { get; set; }
 #endif
-        /// <summary>The api_key property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey? ApiKey { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey ApiKey { get; set; }
-#endif
+        /// <summary>Whether the role was assigned directly or derived from a group.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource"/> and sets the default values.
         /// </summary>
-        public ApiKeyValidationResponse()
+        public UserRoleAssignmentSource()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +50,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_registration_id", n => { AgentRegistrationId = n.GetStringValue(); } },
-                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey.CreateFromDiscriminatorValue); } },
+                { "group_role_assignment_id", n => { GroupRoleAssignmentId = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType>(); } },
             };
         }
         /// <summary>
@@ -66,8 +61,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("agent_registration_id", AgentRegistrationId);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>("api_key", ApiKey);
+            writer.WriteStringValue("group_role_assignment_id", GroupRoleAssignmentId);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

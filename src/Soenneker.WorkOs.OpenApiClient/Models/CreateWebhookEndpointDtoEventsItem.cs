@@ -8,6 +8,26 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     public enum CreateWebhookEndpointDtoEventsItem
     #pragma warning restore CS1591
     {
+        [EnumMember(Value = "agent.registration.created")]
+        #pragma warning disable CS1591
+        AgentRegistrationCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.registration.claim.attempt.created")]
+        #pragma warning disable CS1591
+        AgentRegistrationClaimAttemptCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.registration.claim.completed")]
+        #pragma warning disable CS1591
+        AgentRegistrationClaimCompleted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.registration.credential.issued")]
+        #pragma warning disable CS1591
+        AgentRegistrationCredentialIssued,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.registration.organization.switched")]
+        #pragma warning disable CS1591
+        AgentRegistrationOrganizationSwitched,
+        #pragma warning restore CS1591
         [EnumMember(Value = "authentication.email_verification_succeeded")]
         #pragma warning disable CS1591
         AuthenticationEmailVerificationSucceeded,
@@ -67,6 +87,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "authentication.radar_risk_detected")]
         #pragma warning disable CS1591
         AuthenticationRadarRiskDetected,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "authentication.reauthentication_succeeded")]
+        #pragma warning disable CS1591
+        AuthenticationReauthenticationSucceeded,
         #pragma warning restore CS1591
         [EnumMember(Value = "api_key.created")]
         #pragma warning disable CS1591
@@ -319,10 +343,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "session.created")]
         #pragma warning disable CS1591
         SessionCreated,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "session.reauthenticated")]
-        #pragma warning disable CS1591
-        SessionReauthenticated,
         #pragma warning restore CS1591
         [EnumMember(Value = "session.revoked")]
         #pragma warning disable CS1591

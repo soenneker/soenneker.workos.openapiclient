@@ -7,45 +7,50 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// The agent identity associated with this registration.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ApiKeyValidationResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class AgentRegistrationAgentIdentity : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ID of the agent registration this API Key was issued for. Present only when the API Key is assigned to an agent registration.</summary>
+        /// <summary>The timestamp when the agent identity was created.</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>Unique identifier of the agent identity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentRegistrationId { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string AgentRegistrationId { get; set; }
+        public string Id { get; set; }
 #endif
-        /// <summary>The api_key property</summary>
+        /// <summary>The timestamp when the agent identity was last updated.</summary>
+        public DateTimeOffset? UpdatedAt { get; set; }
+        /// <summary>Identifier of the AuthKit user the agent identity is bound to, or `null` when the agent is not associated with a user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey? ApiKey { get; set; }
+        public string? UserlandUserId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey ApiKey { get; set; }
+        public string UserlandUserId { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationAgentIdentity"/> and sets the default values.
         /// </summary>
-        public ApiKeyValidationResponse()
+        public AgentRegistrationAgentIdentity()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationAgentIdentity"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationAgentIdentity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationAgentIdentity();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +60,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_registration_id", n => { AgentRegistrationId = n.GetStringValue(); } },
-                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey.CreateFromDiscriminatorValue); } },
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "userland_user_id", n => { UserlandUserId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,8 +73,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("agent_registration_id", AgentRegistrationId);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>("api_key", ApiKey);
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("id", Id);
+            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
+            writer.WriteStringValue("userland_user_id", UserlandUserId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

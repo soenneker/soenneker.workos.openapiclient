@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>The SSO provider type to configure.</summary>
+    /// <summary>Indicates this is a list response.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum SsoIntentOptions_provider_type
+    public enum CorsOriginsControllerList200Response_object
     {
-        [EnumMember(Value = "GoogleSAML")]
+        [EnumMember(Value = "list")]
         #pragma warning disable CS1591
-        GoogleSaml,
+        List,
         #pragma warning restore CS1591
     }
 }

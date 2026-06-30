@@ -2,7 +2,9 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey;
 using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize;
+using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials;
 using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token;
 using System.Collections.Generic;
 using System.IO;
@@ -16,10 +18,20 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithSlugItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The apiKey property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey.ApiKeyRequestBuilder ApiKey
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey.ApiKeyRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The authorize property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize.AuthorizeRequestBuilder Authorize
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize.AuthorizeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The credentials property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials.CredentialsRequestBuilder Credentials
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials.CredentialsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The token property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token.TokenRequestBuilder Token

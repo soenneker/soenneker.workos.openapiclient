@@ -7,45 +7,46 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Pagination cursors for navigating between pages of results.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class IntentOptions : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class CorsOriginsControllerList200ResponseListMetadata : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The domain_verification property</summary>
+        /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions? DomainVerification { get; set; }
+        public string? After { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions DomainVerification { get; set; }
+        public string After { get; set; }
 #endif
-        /// <summary>The sso property</summary>
+        /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions? Sso { get; set; }
+        public string? Before { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions Sso { get; set; }
+        public string Before { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200ResponseListMetadata"/> and sets the default values.
         /// </summary>
-        public IntentOptions()
+        public CorsOriginsControllerList200ResponseListMetadata()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200ResponseListMetadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200ResponseListMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.IntentOptions();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200ResponseListMetadata();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +56,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "domain_verification", n => { DomainVerification = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions>(global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions.CreateFromDiscriminatorValue); } },
-                { "sso", n => { Sso = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions>(global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions.CreateFromDiscriminatorValue); } },
+                { "after", n => { After = n.GetStringValue(); } },
+                { "before", n => { Before = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,8 +67,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DomainVerificationIntentOptions>("domain_verification", DomainVerification);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoIntentOptions>("sso", Sso);
+            writer.WriteStringValue("after", After);
+            writer.WriteStringValue("before", Before);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

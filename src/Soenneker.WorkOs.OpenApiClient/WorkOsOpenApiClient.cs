@@ -6,6 +6,7 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
+using Soenneker.WorkOs.OpenApiClient.Agents;
 using Soenneker.WorkOs.OpenApiClient.Api_keys;
 using Soenneker.WorkOs.OpenApiClient.Audit_logs;
 using Soenneker.WorkOs.OpenApiClient.Auth;
@@ -41,6 +42,11 @@ namespace Soenneker.WorkOs.OpenApiClient
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WorkOsOpenApiClient : BaseRequestBuilder
     {
+        /// <summary>The agents property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Agents.AgentsRequestBuilder Agents
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Agents.AgentsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The api_keys property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Api_keys.Api_keysRequestBuilder Api_keys
         {

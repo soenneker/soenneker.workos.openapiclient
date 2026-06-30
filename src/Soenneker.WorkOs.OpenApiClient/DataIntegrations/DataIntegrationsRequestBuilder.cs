@@ -16,7 +16,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
     public partial class DataIntegrationsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.dataIntegrations.item collection</summary>
-        /// <param name="position">The slug identifier of the provider (e.g., `github`, `slack`, `notion`).</param>
+        /// <param name="position">The identifier of the integration.</param>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.WithSlugItemRequestBuilder"/></returns>
         public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.WithSlugItemRequestBuilder this[string position]
         {

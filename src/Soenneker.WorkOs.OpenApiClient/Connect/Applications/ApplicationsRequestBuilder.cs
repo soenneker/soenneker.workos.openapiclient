@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApplicationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connect/applications{?after*,before*,limit*,order*,organization_id*}", pathParameters)
+        public ApplicationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connect/applications{?after*,before*,limit*,order*,organization_id*,registration_types}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApplicationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connect/applications{?after*,before*,limit*,order*,organization_id*}", rawUrl)
+        public ApplicationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connect/applications{?after*,before*,limit*,order*,organization_id*,registration_types}", rawUrl)
         {
         }
         /// <summary>
@@ -187,6 +187,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Connect.Applications
 #else
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
+#endif
+            /// <summary>Filter Connect Applications by registration type. Specify multiple as a comma-separated list (e.g. `registration_types=dynamic,authenticated`). Defaults to `authenticated` only when not specified.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("registration_types")]
+            public global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerListRegistrationTypesParameterItem[]? RegistrationTypes { get; set; }
+#nullable restore
+#else
+            [QueryParameter("registration_types")]
+            public global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerListRegistrationTypesParameterItem[] RegistrationTypes { get; set; }
 #endif
         }
     }

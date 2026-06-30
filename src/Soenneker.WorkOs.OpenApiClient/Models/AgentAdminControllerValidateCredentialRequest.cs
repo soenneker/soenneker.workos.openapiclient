@@ -9,43 +9,45 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ApiKeyValidationResponse : IAdditionalDataHolder, IParsable
+    public partial class AgentAdminControllerValidateCredentialRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ID of the agent registration this API Key was issued for. Present only when the API Key is assigned to an agent registration.</summary>
+        /// <summary>Only applies to `access_token` credentials. When provided, the access token&apos;s `aud` claim is verified against this value — tokens issued for a different resource are rejected. Not permitted for `api_key` credentials.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentRegistrationId { get; set; }
+        public string? Audience { get; set; }
 #nullable restore
 #else
-        public string AgentRegistrationId { get; set; }
+        public string Audience { get; set; }
 #endif
-        /// <summary>The api_key property</summary>
+        /// <summary>&quot;The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey? ApiKey { get; set; }
+        public string? Credential { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey ApiKey { get; set; }
+        public string Credential { get; set; }
 #endif
+        /// <summary>The kind of credential being validated — an agent API key or an agent access token.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestType? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest"/> and sets the default values.
         /// </summary>
-        public ApiKeyValidationResponse()
+        public AgentAdminControllerValidateCredentialRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +57,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_registration_id", n => { AgentRegistrationId = n.GetStringValue(); } },
-                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey.CreateFromDiscriminatorValue); } },
+                { "audience", n => { Audience = n.GetStringValue(); } },
+                { "credential", n => { Credential = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestType>(); } },
             };
         }
         /// <summary>
@@ -66,8 +69,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("agent_registration_id", AgentRegistrationId);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>("api_key", ApiKey);
+            writer.WriteStringValue("audience", Audience);
+            writer.WriteStringValue("credential", Credential);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -9,43 +9,31 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ApiKeyValidationResponse : IAdditionalDataHolder, IParsable
+    public partial class DataIntegrationCredentialsResponseOneOf3 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Indicates credentials are not available.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3_active? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ID of the agent registration this API Key was issued for. Present only when the API Key is assigned to an agent registration.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AgentRegistrationId { get; set; }
-#nullable restore
-#else
-        public string AgentRegistrationId { get; set; }
-#endif
-        /// <summary>The api_key property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey? ApiKey { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey ApiKey { get; set; }
-#endif
+        /// <summary>&quot;The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully.- `\&quot;not_installed\&quot;`: The user does not have the integration installed.- `\&quot;needs_reauthorization\&quot;`: The user needs to reauthorize the integration.&quot;</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Error? Error { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3"/> and sets the default values.
         /// </summary>
-        public ApiKeyValidationResponse()
+        public DataIntegrationCredentialsResponseOneOf3()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +43,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_registration_id", n => { AgentRegistrationId = n.GetStringValue(); } },
-                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey.CreateFromDiscriminatorValue); } },
+                { "active", n => { Active = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3_active>(); } },
+                { "error", n => { Error = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Error>(); } },
             };
         }
         /// <summary>
@@ -66,8 +54,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("agent_registration_id", AgentRegistrationId);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>("api_key", ApiKey);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3_active>("active", Active);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Error>("error", Error);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

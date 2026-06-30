@@ -50,6 +50,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole Role { get; set; }
 #endif
+        /// <summary>The origin of the role assignment.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource? Source { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource Source { get; set; }
+#endif
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -83,6 +91,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "organization_membership_id", n => { OrganizationMembershipId = n.GetStringValue(); } },
                 { "resource", n => { Resource = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentResource>(global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentResource.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>(global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource>(global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -99,6 +108,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("organization_membership_id", OrganizationMembershipId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentResource>("resource", Resource);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>("role", Role);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource>("source", Source);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
