@@ -14258,11 +14258,13 @@
           "range_start": {
             "type": "string",
             "description": "ISO-8601 value for start of the export range.",
+            "format": "date-time",
             "example": "2022-07-02T18:09:06.996Z"
           },
           "range_end": {
             "type": "string",
             "description": "ISO-8601 value for end of the export range.",
+            "format": "date-time",
             "example": "2022-09-02T18:09:06.996Z"
           },
           "actions": {
@@ -37598,6 +37600,7 @@
           "name",
           "description",
           "system",
+          "resource_type_slug",
           "created_at",
           "updated_at"
         ],
@@ -37644,6 +37647,11 @@
             "type": "boolean",
             "description": "Whether the permission is a system permission.",
             "example": false
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The slug of the resource type the permission applies to.",
+            "example": "organization"
           },
           "created_at": {
             "type": "string",
@@ -37668,6 +37676,7 @@
           "name",
           "description",
           "system",
+          "resource_type_slug",
           "created_at",
           "updated_at"
         ],
@@ -37714,6 +37723,11 @@
             "type": "boolean",
             "description": "Whether the permission is a system permission.",
             "example": false
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The slug of the resource type the permission applies to.",
+            "example": "organization"
           },
           "created_at": {
             "type": "string",
@@ -37738,6 +37752,7 @@
           "name",
           "description",
           "system",
+          "resource_type_slug",
           "created_at",
           "updated_at"
         ],
@@ -37784,6 +37799,11 @@
             "type": "boolean",
             "description": "Whether the permission is a system permission.",
             "example": false
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The slug of the resource type the permission applies to.",
+            "example": "organization"
           },
           "created_at": {
             "type": "string",

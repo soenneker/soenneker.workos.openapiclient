@@ -56,21 +56,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>ISO-8601 value for end of the export range.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? RangeEnd { get; set; }
-#nullable restore
-#else
-        public string RangeEnd { get; set; }
-#endif
+        public DateTimeOffset? RangeEnd { get; set; }
         /// <summary>ISO-8601 value for start of the export range.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? RangeStart { get; set; }
-#nullable restore
-#else
-        public string RangeStart { get; set; }
-#endif
+        public DateTimeOffset? RangeStart { get; set; }
         /// <summary>List of target types to filter against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,8 +97,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "actor_names", n => { ActorNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "actors", n => { Actors = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "range_end", n => { RangeEnd = n.GetStringValue(); } },
-                { "range_start", n => { RangeStart = n.GetStringValue(); } },
+                { "range_end", n => { RangeEnd = n.GetDateTimeOffsetValue(); } },
+                { "range_start", n => { RangeStart = n.GetDateTimeOffsetValue(); } },
                 { "targets", n => { Targets = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -126,8 +114,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("actor_names", ActorNames);
             writer.WriteCollectionOfPrimitiveValues<string>("actors", Actors);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteStringValue("range_end", RangeEnd);
-            writer.WriteStringValue("range_start", RangeStart);
+            writer.WriteDateTimeOffsetValue("range_end", RangeEnd);
+            writer.WriteDateTimeOffsetValue("range_start", RangeStart);
             writer.WriteCollectionOfPrimitiveValues<string>("targets", Targets);
             writer.WriteAdditionalData(AdditionalData);
         }
