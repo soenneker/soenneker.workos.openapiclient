@@ -11,6 +11,7 @@ using Soenneker.WorkOs.OpenApiClient.User_management.Jwt_template;
 using Soenneker.WorkOs.OpenApiClient.User_management.Magic_auth;
 using Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships;
 using Soenneker.WorkOs.OpenApiClient.User_management.Password_reset;
+using Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges;
 using Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris;
 using Soenneker.WorkOs.OpenApiClient.User_management.Sessions;
 using Soenneker.WorkOs.OpenApiClient.User_management.Users;
@@ -70,6 +71,11 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Password_reset.Password_resetRequestBuilder Password_reset
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Password_reset.Password_resetRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The radar_challenges property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges.Radar_challengesRequestBuilder Radar_challenges
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges.Radar_challengesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The redirect_uris property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.Redirect_urisRequestBuilder Redirect_uris

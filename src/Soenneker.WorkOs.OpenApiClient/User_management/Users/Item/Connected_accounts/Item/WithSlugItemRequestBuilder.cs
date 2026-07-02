@@ -80,6 +80,60 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Imports a [connected account](/reference/pipes/connected-account) for a user by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation409Response">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response">When receiving a 422 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation404Response.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation409Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation404Response">When receiving a 404 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation404Response.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Disconnects WorkOS&apos;s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. This does not revoke access on the provider side.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -118,6 +172,50 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             return requestInfo;
         }
         /// <summary>
+        /// Imports a [connected account](/reference/pipes/connected-account) for a user by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
+        }
+        /// <summary>
+        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
+        }
+        /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder"/></returns>
@@ -148,6 +246,40 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithSlugItemRequestBuilderGetQueryParameters 
+        {
+            /// <summary>An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("organization_id")]
+            public string? OrganizationId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("organization_id")]
+            public string OrganizationId { get; set; }
+#endif
+        }
+        /// <summary>
+        /// Imports a [connected account](/reference/pipes/connected-account) for a user by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class WithSlugItemRequestBuilderPostQueryParameters 
+        {
+            /// <summary>An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("organization_id")]
+            public string? OrganizationId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("organization_id")]
+            public string OrganizationId { get; set; }
+#endif
+        }
+        /// <summary>
+        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class WithSlugItemRequestBuilderPutQueryParameters 
         {
             /// <summary>An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

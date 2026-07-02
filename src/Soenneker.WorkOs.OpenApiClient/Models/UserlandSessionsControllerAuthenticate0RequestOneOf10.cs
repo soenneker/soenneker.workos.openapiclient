@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UserlandSessionsControllerAuthenticate0RequestOneOf8 : IAdditionalDataHolder, IParsable
+    public partial class UserlandSessionsControllerAuthenticate0RequestOneOf10 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -22,21 +22,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ClientId { get; set; }
 #endif
-        /// <summary>The client secret of the application.</summary>
+        /// <summary>The device verification code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientSecret { get; set; }
+        public string? DeviceCode { get; set; }
 #nullable restore
 #else
-        public string ClientSecret { get; set; }
-#endif
-        /// <summary>The one-time code from the Radar email challenge.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Code { get; set; }
-#nullable restore
-#else
-        public string Code { get; set; }
+        public string DeviceCode { get; set; }
 #endif
         /// <summary>A unique identifier for the device.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string DeviceId { get; set; }
 #endif
         /// <summary>The grant_type property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8_grant_type? GrantType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10_grant_type? GrantType { get; set; }
         /// <summary>The IP address of the user&apos;s request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,22 +47,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #nullable restore
 #else
         public string IpAddress { get; set; }
-#endif
-        /// <summary>The pending authentication token from a previous authentication attempt.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? PendingAuthenticationToken { get; set; }
-#nullable restore
-#else
-        public string PendingAuthenticationToken { get; set; }
-#endif
-        /// <summary>The ID of the Radar email challenge being verified.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? RadarChallengeId { get; set; }
-#nullable restore
-#else
-        public string RadarChallengeId { get; set; }
 #endif
         /// <summary>The user agent string from the user&apos;s browser.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,21 +57,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string UserAgent { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10"/> and sets the default values.
         /// </summary>
-        public UserlandSessionsControllerAuthenticate0RequestOneOf8()
+        public UserlandSessionsControllerAuthenticate0RequestOneOf10()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,13 +82,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
-                { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
-                { "code", n => { Code = n.GetStringValue(); } },
+                { "device_code", n => { DeviceCode = n.GetStringValue(); } },
                 { "device_id", n => { DeviceId = n.GetStringValue(); } },
-                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8_grant_type>(); } },
+                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10_grant_type>(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
-                { "pending_authentication_token", n => { PendingAuthenticationToken = n.GetStringValue(); } },
-                { "radar_challenge_id", n => { RadarChallengeId = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
         }
@@ -124,13 +97,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("client_id", ClientId);
-            writer.WriteStringValue("client_secret", ClientSecret);
-            writer.WriteStringValue("code", Code);
+            writer.WriteStringValue("device_code", DeviceCode);
             writer.WriteStringValue("device_id", DeviceId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8_grant_type>("grant_type", GrantType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10_grant_type>("grant_type", GrantType);
             writer.WriteStringValue("ip_address", IpAddress);
-            writer.WriteStringValue("pending_authentication_token", PendingAuthenticationToken);
-            writer.WriteStringValue("radar_challenge_id", RadarChallengeId);
             writer.WriteStringValue("user_agent", UserAgent);
             writer.WriteAdditionalData(AdditionalData);
         }

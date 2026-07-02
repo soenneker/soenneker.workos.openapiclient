@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserlandSessionsControllerAuthenticate0Request : IComposedTypeWrapper, IParsable
@@ -20,6 +20,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1 UserlandSessionsControllerAuthenticate0RequestOneOf1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10? UserlandSessionsControllerAuthenticate0RequestOneOf10 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10 UserlandSessionsControllerAuthenticate0RequestOneOf10 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,6 +85,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8 UserlandSessionsControllerAuthenticate0RequestOneOf8 { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9? UserlandSessionsControllerAuthenticate0RequestOneOf9 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9 UserlandSessionsControllerAuthenticate0RequestOneOf9 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -90,6 +106,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if("UserlandSessionsControllerAuthenticate0RequestOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.UserlandSessionsControllerAuthenticate0RequestOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1();
+            }
+            else if("UserlandSessionsControllerAuthenticate0RequestOneOf10".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.UserlandSessionsControllerAuthenticate0RequestOneOf10 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10();
             }
             else if("UserlandSessionsControllerAuthenticate0RequestOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -119,6 +139,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 result.UserlandSessionsControllerAuthenticate0RequestOneOf8 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8();
             }
+            else if("UserlandSessionsControllerAuthenticate0RequestOneOf9".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.UserlandSessionsControllerAuthenticate0RequestOneOf9 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9();
+            }
             return result;
         }
         /// <summary>
@@ -130,6 +154,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(UserlandSessionsControllerAuthenticate0RequestOneOf1 != null)
             {
                 return UserlandSessionsControllerAuthenticate0RequestOneOf1.GetFieldDeserializers();
+            }
+            else if(UserlandSessionsControllerAuthenticate0RequestOneOf10 != null)
+            {
+                return UserlandSessionsControllerAuthenticate0RequestOneOf10.GetFieldDeserializers();
             }
             else if(UserlandSessionsControllerAuthenticate0RequestOneOf2 != null)
             {
@@ -159,6 +187,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 return UserlandSessionsControllerAuthenticate0RequestOneOf8.GetFieldDeserializers();
             }
+            else if(UserlandSessionsControllerAuthenticate0RequestOneOf9 != null)
+            {
+                return UserlandSessionsControllerAuthenticate0RequestOneOf9.GetFieldDeserializers();
+            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -171,6 +203,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(UserlandSessionsControllerAuthenticate0RequestOneOf1 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1>(null, UserlandSessionsControllerAuthenticate0RequestOneOf1);
+            }
+            else if(UserlandSessionsControllerAuthenticate0RequestOneOf10 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10>(null, UserlandSessionsControllerAuthenticate0RequestOneOf10);
             }
             else if(UserlandSessionsControllerAuthenticate0RequestOneOf2 != null)
             {
@@ -199,6 +235,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if(UserlandSessionsControllerAuthenticate0RequestOneOf8 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8>(null, UserlandSessionsControllerAuthenticate0RequestOneOf8);
+            }
+            else if(UserlandSessionsControllerAuthenticate0RequestOneOf9 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9>(null, UserlandSessionsControllerAuthenticate0RequestOneOf9);
             }
         }
     }

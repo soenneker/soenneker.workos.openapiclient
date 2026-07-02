@@ -72,6 +72,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string IpAddress { get; set; }
 #endif
+        /// <summary>An optional Radar signals ID to correlate client-side signals with this authentication attempt.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SignalsId { get; set; }
+#nullable restore
+#else
+        public string SignalsId { get; set; }
+#endif
         /// <summary>The user agent string from the user&apos;s browser.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,6 +121,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1_grant_type>(); } },
                 { "invitation_token", n => { InvitationToken = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
+                { "signals_id", n => { SignalsId = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
         }
@@ -131,6 +140,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1_grant_type>("grant_type", GrantType);
             writer.WriteStringValue("invitation_token", InvitationToken);
             writer.WriteStringValue("ip_address", IpAddress);
+            writer.WriteStringValue("signals_id", SignalsId);
             writer.WriteStringValue("user_agent", UserAgent);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -9,11 +9,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreateUserlandUserDto : IAdditionalDataHolder, IParsable
+    public partial class UserlandUsersControllerCreate0201Response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>An ISO 8601 timestamp.</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The email address of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,13 +42,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string FirstName { get; set; }
 #endif
-        /// <summary>The IP address of the user&apos;s request.</summary>
+        /// <summary>The unique ID of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IpAddress { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string IpAddress { get; set; }
+        public string Id { get; set; }
 #endif
         /// <summary>The last name of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,13 +58,23 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string LastName { get; set; }
 #endif
+        /// <summary>The timestamp when the user last signed in.</summary>
+        public DateTimeOffset? LastSignInAt { get; set; }
+        /// <summary>The user&apos;s preferred locale.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Locale { get; set; }
+#nullable restore
+#else
+        public string Locale { get; set; }
+#endif
         /// <summary>Object containing metadata key/value pairs associated with the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201ResponseMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201ResponseMetadata Metadata { get; set; }
 #endif
         /// <summary>The user&apos;s full name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,38 +84,42 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>An optional Radar signals ID to correlate client-side signals with this request.</summary>
+        /// <summary>Distinguishes the user object.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201Response_object? Object { get; set; }
+        /// <summary>A URL reference to an image representing the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SignalsId { get; set; }
+        public string? ProfilePictureUrl { get; set; }
 #nullable restore
 #else
-        public string SignalsId { get; set; }
+        public string ProfilePictureUrl { get; set; }
 #endif
-        /// <summary>The user agent string from the user&apos;s request.</summary>
+        /// <summary>The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserAgent { get; set; }
+        public string? RadarAuthAttemptId { get; set; }
 #nullable restore
 #else
-        public string UserAgent { get; set; }
+        public string RadarAuthAttemptId { get; set; }
 #endif
+        /// <summary>An ISO 8601 timestamp.</summary>
+        public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDto"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201Response"/> and sets the default values.
         /// </summary>
-        public CreateUserlandUserDto()
+        public UserlandUsersControllerCreate0201Response()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDto"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201Response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDto CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDto();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201Response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -113,16 +129,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "email_verified", n => { EmailVerified = n.GetBoolValue(); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
-                { "ip_address", n => { IpAddress = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata.CreateFromDiscriminatorValue); } },
+                { "last_sign_in_at", n => { LastSignInAt = n.GetDateTimeOffsetValue(); } },
+                { "locale", n => { Locale = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201ResponseMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201ResponseMetadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "signals_id", n => { SignalsId = n.GetStringValue(); } },
-                { "user_agent", n => { UserAgent = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201Response_object>(); } },
+                { "profile_picture_url", n => { ProfilePictureUrl = n.GetStringValue(); } },
+                { "radar_auth_attempt_id", n => { RadarAuthAttemptId = n.GetStringValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -132,16 +153,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("email", Email);
             writer.WriteBoolValue("email_verified", EmailVerified);
             writer.WriteStringValue("external_id", ExternalId);
             writer.WriteStringValue("first_name", FirstName);
-            writer.WriteStringValue("ip_address", IpAddress);
+            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("last_name", LastName);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata>("metadata", Metadata);
+            writer.WriteDateTimeOffsetValue("last_sign_in_at", LastSignInAt);
+            writer.WriteStringValue("locale", Locale);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201ResponseMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("signals_id", SignalsId);
-            writer.WriteStringValue("user_agent", UserAgent);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0201Response_object>("object", Object);
+            writer.WriteStringValue("profile_picture_url", ProfilePictureUrl);
+            writer.WriteStringValue("radar_auth_attempt_id", RadarAuthAttemptId);
+            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

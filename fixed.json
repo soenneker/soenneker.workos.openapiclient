@@ -5517,6 +5517,274 @@
         }
       }
     },
+    "/data-integrations": {
+      "post": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Create a data integration",
+        "description": "Creates a data integration for a provider. Set \u0060credentials.type\u0060 to \u0060custom\u0060 to use your own OAuth app credentials, or \u0060organization\u0060 to have each organization supply its own. For a built-in provider, pass its slug as \u0060provider\u0060. For a custom provider, pass a new slug plus a \u0060custom_provider\u0060 definition.",
+        "operationId": "DataIntegrationsManagementControllerCreateDataIntegration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDataIntegrationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegration"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerCreateDataIntegration400Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerCreateDataIntegration404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerCreateDataIntegration422Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "List data integrations",
+        "description": "Lists the environment\u0027s data integrations configured with \u0060custom\u0060 or \u0060organization\u0060 credentials, including custom providers.",
+        "operationId": "DataIntegrationsManagementControllerListDataIntegrations",
+        "parameters": [
+          {
+            "name": "before",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060after=\u0022obj_123\u0022\u0060 to fetch a new batch of objects after \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ987654321KJIHGFEDCBA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Upper limit on the number of objects to return, between \u00601\u0060 and \u0060100\u0060.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10,
+              "example": 10
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records).",
+            "schema": {
+              "$ref": "#/components/schemas/PaginationOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data-integrations/{slug}": {
+      "get": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Get a data integration",
+        "description": "Retrieves a data integration by its slug.",
+        "operationId": "DataIntegrationsManagementControllerGetDataIntegration",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the data integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegration"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerGetDataIntegration404Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Update a data integration",
+        "description": "Updates the description, enabled state, or custom credentials of a data integration. For custom providers, \u0060custom_provider\u0060 updates the OAuth definition.",
+        "operationId": "DataIntegrationsManagementControllerUpdateDataIntegration",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the data integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDataIntegrationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegration"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateDataIntegration400Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateDataIntegration404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateDataIntegration422Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Delete a data integration",
+        "description": "Deletes a data integration and all of its connected installations. For a custom provider, also deletes the custom provider definition.",
+        "operationId": "DataIntegrationsManagementControllerDeleteDataIntegration",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the data integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerDeleteDataIntegration404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/data-integrations/{slug}/api-key": {
       "put": {
         "tags": [
@@ -10366,7 +10634,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MagicAuth"
+                  "$ref": "#/components/schemas/UserlandMagicAuthControllerSendMagicAuthCodeAndReturn201Response"
                 }
               }
             }
@@ -11165,6 +11433,37 @@
         }
       }
     },
+    "/user_management/radar_challenges": {
+      "post": {
+        "tags": [
+          "user-management.authentication"
+        ],
+        "summary": "Send a Radar SMS challenge",
+        "description": "Sends a one-time verification code over SMS to a user as part of a Radar challenge. Use the returned \u0060verification_id\u0060 to authenticate the user with the \u0060urn:workos:oauth:grant-type:radar-sms-challenge:code\u0060 grant type.",
+        "operationId": "PublicRadarChallengesControllerSendRadarSmsChallenge",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRadarSmsChallengeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendRadarSmsChallengeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user_management/redirect_uris": {
       "post": {
         "tags": [
@@ -11512,7 +11811,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserlandUser"
+                  "$ref": "#/components/schemas/UserlandUsersControllerCreate0201Response"
                 }
               }
             }
@@ -12667,6 +12966,166 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerDeleteUserDataInstallation404Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user-management.data-providers"
+        ],
+        "summary": "Import a connected account",
+        "description": "Imports a [connected account](/reference/pipes/connected-account) for a user by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.",
+        "operationId": "DataIntegrationsUserManagementControllerCreateUserDataInstallation",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "A [User](/reference/authkit/user) identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the provider (e.g., \u0060github\u0060, \u0060slack\u0060, \u0060notion\u0060).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          },
+          {
+            "name": "organization_id",
+            "in": "query",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization.",
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConnectedAccountDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The connected account was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectedAccount"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The user, organization, or data integration was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "A connected account already exists for this user, integration, and organization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The data integration is not in a valid state or the token combination is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user-management.data-providers"
+        ],
+        "summary": "Update a connected account",
+        "description": "Updates a user\u0027s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.",
+        "operationId": "DataIntegrationsUserManagementControllerUpdateUserDataInstallation",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "A [User](/reference/authkit/user) identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the provider (e.g., \u0060github\u0060, \u0060slack\u0060, \u0060notion\u0060).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          },
+          {
+            "name": "organization_id",
+            "in": "query",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization.",
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConnectedAccountDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The connected account was updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectedAccount"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The user, organization, or connected account was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerUpdateUserDataInstallation404Response"
                 }
               }
             }
@@ -15184,6 +15643,245 @@
           }
         }
       },
+      "DataIntegrationCredentialsDto": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsDtoType"
+          },
+          "client_id": {
+            "type": "string",
+            "description": "OAuth client ID for the provider app. Required when \u0060type\u0060 is \u0060custom\u0060; omit for \u0060organization\u0060.",
+            "example": "Iv1.abc123"
+          },
+          "client_secret": {
+            "type": "string",
+            "description": "OAuth client secret for the provider app. Required when \u0060type\u0060 is \u0060custom\u0060; omit for \u0060organization\u0060.",
+            "example": "secret_\u2026"
+          }
+        }
+      },
+      "CustomProviderDefinitionDto": {
+        "required": [
+          "name",
+          "authorization_url",
+          "token_url"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A descriptive name for the custom provider.",
+            "example": "My OAuth App"
+          },
+          "authorization_url": {
+            "type": "string",
+            "description": "The provider\u0027s OAuth authorization endpoint.",
+            "format": "uri",
+            "example": "https://provider.example.com/oauth/authorize"
+          },
+          "token_url": {
+            "type": "string",
+            "description": "The provider\u0027s OAuth token endpoint.",
+            "format": "uri",
+            "example": "https://provider.example.com/oauth/token"
+          },
+          "refresh_token_url": {
+            "type": "string",
+            "description": "The endpoint used to refresh tokens, if different from the token endpoint.",
+            "format": "uri",
+            "example": "https://provider.example.com/oauth/token"
+          },
+          "pkce_enabled": {
+            "type": "boolean",
+            "description": "Whether PKCE is used during the authorization code flow. Defaults to \u0060true\u0060.",
+            "example": true
+          },
+          "request_scope_separator": {
+            "type": "string",
+            "description": "The separator used to join requested scopes. Defaults to a space.",
+            "example": " "
+          },
+          "scopes_required": {
+            "type": "boolean",
+            "description": "Whether at least one scope must be selected when connecting an account. Defaults to \u0060false\u0060.",
+            "example": false
+          },
+          "client_secret_required": {
+            "type": "boolean",
+            "description": "Whether a client secret is required for this provider. Defaults to \u0060true\u0060.",
+            "example": true
+          },
+          "additional_authorization_parameters": {
+            "$ref": "#/components/schemas/CustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty"
+          },
+          "token_body_content_type": {
+            "type": "string",
+            "description": "The Content-Type used when exchanging the token request.",
+            "example": "application/x-www-form-urlencoded"
+          },
+          "authenticate_via": {
+            "$ref": "#/components/schemas/CustomProviderDefinitionDtoAuthenticateVia"
+          }
+        }
+      },
+      "CreateDataIntegrationDto": {
+        "required": [
+          "provider"
+        ],
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string",
+            "description": "The provider to create a Data Integration for. For a built-in provider use its slug (e.g. \u0060github\u0060, \u0060slack\u0060). For a custom provider, this is the new provider slug and \u0060custom_provider\u0060 must be supplied. A custom provider slug cannot shadow an existing global provider slug.",
+            "example": "github"
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional description of the Data Integration.",
+            "example": "Production GitHub app"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the Data Integration is enabled. Defaults to \u0060false\u0060.",
+            "example": true
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes to request for the Data Integration. Defaults to the provider\u0027s configured scopes when omitted."
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsDto"
+          },
+          "custom_provider": {
+            "$ref": "#/components/schemas/CustomProviderDefinitionDto"
+          }
+        }
+      },
+      "UpdateCustomProviderDefinitionDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A descriptive name for the custom provider.",
+            "example": "My OAuth App"
+          },
+          "authorization_url": {
+            "type": "string",
+            "description": "The provider\u0027s OAuth authorization endpoint.",
+            "format": "uri",
+            "example": "https://provider.example.com/oauth/authorize"
+          },
+          "token_url": {
+            "type": "string",
+            "description": "The provider\u0027s OAuth token endpoint.",
+            "format": "uri",
+            "example": "https://provider.example.com/oauth/token"
+          },
+          "refresh_token_url": {
+            "type": "string",
+            "description": "The endpoint used to refresh tokens, if different from the token endpoint.",
+            "format": "uri",
+            "example": "https://provider.example.com/oauth/token"
+          },
+          "pkce_enabled": {
+            "type": "boolean",
+            "description": "Whether PKCE is used during the authorization code flow.",
+            "example": true
+          },
+          "request_scope_separator": {
+            "type": "string",
+            "description": "The separator used to join requested scopes.",
+            "example": " "
+          },
+          "scopes_required": {
+            "type": "boolean",
+            "description": "Whether at least one scope must be selected when connecting an account.",
+            "example": false
+          },
+          "client_secret_required": {
+            "type": "boolean",
+            "description": "Whether a client secret is required for this provider.",
+            "example": true
+          },
+          "additional_authorization_parameters": {
+            "$ref": "#/components/schemas/UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty"
+          },
+          "token_body_content_type": {
+            "type": "string",
+            "description": "The Content-Type used when exchanging the token request.",
+            "example": "application/x-www-form-urlencoded"
+          },
+          "authenticate_via": {
+            "$ref": "#/components/schemas/UpdateCustomProviderDefinitionDtoAuthenticateVia"
+          }
+        }
+      },
+      "UpdateDataIntegrationDto": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "An optional description of the Data Integration.",
+            "example": "Production GitHub app"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the Data Integration is enabled.",
+            "example": true
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes to request for the Data Integration. Pass \u0060null\u0060 to reset to the provider\u0027s configured scopes."
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsDto"
+          },
+          "custom_provider": {
+            "$ref": "#/components/schemas/UpdateCustomProviderDefinitionDto"
+          }
+        }
+      },
+      "ConnectedAccountDto": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "The OAuth access token for the connected account.",
+            "example": "gho_16C7e42F292c6912E7710c838347Ae178B4a"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "The OAuth refresh token for the connected account.",
+            "example": "ghr_xxxxxxxxxxxxxxxxxxxx"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The ISO-8601 timestamp when the access token expires. Required when \u0060access_token\u0060 is provided for tokens that expire.",
+            "format": "date-time",
+            "example": "2025-12-31T23:59:59.000Z"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes granted for this connection."
+          },
+          "state": {
+            "$ref": "#/components/schemas/ConnectedAccountDtoState"
+          }
+        }
+      },
       "GenerateLinkDto": {
         "required": [
           "organization"
@@ -15216,6 +15914,41 @@
               "format": "email"
             },
             "description": "The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails."
+          }
+        }
+      },
+      "SendRadarSmsChallengeDto": {
+        "required": [
+          "user_id",
+          "pending_authentication_token",
+          "phone_number"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user to send the SMS challenge to.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "pending_authentication_token": {
+            "type": "string",
+            "description": "The pending authentication token from a previous authentication attempt that triggered the Radar challenge.",
+            "example": "cTDQJTTkTkkVYxbn..."
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "The phone number to send the SMS verification code to.",
+            "example": 15555550123
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The user agent string from the user\u0027s request.",
+            "example": "Mozilla/5.0"
           }
         }
       },
@@ -15289,6 +16022,26 @@
             "type": "string",
             "description": "The invitation token to associate with this magic code.",
             "example": "Z1Y2X3W4V5U6T7S8R9Q0P1O2N3"
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The user agent string from the user\u0027s request.",
+            "example": "Mozilla/5.0"
+          },
+          "radar_auth_attempt_id": {
+            "type": "string",
+            "description": "The ID of an existing Radar authentication attempt to associate with this request.",
+            "example": "radar_auth_attempt_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "signals_id": {
+            "type": "string",
+            "description": "An optional Radar signals ID to correlate client-side signals with this request.",
+            "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
           }
         }
       },
@@ -15599,6 +16352,21 @@
             "type": "string",
             "description": "The external ID of the user.",
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The user agent string from the user\u0027s request.",
+            "example": "Mozilla/5.0"
+          },
+          "signals_id": {
+            "type": "string",
+            "description": "An optional Radar signals ID to correlate client-side signals with this request.",
+            "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
           }
         },
         "x-mutually-exclusive-body-groups": {
@@ -20238,6 +21006,135 @@
           }
         }
       },
+      "DataIntegration": {
+        "required": [
+          "object",
+          "id",
+          "slug",
+          "integration_type",
+          "description",
+          "enabled",
+          "state",
+          "scopes",
+          "redirect_uri",
+          "credentials",
+          "custom_provider",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "data_integration"
+            ],
+            "type": "string",
+            "description": "Distinguishes the Data Integration object.",
+            "example": "data_integration",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "data_integration",
+                  "name": "DataIntegration"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the Data Integration.",
+            "example": "data_integration_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "slug": {
+            "type": "string",
+            "description": "The provider slug for this Data Integration.",
+            "example": "github"
+          },
+          "integration_type": {
+            "type": "string",
+            "description": "The integration type derived from the provider.",
+            "example": "github"
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional description of the Data Integration.",
+            "example": "Production GitHub app"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the Data Integration is enabled.",
+            "example": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/DataIntegrationState"
+          },
+          "scopes": {
+            "$ref": "#/components/schemas/DataIntegrationScopes"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "description": "The OAuth redirect URI to register with the provider when configuring the custom application.",
+            "example": "https://api.workos.com/data-integrations/github/dik_01EHZNVPK3SFK441A1RGBFSHRT/callback"
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsProperty"
+          },
+          "custom_provider": {
+            "$ref": "#/components/schemas/DataIntegrationCustomProvider"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        }
+      },
+      "DataIntegrationList": {
+        "required": [
+          "object",
+          "data",
+          "list_metadata"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "list"
+            ],
+            "type": "string",
+            "description": "Indicates this is a list response.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "list",
+                  "name": "List"
+                }
+              ]
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegration"
+            },
+            "description": "The list of records for the current page."
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/DataIntegrationListListMetadata"
+          }
+        }
+      },
       "DataIntegrationAuthorizeUrlResponse": {
         "required": [
           "url"
@@ -20459,6 +21356,25 @@
             "type": "string",
             "description": "An ephemeral link to initiate the Admin Portal.",
             "example": "https://setup.workos.com?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          }
+        }
+      },
+      "SendRadarSmsChallengeResponse": {
+        "required": [
+          "verification_id",
+          "phone_number"
+        ],
+        "type": "object",
+        "properties": {
+          "verification_id": {
+            "type": "string",
+            "description": "The ID of the SMS verification. Pass this to the authenticate endpoint to verify the code.",
+            "example": "vrf_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "The phone number the verification code was sent to.",
+            "example": 15555550123
           }
         }
       },
@@ -22440,6 +23356,21 @@
             "type": "string",
             "description": "The external ID of the user.",
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The user agent string from the user\u0027s request.",
+            "example": "Mozilla/5.0"
+          },
+          "signals_id": {
+            "type": "string",
+            "description": "An optional Radar signals ID to correlate client-side signals with this request.",
+            "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
           }
         }
       },
@@ -29623,6 +30554,45 @@
         ],
         "description": "The OAuth scopes to request for the organization. Pass \u0060null\u0060 to inherit the provider scopes."
       },
+      "DataIntegrationScopes": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationScopesBranch1"
+          },
+          {
+            "type": "object"
+          }
+        ],
+        "description": "The OAuth scopes configured for the Data Integration. \u0060null\u0060 when the provider\u0027s configured scopes are used."
+      },
+      "DataIntegrationCustomProvider": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationCustomProviderOneOf1"
+          },
+          {
+            "type": "object"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "description": "The OAuth definition when this is a custom provider; \u0060null\u0060 for built-in providers.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "DataIntegrationCustomProviderOneOf1": "#/components/schemas/DataIntegrationCustomProviderOneOf1"
+          }
+        }
+      },
       "DataIntegrationAccessTokenResponseOneOf1": {
         "required": [
           "active",
@@ -30238,6 +31208,75 @@
             "type": "string",
             "description": "The last name of the flag owner.",
             "example": "Doe"
+          }
+        }
+      },
+      "DataIntegrationCustomProviderOneOf1": {
+        "required": [
+          "name",
+          "authorization_url",
+          "token_url",
+          "refresh_token_url",
+          "pkce_enabled",
+          "request_scope_separator",
+          "scopes_required",
+          "client_secret_required",
+          "additional_authorization_parameters",
+          "token_body_content_type",
+          "authenticate_via"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A descriptive name for the custom provider.",
+            "example": "My OAuth App"
+          },
+          "authorization_url": {
+            "type": "string",
+            "description": "The provider\u0027s OAuth authorization endpoint.",
+            "example": "https://provider.example.com/oauth/authorize"
+          },
+          "token_url": {
+            "type": "string",
+            "description": "The provider\u0027s OAuth token endpoint.",
+            "example": "https://provider.example.com/oauth/token"
+          },
+          "refresh_token_url": {
+            "type": "string",
+            "description": "The endpoint used to refresh tokens, if different from the token endpoint.",
+            "example": "https://provider.example.com/oauth/token"
+          },
+          "pkce_enabled": {
+            "type": "boolean",
+            "description": "Whether PKCE is used during the authorization code flow.",
+            "example": true
+          },
+          "request_scope_separator": {
+            "type": "string",
+            "description": "The separator used to join requested scopes.",
+            "example": " "
+          },
+          "scopes_required": {
+            "type": "boolean",
+            "description": "Whether at least one scope must be selected when connecting an account.",
+            "example": false
+          },
+          "client_secret_required": {
+            "type": "boolean",
+            "description": "Whether a client secret is required for this provider.",
+            "example": true
+          },
+          "additional_authorization_parameters": {
+            "$ref": "#/components/schemas/DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty"
+          },
+          "token_body_content_type": {
+            "type": "string",
+            "description": "The Content-Type used when exchanging the token request.",
+            "example": "application/x-www-form-urlencoded"
+          },
+          "authenticate_via": {
+            "$ref": "#/components/schemas/DataIntegrationCustomProviderOneOf1AuthenticateVia"
           }
         }
       },
@@ -30966,6 +32005,26 @@
         },
         "x-jsonschema-propertyNames": {
           "maxLength": 40
+        }
+      },
+      "CustomProviderDefinitionDtoAdditionalAuthorizationParameters": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional static query parameters appended to the authorization request.",
+        "example": {
+          "prompt": "consent"
+        }
+      },
+      "UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParameters": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional static query parameters appended to the authorization request.",
+        "example": {
+          "prompt": "consent"
         }
       },
       "CreateDataKeyRequestContext": {
@@ -32123,6 +33182,50 @@
           }
         },
         "description": "The Audit Log Stream currently configured for the organization, if any."
+      },
+      "DataIntegrationCredentialsProperty": {
+        "required": [
+          "type",
+          "client_id",
+          "redacted_client_secret"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsPropertyType"
+          },
+          "client_id": {
+            "type": "string",
+            "description": "The OAuth client ID configured for the provider app. Null for \u0060organization\u0060 credentials.",
+            "example": "Iv1.abc123"
+          },
+          "redacted_client_secret": {
+            "type": "string",
+            "description": "The last four characters of the OAuth client secret. The full secret is never returned. Null for \u0060organization\u0060 credentials.",
+            "example": 6789
+          }
+        },
+        "description": "The credentials configured for the Data Integration."
+      },
+      "DataIntegrationListListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "data_integration_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "data_integration_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
       },
       "DataIntegrationsListResponseDataItem": {
         "required": [
@@ -38798,6 +39901,16 @@
         },
         "description": "The credential object containing the vended secret."
       },
+      "DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParameters": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional static query parameters appended to the authorization request.",
+        "example": {
+          "prompt": "consent"
+        }
+      },
       "AuditLogSchemaJsonActorMetadata": {
         "type": "object",
         "additionalProperties": {
@@ -44432,6 +45545,110 @@
           }
         }
       },
+      "DataIntegrationsManagementControllerCreateDataIntegration400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerCreateDataIntegration404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerCreateDataIntegration422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerGetDataIntegration404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateDataIntegration400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateDataIntegration404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateDataIntegration422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerDeleteDataIntegration404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "DataIntegrationsControllerUpsertApiKeyRequest": {
         "required": [
           "user_id",
@@ -46520,6 +47737,12 @@
           },
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf9"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf10"
           }
         ],
         "properties": {
@@ -47437,6 +48660,81 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Validation failed."
+          }
+        }
+      },
+      "UserlandMagicAuthControllerSendMagicAuthCodeAndReturn201Response": {
+        "required": [
+          "object",
+          "id",
+          "user_id",
+          "email",
+          "expires_at",
+          "created_at",
+          "updated_at",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "magic_auth"
+            ],
+            "type": "string",
+            "description": "Distinguishes the Magic Auth object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "magic_auth",
+                  "name": "MagicAuth"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the Magic Auth code.",
+            "example": "magic_auth_01HWZBQZY2M3AMQW166Q22K88F"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The unique ID of the user.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user.",
+            "example": "marcelina.davis@example.com"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The timestamp when the Magic Auth code expires.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "code": {
+            "type": "string",
+            "description": "The code used to verify the Magic Auth code.",
+            "example": 123456
+          },
+          "radar_auth_attempt_id": {
+            "type": "string",
+            "description": "The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt.",
+            "example": "radar_auth_attempt_01HXYZ123456789ABCDEFGHIJ"
           }
         }
       },
@@ -48419,6 +49717,112 @@
           }
         }
       },
+      "UserlandUsersControllerCreate0201Response": {
+        "required": [
+          "object",
+          "id",
+          "first_name",
+          "last_name",
+          "profile_picture_url",
+          "email",
+          "email_verified",
+          "external_id",
+          "last_sign_in_at",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "user"
+            ],
+            "type": "string",
+            "description": "Distinguishes the user object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "user",
+                  "name": "User"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the user.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the user.",
+            "example": "Marcelina"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the user.",
+            "example": "Davis"
+          },
+          "name": {
+            "type": "string",
+            "description": "The user\u0027s full name.",
+            "example": "Marcelina Davis"
+          },
+          "profile_picture_url": {
+            "type": "string",
+            "description": "A URL reference to an image representing the user.",
+            "example": "https://workoscdn.com/images/v1/123abc"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user.",
+            "example": "marcelina.davis@example.com"
+          },
+          "email_verified": {
+            "type": "boolean",
+            "description": "Whether the user\u0027s email has been verified.",
+            "example": true
+          },
+          "external_id": {
+            "type": "string",
+            "description": "The external ID of the user.",
+            "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/UserlandUsersControllerCreate0201ResponseMetadata"
+          },
+          "last_sign_in_at": {
+            "type": "string",
+            "description": "The timestamp when the user last signed in.",
+            "format": "date-time",
+            "example": "2025-06-25T19:07:33.155Z"
+          },
+          "locale": {
+            "type": "string",
+            "description": "The user\u0027s preferred locale.",
+            "example": "en-US"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "radar_auth_attempt_id": {
+            "type": "string",
+            "description": "The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt.",
+            "example": "radar_auth_attempt_01HXYZ123456789ABCDEFGHIJ"
+          }
+        }
+      },
       "UserlandUsersControllerCreate0400Response": {
         "required": [
           "type"
@@ -49249,6 +50653,58 @@
           }
         }
       },
+      "DataIntegrationsUserManagementControllerCreateUserDataInstallation404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerCreateUserDataInstallation409Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerUpdateUserDataInstallation404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "DataIntegrationsUserManagementControllerGetUserDataIntegrations404Response": {
         "required": [
           "message"
@@ -49530,6 +50986,20 @@
         }
       },
       "ConfigureDataIntegrationBodyScopesBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DataIntegrationScopesBranch1": {
         "required": [
           "value"
         ],
@@ -50698,6 +52168,11 @@
             "type": "string",
             "description": "The user agent string from the user\u0027s browser.",
             "example": "Mozilla/5.0"
+          },
+          "signals_id": {
+            "type": "string",
+            "description": "An optional Radar signals ID to correlate client-side signals with this authentication attempt.",
+            "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
           }
         }
       },
@@ -50766,6 +52241,16 @@
             "type": "string",
             "description": "The user agent string from the user\u0027s browser.",
             "example": "Mozilla/5.0"
+          },
+          "signals_id": {
+            "type": "string",
+            "description": "An optional Radar signals ID to correlate client-side signals with this authentication attempt.",
+            "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
+          },
+          "radar_auth_attempt_id": {
+            "type": "string",
+            "description": "The ID of an existing Radar authentication attempt to associate with this authentication.",
+            "example": "radar_auth_attempt_01HXYZ123456789ABCDEFGHIJ"
           }
         }
       },
@@ -50895,6 +52380,11 @@
             "type": "string",
             "description": "The user agent string from the user\u0027s browser.",
             "example": "Mozilla/5.0"
+          },
+          "radar_auth_attempt_id": {
+            "type": "string",
+            "description": "The ID of an existing Radar authentication attempt to associate with this authentication.",
+            "example": "radar_auth_attempt_01HXYZ123456789ABCDEFGHIJ"
           }
         }
       },
@@ -51094,6 +52584,150 @@
         }
       },
       "UserlandSessionsControllerAuthenticate0RequestOneOf8": {
+        "required": [
+          "client_id",
+          "client_secret",
+          "grant_type",
+          "code",
+          "radar_challenge_id",
+          "pending_authentication_token"
+        ],
+        "type": "object",
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "description": "The client ID of the application.",
+            "example": "client_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "client_secret": {
+            "type": "string",
+            "description": "The client secret of the application.",
+            "example": "sk_test_...."
+          },
+          "grant_type": {
+            "enum": [
+              "urn:workos:oauth:grant-type:radar-email-challenge:code"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "GrantType",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "urn:workos:oauth:grant-type:radar-email-challenge:code",
+                  "name": "UrnColonWorkosColonOauthColonGrantTypeColonRadarEmailChallengeColonCode"
+                }
+              ]
+            }
+          },
+          "code": {
+            "type": "string",
+            "description": "The one-time code from the Radar email challenge.",
+            "example": 123456
+          },
+          "radar_challenge_id": {
+            "type": "string",
+            "description": "The ID of the Radar email challenge being verified.",
+            "example": "radar_challenge_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "pending_authentication_token": {
+            "type": "string",
+            "description": "The pending authentication token from a previous authentication attempt.",
+            "example": "cTDQJTTkTkkVYxbn..."
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "device_id": {
+            "type": "string",
+            "description": "A unique identifier for the device.",
+            "example": "device_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The user agent string from the user\u0027s browser.",
+            "example": "Mozilla/5.0"
+          }
+        }
+      },
+      "UserlandSessionsControllerAuthenticate0RequestOneOf9": {
+        "required": [
+          "client_id",
+          "client_secret",
+          "grant_type",
+          "code",
+          "verification_id",
+          "phone_number",
+          "pending_authentication_token"
+        ],
+        "type": "object",
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "description": "The client ID of the application.",
+            "example": "client_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "client_secret": {
+            "type": "string",
+            "description": "The client secret of the application.",
+            "example": "sk_test_...."
+          },
+          "grant_type": {
+            "enum": [
+              "urn:workos:oauth:grant-type:radar-sms-challenge:code"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "GrantType",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "urn:workos:oauth:grant-type:radar-sms-challenge:code",
+                  "name": "UrnColonWorkosColonOauthColonGrantTypeColonRadarSmsChallengeColonCode"
+                }
+              ]
+            }
+          },
+          "code": {
+            "type": "string",
+            "description": "The one-time code from the Radar SMS challenge.",
+            "example": 123456
+          },
+          "verification_id": {
+            "type": "string",
+            "description": "The ID of the Radar SMS verification being confirmed.",
+            "example": "vrf_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "The phone number the Radar SMS challenge was sent to.",
+            "example": 15555550123
+          },
+          "pending_authentication_token": {
+            "type": "string",
+            "description": "The pending authentication token from a previous authentication attempt.",
+            "example": "cTDQJTTkTkkVYxbn..."
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "device_id": {
+            "type": "string",
+            "description": "A unique identifier for the device.",
+            "example": "device_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The user agent string from the user\u0027s browser.",
+            "example": "Mozilla/5.0"
+          }
+        }
+      },
+      "UserlandSessionsControllerAuthenticate0RequestOneOf10": {
         "required": [
           "client_id",
           "grant_type",
@@ -54535,6 +56169,20 @@
         },
         "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
       },
+      "CustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional static query parameters appended to the authorization request."
+      },
+      "UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional static query parameters appended to the authorization request."
+      },
       "CreateUserlandUserDtoMetadata": {
         "type": "object",
         "additionalProperties": {
@@ -54725,6 +56373,13 @@
           "$ref": "#/components/schemas/EventSchemaContextAdditionalProperties"
         },
         "description": "Additional context about the event."
+      },
+      "DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional static query parameters appended to the authorization request."
       },
       "AuditLogSchemaJsonActorMetadataProperty": {
         "type": "object",
@@ -55165,6 +56820,14 @@
           }
         },
         "description": "Pagination cursors for navigating between pages of results."
+      },
+      "UserlandUsersControllerCreate0201ResponseMetadata": {
+        "type": "object",
+        "additionalProperties": {
+          "maxLength": 600,
+          "type": "string"
+        },
+        "description": "Object containing metadata key/value pairs associated with the user."
       },
       "UserlandUsersControllerConfirmEmailChange200ResponseUser": {
         "required": [
@@ -55752,6 +57415,102 @@
             {
               "value": "verified",
               "name": "Verified"
+            }
+          ]
+        }
+      },
+      "DataIntegrationCredentialsDtoType": {
+        "enum": [
+          "custom",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The credentials type. \u0060custom\u0060 uses your own OAuth app credentials; \u0060organization\u0060 has each organization supply its own credentials (configured per-organization).",
+        "example": "custom",
+        "x-ms-enum": {
+          "name": "DataIntegrationCredentialsDtoType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "custom",
+              "name": "Custom"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "CustomProviderDefinitionDtoAuthenticateVia": {
+        "enum": [
+          "request_body",
+          "basic_auth_header"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How client credentials are sent when exchanging authorization codes and refreshing tokens.",
+        "example": "request_body",
+        "x-ms-enum": {
+          "name": "CustomProviderDefinitionDtoAuthenticateVia",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "request_body",
+              "name": "RequestBody"
+            },
+            {
+              "value": "basic_auth_header",
+              "name": "BasicAuthHeader"
+            }
+          ]
+        }
+      },
+      "UpdateCustomProviderDefinitionDtoAuthenticateVia": {
+        "enum": [
+          "request_body",
+          "basic_auth_header"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How client credentials are sent when exchanging authorization codes and refreshing tokens.",
+        "example": "request_body",
+        "x-ms-enum": {
+          "name": "UpdateCustomProviderDefinitionDtoAuthenticateVia",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "request_body",
+              "name": "RequestBody"
+            },
+            {
+              "value": "basic_auth_header",
+              "name": "BasicAuthHeader"
+            }
+          ]
+        }
+      },
+      "ConnectedAccountDtoState": {
+        "enum": [
+          "connected",
+          "needs_reauthorization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided.",
+        "example": "connected",
+        "x-ms-enum": {
+          "name": "ConnectedAccountDtoState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected",
+              "name": "Connected"
+            },
+            {
+              "value": "needs_reauthorization",
+              "name": "NeedsReauthorization"
             }
           ]
         }
@@ -58593,6 +60352,35 @@
           ]
         }
       },
+      "DataIntegrationState": {
+        "enum": [
+          "valid",
+          "invalid",
+          "requested"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The state of the Data Integration.",
+        "example": "valid",
+        "x-ms-enum": {
+          "name": "DataIntegrationState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "valid",
+              "name": "Valid"
+            },
+            {
+              "value": "invalid",
+              "name": "Invalid"
+            },
+            {
+              "value": "requested",
+              "name": "Requested"
+            }
+          ]
+        }
+      },
       "ConnectedAccountAuthMethod": {
         "enum": [
           "oauth",
@@ -59229,6 +61017,30 @@
           ]
         }
       },
+      "DataIntegrationCustomProviderOneOf1AuthenticateVia": {
+        "enum": [
+          "request_body",
+          "basic_auth_header"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How client credentials are sent when exchanging authorization codes and refreshing tokens.",
+        "example": "request_body",
+        "x-ms-enum": {
+          "name": "DataIntegrationCustomProviderOneOf1AuthenticateVia",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "request_body",
+              "name": "RequestBody"
+            },
+            {
+              "value": "basic_auth_header",
+              "name": "BasicAuthHeader"
+            }
+          ]
+        }
+      },
       "DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod": {
         "enum": [
           "oauth",
@@ -59442,6 +61254,30 @@
             {
               "value": "invalid",
               "name": "Invalid"
+            }
+          ]
+        }
+      },
+      "DataIntegrationCredentialsPropertyType": {
+        "enum": [
+          "custom",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The credentials type. \u0060custom\u0060 uses your own OAuth app credentials; \u0060organization\u0060 has each organization supply its own credentials (so \u0060client_id\u0060/\u0060redacted_client_secret\u0060 are null on the integration itself).",
+        "example": "custom",
+        "x-ms-enum": {
+          "name": "DataIntegrationCredentialsPropertyType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "custom",
+              "name": "Custom"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
             }
           ]
         }

@@ -72,6 +72,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string IpAddress { get; set; }
 #endif
+        /// <summary>The ID of an existing Radar authentication attempt to associate with this authentication.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RadarAuthAttemptId { get; set; }
+#nullable restore
+#else
+        public string RadarAuthAttemptId { get; set; }
+#endif
         /// <summary>The user agent string from the user&apos;s browser.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,6 +121,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4_grant_type>(); } },
                 { "invitation_token", n => { InvitationToken = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
+                { "radar_auth_attempt_id", n => { RadarAuthAttemptId = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
         }
@@ -131,6 +140,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4_grant_type>("grant_type", GrantType);
             writer.WriteStringValue("invitation_token", InvitationToken);
             writer.WriteStringValue("ip_address", IpAddress);
+            writer.WriteStringValue("radar_auth_attempt_id", RadarAuthAttemptId);
             writer.WriteStringValue("user_agent", UserAgent);
             writer.WriteAdditionalData(AdditionalData);
         }

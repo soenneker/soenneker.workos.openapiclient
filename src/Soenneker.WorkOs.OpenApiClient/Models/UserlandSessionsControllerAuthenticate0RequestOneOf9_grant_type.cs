@@ -5,12 +5,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum UserlandSessionsControllerAuthenticate0RequestOneOf8_grant_type
+    public enum UserlandSessionsControllerAuthenticate0RequestOneOf9_grant_type
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "urn:workos:oauth:grant-type:radar-email-challenge:code")]
+        [EnumMember(Value = "urn:workos:oauth:grant-type:radar-sms-challenge:code")]
         #pragma warning disable CS1591
-        UrnColonWorkosColonOauthColonGrantTypeColonRadarEmailChallengeColonCode,
+        UrnColonWorkosColonOauthColonGrantTypeColonRadarSmsChallengeColonCode,
         #pragma warning restore CS1591
     }
 }
