@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AuthorizeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sso/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type={response_type}{&connection*,domain*,domain_hint*,login_hint*,nonce*,organization*,provider*,provider_query_params*,provider_scopes,state*}", pathParameters)
+        public AuthorizeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sso/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type={response_type}{&connection*,domain*,domain_hint*,login_hint*,nonce*,organization*,prompt*,provider*,provider_query_params*,provider_scopes,state*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AuthorizeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sso/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type={response_type}{&connection*,domain*,domain_hint*,login_hint*,nonce*,organization*,provider*,provider_query_params*,provider_scopes,state*}", rawUrl)
+        public AuthorizeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sso/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type={response_type}{&connection*,domain*,domain_hint*,login_hint*,nonce*,organization*,prompt*,provider*,provider_query_params*,provider_scopes,state*}", rawUrl)
         {
         }
         /// <summary>
@@ -156,6 +156,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
             [QueryParameter("organization")]
             public string Organization { get; set; }
 #endif
+            /// <summary>If set to `login`, forces re-authentication at the identity provider. For SAML connections this sets `ForceAuthn=&quot;true&quot;` in the SAML request.</summary>
+            [QueryParameter("prompt")]
+            public global::Soenneker.WorkOs.OpenApiClient.Sso.Authorize.GetPromptQueryParameterType? Prompt { get; set; }
             /// <summary>Used to initiate OAuth authentication with various providers.</summary>
             [QueryParameter("provider")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerAuthorizeProviderParameter? Provider { get; set; }

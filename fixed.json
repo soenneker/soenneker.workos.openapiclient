@@ -9300,6 +9300,28 @@
               "type": "string",
               "example": "abc123def456"
             }
+          },
+          {
+            "name": "prompt",
+            "in": "query",
+            "description": "If set to \u0060login\u0060, forces re-authentication at the identity provider. For SAML connections this sets \u0060ForceAuthn=\u0022true\u0022\u0060 in the SAML request.",
+            "schema": {
+              "enum": [
+                "login"
+              ],
+              "type": "string",
+              "example": "login",
+              "x-ms-enum": {
+                "name": "GeneratedEnum",
+                "modelAsString": false,
+                "values": [
+                  {
+                    "value": "login",
+                    "name": "Login"
+                  }
+                ]
+              }
+            }
           }
         ],
         "responses": {
