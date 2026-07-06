@@ -18792,6 +18792,11 @@
             },
             "description": "List of Organization Domains."
           },
+          "callback_endpoint": {
+            "type": "string",
+            "description": "The immutable callback endpoint for this Connection. For SAML connections this is the ACS URL; for OIDC connections this is the redirect URI.",
+            "example": "https://auth.workos.com/sso/saml/acs/conn_externalkey"
+          },
           "options": {
             "$ref": "#/components/schemas/ConnectionOptions"
           },

@@ -14,6 +14,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The immutable callback endpoint for this Connection. For SAML connections this is the ACS URL; for OIDC connections this is the redirect URI.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CallbackEndpoint { get; set; }
+#nullable restore
+#else
+        public string CallbackEndpoint { get; set; }
+#endif
         /// <summary>The type of the SSO Connection used to authenticate the user. The Connection type may be used to dynamically generate authorization URLs.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionConnectionType? ConnectionType { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
@@ -92,6 +100,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "callback_endpoint", n => { CallbackEndpoint = n.GetStringValue(); } },
                 { "connection_type", n => { ConnectionType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionConnectionType>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "domains", n => { Domains = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionDomainsItem>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionDomainsItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -112,6 +121,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("callback_endpoint", CallbackEndpoint);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionConnectionType>("connection_type", ConnectionType);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionDomainsItem>("domains", Domains);
