@@ -7,38 +7,28 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class AgentAdminControllerValidateCredentialRequest : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class AgentAdminControllerValidateCredentialRequest : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Only applies to `access_token` credentials. When provided, the access token&apos;s `aud` claim is verified against this value — tokens issued for a different resource are rejected. Not permitted for `api_key` credentials.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Audience { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1? AgentAdminControllerValidateCredentialRequestOneOf1 { get; set; }
 #nullable restore
 #else
-        public string Audience { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1 AgentAdminControllerValidateCredentialRequestOneOf1 { get; set; }
 #endif
-        /// <summary>&quot;The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`.&quot;</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Credential { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2? AgentAdminControllerValidateCredentialRequestOneOf2 { get; set; }
 #nullable restore
 #else
-        public string Credential { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2 AgentAdminControllerValidateCredentialRequestOneOf2 { get; set; }
 #endif
-        /// <summary>The kind of credential being validated — an agent API key or an agent access token.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestType? Type { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest"/> and sets the default values.
-        /// </summary>
-        public AgentAdminControllerValidateCredentialRequest()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -47,7 +37,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest();
+            if("AgentAdminControllerValidateCredentialRequestOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.AgentAdminControllerValidateCredentialRequestOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1();
+            }
+            else if("AgentAdminControllerValidateCredentialRequestOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.AgentAdminControllerValidateCredentialRequestOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,12 +55,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(AgentAdminControllerValidateCredentialRequestOneOf1 != null)
             {
-                { "audience", n => { Audience = n.GetStringValue(); } },
-                { "credential", n => { Credential = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestType>(); } },
-            };
+                return AgentAdminControllerValidateCredentialRequestOneOf1.GetFieldDeserializers();
+            }
+            else if(AgentAdminControllerValidateCredentialRequestOneOf2 != null)
+            {
+                return AgentAdminControllerValidateCredentialRequestOneOf2.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -69,10 +72,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("audience", Audience);
-            writer.WriteStringValue("credential", Credential);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestType>("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
+            if(AgentAdminControllerValidateCredentialRequestOneOf1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1>(null, AgentAdminControllerValidateCredentialRequestOneOf1);
+            }
+            else if(AgentAdminControllerValidateCredentialRequestOneOf2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2>(null, AgentAdminControllerValidateCredentialRequestOneOf2);
+            }
         }
     }
 }

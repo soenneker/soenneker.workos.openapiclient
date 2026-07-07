@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.Models;
+using Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +18,18 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Radar_challengesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.user_management.radar_challenges.item collection</summary>
+        /// <param name="position">The unique ID of the Radar Challenge.</param>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges.Item.Radar_challengesItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges.Item.Radar_challengesItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges.Item.Radar_challengesItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges.Radar_challengesRequestBuilder"/> and sets the default values.
         /// </summary>

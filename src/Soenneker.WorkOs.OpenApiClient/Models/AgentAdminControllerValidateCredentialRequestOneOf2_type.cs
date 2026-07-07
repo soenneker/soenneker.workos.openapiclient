@@ -5,12 +5,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>The kind of credential being validated — an agent API key or an agent access token.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum AgentAdminControllerValidateCredentialRequestType
+    public enum AgentAdminControllerValidateCredentialRequestOneOf2_type
     {
-        [EnumMember(Value = "api_key")]
-        #pragma warning disable CS1591
-        ApiKey,
-        #pragma warning restore CS1591
         [EnumMember(Value = "access_token")]
         #pragma warning disable CS1591
         AccessToken,

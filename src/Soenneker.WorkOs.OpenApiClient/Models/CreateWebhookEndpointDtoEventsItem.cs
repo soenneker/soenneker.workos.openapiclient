@@ -24,6 +24,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         AgentRegistrationCredentialIssued,
         #pragma warning restore CS1591
+        [EnumMember(Value = "agent.registration.expired")]
+        #pragma warning disable CS1591
+        AgentRegistrationExpired,
+        #pragma warning restore CS1591
         [EnumMember(Value = "agent.registration.organization.switched")]
         #pragma warning disable CS1591
         AgentRegistrationOrganizationSwitched,
@@ -83,6 +87,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "authentication.sso_timed_out")]
         #pragma warning disable CS1591
         AuthenticationSsoTimedOut,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "radar.challenge_created")]
+        #pragma warning disable CS1591
+        RadarChallengeCreated,
         #pragma warning restore CS1591
         [EnumMember(Value = "authentication.radar_risk_detected")]
         #pragma warning disable CS1591

@@ -13,36 +13,56 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - api_key
-                    - access_token
-                  description: >-
-                    The kind of credential being validated — an agent API key or
-                    an agent access token.
-                  example: access_token
-                credential:
-                  type: string
-                  minLength: 1
-                  description: >-
-                    The credential value to validate: the API key value for
-                    `api_key`, or the access token (JWT) for `access_token`.
-                  example: sk_agent_example_1234567890
-                audience:
-                  type: string
-                  minLength: 1
-                  description: >-
-                    Only applies to `access_token` credentials. When provided,
-                    the access token's `aud` claim is verified against this
-                    value — tokens issued for a different resource are rejected.
-                    Not permitted for `api_key` credentials.
-                  example: https://api.example.com
-              required:
-                - type
-                - credential
+              discriminator:
+                propertyName: type
+              oneOf:
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      description: >-
+                        The kind of credential being validated — an agent API
+                        key or an agent access token.
+                      const: api_key
+                    credential:
+                      type: string
+                      minLength: 1
+                      description: >-
+                        The credential value to validate: the API key value for
+                        `api_key`, or the access token (JWT) for `access_token`.
+                      example: sk_agent_example_1234567890
+                  required:
+                    - type
+                    - credential
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      description: >-
+                        The kind of credential being validated — an agent API
+                        key or an agent access token.
+                      const: access_token
+                    credential:
+                      type: string
+                      minLength: 1
+                      description: >-
+                        The credential value to validate: the API key value for
+                        `api_key`, or the access token (JWT) for `access_token`.
+                      example: eyJhbGciOiJSUzI1NiIsImtpZCI6...
+                    audience:
+                      type: string
+                      minLength: 1
+                      description: >-
+                        When provided, the access token's `aud` claim is
+                        verified against this value. Tokens issued for a
+                        different resource are rejected.
+                      example: https://api.example.com
+                  required:
+                    - type
+                    - credential
+              description: >-
+                The agent credential to validate. Either an `api_key` or an
+                `access_token`, discriminated by `type`.
       responses:
         '200':
           description: OK
@@ -15358,6 +15378,41 @@ paths:
       summary: Send a Radar SMS challenge
       tags:
         - user-management.authentication
+  /user_management/radar_challenges/{id}:
+    get:
+      description: Get the details of an existing Radar Challenge, including the OTP code.
+      operationId: PublicRadarChallengesController_get
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The unique ID of the Radar Challenge.
+          schema:
+            example: radar_challenge_01HWZBQZY2M3AMQW166Q22K88F
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadarChallenge'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                    example: 'Organization not found: ''org_01EHQMYV6MBK39QC5PZXHY59C3''.'
+                required:
+                  - message
+      summary: Get Radar Challenge details
+      tags:
+        - user-management.authentication
   /user_management/redirect_uris:
     post:
       description: Creates a new redirect URI for an application.
@@ -21536,6 +21591,7 @@ components:
               - agent.registration.claim.attempt.created
               - agent.registration.claim.completed
               - agent.registration.credential.issued
+              - agent.registration.expired
               - agent.registration.organization.switched
               - authentication.email_verification_succeeded
               - authentication.magic_auth_failed
@@ -21551,6 +21607,7 @@ components:
               - authentication.sso_started
               - authentication.sso_succeeded
               - authentication.sso_timed_out
+              - radar.challenge_created
               - authentication.radar_risk_detected
               - authentication.reauthentication_succeeded
               - api_key.created
@@ -25583,6 +25640,42 @@ components:
                     - detail
                     - created_at
                     - updated_at
+                  description: The event payload.
+                created_at:
+                  format: date-time
+                  type: string
+                  description: An ISO 8601 timestamp.
+                  example: '2026-01-15T12:00:00.000Z'
+                context:
+                  $ref: '#/components/schemas/EventContextDto'
+                object:
+                  type: string
+                  description: Distinguishes the Event object.
+                  const: event
+              required:
+                - id
+                - event
+                - data
+                - created_at
+                - object
+            - type: object
+              properties:
+                id:
+                  type: string
+                  description: Unique identifier for the event.
+                  example: event_01EHZNVPK3SFK441A1RGBFSHRT
+                event:
+                  type: string
+                  const: agent.registration.expired
+                data:
+                  type: object
+                  properties:
+                    agent_registration_id:
+                      type: string
+                      description: The agent registration that expired.
+                      example: agent_reg_01EHWNCE74X7JSDV0X3SZ3KJNY
+                  required:
+                    - agent_registration_id
                   description: The event payload.
                 created_at:
                   format: date-time
@@ -32517,6 +32610,58 @@ components:
                   example: event_01EHZNVPK3SFK441A1RGBFSHRT
                 event:
                   type: string
+                  const: radar.challenge_created
+                data:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: The type of the Radar challenge.
+                      example: email
+                      const: email
+                    radar_challenge_id:
+                      type: string
+                      description: The ID of the Radar challenge.
+                      example: radar_challenge_01HWZBQZY2M3AMQW166Q22K88F
+                    user_id:
+                      type: string
+                      description: The ID of the user.
+                      example: user_01E4ZCR3C56J083X43JQXF3JK5
+                    email:
+                      type: string
+                      description: The email address of the user.
+                      example: user@example.com
+                  required:
+                    - type
+                    - radar_challenge_id
+                    - user_id
+                    - email
+                  description: The event payload.
+                created_at:
+                  format: date-time
+                  type: string
+                  description: An ISO 8601 timestamp.
+                  example: '2026-01-15T12:00:00.000Z'
+                context:
+                  $ref: '#/components/schemas/EventContextDto'
+                object:
+                  type: string
+                  description: Distinguishes the Event object.
+                  const: event
+              required:
+                - id
+                - event
+                - data
+                - created_at
+                - object
+            - type: object
+              properties:
+                id:
+                  type: string
+                  description: Unique identifier for the event.
+                  example: event_01EHZNVPK3SFK441A1RGBFSHRT
+                event:
+                  type: string
                   const: role.created
                 data:
                   type: object
@@ -35441,6 +35586,59 @@ components:
             https://setup.workos.com?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
       required:
         - link
+    RadarChallenge:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Distinguishes the Radar Challenge object.
+          const: radar_challenge
+        id:
+          type: string
+          description: The unique ID of the Radar Challenge.
+          example: radar_challenge_01HWZBQZY2M3AMQW166Q22K88F
+        type:
+          type: string
+          description: The type of the Radar challenge.
+          example: email
+          const: email
+        user_id:
+          type: string
+          description: The unique ID of the user.
+          example: user_01E4ZCR3C56J083X43JQXF3JK5
+        email:
+          type: string
+          description: The email address of the user.
+          example: marcelina.davis@example.com
+        expires_at:
+          format: date-time
+          type: string
+          description: The timestamp when the Radar Challenge code expires.
+          example: '2026-01-15T12:00:00.000Z'
+        created_at:
+          format: date-time
+          type: string
+          description: An ISO 8601 timestamp.
+          example: '2026-01-15T12:00:00.000Z'
+        updated_at:
+          format: date-time
+          type: string
+          description: An ISO 8601 timestamp.
+          example: '2026-01-15T12:00:00.000Z'
+        code:
+          type: string
+          description: The code used to verify the Radar Challenge.
+          example: '123456'
+      required:
+        - object
+        - id
+        - type
+        - user_id
+        - email
+        - expires_at
+        - created_at
+        - updated_at
+        - code
     SendRadarSmsChallengeResponse:
       type: object
       properties:

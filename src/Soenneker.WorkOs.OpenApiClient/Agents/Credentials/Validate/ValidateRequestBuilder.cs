@@ -37,7 +37,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Credentials.Validate
         /// &quot;Validate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential.&quot;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentCredentialValidation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">The agent credential to validate. Either an `api_key` or an `access_token`, discriminated by `type`.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredential400Response">When receiving a 400 status code</exception>
@@ -62,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Credentials.Validate
         /// &quot;Validate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential.&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">The agent credential to validate. Either an `api_key` or an `access_token`, discriminated by `type`.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
