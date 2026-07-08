@@ -24,6 +24,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         AgentRegistrationCredentialIssued,
         #pragma warning restore CS1591
+        [EnumMember(Value = "agent.registration.deleted")]
+        #pragma warning disable CS1591
+        AgentRegistrationDeleted,
+        #pragma warning restore CS1591
         [EnumMember(Value = "agent.registration.expired")]
         #pragma warning disable CS1591
         AgentRegistrationExpired,
