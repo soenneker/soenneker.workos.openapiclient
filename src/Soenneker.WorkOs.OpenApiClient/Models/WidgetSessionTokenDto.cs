@@ -14,7 +14,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ID of the organization to scope the widget session to.</summary>
+        /// <summary>The ID of the organization to scope the widget session to. Required when scopes are provided. Optional when issuing a token for user-only widgets (e.g. `UserProfile`, `UserSecurity`) that do not require organization context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationId { get; set; }

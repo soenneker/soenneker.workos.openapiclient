@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Widgets.Token
         {
         }
         /// <summary>
-        /// Generate a widget token scoped to an organization and user with the specified scopes.
+        /// Generate a widget token for a user, optionally scoped to an organization. When an organization is specified, org-scoped widgets are enabled; omitting it issues a user-only token for widgets like `UserProfile` and `UserSecurity`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -61,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Widgets.Token
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WidgetSessionTokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Generate a widget token scoped to an organization and user with the specified scopes.
+        /// Generate a widget token for a user, optionally scoped to an organization. When an organization is specified, org-scoped widgets are enabled; omitting it issues a user-only token for widgets like `UserProfile` and `UserSecurity`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
