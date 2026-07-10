@@ -18839,9 +18839,6 @@
             "description": "The immutable callback endpoint for this Connection. For SAML connections this is the ACS URL; for OIDC connections this is the redirect URI.",
             "example": "https://auth.workos.com/sso/saml/acs/conn_externalkey"
           },
-          "options": {
-            "$ref": "#/components/schemas/ConnectionOptions"
-          },
           "created_at": {
             "type": "string",
             "description": "An ISO 8601 timestamp.",
@@ -32930,20 +32927,6 @@
             "example": "foo-corp.com"
           }
         }
-      },
-      "ConnectionOptions": {
-        "required": [
-          "signing_cert"
-        ],
-        "type": "object",
-        "properties": {
-          "signing_cert": {
-            "type": "string",
-            "description": "The signing certificate of the SAML connection.",
-            "example": null
-          }
-        },
-        "description": "Configuration options for SAML connections. Only present for SAML connection types."
       },
       "ConnectionListListMetadata": {
         "required": [
@@ -61422,6 +61405,7 @@
           "bcrypt",
           "firebase-scrypt",
           "ssha",
+          "ssha256",
           "scrypt",
           "pbkdf2",
           "argon2"
@@ -61447,6 +61431,10 @@
               "name": "Ssha"
             },
             {
+              "value": "ssha256",
+              "name": "Ssha256"
+            },
+            {
               "value": "scrypt",
               "name": "Scrypt"
             },
@@ -61466,6 +61454,7 @@
           "bcrypt",
           "firebase-scrypt",
           "ssha",
+          "ssha256",
           "scrypt",
           "pbkdf2",
           "argon2"
@@ -61489,6 +61478,10 @@
             {
               "value": "ssha",
               "name": "Ssha"
+            },
+            {
+              "value": "ssha256",
+              "name": "Ssha256"
             },
             {
               "value": "scrypt",

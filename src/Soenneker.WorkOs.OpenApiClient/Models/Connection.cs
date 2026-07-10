@@ -52,14 +52,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>Distinguishes the Connection object.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.Connection_object? Object { get; set; }
-        /// <summary>Configuration options for SAML connections. Only present for SAML connection types.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions? Options { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions Options { get; set; }
-#endif
         /// <summary>Unique identifier for the Organization in which the Connection resides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -107,7 +99,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_object>(); } },
-                { "options", n => { Options = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionState>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionStatus>(); } },
@@ -128,7 +119,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Connection_object>("object", Object);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionOptions>("options", Options);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionState>("state", State);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionStatus>("status", Status);
