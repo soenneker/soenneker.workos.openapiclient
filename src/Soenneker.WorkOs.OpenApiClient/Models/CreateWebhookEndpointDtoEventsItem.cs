@@ -36,6 +36,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         AgentRegistrationOrganizationSwitched,
         #pragma warning restore CS1591
+        [EnumMember(Value = "agent.registration.revoked")]
+        #pragma warning disable CS1591
+        AgentRegistrationRevoked,
+        #pragma warning restore CS1591
         [EnumMember(Value = "authentication.email_verification_succeeded")]
         #pragma warning disable CS1591
         AuthenticationEmailVerificationSucceeded,
