@@ -20172,6 +20172,9 @@
               },
               {
                 "$ref": "#/components/schemas/EventSchemaAllOf2OneOf109"
+              },
+              {
+                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf110"
               }
             ]
           }
@@ -30625,7 +30628,7 @@
           },
           "event": {
             "enum": [
-              "vault.metadata.read"
+              "vault.kek.deleted"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -30633,8 +30636,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.metadata.read",
-                  "name": "VaultMetadataRead"
+                  "value": "vault.kek.deleted",
+                  "name": "VaultKekDeleted"
                 }
               ]
             }
@@ -30687,7 +30690,7 @@
           },
           "event": {
             "enum": [
-              "vault.names.listed"
+              "vault.metadata.read"
             ],
             "type": "string",
             "x-ms-enum": {
@@ -30695,8 +30698,8 @@
               "modelAsString": false,
               "values": [
                 {
-                  "value": "vault.names.listed",
-                  "name": "VaultNamesListed"
+                  "value": "vault.metadata.read",
+                  "name": "VaultMetadataRead"
                 }
               ]
             }
@@ -30733,6 +30736,68 @@
         }
       },
       "EventSchemaAllOf2OneOf107": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "enum": [
+              "vault.names.listed"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "vault.names.listed",
+                  "name": "VaultNamesListed"
+                }
+              ]
+            }
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf107Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "enum": [
+              "event"
+            ],
+            "type": "string",
+            "description": "Distinguishes the Event object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "event",
+                  "name": "EventValue"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf108": {
         "required": [
           "id",
           "event",
@@ -30794,7 +30859,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf108": {
+      "EventSchemaAllOf2OneOf109": {
         "required": [
           "id",
           "event",
@@ -30856,7 +30921,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf109": {
+      "EventSchemaAllOf2OneOf110": {
         "required": [
           "id",
           "event",
@@ -40154,7 +40219,8 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "kv_name"
+          "key_name",
+          "key_id"
         ],
         "type": "object",
         "properties": {
@@ -40171,6 +40237,41 @@
             "description": "The name of the actor.",
             "example": "Jane Doe"
           },
+          "key_name": {
+            "type": "string",
+            "description": "The name of the key encryption key.",
+            "example": "production-kek"
+          },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the key encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf106Data": {
+        "required": [
+          "actor_id",
+          "actor_source",
+          "actor_name",
+          "kv_name"
+        ],
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "description": "The unique identifier of the actor.",
+            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "actor_source": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf106DataActorSource"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "The name of the actor.",
+            "example": "Jane Doe"
+          },
           "kv_name": {
             "type": "string",
             "description": "The name of the key-value store.",
@@ -40179,7 +40280,7 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf106Data": {
+      "EventSchemaAllOf2OneOf107Data": {
         "required": [
           "actor_id",
           "actor_source",
@@ -40193,7 +40294,7 @@
             "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf106DataActorSource"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf107DataActorSource"
           },
           "actor_name": {
             "type": "string",
@@ -64055,6 +64156,28 @@
         "additionalProperties": false,
         "x-ms-enum": {
           "name": "EventSchemaAllOf2OneOf106DataActorSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api",
+              "name": "Api"
+            },
+            {
+              "value": "dashboard",
+              "name": "Dashboard"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf107DataActorSource": {
+        "enum": [
+          "api",
+          "dashboard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf107DataActorSource",
           "modelAsString": false,
           "values": [
             {
