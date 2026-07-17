@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.Models;
+using Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +18,18 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Redirect_urisRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.user_management.redirect_uris.item collection</summary>
+        /// <param name="position">The ID of the redirect URI to delete.</param>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.Item.Redirect_urisItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.Item.Redirect_urisItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.Item.Redirect_urisItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.Redirect_urisRequestBuilder"/> and sets the default values.
         /// </summary>

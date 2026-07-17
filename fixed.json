@@ -11557,7 +11557,7 @@
                 },
                 "example": {
                   "object": "redirect_uri",
-                  "id": "ruri_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "id": "redir_01EHZNVPK3SFK441A1RGBFSHRT",
                   "uri": "https://example.com/callback",
                   "default": true,
                   "created_at": "2026-01-15T12:00:00.000Z",
@@ -11674,6 +11674,69 @@
                 },
                 "example": {
                   "message": "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user_management/redirect_uris/{id}": {
+      "delete": {
+        "tags": [
+          "user-management.redirect-uris"
+        ],
+        "summary": "Delete a redirect URI",
+        "description": "Deletes a redirect URI from an application.",
+        "operationId": "RedirectUrisControllerDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the redirect URI to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "redir_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedirectUrisControllerDelete401Response"
+                },
+                "example": {
+                  "message": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Redirect URI not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedirectUrisControllerDelete404Response"
+                },
+                "example": {
+                  "message": "Redirect URI not found: \u0027redir_01EHZNVPK3SFK441A1RGBFSHRT\u0027."
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The redirect URI is the default and cannot be deleted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedirectUrisControllerDelete409Response"
+                },
+                "example": {
+                  "message": "Cannot delete the default redirect URI."
                 }
               }
             }
@@ -21621,7 +21684,7 @@
           "id": {
             "type": "string",
             "description": "The ID of the redirect URI.",
-            "example": "ruri_01EHZNVPK3SFK441A1RGBFSHRT"
+            "example": "redir_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "uri": {
             "type": "string",
@@ -50281,6 +50344,45 @@
           }
         }
       },
+      "RedirectUrisControllerDelete401Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "RedirectUrisControllerDelete404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "RedirectUrisControllerDelete409Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "UserlandSessionsControllerLogout422Response": {
         "required": [
           "message"
@@ -57484,12 +57586,12 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
-            "example": "ruri_01HXYZ123456789ABCDEFGHIJ"
+            "example": "redir_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
-            "example": "ruri_01HXYZ987654321KJIHGFEDCBA"
+            "example": "redir_01HXYZ987654321KJIHGFEDCBA"
           }
         },
         "description": "Pagination cursors for navigating between pages of results."
