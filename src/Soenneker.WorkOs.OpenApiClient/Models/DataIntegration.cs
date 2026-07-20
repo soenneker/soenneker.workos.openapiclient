@@ -14,6 +14,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>How accounts authenticate with the provider for this Data Integration.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthMethodsItem?>? AuthMethods { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthMethodsItem?> AuthMethods { get; set; }
+#endif
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The credentials configured for the Data Integration.</summary>
@@ -49,6 +57,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #nullable restore
 #else
         public string Id { get; set; }
+#endif
+        /// <summary>The tenant installation created when an API key was supplied at creation time; `null` otherwise. Not populated on list/get responses.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallation? Installation { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallation Installation { get; set; }
 #endif
         /// <summary>The integration type derived from the provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,12 +129,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "auth_methods", n => { AuthMethods = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthMethodsItem>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "credentials", n => { Credentials = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsProperty.CreateFromDiscriminatorValue); } },
                 { "custom_provider", n => { CustomProvider = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProvider>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProvider.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "installation", n => { Installation = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallation>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallation.CreateFromDiscriminatorValue); } },
                 { "integration_type", n => { IntegrationType = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration_object>(); } },
                 { "redirect_uri", n => { RedirectUri = n.GetStringValue(); } },
@@ -135,12 +153,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthMethodsItem>("auth_methods", AuthMethods);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsProperty>("credentials", Credentials);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProvider>("custom_provider", CustomProvider);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallation>("installation", Installation);
             writer.WriteStringValue("integration_type", IntegrationType);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration_object>("object", Object);
             writer.WriteStringValue("redirect_uri", RedirectUri);

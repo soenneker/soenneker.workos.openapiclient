@@ -57,7 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a new CORS origin for the current environment. CORS origins allow browser-based applications to make requests to the WorkOS API.
+        /// Creates a new CORS origin for the API key&apos;s application. CORS origins allow browser-based applications to make requests to the WorkOS API.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -103,7 +103,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
             return requestInfo;
         }
         /// <summary>
-        /// Creates a new CORS origin for the current environment. CORS origins allow browser-based applications to make requests to the WorkOS API.
+        /// Creates a new CORS origin for the API key&apos;s application. CORS origins allow browser-based applications to make requests to the WorkOS API.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -14,6 +14,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The api_key property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto? ApiKey { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto ApiKey { get; set; }
+#endif
         /// <summary>The credentials property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,6 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto.CreateFromDiscriminatorValue); } },
                 { "credentials", n => { Credentials = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto.CreateFromDiscriminatorValue); } },
                 { "custom_provider", n => { CustomProvider = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateCustomProviderDefinitionDto>(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateCustomProviderDefinitionDto.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -87,6 +96,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto>("api_key", ApiKey);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto>("credentials", Credentials);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateCustomProviderDefinitionDto>("custom_provider", CustomProvider);
             writer.WriteStringValue("description", Description);

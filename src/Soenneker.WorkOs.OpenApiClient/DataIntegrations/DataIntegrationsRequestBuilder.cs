@@ -47,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
         {
         }
         /// <summary>
-        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers.
+        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,14 +65,16 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials, or `organization` to have each organization supply its own. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition.
+        /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `[&quot;api_key&quot;]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration409Response">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,13 +90,15 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration404Response.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerCreateDataIntegration422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers.
+        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -113,7 +117,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             return requestInfo;
         }
         /// <summary>
-        /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials, or `organization` to have each organization supply its own. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition.
+        /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `[&quot;api_key&quot;]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -144,7 +148,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             return new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.DataIntegrationsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers.
+        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataIntegrationsRequestBuilderGetQueryParameters 

@@ -5523,7 +5523,7 @@
           "pipes"
         ],
         "summary": "Create a data integration",
-        "description": "Creates a data integration for a provider. Set \u0060credentials.type\u0060 to \u0060custom\u0060 to use your own OAuth app credentials, or \u0060organization\u0060 to have each organization supply its own. For a built-in provider, pass its slug as \u0060provider\u0060. For a custom provider, pass a new slug plus a \u0060custom_provider\u0060 definition.",
+        "description": "Creates a data integration for a provider. Set \u0060credentials.type\u0060 to \u0060custom\u0060 to use your own OAuth app credentials or \u0060organization\u0060 to have each organization supply its own. Set \u0060auth_methods\u0060 to \u0060[\u0022api_key\u0022]\u0060 to create an API key integration; you may optionally supply an \u0060api_key\u0060 block to install a first tenant in the same call. For a built-in provider, pass its slug as \u0060provider\u0060. For a custom provider, pass a new slug plus a \u0060custom_provider\u0060 definition.",
         "operationId": "DataIntegrationsManagementControllerCreateDataIntegration",
         "requestBody": {
           "content": {
@@ -5555,12 +5555,32 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerCreateDataIntegration403Response"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataIntegrationsManagementControllerCreateDataIntegration404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "A data integration with this slug already exists in the environment.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerCreateDataIntegration409Response"
                 }
               }
             }
@@ -5582,7 +5602,7 @@
           "pipes"
         ],
         "summary": "List data integrations",
-        "description": "Lists the environment\u0027s data integrations configured with \u0060custom\u0060 or \u0060organization\u0060 credentials, including custom providers.",
+        "description": "Lists the environment\u0027s data integrations configured with \u0060custom\u0060 or \u0060organization\u0060 credentials, including custom providers and API key integrations.",
         "operationId": "DataIntegrationsManagementControllerListDataIntegrations",
         "parameters": [
           {
@@ -5726,6 +5746,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateDataIntegration400Response"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateDataIntegration403Response"
                 }
               }
             }
@@ -9994,7 +10024,7 @@
           "user-management.cors-origins"
         ],
         "summary": "Create a CORS origin",
-        "description": "Creates a new CORS origin for the current environment. CORS origins allow browser-based applications to make requests to the WorkOS API.",
+        "description": "Creates a new CORS origin for the API key\u0027s application. CORS origins allow browser-based applications to make requests to the WorkOS API.",
         "operationId": "CorsOriginsControllerCreateCorsOrigin",
         "requestBody": {
           "content": {
@@ -15023,14 +15053,12 @@
           "resource_external_id": {
             "type": "string",
             "description": "The external ID of the resource.",
-            "example": "proj-456",
-            "x-feature-flag": "user-groups-role-assignment-enabled"
+            "example": "proj-456"
           },
           "resource_type_slug": {
             "type": "string",
             "description": "The resource type slug.",
-            "example": "project",
-            "x-feature-flag": "user-groups-role-assignment-enabled"
+            "example": "project"
           }
         }
       },
@@ -15794,6 +15822,31 @@
           }
         }
       },
+      "ApiKeyInstallationDto": {
+        "required": [
+          "secret",
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "secret": {
+            "minLength": 5,
+            "type": "string",
+            "description": "The API key secret to store for the tenant.",
+            "example": "sk-1234567890abcdef"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The User identifier the API key is installed for.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "An Organization identifier to scope the installation to a specific organization.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          }
+        }
+      },
       "CustomProviderDefinitionDto": {
         "required": [
           "name",
@@ -15886,8 +15939,18 @@
             },
             "description": "The OAuth scopes to request for the Data Integration. Defaults to the provider\u0027s configured scopes when omitted."
           },
+          "auth_methods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateDataIntegrationDtoAuthMethodsItem"
+            },
+            "description": "How accounts authenticate with the provider. Defaults to \u0060[\u0022oauth\u0022]\u0060. Use \u0060[\u0022api_key\u0022]\u0060 to declare an API key integration; \u0060credentials\u0060 is then not required and keys are supplied per-tenant (optionally via \u0060api_key\u0060 on this request)."
+          },
           "credentials": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsDto"
+          },
+          "api_key": {
+            "$ref": "#/components/schemas/ApiKeyInstallationDto"
           },
           "custom_provider": {
             "$ref": "#/components/schemas/CustomProviderDefinitionDto"
@@ -15975,6 +16038,9 @@
           },
           "credentials": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsDto"
+          },
+          "api_key": {
+            "$ref": "#/components/schemas/ApiKeyInstallationDto"
           },
           "custom_provider": {
             "$ref": "#/components/schemas/UpdateCustomProviderDefinitionDto"
@@ -21161,7 +21227,9 @@
           "state",
           "scopes",
           "redirect_uri",
+          "auth_methods",
           "credentials",
+          "installation",
           "custom_provider",
           "created_at",
           "updated_at"
@@ -21222,8 +21290,18 @@
             "description": "The OAuth redirect URI to register with the provider when configuring the custom application.",
             "example": "https://api.workos.com/data-integrations/github/dik_01EHZNVPK3SFK441A1RGBFSHRT/callback"
           },
+          "auth_methods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationAuthMethodsItem"
+            },
+            "description": "How accounts authenticate with the provider for this Data Integration."
+          },
           "credentials": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsProperty"
+          },
+          "installation": {
+            "$ref": "#/components/schemas/DataIntegrationInstallation"
           },
           "custom_provider": {
             "$ref": "#/components/schemas/DataIntegrationCustomProvider"
@@ -31109,6 +31187,34 @@
         ],
         "description": "The OAuth scopes configured for the Data Integration. \u0060null\u0060 when the provider\u0027s configured scopes are used."
       },
+      "DataIntegrationInstallation": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationInstallationOneOf1"
+          },
+          {
+            "type": "object"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "description": "The tenant installation created when an API key was supplied at creation time; \u0060null\u0060 otherwise. Not populated on list/get responses.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "DataIntegrationInstallationOneOf1": "#/components/schemas/DataIntegrationInstallationOneOf1"
+          }
+        },
+        "example": null
+      },
       "DataIntegrationCustomProvider": {
         "required": [
           "type"
@@ -31751,6 +31857,37 @@
             "type": "string",
             "description": "The last name of the flag owner.",
             "example": "Doe"
+          }
+        }
+      },
+      "DataIntegrationInstallationOneOf1": {
+        "required": [
+          "id",
+          "user_id",
+          "organization_id",
+          "api_key_last_4"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the installation.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The User the API key was installed for.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The Organization the installation is scoped to, or null when unscoped.",
+            "example": null
+          },
+          "api_key_last_4": {
+            "type": "string",
+            "description": "The last four characters of the stored API key. The full key is never returned.",
+            "example": "cdef"
           }
         }
       },
@@ -42504,6 +42641,9 @@
           },
           {
             "$ref": "#/components/schemas/ExternalAuthControllerCompleteLogin400ResponseOneOf5"
+          },
+          {
+            "$ref": "#/components/schemas/ExternalAuthControllerCompleteLogin400ResponseOneOf6"
           }
         ],
         "properties": {
@@ -46211,7 +46351,33 @@
           }
         }
       },
+      "DataIntegrationsManagementControllerCreateDataIntegration403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "DataIntegrationsManagementControllerCreateDataIntegration404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerCreateDataIntegration409Response": {
         "required": [
           "message"
         ],
@@ -46251,6 +46417,19 @@
         }
       },
       "DataIntegrationsManagementControllerUpdateDataIntegration400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateDataIntegration403Response": {
         "required": [
           "message"
         ],
@@ -52090,6 +52269,38 @@
         "properties": {
           "code": {
             "enum": [
+              "user_consent_options_not_supported"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "user_consent_options_not_supported",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "user_consent_options_not_supported",
+                  "name": "UserConsentOptionsNotSupported"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "ExternalAuthControllerCompleteLogin400ResponseOneOf3": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
               "email_change_not_allowed"
             ],
             "type": "string",
@@ -52113,7 +52324,7 @@
           }
         }
       },
-      "ExternalAuthControllerCompleteLogin400ResponseOneOf3": {
+      "ExternalAuthControllerCompleteLogin400ResponseOneOf4": {
         "required": [
           "code",
           "message"
@@ -52145,7 +52356,7 @@
           }
         }
       },
-      "ExternalAuthControllerCompleteLogin400ResponseOneOf4": {
+      "ExternalAuthControllerCompleteLogin400ResponseOneOf5": {
         "required": [
           "code",
           "message"
@@ -52177,7 +52388,7 @@
           }
         }
       },
-      "ExternalAuthControllerCompleteLogin400ResponseOneOf5": {
+      "ExternalAuthControllerCompleteLogin400ResponseOneOf6": {
         "required": [
           "error",
           "message"
@@ -58242,6 +58453,28 @@
           ]
         }
       },
+      "CreateDataIntegrationDtoAuthMethodsItem": {
+        "enum": [
+          "oauth",
+          "api_key"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "CreateDataIntegrationDtoAuthMethodsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
+            }
+          ]
+        }
+      },
       "UpdateCustomProviderDefinitionDtoAuthenticateVia": {
         "enum": [
           "request_body",
@@ -61192,6 +61425,28 @@
             {
               "value": "requested",
               "name": "Requested"
+            }
+          ]
+        }
+      },
+      "DataIntegrationAuthMethodsItem": {
+        "enum": [
+          "oauth",
+          "api_key"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "DataIntegrationAuthMethodsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
             }
           ]
         }
