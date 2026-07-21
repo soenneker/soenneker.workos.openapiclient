@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Agents.Claims;
 using Soenneker.WorkOs.OpenApiClient.Agents.Credentials;
 using Soenneker.WorkOs.OpenApiClient.Agents.Registrations;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AgentsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The claims property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Agents.Claims.ClaimsRequestBuilder Claims
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Agents.Claims.ClaimsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The credentials property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Agents.Credentials.CredentialsRequestBuilder Credentials
         {

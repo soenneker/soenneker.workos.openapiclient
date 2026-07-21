@@ -25,6 +25,77 @@
     }
   ],
   "paths": {
+    "/agents/claims/attempts": {
+      "patch": {
+        "tags": [
+          "agents"
+        ],
+        "summary": "Link a claim attempt to an external user",
+        "description": "Link an external user to a claim attempt and retrieve the code needed for the agent to complete the claim. The user is looked up by external ID; if no user exists, one is created. When the user belongs to multiple organizations, an explicit organization must be provided.",
+        "operationId": "AgentAdminControllerLinkClaimAttemptToExternalUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Claim attempt linked to external user.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimViewResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request, email mismatch, invalid claim, invalid organization, or wrong account.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser400Response"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Claim denied or auth method disabled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser403Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Organization selection required, email already in use, or claim already completed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409Response"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Claim or user code has expired.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser410Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agents/credentials/validate": {
       "post": {
         "tags": [
@@ -8889,6 +8960,98 @@
         }
       }
     },
+    "/organizations/{organizationId}/authorized_applications": {
+      "get": {
+        "tags": [
+          "organizations.authorized-applications"
+        ],
+        "summary": "List authorized applications",
+        "description": "Get a list of all Connect applications that users in the organization have authorized.",
+        "operationId": "OrganizationAuthorizedApplicationsControllerList",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "The ID of the organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060after=\u0022obj_123\u0022\u0060 to fetch a new batch of objects after \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ987654321KJIHGFEDCBA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Upper limit on the number of objects to return, between \u00601\u0060 and \u0060100\u0060.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10,
+              "example": 10
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records).",
+            "schema": {
+              "$ref": "#/components/schemas/PaginationOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationAuthorizedConnectApplicationList"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationAuthorizedApplicationsControllerList404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationAuthorizedApplicationsControllerList422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/portal/generate_link": {
       "post": {
         "tags": [
@@ -17410,6 +17573,37 @@
           }
         }
       },
+      "ClaimViewResponse": {
+        "required": [
+          "id",
+          "status",
+          "user_code",
+          "organizations"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The agent registration ID.",
+            "example": "agent_reg_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ClaimViewResponseStatus"
+          },
+          "user_code": {
+            "type": "string",
+            "description": "The user code the agent needs to complete the claim.",
+            "example": "BCDF-GHJK"
+          },
+          "organizations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClaimViewResponseOrganizationsItem"
+            },
+            "description": "Organizations the user belongs to, offered as placement choices."
+          }
+        }
+      },
       "ApiKey": {
         "required": [
           "object",
@@ -17665,6 +17859,43 @@
           },
           "list_metadata": {
             "$ref": "#/components/schemas/AuthorizedConnectApplicationListListMetadata"
+          }
+        }
+      },
+      "OrganizationAuthorizedConnectApplicationList": {
+        "required": [
+          "object",
+          "data",
+          "list_metadata"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "list"
+            ],
+            "type": "string",
+            "description": "Indicates this is a list response.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "list",
+                  "name": "List"
+                }
+              ]
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizationAuthorizedConnectApplicationListDataItem"
+            },
+            "description": "The list of records for the current page."
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/OrganizationAuthorizedConnectApplicationListListMetadata"
           }
         }
       },
@@ -32797,6 +33028,25 @@
         },
         "description": "The agent identity associated with this registration."
       },
+      "ClaimViewResponseOrganizationsItem": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The organization ID.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "name": {
+            "type": "string",
+            "description": "The organization name.",
+            "example": "Acme Corp"
+          }
+        }
+      },
       "ConnectApplicationListListMetadata": {
         "required": [
           "before",
@@ -32866,6 +33116,80 @@
         }
       },
       "AuthorizedConnectApplicationListListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "authorized_connect_app_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": "string",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "authorized_connect_app_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
+      },
+      "OrganizationAuthorizedConnectApplicationListDataItem": {
+        "required": [
+          "object",
+          "id",
+          "granted_scopes",
+          "application",
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "authorized_connect_application"
+            ],
+            "type": "string",
+            "description": "Distinguishes the authorized connect application object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "authorized_connect_application",
+                  "name": "AuthorizedConnectApplication"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the authorized connect application.",
+            "example": "authorized_connect_app_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "granted_scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The scopes granted by the user to the application."
+          },
+          "oauth_resource": {
+            "type": "string",
+            "description": "The OAuth resource associated with the authorized connect application, if one was requested.",
+            "example": "https://api.example.com/resource"
+          },
+          "application": {
+            "$ref": "#/components/schemas/ConnectApplication"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user who authorized the application.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          }
+        }
+      },
+      "OrganizationAuthorizedConnectApplicationListListMetadata": {
         "required": [
           "before",
           "after"
@@ -42057,6 +42381,153 @@
           }
         }
       },
+      "AgentAdminControllerLinkClaimAttemptToExternalUserRequest": {
+        "required": [
+          "type",
+          "claim_attempt_token",
+          "user"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "link_external_user"
+            ],
+            "type": "string",
+            "description": "The operation to perform on the claim attempt. Currently only \u0060link_external_user\u0060 is supported.",
+            "example": "link_external_user",
+            "x-ms-enum": {
+              "name": "Type",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "link_external_user",
+                  "name": "LinkExternalUser"
+                }
+              ]
+            }
+          },
+          "claim_attempt_token": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The token identifying the claim attempt.",
+            "example": "cla_tkn_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "user": {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser"
+          },
+          "organization_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The organization to place the agent in. Required when the user belongs to more than one organization.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser400Response": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf5"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type"
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser403Response": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser403ResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser403ResponseOneOf2"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type"
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser409Response": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOneOf3"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type"
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser410Response": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser410ResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser410ResponseOneOf2"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type"
+        }
+      },
       "AgentAdminControllerValidateCredentialRequest": {
         "required": [
           "type"
@@ -48147,6 +48618,32 @@
           }
         }
       },
+      "OrganizationAuthorizedApplicationsControllerList404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "OrganizationAuthorizedApplicationsControllerList422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "PortalSessionsControllerCreate400Response": {
         "required": [
           "message"
@@ -52078,6 +52575,398 @@
             "type": "boolean",
             "description": "Whether the application uses PKCE for authorization.",
             "example": true
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf1": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "invalid_request"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "invalid_request",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "invalid_request",
+                  "name": "InvalidRequest"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf2": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "invalid_claim"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "invalid_claim",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "invalid_claim",
+                  "name": "InvalidClaim"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf3": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "invalid_organization"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "invalid_organization",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "invalid_organization",
+                  "name": "InvalidOrganization"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf4": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "email_mismatch"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "email_mismatch",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email_mismatch",
+                  "name": "EmailMismatch"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser400ResponseOneOf5": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "wrong_account"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "wrong_account",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "wrong_account",
+                  "name": "WrongAccount"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser403ResponseOneOf1": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "claim_denied"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "claim_denied",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "claim_denied",
+                  "name": "ClaimDenied"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser403ResponseOneOf2": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "auth_method_disabled"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "auth_method_disabled",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "auth_method_disabled",
+                  "name": "AuthMethodDisabled"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOneOf1": {
+        "required": [
+          "code",
+          "message",
+          "organizations"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "organization_selection_required"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "organization_selection_required",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "organization_selection_required",
+                  "name": "OrganizationSelectionRequired"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          },
+          "organizations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOneOf1OrganizationsItem"
+            },
+            "description": "Organizations the user belongs to. Pick one and retry with organization_id."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOneOf2": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "email_already_in_use"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "email_already_in_use",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email_already_in_use",
+                  "name": "EmailAlreadyInUse"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOneOf3": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "already_claimed"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "already_claimed",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "already_claimed",
+                  "name": "AlreadyClaimed"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser410ResponseOneOf1": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "claim_expired"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "claim_expired",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "claim_expired",
+                  "name": "ClaimExpired"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser410ResponseOneOf2": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "user_code_expired"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "user_code_expired",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "user_code_expired",
+                  "name": "UserCodeExpired"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -57556,6 +58445,32 @@
       "EventSchemaAllOf2OneOf73DataCustomAttributesAdditionalProperties": {
         "type": "object"
       },
+      "AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser": {
+        "required": [
+          "email",
+          "external_id"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user.",
+            "format": "email",
+            "example": "alice@example.com"
+          },
+          "external_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The external ID of the user.",
+            "example": "user_abc123"
+          }
+        },
+        "description": "The user to attach to the claim attempt, identified by email and external ID.",
+        "example": {
+          "email": "alice@example.com",
+          "external_id": "user_abc123"
+        }
+      },
       "AuditLogValidatorsControllerList200ResponseListMetadata": {
         "required": [
           "before",
@@ -58154,6 +59069,25 @@
           },
           "provider": {
             "$ref": "#/components/schemas/UserlandUserIdentitiesControllerGet200ResponseItemProvider"
+          }
+        }
+      },
+      "AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOneOf1OrganizationsItem": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The organization ID.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "name": {
+            "type": "string",
+            "description": "The organization name.",
+            "example": "Acme Corp"
           }
         }
       },
@@ -60574,6 +61508,39 @@
             {
               "value": "identity_assertion",
               "name": "IdentityAssertion"
+            }
+          ]
+        }
+      },
+      "ClaimViewResponseStatus": {
+        "enum": [
+          "unverified",
+          "verified",
+          "expired",
+          "revoked"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Current status of the agent registration.",
+        "x-ms-enum": {
+          "name": "ClaimViewResponseStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "unverified",
+              "name": "Unverified"
+            },
+            {
+              "value": "verified",
+              "name": "Verified"
+            },
+            {
+              "value": "expired",
+              "name": "Expired"
+            },
+            {
+              "value": "revoked",
+              "name": "Revoked"
             }
           ]
         }
@@ -66119,6 +67086,10 @@
     {
       "name": "organizations.api_keys",
       "description": "Manage organization-scoped API keys."
+    },
+    {
+      "name": "organizations.authorized-applications",
+      "description": "Manage authorized applications for organizations."
     },
     {
       "name": "organizations.feature-flags",

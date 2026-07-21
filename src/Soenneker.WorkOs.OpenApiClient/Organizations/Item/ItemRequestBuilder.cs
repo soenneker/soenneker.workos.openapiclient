@@ -7,6 +7,7 @@ using Soenneker.WorkOs.OpenApiClient.Models;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Api_keys;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_log_configuration;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_logs_retention;
+using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Authorized_applications;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.FeatureFlags;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups;
@@ -37,6 +38,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item
         public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_logs_retention.Audit_logs_retentionRequestBuilder Audit_logs_retention
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Audit_logs_retention.Audit_logs_retentionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The authorized_applications property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Authorized_applications.Authorized_applicationsRequestBuilder Authorized_applications
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Authorized_applications.Authorized_applicationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The data_integration_configurations property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations.Data_integration_configurationsRequestBuilder Data_integration_configurations
