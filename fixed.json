@@ -16109,6 +16109,9 @@
             },
             "description": "How accounts authenticate with the provider. Defaults to \u0060[\u0022oauth\u0022]\u0060. Use \u0060[\u0022api_key\u0022]\u0060 to declare an API key integration; \u0060credentials\u0060 is then not required and keys are supplied per-tenant (optionally via \u0060api_key\u0060 on this request)."
           },
+          "config": {
+            "$ref": "#/components/schemas/CreateDataIntegrationDtoConfigProperty"
+          },
           "credentials": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsDto"
           },
@@ -21461,6 +21464,7 @@
           "auth_methods",
           "credentials",
           "installation",
+          "config",
           "custom_provider",
           "created_at",
           "updated_at"
@@ -21533,6 +21537,9 @@
           },
           "installation": {
             "$ref": "#/components/schemas/DataIntegrationInstallation"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationConfigProperty"
           },
           "custom_provider": {
             "$ref": "#/components/schemas/DataIntegrationCustomProvider"
@@ -32928,6 +32935,16 @@
           "prompt": "consent"
         }
       },
+      "CreateDataIntegrationDtoConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific config values (e.g. a Snowflake \u0060account_identifier\u0060), keyed by the config field. Only fields the built-in provider declares are accepted.",
+        "example": {
+          "account_identifier": "acme-prod"
+        }
+      },
       "UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParameters": {
         "type": "object",
         "additionalProperties": {
@@ -34196,6 +34213,16 @@
           }
         },
         "description": "The credentials configured for the Data Integration."
+      },
+      "DataIntegrationConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific config values set on the Data Integration (e.g. a Snowflake \u0060account_identifier\u0060), keyed by config field. Only fields the provider declares are accepted.",
+        "example": {
+          "account_identifier": "acme-prod"
+        }
       },
       "DataIntegrationListListMetadata": {
         "required": [
@@ -49505,6 +49532,9 @@
           },
           {
             "$ref": "#/components/schemas/UserlandUserInvitesControllerCreate400ResponseOneOf7"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandUserInvitesControllerCreate400ResponseOneOf8"
           }
         ],
         "properties": {
@@ -56071,6 +56101,38 @@
           }
         }
       },
+      "UserlandUserInvitesControllerCreate400ResponseOneOf8": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "organization_blocked_from_sending_invites"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "organization_blocked_from_sending_invites",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "organization_blocked_from_sending_invites",
+                  "name": "OrganizationBlockedFromSendingInvites"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "UserlandUserInvitesControllerResend400ResponseOneOf1": {
         "required": [
           "code",
@@ -58051,6 +58113,13 @@
         },
         "description": "Additional static query parameters appended to the authorization request."
       },
+      "CreateDataIntegrationDtoConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific config values (e.g. a Snowflake \u0060account_identifier\u0060), keyed by the config field. Only fields the built-in provider declares are accepted."
+      },
       "UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty": {
         "type": "object",
         "additionalProperties": {
@@ -58197,6 +58266,13 @@
           "type": "string"
         },
         "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
+      },
+      "DataIntegrationConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific config values set on the Data Integration (e.g. a Snowflake \u0060account_identifier\u0060), keyed by config field. Only fields the provider declares are accepted."
       },
       "UserlandUserOrganizationMembershipCustomAttributesProperty": {
         "type": "object",

@@ -30,6 +30,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem?> AuthMethods { get; set; }
 #endif
+        /// <summary>Provider-specific config values (e.g. a Snowflake `account_identifier`), keyed by the config field. Only fields the built-in provider declares are accepted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty? Config { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty Config { get; set; }
+#endif
         /// <summary>The credentials property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,6 +107,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto.CreateFromDiscriminatorValue); } },
                 { "auth_methods", n => { AuthMethods = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem>()?.AsList(); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty.CreateFromDiscriminatorValue); } },
                 { "credentials", n => { Credentials = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto.CreateFromDiscriminatorValue); } },
                 { "custom_provider", n => { CustomProvider = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto>(global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -116,6 +125,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto>("api_key", ApiKey);
             writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem>("auth_methods", AuthMethods);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty>("config", Config);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto>("credentials", Credentials);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto>("custom_provider", CustomProvider);
             writer.WriteStringValue("description", Description);

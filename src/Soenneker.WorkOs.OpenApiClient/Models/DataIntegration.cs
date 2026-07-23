@@ -22,6 +22,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthMethodsItem?> AuthMethods { get; set; }
 #endif
+        /// <summary>Provider-specific config values set on the Data Integration (e.g. a Snowflake `account_identifier`), keyed by config field. Only fields the provider declares are accepted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigProperty? Config { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigProperty Config { get; set; }
+#endif
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The credentials configured for the Data Integration.</summary>
@@ -130,6 +138,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "auth_methods", n => { AuthMethods = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthMethodsItem>()?.AsList(); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "credentials", n => { Credentials = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsProperty.CreateFromDiscriminatorValue); } },
                 { "custom_provider", n => { CustomProvider = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProvider>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProvider.CreateFromDiscriminatorValue); } },
@@ -154,6 +163,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthMethodsItem>("auth_methods", AuthMethods);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigProperty>("config", Config);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsProperty>("credentials", Credentials);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProvider>("custom_provider", CustomProvider);
