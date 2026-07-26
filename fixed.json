@@ -49303,34 +49303,25 @@
       },
       "UserlandSessionsControllerAuthenticate0429Response": {
         "required": [
-          "code",
-          "message"
+          "type"
         ],
         "type": "object",
-        "properties": {
-          "code": {
-            "enum": [
-              "daily_quota_exceeded"
-            ],
-            "type": "string",
-            "description": "The error code identifying the type of error.",
-            "example": "daily_quota_exceeded",
-            "x-ms-enum": {
-              "name": "Code",
-              "modelAsString": false,
-              "values": [
-                {
-                  "value": "daily_quota_exceeded",
-                  "name": "DailyQuotaExceeded"
-                }
-              ]
-            }
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0429ResponseOneOf1"
           },
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Request could not be processed."
+          {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0429ResponseOneOf2"
           }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type"
         }
       },
       "UserlandSsoControllerDeviceAuthorizationRequest": {
@@ -55874,6 +55865,70 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Request could not be processed."
+          }
+        }
+      },
+      "UserlandSessionsControllerAuthenticate0429ResponseOneOf1": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "daily_quota_exceeded"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "daily_quota_exceeded",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "daily_quota_exceeded",
+                  "name": "DailyQuotaExceeded"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "UserlandSessionsControllerAuthenticate0429ResponseOneOf2": {
+        "required": [
+          "error",
+          "error_description"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "enum": [
+              "too_many_requests"
+            ],
+            "type": "string",
+            "description": "The OAuth error code.",
+            "example": "too_many_requests",
+            "x-ms-enum": {
+              "name": "Error",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "too_many_requests",
+                  "name": "TooManyRequests"
+                }
+              ]
+            }
+          },
+          "error_description": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "The request failed due to: too_many_requests."
           }
         }
       },
