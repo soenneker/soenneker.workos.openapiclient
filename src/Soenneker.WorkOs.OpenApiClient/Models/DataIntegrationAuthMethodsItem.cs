@@ -16,5 +16,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         ApiKey,
         #pragma warning restore CS1591
+        [EnumMember(Value = "client_credentials")]
+        #pragma warning disable CS1591
+        ClientCredentials,
+        #pragma warning restore CS1591
     }
 }

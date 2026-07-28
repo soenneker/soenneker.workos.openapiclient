@@ -7737,6 +7737,18 @@ paths:
                   format: uri
                   description: The URL to redirect the user to after authorization.
                   example: https://example.com/callback
+                config:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: >-
+                    Connect-time config values for the provider-declared
+                    `installation`-scope fields (e.g. a Zendesk `subdomain`),
+                    keyed by the config field. Only fields the provider declares
+                    may be supplied, and required fields must be provided unless
+                    already pinned on the integration.
+                  example:
+                    subdomain: acme
               required:
                 - user_id
       responses:
@@ -10193,10 +10205,13 @@ paths:
         '400':
           description: >-
             The request body is invalid. Possible reasons: the body is empty (at
-            least one of `enabled`, `scopes`, or `client_id` must be provided);
-            `client_id` and `client_secret` are not provided together; or
-            `client_id`/`client_secret` were supplied for a provider that does
-            not support organization-managed credentials.
+            least one of `enabled`, `scopes`, `client_id`, or `config` must be
+            provided); `client_id` and `client_secret` are not provided
+            together; `client_id`/`client_secret` were supplied for a provider
+            that does not support organization-managed credentials; or `config`
+            contains a field the provider does not declare, a value that does
+            not match that field's pattern, or was supplied for a provider whose
+            credentials are not organization-managed.
           content:
             application/json:
               schema:
@@ -13867,6 +13882,20 @@ paths:
                     required:
                       - code
                       - message
+                  - type: object
+                    properties:
+                      code:
+                        type: string
+                        description: The error code identifying the type of error.
+                        example: email_domain_not_deliverable
+                        const: email_domain_not_deliverable
+                      message:
+                        type: string
+                        description: A human-readable description of the error.
+                        example: Request could not be processed.
+                    required:
+                      - code
+                      - message
         '404':
           description: Not Found
           content:
@@ -14212,6 +14241,20 @@ paths:
                     required:
                       - code
                       - message
+                  - type: object
+                    properties:
+                      code:
+                        type: string
+                        description: The error code identifying the type of error.
+                        example: email_domain_not_deliverable
+                        const: email_domain_not_deliverable
+                      message:
+                        type: string
+                        description: A human-readable description of the error.
+                        example: Request could not be processed.
+                    required:
+                      - code
+                      - message
         '404':
           description: Not Found
           content:
@@ -14552,6 +14595,20 @@ paths:
                     required:
                       - error
                       - error_description
+                  - type: object
+                    properties:
+                      code:
+                        type: string
+                        description: The error code identifying the type of error.
+                        example: email_domain_not_deliverable
+                        const: email_domain_not_deliverable
+                      message:
+                        type: string
+                        description: A human-readable description of the error.
+                        example: Request could not be processed.
+                    required:
+                      - code
+                      - message
         '422':
           description: Unprocessable Entity
           content:
@@ -24697,13 +24754,6 @@ components:
               - object
               - domain
           description: List of Organization Domains.
-        callback_endpoint:
-          type: string
-          description: >-
-            The immutable callback endpoint for this Connection. For SAML
-            connections this is the ACS URL; for OIDC connections this is the
-            redirect URI.
-          example: https://auth.workos.com/sso/saml/acs/conn_externalkey
         created_at:
           format: date-time
           type: string
@@ -35520,6 +35570,17 @@ components:
               items:
                 type: string
             - type: 'null'
+        config:
+          type: object
+          additionalProperties:
+            type: string
+          description: >-
+            The provider-specific config values in effect for this organization,
+            keyed by config field. Reflects the organization override for
+            organization-credential providers, otherwise the provider root.
+            Empty when none are configured.
+          example:
+            account_identifier: acme-prod
         created_at:
           type: string
           description: The timestamp when the configuration was created.
@@ -35538,6 +35599,7 @@ components:
         - name
         - enabled
         - scopes
+        - config
         - created_at
         - updated_at
     DataIntegrationConfigurationListResponse:
@@ -35589,6 +35651,20 @@ components:
             The OAuth client secret of the organization's own application. Must
             be provided together with `client_id`.
           example: ••••••••
+        config:
+          type: object
+          additionalProperties:
+            type: string
+          description: >-
+            Provider-specific config values to set for the organization, keyed
+            by config field. Only fields the provider declares are accepted, and
+            each value must match that field's pattern. Accepted only for
+            providers whose credentials are organization-managed; for shared or
+            custom credential providers, config belongs on the integration
+            itself (via the data-integrations API) and supplying it here is
+            rejected.
+          example:
+            account_identifier: acme-prod
     DataIntegration:
       type: object
       properties:
@@ -35653,6 +35729,7 @@ components:
             enum:
               - oauth
               - api_key
+              - client_credentials
           description: >-
             How accounts authenticate with the provider for this Data
             Integration.
@@ -36167,9 +36244,10 @@ components:
           enum:
             - oauth
             - api_key
+            - client_credentials
           description: >-
-            The authentication method used for this connection (`oauth` or
-            `api_key`). Defaults to `oauth` if absent.
+            The authentication method used for this connection (`oauth`,
+            `api_key`, or `client_credentials`). Defaults to `oauth` if absent.
           example: oauth
         api_key_last_4:
           type:
@@ -36277,10 +36355,11 @@ components:
                   enum:
                     - oauth
                     - api_key
+                    - client_credentials
                 description: >-
                   The authentication methods supported by this provider
-                  (`oauth`, `api_key`, or both). Defaults to `["oauth"]` if
-                  absent.
+                  (`oauth`, `api_key`, `client_credentials`, or a combination).
+                  Defaults to `["oauth"]` if absent.
                 example:
                   - oauth
               ownership:
@@ -36359,9 +36438,11 @@ components:
                         enum:
                           - oauth
                           - api_key
+                          - client_credentials
                         description: >-
                           The authentication method used for this connection
-                          (`oauth` or `api_key`). Defaults to `oauth` if absent.
+                          (`oauth`, `api_key`, or `client_credentials`).
+                          Defaults to `oauth` if absent.
                         example: oauth
                       api_key_last_4:
                         type:

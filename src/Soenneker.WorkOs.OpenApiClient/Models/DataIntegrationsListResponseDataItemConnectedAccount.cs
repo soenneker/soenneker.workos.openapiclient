@@ -23,7 +23,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ApiKeyLast4 { get; set; }
 #endif
-        /// <summary>The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent.</summary>
+        /// <summary>The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod? AuthMethod { get; set; }
         /// <summary>The timestamp when the connection was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

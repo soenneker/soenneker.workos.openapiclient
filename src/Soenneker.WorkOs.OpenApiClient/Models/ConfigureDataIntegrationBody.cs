@@ -30,6 +30,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ClientSecret { get; set; }
 #endif
+        /// <summary>Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field&apos;s pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyConfigProperty? Config { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyConfigProperty Config { get; set; }
+#endif
         /// <summary>Whether the provider is enabled for the organization.</summary>
         public bool? Enabled { get; set; }
         /// <summary>The OAuth scopes to request for the organization. Pass `null` to inherit the provider scopes.</summary>
@@ -67,6 +75,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyConfigProperty.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "scopes", n => { Scopes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyScopes>(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyScopes.CreateFromDiscriminatorValue); } },
             };
@@ -80,6 +89,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyConfigProperty>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyScopes>("scopes", Scopes);
             writer.WriteAdditionalData(AdditionalData);

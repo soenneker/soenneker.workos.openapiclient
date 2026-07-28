@@ -14,7 +14,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The authentication methods supported by this provider (`oauth`, `api_key`, or both). Defaults to `[&quot;oauth&quot;]` if absent.</summary>
+        /// <summary>The authentication methods supported by this provider (`oauth`, `api_key`, `client_credentials`, or a combination). Defaults to `[&quot;oauth&quot;]` if absent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemAuthMethodsItem?>? AuthMethods { get; set; }

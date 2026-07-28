@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent.</summary>
+    /// <summary>The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ConnectedAccountAuthMethod
     {
@@ -14,6 +14,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "api_key")]
         #pragma warning disable CS1591
         ApiKey,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "client_credentials")]
+        #pragma warning disable CS1591
+        ClientCredentials,
         #pragma warning restore CS1591
     }
 }

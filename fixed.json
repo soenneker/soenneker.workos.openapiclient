@@ -8209,7 +8209,7 @@
             }
           },
           "400": {
-            "description": "\u0022The request body is invalid. Possible reasons: the body is empty (at least one of \u0060enabled\u0060, \u0060scopes\u0060, or \u0060client_id\u0060 must be provided); \u0060client_id\u0060 and \u0060client_secret\u0060 are not provided together; or \u0060client_id\u0060/\u0060client_secret\u0060 were supplied for a provider that does not support organization-managed credentials.\u0022",
+            "description": "\u0022The request body is invalid. Possible reasons: the body is empty (at least one of \u0060enabled\u0060, \u0060scopes\u0060, \u0060client_id\u0060, or \u0060config\u0060 must be provided); \u0060client_id\u0060 and \u0060client_secret\u0060 are not provided together; \u0060client_id\u0060/\u0060client_secret\u0060 were supplied for a provider that does not support organization-managed credentials; or \u0060config\u0060 contains a field the provider does not declare, a value that does not match that field\u0027s pattern, or was supplied for a provider whose credentials are not organization-managed.\u0022",
             "content": {
               "application/json": {
                 "schema": {
@@ -19197,11 +19197,6 @@
             },
             "description": "List of Organization Domains."
           },
-          "callback_endpoint": {
-            "type": "string",
-            "description": "The immutable callback endpoint for this Connection. For SAML connections this is the ACS URL; for OIDC connections this is the redirect URI.",
-            "example": "https://auth.workos.com/sso/saml/acs/conn_externalkey"
-          },
           "created_at": {
             "type": "string",
             "description": "An ISO 8601 timestamp.",
@@ -21327,6 +21322,7 @@
           "name",
           "enabled",
           "scopes",
+          "config",
           "created_at",
           "updated_at"
         ],
@@ -21376,6 +21372,9 @@
           },
           "scopes": {
             "$ref": "#/components/schemas/DataIntegrationConfigurationResponseScopes"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationConfigurationResponseConfigProperty"
           },
           "created_at": {
             "type": "string",
@@ -21447,6 +21446,9 @@
             "type": "string",
             "description": "The OAuth client secret of the organization\u0027s own application. Must be provided together with \u0060client_id\u0060.",
             "example": "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
+          },
+          "config": {
+            "$ref": "#/components/schemas/ConfigureDataIntegrationBodyConfigProperty"
           }
         }
       },
@@ -34190,6 +34192,26 @@
         },
         "description": "The Audit Log Stream currently configured for the organization, if any."
       },
+      "DataIntegrationConfigurationResponseConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The provider-specific config values in effect for this organization, keyed by config field. Reflects the organization override for organization-credential providers, otherwise the provider root. Empty when none are configured.",
+        "example": {
+          "account_identifier": "acme-prod"
+        }
+      },
+      "ConfigureDataIntegrationBodyConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field\u0027s pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected.",
+        "example": {
+          "account_identifier": "acme-prod"
+        }
+      },
       "DataIntegrationCredentialsProperty": {
         "required": [
           "type",
@@ -34320,7 +34342,7 @@
             "items": {
               "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemAuthMethodsItem"
             },
-            "description": "The authentication methods supported by this provider (\u0060oauth\u0060, \u0060api_key\u0060, or both). Defaults to \u0060[\u0022oauth\u0022]\u0060 if absent."
+            "description": "The authentication methods supported by this provider (\u0060oauth\u0060, \u0060api_key\u0060, \u0060client_credentials\u0060, or a combination). Defaults to \u0060[\u0022oauth\u0022]\u0060 if absent."
           },
           "ownership": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemOwnership"
@@ -47064,6 +47086,9 @@
             "description": "The URL to redirect the user to after authorization.",
             "format": "uri",
             "example": "https://example.com/callback"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig"
           }
         }
       },
@@ -49526,6 +49551,9 @@
           },
           {
             "$ref": "#/components/schemas/UserlandUserInvitesControllerCreate400ResponseOneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandUserInvitesControllerCreate400ResponseOneOf9"
           }
         ],
         "properties": {
@@ -49766,6 +49794,9 @@
           },
           {
             "$ref": "#/components/schemas/UserlandUserInvitesControllerResend400ResponseOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandUserInvitesControllerResend400ResponseOneOf4"
           }
         ],
         "properties": {
@@ -50102,6 +50133,9 @@
           },
           {
             "$ref": "#/components/schemas/UserlandMagicAuthControllerSendMagicAuthCodeAndReturn400ResponseOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandMagicAuthControllerSendMagicAuthCodeAndReturn400ResponseOneOf4"
           }
         ],
         "properties": {
@@ -56188,6 +56222,38 @@
           }
         }
       },
+      "UserlandUserInvitesControllerCreate400ResponseOneOf9": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "email_domain_not_deliverable"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "email_domain_not_deliverable",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email_domain_not_deliverable",
+                  "name": "EmailDomainNotDeliverable"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "UserlandUserInvitesControllerResend400ResponseOneOf1": {
         "required": [
           "code",
@@ -56275,6 +56341,38 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Invite has already been accepted."
+          }
+        }
+      },
+      "UserlandUserInvitesControllerResend400ResponseOneOf4": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "email_domain_not_deliverable"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "email_domain_not_deliverable",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email_domain_not_deliverable",
+                  "name": "EmailDomainNotDeliverable"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -56371,6 +56469,38 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "The request failed due to: sign_up_not_allowed."
+          }
+        }
+      },
+      "UserlandMagicAuthControllerSendMagicAuthCodeAndReturn400ResponseOneOf4": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "email_domain_not_deliverable"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "email_domain_not_deliverable",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email_domain_not_deliverable",
+                  "name": "EmailDomainNotDeliverable"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -58322,6 +58452,20 @@
         },
         "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
       },
+      "DataIntegrationConfigurationResponseConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The provider-specific config values in effect for this organization, keyed by config field. Reflects the organization override for organization-credential providers, otherwise the provider root. Empty when none are configured."
+      },
+      "ConfigureDataIntegrationBodyConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field\u0027s pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected."
+      },
       "DataIntegrationConfigProperty": {
         "type": "object",
         "additionalProperties": {
@@ -58717,6 +58861,16 @@
             "format": "date-time",
             "example": "2026-01-15T12:00:00.000Z"
           }
+        }
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Connect-time config values for the provider-declared \u0060installation\u0060-scope fields (e.g. a Zendesk \u0060subdomain\u0060), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.",
+        "example": {
+          "subdomain": "acme"
         }
       },
       "EventsControllerList422ResponseErrorsItem": {
@@ -62530,7 +62684,8 @@
       "DataIntegrationAuthMethodsItem": {
         "enum": [
           "oauth",
-          "api_key"
+          "api_key",
+          "client_credentials"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -62545,6 +62700,10 @@
             {
               "value": "api_key",
               "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
             }
           ]
         }
@@ -62552,11 +62711,12 @@
       "ConnectedAccountAuthMethod": {
         "enum": [
           "oauth",
-          "api_key"
+          "api_key",
+          "client_credentials"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The authentication method used for this connection (\u0060oauth\u0060 or \u0060api_key\u0060). Defaults to \u0060oauth\u0060 if absent.",
+        "description": "The authentication method used for this connection (\u0060oauth\u0060, \u0060api_key\u0060, or \u0060client_credentials\u0060). Defaults to \u0060oauth\u0060 if absent.",
         "example": "oauth",
         "x-ms-enum": {
           "name": "ConnectedAccountAuthMethod",
@@ -62569,6 +62729,10 @@
             {
               "value": "api_key",
               "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
             }
           ]
         }
@@ -63222,11 +63386,12 @@
       "DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod": {
         "enum": [
           "oauth",
-          "api_key"
+          "api_key",
+          "client_credentials"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The authentication method used for this connection (\u0060oauth\u0060 or \u0060api_key\u0060). Defaults to \u0060oauth\u0060 if absent.",
+        "description": "The authentication method used for this connection (\u0060oauth\u0060, \u0060api_key\u0060, or \u0060client_credentials\u0060). Defaults to \u0060oauth\u0060 if absent.",
         "example": "oauth",
         "x-ms-enum": {
           "name": "DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod",
@@ -63239,6 +63404,10 @@
             {
               "value": "api_key",
               "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
             }
           ]
         }
@@ -63463,7 +63632,8 @@
       "DataIntegrationsListResponseDataItemAuthMethodsItem": {
         "enum": [
           "oauth",
-          "api_key"
+          "api_key",
+          "client_credentials"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -63478,6 +63648,10 @@
             {
               "value": "api_key",
               "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
             }
           ]
         }
