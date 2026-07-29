@@ -156,7 +156,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
             [QueryParameter("organization")]
             public string Organization { get; set; }
 #endif
-            /// <summary>If set to `login`, forces re-authentication at the identity provider. For SAML connections this sets `ForceAuthn=&quot;true&quot;` in the SAML request.</summary>
+            /// <summary>If set to `login`, forces re-authentication at the identity provider. For supported SAML providers this sets `ForceAuthn=&quot;true&quot;` in the SAML request; providers that don&apos;t support it are unaffected.</summary>
             [QueryParameter("prompt")]
             public global::Soenneker.WorkOs.OpenApiClient.Sso.Authorize.GetPromptQueryParameterType? Prompt { get; set; }
             /// <summary>Used to initiate OAuth authentication with various providers.</summary>
