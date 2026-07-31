@@ -5594,7 +5594,7 @@
           "pipes"
         ],
         "summary": "Create a data integration",
-        "description": "Creates a data integration for a provider. Set \u0060credentials.type\u0060 to \u0060custom\u0060 to use your own OAuth app credentials or \u0060organization\u0060 to have each organization supply its own. Set \u0060auth_methods\u0060 to \u0060[\u0022api_key\u0022]\u0060 to create an API key integration; you may optionally supply an \u0060api_key\u0060 block to install a first tenant in the same call. For a built-in provider, pass its slug as \u0060provider\u0060. For a custom provider, pass a new slug plus a \u0060custom_provider\u0060 definition.",
+        "description": "Creates a data integration for a provider. Set \u0060credentials.type\u0060 to \u0060custom\u0060 to use your own OAuth app credentials or \u0060organization\u0060 to have each organization supply its own. Set \u0060auth_methods\u0060 to \u0060[\u0022api_key\u0022]\u0060 to create an API key integration; you may optionally supply an \u0060api_key\u0060 block to install a first tenant in the same call. Set \u0060auth_methods\u0060 to \u0060[\u0022client_credentials\u0022]\u0060 to create a client-credentials integration; client credentials are installed per-tenant afterwards. For a built-in provider, pass its slug as \u0060provider\u0060. For a custom provider, pass a new slug plus a \u0060custom_provider\u0060 definition.",
         "operationId": "DataIntegrationsManagementControllerCreateDataIntegration",
         "requestBody": {
           "content": {
@@ -6047,6 +6047,100 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data-integrations/{slug}/client-credentials": {
+      "put": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Upsert client credentials for a connected account",
+        "description": "Creates or updates a client-credentials-based installation for the specified integration and user. If an installation already exists, the stored client credentials are rotated to the new values.",
+        "operationId": "DataIntegrationsControllerUpsertClientCredentials",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The identifier of the integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "salesforce"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The resulting connected account after the upsert.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectedAccount"
+                },
+                "example": {
+                  "object": "connected_account",
+                  "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "scopes": [],
+                  "auth_method": "client_credentials",
+                  "state": "connected",
+                  "created_at": "2024-01-16T14:20:00.000Z",
+                  "updated_at": "2024-01-16T14:20:00.000Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentials400Response"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentials403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Data integration not found for the given provider slug.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentials404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The matched installation uses a different auth method than this endpoint expects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthMethodMismatchError"
                 }
               }
             }
@@ -16107,7 +16201,7 @@
             "items": {
               "$ref": "#/components/schemas/CreateDataIntegrationDtoAuthMethodsItem"
             },
-            "description": "How accounts authenticate with the provider. Defaults to \u0060[\u0022oauth\u0022]\u0060. Use \u0060[\u0022api_key\u0022]\u0060 to declare an API key integration; \u0060credentials\u0060 is then not required and keys are supplied per-tenant (optionally via \u0060api_key\u0060 on this request)."
+            "description": "How accounts authenticate with the provider. Defaults to \u0060[\u0022oauth\u0022]\u0060. Use \u0060[\u0022api_key\u0022]\u0060 to declare an API key integration; \u0060credentials\u0060 is then not required and keys are supplied per-tenant (optionally via \u0060api_key\u0060 on this request). Use \u0060[\u0022client_credentials\u0022]\u0060 to declare a client-credentials integration; \u0060credentials\u0060 is likewise not required and client credentials are supplied per-tenant."
           },
           "config": {
             "$ref": "#/components/schemas/CreateDataIntegrationDtoConfigProperty"
@@ -21538,7 +21632,7 @@
             "description": "How accounts authenticate with the provider for this Data Integration."
           },
           "credentials": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsProperty"
+            "$ref": "#/components/schemas/DataIntegrationCredentialsComposed"
           },
           "installation": {
             "$ref": "#/components/schemas/DataIntegrationInstallation"
@@ -31492,6 +31586,33 @@
         ],
         "description": "The OAuth scopes configured for the Data Integration. \u0060null\u0060 when the provider\u0027s configured scopes are used."
       },
+      "DataIntegrationCredentialsComposed": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsComposedOneOf1"
+          },
+          {
+            "type": "object"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "description": "The integration-level OAuth app credentials. \u0060null\u0060 for \u0060api_key\u0060 integrations, which hold no OAuth credentials (keys are installed per-tenant).",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "DataIntegrationCredentialsComposedOneOf1": "#/components/schemas/DataIntegrationCredentialsComposedOneOf1"
+          }
+        }
+      },
       "DataIntegrationInstallation": {
         "required": [
           "type"
@@ -32162,6 +32283,29 @@
             "type": "string",
             "description": "The last name of the flag owner.",
             "example": "Doe"
+          }
+        }
+      },
+      "DataIntegrationCredentialsComposedOneOf1": {
+        "required": [
+          "type",
+          "client_id",
+          "redacted_client_secret"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsComposedOneOf1Type"
+          },
+          "client_id": {
+            "type": "string",
+            "description": "The OAuth client ID configured for the provider app. Null for \u0060organization\u0060 credentials.",
+            "example": "Iv1.abc123"
+          },
+          "redacted_client_secret": {
+            "type": "string",
+            "description": "The last four characters of the OAuth client secret. The full secret is never returned. Null for \u0060organization\u0060 credentials.",
+            "example": 6789
           }
         }
       },
@@ -34276,30 +34420,6 @@
         "example": {
           "account_identifier": "acme-prod"
         }
-      },
-      "DataIntegrationCredentialsProperty": {
-        "required": [
-          "type",
-          "client_id",
-          "redacted_client_secret"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsPropertyType"
-          },
-          "client_id": {
-            "type": "string",
-            "description": "The OAuth client ID configured for the provider app. Null for \u0060organization\u0060 credentials.",
-            "example": "Iv1.abc123"
-          },
-          "redacted_client_secret": {
-            "type": "string",
-            "description": "The last four characters of the OAuth client secret. The full secret is never returned. Null for \u0060organization\u0060 credentials.",
-            "example": 6789
-          }
-        },
-        "description": "The credentials configured for the Data Integration."
       },
       "DataIntegrationConfig": {
         "type": "object",
@@ -47210,6 +47330,80 @@
           }
         }
       },
+      "DataIntegrationsControllerUpsertClientCredentialsRequest": {
+        "required": [
+          "user_id",
+          "client_id",
+          "client_secret"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "A [User](/reference/authkit/user) identifier.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "client_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The OAuth client ID to store for this integration.",
+            "example": "3MVG9..."
+          },
+          "client_secret": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The OAuth client secret to store for this integration.",
+            "example": "shhh-secret"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestConfig"
+          }
+        }
+      },
+      "DataIntegrationsControllerUpsertClientCredentials400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsControllerUpsertClientCredentials403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsControllerUpsertClientCredentials404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "DataIntegrationsControllerVendCredentialsRequest": {
         "required": [
           "user_id"
@@ -58952,6 +59146,16 @@
           "subdomain": "acme"
         }
       },
+      "DataIntegrationsControllerUpsertClientCredentialsRequestConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific configuration values collected for this installation, keyed by the provider\u0027s config field descriptors.",
+        "example": {
+          "mydomain": "acme"
+        }
+      },
       "EventsControllerList422ResponseErrorsItem": {
         "required": [
           "code",
@@ -59754,7 +59958,8 @@
       "CreateDataIntegrationDtoAuthMethodsItem": {
         "enum": [
           "oauth",
-          "api_key"
+          "api_key",
+          "client_credentials"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -59769,6 +59974,10 @@
             {
               "value": "api_key",
               "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
             }
           ]
         }
@@ -63448,6 +63657,30 @@
           ]
         }
       },
+      "DataIntegrationCredentialsComposedOneOf1Type": {
+        "enum": [
+          "custom",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The credentials type. \u0060custom\u0060 uses your own OAuth app credentials; \u0060organization\u0060 has each organization supply its own credentials (so \u0060client_id\u0060/\u0060redacted_client_secret\u0060 are null on the integration itself).",
+        "example": "custom",
+        "x-ms-enum": {
+          "name": "DataIntegrationCredentialsComposedOneOf1Type",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "custom",
+              "name": "Custom"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
       "DataIntegrationCustomProviderOneOf1AuthenticateVia": {
         "enum": [
           "request_body",
@@ -63690,30 +63923,6 @@
             {
               "value": "invalid",
               "name": "Invalid"
-            }
-          ]
-        }
-      },
-      "DataIntegrationCredentialsPropertyType": {
-        "enum": [
-          "custom",
-          "organization"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "The credentials type. \u0060custom\u0060 uses your own OAuth app credentials; \u0060organization\u0060 has each organization supply its own credentials (so \u0060client_id\u0060/\u0060redacted_client_secret\u0060 are null on the integration itself).",
-        "example": "custom",
-        "x-ms-enum": {
-          "name": "DataIntegrationCredentialsPropertyType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "custom",
-              "name": "Custom"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
             }
           ]
         }

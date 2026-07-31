@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto ApiKey { get; set; }
 #endif
-        /// <summary>How accounts authenticate with the provider. Defaults to `[&quot;oauth&quot;]`. Use `[&quot;api_key&quot;]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request).</summary>
+        /// <summary>How accounts authenticate with the provider. Defaults to `[&quot;oauth&quot;]`. Use `[&quot;api_key&quot;]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request). Use `[&quot;client_credentials&quot;]` to declare a client-credentials integration; `credentials` is likewise not required and client credentials are supplied per-tenant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem?>? AuthMethods { get; set; }

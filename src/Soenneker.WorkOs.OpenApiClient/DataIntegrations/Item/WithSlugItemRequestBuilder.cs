@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey;
 using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize;
+using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ClientCredentials;
 using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials;
 using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token;
 using Soenneker.WorkOs.OpenApiClient.Models;
@@ -30,6 +31,11 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
         public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize.AuthorizeRequestBuilder Authorize
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize.AuthorizeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The clientCredentials property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ClientCredentials.ClientCredentialsRequestBuilder ClientCredentials
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ClientCredentials.ClientCredentialsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The credentials property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials.CredentialsRequestBuilder Credentials

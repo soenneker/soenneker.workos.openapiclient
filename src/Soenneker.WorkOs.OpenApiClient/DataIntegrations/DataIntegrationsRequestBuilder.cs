@@ -65,7 +65,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `[&quot;api_key&quot;]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition.
+        /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `[&quot;api_key&quot;]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. Set `auth_methods` to `[&quot;client_credentials&quot;]` to create a client-credentials integration; client credentials are installed per-tenant afterwards. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration"/></returns>
         /// <param name="body">The request body</param>
@@ -117,7 +117,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             return requestInfo;
         }
         /// <summary>
-        /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `[&quot;api_key&quot;]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition.
+        /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `[&quot;api_key&quot;]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. Set `auth_methods` to `[&quot;client_credentials&quot;]` to create a client-credentials integration; client credentials are installed per-tenant afterwards. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
