@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ApplicationCredentialsControllerList200ResponseResponseJsonItem : IAdditionalDataHolder, IParsable
+    public partial class ApplicationCredentialsControllerList200ResponseSchemaItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,7 +27,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The timestamp when the client secret was last used, or null if never used.</summary>
         public DateTimeOffset? LastUsedAt { get; set; }
         /// <summary>Distinguishes the connect application secret object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseSchemaItem_object? Object { get; set; }
         /// <summary>A hint showing the last few characters of the secret value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,21 +39,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseSchemaItem"/> and sets the default values.
         /// </summary>
-        public ApplicationCredentialsControllerList200ResponseResponseJsonItem()
+        public ApplicationCredentialsControllerList200ResponseSchemaItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseSchemaItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseSchemaItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseSchemaItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,7 +66,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseSchemaItem_object>(); } },
                 { "secret_hint", n => { SecretHint = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -81,7 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseResponseJsonItem_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationCredentialsControllerList200ResponseSchemaItem_object>("object", Object);
             writer.WriteStringValue("secret_hint", SecretHint);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>Distinguishes the connect application secret object.</summary>
+    /// <summary>The type of the identity.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ApplicationCredentialsControllerList200ResponseResponseJsonItem_object
+    public enum UserlandUserIdentitiesControllerGet200ResponseSchemaItem_type
     {
-        [EnumMember(Value = "connect_application_secret")]
+        [EnumMember(Value = "OAuth")]
         #pragma warning disable CS1591
-        ConnectApplicationSecret,
+        OAuth,
         #pragma warning restore CS1591
     }
 }

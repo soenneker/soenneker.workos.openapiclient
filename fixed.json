@@ -5262,7 +5262,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApplicationCredentialsControllerList200ResponseResponseJson"
+                  "$ref": "#/components/schemas/ApplicationCredentialsControllerList200ResponseSchema"
                 }
               }
             }
@@ -6486,7 +6486,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DirectoriesControllerDeleteDirectory202ResponseResponseJson"
+                  "$ref": "#/components/schemas/DirectoriesControllerDeleteDirectory202ResponseSchema"
                 }
               }
             }
@@ -6798,7 +6798,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DirectoryUsersControllerList429ResponseResponseJson"
+                  "$ref": "#/components/schemas/DirectoryUsersControllerList429ResponseSchema"
                 }
               }
             }
@@ -12785,7 +12785,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserlandUserIdentitiesControllerGet200ResponseResponseJson"
+                  "$ref": "#/components/schemas/UserlandUserIdentitiesControllerGet200ResponseSchema"
                 }
               }
             }
@@ -52825,19 +52825,19 @@
           }
         }
       },
-      "ApplicationCredentialsControllerList200ResponseResponseJson": {
+      "ApplicationCredentialsControllerList200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ApplicationCredentialsControllerList200ResponseResponseJsonItem"
+          "$ref": "#/components/schemas/ApplicationCredentialsControllerList200ResponseSchemaItem"
         }
       },
       "ApplicationCredentialsControllerCreateRequest": {
         "type": "object"
       },
-      "DirectoriesControllerDeleteDirectory202ResponseResponseJson": {
+      "DirectoriesControllerDeleteDirectory202ResponseSchema": {
         "type": "object"
       },
-      "DirectoryUsersControllerList429ResponseResponseJson": {
+      "DirectoryUsersControllerList429ResponseSchema": {
         "type": "string"
       },
       "DefaultResponse": {
@@ -52845,10 +52845,10 @@
         "type": "object",
         "description": "Default response schema"
       },
-      "UserlandUserIdentitiesControllerGet200ResponseResponseJson": {
+      "UserlandUserIdentitiesControllerGet200ResponseSchema": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/UserlandUserIdentitiesControllerGet200ResponseResponseJsonItem"
+          "$ref": "#/components/schemas/UserlandUserIdentitiesControllerGet200ResponseSchemaItem"
         }
       },
       "ConnectApplicationAllOf1OneOf1": {
@@ -59557,7 +59557,7 @@
           }
         }
       },
-      "ApplicationCredentialsControllerList200ResponseResponseJsonItem": {
+      "ApplicationCredentialsControllerList200ResponseSchemaItem": {
         "required": [
           "object",
           "id",
@@ -59615,7 +59615,7 @@
           }
         }
       },
-      "UserlandUserIdentitiesControllerGet200ResponseResponseJsonItem": {
+      "UserlandUserIdentitiesControllerGet200ResponseSchemaItem": {
         "required": [
           "idp_id",
           "type",

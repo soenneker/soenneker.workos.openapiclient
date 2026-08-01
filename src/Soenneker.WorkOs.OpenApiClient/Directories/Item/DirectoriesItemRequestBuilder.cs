@@ -36,17 +36,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories.Item
         /// <summary>
         /// Permanently deletes an existing directory. It cannot be undone.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseResponseJson"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory403Response">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseResponseJson?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseSchema?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseResponseJson> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseSchema> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -54,7 +54,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories.Item
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory403Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseResponseJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseResponseJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseSchema>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory202ResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get the details of an existing directory.
