@@ -24,7 +24,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How client credentials are sent when exchanging authorization codes and refreshing tokens.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDtoAuthenticateVia? AuthenticateVia { get; set; }
-        /// <summary>The provider&apos;s OAuth authorization endpoint.</summary>
+        /// <summary>The provider&apos;s OAuth authorization endpoint. Required for OAuth providers; omit for `api_key` providers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AuthorizationUrl { get; set; }
@@ -70,7 +70,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string TokenBodyContentType { get; set; }
 #endif
-        /// <summary>The provider&apos;s OAuth token endpoint.</summary>
+        /// <summary>The provider&apos;s OAuth token endpoint. Required for OAuth providers; omit for `api_key` providers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TokenUrl { get; set; }

@@ -7088,6 +7088,7 @@ paths:
               - GoogleOAuth
               - GoogleOIDC
               - GoogleSAML
+              - GrokOAuth
               - IntuitOAuth
               - JumpCloudSAML
               - KeycloakSAML
@@ -17715,6 +17716,7 @@ paths:
                         - GithubOAuth
                         - GitLabOAuth
                         - GoogleOAuth
+                        - GrokOAuth
                         - IntuitOAuth
                         - LinkedInOAuth
                         - MicrosoftOAuth
@@ -21182,12 +21184,16 @@ components:
         authorization_url:
           type: string
           format: uri
-          description: The provider's OAuth authorization endpoint.
+          description: >-
+            The provider's OAuth authorization endpoint. Required for OAuth
+            providers; omit for `api_key` providers.
           example: https://provider.example.com/oauth/authorize
         token_url:
           type: string
           format: uri
-          description: The provider's OAuth token endpoint.
+          description: >-
+            The provider's OAuth token endpoint. Required for OAuth providers;
+            omit for `api_key` providers.
           example: https://provider.example.com/oauth/token
         refresh_token_url:
           type:
@@ -21244,8 +21250,6 @@ components:
           example: request_body
       required:
         - name
-        - authorization_url
-        - token_url
     CreateDataIntegrationDto:
       type: object
       properties:
@@ -24808,6 +24812,7 @@ components:
             - GoogleOAuth
             - GoogleOIDC
             - GoogleSAML
+            - GrokOAuth
             - IntuitOAuth
             - JumpCloudSAML
             - KeycloakSAML
@@ -25917,6 +25922,12 @@ components:
             The timestamp when the Waitlist User was approved, or null if not
             yet approved.
           example: null
+        waitlist_id:
+          type:
+            - string
+            - 'null'
+          description: The unique ID of the Waitlist that the Waitlist User joined.
+          example: waitlist_01E4ZCR3C56J083X43JQXF3JK5
         created_at:
           format: date-time
           type: string
@@ -28600,6 +28611,7 @@ components:
                         - GoogleOAuth
                         - GoogleOIDC
                         - GoogleSAML
+                        - GrokOAuth
                         - IntuitOAuth
                         - JumpCloudSAML
                         - KeycloakSAML
@@ -28765,6 +28777,7 @@ components:
                         - GoogleOAuth
                         - GoogleOIDC
                         - GoogleSAML
+                        - GrokOAuth
                         - IntuitOAuth
                         - JumpCloudSAML
                         - KeycloakSAML
@@ -28930,6 +28943,7 @@ components:
                         - GoogleOAuth
                         - GoogleOIDC
                         - GoogleSAML
+                        - GrokOAuth
                         - IntuitOAuth
                         - JumpCloudSAML
                         - KeycloakSAML
@@ -37706,6 +37720,7 @@ components:
             - GitHubOAuth
             - GitLabOAuth
             - GoogleOAuth
+            - GrokOAuth
             - IntuitOAuth
             - LinkedInOAuth
             - MicrosoftOAuth
@@ -37984,6 +37999,7 @@ components:
             - GoogleOAuth
             - GoogleOIDC
             - GoogleSAML
+            - GrokOAuth
             - IntuitOAuth
             - JumpCloudSAML
             - KeycloakSAML

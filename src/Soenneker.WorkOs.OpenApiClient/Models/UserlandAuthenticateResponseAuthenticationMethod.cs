@@ -51,6 +51,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         GoogleOAuth,
         #pragma warning restore CS1591
+        [EnumMember(Value = "GrokOAuth")]
+        #pragma warning disable CS1591
+        GrokOAuth,
+        #pragma warning restore CS1591
         [EnumMember(Value = "IntuitOAuth")]
         #pragma warning disable CS1591
         IntuitOAuth,

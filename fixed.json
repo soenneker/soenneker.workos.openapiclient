@@ -16106,9 +16106,7 @@
       },
       "CustomProviderDefinitionDto": {
         "required": [
-          "name",
-          "authorization_url",
-          "token_url"
+          "name"
         ],
         "type": "object",
         "properties": {
@@ -16119,13 +16117,13 @@
           },
           "authorization_url": {
             "type": "string",
-            "description": "The provider\u0027s OAuth authorization endpoint.",
+            "description": "The provider\u0027s OAuth authorization endpoint. Required for OAuth providers; omit for \u0060api_key\u0060 providers.",
             "format": "uri",
             "example": "https://provider.example.com/oauth/authorize"
           },
           "token_url": {
             "type": "string",
-            "description": "The provider\u0027s OAuth token endpoint.",
+            "description": "The provider\u0027s OAuth token endpoint. Required for OAuth providers; omit for \u0060api_key\u0060 providers.",
             "format": "uri",
             "example": "https://provider.example.com/oauth/token"
           },
@@ -20270,6 +20268,11 @@
             "description": "The timestamp when the Waitlist User was approved, or null if not yet approved.",
             "format": "date-time",
             "example": null
+          },
+          "waitlist_id": {
+            "type": "string",
+            "description": "The unique ID of the Waitlist that the Waitlist User joined.",
+            "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "created_at": {
             "type": "string",
@@ -62294,6 +62297,7 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
+          "GrokOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -63267,6 +63271,7 @@
           "GitHubOAuth",
           "GitLabOAuth",
           "GoogleOAuth",
+          "GrokOAuth",
           "IntuitOAuth",
           "LinkedInOAuth",
           "MicrosoftOAuth",
@@ -63343,6 +63348,7 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
+          "GrokOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -64154,6 +64160,7 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
+          "GrokOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -64405,6 +64412,7 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
+          "GrokOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -64656,6 +64664,7 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
+          "GrokOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -66952,6 +66961,7 @@
           "GithubOAuth",
           "GitLabOAuth",
           "GoogleOAuth",
+          "GrokOAuth",
           "IntuitOAuth",
           "LinkedInOAuth",
           "MicrosoftOAuth",
@@ -67150,6 +67160,7 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
+          "GrokOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
