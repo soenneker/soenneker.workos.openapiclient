@@ -42,6 +42,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentials400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentials404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentials422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -57,6 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentials400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentials404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentials422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

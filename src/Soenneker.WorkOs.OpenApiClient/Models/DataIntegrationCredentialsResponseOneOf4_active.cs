@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>Indicates credentials are available.</summary>
+    /// <summary>Indicates credentials are not available.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationCredentialsResponseOneOf3_active
+    public enum DataIntegrationCredentialsResponseOneOf4_active
     {
-        [EnumMember(Value = "True")]
+        [EnumMember(Value = "False")]
         #pragma warning disable CS1591
-        TrueValue,
+        FalseValue,
         #pragma warning restore CS1591
     }
 }
