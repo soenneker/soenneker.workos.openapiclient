@@ -16767,6 +16767,16 @@
                           "x-exclude-from-lint": true
                         }
                       }
+                    },
+                    {
+                      "required": [
+                        "password_salt_position"
+                      ],
+                      "properties": {
+                        "password_salt_position": {
+                          "x-exclude-from-lint": true
+                        }
+                      }
                     }
                   ]
                 }
@@ -16842,7 +16852,13 @@
               ],
               "hashed": [
                 "password_hash",
-                "password_hash_type"
+                "password_hash_type",
+                "password_salt_position"
+              ]
+            },
+            "optionalFields": {
+              "hashed": [
+                "password_salt_position"
               ]
             }
           }
@@ -16884,6 +16900,16 @@
                       ],
                       "properties": {
                         "password_hash_type": {
+                          "x-exclude-from-lint": true
+                        }
+                      }
+                    },
+                    {
+                      "required": [
+                        "password_salt_position"
+                      ],
+                      "properties": {
+                        "password_salt_position": {
                           "x-exclude-from-lint": true
                         }
                       }
@@ -16952,7 +16978,13 @@
               ],
               "hashed": [
                 "password_hash",
-                "password_hash_type"
+                "password_hash_type",
+                "password_salt_position"
+              ]
+            },
+            "optionalFields": {
+              "hashed": [
+                "password_salt_position"
               ]
             }
           }
@@ -21874,6 +21906,19 @@
             "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
             "example": null
           },
+          "client_id": {
+            "type": "string",
+            "description": "The client ID supplied for this connection. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "example": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc"
+          },
+          "client_secret_last_4": {
+            "type": "string",
+            "description": "The last four characters of the client secret supplied for this connection, or \u0060null\u0060 when it can\u0027t be read. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "example": "cdef"
+          },
+          "config": {
+            "$ref": "#/components/schemas/ConnectedAccountConfigProperty"
+          },
           "state": {
             "$ref": "#/components/schemas/ConnectedAccountState"
           },
@@ -24065,13 +24110,23 @@
                   "x-exclude-from-lint": true
                 }
               }
+            },
+            {
+              "required": [
+                "password_salt_position"
+              ],
+              "properties": {
+                "password_salt_position": {
+                  "x-exclude-from-lint": true
+                }
+              }
             }
           ]
         },
         "properties": {
           "password": {
             "type": "string",
-            "description": "The password to set for the user. Mutually exclusive with \u0060password_hash\u0060 and \u0060password_hash_type\u0060.",
+            "description": "The password to set for the user. Mutually exclusive with \u0060password_hash\u0060, \u0060password_hash_type\u0060, and \u0060password_salt_position\u0060.",
             "example": "strong_password_123!"
           }
         }
@@ -24104,6 +24159,9 @@
           },
           "password_hash_type": {
             "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf2OneOf3PasswordHashType"
+          },
+          "password_salt_position": {
+            "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition"
           }
         }
       },
@@ -24179,13 +24237,23 @@
                   "x-exclude-from-lint": true
                 }
               }
+            },
+            {
+              "required": [
+                "password_salt_position"
+              ],
+              "properties": {
+                "password_salt_position": {
+                  "x-exclude-from-lint": true
+                }
+              }
             }
           ]
         },
         "properties": {
           "password": {
             "type": "string",
-            "description": "The password to set for the user. Mutually exclusive with \u0060password_hash\u0060 and \u0060password_hash_type\u0060.",
+            "description": "The password to set for the user. Mutually exclusive with \u0060password_hash\u0060, \u0060password_hash_type\u0060, and \u0060password_salt_position\u0060.",
             "example": "strong_password_123!"
           }
         }
@@ -24218,6 +24286,9 @@
           },
           "password_hash_type": {
             "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf2OneOf3PasswordHashType"
+          },
+          "password_salt_position": {
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition"
           }
         }
       },
@@ -32519,6 +32590,19 @@
             "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
             "example": null
           },
+          "client_id": {
+            "type": "string",
+            "description": "The client ID supplied for this connection. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "example": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc"
+          },
+          "client_secret_last_4": {
+            "type": "string",
+            "description": "The last four characters of the client secret supplied for this connection, or \u0060null\u0060 when it can\u0027t be read. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "example": "cdef"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty"
+          },
           "state": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1State"
           },
@@ -34496,6 +34580,16 @@
           }
         },
         "description": "Pagination cursors for navigating between pages of results."
+      },
+      "ConnectedAccountConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+        "example": {
+          "instance_url": "https://example.my.salesforce.com"
+        }
       },
       "DataIntegrationsListResponseDataItem": {
         "required": [
@@ -41400,6 +41494,16 @@
         "description": "Additional static query parameters appended to the authorization request.",
         "example": {
           "prompt": "consent"
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountOneOf1Config": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+        "example": {
+          "instance_url": "https://example.my.salesforce.com"
         }
       },
       "AuditLogSchemaJsonActorMetadata": {
@@ -49648,6 +49752,12 @@
           },
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0400ResponseOneOf27"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0400ResponseOneOf28"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0400ResponseOneOf29"
           }
         ],
         "properties": {
@@ -49695,6 +49805,9 @@
           },
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf10"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf11"
           }
         ],
         "properties": {
@@ -51708,6 +51821,9 @@
           },
           {
             "$ref": "#/components/schemas/UserlandUsersControllerCreate0400ResponseOneOf6"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandUsersControllerCreate0400ResponseOneOf7"
           }
         ],
         "properties": {
@@ -51816,6 +51932,9 @@
           },
           {
             "$ref": "#/components/schemas/UserlandUsersControllerUpdate0400ResponseOneOf11"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandUsersControllerUpdate0400ResponseOneOf12"
           }
         ],
         "properties": {
@@ -55014,8 +55133,6 @@
           "client_secret",
           "grant_type",
           "code",
-          "verification_id",
-          "phone_number",
           "pending_authentication_token"
         ],
         "type": "object",
@@ -55053,12 +55170,12 @@
           },
           "verification_id": {
             "type": "string",
-            "description": "The ID of the Radar SMS verification being confirmed.",
+            "description": "The ID of the Radar SMS verification being confirmed. Required for sign-up challenges; omitted for sign-in challenges, where the verification is resolved server-side.",
             "example": "vrf_01HXYZ123456789ABCDEFGHIJ"
           },
           "phone_number": {
             "type": "string",
-            "description": "The phone number the Radar SMS challenge was sent to.",
+            "description": "The phone number the Radar SMS challenge was sent to. Required for sign-up challenges; omitted for sign-in challenges, where the phone number on file is resolved server-side.",
             "example": 15555550123
           },
           "pending_authentication_token": {
@@ -55424,6 +55541,70 @@
       },
       "UserlandSessionsControllerAuthenticate0400ResponseOneOf10": {
         "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "phone_number_required"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "phone_number_required",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "phone_number_required",
+                  "name": "PhoneNumberRequired"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf11": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "verification_id_required"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "verification_id_required",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "verification_id_required",
+                  "name": "VerificationIdRequired"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf12": {
+        "required": [
           "error",
           "error_description"
         ],
@@ -55454,7 +55635,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf11": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf13": {
         "required": [
           "error",
           "error_description"
@@ -55486,7 +55667,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf12": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf14": {
         "required": [
           "error",
           "error_description"
@@ -55518,7 +55699,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf13": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf15": {
         "required": [
           "error",
           "error_description"
@@ -55550,7 +55731,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf14": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf16": {
         "required": [
           "error",
           "error_description"
@@ -55582,7 +55763,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf15": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf17": {
         "required": [
           "error",
           "error_description"
@@ -55614,7 +55795,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf16": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf18": {
         "required": [
           "error",
           "error_description"
@@ -55646,7 +55827,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf17": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf19": {
         "required": [
           "error",
           "error_description"
@@ -55678,7 +55859,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf18": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf20": {
         "required": [
           "error",
           "error_description"
@@ -55710,7 +55891,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf19": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf21": {
         "required": [
           "error",
           "error_description"
@@ -55742,7 +55923,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf20": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf22": {
         "required": [
           "error",
           "error_description"
@@ -55774,7 +55955,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf21": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf23": {
         "required": [
           "error",
           "error_description"
@@ -55806,7 +55987,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf22": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf24": {
         "required": [
           "error",
           "error_description"
@@ -55838,7 +56019,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf23": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf25": {
         "required": [
           "error",
           "error_description"
@@ -55870,7 +56051,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf24": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf26": {
         "required": [
           "error",
           "error_description"
@@ -55902,7 +56083,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf25": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf27": {
         "required": [
           "error",
           "error_description"
@@ -55934,7 +56115,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf26": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf28": {
         "required": [
           "message"
         ],
@@ -55958,7 +56139,7 @@
           }
         }
       },
-      "UserlandSessionsControllerAuthenticate0400ResponseOneOf27": {
+      "UserlandSessionsControllerAuthenticate0400ResponseOneOf29": {
         "required": [
           "error",
           "error_description"
@@ -56297,6 +56478,38 @@
         }
       },
       "UserlandSessionsControllerAuthenticate0403ResponseOneOf10": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "radar_sms_sign_in_challenge"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "radar_sms_sign_in_challenge",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "radar_sms_sign_in_challenge",
+                  "name": "RadarSmsSignInChallenge"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "UserlandSessionsControllerAuthenticate0403ResponseOneOf11": {
         "required": [
           "code",
           "message"
@@ -57511,6 +57724,38 @@
         "properties": {
           "code": {
             "enum": [
+              "password_salt_position_requires_password_hash"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "password_salt_position_requires_password_hash",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "password_salt_position_requires_password_hash",
+                  "name": "PasswordSaltPositionRequiresPasswordHash"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "UserlandUsersControllerCreate0400ResponseOneOf7": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
               "invalid_metadata"
             ],
             "type": "string",
@@ -57679,6 +57924,38 @@
         "properties": {
           "code": {
             "enum": [
+              "password_salt_position_requires_password_hash"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "password_salt_position_requires_password_hash",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "password_salt_position_requires_password_hash",
+                  "name": "PasswordSaltPositionRequiresPasswordHash"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "UserlandUsersControllerUpdate0400ResponseOneOf6": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
               "email_already_verified"
             ],
             "type": "string",
@@ -57702,7 +57979,7 @@
           }
         }
       },
-      "UserlandUsersControllerUpdate0400ResponseOneOf6": {
+      "UserlandUsersControllerUpdate0400ResponseOneOf7": {
         "required": [
           "code",
           "message"
@@ -57734,7 +58011,7 @@
           }
         }
       },
-      "UserlandUsersControllerUpdate0400ResponseOneOf7": {
+      "UserlandUsersControllerUpdate0400ResponseOneOf8": {
         "required": [
           "code",
           "message"
@@ -57766,7 +58043,7 @@
           }
         }
       },
-      "UserlandUsersControllerUpdate0400ResponseOneOf8": {
+      "UserlandUsersControllerUpdate0400ResponseOneOf9": {
         "required": [
           "code",
           "message"
@@ -57798,7 +58075,7 @@
           }
         }
       },
-      "UserlandUsersControllerUpdate0400ResponseOneOf9": {
+      "UserlandUsersControllerUpdate0400ResponseOneOf10": {
         "required": [
           "code",
           "message"
@@ -57830,7 +58107,7 @@
           }
         }
       },
-      "UserlandUsersControllerUpdate0400ResponseOneOf10": {
+      "UserlandUsersControllerUpdate0400ResponseOneOf11": {
         "required": [
           "code",
           "message"
@@ -57862,7 +58139,7 @@
           }
         }
       },
-      "UserlandUsersControllerUpdate0400ResponseOneOf11": {
+      "UserlandUsersControllerUpdate0400ResponseOneOf12": {
         "required": [
           "code",
           "message"
@@ -58899,6 +59176,13 @@
         },
         "description": "Provider-specific config values set on the Data Integration (e.g. a Snowflake \u0060account_identifier\u0060), keyed by config field. Only fields the provider declares are accepted."
       },
+      "ConnectedAccountConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060."
+      },
       "UserlandUserOrganizationMembershipCustomAttributesProperty": {
         "type": "object",
         "additionalProperties": {
@@ -58956,6 +59240,13 @@
           "type": "string"
         },
         "description": "Additional static query parameters appended to the authorization request."
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060."
       },
       "AuditLogSchemaJsonActorMetadataProperty": {
         "type": "object",
@@ -62461,6 +62752,7 @@
           "GoogleOIDC",
           "GoogleSAML",
           "GrokOAuth",
+          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -62553,6 +62845,10 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
+            },
+            {
+              "value": "XOAuth",
+              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -63435,6 +63731,7 @@
           "GitLabOAuth",
           "GoogleOAuth",
           "GrokOAuth",
+          "XOAuth",
           "IntuitOAuth",
           "LinkedInOAuth",
           "MicrosoftOAuth",
@@ -63458,6 +63755,10 @@
             {
               "value": "SSO",
               "name": "Sso"
+            },
+            {
+              "value": "XOAuth",
+              "name": "XoAuth"
             }
           ]
         }
@@ -63512,6 +63813,7 @@
           "GoogleOIDC",
           "GoogleSAML",
           "GrokOAuth",
+          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -63604,6 +63906,10 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
+            },
+            {
+              "value": "XOAuth",
+              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -63725,6 +64031,30 @@
           ]
         }
       },
+      "CreateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition": {
+        "enum": [
+          "prefix",
+          "suffix"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "\u0022The position of the salt relative to the password when the \u0060password_hash\u0060 digest was computed: \u0060prefix\u0060 for \u0060hash(salt \u002B password)\u0060 or \u0060suffix\u0060 for \u0060hash(password \u002B salt)\u0060. Only supported with the \u0060ssha256\u0060 hash type and only valid when a \u0060password_hash\u0060 is provided. Defaults to \u0060suffix\u0060. Mutually exclusive with \u0060password\u0060.\u0022",
+        "example": "prefix",
+        "x-ms-enum": {
+          "name": "CreateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "prefix",
+              "name": "Prefix"
+            },
+            {
+              "value": "suffix",
+              "name": "Suffix"
+            }
+          ]
+        }
+      },
       "UpdateUserlandUserDtoAllOf2OneOf3PasswordHashType": {
         "enum": [
           "bcrypt",
@@ -63770,6 +64100,30 @@
             {
               "value": "argon2",
               "name": "Argon2"
+            }
+          ]
+        }
+      },
+      "UpdateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition": {
+        "enum": [
+          "prefix",
+          "suffix"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "\u0022The position of the salt relative to the password when the \u0060password_hash\u0060 digest was computed: \u0060prefix\u0060 for \u0060hash(salt \u002B password)\u0060 or \u0060suffix\u0060 for \u0060hash(password \u002B salt)\u0060. Only supported with the \u0060ssha256\u0060 hash type and only valid when a \u0060password_hash\u0060 is provided. Defaults to \u0060suffix\u0060. Mutually exclusive with \u0060password\u0060.\u0022",
+        "example": "prefix",
+        "x-ms-enum": {
+          "name": "UpdateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "prefix",
+              "name": "Prefix"
+            },
+            {
+              "value": "suffix",
+              "name": "Suffix"
             }
           ]
         }
@@ -64324,6 +64678,7 @@
           "GoogleOIDC",
           "GoogleSAML",
           "GrokOAuth",
+          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -64416,6 +64771,10 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
+            },
+            {
+              "value": "XOAuth",
+              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -64576,6 +64935,7 @@
           "GoogleOIDC",
           "GoogleSAML",
           "GrokOAuth",
+          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -64668,6 +65028,10 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
+            },
+            {
+              "value": "XOAuth",
+              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -64828,6 +65192,7 @@
           "GoogleOIDC",
           "GoogleSAML",
           "GrokOAuth",
+          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -64920,6 +65285,10 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
+            },
+            {
+              "value": "XOAuth",
+              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -67125,6 +67494,7 @@
           "GitLabOAuth",
           "GoogleOAuth",
           "GrokOAuth",
+          "XOAuth",
           "IntuitOAuth",
           "LinkedInOAuth",
           "MicrosoftOAuth",
@@ -67137,7 +67507,17 @@
         "type": "string",
         "additionalProperties": false,
         "description": "The type of OAuth provider for the identity.",
-        "example": "MicrosoftOAuth"
+        "example": "MicrosoftOAuth",
+        "x-ms-enum": {
+          "name": "UserlandUserIdentitiesControllerGet200ResponseItemProvider",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "XOAuth",
+              "name": "XoAuth"
+            }
+          ]
+        }
       },
       "UserlandUserSessionsControllerList200ResponseDataItemAuthMethod": {
         "enum": [
@@ -67324,6 +67704,7 @@
           "GoogleOIDC",
           "GoogleSAML",
           "GrokOAuth",
+          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -67414,6 +67795,10 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
+            },
+            {
+              "value": "XOAuth",
+              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",

@@ -25,6 +25,30 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod? AuthMethod { get; set; }
+        /// <summary>The client ID supplied for this connection. Only present when `auth_method` is `client_credentials`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ClientId { get; set; }
+#nullable restore
+#else
+        public string ClientId { get; set; }
+#endif
+        /// <summary>The last four characters of the client secret supplied for this connection, or `null` when it can&apos;t be read. Only present when `auth_method` is `client_credentials`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ClientSecretLast4 { get; set; }
+#nullable restore
+#else
+        public string ClientSecretLast4 { get; set; }
+#endif
+        /// <summary>The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding any it declares as secret. Only present when `auth_method` is `client_credentials`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty? Config { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty Config { get; set; }
+#endif
         /// <summary>The timestamp when the connection was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -148,6 +172,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "api_key_last_4", n => { ApiKeyLast4 = n.GetStringValue(); } },
                 { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod>(); } },
+                { "client_id", n => { ClientId = n.GetStringValue(); } },
+                { "client_secret_last_4", n => { ClientSecretLast4 = n.GetStringValue(); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty.CreateFromDiscriminatorValue); } },
                 { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount_object>(); } },
@@ -172,6 +199,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("api_key_last_4", ApiKeyLast4);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod>("auth_method", AuthMethod);
+            writer.WriteStringValue("client_id", ClientId);
+            writer.WriteStringValue("client_secret_last_4", ClientSecretLast4);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty>("config", Config);
             writer.WriteStringValue("created_at", Created_at);
             writer.WriteStringValue("createdAt", CreatedAt);
             writer.WriteStringValue("id", Id);

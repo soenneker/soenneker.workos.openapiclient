@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string PendingAuthenticationToken { get; set; }
 #endif
-        /// <summary>The phone number the Radar SMS challenge was sent to.</summary>
+        /// <summary>The phone number the Radar SMS challenge was sent to. Required for sign-up challenges; omitted for sign-in challenges, where the phone number on file is resolved server-side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PhoneNumber { get; set; }
@@ -80,7 +80,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string UserAgent { get; set; }
 #endif
-        /// <summary>The ID of the Radar SMS verification being confirmed.</summary>
+        /// <summary>The ID of the Radar SMS verification being confirmed. Required for sign-up challenges; omitted for sign-in challenges, where the verification is resolved server-side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VerificationId { get; set; }
