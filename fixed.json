@@ -12452,6 +12452,16 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": "409 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserlandUsersControllerDelete0409Response"
+                }
+              }
+            }
           }
         }
       }
@@ -52002,6 +52012,38 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "UserlandUsersControllerDelete0409Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "enum": [
+              "user_deletion_not_allowed"
+            ],
+            "type": "string",
+            "description": "The error code identifying the type of error.",
+            "example": "user_deletion_not_allowed",
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "user_deletion_not_allowed",
+                  "name": "UserDeletionNotAllowed"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
