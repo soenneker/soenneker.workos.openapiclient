@@ -12,7 +12,7 @@
       "name": "MIT",
       "url": "https://opensource.org/license/MIT"
     },
-    "version": "1"
+    "version": "1.0"
   },
   "servers": [
     {
@@ -6749,7 +6749,7 @@
             "description": "Filter Directory Users by the identity provider\u0027s unique identifier (\u0060idp_id\u0060). Requires the \u0060directory\u0060 parameter to also be provided.",
             "schema": {
               "type": "string",
-              "example": 2836
+              "example": "2836"
             }
           },
           {
@@ -14806,6 +14806,7 @@
             "type": "string",
             "description": "When the API key should expire. If omitted or in the past, the key expires immediately. Use null to clear a scheduled future expiration.",
             "format": "date-time",
+            "nullable": true,
             "example": "2030-01-01T00:00:00.000Z"
           }
         }
@@ -14852,6 +14853,7 @@
           "default": {
             "type": "boolean",
             "description": "Whether this is the default redirect URI.",
+            "nullable": true,
             "example": true
           }
         }
@@ -14889,6 +14891,7 @@
           "description": {
             "type": "string",
             "description": "A description for the application.",
+            "nullable": true,
             "example": "An application for managing user access"
           },
           "scopes": {
@@ -14896,18 +14899,21 @@
             "items": {
               "type": "string"
             },
-            "description": "The OAuth scopes granted to the application."
+            "description": "The OAuth scopes granted to the application.",
+            "nullable": true
           },
           "redirect_uris": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RedirectUriDto"
             },
-            "description": "Redirect URIs for the application."
+            "description": "Redirect URIs for the application.",
+            "nullable": true
           },
           "uses_pkce": {
             "type": "boolean",
             "description": "Whether the application uses PKCE (Proof Key for Code Exchange).",
+            "nullable": true,
             "example": true
           },
           "is_first_party": {
@@ -14918,6 +14924,7 @@
           "organization_id": {
             "type": "string",
             "description": "The organization ID this application belongs to. Required when is_first_party is false.",
+            "nullable": true,
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           }
         }
@@ -14955,6 +14962,7 @@
           "description": {
             "type": "string",
             "description": "A description for the application.",
+            "nullable": true,
             "example": "An application for managing user access"
           },
           "scopes": {
@@ -14962,7 +14970,8 @@
             "items": {
               "type": "string"
             },
-            "description": "The OAuth scopes granted to the application."
+            "description": "The OAuth scopes granted to the application.",
+            "nullable": true
           },
           "organization_id": {
             "type": "string",
@@ -14982,6 +14991,7 @@
           "description": {
             "type": "string",
             "description": "A description for the application.",
+            "nullable": true,
             "example": "An application for managing user access"
           },
           "scopes": {
@@ -14989,14 +14999,16 @@
             "items": {
               "type": "string"
             },
-            "description": "The OAuth scopes granted to the application."
+            "description": "The OAuth scopes granted to the application.",
+            "nullable": true
           },
           "redirect_uris": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RedirectUriDto"
             },
-            "description": "Updated redirect URIs for the application. OAuth applications only."
+            "description": "Updated redirect URIs for the application. OAuth applications only.",
+            "nullable": true
           }
         }
       },
@@ -15541,6 +15553,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the role\u0027s purpose.",
+            "nullable": true,
             "example": "Can manage billing and invoices"
           },
           "resource_type_slug": {
@@ -15564,6 +15577,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the role\u0027s purpose.",
+            "nullable": true,
             "example": "Can manage all financial operations"
           }
         }
@@ -15591,6 +15605,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the Permission.",
+            "nullable": true,
             "example": "Allows viewing document contents"
           },
           "resource_type_slug": {
@@ -15614,6 +15629,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the Permission.",
+            "nullable": true,
             "example": "Allows viewing document contents"
           }
         }
@@ -15641,6 +15657,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can edit resources"
           },
           "resource_type_slug": {
@@ -15664,6 +15681,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Full administrative access to all resources"
           }
         }
@@ -15731,6 +15749,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the resource.",
+            "nullable": true,
             "example": "Updated description"
           }
         },
@@ -15825,6 +15844,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the resource.",
+            "nullable": true,
             "example": "Primary workspace for the Acme team"
           },
           "resource_type_slug": {
@@ -15895,6 +15915,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the Group.",
+            "nullable": true,
             "example": "The engineering team"
           }
         }
@@ -15912,6 +15933,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the Group.",
+            "nullable": true,
             "example": "The engineering team"
           }
         }
@@ -16022,13 +16044,14 @@
             "description": "The domains associated with the organization, including verification state."
           },
           "metadata": {
-            "$ref": "#/components/schemas/OrganizationDtoMetadataProperty"
+            "$ref": "#/components/schemas/OrganizationDtoMetadata"
           },
           "external_id": {
             "maxLength": 128,
             "pattern": "^[\\x00-\\x7F]\u002B$",
             "type": "string",
             "description": "An external identifier for the Organization.",
+            "nullable": true,
             "example": "ext_12345"
           }
         }
@@ -16067,13 +16090,14 @@
             "example": "cus_R9qWAGMQ6nGE7V"
           },
           "metadata": {
-            "$ref": "#/components/schemas/UpdateOrganizationDtoMetadataProperty"
+            "$ref": "#/components/schemas/UpdateOrganizationDtoMetadata"
           },
           "external_id": {
             "maxLength": 128,
             "pattern": "^[\\x00-\\x7F]\u002B$",
             "type": "string",
             "description": "An external identifier for the Organization.",
+            "nullable": true,
             "example": "2fe01467-f7ea-4dd2-8b79-c2b4f56d0191"
           }
         }
@@ -16151,6 +16175,7 @@
             "type": "string",
             "description": "The endpoint used to refresh tokens, if different from the token endpoint.",
             "format": "uri",
+            "nullable": true,
             "example": "https://provider.example.com/oauth/token"
           },
           "pkce_enabled": {
@@ -16200,6 +16225,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Data Integration.",
+            "nullable": true,
             "example": "Production GitHub app"
           },
           "enabled": {
@@ -16212,7 +16238,8 @@
             "items": {
               "type": "string"
             },
-            "description": "The OAuth scopes to request for the Data Integration. Defaults to the provider\u0027s configured scopes when omitted."
+            "description": "The OAuth scopes to request for the Data Integration. Defaults to the provider\u0027s configured scopes when omitted.",
+            "nullable": true
           },
           "auth_methods": {
             "type": "array",
@@ -16259,6 +16286,7 @@
             "type": "string",
             "description": "The endpoint used to refresh tokens, if different from the token endpoint.",
             "format": "uri",
+            "nullable": true,
             "example": "https://provider.example.com/oauth/token"
           },
           "pkce_enabled": {
@@ -16300,6 +16328,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Data Integration.",
+            "nullable": true,
             "example": "Production GitHub app"
           },
           "enabled": {
@@ -16312,7 +16341,8 @@
             "items": {
               "type": "string"
             },
-            "description": "The OAuth scopes to request for the Data Integration. Pass \u0060null\u0060 to reset to the provider\u0027s configured scopes."
+            "description": "The OAuth scopes to request for the Data Integration. Pass \u0060null\u0060 to reset to the provider\u0027s configured scopes.",
+            "nullable": true
           },
           "credentials": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsDto"
@@ -16412,7 +16442,7 @@
           "phone_number": {
             "type": "string",
             "description": "The phone number to send the SMS verification code to.",
-            "example": 15555550123
+            "example": "\u002B15555550123"
           },
           "ip_address": {
             "type": "string",
@@ -16810,41 +16840,48 @@
           "first_name": {
             "type": "string",
             "description": "The first name of the user.",
+            "nullable": true,
             "example": "Marcelina"
           },
           "last_name": {
             "type": "string",
             "description": "The last name of the user.",
+            "nullable": true,
             "example": "Davis"
           },
           "name": {
             "type": "string",
             "description": "The user\u0027s full name.",
+            "nullable": true,
             "example": "Marcelina Davis"
           },
           "email_verified": {
             "type": "boolean",
             "description": "Whether the user\u0027s email has been verified.",
+            "nullable": true,
             "example": true
           },
           "metadata": {
-            "$ref": "#/components/schemas/CreateUserlandUserDtoMetadata"
+            "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf1Metadata"
           },
           "external_id": {
             "maxLength": 128,
             "pattern": "^[\\x00-\\x7F]\u002B$",
             "type": "string",
             "description": "The external ID of the user.",
+            "nullable": true,
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
           },
           "ip_address": {
             "type": "string",
             "description": "The IP address of the user\u0027s request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent string from the user\u0027s request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "signals_id": {
@@ -16964,18 +17001,20 @@
             "example": true
           },
           "metadata": {
-            "$ref": "#/components/schemas/UpdateUserlandUserDtoMetadata"
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf1Metadata"
           },
           "external_id": {
             "maxLength": 128,
             "pattern": "^[\\x00-\\x7F]\u002B$",
             "type": "string",
             "description": "The external ID of the user.",
+            "nullable": true,
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
           },
           "locale": {
             "type": "string",
             "description": "The user\u0027s preferred locale.",
+            "nullable": true,
             "example": "en-US"
           }
         },
@@ -17009,7 +17048,7 @@
           "code": {
             "type": "string",
             "description": "The one-time email verification code.",
-            "example": 123456
+            "example": "123456"
           }
         }
       },
@@ -17068,7 +17107,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code used to confirm the email change.",
-            "example": 123456
+            "example": "123456"
           }
         }
       },
@@ -17375,11 +17414,13 @@
           "after": {
             "type": "string",
             "description": "Cursor for the next page of results.",
+            "nullable": true,
             "example": "b21f3a8c-7e4d-4b1a-9c5e-2d8f6a7b3c4e"
           },
           "before": {
             "type": "string",
             "description": "Cursor for the previous page of results.",
+            "nullable": true,
             "example": "a10e2b7d-6c3f-4a2b-8d1e-3f9a5b8c7d6e"
           }
         },
@@ -17478,6 +17519,7 @@
           "version_id": {
             "type": "string",
             "description": "Current version identifier of the object.",
+            "nullable": true,
             "example": "c3d4e5f6-7890-abcd-ef12-34567890abcd"
           }
         },
@@ -17505,6 +17547,7 @@
             "type": "string",
             "description": "Timestamp of the last update.",
             "format": "date-time",
+            "nullable": true,
             "example": "2024-06-15T10:30:00Z"
           }
         },
@@ -17608,6 +17651,7 @@
           "version_check": {
             "type": "string",
             "description": "ID of the expected current version for optimistic locking.",
+            "nullable": true,
             "example": "c3d4e5f6-7890-abcd-ef12-34567890abcd"
           }
         }
@@ -17710,12 +17754,14 @@
           "registration_id": {
             "type": "string",
             "description": "Identifier of the agent registration the credential belongs to, or \u0060null\u0060 when the credential is invalid.",
+            "nullable": true,
             "example": "agent_reg_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "expires_at": {
             "type": "string",
             "description": "The timestamp when the credential expires, or \u0060null\u0060 when the credential is invalid.",
             "format": "date-time",
+            "nullable": true,
             "example": "2026-01-15T12:00:00.000Z"
           }
         }
@@ -17805,12 +17851,14 @@
             "type": "string",
             "description": "Timestamp of when the API Key was last used.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
             "type": "string",
             "description": "Timestamp when the API Key expires. Null means the key does not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "permissions": {
@@ -17907,6 +17955,7 @@
           "description": {
             "type": "string",
             "description": "A description of the connect application.",
+            "nullable": true,
             "example": "An application for managing user access"
           },
           "name": {
@@ -18089,6 +18138,7 @@
             "type": "string",
             "description": "The timestamp when the client secret was last used, or null if never used.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "created_at": {
@@ -18162,6 +18212,7 @@
           "url": {
             "type": "string",
             "description": "A URL to the CSV file. Only defined when the Audit Log Export is ready.",
+            "nullable": true,
             "example": "https://exports.audit-logs.com/audit-log-exports/export.csv"
           },
           "created_at": {
@@ -18187,6 +18238,7 @@
           "retention_period_in_days": {
             "type": "integer",
             "description": "The number of days Audit Log events will be retained before being permanently deleted. Valid values are 30 and 365.",
+            "nullable": true,
             "example": 30
           }
         }
@@ -18335,7 +18387,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code for the challenge.",
-            "example": 123456
+            "example": "123456"
           },
           "authentication_factor_id": {
             "type": "string",
@@ -18546,6 +18598,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Resource.",
+            "nullable": true,
             "example": "Company website redesign project"
           },
           "organization_id": {
@@ -18556,6 +18609,7 @@
           "parent_resource_id": {
             "type": "string",
             "description": "The ID of the parent resource, if this resource is nested.",
+            "nullable": true,
             "example": "authz_resource_01HXYZ123456789ABCDEFGHIJ"
           },
           "id": {
@@ -18673,6 +18727,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Permission.",
+            "nullable": true,
             "example": "Allows viewing document contents"
           },
           "system": {
@@ -18997,6 +19052,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can manage all resources"
           },
           "type": {
@@ -19102,21 +19158,25 @@
           "first_name": {
             "type": "string",
             "description": "The first name of the user.",
+            "nullable": true,
             "example": "Marcelina"
           },
           "last_name": {
             "type": "string",
             "description": "The last name of the user.",
+            "nullable": true,
             "example": "Davis"
           },
           "name": {
             "type": "string",
             "description": "The user\u0027s full name.",
+            "nullable": true,
             "example": "Marcelina Davis"
           },
           "profile_picture_url": {
             "type": "string",
             "description": "A URL reference to an image representing the user.",
+            "nullable": true,
             "example": "https://workoscdn.com/images/v1/123abc"
           },
           "email": {
@@ -19132,6 +19192,7 @@
           "external_id": {
             "type": "string",
             "description": "The external ID of the user.",
+            "nullable": true,
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
           },
           "metadata": {
@@ -19141,11 +19202,13 @@
             "type": "string",
             "description": "The timestamp when the user last signed in.",
             "format": "date-time",
+            "nullable": true,
             "example": "2025-06-25T19:07:33.155Z"
           },
           "locale": {
             "type": "string",
             "description": "The user\u0027s preferred locale.",
+            "nullable": true,
             "example": "en-US"
           },
           "created_at": {
@@ -19720,26 +19783,30 @@
           "idp_id": {
             "type": "string",
             "description": "Unique identifier for the user, assigned by the Directory Provider. Different Directory Providers use different ID formats.",
-            "example": 2836
+            "example": "2836"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "marcelina.davis@example.com"
           },
           "first_name": {
             "type": "string",
             "description": "The first name of the user.",
+            "nullable": true,
             "example": "Marcelina"
           },
           "last_name": {
             "type": "string",
             "description": "The last name of the user.",
+            "nullable": true,
             "example": "Davis"
           },
           "name": {
             "type": "string",
             "description": "The full name of the user.",
+            "nullable": true,
             "example": "Marcelina Davis"
           },
           "emails": {
@@ -19753,12 +19820,14 @@
           "job_title": {
             "type": "string",
             "description": "The job title of the user.",
+            "nullable": true,
             "example": "Software Engineer",
             "deprecated": true
           },
           "username": {
             "type": "string",
             "description": "The username of the user.",
+            "nullable": true,
             "example": "mdavis",
             "deprecated": true
           },
@@ -19925,6 +19994,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Group.",
+            "nullable": true,
             "example": "The engineering team"
           },
           "created_at": {
@@ -19997,6 +20067,7 @@
           "name": {
             "type": "string",
             "description": "The name of the actor.",
+            "nullable": true,
             "example": "Jane Doe"
           }
         },
@@ -20087,26 +20158,30 @@
           "idp_id": {
             "type": "string",
             "description": "Unique identifier for the user, assigned by the Directory Provider. Different Directory Providers use different ID formats.",
-            "example": 2836
+            "example": "2836"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "marcelina.davis@example.com"
           },
           "first_name": {
             "type": "string",
             "description": "The first name of the user.",
+            "nullable": true,
             "example": "Marcelina"
           },
           "last_name": {
             "type": "string",
             "description": "The last name of the user.",
+            "nullable": true,
             "example": "Davis"
           },
           "name": {
             "type": "string",
             "description": "The full name of the user.",
+            "nullable": true,
             "example": "Marcelina Davis"
           },
           "emails": {
@@ -20120,12 +20195,14 @@
           "job_title": {
             "type": "string",
             "description": "The job title of the user.",
+            "nullable": true,
             "example": "Software Engineer",
             "deprecated": true
           },
           "username": {
             "type": "string",
             "description": "The username of the user.",
+            "nullable": true,
             "example": "mdavis",
             "deprecated": true
           },
@@ -20213,11 +20290,13 @@
           "user_id": {
             "type": "string",
             "description": "The ID of the User the connected account belongs to.",
+            "nullable": true,
             "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "organization_id": {
             "type": "string",
             "description": "The ID of the Organization the connected account belongs to.",
+            "nullable": true,
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "scopes": {
@@ -20319,11 +20398,13 @@
             "type": "string",
             "description": "The timestamp when the Waitlist User was approved, or null if not yet approved.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "waitlist_id": {
             "type": "string",
             "description": "The unique ID of the Waitlist that the Waitlist User joined.",
+            "nullable": true,
             "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "created_at": {
@@ -20748,7 +20829,7 @@
                 "value": "veda@foo-corp.com"
               }
             ],
-            "idp_id": 2836,
+            "idp_id": "2836",
             "object": "directory_user",
             "username": "veda@foo-corp.com",
             "last_name": "Torp",
@@ -20818,7 +20899,7 @@
                     "value": "veda@foo-corp.com"
                   }
                 ],
-                "idp_id": 2836,
+                "idp_id": "2836",
                 "object": "directory_user",
                 "username": "veda@foo-corp.com",
                 "last_name": "Torp",
@@ -21004,6 +21085,7 @@
           "description": {
             "type": "string",
             "description": "A description for the Feature Flag.",
+            "nullable": true,
             "example": "Enable advanced analytics dashboard feature"
           },
           "owner": {
@@ -21131,12 +21213,14 @@
             "type": "string",
             "description": "Timestamp of when the API Key was last used.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
             "type": "string",
             "description": "Timestamp when the API Key expires. Null means the key does not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "permissions": {
@@ -21252,12 +21336,14 @@
             "type": "string",
             "description": "Timestamp of when the API Key was last used.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
             "type": "string",
             "description": "Timestamp when the API Key expires. Null means the key does not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": "2030-01-01T00:00:00.000Z"
           },
           "permissions": {
@@ -21339,6 +21425,7 @@
           "external_id": {
             "type": "string",
             "description": "The external ID of the Organization.",
+            "nullable": true,
             "example": "2fe01467-f7ea-4dd2-8b79-c2b4f56d0191"
           },
           "stripe_customer_id": {
@@ -21450,11 +21537,13 @@
           "client_id": {
             "type": "string",
             "description": "The OAuth client ID supplied by the organization, or \u0060null\u0060 when none is configured.",
+            "nullable": true,
             "example": "client_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "client_secret_last_four": {
             "type": "string",
             "description": "The last four characters of the organization-supplied OAuth client secret, or \u0060null\u0060 when none is configured.",
+            "nullable": true,
             "example": "1a2b"
           },
           "redirect_uri": {
@@ -21661,6 +21750,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Data Integration.",
+            "nullable": true,
             "example": "Production GitHub app"
           },
           "enabled": {
@@ -21687,7 +21777,7 @@
             "description": "How accounts authenticate with the provider for this Data Integration."
           },
           "credentials": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsComposed"
+            "$ref": "#/components/schemas/DataIntegrationCredentialsProperty"
           },
           "installation": {
             "$ref": "#/components/schemas/DataIntegrationInstallation"
@@ -21894,11 +21984,13 @@
           "user_id": {
             "type": "string",
             "description": "The [User](/reference/authkit/user) identifier associated with this connection.",
+            "nullable": true,
             "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "organization_id": {
             "type": "string",
             "description": "The [Organization](/reference/organization) identifier associated with this connection, or \u0060null\u0060 if not scoped to an organization.",
+            "nullable": true,
             "example": null
           },
           "scopes": {
@@ -21914,16 +22006,19 @@
           "api_key_last_4": {
             "type": "string",
             "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
+            "nullable": true,
             "example": null
           },
           "client_id": {
             "type": "string",
             "description": "The client ID supplied for this connection. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "nullable": true,
             "example": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc"
           },
           "client_secret_last_4": {
             "type": "string",
             "description": "The last four characters of the client secret supplied for this connection, or \u0060null\u0060 when it can\u0027t be read. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "nullable": true,
             "example": "cdef"
           },
           "config": {
@@ -22075,7 +22170,7 @@
           "code": {
             "type": "string",
             "description": "The code used to verify the Radar Challenge.",
-            "example": 123456
+            "example": "123456"
           }
         }
       },
@@ -22094,7 +22189,7 @@
           "phone_number": {
             "type": "string",
             "description": "The phone number the verification code was sent to.",
-            "example": 15555550123
+            "example": "\u002B15555550123"
           }
         }
       },
@@ -22313,7 +22408,7 @@
           "code": {
             "type": "string",
             "description": "The code used to verify the Magic Auth code.",
-            "example": 123456
+            "example": "123456"
           }
         }
       },
@@ -22371,12 +22466,14 @@
             "type": "string",
             "description": "The timestamp when the invitation was accepted, or null if not yet accepted.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "revoked_at": {
             "type": "string",
             "description": "The timestamp when the invitation was revoked, or null if not revoked.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
@@ -22388,21 +22485,25 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the [organization](/reference/organization) that the recipient will join.",
+            "nullable": true,
             "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "inviter_user_id": {
             "type": "string",
             "description": "The ID of the user who invited the recipient, if provided.",
+            "nullable": true,
             "example": "user_01HYGBX8ZGD19949T3BM4FW1C3"
           },
           "accepted_user_id": {
             "type": "string",
             "description": "The ID of the user who accepted the invitation, once accepted.",
+            "nullable": true,
             "example": null
           },
           "role_slug": {
             "type": "string",
             "description": "Slug of the role the invitee will be assigned on acceptance. Reflects the current role on the invitee\u0027s organization membership. null when the invitation has no associated organization.",
+            "nullable": true,
             "example": "admin"
           },
           "created_at": {
@@ -22648,12 +22749,14 @@
             "type": "string",
             "description": "Timestamp of when the API Key was last used.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
             "type": "string",
             "description": "Timestamp when the API Key expires. Null means the key does not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "permissions": {
@@ -22769,12 +22872,14 @@
             "type": "string",
             "description": "Timestamp of when the API Key was last used.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
             "type": "string",
             "description": "Timestamp when the API Key expires. Null means the key does not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": "2030-01-01T00:00:00.000Z"
           },
           "permissions": {
@@ -22906,7 +23011,7 @@
           "code": {
             "type": "string",
             "description": "The code used to verify the email.",
-            "example": 123456
+            "example": "123456"
           }
         }
       },
@@ -23334,6 +23439,7 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the organization the user belongs to.",
+            "nullable": true,
             "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
           },
           "connection_id": {
@@ -23347,7 +23453,7 @@
           "idp_id": {
             "type": "string",
             "description": "The user\u0027s unique identifier from the identity provider.",
-            "example": 103456790000000000000
+            "example": "103456789012345678901"
           },
           "email": {
             "type": "string",
@@ -23357,16 +23463,19 @@
           "first_name": {
             "type": "string",
             "description": "The user\u0027s first name.",
+            "nullable": true,
             "example": "Todd"
           },
           "last_name": {
             "type": "string",
             "description": "The user\u0027s last name.",
+            "nullable": true,
             "example": "Rundgren"
           },
           "name": {
             "type": "string",
             "description": "The user\u0027s full name.",
+            "nullable": true,
             "example": "Todd Rundgren"
           },
           "role": {
@@ -23720,6 +23829,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the resource.",
+            "nullable": true,
             "example": "Updated description"
           }
         }
@@ -23820,6 +23930,7 @@
             "maxLength": 150,
             "type": "string",
             "description": "An optional description of the resource.",
+            "nullable": true,
             "example": "Primary workspace for the Acme team"
           },
           "resource_type_slug": {
@@ -23867,6 +23978,7 @@
           "parent_resource_id": {
             "type": "string",
             "description": "The ID of the parent resource. Mutually exclusive with \u0060parent_resource_external_id\u0060 and \u0060parent_resource_type_slug\u0060.",
+            "nullable": true,
             "example": "authz_resource_01HXYZ123456789ABCDEFGHIJ"
           }
         }
@@ -24050,41 +24162,48 @@
           "first_name": {
             "type": "string",
             "description": "The first name of the user.",
+            "nullable": true,
             "example": "Marcelina"
           },
           "last_name": {
             "type": "string",
             "description": "The last name of the user.",
+            "nullable": true,
             "example": "Davis"
           },
           "name": {
             "type": "string",
             "description": "The user\u0027s full name.",
+            "nullable": true,
             "example": "Marcelina Davis"
           },
           "email_verified": {
             "type": "boolean",
             "description": "Whether the user\u0027s email has been verified.",
+            "nullable": true,
             "example": true
           },
           "metadata": {
-            "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf1MetadataProperty"
+            "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf1Metadata"
           },
           "external_id": {
             "maxLength": 128,
             "pattern": "^[\\x00-\\x7F]\u002B$",
             "type": "string",
             "description": "The external ID of the user.",
+            "nullable": true,
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
           },
           "ip_address": {
             "type": "string",
             "description": "The IP address of the user\u0027s request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent string from the user\u0027s request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "signals_id": {
@@ -24137,6 +24256,7 @@
           "password": {
             "type": "string",
             "description": "The password to set for the user. Mutually exclusive with \u0060password_hash\u0060, \u0060password_hash_type\u0060, and \u0060password_salt_position\u0060.",
+            "nullable": true,
             "example": "strong_password_123!"
           }
         }
@@ -24205,18 +24325,20 @@
             "example": true
           },
           "metadata": {
-            "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf1MetadataProperty"
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf1Metadata"
           },
           "external_id": {
             "maxLength": 128,
             "pattern": "^[\\x00-\\x7F]\u002B$",
             "type": "string",
             "description": "The external ID of the user.",
+            "nullable": true,
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
           },
           "locale": {
             "type": "string",
             "description": "The user\u0027s preferred locale.",
+            "nullable": true,
             "example": "en-US"
           }
         }
@@ -24302,33 +24424,6 @@
           }
         }
       },
-      "AgentRegistrationClaim": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/AgentRegistrationClaimOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The claim associated with this registration, or \u0060null\u0060 if the registration has no claim.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "AgentRegistrationClaimOneOf1": "#/components/schemas/AgentRegistrationClaimOneOf1"
-          }
-        }
-      },
       "ApiKeyOwner": {
         "required": [
           "type"
@@ -24372,7 +24467,9 @@
             "$ref": "#/components/schemas/ApiKey"
           },
           {
-            "type": "object"
+            "enum": [
+              null
+            ]
           }
         ],
         "properties": {
@@ -24432,6 +24529,7 @@
           "description": {
             "type": "string",
             "description": "A description of the connect application.",
+            "nullable": true,
             "example": "An application for managing user access"
           },
           "name": {
@@ -24721,7 +24819,7 @@
                 "value": "veda@foo-corp.com"
               }
             ],
-            "idp_id": 2836,
+            "idp_id": "2836",
             "object": "directory_user",
             "username": "veda@foo-corp.com",
             "last_name": "Torp",
@@ -31621,41 +31719,19 @@
           }
         }
       },
-      "FlagOwner": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/FlagOwnerOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The owner of the Feature Flag.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "FlagOwnerOneOf1": "#/components/schemas/FlagOwnerOneOf1"
-          }
-        }
-      },
       "DataIntegrationConfigurationResponseScopes": {
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/DataIntegrationConfigurationResponseScopesBranch1"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           {
-            "type": "object"
+            "enum": [
+              null
+            ]
           }
         ],
         "description": "The OAuth scopes in effect for this organization. Reflects the organization override when one is set, otherwise the provider scopes, or \u0060null\u0060 when none are configured."
@@ -31664,10 +31740,15 @@
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/ConfigureDataIntegrationBodyScopesBranch1"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           {
-            "type": "object"
+            "enum": [
+              null
+            ]
           }
         ],
         "description": "The OAuth scopes to request for the organization. Pass \u0060null\u0060 to inherit the provider scopes."
@@ -31676,95 +31757,18 @@
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/DataIntegrationScopesBranch1"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           {
-            "type": "object"
+            "enum": [
+              null
+            ]
           }
         ],
         "description": "The OAuth scopes configured for the Data Integration. \u0060null\u0060 when the provider\u0027s configured scopes are used."
-      },
-      "DataIntegrationCredentialsComposed": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsComposedOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The integration-level OAuth app credentials. \u0060null\u0060 for \u0060api_key\u0060 integrations, which hold no OAuth credentials (keys are installed per-tenant).",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "DataIntegrationCredentialsComposedOneOf1": "#/components/schemas/DataIntegrationCredentialsComposedOneOf1"
-          }
-        }
-      },
-      "DataIntegrationInstallation": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationInstallationOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The tenant installation created when an API key was supplied at creation time; \u0060null\u0060 otherwise. Not populated on list/get responses.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "DataIntegrationInstallationOneOf1": "#/components/schemas/DataIntegrationInstallationOneOf1"
-          }
-        },
-        "example": null
-      },
-      "DataIntegrationCustomProvider": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationCustomProviderOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The OAuth definition when this is a custom provider; \u0060null\u0060 for built-in providers.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "DataIntegrationCustomProviderOneOf1": "#/components/schemas/DataIntegrationCustomProviderOneOf1"
-          }
-        }
       },
       "DataIntegrationAccessTokenResponseOneOf1": {
         "required": [
@@ -31944,40 +31948,18 @@
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemScopesBranch1"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           {
-            "type": "object"
+            "enum": [
+              null
+            ]
           }
         ],
         "description": "The OAuth scopes configured for this provider, or \u0060null\u0060 if none are configured."
-      },
-      "DataIntegrationsListResponseDataItemConnectedAccount": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The user\u0027s [connected account](/reference/pipes/connected-account) for this provider, or \u0060null\u0060 if the user has not connected.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "DataIntegrationsListResponseDataItemConnectedAccountOneOf1": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1"
-          }
-        }
       },
       "ProfileRole": {
         "required": [
@@ -31989,7 +31971,9 @@
             "$ref": "#/components/schemas/SlimRole"
           },
           {
-            "type": "object"
+            "enum": [
+              null
+            ]
           }
         ],
         "properties": {
@@ -32010,51 +31994,18 @@
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/ProfileRolesBranch1"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlimRole"
+            }
           },
           {
-            "type": "object"
+            "enum": [
+              null
+            ]
           }
         ],
         "description": "The roles assigned to the user within the organization, if applicable."
-      },
-      "AgentRegistrationClaimOneOf1": {
-        "required": [
-          "id",
-          "claim_completion",
-          "created_at",
-          "updated_at",
-          "expires_at"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier of the claim.",
-            "example": "agent_reg_claim_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "claim_completion": {
-            "$ref": "#/components/schemas/AgentRegistrationClaimOneOf1ClaimCompletion"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The timestamp when the claim was created.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "The timestamp when the claim was last updated.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "expires_at": {
-            "type": "string",
-            "description": "The timestamp when the claim expires.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          }
-        }
       },
       "ApiKeyOwnerOneOf1": {
         "required": [
@@ -32130,18 +32081,11 @@
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf4DataClaimedByOrganizationIdBranch1"
+            "type": "string"
           },
           {
-            "type": "object",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf4DataClaimedByOrganizationIdOneOf2Branch1"
-              },
-              {
-                "type": "object"
-              }
-            ]
+            "type": "string",
+            "nullable": true
           }
         ],
         "description": "The ID of the organization the claiming user belongs to.",
@@ -32151,18 +32095,11 @@
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf5DataAgentIdentityUserlandUserIdBranch1"
+            "type": "string"
           },
           {
-            "type": "object",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf5DataAgentIdentityUserlandUserIdOneOf2Branch1"
-              },
-              {
-                "type": "object"
-              }
-            ]
+            "type": "string",
+            "nullable": true
           }
         ],
         "description": "The ID of the userland user bound to this agent identity.",
@@ -32277,401 +32214,6 @@
           "mapping": {
             "EventSchemaAllOf2OneOf14DataOwnerOneOf1": "#/components/schemas/EventSchemaAllOf2OneOf14DataOwnerOneOf1",
             "EventSchemaAllOf2OneOf14DataOwnerOneOf2": "#/components/schemas/EventSchemaAllOf2OneOf14DataOwnerOneOf2"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf51DataOwner": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf51DataOwnerOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The owner of the Feature Flag.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "EventSchemaAllOf2OneOf51DataOwnerOneOf1": "#/components/schemas/EventSchemaAllOf2OneOf51DataOwnerOneOf1"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf52DataOwner": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf52DataOwnerOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The owner of the Feature Flag.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "EventSchemaAllOf2OneOf52DataOwnerOneOf1": "#/components/schemas/EventSchemaAllOf2OneOf52DataOwnerOneOf1"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf53DataOwner": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf53DataOwnerOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The owner of the Feature Flag.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "EventSchemaAllOf2OneOf53DataOwnerOneOf1": "#/components/schemas/EventSchemaAllOf2OneOf53DataOwnerOneOf1"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf54DataOwner": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf54DataOwnerOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The owner of the Feature Flag.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "EventSchemaAllOf2OneOf54DataOwnerOneOf1": "#/components/schemas/EventSchemaAllOf2OneOf54DataOwnerOneOf1"
-          }
-        }
-      },
-      "FlagOwnerOneOf1": {
-        "required": [
-          "email",
-          "first_name",
-          "last_name"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address of the flag owner.",
-            "example": "jane@example.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the flag owner.",
-            "example": "Jane"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the flag owner.",
-            "example": "Doe"
-          }
-        }
-      },
-      "DataIntegrationCredentialsComposedOneOf1": {
-        "required": [
-          "type",
-          "client_id",
-          "redacted_client_secret"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsComposedOneOf1Type"
-          },
-          "client_id": {
-            "type": "string",
-            "description": "The OAuth client ID configured for the provider app. Null for \u0060organization\u0060 credentials.",
-            "example": "Iv1.abc123"
-          },
-          "redacted_client_secret": {
-            "type": "string",
-            "description": "The last four characters of the OAuth client secret. The full secret is never returned. Null for \u0060organization\u0060 credentials.",
-            "example": 6789
-          }
-        }
-      },
-      "DataIntegrationInstallationOneOf1": {
-        "required": [
-          "id",
-          "user_id",
-          "organization_id",
-          "api_key_last_4"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier of the installation.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "The User the API key was installed for.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "The Organization the installation is scoped to, or null when unscoped.",
-            "example": null
-          },
-          "api_key_last_4": {
-            "type": "string",
-            "description": "The last four characters of the stored API key. The full key is never returned.",
-            "example": "cdef"
-          }
-        }
-      },
-      "DataIntegrationCustomProviderOneOf1": {
-        "required": [
-          "name",
-          "authorization_url",
-          "token_url",
-          "refresh_token_url",
-          "pkce_enabled",
-          "request_scope_separator",
-          "scopes_required",
-          "client_secret_required",
-          "additional_authorization_parameters",
-          "token_body_content_type",
-          "authenticate_via"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "A descriptive name for the custom provider.",
-            "example": "My OAuth App"
-          },
-          "authorization_url": {
-            "type": "string",
-            "description": "The provider\u0027s OAuth authorization endpoint.",
-            "example": "https://provider.example.com/oauth/authorize"
-          },
-          "token_url": {
-            "type": "string",
-            "description": "The provider\u0027s OAuth token endpoint.",
-            "example": "https://provider.example.com/oauth/token"
-          },
-          "refresh_token_url": {
-            "type": "string",
-            "description": "The endpoint used to refresh tokens, if different from the token endpoint.",
-            "example": "https://provider.example.com/oauth/token"
-          },
-          "pkce_enabled": {
-            "type": "boolean",
-            "description": "Whether PKCE is used during the authorization code flow.",
-            "example": true
-          },
-          "request_scope_separator": {
-            "type": "string",
-            "description": "The separator used to join requested scopes.",
-            "example": " "
-          },
-          "scopes_required": {
-            "type": "boolean",
-            "description": "Whether at least one scope must be selected when connecting an account.",
-            "example": false
-          },
-          "client_secret_required": {
-            "type": "boolean",
-            "description": "Whether a client secret is required for this provider.",
-            "example": true
-          },
-          "additional_authorization_parameters": {
-            "$ref": "#/components/schemas/DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty"
-          },
-          "token_body_content_type": {
-            "type": "string",
-            "description": "The Content-Type used when exchanging the token request.",
-            "example": "application/x-www-form-urlencoded"
-          },
-          "authenticate_via": {
-            "$ref": "#/components/schemas/DataIntegrationCustomProviderOneOf1AuthenticateVia"
-          }
-        }
-      },
-      "DataIntegrationsListResponseDataItemConnectedAccountOneOf1": {
-        "required": [
-          "object",
-          "id",
-          "user_id",
-          "organization_id",
-          "scopes",
-          "state",
-          "created_at",
-          "updated_at",
-          "userlandUserId",
-          "organizationId",
-          "createdAt",
-          "updatedAt"
-        ],
-        "type": "object",
-        "properties": {
-          "object": {
-            "enum": [
-              "connected_account"
-            ],
-            "type": "string",
-            "description": "Distinguishes the connected account object.",
-            "x-ms-enum": {
-              "name": "ObjectValue",
-              "modelAsString": false,
-              "values": [
-                {
-                  "value": "connected_account",
-                  "name": "ConnectedAccount"
-                }
-              ]
-            }
-          },
-          "id": {
-            "type": "string",
-            "description": "The unique identifier of the connected account.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "The [User](/reference/authkit/user) identifier associated with this connection.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "The [Organization](/reference/organization) identifier associated with this connection, or \u0060null\u0060 if not scoped to an organization.",
-            "example": null
-          },
-          "scopes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The OAuth scopes granted for this connection."
-          },
-          "auth_method": {
-            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod"
-          },
-          "api_key_last_4": {
-            "type": "string",
-            "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
-            "example": null
-          },
-          "client_id": {
-            "type": "string",
-            "description": "The client ID supplied for this connection. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
-            "example": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc"
-          },
-          "client_secret_last_4": {
-            "type": "string",
-            "description": "The last four characters of the client secret supplied for this connection, or \u0060null\u0060 when it can\u0027t be read. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
-            "example": "cdef"
-          },
-          "config": {
-            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty"
-          },
-          "state": {
-            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountOneOf1State"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The timestamp when the connection was created.",
-            "example": "2024-01-16T14:20:00.000Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "The timestamp when the connection was last updated.",
-            "example": "2024-01-16T14:20:00.000Z"
-          },
-          "userlandUserId": {
-            "type": "string",
-            "description": "Use \u0060user_id\u0060 instead.",
-            "deprecated": true
-          },
-          "organizationId": {
-            "type": "string",
-            "description": "Use \u0060organization_id\u0060 instead.",
-            "deprecated": true
-          },
-          "createdAt": {
-            "type": "string",
-            "description": "Use \u0060created_at\u0060 instead.",
-            "deprecated": true
-          },
-          "updatedAt": {
-            "type": "string",
-            "description": "Use \u0060updated_at\u0060 instead.",
-            "deprecated": true
-          }
-        }
-      },
-      "AgentRegistrationClaimOneOf1ClaimCompletion": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/AgentRegistrationClaimOneOf1ClaimCompletionOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The completion record for the claim, or \u0060null\u0060 if the claim has not been completed.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "AgentRegistrationClaimOneOf1ClaimCompletionOneOf1": "#/components/schemas/AgentRegistrationClaimOneOf1ClaimCompletionOneOf1"
           }
         }
       },
@@ -32945,163 +32487,15 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf51DataOwnerOneOf1": {
-        "required": [
-          "email",
-          "first_name",
-          "last_name"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address of the flag owner.",
-            "example": "jane@example.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the flag owner.",
-            "example": "Jane"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the flag owner.",
-            "example": "Doe"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf52DataOwnerOneOf1": {
-        "required": [
-          "email",
-          "first_name",
-          "last_name"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address of the flag owner.",
-            "example": "jane@example.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the flag owner.",
-            "example": "Jane"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the flag owner.",
-            "example": "Doe"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf53DataOwnerOneOf1": {
-        "required": [
-          "email",
-          "first_name",
-          "last_name"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address of the flag owner.",
-            "example": "jane@example.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the flag owner.",
-            "example": "Jane"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the flag owner.",
-            "example": "Doe"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf54DataOwnerOneOf1": {
-        "required": [
-          "email",
-          "first_name",
-          "last_name"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address of the flag owner.",
-            "example": "jane@example.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the flag owner.",
-            "example": "Jane"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the flag owner.",
-            "example": "Doe"
-          }
-        }
-      },
-      "AgentRegistrationClaimOneOf1ClaimCompletionOneOf1": {
-        "required": [
-          "id",
-          "created_at",
-          "updated_at",
-          "expires_at",
-          "claimed_at"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier of the claim completion.",
-            "example": "agent_reg_claim_attempt_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The timestamp when the claim completion was created.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "The timestamp when the claim completion was last updated.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "expires_at": {
-            "type": "string",
-            "description": "The timestamp when the claim completion expires.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "claimed_at": {
-            "type": "string",
-            "description": "The timestamp when the claim was completed.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          }
-        }
-      },
       "EventSchemaAllOf2OneOf6DataDetailOneOf2ExpiresAt": {
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf6DataDetailOneOf2ExpiresAtBranch1"
+            "type": "string"
           },
           {
-            "type": "object",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf6DataDetailOneOf2ExpiresAtOneOf2Branch1"
-              },
-              {
-                "type": "object"
-              }
-            ]
+            "type": "string",
+            "nullable": true
           }
         ],
         "description": "The timestamp when the access token expires.",
@@ -33254,6 +32648,7 @@
           "type": "string"
         },
         "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization.",
+        "nullable": true,
         "example": {
           "tier": "diamond"
         },
@@ -33269,6 +32664,7 @@
           "type": "string"
         },
         "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization.",
+        "nullable": true,
         "example": {
           "tier": "diamond"
         },
@@ -33379,6 +32775,7 @@
           "userland_user_id": {
             "type": "string",
             "description": "Identifier of the AuthKit user the agent identity is bound to, or \u0060null\u0060 when the agent is not associated with a user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "created_at": {
@@ -33395,6 +32792,46 @@
           }
         },
         "description": "The agent identity associated with this registration."
+      },
+      "AgentRegistrationClaim": {
+        "required": [
+          "id",
+          "claim_completion",
+          "created_at",
+          "updated_at",
+          "expires_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the claim.",
+            "example": "agent_reg_claim_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "claim_completion": {
+            "$ref": "#/components/schemas/AgentRegistrationClaimClaimCompletion"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the claim was created.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the claim was last updated.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The timestamp when the claim expires.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        },
+        "description": "The claim associated with this registration, or \u0060null\u0060 if the registration has no claim.",
+        "nullable": true
       },
       "ClaimViewResponseOrganizationsItem": {
         "required": [
@@ -33425,11 +32862,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "conn_app_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "conn_app_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33493,11 +32932,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "authorized_connect_app_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "authorized_connect_app_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33567,11 +33008,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "authorized_connect_app_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "authorized_connect_app_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33639,7 +33082,7 @@
           "phone_number": {
             "type": "string",
             "description": "The user\u0027s phone number for SMS-based authentication.",
-            "example": 15005550006
+            "example": "\u002B15005550006"
           }
         },
         "description": "SMS-based authentication factor details."
@@ -33691,7 +33134,7 @@
           "phone_number": {
             "type": "string",
             "description": "The user\u0027s phone number for SMS-based authentication.",
-            "example": 15005550006
+            "example": "\u002B15005550006"
           }
         },
         "description": "SMS-based authentication factor details."
@@ -33726,11 +33169,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "authz_resource_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "authz_resource_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33746,11 +33191,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "perm_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "perm_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33792,11 +33239,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "gra_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "gra_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33841,6 +33290,7 @@
           "group_role_assignment_id": {
             "type": "string",
             "description": "The ID of the group role assignment the role was derived from, or null if direct.",
+            "nullable": true,
             "example": null
           }
         },
@@ -33856,11 +33306,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "role_assignment_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "role_assignment_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33903,11 +33355,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "om_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "om_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33960,11 +33414,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "conn_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "conn_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -33998,11 +33454,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "directory_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "directory_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34025,11 +33483,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "directory_group_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "directory_group_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34051,6 +33511,7 @@
           "value": {
             "type": "string",
             "description": "The email address value.",
+            "nullable": true,
             "example": "marcelina.davis@example.com"
           }
         }
@@ -34084,11 +33545,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "directory_user_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "directory_user_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34179,11 +33642,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "om_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "om_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34199,11 +33664,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "group_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "group_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34223,12 +33690,12 @@
           "sessionId": {
             "type": "string",
             "description": "The Google Analytics session ID.",
-            "example": 1234567890
+            "example": "1234567890"
           },
           "sessionNumber": {
             "type": "string",
             "description": "The Google Analytics session number.",
-            "example": 1
+            "example": "1"
           }
         }
       },
@@ -34255,6 +33722,7 @@
           "value": {
             "type": "string",
             "description": "The email address value.",
+            "nullable": true,
             "example": "marcelina.davis@example.com"
           }
         }
@@ -34287,10 +33755,40 @@
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           }
         },
         "description": "Pagination cursor for navigating to the next page of results."
+      },
+      "FlagOwner": {
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the flag owner.",
+            "example": "jane@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the flag owner.",
+            "nullable": true,
+            "example": "Jane"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the flag owner.",
+            "nullable": true,
+            "example": "Doe"
+          }
+        },
+        "description": "The owner of the Feature Flag.",
+        "nullable": true
       },
       "FlagListListMetadata": {
         "required": [
@@ -34302,11 +33800,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "flag_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "flag_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34355,11 +33855,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "api_key_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "api_key_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34496,11 +33998,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "org_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "org_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34530,6 +34034,7 @@
           "last_synced_at": {
             "type": "string",
             "description": "ISO-8601 timestamp of when the last event was successfully synced, or null if no events have been synced.",
+            "nullable": true,
             "example": "2026-01-15T12:00:00.000Z"
           },
           "created_at": {
@@ -34561,6 +34066,69 @@
           "account_identifier": "acme-prod"
         }
       },
+      "DataIntegrationCredentialsProperty": {
+        "required": [
+          "type",
+          "client_id",
+          "redacted_client_secret"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsPropertyType"
+          },
+          "client_id": {
+            "type": "string",
+            "description": "The OAuth client ID configured for the provider app. Null for \u0060organization\u0060 credentials.",
+            "nullable": true,
+            "example": "Iv1.abc123"
+          },
+          "redacted_client_secret": {
+            "type": "string",
+            "description": "The last four characters of the OAuth client secret. The full secret is never returned. Null for \u0060organization\u0060 credentials.",
+            "nullable": true,
+            "example": "6789"
+          }
+        },
+        "description": "The integration-level OAuth app credentials. \u0060null\u0060 for \u0060api_key\u0060 integrations, which hold no OAuth credentials (keys are installed per-tenant).",
+        "nullable": true
+      },
+      "DataIntegrationInstallation": {
+        "required": [
+          "id",
+          "user_id",
+          "organization_id",
+          "api_key_last_4"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the installation.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The User the API key was installed for.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The Organization the installation is scoped to, or null when unscoped.",
+            "nullable": true,
+            "example": null
+          },
+          "api_key_last_4": {
+            "type": "string",
+            "description": "The last four characters of the stored API key. The full key is never returned.",
+            "nullable": true,
+            "example": "cdef"
+          }
+        },
+        "description": "The tenant installation created when an API key was supplied at creation time; \u0060null\u0060 otherwise. Not populated on list/get responses.",
+        "nullable": true,
+        "example": null
+      },
       "DataIntegrationConfig": {
         "type": "object",
         "additionalProperties": {
@@ -34570,6 +34138,80 @@
         "example": {
           "account_identifier": "acme-prod"
         }
+      },
+      "DataIntegrationCustomProvider": {
+        "required": [
+          "name",
+          "authorization_url",
+          "token_url",
+          "refresh_token_url",
+          "pkce_enabled",
+          "request_scope_separator",
+          "scopes_required",
+          "client_secret_required",
+          "additional_authorization_parameters",
+          "token_body_content_type",
+          "authenticate_via"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A descriptive name for the custom provider.",
+            "example": "My OAuth App"
+          },
+          "authorization_url": {
+            "type": "string",
+            "description": "The provider\u0027s OAuth authorization endpoint.",
+            "nullable": true,
+            "example": "https://provider.example.com/oauth/authorize"
+          },
+          "token_url": {
+            "type": "string",
+            "description": "The provider\u0027s OAuth token endpoint.",
+            "nullable": true,
+            "example": "https://provider.example.com/oauth/token"
+          },
+          "refresh_token_url": {
+            "type": "string",
+            "description": "The endpoint used to refresh tokens, if different from the token endpoint.",
+            "nullable": true,
+            "example": "https://provider.example.com/oauth/token"
+          },
+          "pkce_enabled": {
+            "type": "boolean",
+            "description": "Whether PKCE is used during the authorization code flow.",
+            "example": true
+          },
+          "request_scope_separator": {
+            "type": "string",
+            "description": "The separator used to join requested scopes.",
+            "example": " "
+          },
+          "scopes_required": {
+            "type": "boolean",
+            "description": "Whether at least one scope must be selected when connecting an account.",
+            "example": false
+          },
+          "client_secret_required": {
+            "type": "boolean",
+            "description": "Whether a client secret is required for this provider.",
+            "example": true
+          },
+          "additional_authorization_parameters": {
+            "$ref": "#/components/schemas/DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty"
+          },
+          "token_body_content_type": {
+            "type": "string",
+            "description": "The Content-Type used when exchanging the token request.",
+            "example": "application/x-www-form-urlencoded"
+          },
+          "authenticate_via": {
+            "$ref": "#/components/schemas/DataIntegrationCustomProviderAuthenticateVia"
+          }
+        },
+        "description": "The OAuth definition when this is a custom provider; \u0060null\u0060 for built-in providers.",
+        "nullable": true
       },
       "DataIntegrationListListMetadata": {
         "required": [
@@ -34581,11 +34223,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "data_integration_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "data_integration_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34652,6 +34296,7 @@
           "description": {
             "type": "string",
             "description": "A description of the provider explaining how it will be used, if configured.",
+            "nullable": true,
             "example": "Connect your GitHub account to access repositories."
           },
           "slug": {
@@ -34727,11 +34372,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "auth_factor_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "auth_factor_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34747,11 +34394,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "invitation_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "invitation_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34779,11 +34428,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "om_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "om_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34838,11 +34489,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "api_key_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "api_key_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34897,11 +34550,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "user_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "user_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -34922,6 +34577,7 @@
           "reason": {
             "type": "string",
             "description": "The justification the impersonator gave for impersonating the user.",
+            "nullable": true,
             "example": "Investigating an issue with the customer\u0027s account."
           }
         },
@@ -34977,11 +34633,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "we_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "we_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -35142,6 +34800,7 @@
           "type": "string"
         },
         "description": "Object containing metadata key/value pairs associated with the user.",
+        "nullable": true,
         "example": {
           "timezone": "America/New_York"
         },
@@ -35157,6 +34816,7 @@
           "type": "string"
         },
         "description": "Object containing metadata key/value pairs associated with the user.",
+        "nullable": true,
         "example": {
           "timezone": "America/New_York"
         },
@@ -35203,7 +34863,7 @@
               "value": "veda@foo-corp.com"
             }
           ],
-          "idp_id": 2836,
+          "idp_id": "2836",
           "object": "directory_user",
           "username": "veda@foo-corp.com",
           "last_name": "Torp",
@@ -35277,6 +34937,7 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the organization.",
+            "nullable": true,
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "email": {
@@ -35287,11 +34948,13 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.1"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           }
         },
@@ -35347,6 +35010,7 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the organization.",
+            "nullable": true,
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "email": {
@@ -35357,11 +35021,13 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.1"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           }
         },
@@ -35756,12 +35422,14 @@
           "last_used_at": {
             "type": "string",
             "description": "The timestamp when the API key was last used.",
+            "nullable": true,
             "example": "2026-01-15T12:00:00.000Z"
           },
           "expires_at": {
             "type": "string",
             "description": "Timestamp when the API Key expires. Null means the key does not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "permissions": {
@@ -35837,12 +35505,14 @@
           "last_used_at": {
             "type": "string",
             "description": "The timestamp when the API key was last used.",
+            "nullable": true,
             "example": "2026-01-15T12:00:00.000Z"
           },
           "expires_at": {
             "type": "string",
             "description": "Timestamp when the API Key expires. Null means the key does not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "permissions": {
@@ -35919,12 +35589,14 @@
           "last_used_at": {
             "type": "string",
             "description": "The timestamp when the API key was last used.",
+            "nullable": true,
             "example": "2026-01-15T12:00:00.000Z"
           },
           "expires_at": {
             "type": "string",
             "description": "Timestamp when the API Key expires. Null means the key does not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "permissions": {
@@ -35997,21 +35669,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "error": {
@@ -36066,11 +35742,13 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
@@ -36133,21 +35811,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "error": {
@@ -36202,11 +35884,13 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
@@ -36269,21 +35953,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "error": {
@@ -36338,11 +36026,13 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
@@ -36405,21 +36095,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "error": {
@@ -36474,16 +36168,19 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
@@ -36541,21 +36238,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "error": {
@@ -36610,11 +36311,13 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
@@ -36677,21 +36380,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "error": {
@@ -36746,11 +36453,13 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
@@ -36790,21 +36499,25 @@
           "control": {
             "type": "string",
             "description": "The control action taken for the detected risk.",
+            "nullable": true,
             "example": "block"
           },
           "blocklist_type": {
             "type": "string",
             "description": "The type of blocklist that triggered the risk detection.",
+            "nullable": true,
             "example": "ip"
           },
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
@@ -36866,11 +36579,13 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
@@ -36934,21 +36649,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "sso": {
@@ -37007,21 +36726,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "sso": {
@@ -37077,16 +36800,19 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
@@ -37148,21 +36874,25 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address of the request.",
+            "nullable": true,
             "example": "203.0.113.42"
           },
           "user_agent": {
             "type": "string",
             "description": "The user agent of the request.",
+            "nullable": true,
             "example": "Mozilla/5.0"
           },
           "user_id": {
             "type": "string",
             "description": "The ID of the user.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "user@example.com"
           },
           "sso": {
@@ -37877,26 +37607,30 @@
           "idp_id": {
             "type": "string",
             "description": "Unique identifier for the user, assigned by the Directory Provider. Different Directory Providers use different ID formats.",
-            "example": 2836
+            "example": "2836"
           },
           "email": {
             "type": "string",
             "description": "The email address of the user.",
+            "nullable": true,
             "example": "marcelina.davis@example.com"
           },
           "first_name": {
             "type": "string",
             "description": "The first name of the user.",
+            "nullable": true,
             "example": "Marcelina"
           },
           "last_name": {
             "type": "string",
             "description": "The last name of the user.",
+            "nullable": true,
             "example": "Davis"
           },
           "name": {
             "type": "string",
             "description": "The full name of the user.",
+            "nullable": true,
             "example": "Marcelina Davis"
           },
           "emails": {
@@ -37910,12 +37644,14 @@
           "job_title": {
             "type": "string",
             "description": "The job title of the user.",
+            "nullable": true,
             "example": "Software Engineer",
             "deprecated": true
           },
           "username": {
             "type": "string",
             "description": "The username of the user.",
+            "nullable": true,
             "example": "mdavis",
             "deprecated": true
           },
@@ -38077,6 +37813,7 @@
           "description": {
             "type": "string",
             "description": "A description for the Feature Flag.",
+            "nullable": true,
             "example": "Enable advanced analytics dashboard feature"
           },
           "owner": {
@@ -38188,6 +37925,7 @@
           "description": {
             "type": "string",
             "description": "A description for the Feature Flag.",
+            "nullable": true,
             "example": "Enable advanced analytics dashboard feature"
           },
           "owner": {
@@ -38299,6 +38037,7 @@
           "description": {
             "type": "string",
             "description": "A description for the Feature Flag.",
+            "nullable": true,
             "example": "Enable advanced analytics dashboard feature"
           },
           "owner": {
@@ -38422,6 +38161,7 @@
           "description": {
             "type": "string",
             "description": "A description for the Feature Flag.",
+            "nullable": true,
             "example": "Enable advanced analytics dashboard feature"
           },
           "owner": {
@@ -38572,12 +38312,14 @@
             "type": "string",
             "description": "The timestamp when the invitation was accepted, or null if not yet accepted.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "revoked_at": {
             "type": "string",
             "description": "The timestamp when the invitation was revoked, or null if not revoked.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
@@ -38589,21 +38331,25 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the [organization](/reference/organization) that the recipient will join.",
+            "nullable": true,
             "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "inviter_user_id": {
             "type": "string",
             "description": "The ID of the user who invited the recipient, if provided.",
+            "nullable": true,
             "example": "user_01HYGBX8ZGD19949T3BM4FW1C3"
           },
           "accepted_user_id": {
             "type": "string",
             "description": "The ID of the user who accepted the invitation, once accepted.",
+            "nullable": true,
             "example": null
           },
           "role_slug": {
             "type": "string",
             "description": "Slug of the role the invitee will be assigned on acceptance. Reflects the current role on the invitee\u0027s organization membership. null when the invitation has no associated organization.",
+            "nullable": true,
             "example": "admin"
           },
           "created_at": {
@@ -38673,12 +38419,14 @@
             "type": "string",
             "description": "The timestamp when the invitation was accepted, or null if not yet accepted.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "revoked_at": {
             "type": "string",
             "description": "The timestamp when the invitation was revoked, or null if not revoked.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
@@ -38690,21 +38438,25 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the [organization](/reference/organization) that the recipient will join.",
+            "nullable": true,
             "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "inviter_user_id": {
             "type": "string",
             "description": "The ID of the user who invited the recipient, if provided.",
+            "nullable": true,
             "example": "user_01HYGBX8ZGD19949T3BM4FW1C3"
           },
           "accepted_user_id": {
             "type": "string",
             "description": "The ID of the user who accepted the invitation, once accepted.",
+            "nullable": true,
             "example": null
           },
           "role_slug": {
             "type": "string",
             "description": "Slug of the role the invitee will be assigned on acceptance. Reflects the current role on the invitee\u0027s organization membership. null when the invitation has no associated organization.",
+            "nullable": true,
             "example": "admin"
           },
           "created_at": {
@@ -38774,12 +38526,14 @@
             "type": "string",
             "description": "The timestamp when the invitation was accepted, or null if not yet accepted.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "revoked_at": {
             "type": "string",
             "description": "The timestamp when the invitation was revoked, or null if not revoked.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
@@ -38791,21 +38545,25 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the [organization](/reference/organization) that the recipient will join.",
+            "nullable": true,
             "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "inviter_user_id": {
             "type": "string",
             "description": "The ID of the user who invited the recipient, if provided.",
+            "nullable": true,
             "example": "user_01HYGBX8ZGD19949T3BM4FW1C3"
           },
           "accepted_user_id": {
             "type": "string",
             "description": "The ID of the user who accepted the invitation, once accepted.",
+            "nullable": true,
             "example": null
           },
           "role_slug": {
             "type": "string",
             "description": "Slug of the role the invitee will be assigned on acceptance. Reflects the current role on the invitee\u0027s organization membership. null when the invitation has no associated organization.",
+            "nullable": true,
             "example": "admin"
           },
           "created_at": {
@@ -38875,12 +38633,14 @@
             "type": "string",
             "description": "The timestamp when the invitation was accepted, or null if not yet accepted.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "revoked_at": {
             "type": "string",
             "description": "The timestamp when the invitation was revoked, or null if not revoked.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
@@ -38892,21 +38652,25 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the [organization](/reference/organization) that the recipient will join.",
+            "nullable": true,
             "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "inviter_user_id": {
             "type": "string",
             "description": "The ID of the user who invited the recipient, if provided.",
+            "nullable": true,
             "example": "user_01HYGBX8ZGD19949T3BM4FW1C3"
           },
           "accepted_user_id": {
             "type": "string",
             "description": "The ID of the user who accepted the invitation, once accepted.",
+            "nullable": true,
             "example": null
           },
           "role_slug": {
             "type": "string",
             "description": "Slug of the role the invitee will be assigned on acceptance. Reflects the current role on the invitee\u0027s organization membership. null when the invitation has no associated organization.",
+            "nullable": true,
             "example": "admin"
           },
           "created_at": {
@@ -39042,6 +38806,7 @@
           "external_id": {
             "type": "string",
             "description": "The external ID of the Organization.",
+            "nullable": true,
             "example": "2fe01467-f7ea-4dd2-8b79-c2b4f56d0191"
           },
           "stripe_customer_id": {
@@ -39117,6 +38882,7 @@
           "external_id": {
             "type": "string",
             "description": "The external ID of the Organization.",
+            "nullable": true,
             "example": "2fe01467-f7ea-4dd2-8b79-c2b4f56d0191"
           },
           "stripe_customer_id": {
@@ -39749,6 +39515,7 @@
           "description": {
             "type": "string",
             "description": "A description of the role.",
+            "nullable": true,
             "example": "Can manage billing settings."
           },
           "resource_type_slug": {
@@ -39827,6 +39594,7 @@
           "description": {
             "type": "string",
             "description": "A description of the role.",
+            "nullable": true,
             "example": "Can manage billing settings."
           },
           "resource_type_slug": {
@@ -39905,6 +39673,7 @@
           "description": {
             "type": "string",
             "description": "A description of the role.",
+            "nullable": true,
             "example": "Can manage billing settings."
           },
           "resource_type_slug": {
@@ -39987,6 +39756,7 @@
           "external_id": {
             "type": "string",
             "description": "The external ID of the Organization.",
+            "nullable": true,
             "example": "2fe01467-f7ea-4dd2-8b79-c2b4f56d0191"
           },
           "stripe_customer_id": {
@@ -40174,6 +39944,7 @@
           "description": {
             "type": "string",
             "description": "A description of the permission.",
+            "nullable": true,
             "example": "Allows managing billing settings."
           },
           "system": {
@@ -40250,6 +40021,7 @@
           "description": {
             "type": "string",
             "description": "A description of the permission.",
+            "nullable": true,
             "example": "Allows managing billing settings."
           },
           "system": {
@@ -40326,6 +40098,7 @@
           "description": {
             "type": "string",
             "description": "A description of the permission.",
+            "nullable": true,
             "example": "Allows managing billing settings."
           },
           "system": {
@@ -40400,11 +40173,13 @@
           "user_id": {
             "type": "string",
             "description": "The ID of the User the connection attempt belongs to.",
+            "nullable": true,
             "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "organization_id": {
             "type": "string",
             "description": "The ID of the Organization the connection attempt belongs to.",
+            "nullable": true,
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "error_code": {
@@ -40415,16 +40190,19 @@
           "error_reason": {
             "type": "string",
             "description": "A human-readable explanation of the failure.",
+            "nullable": true,
             "example": "The authorization code has expired."
           },
           "provider_error": {
             "type": "string",
             "description": "The raw error code returned by the OAuth provider.",
+            "nullable": true,
             "example": "access_denied"
           },
           "provider_error_description": {
             "type": "string",
             "description": "The raw error description returned by the OAuth provider.",
+            "nullable": true,
             "example": "The user denied the authorization request."
           },
           "created_at": {
@@ -40702,6 +40480,7 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address from which the session was created.",
+            "nullable": true,
             "example": "198.51.100.42"
           },
           "organization_id": {
@@ -40712,6 +40491,7 @@
           "user_agent": {
             "type": "string",
             "description": "The user agent string from the device that created the session.",
+            "nullable": true,
             "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
           },
           "user_id": {
@@ -40735,6 +40515,7 @@
             "type": "string",
             "description": "The timestamp when the session ended.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "created_at": {
@@ -40796,6 +40577,7 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address from which the session was created.",
+            "nullable": true,
             "example": "198.51.100.42"
           },
           "organization_id": {
@@ -40806,6 +40588,7 @@
           "user_agent": {
             "type": "string",
             "description": "The user agent string from the device that created the session.",
+            "nullable": true,
             "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
           },
           "user_id": {
@@ -40829,6 +40612,7 @@
             "type": "string",
             "description": "The timestamp when the session ended.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "created_at": {
@@ -41261,6 +41045,7 @@
           "expires_at": {
             "type": "string",
             "description": "The ISO-8601 formatted timestamp indicating when the access token expires.",
+            "nullable": true,
             "example": "2025-12-31T23:59:59.000Z"
           },
           "scopes": {
@@ -41339,6 +41124,7 @@
           "expires_at": {
             "type": "string",
             "description": "The ISO-8601 formatted timestamp indicating when the credential expires.",
+            "nullable": true,
             "example": "2025-12-31T23:59:59.000Z"
           },
           "scopes": {
@@ -41473,6 +41259,7 @@
           "expires_at": {
             "type": "string",
             "description": "The ISO-8601 formatted timestamp indicating when the credential expires.",
+            "nullable": true,
             "example": "2025-12-31T23:59:59.000Z"
           },
           "scopes": {
@@ -41496,25 +41283,48 @@
         },
         "description": "The credential object containing the vended secret."
       },
-      "DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParameters": {
+      "AgentRegistrationClaimClaimCompletion": {
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "expires_at",
+          "claimed_at"
+        ],
         "type": "object",
-        "additionalProperties": {
-          "type": "string"
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the claim completion.",
+            "example": "agent_reg_claim_attempt_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the claim completion was created.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the claim completion was last updated.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The timestamp when the claim completion expires.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "claimed_at": {
+            "type": "string",
+            "description": "The timestamp when the claim was completed.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
         },
-        "description": "Additional static query parameters appended to the authorization request.",
-        "example": {
-          "prompt": "consent"
-        }
-      },
-      "DataIntegrationsListResponseDataItemConnectedAccountOneOf1Config": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
-        "example": {
-          "instance_url": "https://example.my.salesforce.com"
-        }
+        "description": "The completion record for the claim, or \u0060null\u0060 if the claim has not been completed.",
+        "nullable": true
       },
       "AuditLogSchemaJsonActorMetadata": {
         "type": "object",
@@ -41569,6 +41379,137 @@
           "title": "Developer Experience Engineer",
           "location": "Brooklyn"
         }
+      },
+      "DataIntegrationCustomProviderAdditionalAuthorizationParameters": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional static query parameters appended to the authorization request.",
+        "example": {
+          "prompt": "consent"
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccount": {
+        "required": [
+          "object",
+          "id",
+          "user_id",
+          "organization_id",
+          "scopes",
+          "state",
+          "created_at",
+          "updated_at",
+          "userlandUserId",
+          "organizationId",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "enum": [
+              "connected_account"
+            ],
+            "type": "string",
+            "description": "Distinguishes the connected account object.",
+            "x-ms-enum": {
+              "name": "ObjectValue",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "connected_account",
+                  "name": "ConnectedAccount"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the connected account.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The [User](/reference/authkit/user) identifier associated with this connection.",
+            "nullable": true,
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The [Organization](/reference/organization) identifier associated with this connection, or \u0060null\u0060 if not scoped to an organization.",
+            "nullable": true,
+            "example": null
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes granted for this connection."
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountAuthMethod"
+          },
+          "api_key_last_4": {
+            "type": "string",
+            "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
+            "nullable": true,
+            "example": null
+          },
+          "client_id": {
+            "type": "string",
+            "description": "The client ID supplied for this connection. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "nullable": true,
+            "example": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc"
+          },
+          "client_secret_last_4": {
+            "type": "string",
+            "description": "The last four characters of the client secret supplied for this connection, or \u0060null\u0060 when it can\u0027t be read. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "nullable": true,
+            "example": "cdef"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountConfigProperty"
+          },
+          "state": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountState"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the connection was created.",
+            "example": "2024-01-16T14:20:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the connection was last updated.",
+            "example": "2024-01-16T14:20:00.000Z"
+          },
+          "userlandUserId": {
+            "type": "string",
+            "description": "Use \u0060user_id\u0060 instead.",
+            "nullable": true,
+            "deprecated": true
+          },
+          "organizationId": {
+            "type": "string",
+            "description": "Use \u0060organization_id\u0060 instead.",
+            "nullable": true,
+            "deprecated": true
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Use \u0060created_at\u0060 instead.",
+            "deprecated": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Use \u0060updated_at\u0060 instead.",
+            "deprecated": true
+          }
+        },
+        "description": "The user\u0027s [connected account](/reference/pipes/connected-account) for this provider, or \u0060null\u0060 if the user has not connected.",
+        "nullable": true
       },
       "EventSchemaAllOf2OneOf4DataClaimedBy": {
         "required": [
@@ -41634,6 +41575,7 @@
             "type": "string",
             "description": "The previous timestamp when the API Key expired. Null means the key did not expire.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           }
         },
@@ -41770,16 +41712,19 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the organization.",
+            "nullable": true,
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "connection_id": {
             "type": "string",
             "description": "The ID of the SSO connection.",
+            "nullable": true,
             "example": "conn_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "session_id": {
             "type": "string",
             "description": "The ID of the SSO session.",
+            "nullable": true,
             "example": "sess_01E4ZCR3C56J083X43JQXF3JK5"
           }
         },
@@ -41816,16 +41761,19 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the organization.",
+            "nullable": true,
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "connection_id": {
             "type": "string",
             "description": "The ID of the SSO connection.",
+            "nullable": true,
             "example": "conn_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "session_id": {
             "type": "string",
             "description": "The ID of the SSO session.",
+            "nullable": true,
             "example": "sess_01E4ZCR3C56J083X43JQXF3JK5"
           }
         },
@@ -41842,16 +41790,19 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the organization.",
+            "nullable": true,
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "connection_id": {
             "type": "string",
             "description": "The ID of the SSO connection.",
+            "nullable": true,
             "example": "conn_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "session_id": {
             "type": "string",
             "description": "The ID of the SSO session.",
+            "nullable": true,
             "example": "sess_01E4ZCR3C56J083X43JQXF3JK5"
           }
         },
@@ -41868,16 +41819,19 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the organization.",
+            "nullable": true,
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "connection_id": {
             "type": "string",
             "description": "The ID of the SSO connection.",
+            "nullable": true,
             "example": "conn_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "session_id": {
             "type": "string",
             "description": "The ID of the SSO session.",
+            "nullable": true,
             "example": "sess_01E4ZCR3C56J083X43JQXF3JK5"
           }
         },
@@ -42125,6 +42079,7 @@
           "value": {
             "type": "string",
             "description": "The email address value.",
+            "nullable": true,
             "example": "marcelina.davis@example.com"
           }
         }
@@ -42154,6 +42109,35 @@
           "$ref": "#/components/schemas/EventSchemaAllOf2OneOf49DataPreviousAttributesAdditionalProperties"
         }
       },
+      "EventSchemaAllOf2OneOf51DataOwner": {
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the flag owner.",
+            "example": "jane@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the flag owner.",
+            "nullable": true,
+            "example": "Jane"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the flag owner.",
+            "nullable": true,
+            "example": "Doe"
+          }
+        },
+        "description": "The owner of the Feature Flag.",
+        "nullable": true
+      },
       "EventSchemaAllOf2OneOf51ContextActor": {
         "required": [
           "id",
@@ -42173,10 +42157,40 @@
           "name": {
             "type": "string",
             "description": "The name of the actor.",
+            "nullable": true,
             "example": "Jane Doe"
           }
         },
         "description": "The actor who performed the action."
+      },
+      "EventSchemaAllOf2OneOf52DataOwner": {
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the flag owner.",
+            "example": "jane@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the flag owner.",
+            "nullable": true,
+            "example": "Jane"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the flag owner.",
+            "nullable": true,
+            "example": "Doe"
+          }
+        },
+        "description": "The owner of the Feature Flag.",
+        "nullable": true
       },
       "EventSchemaAllOf2OneOf52ContextActor": {
         "required": [
@@ -42197,10 +42211,40 @@
           "name": {
             "type": "string",
             "description": "The name of the actor.",
+            "nullable": true,
             "example": "Jane Doe"
           }
         },
         "description": "The actor who performed the action."
+      },
+      "EventSchemaAllOf2OneOf53DataOwner": {
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the flag owner.",
+            "example": "jane@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the flag owner.",
+            "nullable": true,
+            "example": "Jane"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the flag owner.",
+            "nullable": true,
+            "example": "Doe"
+          }
+        },
+        "description": "The owner of the Feature Flag.",
+        "nullable": true
       },
       "EventSchemaAllOf2OneOf53ContextActor": {
         "required": [
@@ -42221,6 +42265,7 @@
           "name": {
             "type": "string",
             "description": "The name of the actor.",
+            "nullable": true,
             "example": "Jane Doe"
           }
         },
@@ -42262,6 +42307,35 @@
         },
         "description": "Attributes that changed from their previous values."
       },
+      "EventSchemaAllOf2OneOf54DataOwner": {
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the flag owner.",
+            "example": "jane@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the flag owner.",
+            "nullable": true,
+            "example": "Jane"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the flag owner.",
+            "nullable": true,
+            "example": "Doe"
+          }
+        },
+        "description": "The owner of the Feature Flag.",
+        "nullable": true
+      },
       "EventSchemaAllOf2OneOf54ContextActor": {
         "required": [
           "id",
@@ -42281,6 +42355,7 @@
           "name": {
             "type": "string",
             "description": "The name of the actor.",
+            "nullable": true,
             "example": "Jane Doe"
           }
         },
@@ -42669,6 +42744,7 @@
           "reason": {
             "type": "string",
             "description": "The justification the impersonator gave for impersonating the user.",
+            "nullable": true,
             "example": "Investigating an issue with the customer\u0027s account."
           }
         },
@@ -42689,6 +42765,7 @@
           "reason": {
             "type": "string",
             "description": "The justification the impersonator gave for impersonating the user.",
+            "nullable": true,
             "example": "Investigating an issue with the customer\u0027s account."
           }
         },
@@ -42720,6 +42797,16 @@
         "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider.",
         "example": {
           "instance_url": "https://acme.my.salesforce.com"
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+        "example": {
+          "instance_url": "https://example.my.salesforce.com"
         }
       },
       "EventSchemaAllOf2OneOf53ContextConfiguredTargetsOrganizationsItem": {
@@ -42799,6 +42886,7 @@
           "description": {
             "type": "string",
             "description": "The previous description of the flag.",
+            "nullable": true,
             "example": "Enables the new feature."
           },
           "tags": {
@@ -43436,7 +43524,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code to verify.",
-            "example": 123456
+            "example": "123456"
           }
         }
       },
@@ -43510,7 +43598,7 @@
           "phone_number": {
             "type": "string",
             "description": "Required when type is \u0027sms\u0027.",
-            "example": 15555555555
+            "example": "\u002B15555555555"
           },
           "totp_issuer": {
             "type": "string",
@@ -44251,6 +44339,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can manage billing and invoices"
           },
           "type": {
@@ -44463,6 +44552,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can view and export billing reports"
           },
           "type": {
@@ -44572,6 +44662,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can manage all financial operations"
           },
           "type": {
@@ -44807,6 +44898,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can manage all resources"
           },
           "type": {
@@ -44929,6 +45021,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can manage all resources"
           },
           "type": {
@@ -45124,6 +45217,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Resource.",
+            "nullable": true,
             "example": "Updated description"
           },
           "organization_id": {
@@ -45134,6 +45228,7 @@
           "parent_resource_id": {
             "type": "string",
             "description": "The ID of the parent resource, if this resource is nested.",
+            "nullable": true,
             "example": "authz_resource_01HXYZ123456789ABCDEFGHIJ"
           },
           "id": {
@@ -45509,6 +45604,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Permission.",
+            "nullable": true,
             "example": "Allows viewing document contents"
           },
           "system": {
@@ -45802,6 +45898,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Resource.",
+            "nullable": true,
             "example": "Primary workspace for the Acme team"
           },
           "organization_id": {
@@ -45812,6 +45909,7 @@
           "parent_resource_id": {
             "type": "string",
             "description": "The ID of the parent resource, if this resource is nested.",
+            "nullable": true,
             "example": "authz_resource_01HXYZ123456789ABCDEFGHIJ"
           },
           "id": {
@@ -46008,6 +46106,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the Resource.",
+            "nullable": true,
             "example": "Updated description"
           },
           "organization_id": {
@@ -46018,6 +46117,7 @@
           "parent_resource_id": {
             "type": "string",
             "description": "The ID of the parent resource, if this resource is nested.",
+            "nullable": true,
             "example": "authz_resource_01HXYZ123456789ABCDEFGHIJ"
           },
           "id": {
@@ -46382,6 +46482,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can edit resources"
           },
           "type": {
@@ -46607,6 +46708,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Full administrative access to all resources"
           },
           "type": {
@@ -46761,6 +46863,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can manage all resources"
           },
           "type": {
@@ -46915,6 +47018,7 @@
           "description": {
             "type": "string",
             "description": "An optional description of the role.",
+            "nullable": true,
             "example": "Can manage all resources"
           },
           "type": {
@@ -48119,6 +48223,7 @@
           "description": {
             "type": "string",
             "description": "A description for the Feature Flag.",
+            "nullable": true,
             "example": "Enable advanced analytics dashboard feature"
           },
           "owner": {
@@ -48220,6 +48325,7 @@
           "description": {
             "type": "string",
             "description": "A description for the Feature Flag.",
+            "nullable": true,
             "example": "Enable advanced analytics dashboard feature"
           },
           "owner": {
@@ -50240,12 +50346,14 @@
             "type": "string",
             "description": "The timestamp when the invitation was accepted, or null if not yet accepted.",
             "format": "date-time",
+            "nullable": true,
             "example": "2026-01-15T12:00:00.000Z"
           },
           "revoked_at": {
             "type": "string",
             "description": "The timestamp when the invitation was revoked, or null if not revoked.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "expires_at": {
@@ -50257,21 +50365,25 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the [organization](/reference/organization) that the recipient will join.",
+            "nullable": true,
             "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "inviter_user_id": {
             "type": "string",
             "description": "The ID of the user who invited the recipient, if provided.",
+            "nullable": true,
             "example": "user_01HYGBX8ZGD19949T3BM4FW1C3"
           },
           "accepted_user_id": {
             "type": "string",
             "description": "The ID of the user who accepted the invitation, once accepted.",
+            "nullable": true,
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "role_slug": {
             "type": "string",
             "description": "Slug of the role the invitee will be assigned on acceptance. Reflects the current role on the invitee\u0027s organization membership. null when the invitation has no associated organization.",
+            "nullable": true,
             "example": "admin"
           },
           "created_at": {
@@ -50457,12 +50569,14 @@
             "type": "string",
             "description": "The timestamp when the invitation was accepted, or null if not yet accepted.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "revoked_at": {
             "type": "string",
             "description": "The timestamp when the invitation was revoked, or null if not revoked.",
             "format": "date-time",
+            "nullable": true,
             "example": "2026-01-15T12:00:00.000Z"
           },
           "expires_at": {
@@ -50474,21 +50588,25 @@
           "organization_id": {
             "type": "string",
             "description": "The ID of the [organization](/reference/organization) that the recipient will join.",
+            "nullable": true,
             "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
           },
           "inviter_user_id": {
             "type": "string",
             "description": "The ID of the user who invited the recipient, if provided.",
+            "nullable": true,
             "example": "user_01HYGBX8ZGD19949T3BM4FW1C3"
           },
           "accepted_user_id": {
             "type": "string",
             "description": "The ID of the user who accepted the invitation, once accepted.",
+            "nullable": true,
             "example": null
           },
           "role_slug": {
             "type": "string",
             "description": "Slug of the role the invitee will be assigned on acceptance. Reflects the current role on the invitee\u0027s organization membership. null when the invitation has no associated organization.",
+            "nullable": true,
             "example": "admin"
           },
           "created_at": {
@@ -50659,7 +50777,7 @@
           "code": {
             "type": "string",
             "description": "The code used to verify the Magic Auth code.",
-            "example": 123456
+            "example": "123456"
           },
           "radar_auth_attempt_id": {
             "type": "string",
@@ -51743,21 +51861,25 @@
           "first_name": {
             "type": "string",
             "description": "The first name of the user.",
+            "nullable": true,
             "example": "Marcelina"
           },
           "last_name": {
             "type": "string",
             "description": "The last name of the user.",
+            "nullable": true,
             "example": "Davis"
           },
           "name": {
             "type": "string",
             "description": "The user\u0027s full name.",
+            "nullable": true,
             "example": "Marcelina Davis"
           },
           "profile_picture_url": {
             "type": "string",
             "description": "A URL reference to an image representing the user.",
+            "nullable": true,
             "example": "https://workoscdn.com/images/v1/123abc"
           },
           "email": {
@@ -51773,6 +51895,7 @@
           "external_id": {
             "type": "string",
             "description": "The external ID of the user.",
+            "nullable": true,
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
           },
           "metadata": {
@@ -51782,11 +51905,13 @@
             "type": "string",
             "description": "The timestamp when the user last signed in.",
             "format": "date-time",
+            "nullable": true,
             "example": "2025-06-25T19:07:33.155Z"
           },
           "locale": {
             "type": "string",
             "description": "The user\u0027s preferred locale.",
+            "nullable": true,
             "example": "en-US"
           },
           "created_at": {
@@ -52994,151 +53119,6 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
-      "DataIntegrationConfigurationResponseScopesBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "ConfigureDataIntegrationBodyScopesBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "DataIntegrationScopesBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "DataIntegrationsListResponseDataItemScopesBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "ProfileRolesBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SlimRole"
-            }
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf4DataClaimedByOrganizationIdBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf4DataClaimedByOrganizationIdOneOf2Branch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "enum": [
-              null
-            ],
-            "type": "string"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf5DataAgentIdentityUserlandUserIdBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf5DataAgentIdentityUserlandUserIdOneOf2Branch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "enum": [
-              null
-            ],
-            "type": "string"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf6DataDetailOneOf2ExpiresAtBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf6DataDetailOneOf2ExpiresAtOneOf2Branch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "enum": [
-              null
-            ],
-            "type": "string"
-          }
-        }
-      },
       "ApplicationCredentialsControllerList200ResponseSchema": {
         "type": "array",
         "items": {
@@ -54258,30 +54238,6 @@
           }
         }
       },
-      "FeatureFlagsControllerDisableFlag200ResponseOwner": {
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/FeatureFlagsControllerDisableFlag200ResponseOwnerOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "description": "The owner of the Feature Flag."
-      },
-      "FeatureFlagsControllerEnableFlag200ResponseOwner": {
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/FeatureFlagsControllerEnableFlag200ResponseOwnerOneOf1"
-          },
-          {
-            "type": "object"
-          }
-        ],
-        "description": "The owner of the Feature Flag."
-      },
       "OrganizationsControllerCreate400ResponseOneOf1": {
         "required": [
           "code",
@@ -54871,7 +54827,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code for Magic Auth authentication.",
-            "example": 123456
+            "example": "123456"
           },
           "email": {
             "type": "string",
@@ -54944,7 +54900,7 @@
           "code": {
             "type": "string",
             "description": "The email verification code.",
-            "example": 123456
+            "example": "123456"
           },
           "pending_authentication_token": {
             "type": "string",
@@ -55008,7 +54964,7 @@
           "code": {
             "type": "string",
             "description": "The TOTP code from the authenticator app.",
-            "example": 123456
+            "example": "123456"
           },
           "pending_authentication_token": {
             "type": "string",
@@ -55140,7 +55096,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code from the Radar email challenge.",
-            "example": 123456
+            "example": "123456"
           },
           "radar_challenge_id": {
             "type": "string",
@@ -55208,7 +55164,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code from the Radar SMS challenge.",
-            "example": 123456
+            "example": "123456"
           },
           "verification_id": {
             "type": "string",
@@ -55218,7 +55174,7 @@
           "phone_number": {
             "type": "string",
             "description": "The phone number the Radar SMS challenge was sent to. Required for sign-up challenges; omitted for sign-in challenges, where the phone number on file is resolved server-side.",
-            "example": 15555550123
+            "example": "\u002B15555550123"
           },
           "pending_authentication_token": {
             "type": "string",
@@ -58938,56 +58894,6 @@
           }
         }
       },
-      "FeatureFlagsControllerDisableFlag200ResponseOwnerOneOf1": {
-        "required": [
-          "email",
-          "first_name",
-          "last_name"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address of the flag owner.",
-            "example": "jane@example.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the flag owner.",
-            "example": "Jane"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the flag owner.",
-            "example": "Doe"
-          }
-        }
-      },
-      "FeatureFlagsControllerEnableFlag200ResponseOwnerOneOf1": {
-        "required": [
-          "email",
-          "first_name",
-          "last_name"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The email address of the flag owner.",
-            "example": "jane@example.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the flag owner.",
-            "example": "Jane"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the flag owner.",
-            "example": "Doe"
-          }
-        }
-      },
       "UserObjectMetadataProperty": {
         "type": "object",
         "additionalProperties": {
@@ -59020,22 +58926,6 @@
         "type": "object",
         "description": "Optional JSON schema for event metadata."
       },
-      "OrganizationDtoMetadataProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "maxLength": 600,
-          "type": "string"
-        },
-        "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
-      },
-      "UpdateOrganizationDtoMetadataProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "maxLength": 600,
-          "type": "string"
-        },
-        "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
-      },
       "CustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty": {
         "type": "object",
         "additionalProperties": {
@@ -59056,22 +58946,6 @@
           "type": "string"
         },
         "description": "Additional static query parameters appended to the authorization request."
-      },
-      "CreateUserlandUserDtoMetadata": {
-        "type": "object",
-        "additionalProperties": {
-          "maxLength": 600,
-          "type": "string"
-        },
-        "description": "Object containing metadata key/value pairs associated with the user."
-      },
-      "UpdateUserlandUserDtoMetadata": {
-        "type": "object",
-        "additionalProperties": {
-          "maxLength": 600,
-          "type": "string"
-        },
-        "description": "Object containing metadata key/value pairs associated with the user."
       },
       "CreateDataKeyRequestContextProperty": {
         "type": "object",
@@ -59246,22 +59120,6 @@
         },
         "description": "The complete set of raw attributes returned by the identity provider."
       },
-      "CreateUserlandUserDtoAllOf1MetadataProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "maxLength": 600,
-          "type": "string"
-        },
-        "description": "Object containing metadata key/value pairs associated with the user."
-      },
-      "UpdateUserlandUserDtoAllOf1MetadataProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "maxLength": 600,
-          "type": "string"
-        },
-        "description": "Object containing metadata key/value pairs associated with the user."
-      },
       "EventSchemaAllOf1DataProperty": {
         "type": "object",
         "additionalProperties": {
@@ -59275,20 +59133,6 @@
           "$ref": "#/components/schemas/EventSchemaContextAdditionalProperties"
         },
         "description": "Additional context about the event."
-      },
-      "DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Additional static query parameters appended to the authorization request."
-      },
-      "DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060."
       },
       "AuditLogSchemaJsonActorMetadataProperty": {
         "type": "object",
@@ -59334,6 +59178,13 @@
       },
       "DirectoryUserCustomAttributesAdditionalProperties": {
         "type": "object"
+      },
+      "DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional static query parameters appended to the authorization request."
       },
       "UserlandUserOrganizationMembershipCustomAttributesAdditionalProperties": {
         "type": "object"
@@ -59462,6 +59313,13 @@
       "UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesAdditionalProperties": {
         "type": "object"
       },
+      "DataIntegrationsListResponseDataItemConnectedAccountConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060."
+      },
       "EventSchemaAllOf2OneOf42DataRawAttributesAdditionalProperties": {
         "type": "object"
       },
@@ -59525,11 +59383,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "ala_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "ala_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -59545,11 +59405,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "als_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "als_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -59616,6 +59478,7 @@
             "type": "string",
             "description": "The timestamp when the client secret was last used, or null if never used.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "created_at": {
@@ -59671,6 +59534,64 @@
           }
         }
       },
+      "FeatureFlagsControllerDisableFlag200ResponseOwner": {
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the flag owner.",
+            "example": "jane@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the flag owner.",
+            "nullable": true,
+            "example": "Jane"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the flag owner.",
+            "nullable": true,
+            "example": "Doe"
+          }
+        },
+        "description": "The owner of the Feature Flag.",
+        "nullable": true
+      },
+      "FeatureFlagsControllerEnableFlag200ResponseOwner": {
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the flag owner.",
+            "example": "jane@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the flag owner.",
+            "nullable": true,
+            "example": "Jane"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the flag owner.",
+            "nullable": true,
+            "example": "Doe"
+          }
+        },
+        "description": "The owner of the Feature Flag.",
+        "nullable": true
+      },
       "OrganizationApiKeysControllerCreate422ResponseErrorsItem": {
         "required": [
           "code",
@@ -59713,11 +59634,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "cors_origin_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "cors_origin_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -59776,11 +59699,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "redir_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "redir_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -59835,21 +59760,25 @@
           "first_name": {
             "type": "string",
             "description": "The first name of the user.",
+            "nullable": true,
             "example": "Marcelina"
           },
           "last_name": {
             "type": "string",
             "description": "The last name of the user.",
+            "nullable": true,
             "example": "Davis"
           },
           "name": {
             "type": "string",
             "description": "The user\u0027s full name.",
+            "nullable": true,
             "example": "Marcelina Davis"
           },
           "profile_picture_url": {
             "type": "string",
             "description": "A URL reference to an image representing the user.",
+            "nullable": true,
             "example": "https://workoscdn.com/images/v1/123abc"
           },
           "email": {
@@ -59865,6 +59794,7 @@
           "external_id": {
             "type": "string",
             "description": "The external ID of the user.",
+            "nullable": true,
             "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
           },
           "metadata": {
@@ -59874,11 +59804,13 @@
             "type": "string",
             "description": "The timestamp when the user last signed in.",
             "format": "date-time",
+            "nullable": true,
             "example": "2025-06-25T19:07:33.155Z"
           },
           "locale": {
             "type": "string",
             "description": "The user\u0027s preferred locale.",
+            "nullable": true,
             "example": "en-US"
           },
           "created_at": {
@@ -59931,11 +59863,13 @@
           "before": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "nullable": true,
             "example": "session_01HXYZ123456789ABCDEFGHIJ"
           },
           "after": {
             "type": "string",
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "nullable": true,
             "example": "session_01HXYZ987654321KJIHGFEDCBA"
           }
         },
@@ -59985,6 +59919,7 @@
           "ip_address": {
             "type": "string",
             "description": "The IP address from which the session was created.",
+            "nullable": true,
             "example": "198.51.100.42"
           },
           "organization_id": {
@@ -59995,6 +59930,7 @@
           "user_agent": {
             "type": "string",
             "description": "The user agent string from the device that created the session.",
+            "nullable": true,
             "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
           },
           "user_id": {
@@ -60018,6 +59954,7 @@
             "type": "string",
             "description": "The timestamp when the session ended.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "created_at": {
@@ -60095,6 +60032,7 @@
             "type": "string",
             "description": "The timestamp when the client secret was last used, or null if never used.",
             "format": "date-time",
+            "nullable": true,
             "example": null
           },
           "created_at": {
@@ -60377,6 +60315,7 @@
           "reason": {
             "type": "string",
             "description": "The justification the impersonator gave for impersonating the user.",
+            "nullable": true,
             "example": "Investigating an issue with the customer\u0027s account."
           }
         },
@@ -60541,7 +60480,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "      The intent of the Admin Portal.\n        - \u0060sso\u0060 - Launch Admin Portal for creating SSO connections\n        - \u0060dsync\u0060 - Launch Admin Portal for creating Directory Sync connections\n        - \u0060audit_logs\u0060 - Launch Admin Portal for viewing Audit Logs\n        - \u0060log_streams\u0060 - Launch Admin Portal for creating Log Streams\n        - \u0060domain_verification\u0060 - Launch Admin Portal for Domain Verification\n        - \u0060certificate_renewal\u0060 - Launch Admin Portal for renewing SAML Certificates\n        - \u0060bring_your_own_key\u0060 - Launch Admin Portal for configuring Bring Your Own Key",
+        "description": "\n      The intent of the Admin Portal.\n        - \u0060sso\u0060 - Launch Admin Portal for creating SSO connections\n        - \u0060dsync\u0060 - Launch Admin Portal for creating Directory Sync connections\n        - \u0060audit_logs\u0060 - Launch Admin Portal for viewing Audit Logs\n        - \u0060log_streams\u0060 - Launch Admin Portal for creating Log Streams\n        - \u0060domain_verification\u0060 - Launch Admin Portal for Domain Verification\n        - \u0060certificate_renewal\u0060 - Launch Admin Portal for renewing SAML Certificates\n        - \u0060bring_your_own_key\u0060 - Launch Admin Portal for configuring Bring Your Own Key",
         "example": "sso",
         "x-ms-enum": {
           "name": "GenerateLinkDtoIntent",
@@ -64222,112 +64161,6 @@
           ]
         }
       },
-      "DataIntegrationCredentialsComposedOneOf1Type": {
-        "enum": [
-          "custom",
-          "organization"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "The credentials type. \u0060custom\u0060 uses your own OAuth app credentials; \u0060organization\u0060 has each organization supply its own credentials (so \u0060client_id\u0060/\u0060redacted_client_secret\u0060 are null on the integration itself).",
-        "example": "custom",
-        "x-ms-enum": {
-          "name": "DataIntegrationCredentialsComposedOneOf1Type",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "custom",
-              "name": "Custom"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
-      "DataIntegrationCustomProviderOneOf1AuthenticateVia": {
-        "enum": [
-          "request_body",
-          "basic_auth_header"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "How client credentials are sent when exchanging authorization codes and refreshing tokens.",
-        "example": "request_body",
-        "x-ms-enum": {
-          "name": "DataIntegrationCustomProviderOneOf1AuthenticateVia",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "request_body",
-              "name": "RequestBody"
-            },
-            {
-              "value": "basic_auth_header",
-              "name": "BasicAuthHeader"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod": {
-        "enum": [
-          "oauth",
-          "api_key",
-          "client_credentials"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "The authentication method used for this connection (\u0060oauth\u0060, \u0060api_key\u0060, or \u0060client_credentials\u0060). Defaults to \u0060oauth\u0060 if absent.",
-        "example": "oauth",
-        "x-ms-enum": {
-          "name": "DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "oauth",
-              "name": "OAuth"
-            },
-            {
-              "value": "api_key",
-              "name": "ApiKey"
-            },
-            {
-              "value": "client_credentials",
-              "name": "ClientCredentials"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsListResponseDataItemConnectedAccountOneOf1State": {
-        "enum": [
-          "connected",
-          "needs_reauthorization",
-          "disconnected"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "\u0022The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed.\n- \u0060disconnected\u0060: The connection has been disconnected.\u0022",
-        "example": "connected",
-        "x-ms-enum": {
-          "name": "DataIntegrationsListResponseDataItemConnectedAccountOneOf1State",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "connected",
-              "name": "Connected"
-            },
-            {
-              "value": "needs_reauthorization",
-              "name": "NeedsReauthorization"
-            },
-            {
-              "value": "disconnected",
-              "name": "Disconnected"
-            }
-          ]
-        }
-      },
       "UserRoleAssignmentSourceType": {
         "enum": [
           "direct",
@@ -64488,6 +64321,54 @@
             {
               "value": "invalid",
               "name": "Invalid"
+            }
+          ]
+        }
+      },
+      "DataIntegrationCredentialsPropertyType": {
+        "enum": [
+          "custom",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The credentials type. \u0060custom\u0060 uses your own OAuth app credentials; \u0060organization\u0060 has each organization supply its own credentials (so \u0060client_id\u0060/\u0060redacted_client_secret\u0060 are null on the integration itself).",
+        "example": "custom",
+        "x-ms-enum": {
+          "name": "DataIntegrationCredentialsPropertyType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "custom",
+              "name": "Custom"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationCustomProviderAuthenticateVia": {
+        "enum": [
+          "request_body",
+          "basic_auth_header"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How client credentials are sent when exchanging authorization codes and refreshing tokens.",
+        "example": "request_body",
+        "x-ms-enum": {
+          "name": "DataIntegrationCustomProviderAuthenticateVia",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "request_body",
+              "name": "RequestBody"
+            },
+            {
+              "value": "basic_auth_header",
+              "name": "BasicAuthHeader"
             }
           ]
         }
@@ -66697,6 +66578,64 @@
             {
               "value": "dashboard",
               "name": "Dashboard"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountAuthMethod": {
+        "enum": [
+          "oauth",
+          "api_key",
+          "client_credentials"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The authentication method used for this connection (\u0060oauth\u0060, \u0060api_key\u0060, or \u0060client_credentials\u0060). Defaults to \u0060oauth\u0060 if absent.",
+        "example": "oauth",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountAuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountState": {
+        "enum": [
+          "connected",
+          "needs_reauthorization",
+          "disconnected"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "\u0022The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed.\n- \u0060disconnected\u0060: The connection has been disconnected.\u0022",
+        "example": "connected",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected",
+              "name": "Connected"
+            },
+            {
+              "value": "needs_reauthorization",
+              "name": "NeedsReauthorization"
+            },
+            {
+              "value": "disconnected",
+              "name": "Disconnected"
             }
           ]
         }

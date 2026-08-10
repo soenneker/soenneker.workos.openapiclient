@@ -8,29 +8,29 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding any it declares as secret. Only present when `auth_method` is `client_credentials`.
+    /// Object containing metadata key/value pairs associated with the user.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty : IAdditionalDataHolder, IParsable
+    public partial class CreateUserlandUserDtoAllOf1Metadata : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata"/> and sets the default values.
         /// </summary>
-        public DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty()
+        public CreateUserlandUserDtoAllOf1Metadata()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata();
         }
         /// <summary>
         /// The deserialization information for the current model

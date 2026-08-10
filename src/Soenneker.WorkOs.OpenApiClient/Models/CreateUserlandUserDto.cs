@@ -59,10 +59,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Object containing metadata key/value pairs associated with the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata Metadata { get; set; }
 #endif
         /// <summary>The user&apos;s full name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -119,7 +119,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "signals_id", n => { SignalsId = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
@@ -138,7 +138,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteStringValue("last_name", LastName);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf1Metadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("signals_id", SignalsId);
             writer.WriteStringValue("user_agent", UserAgent);

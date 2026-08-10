@@ -16,15 +16,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Additional static query parameters appended to the authorization request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty? AdditionalAuthorizationParameters { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty? AdditionalAuthorizationParameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty AdditionalAuthorizationParameters { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty AdditionalAuthorizationParameters { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How client credentials are sent when exchanging authorization codes and refreshing tokens.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AuthenticateVia? AuthenticateVia { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAuthenticateVia? AuthenticateVia { get; set; }
         /// <summary>The provider&apos;s OAuth authorization endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,14 +79,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string TokenUrl { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProvider"/> and sets the default values.
         /// </summary>
@@ -112,8 +104,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "additional_authorization_parameters", n => { AdditionalAuthorizationParameters = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty.CreateFromDiscriminatorValue); } },
-                { "authenticate_via", n => { AuthenticateVia = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AuthenticateVia>(); } },
+                { "additional_authorization_parameters", n => { AdditionalAuthorizationParameters = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty.CreateFromDiscriminatorValue); } },
+                { "authenticate_via", n => { AuthenticateVia = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAuthenticateVia>(); } },
                 { "authorization_url", n => { AuthorizationUrl = n.GetStringValue(); } },
                 { "client_secret_required", n => { ClientSecretRequired = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -123,7 +115,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "scopes_required", n => { ScopesRequired = n.GetBoolValue(); } },
                 { "token_body_content_type", n => { TokenBodyContentType = n.GetStringValue(); } },
                 { "token_url", n => { TokenUrl = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -133,8 +124,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty>("additional_authorization_parameters", AdditionalAuthorizationParameters);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AuthenticateVia>("authenticate_via", AuthenticateVia);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty>("additional_authorization_parameters", AdditionalAuthorizationParameters);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAuthenticateVia>("authenticate_via", AuthenticateVia);
             writer.WriteStringValue("authorization_url", AuthorizationUrl);
             writer.WriteBoolValue("client_secret_required", ClientSecretRequired);
             writer.WriteStringValue("name", Name);
@@ -144,7 +135,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteBoolValue("scopes_required", ScopesRequired);
             writer.WriteStringValue("token_body_content_type", TokenBodyContentType);
             writer.WriteStringValue("token_url", TokenUrl);
-            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

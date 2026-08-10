@@ -5,7 +5,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod
+    public enum DataIntegrationsListResponseDataItemConnectedAccountAuthMethod
     {
         [EnumMember(Value = "oauth")]
         #pragma warning disable CS1591

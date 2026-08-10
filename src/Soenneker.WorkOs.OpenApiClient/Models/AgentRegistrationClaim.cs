@@ -18,10 +18,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The completion record for the claim, or `null` if the claim has not been completed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimOneOf1ClaimCompletion? ClaimCompletion { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimClaimCompletion? ClaimCompletion { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimOneOf1ClaimCompletion ClaimCompletion { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimClaimCompletion ClaimCompletion { get; set; }
 #endif
         /// <summary>The timestamp when the claim was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
@@ -34,14 +34,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #nullable restore
 #else
         public string Id { get; set; }
-#endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
 #endif
         /// <summary>The timestamp when the claim was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
@@ -70,11 +62,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "claim_completion", n => { ClaimCompletion = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimOneOf1ClaimCompletion>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimOneOf1ClaimCompletion.CreateFromDiscriminatorValue); } },
+                { "claim_completion", n => { ClaimCompletion = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimClaimCompletion>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimClaimCompletion.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -85,11 +76,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimOneOf1ClaimCompletion>("claim_completion", ClaimCompletion);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaimClaimCompletion>("claim_completion", ClaimCompletion);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

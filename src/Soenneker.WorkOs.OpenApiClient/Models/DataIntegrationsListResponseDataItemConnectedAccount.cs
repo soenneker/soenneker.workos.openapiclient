@@ -24,7 +24,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string ApiKeyLast4 { get; set; }
 #endif
         /// <summary>The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod? AuthMethod { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountAuthMethod? AuthMethod { get; set; }
         /// <summary>The client ID supplied for this connection. Only present when `auth_method` is `client_credentials`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,10 +44,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding any it declares as secret. Only present when `auth_method` is `client_credentials`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty? Config { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty Config { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty Config { get; set; }
 #endif
         /// <summary>The timestamp when the connection was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -102,15 +102,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<string> Scopes { get; set; }
 #endif
         /// <summary>&quot;The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.- `disconnected`: The connection has been disconnected.&quot;</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1State? State { get; set; }
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountState? State { get; set; }
         /// <summary>The timestamp when the connection was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -171,17 +163,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "api_key_last_4", n => { ApiKeyLast4 = n.GetStringValue(); } },
-                { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod>(); } },
+                { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountAuthMethod>(); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret_last_4", n => { ClientSecretLast4 = n.GetStringValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty.CreateFromDiscriminatorValue); } },
                 { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount_object>(); } },
                 { "organizationId", n => { OrganizationId = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1State>(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountState>(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "userlandUserId", n => { UserlandUserId = n.GetStringValue(); } },
@@ -198,10 +189,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("api_key_last_4", ApiKeyLast4);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1AuthMethod>("auth_method", AuthMethod);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountAuthMethod>("auth_method", AuthMethod);
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret_last_4", ClientSecretLast4);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1ConfigProperty>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty>("config", Config);
             writer.WriteStringValue("created_at", Created_at);
             writer.WriteStringValue("createdAt", CreatedAt);
             writer.WriteStringValue("id", Id);
@@ -209,8 +200,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("organization_id", Organization_id);
             writer.WriteStringValue("organizationId", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountOneOf1State>("state", State);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountState>("state", State);
             writer.WriteStringValue("updated_at", Updated_at);
             writer.WriteStringValue("updatedAt", UpdatedAt);
             writer.WriteStringValue("user_id", UserId);

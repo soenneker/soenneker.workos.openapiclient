@@ -8,29 +8,29 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Additional static query parameters appended to the authorization request.
+    /// The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding any it declares as secret. Only present when `auth_method` is `client_credentials`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty : IAdditionalDataHolder, IParsable
+    public partial class DataIntegrationsListResponseDataItemConnectedAccountConfigProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty"/> and sets the default values.
         /// </summary>
-        public DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty()
+        public DataIntegrationsListResponseDataItemConnectedAccountConfigProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderOneOf1AdditionalAuthorizationParametersProperty();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty();
         }
         /// <summary>
         /// The deserialization information for the current model

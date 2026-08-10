@@ -5,7 +5,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>How client credentials are sent when exchanging authorization codes and refreshing tokens.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationCustomProviderOneOf1AuthenticateVia
+    public enum DataIntegrationCustomProviderAuthenticateVia
     {
         [EnumMember(Value = "request_body")]
         #pragma warning disable CS1591

@@ -39,14 +39,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>The User the API key was installed for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +75,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "api_key_last_4", n => { ApiKeyLast4 = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
         }
@@ -97,7 +88,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("api_key_last_4", ApiKeyLast4);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteStringValue("type", Type);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);
         }

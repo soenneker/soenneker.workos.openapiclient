@@ -5,7 +5,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>&quot;The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.- `disconnected`: The connection has been disconnected.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationsListResponseDataItemConnectedAccountOneOf1State
+    public enum DataIntegrationsListResponseDataItemConnectedAccountState
     {
         [EnumMember(Value = "connected")]
         #pragma warning disable CS1591
