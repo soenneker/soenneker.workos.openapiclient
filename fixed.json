@@ -6921,6 +6921,7 @@
             "name": "events",
             "in": "query",
             "description": "Filter events by one or more event types (e.g. \u0060dsync.user.created\u0060).",
+            "required": true,
             "explode": false,
             "schema": {
               "type": "array",
@@ -8563,6 +8564,15 @@
             "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records).",
             "schema": {
               "$ref": "#/components/schemas/PaginationOrder"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search groups by name or by group ID.",
+            "schema": {
+              "type": "string",
+              "example": "Engineering"
             }
           }
         ],
@@ -32687,9 +32697,9 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Provider-specific config values (e.g. a Snowflake \u0060account_identifier\u0060), keyed by the config field. Only fields the built-in provider declares are accepted.",
+        "description": "Provider-specific config values (e.g. a Snowflake \u0060account\u0060), keyed by the config field. Only fields the built-in provider declares are accepted.",
         "example": {
-          "account_identifier": "acme-prod"
+          "account": "myorg-myaccount"
         }
       },
       "UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParameters": {
@@ -34053,7 +34063,7 @@
         },
         "description": "The provider-specific config values in effect for this organization, keyed by config field. Reflects the organization override for organization-credential providers, otherwise the provider root. Empty when none are configured.",
         "example": {
-          "account_identifier": "acme-prod"
+          "account": "myorg-myaccount"
         }
       },
       "ConfigureDataIntegrationBodyConfig": {
@@ -34063,7 +34073,7 @@
         },
         "description": "Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field\u0027s pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected.",
         "example": {
-          "account_identifier": "acme-prod"
+          "account": "myorg-myaccount"
         }
       },
       "DataIntegrationCredentialsProperty": {
@@ -34134,9 +34144,9 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Provider-specific config values set on the Data Integration (e.g. a Snowflake \u0060account_identifier\u0060), keyed by config field. Only fields the provider declares are accepted.",
+        "description": "Provider-specific config values set on the Data Integration (e.g. a Snowflake \u0060account\u0060), keyed by config field. Only fields the provider declares are accepted.",
         "example": {
-          "account_identifier": "acme-prod"
+          "account": "myorg-myaccount"
         }
       },
       "DataIntegrationCustomProvider": {
@@ -58938,7 +58948,7 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Provider-specific config values (e.g. a Snowflake \u0060account_identifier\u0060), keyed by the config field. Only fields the built-in provider declares are accepted."
+        "description": "Provider-specific config values (e.g. a Snowflake \u0060account\u0060), keyed by the config field. Only fields the built-in provider declares are accepted."
       },
       "UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty": {
         "type": "object",
@@ -59090,7 +59100,7 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Provider-specific config values set on the Data Integration (e.g. a Snowflake \u0060account_identifier\u0060), keyed by config field. Only fields the provider declares are accepted."
+        "description": "Provider-specific config values set on the Data Integration (e.g. a Snowflake \u0060account\u0060), keyed by config field. Only fields the provider declares are accepted."
       },
       "ConnectedAccountConfigProperty": {
         "type": "object",
