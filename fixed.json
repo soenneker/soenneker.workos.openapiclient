@@ -12462,16 +12462,6 @@
                 }
               }
             }
-          },
-          "409": {
-            "description": "409 response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserlandUsersControllerDelete0409Response"
-                }
-              }
-            }
           }
         }
       }
@@ -16044,7 +16034,8 @@
             "items": {
               "type": "string"
             },
-            "description": "The domains associated with the organization. Deprecated in favor of \u0060domain_data\u0060."
+            "description": "The domains associated with the organization. Deprecated in favor of \u0060domain_data\u0060.",
+            "deprecated": true
           },
           "domain_data": {
             "type": "array",
@@ -20364,16 +20355,57 @@
       },
       "WaitlistUser": {
         "required": [
-          "object",
           "id",
           "email",
           "state",
           "approved_at",
           "created_at",
-          "updated_at"
+          "updated_at",
+          "object"
         ],
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the waitlist entry.",
+            "example": "wl_user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user on the waitlist.",
+            "example": "marcelina.davis@example.com"
+          },
+          "state": {
+            "$ref": "#/components/schemas/WaitlistUserState"
+          },
+          "approved_at": {
+            "type": "string",
+            "description": "The timestamp when the entry was approved, or null if not yet approved.",
+            "format": "date-time",
+            "nullable": true,
+            "example": null
+          },
+          "additional_fields": {
+            "$ref": "#/components/schemas/WaitlistUserAdditionalFieldsProperty"
+          },
+          "waitlist_id": {
+            "type": "string",
+            "description": "The unique ID of the waitlist the entry belongs to.",
+            "nullable": true,
+            "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
           "object": {
             "enum": [
               "waitlist_user"
@@ -20390,44 +20422,6 @@
                 }
               ]
             }
-          },
-          "id": {
-            "type": "string",
-            "description": "The unique ID of the Waitlist User.",
-            "example": "wl_user_01E4ZCR3C56J083X43JQXF3JK5"
-          },
-          "email": {
-            "type": "string",
-            "description": "The email address of the Waitlist User.",
-            "example": "marcelina.davis@example.com"
-          },
-          "state": {
-            "$ref": "#/components/schemas/WaitlistUserState"
-          },
-          "approved_at": {
-            "type": "string",
-            "description": "The timestamp when the Waitlist User was approved, or null if not yet approved.",
-            "format": "date-time",
-            "nullable": true,
-            "example": null
-          },
-          "waitlist_id": {
-            "type": "string",
-            "description": "The unique ID of the Waitlist that the Waitlist User joined.",
-            "nullable": true,
-            "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
           }
         }
       },
@@ -33754,6 +33748,16 @@
         "example": {
           "department": "Engineering",
           "job_title": "Software Engineer"
+        }
+      },
+      "WaitlistUserAdditionalFields": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional fields submitted when the user joined the waitlist. Values are user-provided \u2014 treat them as untrusted input when rendering or exporting.",
+        "example": {
+          "company": "Example Corp"
         }
       },
       "EventListListMetadata": {
@@ -52150,38 +52154,6 @@
           }
         }
       },
-      "UserlandUsersControllerDelete0409Response": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "enum": [
-              "user_deletion_not_allowed"
-            ],
-            "type": "string",
-            "description": "The error code identifying the type of error.",
-            "example": "user_deletion_not_allowed",
-            "x-ms-enum": {
-              "name": "Code",
-              "modelAsString": false,
-              "values": [
-                {
-                  "value": "user_deletion_not_allowed",
-                  "name": "UserDeletionNotAllowed"
-                }
-              ]
-            }
-          },
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Request could not be processed."
-          }
-        }
-      },
       "UserlandUsersControllerConfirmEmailChange200Response": {
         "required": [
           "object",
@@ -59059,6 +59031,13 @@
         },
         "description": "An object containing the custom attribute mapping for the Directory Provider."
       },
+      "WaitlistUserAdditionalFieldsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional fields submitted when the user joined the waitlist. Values are user-provided \u2014 treat them as untrusted input when rendering or exporting."
+      },
       "EventSchemaData": {
         "type": "object",
         "additionalProperties": {
@@ -63262,7 +63241,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The state of the Waitlist User.",
+        "description": "The state of the waitlist entry.",
         "example": "pending",
         "x-ms-enum": {
           "name": "WaitlistUserState",

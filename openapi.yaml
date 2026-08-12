@@ -17136,25 +17136,6 @@ paths:
                     example: 'Organization not found: ''org_01EHQMYV6MBK39QC5PZXHY59C3''.'
                 required:
                   - message
-        '409':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: The error code identifying the type of error.
-                    example: user_deletion_not_allowed
-                    const: user_deletion_not_allowed
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-                    example: Request could not be processed.
-                required:
-                  - code
-                  - message
       summary: Delete a user
       tags:
         - user-management.users
@@ -21164,6 +21145,7 @@ components:
             `domain_data`.
           example:
             - example.com
+          deprecated: true
           type: array
           items:
             type: string
@@ -26067,17 +26049,13 @@ components:
     WaitlistUser:
       type: object
       properties:
-        object:
-          type: string
-          description: Distinguishes the Waitlist User object.
-          const: waitlist_user
         id:
           type: string
-          description: The unique ID of the Waitlist User.
+          description: The unique ID of the waitlist entry.
           example: wl_user_01E4ZCR3C56J083X43JQXF3JK5
         email:
           type: string
-          description: The email address of the Waitlist User.
+          description: The email address of the user on the waitlist.
           example: marcelina.davis@example.com
         state:
           type: string
@@ -26085,7 +26063,7 @@ components:
             - pending
             - approved
             - denied
-          description: The state of the Waitlist User.
+          description: The state of the waitlist entry.
           example: pending
         approved_at:
           format: date-time
@@ -26093,14 +26071,24 @@ components:
             - string
             - 'null'
           description: >-
-            The timestamp when the Waitlist User was approved, or null if not
-            yet approved.
+            The timestamp when the entry was approved, or null if not yet
+            approved.
           example: null
+        additional_fields:
+          type: object
+          additionalProperties:
+            type: string
+          description: >-
+            Additional fields submitted when the user joined the waitlist.
+            Values are user-provided — treat them as untrusted input when
+            rendering or exporting.
+          example:
+            company: Example Corp
         waitlist_id:
           type:
             - string
             - 'null'
-          description: The unique ID of the Waitlist that the Waitlist User joined.
+          description: The unique ID of the waitlist the entry belongs to.
           example: waitlist_01E4ZCR3C56J083X43JQXF3JK5
         created_at:
           format: date-time
@@ -26112,14 +26100,18 @@ components:
           type: string
           description: An ISO 8601 timestamp.
           example: '2026-01-15T12:00:00.000Z'
+        object:
+          type: string
+          description: Distinguishes the Waitlist User object.
+          const: waitlist_user
       required:
-        - object
         - id
         - email
         - state
         - approved_at
         - created_at
         - updated_at
+        - object
     EventSchema:
       allOf:
         - type: object

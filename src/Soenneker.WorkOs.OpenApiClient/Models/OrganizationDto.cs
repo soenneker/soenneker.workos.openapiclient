@@ -25,6 +25,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainDataDto> DomainData { get; set; }
 #endif
         /// <summary>The domains associated with the organization. Deprecated in favor of `domain_data`.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Domains { get; set; }
