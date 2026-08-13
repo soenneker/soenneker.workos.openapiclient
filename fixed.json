@@ -1782,7 +1782,7 @@
           "authorization"
         ],
         "summary": "List effective permissions for an organization membership on a resource",
-        "description": "Returns all permissions the organization membership effectively has on a resource, including permissions inherited through roles assigned to ancestor resources.",
+        "description": "\u0022Returns all permissions the organization membership effectively has on a resource, including permissions inherited through roles assigned to ancestor resources. Results are not filtered by the resource type: a permission is returned whenever a check for it on this resource would be authorized, and each permission is labeled with the resource type it is declared on.\u0022",
         "operationId": "AuthorizationControllerListEffectivePermissions",
         "parameters": [
           {
@@ -1894,7 +1894,7 @@
           "authorization"
         ],
         "summary": "List effective permissions for an organization membership on a resource by external ID",
-        "description": "Returns all permissions the organization membership effectively has on a resource identified by its external ID, including permissions inherited through roles assigned to ancestor resources.",
+        "description": "\u0022Returns all permissions the organization membership effectively has on a resource identified by its external ID, including permissions inherited through roles assigned to ancestor resources. Results are not filtered by the resource type: a permission is returned whenever a check for it on this resource would be authorized, and each permission is labeled with the resource type it is declared on.\u0022",
         "operationId": "AuthorizationControllerListEffectivePermissionsByExternalId",
         "parameters": [
           {
@@ -24473,7 +24473,8 @@
           {
             "enum": [
               null
-            ]
+            ],
+            "nullable": true
           }
         ],
         "properties": {
@@ -31735,7 +31736,8 @@
           {
             "enum": [
               null
-            ]
+            ],
+            "nullable": true
           }
         ],
         "description": "The OAuth scopes in effect for this organization. Reflects the organization override when one is set, otherwise the provider scopes, or \u0060null\u0060 when none are configured."
@@ -31752,7 +31754,8 @@
           {
             "enum": [
               null
-            ]
+            ],
+            "nullable": true
           }
         ],
         "description": "The OAuth scopes to request for the organization. Pass \u0060null\u0060 to inherit the provider scopes."
@@ -31769,7 +31772,8 @@
           {
             "enum": [
               null
-            ]
+            ],
+            "nullable": true
           }
         ],
         "description": "The OAuth scopes configured for the Data Integration. \u0060null\u0060 when the provider\u0027s configured scopes are used."
@@ -31960,7 +31964,8 @@
           {
             "enum": [
               null
-            ]
+            ],
+            "nullable": true
           }
         ],
         "description": "The OAuth scopes configured for this provider, or \u0060null\u0060 if none are configured."
@@ -31977,7 +31982,8 @@
           {
             "enum": [
               null
-            ]
+            ],
+            "nullable": true
           }
         ],
         "properties": {
@@ -32006,7 +32012,8 @@
           {
             "enum": [
               null
-            ]
+            ],
+            "nullable": true
           }
         ],
         "description": "The roles assigned to the user within the organization, if applicable."

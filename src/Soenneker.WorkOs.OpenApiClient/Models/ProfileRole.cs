@@ -8,36 +8,27 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// The role assigned to the user within the organization, if applicable.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ProfileRole : IAdditionalDataHolder, IParsable
+    public partial class ProfileRole : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The slug of the assigned role.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Slug { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1? ProfileRoleMember1 { get; set; }
 #nullable restore
 #else
-        public string Slug { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1 ProfileRoleMember1 { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole? SlimRole { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole SlimRole { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole"/> and sets the default values.
-        /// </summary>
-        public ProfileRole()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +37,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole();
+            if("SlimRole".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.SlimRole = new global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,11 +51,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(ProfileRoleMember1 != null)
             {
-                { "slug", n => { Slug = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-            };
+                return ProfileRoleMember1.GetFieldDeserializers();
+            }
+            else if(SlimRole != null)
+            {
+                return SlimRole.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -67,9 +68,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("slug", Slug);
-            writer.WriteStringValue("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
+            if(ProfileRoleMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1>(null, ProfileRoleMember1);
+            }
+            else if(SlimRole != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>(null, SlimRole);
+            }
         }
     }
 }

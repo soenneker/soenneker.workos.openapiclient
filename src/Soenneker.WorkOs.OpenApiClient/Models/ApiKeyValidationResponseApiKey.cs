@@ -7,78 +7,28 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKeyMember1"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ApiKeyValidationResponseApiKey : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class ApiKeyValidationResponseApiKey : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>An ISO 8601 timestamp.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>Timestamp when the API Key expires. Null means the key does not expire.</summary>
-        public DateTimeOffset? ExpiresAt { get; set; }
-        /// <summary>Unique identifier of the API Key.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey? ApiKey { get; set; }
 #nullable restore
 #else
-        public string Id { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey ApiKey { get; set; }
 #endif
-        /// <summary>Timestamp of when the API Key was last used.</summary>
-        public DateTimeOffset? LastUsedAt { get; set; }
-        /// <summary>A descriptive name for the API Key.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKeyMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKeyMember1? ApiKeyValidationResponseApiKeyMember1 { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKeyMember1 ApiKeyValidationResponseApiKeyMember1 { get; set; }
 #endif
-        /// <summary>An obfuscated representation of the API Key value.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ObfuscatedValue { get; set; }
-#nullable restore
-#else
-        public string ObfuscatedValue { get; set; }
-#endif
-        /// <summary>Distinguishes the API Key object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey_object? Object { get; set; }
-        /// <summary>The entity that owns the API Key.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwner? Owner { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwner Owner { get; set; }
-#endif
-        /// <summary>The permission slugs assigned to the API Key.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Permissions { get; set; }
-#nullable restore
-#else
-        public List<string> Permissions { get; set; }
-#endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
-        /// <summary>An ISO 8601 timestamp.</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey"/> and sets the default values.
-        /// </summary>
-        public ApiKeyValidationResponseApiKey()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -87,7 +37,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey();
+            if("ApiKey".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.ApiKey = new global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -95,20 +51,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(ApiKey != null)
             {
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "id", n => { Id = n.GetStringValue(); } },
-                { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "obfuscated_value", n => { ObfuscatedValue = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey_object>(); } },
-                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwner>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwner.CreateFromDiscriminatorValue); } },
-                { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-            };
+                return ApiKey.GetFieldDeserializers();
+            }
+            else if(ApiKeyValidationResponseApiKeyMember1 != null)
+            {
+                return ApiKeyValidationResponseApiKeyMember1.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -117,18 +68,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
-            writer.WriteStringValue("id", Id);
-            writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("obfuscated_value", ObfuscatedValue);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey_object>("object", Object);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyOwner>("owner", Owner);
-            writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
-            writer.WriteStringValue("type", Type);
-            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
-            writer.WriteAdditionalData(AdditionalData);
+            if(ApiKey != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey>(null, ApiKey);
+            }
+            else if(ApiKeyValidationResponseApiKeyMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKeyMember1>(null, ApiKeyValidationResponseApiKeyMember1);
+            }
         }
     }
 }
