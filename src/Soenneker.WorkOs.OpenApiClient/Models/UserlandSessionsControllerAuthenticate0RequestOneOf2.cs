@@ -47,7 +47,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Email { get; set; }
 #endif
         /// <summary>The grant_type property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2_grant_type? GrantType { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GrantType { get; set; }
+#nullable restore
+#else
+        public string GrantType { get; set; }
+#endif
         /// <summary>An invitation token to accept during authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -125,7 +131,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "device_id", n => { DeviceId = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
-                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2_grant_type>(); } },
+                { "grant_type", n => { GrantType = n.GetStringValue(); } },
                 { "invitation_token", n => { InvitationToken = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
                 { "password", n => { Password = n.GetStringValue(); } },
@@ -145,7 +151,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("device_id", DeviceId);
             writer.WriteStringValue("email", Email);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2_grant_type>("grant_type", GrantType);
+            writer.WriteStringValue("grant_type", GrantType);
             writer.WriteStringValue("invitation_token", InvitationToken);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteStringValue("password", Password);

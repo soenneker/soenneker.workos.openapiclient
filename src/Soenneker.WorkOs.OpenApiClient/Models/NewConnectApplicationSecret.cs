@@ -27,7 +27,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The timestamp when the client secret was last used, or null if never used.</summary>
         public DateTimeOffset? LastUsedAt { get; set; }
         /// <summary>Distinguishes the connect application secret object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret_object? Object { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Object { get; set; }
+#nullable restore
+#else
+        public string Object { get; set; }
+#endif
         /// <summary>The plaintext secret value. Only returned at creation time and cannot be retrieved later.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,7 +80,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret_object>(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
                 { "secret", n => { Secret = n.GetStringValue(); } },
                 { "secret_hint", n => { SecretHint = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -90,7 +96,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.NewConnectApplicationSecret_object>("object", Object);
+            writer.WriteStringValue("object", Object);
             writer.WriteStringValue("secret", Secret);
             writer.WriteStringValue("secret_hint", SecretHint);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

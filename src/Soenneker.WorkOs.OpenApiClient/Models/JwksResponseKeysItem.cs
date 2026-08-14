@@ -15,7 +15,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Algorithm.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_alg? Alg { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Alg { get; set; }
+#nullable restore
+#else
+        public string Alg { get; set; }
+#endif
         /// <summary>RSA exponent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,7 +39,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Kid { get; set; }
 #endif
         /// <summary>Key type.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_kty? Kty { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kty { get; set; }
+#nullable restore
+#else
+        public string Kty { get; set; }
+#endif
         /// <summary>RSA modulus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,7 +55,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string N { get; set; }
 #endif
         /// <summary>Key use (signature).</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_use? Use { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Use { get; set; }
+#nullable restore
+#else
+        public string Use { get; set; }
+#endif
         /// <summary>X.509 certificate chain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,12 +103,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "alg", n => { Alg = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_alg>(); } },
+                { "alg", n => { Alg = n.GetStringValue(); } },
                 { "e", n => { E = n.GetStringValue(); } },
                 { "kid", n => { Kid = n.GetStringValue(); } },
-                { "kty", n => { Kty = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_kty>(); } },
+                { "kty", n => { Kty = n.GetStringValue(); } },
                 { "n", n => { N = n.GetStringValue(); } },
-                { "use", n => { Use = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_use>(); } },
+                { "use", n => { Use = n.GetStringValue(); } },
                 { "x5c", n => { X5c = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "x5t#S256", n => { X5tS256 = n.GetStringValue(); } },
             };
@@ -102,12 +120,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_alg>("alg", Alg);
+            writer.WriteStringValue("alg", Alg);
             writer.WriteStringValue("e", E);
             writer.WriteStringValue("kid", Kid);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_kty>("kty", Kty);
+            writer.WriteStringValue("kty", Kty);
             writer.WriteStringValue("n", N);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponseKeysItem_use>("use", Use);
+            writer.WriteStringValue("use", Use);
             writer.WriteCollectionOfPrimitiveValues<string>("x5c", X5c);
             writer.WriteStringValue("x5t#S256", X5tS256);
             writer.WriteAdditionalData(AdditionalData);

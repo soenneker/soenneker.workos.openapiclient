@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ExternalAuthId { get; set; }
 #endif
-        /// <summary>The user property</summary>
+        /// <summary>The user to create or update in AuthKit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserObject? User { get; set; }

@@ -25,7 +25,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the role assignment object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment_object? Object { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Object { get; set; }
+#nullable restore
+#else
+        public string Object { get; set; }
+#endif
         /// <summary>The ID of the organization membership the role is assigned to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -42,7 +48,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentResource Resource { get; set; }
 #endif
-        /// <summary>The primary role assigned to the user.</summary>
+        /// <summary>The role included in the assignment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole? Role { get; set; }
@@ -87,7 +93,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment_object>(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
                 { "organization_membership_id", n => { OrganizationMembershipId = n.GetStringValue(); } },
                 { "resource", n => { Resource = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentResource>(global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentResource.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>(global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole.CreateFromDiscriminatorValue); } },
@@ -104,7 +110,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment_object>("object", Object);
+            writer.WriteStringValue("object", Object);
             writer.WriteStringValue("organization_membership_id", OrganizationMembershipId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentResource>("resource", Resource);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>("role", Role);

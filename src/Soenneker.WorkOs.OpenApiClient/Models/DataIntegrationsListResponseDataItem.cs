@@ -106,7 +106,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the data provider object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItem_object? Object { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Object { get; set; }
+#nullable restore
+#else
+        public string Object { get; set; }
+#endif
         /// <summary>Whether the provider is owned by a user or organization.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemOwnership? Ownership { get; set; }
         /// <summary>The OAuth scopes configured for this provider, or `null` if none are configured.</summary>
@@ -175,7 +181,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "integrationType", n => { IntegrationType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItem_object>(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
                 { "ownership", n => { Ownership = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemOwnership>(); } },
                 { "scopes", n => { Scopes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemScopes>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemScopes.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
@@ -204,7 +210,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("integration_type", Integration_type);
             writer.WriteStringValue("integrationType", IntegrationType);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItem_object>("object", Object);
+            writer.WriteStringValue("object", Object);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemOwnership>("ownership", Ownership);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemScopes>("scopes", Scopes);
             writer.WriteStringValue("slug", Slug);

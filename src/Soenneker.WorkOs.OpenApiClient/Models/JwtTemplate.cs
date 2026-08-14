@@ -31,7 +31,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string CreatedAt { get; set; }
 #endif
         /// <summary>The object type.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplate_object? Object { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Object { get; set; }
+#nullable restore
+#else
+        public string Object { get; set; }
+#endif
         /// <summary>The timestamp when the JWT template was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +73,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplate_object>(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
             };
         }
@@ -80,7 +86,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplate_object>("object", Object);
+            writer.WriteStringValue("object", Object);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

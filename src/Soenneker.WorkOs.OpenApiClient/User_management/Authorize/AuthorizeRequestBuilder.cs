@@ -112,8 +112,15 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
             public string CodeChallenge { get; set; }
 #endif
             /// <summary>The only valid PKCE code challenge method is `&quot;S256&quot;`. Required when specifying a `code_challenge`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("code_challenge_method")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.GetCode_challenge_methodQueryParameterType? CodeChallengeMethod { get; set; }
+            public string? CodeChallengeMethod { get; set; }
+#nullable restore
+#else
+            [QueryParameter("code_challenge_method")]
+            public string CodeChallengeMethod { get; set; }
+#endif
             /// <summary>The ID of an SSO connection to use for authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -211,8 +218,15 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
             public string RedirectUri { get; set; }
 #endif
             /// <summary>The response type of the application.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("response_type")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.GetResponse_typeQueryParameterType? ResponseType { get; set; }
+            public string? ResponseType { get; set; }
+#nullable restore
+#else
+            [QueryParameter("response_type")]
+            public string ResponseType { get; set; }
+#endif
             /// <summary>Used to specify which screen to display when the provider is `authkit`.</summary>
             [QueryParameter("screen_hint")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSsoControllerAuthorizeScreenHintParameter? ScreenHint { get; set; }

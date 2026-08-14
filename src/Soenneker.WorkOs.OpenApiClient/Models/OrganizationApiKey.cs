@@ -45,7 +45,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string ObfuscatedValue { get; set; }
 #endif
         /// <summary>Distinguishes the API Key object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_object? Object { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Object { get; set; }
+#nullable restore
+#else
+        public string Object { get; set; }
+#endif
         /// <summary>The entity that owns the API Key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +101,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "obfuscated_value", n => { ObfuscatedValue = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_object>(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
                 { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKeyOwner>(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKeyOwner.CreateFromDiscriminatorValue); } },
                 { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -114,7 +120,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("obfuscated_value", ObfuscatedValue);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKey_object>("object", Object);
+            writer.WriteStringValue("object", Object);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationApiKeyOwner>("owner", Owner);
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

@@ -39,7 +39,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Label { get; set; }
 #endif
         /// <summary>The type of consent option.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption"/> and sets the default values.
         /// </summary>
@@ -68,7 +74,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "choices", n => { Choices = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOptionChoicesItem>(global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOptionChoicesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "claim", n => { Claim = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -81,7 +87,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOptionChoicesItem>("choices", Choices);
             writer.WriteStringValue("claim", Claim);
             writer.WriteStringValue("label", Label);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

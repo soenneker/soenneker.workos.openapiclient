@@ -61,7 +61,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string InviterUserId { get; set; }
 #endif
         /// <summary>Distinguishes the invitation object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerAccept200Response_object? Object { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Object { get; set; }
+#nullable restore
+#else
+        public string Object { get; set; }
+#endif
         /// <summary>The ID of the [organization](/reference/organization) that the recipient will join.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -125,7 +131,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "inviter_user_id", n => { InviterUserId = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerAccept200Response_object>(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "revoked_at", n => { RevokedAt = n.GetDateTimeOffsetValue(); } },
                 { "role_slug", n => { RoleSlug = n.GetStringValue(); } },
@@ -149,7 +155,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("inviter_user_id", InviterUserId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerAccept200Response_object>("object", Object);
+            writer.WriteStringValue("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteDateTimeOffsetValue("revoked_at", RevokedAt);
             writer.WriteStringValue("role_slug", RoleSlug);

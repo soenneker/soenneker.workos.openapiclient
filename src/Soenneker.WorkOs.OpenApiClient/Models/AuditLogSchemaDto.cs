@@ -12,7 +12,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     public partial class AuditLogSchemaDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The actor property</summary>
+        /// <summary>The metadata schema for the actor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaActorDto? Actor { get; set; }

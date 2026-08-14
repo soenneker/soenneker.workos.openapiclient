@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string RefreshToken { get; set; }
 #endif
-        /// <summary>The user object.</summary>
+        /// <summary>The corresponding [user](/reference/authkit/user) object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser? User { get; set; }
