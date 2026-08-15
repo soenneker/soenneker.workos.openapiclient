@@ -42,20 +42,19 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
         /// <summary>
         /// Generates an OAuth 2.0 authorization URL to authenticate a user with AuthKit or SSO.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DefaultResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DefaultResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DefaultResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DefaultResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DefaultResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Generates an OAuth 2.0 authorization URL to authenticate a user with AuthKit or SSO.
@@ -73,7 +72,6 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -113,7 +111,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
 #endif
             /// <summary>The only valid PKCE code challenge method is `&quot;S256&quot;`. Required when specifying a `code_challenge`.</summary>
             [QueryParameter("code_challenge_method")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.GetCode_challenge_methodQueryParameterType? CodeChallengeMethod { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.S256CodeChallengeMethod? CodeChallengeMethod { get; set; }
             /// <summary>The ID of an SSO connection to use for authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -212,7 +210,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
 #endif
             /// <summary>The response type of the application.</summary>
             [QueryParameter("response_type")]
-            public global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.GetResponse_typeQueryParameterType? ResponseType { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.CodeResponseType? ResponseType { get; set; }
             /// <summary>Used to specify which screen to display when the provider is `authkit`.</summary>
             [QueryParameter("screen_hint")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSsoControllerAuthorizeScreenHintParameter? ScreenHint { get; set; }

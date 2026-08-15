@@ -7,92 +7,182 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UserlandSessionsControllerAuthenticate0Request : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class UserlandSessionsControllerAuthenticate0Request : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1"/></summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The ID of the MFA authentication challenge.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1? UserlandSessionsControllerAuthenticate0RequestOneOf1 { get; set; }
+        public string? AuthenticationChallengeId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1 UserlandSessionsControllerAuthenticate0RequestOneOf1 { get; set; }
+        public string AuthenticationChallengeId { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10"/></summary>
+        /// <summary>The client ID of the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10? UserlandSessionsControllerAuthenticate0RequestOneOf10 { get; set; }
+        public string? ClientId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10 UserlandSessionsControllerAuthenticate0RequestOneOf10 { get; set; }
+        public string ClientId { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2"/></summary>
+        /// <summary>The client secret of the application. May be omitted by public clients that authenticate through other means, such as a PKCE `code_verifier`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2? UserlandSessionsControllerAuthenticate0RequestOneOf2 { get; set; }
+        public string? ClientSecret { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2 UserlandSessionsControllerAuthenticate0RequestOneOf2 { get; set; }
+        public string ClientSecret { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3"/></summary>
+        /// <summary>The authorization code received from the redirect.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3? UserlandSessionsControllerAuthenticate0RequestOneOf3 { get; set; }
+        public string? Code { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3 UserlandSessionsControllerAuthenticate0RequestOneOf3 { get; set; }
+        public string Code { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4"/></summary>
+        /// <summary>The PKCE code verifier used to derive the code challenge passed to the authorization URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4? UserlandSessionsControllerAuthenticate0RequestOneOf4 { get; set; }
+        public string? CodeVerifier { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4 UserlandSessionsControllerAuthenticate0RequestOneOf4 { get; set; }
+        public string CodeVerifier { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5"/></summary>
+        /// <summary>The device verification code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5? UserlandSessionsControllerAuthenticate0RequestOneOf5 { get; set; }
+        public string? DeviceCode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5 UserlandSessionsControllerAuthenticate0RequestOneOf5 { get; set; }
+        public string DeviceCode { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6"/></summary>
+        /// <summary>A unique identifier for the device.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6? UserlandSessionsControllerAuthenticate0RequestOneOf6 { get; set; }
+        public string? DeviceId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6 UserlandSessionsControllerAuthenticate0RequestOneOf6 { get; set; }
+        public string DeviceId { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7"/></summary>
+        /// <summary>The user&apos;s email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7? UserlandSessionsControllerAuthenticate0RequestOneOf7 { get; set; }
+        public string? Email { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7 UserlandSessionsControllerAuthenticate0RequestOneOf7 { get; set; }
+        public string Email { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8"/></summary>
+        /// <summary>The grant type for the token request.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType? GrantType { get; set; }
+        /// <summary>An invitation token to accept during authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8? UserlandSessionsControllerAuthenticate0RequestOneOf8 { get; set; }
+        public string? InvitationToken { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8 UserlandSessionsControllerAuthenticate0RequestOneOf8 { get; set; }
+        public string InvitationToken { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9"/></summary>
+        /// <summary>The IP address of the user&apos;s request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9? UserlandSessionsControllerAuthenticate0RequestOneOf9 { get; set; }
+        public string? IpAddress { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9 UserlandSessionsControllerAuthenticate0RequestOneOf9 { get; set; }
+        public string IpAddress { get; set; }
 #endif
+        /// <summary>The ID of the organization to scope the session to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OrganizationId { get; set; }
+#nullable restore
+#else
+        public string OrganizationId { get; set; }
+#endif
+        /// <summary>The user&apos;s password.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Password { get; set; }
+#nullable restore
+#else
+        public string Password { get; set; }
+#endif
+        /// <summary>The pending authentication token from a previous authentication attempt.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PendingAuthenticationToken { get; set; }
+#nullable restore
+#else
+        public string PendingAuthenticationToken { get; set; }
+#endif
+        /// <summary>The phone number the Radar SMS challenge was sent to. Required for sign-up challenges; omitted for sign-in challenges, where the phone number on file is resolved server-side.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PhoneNumber { get; set; }
+#nullable restore
+#else
+        public string PhoneNumber { get; set; }
+#endif
+        /// <summary>The ID of an existing Radar authentication attempt to associate with this authentication.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RadarAuthAttemptId { get; set; }
+#nullable restore
+#else
+        public string RadarAuthAttemptId { get; set; }
+#endif
+        /// <summary>The ID of the Radar email challenge being verified.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RadarChallengeId { get; set; }
+#nullable restore
+#else
+        public string RadarChallengeId { get; set; }
+#endif
+        /// <summary>The refresh token to exchange for new tokens.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RefreshToken { get; set; }
+#nullable restore
+#else
+        public string RefreshToken { get; set; }
+#endif
+        /// <summary>An optional Radar signals ID to correlate client-side signals with this authentication attempt.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SignalsId { get; set; }
+#nullable restore
+#else
+        public string SignalsId { get; set; }
+#endif
+        /// <summary>The user agent string from the user&apos;s browser.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAgent { get; set; }
+#nullable restore
+#else
+        public string UserAgent { get; set; }
+#endif
+        /// <summary>The ID of the Radar SMS verification being confirmed. Required for sign-up challenges; omitted for sign-in challenges, where the verification is resolved server-side.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? VerificationId { get; set; }
+#nullable restore
+#else
+        public string VerificationId { get; set; }
+#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request"/> and sets the default values.
+        /// </summary>
+        public UserlandSessionsControllerAuthenticate0Request()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -101,49 +191,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
-            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request();
-            if("UserlandSessionsControllerAuthenticate0RequestOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf10".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf10 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf3 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf4 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf5 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf6 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf7".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf7 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf8".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf8 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8();
-            }
-            else if("UserlandSessionsControllerAuthenticate0RequestOneOf9".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.UserlandSessionsControllerAuthenticate0RequestOneOf9 = new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9();
-            }
-            return result;
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -151,47 +199,30 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(UserlandSessionsControllerAuthenticate0RequestOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf1.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf10 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf10.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf2 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf2.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf3 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf3.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf4 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf4.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf5 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf5.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf6 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf6.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf7 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf7.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf8 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf8.GetFieldDeserializers();
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf9 != null)
-            {
-                return UserlandSessionsControllerAuthenticate0RequestOneOf9.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "authentication_challenge_id", n => { AuthenticationChallengeId = n.GetStringValue(); } },
+                { "client_id", n => { ClientId = n.GetStringValue(); } },
+                { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetStringValue(); } },
+                { "code_verifier", n => { CodeVerifier = n.GetStringValue(); } },
+                { "device_code", n => { DeviceCode = n.GetStringValue(); } },
+                { "device_id", n => { DeviceId = n.GetStringValue(); } },
+                { "email", n => { Email = n.GetStringValue(); } },
+                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType>(); } },
+                { "invitation_token", n => { InvitationToken = n.GetStringValue(); } },
+                { "ip_address", n => { IpAddress = n.GetStringValue(); } },
+                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "password", n => { Password = n.GetStringValue(); } },
+                { "pending_authentication_token", n => { PendingAuthenticationToken = n.GetStringValue(); } },
+                { "phone_number", n => { PhoneNumber = n.GetStringValue(); } },
+                { "radar_auth_attempt_id", n => { RadarAuthAttemptId = n.GetStringValue(); } },
+                { "radar_challenge_id", n => { RadarChallengeId = n.GetStringValue(); } },
+                { "refresh_token", n => { RefreshToken = n.GetStringValue(); } },
+                { "signals_id", n => { SignalsId = n.GetStringValue(); } },
+                { "user_agent", n => { UserAgent = n.GetStringValue(); } },
+                { "verification_id", n => { VerificationId = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -200,46 +231,28 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(UserlandSessionsControllerAuthenticate0RequestOneOf1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1>(null, UserlandSessionsControllerAuthenticate0RequestOneOf1);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf10 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10>(null, UserlandSessionsControllerAuthenticate0RequestOneOf10);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2>(null, UserlandSessionsControllerAuthenticate0RequestOneOf2);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3>(null, UserlandSessionsControllerAuthenticate0RequestOneOf3);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf4 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4>(null, UserlandSessionsControllerAuthenticate0RequestOneOf4);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf5 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5>(null, UserlandSessionsControllerAuthenticate0RequestOneOf5);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf6 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6>(null, UserlandSessionsControllerAuthenticate0RequestOneOf6);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf7 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7>(null, UserlandSessionsControllerAuthenticate0RequestOneOf7);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf8 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8>(null, UserlandSessionsControllerAuthenticate0RequestOneOf8);
-            }
-            else if(UserlandSessionsControllerAuthenticate0RequestOneOf9 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9>(null, UserlandSessionsControllerAuthenticate0RequestOneOf9);
-            }
+            writer.WriteStringValue("authentication_challenge_id", AuthenticationChallengeId);
+            writer.WriteStringValue("client_id", ClientId);
+            writer.WriteStringValue("client_secret", ClientSecret);
+            writer.WriteStringValue("code", Code);
+            writer.WriteStringValue("code_verifier", CodeVerifier);
+            writer.WriteStringValue("device_code", DeviceCode);
+            writer.WriteStringValue("device_id", DeviceId);
+            writer.WriteStringValue("email", Email);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType>("grant_type", GrantType);
+            writer.WriteStringValue("invitation_token", InvitationToken);
+            writer.WriteStringValue("ip_address", IpAddress);
+            writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteStringValue("password", Password);
+            writer.WriteStringValue("pending_authentication_token", PendingAuthenticationToken);
+            writer.WriteStringValue("phone_number", PhoneNumber);
+            writer.WriteStringValue("radar_auth_attempt_id", RadarAuthAttemptId);
+            writer.WriteStringValue("radar_challenge_id", RadarChallengeId);
+            writer.WriteStringValue("refresh_token", RefreshToken);
+            writer.WriteStringValue("signals_id", SignalsId);
+            writer.WriteStringValue("user_agent", UserAgent);
+            writer.WriteStringValue("verification_id", VerificationId);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

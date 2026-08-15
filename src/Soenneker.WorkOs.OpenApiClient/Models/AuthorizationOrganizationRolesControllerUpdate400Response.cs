@@ -16,7 +16,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The error code identifying the type of error.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerUpdate400Response_code? Code { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.BadRequestCode? Code { get; set; }
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
         /// <summary>A human-readable description of the error.</summary>
@@ -52,7 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerUpdate400Response_code>(); } },
+                { "code", n => { Code = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.BadRequestCode>(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
             };
         }
@@ -63,7 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerUpdate400Response_code>("code", Code);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.BadRequestCode>("code", Code);
             writer.WriteStringValue("message", MessageEscaped);
             writer.WriteAdditionalData(AdditionalData);
         }

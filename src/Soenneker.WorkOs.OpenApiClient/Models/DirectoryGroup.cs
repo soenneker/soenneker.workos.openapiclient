@@ -49,7 +49,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the Directory Group object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupObject? Object { get; set; }
         /// <summary>The identifier for the Organization in which the Directory resides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,7 +98,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "idp_id", n => { IdpId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupObject>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "raw_attributes", n => { RawAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupRawAttributesProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupRawAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -116,7 +116,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("idp_id", IdpId);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupObject>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupRawAttributesProperty>("raw_attributes", RawAttributes);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

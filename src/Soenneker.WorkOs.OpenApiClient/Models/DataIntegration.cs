@@ -83,7 +83,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string IntegrationType { get; set; }
 #endif
         /// <summary>Distinguishes the Data Integration object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationObject? Object { get; set; }
         /// <summary>The OAuth redirect URI to register with the provider when configuring the custom application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,7 +147,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "installation", n => { Installation = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallation>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallation.CreateFromDiscriminatorValue); } },
                 { "integration_type", n => { IntegrationType = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationObject>(); } },
                 { "redirect_uri", n => { RedirectUri = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationScopes>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationScopes.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
@@ -172,7 +172,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallation>("installation", Installation);
             writer.WriteStringValue("integration_type", IntegrationType);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationObject>("object", Object);
             writer.WriteStringValue("redirect_uri", RedirectUri);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationScopes>("scopes", Scopes);
             writer.WriteStringValue("slug", Slug);

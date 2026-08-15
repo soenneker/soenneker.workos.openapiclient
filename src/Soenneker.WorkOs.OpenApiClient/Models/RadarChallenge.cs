@@ -43,9 +43,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the Radar Challenge object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallenge_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallengeObject? Object { get; set; }
         /// <summary>The type of the Radar challenge.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallenge_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EmailType? Type { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The unique ID of the user.</summary>
@@ -86,8 +86,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallenge_object>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallenge_type>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallengeObject>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EmailType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
@@ -104,8 +104,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallenge_object>("object", Object);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallenge_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarChallengeObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EmailType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);

@@ -31,7 +31,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListListMetadata ListMetadata { get; set; }
 #endif
         /// <summary>Indicates this is a list response.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ListObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "list_metadata", n => { ListMetadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListListMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListListMetadata.CreateFromDiscriminatorValue); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ListObject>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem>("data", Data);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListListMetadata>("list_metadata", ListMetadata);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ListObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

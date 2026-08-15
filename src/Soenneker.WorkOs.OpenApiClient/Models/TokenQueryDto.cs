@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Code { get; set; }
 #endif
         /// <summary>The grant type for the token request.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto_grant_type? GrantType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType? GrantType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto"/> and sets the default values.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto_grant_type>(); } },
+                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType>(); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("code", Code);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto_grant_type>("grant_type", GrantType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType>("grant_type", GrantType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

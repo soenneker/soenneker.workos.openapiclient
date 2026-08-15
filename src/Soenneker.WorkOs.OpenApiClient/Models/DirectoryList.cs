@@ -17,10 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The list of records for the current page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject>? Data { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject1>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject> Data { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject1> Data { get; set; }
 #endif
         /// <summary>Pagination cursors for navigating between pages of results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +31,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryListListMetadata ListMetadata { get; set; }
 #endif
         /// <summary>Indicates this is a list response.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryList_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ListObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryList"/> and sets the default values.
         /// </summary>
@@ -57,9 +57,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject1>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject1.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "list_metadata", n => { ListMetadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryListListMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryListListMetadata.CreateFromDiscriminatorValue); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryList_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ListObject>(); } },
             };
         }
         /// <summary>
@@ -69,9 +69,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject1>("data", Data);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryListListMetadata>("list_metadata", ListMetadata);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryList_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ListObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

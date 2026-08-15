@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string TotpUser { get; set; }
 #endif
         /// <summary>The type of the factor to enroll.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EnrollUserlandUserAuthenticationFactorDto_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.TotpType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.EnrollUserlandUserAuthenticationFactorDto"/> and sets the default values.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "totp_issuer", n => { TotpIssuer = n.GetStringValue(); } },
                 { "totp_secret", n => { TotpSecret = n.GetStringValue(); } },
                 { "totp_user", n => { TotpUser = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EnrollUserlandUserAuthenticationFactorDto_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TotpType>(); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("totp_issuer", TotpIssuer);
             writer.WriteStringValue("totp_secret", TotpSecret);
             writer.WriteStringValue("totp_user", TotpUser);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EnrollUserlandUserAuthenticationFactorDto_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TotpType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

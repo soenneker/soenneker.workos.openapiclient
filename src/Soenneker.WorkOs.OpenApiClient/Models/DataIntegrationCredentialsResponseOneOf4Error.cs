@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>&quot;The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully.- `\&quot;not_installed\&quot;`: The user does not have the integration installed.- `\&quot;needs_reauthorization\&quot;`: The user needs to reauthorize the integration.&quot;</summary>
+    /// <summary>The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully.- `&quot;not_installed&quot;`: The user does not have the integration installed.- `&quot;needs_reauthorization&quot;`: The user needs to reauthorize the integration.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DataIntegrationCredentialsResponseOneOf4Error
     {

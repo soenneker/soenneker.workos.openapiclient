@@ -36,7 +36,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Lists.Item.Item
         /// <summary>
         /// Remove an entry from a Radar list.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -44,11 +43,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Lists.Item.Item
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntry404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> DeleteAsync(global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntryRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntryRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> DeleteAsync(global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntryRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntryRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -58,7 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Lists.Item.Item
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntry400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntry404Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Add an entry to a Radar list.

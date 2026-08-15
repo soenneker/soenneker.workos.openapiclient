@@ -49,7 +49,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
         /// <summary>
         /// Remove role assignments from a group that match the provided criteria. Returns 404 when no matching active assignment is found.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -58,11 +57,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> DeleteAsync(global::Soenneker.WorkOs.OpenApiClient.Models.DeleteGroupRoleAssignmentsByCriteriaDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(global::Soenneker.WorkOs.OpenApiClient.Models.DeleteGroupRoleAssignmentsByCriteriaDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> DeleteAsync(global::Soenneker.WorkOs.OpenApiClient.Models.DeleteGroupRoleAssignmentsByCriteriaDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(global::Soenneker.WorkOs.OpenApiClient.Models.DeleteGroupRoleAssignmentsByCriteriaDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -73,7 +72,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments422Response.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all role assignments granted to a group. Each assignment represents a role granted to the group on a resource.

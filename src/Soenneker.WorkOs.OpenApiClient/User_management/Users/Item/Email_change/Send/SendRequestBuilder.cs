@@ -41,6 +41,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendEmailChange404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendEmailChange409Response">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendEmailChange422Response">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendEmailChange429Response">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +58,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendEmailChange404Response.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendEmailChange409Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendEmailChange422Response.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendEmailChange429Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.EmailChange>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.EmailChange.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);

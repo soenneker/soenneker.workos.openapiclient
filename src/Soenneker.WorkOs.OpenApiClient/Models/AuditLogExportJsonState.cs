@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>&quot;The state of the export. Possible values: pending, ready, error, expired.&quot;</summary>
+    /// <summary>The state of the export. Possible values: pending, ready, error, expired.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AuditLogExportJsonState
     {

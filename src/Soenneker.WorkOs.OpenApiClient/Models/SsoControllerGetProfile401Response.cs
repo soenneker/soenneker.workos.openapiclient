@@ -16,7 +16,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The error property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerGetProfile401Response_error? Error { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UnauthorizedError? Error { get; set; }
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
         /// <summary>
@@ -44,7 +44,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error", n => { Error = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerGetProfile401Response_error>(); } },
+                { "error", n => { Error = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UnauthorizedError>(); } },
             };
         }
         /// <summary>
@@ -54,7 +54,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerGetProfile401Response_error>("error", Error);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UnauthorizedError>("error", Error);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

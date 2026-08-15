@@ -31,7 +31,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>The operation to perform on the claim attempt. Currently only `link_external_user` is supported.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequest_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.LinkExternalUserType? Type { get; set; }
         /// <summary>The user to attach to the claim attempt, identified by email and external ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +67,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "claim_attempt_token", n => { ClaimAttemptToken = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequest_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.LinkExternalUserType>(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser.CreateFromDiscriminatorValue); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("claim_attempt_token", ClaimAttemptToken);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequest_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.LinkExternalUserType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }

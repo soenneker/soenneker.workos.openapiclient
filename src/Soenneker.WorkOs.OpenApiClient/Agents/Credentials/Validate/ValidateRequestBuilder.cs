@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Credentials.Validate
         {
         }
         /// <summary>
-        /// &quot;Validate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential.&quot;
+        /// Validate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentCredentialValidation"/></returns>
         /// <param name="body">The agent credential to validate. Either an `api_key` or an `access_token`, discriminated by `type`.</param>
@@ -59,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Credentials.Validate
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentCredentialValidation>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentCredentialValidation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Validate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential.&quot;
+        /// Validate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The agent credential to validate. Either an `api_key` or an `access_token`, discriminated by `type`.</param>

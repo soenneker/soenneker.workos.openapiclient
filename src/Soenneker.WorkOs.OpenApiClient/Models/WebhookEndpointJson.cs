@@ -41,7 +41,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the Webhook Endpoint object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointObject? Object { get; set; }
         /// <summary>The secret used to sign webhook payloads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +83,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "endpoint_url", n => { EndpointUrl = n.GetStringValue(); } },
                 { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointObject>(); } },
                 { "secret", n => { Secret = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJsonStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -100,7 +100,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("endpoint_url", EndpointUrl);
             writer.WriteCollectionOfPrimitiveValues<string>("events", Events);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointObject>("object", Object);
             writer.WriteStringValue("secret", Secret);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJsonStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

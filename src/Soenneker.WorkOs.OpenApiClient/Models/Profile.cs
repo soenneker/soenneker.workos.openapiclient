@@ -89,7 +89,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the profile object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Profile_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ProfileObject? Object { get; set; }
         /// <summary>The ID of the organization the user belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -157,7 +157,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "idp_id", n => { IdpId = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileObject>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "raw_attributes", n => { RawAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRawAttributesProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRawAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole>(global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole.CreateFromDiscriminatorValue); } },
@@ -181,7 +181,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("idp_id", IdpId);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileObject>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRawAttributesProperty>("raw_attributes", RawAttributes);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole>("role", Role);

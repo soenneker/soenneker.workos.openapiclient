@@ -64,8 +64,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Distinguishes the connected account object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_object? Object { get; set; }
+        /// <summary>The connected account object.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountObject? Object { get; set; }
         /// <summary>The [Organization](/reference/organization) identifier associated with this connection, or `null` if not scoped to an organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,7 +82,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public List<string> Scopes { get; set; }
 #endif
-        /// <summary>&quot;The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.- `disconnected`: The connection has been disconnected.&quot;</summary>
+        /// <summary>The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.- `disconnected`: The connection has been disconnected.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState? State { get; set; }
         /// <summary>The timestamp when the connection was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -132,7 +132,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountObject>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState>(); } },
@@ -154,7 +154,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty>("config", Config);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountObject>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState>("state", State);

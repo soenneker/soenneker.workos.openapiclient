@@ -25,7 +25,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The type of OAuth provider for the identity.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemProvider? Provider { get; set; }
         /// <summary>The type of the identity.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem"/> and sets the default values.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "idp_id", n => { IdpId = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemProvider>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemType>(); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("idp_id", IdpId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemProvider>("provider", Provider);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

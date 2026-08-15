@@ -12,11 +12,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     public partial class DataIntegrationCredentialsResponseOneOf4 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates credentials are not available.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4_active? Active { get; set; }
+        /// <summary>Indicates whether the access token is valid and ready for use, or if reauthorization is required.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.FalseValueActive? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully.- `\&quot;not_installed\&quot;`: The user does not have the integration installed.- `\&quot;needs_reauthorization\&quot;`: The user needs to reauthorize the integration.&quot;</summary>
+        /// <summary>The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully.- `&quot;not_installed&quot;`: The user does not have the integration installed.- `&quot;needs_reauthorization&quot;`: The user needs to reauthorize the integration.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4Error? Error { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4"/> and sets the default values.
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active", n => { Active = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4_active>(); } },
+                { "active", n => { Active = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.FalseValueActive>(); } },
                 { "error", n => { Error = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4Error>(); } },
             };
         }
@@ -54,7 +54,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4_active>("active", Active);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.FalseValueActive>("active", Active);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4Error>("error", Error);
             writer.WriteAdditionalData(AdditionalData);
         }

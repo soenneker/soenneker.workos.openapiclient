@@ -14,7 +14,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`.&quot;</summary>
+        /// <summary>The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Credential { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Credential { get; set; }
 #endif
         /// <summary>The kind of credential being validated — an agent API key or an agent access token.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "credential", n => { Credential = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyType>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("credential", Credential);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

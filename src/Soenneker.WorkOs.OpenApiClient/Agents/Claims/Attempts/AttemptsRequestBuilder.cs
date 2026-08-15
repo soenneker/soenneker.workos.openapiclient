@@ -40,6 +40,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Claims.Attempts
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUser400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUser403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUser409Response">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUser410Response">When receiving a 410 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse?> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -51,7 +55,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Claims.Attempts
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUser400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUser403Response.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUser409Response.CreateFromDiscriminatorValue },
+                { "410", global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUser410Response.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Link an external user to a claim attempt and retrieve the code needed for the agent to complete the claim. The user is looked up by external ID; if no user exists, one is created. When the user belongs to multiple organizations, an explicit organization must be provided.

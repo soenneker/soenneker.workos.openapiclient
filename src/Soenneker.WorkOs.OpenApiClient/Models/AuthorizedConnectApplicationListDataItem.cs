@@ -47,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OauthResource { get; set; }
 #endif
         /// <summary>Distinguishes the authorized connect application object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem"/> and sets the default values.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "granted_scopes", n => { GrantedScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "oauth_resource", n => { OauthResource = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationObject>(); } },
             };
         }
         /// <summary>
@@ -91,7 +91,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("granted_scopes", GrantedScopes);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("oauth_resource", OauthResource);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

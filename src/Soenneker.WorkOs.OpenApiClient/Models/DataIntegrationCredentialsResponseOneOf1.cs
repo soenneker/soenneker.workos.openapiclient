@@ -12,8 +12,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     public partial class DataIntegrationCredentialsResponseOneOf1 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates credentials are available.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1_active? Active { get; set; }
+        /// <summary>Indicates whether the access token is valid and ready for use, or if reauthorization is required.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueActive? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The credential object containing the vended secret.</summary>
@@ -49,7 +49,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active", n => { Active = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1_active>(); } },
+                { "active", n => { Active = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueActive>(); } },
                 { "credential", n => { Credential = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential.CreateFromDiscriminatorValue); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1_active>("active", Active);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueActive>("active", Active);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential>("credential", Credential);
             writer.WriteAdditionalData(AdditionalData);
         }

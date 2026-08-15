@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the password reset object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.PasswordReset_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PasswordResetObject? Object { get; set; }
         /// <summary>The token used to reset the password.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,7 +89,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.PasswordReset_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.PasswordResetObject>(); } },
                 { "password_reset_token", n => { PasswordResetToken = n.GetStringValue(); } },
                 { "password_reset_url", n => { PasswordResetUrl = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -106,7 +106,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.PasswordReset_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.PasswordResetObject>("object", Object);
             writer.WriteStringValue("password_reset_token", PasswordResetToken);
             writer.WriteStringValue("password_reset_url", PasswordResetUrl);
             writer.WriteStringValue("user_id", UserId);

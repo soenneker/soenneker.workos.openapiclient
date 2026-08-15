@@ -32,7 +32,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OrganizationId { get; set; }
 #endif
         /// <summary>The type of the API Key owner.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValueOwner_type? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValueOwner"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValueOwner_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserType>(); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValueOwner_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

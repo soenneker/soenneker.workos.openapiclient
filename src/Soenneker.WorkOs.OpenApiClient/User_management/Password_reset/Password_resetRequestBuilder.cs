@@ -59,6 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Password_reset
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken422Response">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken429Response">When receiving a 429 status code</exception>
@@ -75,6 +76,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Password_reset
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken422Response.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken429Response.CreateFromDiscriminatorValue },

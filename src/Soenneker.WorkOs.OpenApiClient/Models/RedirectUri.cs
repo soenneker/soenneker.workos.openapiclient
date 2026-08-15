@@ -33,7 +33,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The object type.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriObject? Object { get; set; }
         /// <summary>The timestamp when the redirect URI was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,7 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "default", n => { Default = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriObject>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "uri", n => { Uri = n.GetStringValue(); } },
             };
@@ -93,7 +93,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteBoolValue("default", Default);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriObject>("object", Object);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteStringValue("uri", Uri);
             writer.WriteAdditionalData(AdditionalData);

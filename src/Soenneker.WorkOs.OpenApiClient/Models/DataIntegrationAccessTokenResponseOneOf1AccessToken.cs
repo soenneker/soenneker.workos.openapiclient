@@ -40,7 +40,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<string> MissingScopes { get; set; }
 #endif
         /// <summary>Distinguishes the access token object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1AccessToken_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AccessTokenObject? Object { get; set; }
         /// <summary>The scopes granted to the access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,7 +77,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "access_token", n => { AccessToken = n.GetStringValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
                 { "missing_scopes", n => { MissingScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1AccessToken_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AccessTokenObject>(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -91,7 +91,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("access_token", AccessToken);
             writer.WriteStringValue("expires_at", ExpiresAt);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_scopes", MissingScopes);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1AccessToken_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AccessTokenObject>("object", Object);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteAdditionalData(AdditionalData);
         }

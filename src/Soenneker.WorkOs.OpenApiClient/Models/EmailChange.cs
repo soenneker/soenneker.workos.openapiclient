@@ -27,7 +27,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string NewEmail { get; set; }
 #endif
         /// <summary>Distinguishes the email change object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EmailChange_object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EmailChangeObject? Object { get; set; }
         /// <summary>The user object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "new_email", n => { NewEmail = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EmailChange_object>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EmailChangeObject>(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser.CreateFromDiscriminatorValue); } },
             };
         }
@@ -78,7 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("new_email", NewEmail);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EmailChange_object>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EmailChangeObject>("object", Object);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }

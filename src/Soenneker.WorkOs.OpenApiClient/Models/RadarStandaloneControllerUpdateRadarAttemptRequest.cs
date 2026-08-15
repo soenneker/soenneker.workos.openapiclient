@@ -15,9 +15,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set to `&quot;success&quot;` to mark the authentication attempt as successful.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest_attempt_status? AttemptStatus { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus? AttemptStatus { get; set; }
         /// <summary>Set to `&quot;success&quot;` to mark the challenge as completed.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest_challenge_status? ChallengeStatus { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus? ChallengeStatus { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest"/> and sets the default values.
         /// </summary>
@@ -43,8 +43,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attempt_status", n => { AttemptStatus = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest_attempt_status>(); } },
-                { "challenge_status", n => { ChallengeStatus = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest_challenge_status>(); } },
+                { "attempt_status", n => { AttemptStatus = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus>(); } },
+                { "challenge_status", n => { ChallengeStatus = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus>(); } },
             };
         }
         /// <summary>
@@ -54,8 +54,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest_attempt_status>("attempt_status", AttemptStatus);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest_challenge_status>("challenge_status", ChallengeStatus);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus>("attempt_status", AttemptStatus);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus>("challenge_status", ChallengeStatus);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

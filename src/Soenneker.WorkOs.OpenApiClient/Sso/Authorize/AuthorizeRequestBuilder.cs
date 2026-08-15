@@ -158,7 +158,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
 #endif
             /// <summary>If set to `login`, forces re-authentication at the identity provider. For supported SAML providers this sets `ForceAuthn=&quot;true&quot;` in the SAML request; providers that don&apos;t support it are unaffected.</summary>
             [QueryParameter("prompt")]
-            public global::Soenneker.WorkOs.OpenApiClient.Sso.Authorize.GetPromptQueryParameterType? Prompt { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.LoginPrompt? Prompt { get; set; }
             /// <summary>Used to initiate OAuth authentication with various providers.</summary>
             [QueryParameter("provider")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerAuthorizeProviderParameter? Provider { get; set; }
@@ -194,7 +194,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Authorize
 #endif
             /// <summary>The only valid option for the response type parameter is `&quot;code&quot;`.The `&quot;code&quot;` parameter value initiates an [authorization code grant type](https://tools.ietf.org/html/rfc6749#section-4.1). This grant type allows you to exchange an authorization code for an access token during the redirect that takes place after a user has authenticated with an identity provider.</summary>
             [QueryParameter("response_type")]
-            public global::Soenneker.WorkOs.OpenApiClient.Sso.Authorize.GetResponse_typeQueryParameterType? ResponseType { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.CodeResponseType? ResponseType { get; set; }
             /// <summary>An optional parameter that can be used to encode arbitrary information to help restore application state between redirects. If included, the redirect URI received from WorkOS will contain the exact `state` that was passed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

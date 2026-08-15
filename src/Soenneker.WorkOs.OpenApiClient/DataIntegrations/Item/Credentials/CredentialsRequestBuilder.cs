@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials
         {
         }
         /// <summary>
-        /// &quot;Returns credentials for a user&apos;s connected account. Branches on the installation&apos;s `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret.&quot;
+        /// Returns credentials for a user&apos;s connected account. Branches on the installation&apos;s `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -63,7 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Returns credentials for a user&apos;s connected account. Branches on the installation&apos;s `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret.&quot;
+        /// Returns credentials for a user&apos;s connected account. Branches on the installation&apos;s `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
