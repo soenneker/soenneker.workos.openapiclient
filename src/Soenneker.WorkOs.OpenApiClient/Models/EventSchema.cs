@@ -50,13 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the Event object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_object? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema"/> and sets the default values.
         /// </summary>
@@ -87,7 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "data", n => { Data = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaData>(global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaData.CreateFromDiscriminatorValue); } },
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_object>(); } },
             };
         }
         /// <summary>
@@ -102,7 +96,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchemaData>("data", Data);
             writer.WriteStringValue("event", Event);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EventSchema_object>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

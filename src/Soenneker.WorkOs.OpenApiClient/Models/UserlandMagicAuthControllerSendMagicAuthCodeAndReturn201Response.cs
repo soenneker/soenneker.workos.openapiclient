@@ -43,13 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the Magic Auth object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn201Response_object? Object { get; set; }
         /// <summary>The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,7 +92,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn201Response_object>(); } },
                 { "radar_auth_attempt_id", n => { RadarAuthAttemptId = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -116,7 +110,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandMagicAuthControllerSendMagicAuthCodeAndReturn201Response_object>("object", Object);
             writer.WriteStringValue("radar_auth_attempt_id", RadarAuthAttemptId);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("user_id", UserId);

@@ -16,13 +16,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AuthMethod { get; set; }
-#nullable restore
-#else
-        public string AuthMethod { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential_auth_method? AuthMethod { get; set; }
         /// <summary>The ISO-8601 formatted timestamp indicating when the credential expires.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,13 +42,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<string> MissingScopes { get; set; }
 #endif
         /// <summary>Distinguishes the credential object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential_object? Object { get; set; }
         /// <summary>The scopes granted to the access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,11 +84,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "auth_method", n => { AuthMethod = n.GetStringValue(); } },
+                { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential_auth_method>(); } },
                 { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3CredentialMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3CredentialMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "missing_scopes", n => { MissingScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential_object>(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
@@ -112,11 +100,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("auth_method", AuthMethod);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential_auth_method>("auth_method", AuthMethod);
             writer.WriteStringValue("expires_at", ExpiresAt);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3CredentialMetadataProperty>("metadata", Metadata);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_scopes", MissingScopes);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential_object>("object", Object);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);

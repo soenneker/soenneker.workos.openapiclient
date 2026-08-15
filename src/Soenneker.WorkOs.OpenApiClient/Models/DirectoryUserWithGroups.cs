@@ -108,13 +108,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the Directory User object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_object? Object { get; set; }
         /// <summary>The identifier for the Organization in which the Directory resides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -197,7 +191,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "job_title", n => { JobTitle = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "raw_attributes", n => { RawAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsRawAttributesProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsRawAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>(global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole.CreateFromDiscriminatorValue); } },
@@ -226,7 +220,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("job_title", JobTitle);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroups_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserWithGroupsRawAttributesProperty>("raw_attributes", RawAttributes);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>("role", Role);

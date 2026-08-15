@@ -128,15 +128,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
             public string Code { get; set; }
 #endif
             /// <summary>The grant type for the token request.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("grant_type")]
-            public string? GrantType { get; set; }
-#nullable restore
-#else
-            [QueryParameter("grant_type")]
-            public string GrantType { get; set; }
-#endif
+            public global::Soenneker.WorkOs.OpenApiClient.Sso.Token.PostGrant_typeQueryParameterType? GrantType { get; set; }
         }
     }
 }

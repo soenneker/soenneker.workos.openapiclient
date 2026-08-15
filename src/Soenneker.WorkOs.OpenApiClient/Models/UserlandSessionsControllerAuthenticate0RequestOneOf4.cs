@@ -55,13 +55,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Email { get; set; }
 #endif
         /// <summary>The grant_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? GrantType { get; set; }
-#nullable restore
-#else
-        public string GrantType { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4_grant_type? GrantType { get; set; }
         /// <summary>An invitation token to accept during authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,7 +118,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "device_id", n => { DeviceId = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
-                { "grant_type", n => { GrantType = n.GetStringValue(); } },
+                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4_grant_type>(); } },
                 { "invitation_token", n => { InvitationToken = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
                 { "radar_auth_attempt_id", n => { RadarAuthAttemptId = n.GetStringValue(); } },
@@ -143,7 +137,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("device_id", DeviceId);
             writer.WriteStringValue("email", Email);
-            writer.WriteStringValue("grant_type", GrantType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4_grant_type>("grant_type", GrantType);
             writer.WriteStringValue("invitation_token", InvitationToken);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteStringValue("radar_auth_attempt_id", RadarAuthAttemptId);

@@ -45,13 +45,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the Feature Flag object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.Flag_object? Object { get; set; }
         /// <summary>The owner of the Feature Flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,7 +103,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Flag_object>(); } },
                 { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.FlagOwner>(global::Soenneker.WorkOs.OpenApiClient.Models.FlagOwner.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -129,7 +123,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Flag_object>("object", Object);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.FlagOwner>("owner", Owner);
             writer.WriteStringValue("slug", Slug);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);

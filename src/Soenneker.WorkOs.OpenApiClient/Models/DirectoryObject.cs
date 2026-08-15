@@ -57,13 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the Directory object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.Directory_object? Object { get; set; }
         /// <summary>The unique identifier for the Organization in which the directory resides.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,7 +103,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryMetadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryState>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryType>(); } },
@@ -129,7 +123,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.Directory_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryState>("state", State);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryType>("type", Type);

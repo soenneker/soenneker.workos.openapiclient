@@ -65,13 +65,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the connected account object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_object? Object { get; set; }
         /// <summary>The [Organization](/reference/organization) identifier associated with this connection, or `null` if not scoped to an organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,7 +132,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState>(); } },
@@ -160,7 +154,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty>("config", Config);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState>("state", State);

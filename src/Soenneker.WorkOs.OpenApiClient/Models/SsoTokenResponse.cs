@@ -41,13 +41,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.Profile Profile { get; set; }
 #endif
         /// <summary>The type of token issued.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TokenType { get; set; }
-#nullable restore
-#else
-        public string TokenType { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse_token_type? TokenType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse"/> and sets the default values.
         /// </summary>
@@ -77,7 +71,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "expires_in", n => { ExpiresIn = n.GetIntValue(); } },
                 { "oauth_tokens", n => { OauthTokens = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens>(global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens.CreateFromDiscriminatorValue); } },
                 { "profile", n => { Profile = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile>(global::Soenneker.WorkOs.OpenApiClient.Models.Profile.CreateFromDiscriminatorValue); } },
-                { "token_type", n => { TokenType = n.GetStringValue(); } },
+                { "token_type", n => { TokenType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse_token_type>(); } },
             };
         }
         /// <summary>
@@ -91,7 +85,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteIntValue("expires_in", ExpiresIn);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens>("oauth_tokens", OauthTokens);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile>("profile", Profile);
-            writer.WriteStringValue("token_type", TokenType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse_token_type>("token_type", TokenType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

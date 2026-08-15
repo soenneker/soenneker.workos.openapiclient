@@ -47,13 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string IpAddress { get; set; }
 #endif
         /// <summary>Distinguishes the session object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItem_object? Object { get; set; }
         /// <summary>The ID of the organization this session is associated with.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -114,7 +108,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "impersonator", n => { Impersonator = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItemImpersonator>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItemImpersonator.CreateFromDiscriminatorValue); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItem_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItemStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -136,7 +130,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItemImpersonator>("impersonator", Impersonator);
             writer.WriteStringValue("ip_address", IpAddress);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItem_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItemStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

@@ -31,13 +31,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyListListMetadata ListMetadata { get; set; }
 #endif
         /// <summary>Indicates this is a list response.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyList_object? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyList"/> and sets the default values.
         /// </summary>
@@ -65,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey>(global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "list_metadata", n => { ListMetadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyListListMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyListListMetadata.CreateFromDiscriminatorValue); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyList_object>(); } },
             };
         }
         /// <summary>
@@ -77,7 +71,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKey>("data", Data);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyListListMetadata>("list_metadata", ListMetadata);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyList_object>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

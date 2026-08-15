@@ -57,13 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Distinguishes the data integration configuration object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponse_object? Object { get; set; }
         /// <summary>The [Organization](/reference/organization) this configuration applies to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,7 +121,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponse_object>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponseScopes>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponseScopes.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
@@ -147,7 +141,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponse_object>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponseScopes>("scopes", Scopes);
             writer.WriteStringValue("slug", Slug);

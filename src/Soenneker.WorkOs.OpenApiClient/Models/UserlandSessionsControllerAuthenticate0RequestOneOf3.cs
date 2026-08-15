@@ -39,13 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string DeviceId { get; set; }
 #endif
         /// <summary>The grant_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? GrantType { get; set; }
-#nullable restore
-#else
-        public string GrantType { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3_grant_type? GrantType { get; set; }
         /// <summary>The IP address of the user&apos;s request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -106,7 +100,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "device_id", n => { DeviceId = n.GetStringValue(); } },
-                { "grant_type", n => { GrantType = n.GetStringValue(); } },
+                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3_grant_type>(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "refresh_token", n => { RefreshToken = n.GetStringValue(); } },
@@ -123,7 +117,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("device_id", DeviceId);
-            writer.WriteStringValue("grant_type", GrantType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3_grant_type>("grant_type", GrantType);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("refresh_token", RefreshToken);

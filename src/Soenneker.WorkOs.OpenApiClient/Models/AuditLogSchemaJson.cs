@@ -34,13 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>Distinguishes the Audit Log Schema object.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Object { get; set; }
-#nullable restore
-#else
-        public string Object { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJson_object? Object { get; set; }
         /// <summary>The list of targets for the schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +73,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "actor", n => { Actor = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonActor>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonActor.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonMetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonMetadataProperty.CreateFromDiscriminatorValue); } },
-                { "object", n => { Object = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJson_object>(); } },
                 { "targets", n => { Targets = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonTargetsItem>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonTargetsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
@@ -94,7 +88,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonActor>("actor", Actor);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonMetadataProperty>("metadata", Metadata);
-            writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJson_object>("object", Object);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJsonTargetsItem>("targets", Targets);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
