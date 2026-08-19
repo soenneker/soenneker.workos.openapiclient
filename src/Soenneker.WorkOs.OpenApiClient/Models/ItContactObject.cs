@@ -3,14 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>The IT Contact object.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum AuthorizationCodeGrantType
-    #pragma warning restore CS1591
+    public enum ItContactObject
     {
-        [EnumMember(Value = "authorization_code")]
+        [EnumMember(Value = "it_contact")]
         #pragma warning disable CS1591
-        AuthorizationCode,
+        ItContact,
         #pragma warning restore CS1591
     }
 }

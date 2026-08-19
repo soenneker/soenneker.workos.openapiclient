@@ -9,53 +9,49 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class TokenQueryDto : IAdditionalDataHolder, IParsable
+    public partial class ItContact : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The client ID of the WorkOS environment.</summary>
+        /// <summary>An ISO 8601 timestamp.</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The email address of the IT Contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientId { get; set; }
+        public string? Email { get; set; }
 #nullable restore
 #else
-        public string ClientId { get; set; }
+        public string Email { get; set; }
 #endif
-        /// <summary>The client secret of the WorkOS environment.</summary>
+        /// <summary>The unique ID of the IT Contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientSecret { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string ClientSecret { get; set; }
+        public string Id { get; set; }
 #endif
-        /// <summary>The authorization code received from the authorization callback.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Code { get; set; }
-#nullable restore
-#else
-        public string Code { get; set; }
-#endif
-        /// <summary>The grant type for the token request.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType? GrantType { get; set; }
+        /// <summary>The IT Contact object.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ItContactObject? Object { get; set; }
+        /// <summary>An ISO 8601 timestamp.</summary>
+        public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ItContact"/> and sets the default values.
         /// </summary>
-        public TokenQueryDto()
+        public ItContact()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ItContact"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.ItContact CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.ItContact();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,10 +61,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "client_id", n => { ClientId = n.GetStringValue(); } },
-                { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
-                { "code", n => { Code = n.GetStringValue(); } },
-                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType>(); } },
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "email", n => { Email = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ItContactObject>(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -78,10 +75,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("client_id", ClientId);
-            writer.WriteStringValue("client_secret", ClientSecret);
-            writer.WriteStringValue("code", Code);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType>("grant_type", GrantType);
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("email", Email);
+            writer.WriteStringValue("id", Id);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ItContactObject>("object", Object);
+            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

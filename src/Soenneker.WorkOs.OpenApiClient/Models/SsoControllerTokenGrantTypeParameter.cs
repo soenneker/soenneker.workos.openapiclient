@@ -5,12 +5,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum AuthorizationCodeGrantType
+    public enum SsoControllerTokenGrantTypeParameter
     #pragma warning restore CS1591
     {
         [EnumMember(Value = "authorization_code")]
         #pragma warning disable CS1591
         AuthorizationCode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "urn:ietf:params:oauth:grant-type:token-exchange")]
+        #pragma warning disable CS1591
+        UrnColonIetfColonParamsColonOauthColonGrantTypeColonTokenExchange,
         #pragma warning restore CS1591
     }
 }

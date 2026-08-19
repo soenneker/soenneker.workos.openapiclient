@@ -11,6 +11,7 @@ using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Authorized_applications;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.FeatureFlags;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups;
+using Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -58,6 +59,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item
         public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupsRequestBuilder Groups
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The it_contacts property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.It_contactsRequestBuilder It_contacts
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.It_contactsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.ItemRequestBuilder"/> and sets the default values.

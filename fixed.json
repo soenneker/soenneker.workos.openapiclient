@@ -9326,6 +9326,383 @@
         }
       }
     },
+    "/organizations/{organizationId}/it_contacts": {
+      "get": {
+        "tags": [
+          "organizations.it-contacts"
+        ],
+        "summary": "List IT contacts",
+        "description": "Get the IT contacts for an organization.",
+        "operationId": "ItContactsControllerList",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "The ID of the organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactList"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerList403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerList404Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "organizations.it-contacts"
+        ],
+        "summary": "Create an IT contact",
+        "description": "Add an IT contact to an organization. No Admin Portal invitation is sent, though the contact is notified if the organization has a connection certificate nearing expiry.",
+        "operationId": "ItContactsControllerCreate",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "The ID of the organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateItContactDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContact"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerCreate403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerCreate404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The email address is already an IT contact of the organization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerCreate409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerCreate422Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "503 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerCreate503Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/it_contacts/{contactId}": {
+      "delete": {
+        "tags": [
+          "organizations.it-contacts"
+        ],
+        "summary": "Delete an IT contact",
+        "description": "Remove an IT contact from an organization and revoke the contact\u0027s active setup links.",
+        "operationId": "ItContactsControllerDelete",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "The ID of the organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "The ID of the IT contact.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "it_contact_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerDelete403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerDelete404Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "503 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerDelete503Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/it_contacts/{contactId}/invite": {
+      "post": {
+        "tags": [
+          "organizations.it-contacts"
+        ],
+        "summary": "Invite an IT contact",
+        "description": "Create an Admin Portal setup link and email it to the IT contact. An organization can have at most one active invitation.",
+        "operationId": "ItContactsControllerInvite",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "The ID of the organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "The ID of the IT contact.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "it_contact_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InviteItContactDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerInvite403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerInvite404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Another IT contact invitation is already active for the organization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerInvite409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerInvite422Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "503 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerInvite503Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/it_contacts/{contactId}/revoke": {
+      "post": {
+        "tags": [
+          "organizations.it-contacts"
+        ],
+        "summary": "Revoke an IT contact\u0027s invitation",
+        "description": "Revoke the organization\u0027s active Admin Portal invitation.",
+        "operationId": "ItContactsControllerRevoke",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "The ID of the organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "The ID of the IT contact.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "it_contact_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerRevoke403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerRevoke404Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "503 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerRevoke503Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/portal/generate_link": {
       "post": {
         "tags": [
@@ -10044,8 +10421,7 @@
           {
             "name": "code",
             "in": "query",
-            "description": "The authorization code received from the authorization callback.",
-            "required": true,
+            "description": "The authorization code received from the authorization callback. Required when \u0060grant_type\u0060 is \u0060authorization_code\u0060.",
             "schema": {
               "type": "string",
               "example": "authorization_code_value"
@@ -10057,7 +10433,7 @@
             "description": "The grant type for the token request.",
             "required": true,
             "schema": {
-              "$ref": "#/components/schemas/AuthorizationCodeGrantType"
+              "$ref": "#/components/schemas/SsoControllerTokenGrantTypeParameter"
             }
           }
         ],
@@ -10065,7 +10441,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TokenQueryDto"
+                "$ref": "#/components/schemas/TokenBodyDto"
               }
             }
           },
@@ -16254,6 +16630,37 @@
           }
         }
       },
+      "CreateItContactDto": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the IT contact.",
+            "format": "email",
+            "example": "it-contact@example.com"
+          }
+        }
+      },
+      "InviteItContactDto": {
+        "required": [
+          "intents"
+        ],
+        "type": "object",
+        "properties": {
+          "intents": {
+            "minItems": 1,
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InviteItContactDtoIntentsItem"
+            },
+            "description": "The Admin Portal features that the IT contact can configure."
+          }
+        }
+      },
       "OrganizationDomainDataDto": {
         "required": [
           "domain",
@@ -17488,11 +17895,10 @@
           }
         }
       },
-      "TokenQueryDto": {
+      "TokenBodyDto": {
         "required": [
           "client_id",
           "client_secret",
-          "code",
           "grant_type"
         ],
         "type": "object",
@@ -17509,11 +17915,24 @@
           },
           "code": {
             "type": "string",
-            "description": "The authorization code received from the authorization callback.",
+            "description": "The authorization code received from the authorization callback. Required when \u0060grant_type\u0060 is \u0060authorization_code\u0060.",
             "example": "authorization_code_value"
           },
           "grant_type": {
-            "$ref": "#/components/schemas/AuthorizationCodeGrantType"
+            "$ref": "#/components/schemas/TokenBodyDtoGrantType"
+          },
+          "subject_token": {
+            "type": "string",
+            "description": "The OIDC ID token to exchange. Required when \u0060grant_type\u0060 is \u0060urn:ietf:params:oauth:grant-type:token-exchange\u0060. Must be sent in the request body.",
+            "example": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMifQ.example"
+          },
+          "subject_token_type": {
+            "$ref": "#/components/schemas/UrnColonIetfColonParamsColonOAuthColonTokenTypeColonIdTokenSubjectTokenType"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization whose connection the subject token is validated against. Required when \u0060grant_type\u0060 is \u0060urn:ietf:params:oauth:grant-type:token-exchange\u0060. Must be sent in the request body.",
+            "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
           }
         }
       },
@@ -21053,6 +21472,67 @@
             "type": "string",
             "description": "The full API Key value. Only returned once at creation time.",
             "example": "sk_abcdefghijklmnop123456"
+          }
+        }
+      },
+      "ItContact": {
+        "required": [
+          "object",
+          "id",
+          "email",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ItContactObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the IT Contact.",
+            "example": "it_contact_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the IT Contact.",
+            "format": "email",
+            "example": "it-contact@example.com"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        }
+      },
+      "ItContactList": {
+        "required": [
+          "object",
+          "data",
+          "list_metadata"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ListObject"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItContact"
+            },
+            "description": "The list of records for the current page."
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/ItContactListListMetadata"
           }
         }
       },
@@ -30042,6 +30522,32 @@
           }
         },
         "description": "The entity that owns the API Key."
+      },
+      "ItContactListListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "it_contact_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "it_contact_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
       },
       "OrganizationDomainsItem": {
         "required": [
@@ -43594,6 +44100,264 @@
           }
         }
       },
+      "ItContactsControllerList403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerList404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerCreate403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerCreate404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerCreate409Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ItContactAlreadyExistsCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "ItContactsControllerCreate422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerCreate503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "ItContactsControllerDelete403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerDelete404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerDelete503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "ItContactsControllerInvite403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerInvite404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerInvite409Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ItContactInvitationAlreadyActiveCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "ItContactsControllerInvite422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerInvite503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "ItContactsControllerRevoke403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerRevoke404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "ItContactsControllerRevoke503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "PortalSessionsControllerCreate400Response": {
         "required": [
           "message"
@@ -48748,6 +49512,43 @@
           ]
         }
       },
+      "InviteItContactDtoIntentsItem": {
+        "enum": [
+          "sso",
+          "directory_sync",
+          "log_streams",
+          "domain_verification",
+          "bring_your_own_key"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "InviteItContactDtoIntentsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "sso",
+              "name": "Sso"
+            },
+            {
+              "value": "directory_sync",
+              "name": "DirectorySync"
+            },
+            {
+              "value": "log_streams",
+              "name": "LogStreams"
+            },
+            {
+              "value": "domain_verification",
+              "name": "DomainVerification"
+            },
+            {
+              "value": "bring_your_own_key",
+              "name": "BringYourOwnKey"
+            }
+          ]
+        }
+      },
       "OrganizationDomainDataDtoState": {
         "enum": [
           "pending",
@@ -50916,21 +51717,45 @@
           ]
         }
       },
-      "AuthorizationCodeGrantType": {
-        "const": null,
+      "TokenBodyDtoGrantType": {
         "enum": [
-          "authorization_code"
+          "authorization_code",
+          "urn:ietf:params:oauth:grant-type:token-exchange"
         ],
         "type": "string",
+        "additionalProperties": false,
         "description": "The grant type for the token request.",
         "example": "authorization_code",
         "x-ms-enum": {
-          "name": "AuthorizationCodeGrantType",
+          "name": "TokenBodyDtoGrantType",
           "modelAsString": false,
           "values": [
             {
               "value": "authorization_code",
               "name": "AuthorizationCode"
+            },
+            {
+              "value": "urn:ietf:params:oauth:grant-type:token-exchange",
+              "name": "UrnColonIetfColonParamsColonOauthColonGrantTypeColonTokenExchange"
+            }
+          ]
+        }
+      },
+      "UrnColonIetfColonParamsColonOAuthColonTokenTypeColonIdTokenSubjectTokenType": {
+        "const": null,
+        "enum": [
+          "urn:ietf:params:oauth:token-type:id_token"
+        ],
+        "type": "string",
+        "description": "The type of the subject token. Required when \u0060grant_type\u0060 is \u0060urn:ietf:params:oauth:grant-type:token-exchange\u0060. Must be sent in the request body.",
+        "example": "urn:ietf:params:oauth:token-type:id_token",
+        "x-ms-enum": {
+          "name": "UrnColonIetfColonParamsColonOAuthColonTokenTypeColonIdTokenSubjectTokenType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "urn:ietf:params:oauth:token-type:id_token",
+              "name": "UrnColonIetfColonParamsColonOauthColonTokenTypeColonIdToken"
             }
           ]
         }
@@ -52308,6 +53133,25 @@
             {
               "value": "feature_flag",
               "name": "FeatureFlag"
+            }
+          ]
+        }
+      },
+      "ItContactObject": {
+        "const": null,
+        "enum": [
+          "it_contact"
+        ],
+        "type": "string",
+        "description": "The IT Contact object.",
+        "example": "it_contact",
+        "x-ms-enum": {
+          "name": "ItContactObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "it_contact",
+              "name": "ItContact"
             }
           ]
         }
@@ -59646,6 +60490,63 @@
           ]
         }
       },
+      "ItContactAlreadyExistsCode": {
+        "const": null,
+        "enum": [
+          "it_contact_already_exists"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "it_contact_already_exists",
+        "x-ms-enum": {
+          "name": "ItContactAlreadyExistsCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "it_contact_already_exists",
+              "name": "ItContactAlreadyExists"
+            }
+          ]
+        }
+      },
+      "ConcurrentRequestCode": {
+        "const": null,
+        "enum": [
+          "concurrent_request"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "concurrent_request",
+        "x-ms-enum": {
+          "name": "ConcurrentRequestCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "concurrent_request",
+              "name": "ConcurrentRequest"
+            }
+          ]
+        }
+      },
+      "ItContactInvitationAlreadyActiveCode": {
+        "const": null,
+        "enum": [
+          "it_contact_invitation_already_active"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "it_contact_invitation_already_active",
+        "x-ms-enum": {
+          "name": "ItContactInvitationAlreadyActiveCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "it_contact_invitation_already_active",
+              "name": "ItContactInvitationAlreadyActive"
+            }
+          ]
+        }
+      },
       "RadarStandaloneControllerAssessRequestAuthMethod": {
         "enum": [
           "Password",
@@ -59779,6 +60680,23 @@
             {
               "value": "invalid_client",
               "name": "InvalidClient"
+            }
+          ]
+        }
+      },
+      "AuthorizationCodeGrantType": {
+        "const": null,
+        "enum": [
+          "authorization_code"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AuthorizationCodeGrantType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "authorization_code",
+              "name": "AuthorizationCode"
             }
           ]
         }
@@ -61508,6 +62426,29 @@
           ]
         }
       },
+      "SsoControllerTokenGrantTypeParameter": {
+        "enum": [
+          "authorization_code",
+          "urn:ietf:params:oauth:grant-type:token-exchange"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "example": "authorization_code",
+        "x-ms-enum": {
+          "name": "SsoControllerTokenGrantTypeParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "authorization_code",
+              "name": "AuthorizationCode"
+            },
+            {
+              "value": "urn:ietf:params:oauth:grant-type:token-exchange",
+              "name": "UrnColonIetfColonParamsColonOauthColonGrantTypeColonTokenExchange"
+            }
+          ]
+        }
+      },
       "S256CodeChallengeMethod": {
         "const": null,
         "enum": [
@@ -61733,6 +62674,10 @@
     {
       "name": "organizations.feature-flags",
       "description": "Manage organization-scoped feature flags."
+    },
+    {
+      "name": "organizations.it-contacts",
+      "description": "Manage IT contacts for organizations."
     },
     {
       "name": "permissions",

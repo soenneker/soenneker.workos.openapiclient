@@ -3,14 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>The grant type for the token request.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum AuthorizationCodeGrantType
-    #pragma warning restore CS1591
+    public enum TokenBodyDtoGrantType
     {
         [EnumMember(Value = "authorization_code")]
         #pragma warning disable CS1591
         AuthorizationCode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "urn:ietf:params:oauth:grant-type:token-exchange")]
+        #pragma warning disable CS1591
+        UrnColonIetfColonParamsColonOauthColonGrantTypeColonTokenExchange,
         #pragma warning restore CS1591
     }
 }

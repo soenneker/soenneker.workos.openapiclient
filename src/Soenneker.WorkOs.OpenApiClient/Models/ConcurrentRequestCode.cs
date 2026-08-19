@@ -3,14 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>The error code identifying the type of error.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum AuthorizationCodeGrantType
-    #pragma warning restore CS1591
+    public enum ConcurrentRequestCode
     {
-        [EnumMember(Value = "authorization_code")]
+        [EnumMember(Value = "concurrent_request")]
         #pragma warning disable CS1591
-        AuthorizationCode,
+        ConcurrentRequest,
         #pragma warning restore CS1591
     }
 }

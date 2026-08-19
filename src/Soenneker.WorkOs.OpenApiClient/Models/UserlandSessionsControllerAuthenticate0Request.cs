@@ -78,7 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The grant type for the token request.</summary>
+        /// <summary>The grant_type property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType? GrantType { get; set; }
         /// <summary>An invitation token to accept during authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

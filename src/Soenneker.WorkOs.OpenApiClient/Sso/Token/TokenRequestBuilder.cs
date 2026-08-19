@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TokenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sso/token?client_id={client_id}&client_secret={client_secret}&code={code}&grant_type={grant_type}", pathParameters)
+        public TokenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sso/token?client_id={client_id}&client_secret={client_secret}&grant_type={grant_type}{&code*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TokenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sso/token?client_id={client_id}&client_secret={client_secret}&code={code}&grant_type={grant_type}", rawUrl)
+        public TokenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/sso/token?client_id={client_id}&client_secret={client_secret}&grant_type={grant_type}{&code*}", rawUrl)
         {
         }
         /// <summary>
@@ -45,11 +45,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerToken422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Sso.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Sso.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Sso.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Sso.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -70,11 +70,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Sso.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Sso.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Sso.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Sso.Token.TokenRequestBuilder.TokenRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -119,7 +119,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
             [QueryParameter("client_secret")]
             public string ClientSecret { get; set; }
 #endif
-            /// <summary>The authorization code received from the authorization callback.</summary>
+            /// <summary>The authorization code received from the authorization callback. Required when `grant_type` is `authorization_code`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("code")]
@@ -131,7 +131,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
 #endif
             /// <summary>The grant type for the token request.</summary>
             [QueryParameter("grant_type")]
-            public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType? GrantType { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerTokenGrantTypeParameter? GrantType { get; set; }
         }
     }
 }
