@@ -23,6 +23,7 @@ using Soenneker.WorkOs.OpenApiClient.Events;
 using Soenneker.WorkOs.OpenApiClient.FeatureFlags;
 using Soenneker.WorkOs.OpenApiClient.Organization_domains;
 using Soenneker.WorkOs.OpenApiClient.Organizations;
+using Soenneker.WorkOs.OpenApiClient.Platform;
 using Soenneker.WorkOs.OpenApiClient.Portal;
 using Soenneker.WorkOs.OpenApiClient.Radar;
 using Soenneker.WorkOs.OpenApiClient.Sso;
@@ -126,6 +127,11 @@ namespace Soenneker.WorkOs.OpenApiClient
         public global::Soenneker.WorkOs.OpenApiClient.Organizations.OrganizationsRequestBuilder Organizations
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.OrganizationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The platform property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Platform.PlatformRequestBuilder Platform
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Platform.PlatformRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The portal property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Portal.PortalRequestBuilder Portal

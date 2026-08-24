@@ -9703,6 +9703,102 @@
         }
       }
     },
+    "/platform/teams": {
+      "post": {
+        "tags": [
+          "platform.teams"
+        ],
+        "summary": "Create a team",
+        "description": "Creates a team along with its default project, a staging environment, and a production environment. An admin invitation is sent to \u0060admin_email\u0060, onboarding is marked complete with AuthKit enabled, and the calling platform is authorized to act inside the team.",
+        "operationId": "TeamsControllerCreateTeam",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeamDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "409 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamsControllerCreateTeam409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamsControllerCreateTeam422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/platform/teams/{teamId}": {
+      "get": {
+        "tags": [
+          "platform.teams"
+        ],
+        "summary": "Get a team",
+        "description": "Returns a team, and doubles as a health check on the platform\u0027s access to it. Read \u0060production_state\u0060 before attempting to create a production environment.",
+        "operationId": "TeamsControllerGetTeam",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "The ID of the team.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "team_01JX9AN6E02HAG2Q2CKGC1XT5W"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamsControllerGetTeam404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/portal/generate_link": {
       "post": {
         "tags": [
@@ -17157,6 +17253,26 @@
           }
         }
       },
+      "CreateTeamDto": {
+        "required": [
+          "admin_email",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "admin_email": {
+            "type": "string",
+            "description": "The email address of the person who will administer the team. An invitation is sent to this address.",
+            "format": "email",
+            "example": "alice@example.com"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the team.",
+            "example": "Example Team"
+          }
+        }
+      },
       "EnrollUserlandUserAuthenticationFactorDto": {
         "required": [
           "type"
@@ -22278,6 +22394,57 @@
             "type": "string",
             "description": "The timestamp when the redirect URI was last updated.",
             "example": "2026-01-15T12:00:00.000Z"
+          }
+        }
+      },
+      "Team": {
+        "required": [
+          "object",
+          "id",
+          "name",
+          "production_state",
+          "production_enabled_at",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/TeamObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the team.",
+            "example": "team_01JX9AN6E02HAG2Q2CKGC1XT5W"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the team.",
+            "example": "Example Team"
+          },
+          "production_state": {
+            "$ref": "#/components/schemas/TeamProductionState"
+          },
+          "production_enabled_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The timestamp when production was enabled for the team, or \u0060null\u0060 if it never has been.",
+            "format": "date-time",
+            "example": "2024-01-01T00:00:00.000Z"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the team was created.",
+            "format": "date-time",
+            "example": "2024-01-01T00:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the team was last updated.",
+            "format": "date-time",
+            "example": "2024-01-01T00:00:00.000Z"
           }
         }
       },
@@ -44358,6 +44525,53 @@
           }
         }
       },
+      "TeamsControllerCreateTeam409Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/UserAlreadyExistsCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "TeamsControllerCreateTeam422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "TeamsControllerGetTeam404Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/TeamNotFoundCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "PortalSessionsControllerCreate400Response": {
         "required": [
           "message"
@@ -53584,6 +53798,36 @@
           ]
         }
       },
+      "TeamObject": {
+        "const": null,
+        "enum": [
+          "team"
+        ],
+        "type": "string",
+        "description": "Distinguishes the team object.",
+        "x-ms-enum": {
+          "name": "TeamObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "team",
+              "name": "Team"
+            }
+          ]
+        }
+      },
+      "TeamProductionState": {
+        "enum": [
+          "Active",
+          "Inactive",
+          "Suspended",
+          "Deleting"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether the team can host production environments. \u0060Active\u0060 means billing is set up. \u0060Inactive\u0060 means a team admin must add a payment method in the WorkOS Dashboard. \u0060Suspended\u0060 and \u0060Deleting\u0060 mean the team can\u0027t be provisioned into.",
+        "example": "Active"
+      },
       "MagicAuthObject": {
         "const": null,
         "enum": [
@@ -60547,6 +60791,44 @@
           ]
         }
       },
+      "UserAlreadyExistsCode": {
+        "const": null,
+        "enum": [
+          "user_already_exists"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "user_already_exists",
+        "x-ms-enum": {
+          "name": "UserAlreadyExistsCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user_already_exists",
+              "name": "UserAlreadyExists"
+            }
+          ]
+        }
+      },
+      "TeamNotFoundCode": {
+        "const": null,
+        "enum": [
+          "team_not_found"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "team_not_found",
+        "x-ms-enum": {
+          "name": "TeamNotFoundCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "team_not_found",
+              "name": "TeamNotFound"
+            }
+          ]
+        }
+      },
       "RadarStandaloneControllerAssessRequestAuthMethod": {
         "enum": [
           "Password",
@@ -62690,6 +62972,10 @@
     {
       "name": "pipes.provider",
       "description": "Manage organization-scoped provider configurations."
+    },
+    {
+      "name": "platform.teams",
+      "description": "Manage teams for platforms."
     },
     {
       "name": "radar",
