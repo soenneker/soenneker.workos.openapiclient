@@ -14467,6 +14467,388 @@
         }
       }
     },
+    "/user_management/waitlist_entries/{id}": {
+      "delete": {
+        "tags": [
+          "user-management.waitlists"
+        ],
+        "summary": "Delete a waitlist entry",
+        "description": "Removes the entry from the waitlist. An invitation created by approving the entry stays valid, so revoke that invitation to withdraw access.",
+        "operationId": "WaitlistEntriesControllerDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the waitlist entry.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "wl_user_01E4ZCR3C56J083X43JQXF3JK5"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntriesControllerDelete404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user_management/waitlist_entries/{id}/approve": {
+      "post": {
+        "tags": [
+          "user-management.waitlists"
+        ],
+        "summary": "Approve a waitlist entry",
+        "description": "Approve a waitlist entry and send the resulting user invitation email. Also reverses a denial: a denied entry can be approved.",
+        "operationId": "WaitlistEntriesControllerApprove",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the waitlist entry.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "wl_user_01E4ZCR3C56J083X43JQXF3JK5"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntriesControllerApprove200Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntriesControllerApprove404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntriesControllerApprove422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user_management/waitlist_entries/{id}/deny": {
+      "post": {
+        "tags": [
+          "user-management.waitlists"
+        ],
+        "summary": "Deny a waitlist entry",
+        "description": "Deny a pending waitlist entry. A denial can be reversed by approving the entry.",
+        "operationId": "WaitlistEntriesControllerDeny",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the waitlist entry.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "wl_user_01E4ZCR3C56J083X43JQXF3JK5"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntriesControllerDeny200Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntriesControllerDeny404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntriesControllerDeny422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user_management/waitlists": {
+      "get": {
+        "tags": [
+          "user-management.waitlists"
+        ],
+        "summary": "List waitlists",
+        "description": "Get a list of the waitlists in the environment.",
+        "operationId": "WaitlistsControllerList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistsControllerList200Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user_management/waitlists/{id}": {
+      "get": {
+        "tags": [
+          "user-management.waitlists"
+        ],
+        "summary": "Get a waitlist",
+        "description": "Get the details of an existing waitlist.",
+        "operationId": "WaitlistsControllerFind",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the waitlist, or the literal \u0060default\u0060 for the environment\u0027s default waitlist.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Waitlist"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistsControllerFind404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user_management/waitlists/{id}/entries": {
+      "get": {
+        "tags": [
+          "user-management.waitlists"
+        ],
+        "summary": "List waitlist entries",
+        "description": "Get a list of entries on a waitlist matching the criteria specified.",
+        "operationId": "WaitlistsControllerListEntries",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the waitlist, or the literal \u0060default\u0060 for the environment\u0027s default waitlist.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060after=\u0022obj_123\u0022\u0060 to fetch a new batch of objects after \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ987654321KJIHGFEDCBA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Upper limit on the number of objects to return, between \u00601\u0060 and \u0060100\u0060.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10,
+              "example": 10
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records).",
+            "schema": {
+              "$ref": "#/components/schemas/PaginationOrder"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Filter waitlist entries by their state.",
+            "schema": {
+              "$ref": "#/components/schemas/WaitlistsControllerListEntriesStateParameter"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Filter waitlist entries by their exact email address.",
+            "schema": {
+              "type": "string",
+              "example": "marcelina.davis@example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistsControllerListEntries200Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistsControllerListEntries404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistsControllerListEntries422Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user-management.waitlists"
+        ],
+        "summary": "Create a waitlist entry",
+        "description": "Add an email address to the waitlist. Creating an entry is idempotent per email address: a request for an email address already on the waitlist returns the existing entry.",
+        "operationId": "WaitlistsControllerCreateEntry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the waitlist, or the literal \u0060default\u0060 for the environment\u0027s default waitlist.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWaitlistEntryDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntry"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistsControllerCreateEntry404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistsControllerCreateEntry422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/vault/v1/keys/data-key": {
       "post": {
         "tags": [
@@ -17926,6 +18308,29 @@
             "type": "string",
             "description": "The ID of the session to revoke. This can be extracted from the \u0060sid\u0060 claim of the access token.",
             "example": "session_01H93ZY4F80QPBEZ1R5B2SHQG8"
+          }
+        }
+      },
+      "CreateWaitlistEntryDto": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user joining the waitlist.",
+            "format": "email",
+            "example": "marcelina.davis@example.com"
+          },
+          "additional_fields": {
+            "$ref": "#/components/schemas/CreateWaitlistEntryDtoAdditionalFieldsProperty"
+          },
+          "send_confirmation_email": {
+            "type": "boolean",
+            "description": "Whether to send the waitlist confirmation email to the user. Defaults to \u0060false\u0060. No email is sent when the waitlist confirmation email is disabled in the environment, even if \u0060send_confirmation_email\u0060 is \u0060true\u0060.",
+            "default": false,
+            "example": false
           }
         }
       },
@@ -23253,6 +23658,99 @@
             "type": "number",
             "description": "Minimum polling interval in seconds.",
             "example": 5
+          }
+        }
+      },
+      "Waitlist": {
+        "required": [
+          "object",
+          "id",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/WaitlistObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the Waitlist.",
+            "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        }
+      },
+      "WaitlistEntry": {
+        "required": [
+          "id",
+          "email",
+          "state",
+          "approved_at",
+          "created_at",
+          "updated_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the waitlist entry.",
+            "example": "wl_user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user on the waitlist.",
+            "example": "marcelina.davis@example.com"
+          },
+          "state": {
+            "$ref": "#/components/schemas/WaitlistEntryState"
+          },
+          "approved_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The timestamp when the entry was approved, or null if not yet approved.",
+            "format": "date-time",
+            "example": null
+          },
+          "additional_fields": {
+            "$ref": "#/components/schemas/WaitlistEntryAdditionalFieldsProperty"
+          },
+          "waitlist_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The unique ID of the waitlist the entry belongs to.",
+            "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "object": {
+            "$ref": "#/components/schemas/WaitlistEntryObject"
           }
         }
       },
@@ -29486,6 +29984,18 @@
           "prompt": "consent"
         }
       },
+      "CreateWaitlistEntryDtoAdditionalFields": {
+        "maxProperties": 50,
+        "type": "object",
+        "additionalProperties": {
+          "maxLength": 600,
+          "type": "string"
+        },
+        "description": "Object containing additional key/value pairs collected with the waitlist entry. Values are user-provided \u2014 treat them as untrusted input when rendering or exporting.",
+        "example": {
+          "company": "Example Corp"
+        }
+      },
       "CreateDataKeyRequestContext": {
         "maxProperties": 10,
         "type": "object",
@@ -31435,6 +31945,16 @@
         },
         "description": "The OAuth tokens from the identity provider, if applicable."
       },
+      "WaitlistEntryAdditionalFields": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional fields submitted when the user joined the waitlist. Values are user-provided \u2014 treat them as untrusted input when rendering or exporting.",
+        "example": {
+          "company": "Example Corp"
+        }
+      },
       "WebhookEndpointListListMetadata": {
         "required": [
           "before",
@@ -32648,6 +33168,11 @@
           },
           "error": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf21DataError"
+          },
+          "provider": {
+            "type": "string",
+            "description": "The OAuth provider used for authentication.",
+            "example": "GoogleOAuth"
           }
         },
         "description": "The event payload."
@@ -32697,6 +33222,11 @@
             "type": "string",
             "description": "The email address of the user.",
             "example": "user@example.com"
+          },
+          "provider": {
+            "type": "string",
+            "description": "The OAuth provider used for authentication.",
+            "example": "GoogleOAuth"
           }
         },
         "description": "The event payload."
@@ -47442,6 +47972,320 @@
           }
         }
       },
+      "WaitlistEntriesControllerDelete404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "WaitlistEntriesControllerApprove200Response": {
+        "required": [
+          "id",
+          "email",
+          "state",
+          "approved_at",
+          "created_at",
+          "updated_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the waitlist entry.",
+            "example": "wl_user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user on the waitlist.",
+            "example": "marcelina.davis@example.com"
+          },
+          "state": {
+            "$ref": "#/components/schemas/WaitlistEntriesControllerApprove200ResponseState"
+          },
+          "approved_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The timestamp when the entry was approved, or null if not yet approved.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "additional_fields": {
+            "$ref": "#/components/schemas/WaitlistEntriesControllerApprove200ResponseAdditionalFields"
+          },
+          "waitlist_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The unique ID of the waitlist the entry belongs to.",
+            "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "object": {
+            "$ref": "#/components/schemas/WaitlistEntryObject"
+          }
+        },
+        "x-inline-with-overrides": true
+      },
+      "WaitlistEntriesControllerApprove404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "WaitlistEntriesControllerApprove422Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/InvalidStateCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "WaitlistEntriesControllerDeny200Response": {
+        "required": [
+          "id",
+          "email",
+          "state",
+          "approved_at",
+          "created_at",
+          "updated_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the waitlist entry.",
+            "example": "wl_user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user on the waitlist.",
+            "example": "marcelina.davis@example.com"
+          },
+          "state": {
+            "$ref": "#/components/schemas/WaitlistEntriesControllerDeny200ResponseState"
+          },
+          "approved_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The timestamp when the entry was approved, or null if not yet approved.",
+            "format": "date-time",
+            "example": null
+          },
+          "additional_fields": {
+            "$ref": "#/components/schemas/WaitlistEntriesControllerDeny200ResponseAdditionalFields"
+          },
+          "waitlist_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The unique ID of the waitlist the entry belongs to.",
+            "example": "waitlist_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "object": {
+            "$ref": "#/components/schemas/WaitlistEntryObject"
+          }
+        },
+        "x-inline-with-overrides": true
+      },
+      "WaitlistEntriesControllerDeny404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "WaitlistEntriesControllerDeny422Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/InvalidStateCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "WaitlistsControllerList200Response": {
+        "required": [
+          "object",
+          "data",
+          "list_metadata"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ListObject"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Waitlist"
+            },
+            "description": "The list of records for the current page."
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/WaitlistsControllerList200ResponseListMetadata"
+          }
+        },
+        "x-inline-with-overrides": true
+      },
+      "WaitlistsControllerFind404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "WaitlistsControllerListEntries200Response": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ListObject"
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/WaitlistsControllerListEntries200ResponseListMetadata"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaitlistEntry"
+            },
+            "description": "The list of records for the current page."
+          }
+        }
+      },
+      "WaitlistsControllerListEntries404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "WaitlistsControllerListEntries422Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/InvalidRequestParametersCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Validation failed."
+          }
+        }
+      },
+      "WaitlistsControllerCreateEntry404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "WaitlistsControllerCreateEntry422Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/UserAlreadyExistsCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "WebhookEndpointsControllerCreate409Response": {
         "required": [
           "code",
@@ -48300,6 +49144,14 @@
         },
         "description": "Object containing metadata key/value pairs associated with the user."
       },
+      "CreateWaitlistEntryDtoAdditionalFieldsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "maxLength": 600,
+          "type": "string"
+        },
+        "description": "Object containing additional key/value pairs collected with the waitlist entry. Values are user-provided \u2014 treat them as untrusted input when rendering or exporting."
+      },
       "CreateDataKeyRequestContextProperty": {
         "type": "object",
         "additionalProperties": {
@@ -48465,6 +49317,13 @@
           "$ref": "#/components/schemas/UserlandUserOrganizationMembershipCustomAttributesPropertyAdditionalProperties"
         },
         "description": "An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked."
+      },
+      "WaitlistEntryAdditionalFieldsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional fields submitted when the user joined the waitlist. Values are user-provided \u2014 treat them as untrusted input when rendering or exporting."
       },
       "ProfileCustomAttributesProperty": {
         "type": "object",
@@ -49443,6 +50302,78 @@
             "example": "event.action"
           }
         }
+      },
+      "WaitlistEntriesControllerApprove200ResponseAdditionalFields": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional fields submitted when the user joined the waitlist. Values are user-provided \u2014 treat them as untrusted input when rendering or exporting.",
+        "example": {
+          "company": "Example Corp"
+        }
+      },
+      "WaitlistEntriesControllerDeny200ResponseAdditionalFields": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Additional fields submitted when the user joined the waitlist. Values are user-provided \u2014 treat them as untrusted input when rendering or exporting.",
+        "example": {
+          "company": "Example Corp"
+        }
+      },
+      "WaitlistsControllerList200ResponseListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": null
+          },
+          "after": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": null
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
+      },
+      "WaitlistsControllerListEntries200ResponseListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "wl_user_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "wl_user_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
       },
       "WebhookEndpointsControllerCreate422ResponseErrorsItem": {
         "required": [
@@ -52537,7 +53468,6 @@
           "CleverOIDC",
           "CloudflareSAML",
           "CyberArkSAML",
-          "DiscordOAuth",
           "DuoSAML",
           "EntraIdOIDC",
           "GenericOIDC",
@@ -52547,8 +53477,6 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
-          "GrokOAuth",
-          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -52641,10 +53569,6 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
-            },
-            {
-              "value": "XOAuth",
-              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -53989,13 +54913,10 @@
           "AppleOAuth",
           "BitbucketOAuth",
           "CrossAppAuth",
-          "DiscordOAuth",
           "ExternalAuth",
           "GitHubOAuth",
           "GitLabOAuth",
           "GoogleOAuth",
-          "GrokOAuth",
-          "XOAuth",
           "IntuitOAuth",
           "LinkedInOAuth",
           "MicrosoftOAuth",
@@ -54019,10 +54940,71 @@
             {
               "value": "SSO",
               "name": "Sso"
+            }
+          ]
+        }
+      },
+      "WaitlistObject": {
+        "const": null,
+        "enum": [
+          "waitlist"
+        ],
+        "type": "string",
+        "description": "Distinguishes the Waitlist object.",
+        "x-ms-enum": {
+          "name": "WaitlistObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "waitlist",
+              "name": "Waitlist"
+            }
+          ]
+        }
+      },
+      "WaitlistEntryState": {
+        "enum": [
+          "pending",
+          "approved",
+          "denied"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The state of the waitlist entry.",
+        "example": "pending",
+        "x-ms-enum": {
+          "name": "WaitlistEntryState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pending",
+              "name": "Pending"
             },
             {
-              "value": "XOAuth",
-              "name": "XoAuth"
+              "value": "approved",
+              "name": "Approved"
+            },
+            {
+              "value": "denied",
+              "name": "Denied"
+            }
+          ]
+        }
+      },
+      "WaitlistEntryObject": {
+        "const": null,
+        "enum": [
+          "waitlist_entry"
+        ],
+        "type": "string",
+        "description": "Distinguishes the Waitlist Entry object.",
+        "x-ms-enum": {
+          "name": "WaitlistEntryObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "waitlist_entry",
+              "name": "WaitlistEntry"
             }
           ]
         }
@@ -54103,7 +55085,6 @@
           "CleverOIDC",
           "CloudflareSAML",
           "CyberArkSAML",
-          "DiscordOAuth",
           "DuoSAML",
           "EntraIdOIDC",
           "GenericOIDC",
@@ -54113,8 +55094,6 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
-          "GrokOAuth",
-          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -54207,10 +55186,6 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
-            },
-            {
-              "value": "XOAuth",
-              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -57419,7 +58394,6 @@
           "CleverOIDC",
           "CloudflareSAML",
           "CyberArkSAML",
-          "DiscordOAuth",
           "DuoSAML",
           "EntraIdOIDC",
           "GenericOIDC",
@@ -57429,8 +58403,6 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
-          "GrokOAuth",
-          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -57523,10 +58495,6 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
-            },
-            {
-              "value": "XOAuth",
-              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -57676,7 +58644,6 @@
           "CleverOIDC",
           "CloudflareSAML",
           "CyberArkSAML",
-          "DiscordOAuth",
           "DuoSAML",
           "EntraIdOIDC",
           "GenericOIDC",
@@ -57686,8 +58653,6 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
-          "GrokOAuth",
-          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -57780,10 +58745,6 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
-            },
-            {
-              "value": "XOAuth",
-              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -57933,7 +58894,6 @@
           "CleverOIDC",
           "CloudflareSAML",
           "CyberArkSAML",
-          "DiscordOAuth",
           "DuoSAML",
           "EntraIdOIDC",
           "GenericOIDC",
@@ -57943,8 +58903,6 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
-          "GrokOAuth",
-          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -58037,10 +58995,6 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
-            },
-            {
-              "value": "XOAuth",
-              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -61513,6 +62467,83 @@
           ]
         }
       },
+      "WaitlistEntriesControllerApprove200ResponseState": {
+        "enum": [
+          "pending",
+          "approved",
+          "denied"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The state of the waitlist entry.",
+        "example": "approved",
+        "x-ms-enum": {
+          "name": "WaitlistEntriesControllerApprove200ResponseState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "approved",
+              "name": "Approved"
+            },
+            {
+              "value": "denied",
+              "name": "Denied"
+            }
+          ]
+        }
+      },
+      "InvalidStateCode": {
+        "const": null,
+        "enum": [
+          "invalid_state"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "invalid_state",
+        "x-ms-enum": {
+          "name": "InvalidStateCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "invalid_state",
+              "name": "InvalidState"
+            }
+          ]
+        }
+      },
+      "WaitlistEntriesControllerDeny200ResponseState": {
+        "enum": [
+          "pending",
+          "approved",
+          "denied"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The state of the waitlist entry.",
+        "example": "denied",
+        "x-ms-enum": {
+          "name": "WaitlistEntriesControllerDeny200ResponseState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "approved",
+              "name": "Approved"
+            },
+            {
+              "value": "denied",
+              "name": "Denied"
+            }
+          ]
+        }
+      },
       "DuplicateEndpointCode": {
         "const": null,
         "enum": [
@@ -62128,12 +63159,9 @@
         "enum": [
           "AppleOAuth",
           "BitbucketOAuth",
-          "DiscordOAuth",
           "GithubOAuth",
           "GitLabOAuth",
           "GoogleOAuth",
-          "GrokOAuth",
-          "XOAuth",
           "IntuitOAuth",
           "LinkedInOAuth",
           "MicrosoftOAuth",
@@ -62146,17 +63174,7 @@
         "type": "string",
         "additionalProperties": false,
         "description": "The type of OAuth provider for the identity.",
-        "example": "MicrosoftOAuth",
-        "x-ms-enum": {
-          "name": "UserlandUserIdentitiesControllerGet200ResponseItemProvider",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "XOAuth",
-              "name": "XoAuth"
-            }
-          ]
-        }
+        "example": "MicrosoftOAuth"
       },
       "UserlandUserSessionsControllerList200ResponseDataItemAuthMethod": {
         "enum": [
@@ -62332,7 +63350,6 @@
           "ClassLinkSAML",
           "CleverOIDC",
           "CyberArkSAML",
-          "DiscordOAuth",
           "DuoSAML",
           "EntraIdOIDC",
           "GenericOIDC",
@@ -62342,8 +63359,6 @@
           "GoogleOAuth",
           "GoogleOIDC",
           "GoogleSAML",
-          "GrokOAuth",
-          "XOAuth",
           "IntuitOAuth",
           "JumpCloudSAML",
           "KeycloakSAML",
@@ -62434,10 +63449,6 @@
             {
               "value": "GoogleSAML",
               "name": "GoogleSaml"
-            },
-            {
-              "value": "XOAuth",
-              "name": "XoAuth"
             },
             {
               "value": "JumpCloudSAML",
@@ -62820,6 +63831,34 @@
           ]
         }
       },
+      "WaitlistsControllerListEntriesStateParameter": {
+        "enum": [
+          "pending",
+          "approved",
+          "denied"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "example": "pending",
+        "x-ms-enum": {
+          "name": "WaitlistsControllerListEntriesStateParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "approved",
+              "name": "Approved"
+            },
+            {
+              "value": "denied",
+              "name": "Denied"
+            }
+          ]
+        }
+      },
       "JumpWireWebDataVaultControllerIndexOrderParameter": {
         "enum": [
           "asc",
@@ -63040,6 +64079,10 @@
     {
       "name": "user-management.users.feature-flags",
       "description": "Manage user-scoped feature flags."
+    },
+    {
+      "name": "user-management.waitlists",
+      "description": "Manage waitlists and waitlist entries."
     },
     {
       "name": "vault",

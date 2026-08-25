@@ -59,10 +59,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         CyberArkSaml,
         #pragma warning restore CS1591
-        [EnumMember(Value = "DiscordOAuth")]
-        #pragma warning disable CS1591
-        DiscordOAuth,
-        #pragma warning restore CS1591
         [EnumMember(Value = "DuoSAML")]
         #pragma warning disable CS1591
         DuoSaml,
@@ -98,14 +94,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "GoogleSAML")]
         #pragma warning disable CS1591
         GoogleSaml,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "GrokOAuth")]
-        #pragma warning disable CS1591
-        GrokOAuth,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "XOAuth")]
-        #pragma warning disable CS1591
-        XoAuth,
         #pragma warning restore CS1591
         [EnumMember(Value = "IntuitOAuth")]
         #pragma warning disable CS1591

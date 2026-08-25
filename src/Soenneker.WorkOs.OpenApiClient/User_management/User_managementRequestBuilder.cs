@@ -15,6 +15,8 @@ using Soenneker.WorkOs.OpenApiClient.User_management.Radar_challenges;
 using Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris;
 using Soenneker.WorkOs.OpenApiClient.User_management.Sessions;
 using Soenneker.WorkOs.OpenApiClient.User_management.Users;
+using Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries;
+using Soenneker.WorkOs.OpenApiClient.User_management.Waitlists;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -91,6 +93,16 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.UsersRequestBuilder Users
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The waitlist_entries property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries.Waitlist_entriesRequestBuilder Waitlist_entries
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries.Waitlist_entriesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The waitlists property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Waitlists.WaitlistsRequestBuilder Waitlists
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Waitlists.WaitlistsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.User_managementRequestBuilder"/> and sets the default values.
