@@ -33,7 +33,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3CredentialMetadataProperty Metadata { get; set; }
 #endif
-        /// <summary>If the integration has requested scopes that aren&apos;t present on the access token, they&apos;re listed here.</summary>
+        /// <summary>If the integration has requested scopes that aren&apos;t present on the access token, they&apos;re listed here. The scopes granted to a client-credentials token are governed by the connected organization&apos;s client application, so the integration&apos;s configured scopes are requests or defaults rather than guarantees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? MissingScopes { get; set; }

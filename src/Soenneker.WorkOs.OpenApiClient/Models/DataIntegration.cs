@@ -32,7 +32,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>An ISO 8601 timestamp.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The integration-level OAuth app credentials. `null` for `api_key` integrations, which hold no OAuth credentials (keys are installed per-tenant).</summary>
+        /// <summary>The integration-level OAuth app credentials. `null` for `api_key` and `client_credentials` integrations, which hold no integration-level credentials (secrets are installed per-tenant).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsProperty? Credentials { get; set; }
@@ -84,7 +84,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>Distinguishes the Data Integration object.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationObject? Object { get; set; }
-        /// <summary>The OAuth redirect URI to register with the provider when configuring the custom application.</summary>
+        /// <summary>The OAuth redirect URI to register with the provider when configuring the custom application. Empty for `api_key` and `client_credentials` integrations, which run no authorization redirect.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RedirectUri { get; set; }

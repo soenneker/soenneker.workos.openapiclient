@@ -162,7 +162,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Api_keys
             /// <summary>Upper limit on the number of objects to return, between `1` and `100`.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>Order the results by the creation time.</summary>
+            /// <summary>Order the results by the creation time. Defaults to `normal`.</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
         }

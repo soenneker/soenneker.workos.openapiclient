@@ -8,6 +8,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     public enum CreateWebhookEndpointDtoEventsItem
     #pragma warning restore CS1591
     {
+        [EnumMember(Value = "agent.blueprint.created")]
+        #pragma warning disable CS1591
+        AgentBlueprintCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.blueprint.deleted")]
+        #pragma warning disable CS1591
+        AgentBlueprintDeleted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.blueprint.updated")]
+        #pragma warning disable CS1591
+        AgentBlueprintUpdated,
+        #pragma warning restore CS1591
         [EnumMember(Value = "agent.registration.created")]
         #pragma warning disable CS1591
         AgentRegistrationCreated,

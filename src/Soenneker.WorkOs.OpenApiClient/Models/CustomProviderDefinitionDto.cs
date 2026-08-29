@@ -25,7 +25,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How client credentials are sent when exchanging authorization codes and refreshing tokens.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDtoAuthenticateVia? AuthenticateVia { get; set; }
-        /// <summary>The provider&apos;s OAuth authorization endpoint. Required for OAuth providers; omit for `api_key` providers.</summary>
+        /// <summary>The provider&apos;s OAuth authorization endpoint. Required for OAuth providers; omit for `api_key` providers. Must be a static URL: `${config.…}` placeholders are resolved against a provider&apos;s declared config fields, which custom providers cannot declare.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AuthorizationUrl { get; set; }
@@ -45,7 +45,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>Whether PKCE is used during the authorization code flow. Defaults to `true`.</summary>
         public bool? PkceEnabled { get; set; }
-        /// <summary>The endpoint used to refresh tokens, if different from the token endpoint.</summary>
+        /// <summary>The endpoint used to refresh tokens, if different from the token endpoint. Must be a static URL, like the other endpoints.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RefreshTokenUrl { get; set; }
@@ -71,7 +71,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string TokenBodyContentType { get; set; }
 #endif
-        /// <summary>The provider&apos;s OAuth token endpoint. Required for OAuth providers; omit for `api_key` providers.</summary>
+        /// <summary>The provider&apos;s OAuth token endpoint. Required for OAuth and `client_credentials` providers; omit for `api_key` providers. Must be a static URL: `${config.…}` placeholders are resolved against a provider&apos;s declared config fields, which custom providers cannot declare.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TokenUrl { get; set; }
