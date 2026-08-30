@@ -43,10 +43,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The OAuth scopes to request for the organization. Pass `null` to inherit the provider scopes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyScopes? Scopes { get; set; }
+        public List<string>? Scopes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyScopes Scopes { get; set; }
+        public List<string> Scopes { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody"/> and sets the default values.
@@ -77,7 +77,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyConfigProperty.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "scopes", n => { Scopes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyScopes>(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyScopes.CreateFromDiscriminatorValue); } },
+                { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -91,7 +91,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyConfigProperty>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBodyScopes>("scopes", Scopes);
+            writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

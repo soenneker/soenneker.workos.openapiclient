@@ -22282,7 +22282,14 @@
             "example": true
           },
           "scopes": {
-            "$ref": "#/components/schemas/DataIntegrationConfigurationResponseScopes"
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes in effect for this organization. Reflects the organization override when one is set, otherwise the provider scopes, or \u0060null\u0060 when none are configured."
           },
           "config": {
             "$ref": "#/components/schemas/DataIntegrationConfigurationResponseConfigProperty"
@@ -22331,7 +22338,14 @@
             "example": true
           },
           "scopes": {
-            "$ref": "#/components/schemas/ConfigureDataIntegrationBodyScopes"
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes to request for the organization. Pass \u0060null\u0060 to inherit the provider scopes."
           },
           "client_id": {
             "minLength": 1,
@@ -22406,7 +22420,14 @@
             "$ref": "#/components/schemas/DataIntegrationState"
           },
           "scopes": {
-            "$ref": "#/components/schemas/DataIntegrationScopes"
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes configured for the Data Integration. \u0060null\u0060 when the provider\u0027s configured scopes are used."
           },
           "redirect_uri": {
             "type": "string",
@@ -23971,7 +23992,14 @@
             "$ref": "#/components/schemas/ProfileRole"
           },
           "roles": {
-            "$ref": "#/components/schemas/ProfileRoles"
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/SlimRole"
+            },
+            "description": "The roles assigned to the user within the organization, if applicable."
           },
           "groups": {
             "type": "array",
@@ -29523,51 +29551,6 @@
           }
         }
       },
-      "DataIntegrationConfigurationResponseScopes": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "The OAuth scopes in effect for this organization. Reflects the organization override when one is set, otherwise the provider scopes, or \u0060null\u0060 when none are configured."
-      },
-      "ConfigureDataIntegrationBodyScopes": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "The OAuth scopes to request for the organization. Pass \u0060null\u0060 to inherit the provider scopes."
-      },
-      "DataIntegrationScopes": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "The OAuth scopes configured for the Data Integration. \u0060null\u0060 when the provider\u0027s configured scopes are used."
-      },
       "DataIntegrationAccessTokenResponseOneOf1": {
         "required": [
           "active",
@@ -29658,21 +29641,6 @@
           }
         }
       },
-      "DataIntegrationsListResponseDataItemScopes": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "The OAuth scopes configured for this provider, or \u0060null\u0060 if none are configured."
-      },
       "ProfileRole": {
         "type": "object",
         "oneOf": [
@@ -29691,21 +29659,6 @@
           }
         },
         "description": "The role assigned to the user within the organization, if applicable."
-      },
-      "ProfileRoles": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SlimRole"
-            }
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "The roles assigned to the user within the organization, if applicable."
       },
       "ApiKeyOwnerOneOf1": {
         "required": [
@@ -31918,7 +31871,14 @@
             "example": "oauth2"
           },
           "scopes": {
-            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemScopes"
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes configured for this provider, or \u0060null\u0060 if none are configured."
           },
           "auth_methods": {
             "type": "array",

@@ -117,10 +117,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The roles assigned to the user within the organization, if applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoles? Roles { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>? Roles { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoles Roles { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole> Roles { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.Profile"/> and sets the default values.
@@ -161,7 +161,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "raw_attributes", n => { RawAttributes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRawAttributesProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRawAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole>(global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole.CreateFromDiscriminatorValue); } },
-                { "roles", n => { Roles = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoles>(global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoles.CreateFromDiscriminatorValue); } },
+                { "roles", n => { Roles = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>(global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -185,7 +185,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRawAttributesProperty>("raw_attributes", RawAttributes);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRole>("role", Role);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoles>("roles", Roles);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.SlimRole>("roles", Roles);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

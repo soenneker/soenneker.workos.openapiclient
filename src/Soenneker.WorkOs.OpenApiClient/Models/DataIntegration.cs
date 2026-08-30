@@ -95,10 +95,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The OAuth scopes configured for the Data Integration. `null` when the provider&apos;s configured scopes are used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationScopes? Scopes { get; set; }
+        public List<string>? Scopes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationScopes Scopes { get; set; }
+        public List<string> Scopes { get; set; }
 #endif
         /// <summary>The provider slug for this Data Integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -149,7 +149,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "integration_type", n => { IntegrationType = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationObject>(); } },
                 { "redirect_uri", n => { RedirectUri = n.GetStringValue(); } },
-                { "scopes", n => { Scopes = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationScopes>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationScopes.CreateFromDiscriminatorValue); } },
+                { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationState>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -174,7 +174,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("integration_type", IntegrationType);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationObject>("object", Object);
             writer.WriteStringValue("redirect_uri", RedirectUri);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationScopes>("scopes", Scopes);
+            writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteStringValue("slug", Slug);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationState>("state", State);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
