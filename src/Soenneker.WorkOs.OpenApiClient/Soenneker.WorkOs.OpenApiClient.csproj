@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Description>A .NET client generated from the WorkOS OpenAPI schema, updated daily</Description>
+        <Description>A Kiota client for WorkOS organizations, users, directory sync, SSO, audit logs, and User Management.</Description>
         <Version Condition="'$(BUILD_VERSION)' == ''">4.0.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.WorkOs.OpenApiClient</AssemblyName>
