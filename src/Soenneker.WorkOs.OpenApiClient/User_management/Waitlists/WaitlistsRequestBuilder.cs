@@ -19,7 +19,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlists
     public partial class WaitlistsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.user_management.waitlists.item collection</summary>
-        /// <param name="position">The unique ID of the waitlist, or the literal `default` for the environment&apos;s default waitlist.</param>
+        /// <param name="position">The unique ID of the waitlist, or the literal `default` for the environment&apos;s default waitlist. The default waitlist is created when its first entry is added, so read requests for `default` return a `404` until then.</param>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Waitlists.Item.WaitlistsItemRequestBuilder"/></returns>
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Waitlists.Item.WaitlistsItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlists
         {
         }
         /// <summary>
-        /// Get a list of the waitlists in the environment.
+        /// Get a list of the waitlists in the environment. All waitlists are returned in a single response — this endpoint is not paginated, so the `list_metadata` cursors are always `null`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlists
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a list of the waitlists in the environment.
+        /// Get a list of the waitlists in the environment. All waitlists are returned in a single response — this endpoint is not paginated, so the `list_metadata` cursors are always `null`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

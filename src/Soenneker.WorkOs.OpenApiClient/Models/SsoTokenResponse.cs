@@ -40,7 +40,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.Profile Profile { get; set; }
 #endif
-        /// <summary>The type of token issued.</summary>
+        /// <summary>Always `Bearer`.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.BearerTokenType? TokenType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse"/> and sets the default values.

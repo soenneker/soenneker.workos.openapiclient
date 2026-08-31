@@ -20,6 +20,22 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         AgentBlueprintUpdated,
         #pragma warning restore CS1591
+        [EnumMember(Value = "agent.instance.created")]
+        #pragma warning disable CS1591
+        AgentInstanceCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.instance.deleted")]
+        #pragma warning disable CS1591
+        AgentInstanceDeleted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.instance.session.created")]
+        #pragma warning disable CS1591
+        AgentInstanceSessionCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "agent.instance.session.revoked")]
+        #pragma warning disable CS1591
+        AgentInstanceSessionRevoked,
+        #pragma warning restore CS1591
         [EnumMember(Value = "agent.registration.created")]
         #pragma warning disable CS1591
         AgentRegistrationCreated,

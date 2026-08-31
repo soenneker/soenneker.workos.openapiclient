@@ -46,7 +46,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries.Item
         {
         }
         /// <summary>
-        /// Removes the entry from the waitlist. An invitation created by approving the entry stays valid, so revoke that invitation to withdraw access.
+        /// Remove the entry from the waitlist. Its email address can join again unless a user with that email now exists in the environment. Deleting the entry does not revoke an invitation created by approving it — [revoke that invitation](/reference/authkit/invitation/revoke) separately to withdraw access.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -68,7 +68,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Removes the entry from the waitlist. An invitation created by approving the entry stays valid, so revoke that invitation to withdraw access.
+        /// Remove the entry from the waitlist. Its email address can join again unless a user with that email now exists in the environment. Deleting the entry does not revoke an invitation created by approving it — [revoke that invitation](/reference/authkit/invitation/revoke) separately to withdraw access.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries.Item.D
         {
         }
         /// <summary>
-        /// Deny a pending waitlist entry. A denial can be reversed by approving the entry.
+        /// Deny a pending waitlist entry. Denying an entry that is not pending fails with the code `invalid_state`. A denial can be reversed by approving the entry.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerDeny200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries.Item.D
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerDeny200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerDeny200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deny a pending waitlist entry. A denial can be reversed by approving the entry.
+        /// Deny a pending waitlist entry. Denying an entry that is not pending fails with the code `invalid_state`. A denial can be reversed by approving the entry.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

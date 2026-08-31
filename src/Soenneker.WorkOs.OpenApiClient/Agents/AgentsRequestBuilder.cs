@@ -2,9 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Agents.Blueprints;
 using Soenneker.WorkOs.OpenApiClient.Agents.Claims;
 using Soenneker.WorkOs.OpenApiClient.Agents.Credentials;
+using Soenneker.WorkOs.OpenApiClient.Agents.Instances;
 using Soenneker.WorkOs.OpenApiClient.Agents.Registrations;
+using Soenneker.WorkOs.OpenApiClient.Agents.Sessions;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +20,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AgentsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The blueprints property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.BlueprintsRequestBuilder Blueprints
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.BlueprintsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The claims property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Agents.Claims.ClaimsRequestBuilder Claims
         {
@@ -27,10 +35,20 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Agents.Credentials.CredentialsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The instances property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Agents.Instances.InstancesRequestBuilder Instances
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Agents.Instances.InstancesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The registrations property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Agents.Registrations.RegistrationsRequestBuilder Registrations
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Agents.Registrations.RegistrationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The sessions property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Agents.Sessions.SessionsRequestBuilder Sessions
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Agents.Sessions.SessionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Agents.AgentsRequestBuilder"/> and sets the default values.

@@ -59,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlists.Item.Entries
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerListEntries200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerListEntries200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Add an email address to the waitlist. Creating an entry is idempotent per email address: a request for an email address already on the waitlist returns the existing entry.
+        /// Add an email address to the waitlist. Email addresses are normalized and unique per environment: a request for an email address already on the waitlist returns the existing entry unchanged (still with status `201`) and does not send another confirmation email. If a user with the email address already exists in the environment, the request fails with the code `user_already_exists`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntry"/></returns>
         /// <param name="body">The request body</param>
@@ -105,7 +105,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlists.Item.Entries
             return requestInfo;
         }
         /// <summary>
-        /// Add an email address to the waitlist. Creating an entry is idempotent per email address: a request for an email address already on the waitlist returns the existing entry.
+        /// Add an email address to the waitlist. Email addresses are normalized and unique per environment: a request for an email address already on the waitlist returns the existing entry unchanged (still with status `201`) and does not send another confirmation email. If a user with the email address already exists in the environment, the request fails with the code `user_already_exists`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

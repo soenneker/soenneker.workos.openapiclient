@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries.Item.A
         {
         }
         /// <summary>
-        /// Approve a waitlist entry and send the resulting user invitation email. Also reverses a denial: a denied entry can be approved.
+        /// Approve a waitlist entry, create an invitation for its email address, and send the invitation email. Approving a denied entry reverses the denial. The approval is saved even when the invitation steps fail, so instead of retrying the approval, recover based on the outcome:- `200` — the entry is approved. If invitation creation failed, no invitation exists yet; [send](/reference/authkit/invitation/send) one.- `422` with code `invitation_email_not_sent` — the entry is approved and an invitation exists, but its email was not sent; [resend](/reference/authkit/invitation/resend) it.- `422` with code `invalid_state` — the entry was already approved.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlist_entries.Item.A
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Approve a waitlist entry and send the resulting user invitation email. Also reverses a denial: a denied entry can be approved.
+        /// Approve a waitlist entry, create an invitation for its email address, and send the invitation email. Approving a denied entry reverses the denial. The approval is saved even when the invitation steps fail, so instead of retrying the approval, recover based on the outcome:- `200` — the entry is approved. If invitation creation failed, no invitation exists yet; [send](/reference/authkit/invitation/send) one.- `422` with code `invitation_email_not_sent` — the entry is approved and an invitation exists, but its email was not sent; [resend](/reference/authkit/invitation/resend) it.- `422` with code `invalid_state` — the entry was already approved.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

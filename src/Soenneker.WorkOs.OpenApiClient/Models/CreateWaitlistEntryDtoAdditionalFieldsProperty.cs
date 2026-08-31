@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Object containing additional key/value pairs collected with the waitlist entry. Values are user-provided — treat them as untrusted input when rendering or exporting.
+    /// Object containing additional key/value pairs collected with the waitlist entry. Supports up to 50 string pairs, with keys up to 40 characters and values up to 600 characters. Values are user-provided — treat them as untrusted input when rendering or exporting.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateWaitlistEntryDtoAdditionalFieldsProperty : IAdditionalDataHolder, IParsable
