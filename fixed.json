@@ -392,6 +392,70 @@
         }
       }
     },
+    "/agents/blueprints/{agentBlueprintId}/tokens/validate": {
+      "post": {
+        "tags": [
+          "agents.blueprints.tokens"
+        ],
+        "summary": "Validate an agent token",
+        "description": "Validates an agent access token: verifies its signature against the environment, that it was minted under this blueprint, and that the backing session is live (not revoked or expired, and \u2014 for delegated sessions \u2014 that the delegating user session has not ended). Returns the token claims and session metadata when valid; invalid tokens are reported as errors with stable codes.",
+        "operationId": "AgentBlueprintsTokenControllerValidateToken",
+        "parameters": [
+          {
+            "name": "agentBlueprintId",
+            "in": "path",
+            "description": "The unique ID of the agent blueprint.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "agent_blueprint_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentBlueprintsTokenControllerValidateTokenRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentTokenValidation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentBlueprintsTokenControllerValidateToken400Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentBlueprintsTokenControllerValidateToken404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agents/claims/attempts": {
       "patch": {
         "tags": [
@@ -12052,7 +12116,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TokenBodyDto"
+                "$ref": "#/components/schemas/TokenQueryDto"
               }
             }
           },
@@ -17818,15 +17882,37 @@
         }
       },
       "UpdateAuditLogsRetentionDto": {
-        "required": [
-          "retention_period_in_days"
-        ],
         "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/UpdateAuditLogsRetentionDtoOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateAuditLogsRetentionDtoOneOf2"
+          }
+        ],
         "properties": {
+          "retention_period": {
+            "$ref": "#/components/schemas/UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod"
+          },
           "retention_period_in_days": {
             "type": "integer",
-            "description": "The number of days Audit Log events will be retained. Valid values are \u006030\u0060 and \u0060365\u0060.",
-            "example": 30
+            "description": "The number of days Audit Log events will be retained. Valid values are \u006030\u0060 through \u0060330\u0060 in 30-day increments and \u0060365\u0060 through \u00603650\u0060 in 365-day increments. Deprecated: use \u0060retention_period\u0060 instead. Mutually exclusive with \u0060retention_period\u0060.",
+            "example": 30,
+            "deprecated": true
+          }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "retention": {
+            "optional": false,
+            "variants": {
+              "period": [
+                "retention_period"
+              ],
+              "period_in_days": [
+                "retention_period_in_days"
+              ]
+            }
           }
         }
       },
@@ -20402,7 +20488,7 @@
           }
         }
       },
-      "TokenBodyDto": {
+      "TokenQueryDto": {
         "required": [
           "client_id",
           "client_secret",
@@ -20426,7 +20512,7 @@
             "example": "authorization_code_value"
           },
           "grant_type": {
-            "$ref": "#/components/schemas/TokenBodyDtoGrantType"
+            "$ref": "#/components/schemas/TokenQueryDtoGrantType"
           },
           "subject_token": {
             "type": "string",
@@ -21179,6 +21265,67 @@
               "type": "string"
             },
             "description": "The effective permission slugs carried by the token."
+          }
+        }
+      },
+      "AgentTokenValidation": {
+        "required": [
+          "valid",
+          "agent_instance_id",
+          "agent_instance_session_id",
+          "organization_id",
+          "permissions",
+          "intent",
+          "acting_user_id",
+          "session_expires_at"
+        ],
+        "type": "object",
+        "properties": {
+          "valid": {
+            "$ref": "#/components/schemas/TrueValueValid"
+          },
+          "agent_instance_id": {
+            "type": "string",
+            "description": "The agent instance the token was minted for.",
+            "example": "agent_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "agent_instance_session_id": {
+            "type": "string",
+            "description": "The agent instance session backing the token.",
+            "example": "agent_session_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The organization the agent acts within.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The effective permission slugs carried by the token."
+          },
+          "intent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The caller-supplied context echoed into the token at mint time, or \u0060null\u0060 when none was given.",
+            "example": "renew-contract-123"
+          },
+          "acting_user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The delegating user carried in the \u0060act.sub\u0060 claim of the token, or \u0060null\u0060 for autonomous sessions.",
+            "example": "userland_user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "session_expires_at": {
+            "type": "string",
+            "description": "When the backing agent instance session expires.",
+            "example": "2024-01-01T00:00:00.000Z"
           }
         }
       },
@@ -26495,6 +26642,59 @@
               "$ref": "#/components/schemas/JwksResponseKeysItem"
             },
             "description": "The public keys used for verifying access tokens."
+          }
+        }
+      },
+      "UpdateAuditLogsRetentionDtoOneOf1": {
+        "required": [
+          "retention_period"
+        ],
+        "type": "object",
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "retention_period_in_days"
+              ],
+              "properties": {
+                "retention_period_in_days": {
+                  "x-exclude-from-lint": true
+                }
+              }
+            }
+          ]
+        },
+        "properties": {
+          "retention_period": {
+            "$ref": "#/components/schemas/UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod"
+          }
+        }
+      },
+      "UpdateAuditLogsRetentionDtoOneOf2": {
+        "required": [
+          "retention_period_in_days"
+        ],
+        "type": "object",
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "retention_period"
+              ],
+              "properties": {
+                "retention_period": {
+                  "x-exclude-from-lint": true
+                }
+              }
+            }
+          ]
+        },
+        "properties": {
+          "retention_period_in_days": {
+            "type": "integer",
+            "description": "The number of days Audit Log events will be retained. Valid values are \u006030\u0060 through \u0060330\u0060 in 30-day increments and \u0060365\u0060 through \u00603650\u0060 in 365-day increments. Deprecated: use \u0060retention_period\u0060 instead. Mutually exclusive with \u0060retention_period\u0060.",
+            "example": 30,
+            "deprecated": true
           }
         }
       },
@@ -42796,8 +42996,7 @@
       },
       "AgentBlueprintsControllerCreateRequest": {
         "required": [
-          "name",
-          "session_settings"
+          "name"
         ],
         "type": "object",
         "properties": {
@@ -43133,6 +43332,51 @@
         }
       },
       "AgentBlueprintsTokenControllerMintToken404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AgentBlueprintsTokenControllerValidateTokenRequest": {
+        "required": [
+          "agent_access_token"
+        ],
+        "type": "object",
+        "properties": {
+          "agent_access_token": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The agent access token (a JWT) to validate.",
+            "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6..."
+          }
+        },
+        "description": "The agent access token to validate."
+      },
+      "AgentBlueprintsTokenControllerValidateToken400Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/InvalidRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AgentBlueprintsTokenControllerValidateToken404Response": {
         "required": [
           "message"
         ],
@@ -50202,6 +50446,11 @@
             "description": "The ID of the MFA authentication challenge.",
             "example": "auth_challenge_01HXYZ123456789ABCDEFGHIJ"
           },
+          "email_completion_token": {
+            "type": "string",
+            "description": "The token from the \u0060email_completion_required\u0060 response.",
+            "example": "JZ8kQ2mR5vT7wX1yA3bC6dE9f"
+          },
           "radar_challenge_id": {
             "type": "string",
             "description": "The ID of the Radar email challenge being verified.",
@@ -50355,6 +50604,11 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Request could not be processed."
+          },
+          "email_completion_token": {
+            "type": "string",
+            "description": "Pass this to the \u0060email-completion\u0060 grant, with the address the user supplies, to finish authenticating.",
+            "example": "JZ8kQ2mR5vT7wX1yA3bC6dE9f"
           }
         }
       },
@@ -54423,7 +54677,12 @@
             "example": 3600
           }
         },
-        "description": "Token and session lifetimes for sessions minted from this blueprint."
+        "description": "Token and session lifetimes for sessions minted from this blueprint.",
+        "default": {
+          "max_age_seconds": 3600,
+          "access_token_ttl_seconds": 300,
+          "refresh_token_ttl_seconds": 3600
+        }
       },
       "AgentBlueprintsControllerList200ResponseListMetadata": {
         "required": [
@@ -58139,7 +58398,7 @@
           ]
         }
       },
-      "TokenBodyDtoGrantType": {
+      "TokenQueryDtoGrantType": {
         "enum": [
           "authorization_code",
           "urn:ietf:params:oauth:grant-type:token-exchange"
@@ -58149,7 +58408,7 @@
         "description": "The grant type for the token request.",
         "example": "authorization_code",
         "x-ms-enum": {
-          "name": "TokenBodyDtoGrantType",
+          "name": "TokenQueryDtoGrantType",
           "modelAsString": false,
           "values": [
             {
@@ -58344,6 +58603,24 @@
         ],
         "type": "string",
         "description": "Always \u0060Bearer\u0060."
+      },
+      "TrueValueValid": {
+        "const": null,
+        "enum": [
+          "True"
+        ],
+        "type": "boolean",
+        "description": "Always \u0060true\u0060: an invalid token is reported as an error with a stable code, never as a \u0060200\u0060.",
+        "x-ms-enum": {
+          "name": "TrueValueValid",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "True",
+              "name": "TrueValue"
+            }
+          ]
+        }
       },
       "AgentInstanceSessionObject": {
         "const": null,
@@ -60698,6 +60975,125 @@
             {
               "value": "VMwareSAML",
               "name": "VMwareSaml"
+            }
+          ]
+        }
+      },
+      "UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod": {
+        "enum": [
+          "1_MONTH",
+          "2_MONTHS",
+          "3_MONTHS",
+          "4_MONTHS",
+          "5_MONTHS",
+          "6_MONTHS",
+          "7_MONTHS",
+          "8_MONTHS",
+          "9_MONTHS",
+          "10_MONTHS",
+          "11_MONTHS",
+          "1_YEAR",
+          "2_YEARS",
+          "3_YEARS",
+          "4_YEARS",
+          "5_YEARS",
+          "6_YEARS",
+          "7_YEARS",
+          "8_YEARS",
+          "9_YEARS",
+          "10_YEARS"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The period Audit Log events will be retained. Valid values are \u00601_MONTH\u0060 through \u006011_MONTHS\u0060 in one-month increments and \u00601_YEAR\u0060 through \u006010_YEARS\u0060 in one-year increments. Mutually exclusive with \u0060retention_period_in_days\u0060.",
+        "example": "1_MONTH",
+        "x-ms-enum": {
+          "name": "UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "1_MONTH",
+              "name": "Value1Month"
+            },
+            {
+              "value": "2_MONTHS",
+              "name": "Value2Months"
+            },
+            {
+              "value": "3_MONTHS",
+              "name": "Value3Months"
+            },
+            {
+              "value": "4_MONTHS",
+              "name": "Value4Months"
+            },
+            {
+              "value": "5_MONTHS",
+              "name": "Value5Months"
+            },
+            {
+              "value": "6_MONTHS",
+              "name": "Value6Months"
+            },
+            {
+              "value": "7_MONTHS",
+              "name": "Value7Months"
+            },
+            {
+              "value": "8_MONTHS",
+              "name": "Value8Months"
+            },
+            {
+              "value": "9_MONTHS",
+              "name": "Value9Months"
+            },
+            {
+              "value": "10_MONTHS",
+              "name": "Value10Months"
+            },
+            {
+              "value": "11_MONTHS",
+              "name": "Value11Months"
+            },
+            {
+              "value": "1_YEAR",
+              "name": "Value1Year"
+            },
+            {
+              "value": "2_YEARS",
+              "name": "Value2Years"
+            },
+            {
+              "value": "3_YEARS",
+              "name": "Value3Years"
+            },
+            {
+              "value": "4_YEARS",
+              "name": "Value4Years"
+            },
+            {
+              "value": "5_YEARS",
+              "name": "Value5Years"
+            },
+            {
+              "value": "6_YEARS",
+              "name": "Value6Years"
+            },
+            {
+              "value": "7_YEARS",
+              "name": "Value7Years"
+            },
+            {
+              "value": "8_YEARS",
+              "name": "Value8Years"
+            },
+            {
+              "value": "9_YEARS",
+              "name": "Value9Years"
+            },
+            {
+              "value": "10_YEARS",
+              "name": "Value10Years"
             }
           ]
         }

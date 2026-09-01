@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class TokenBodyDto : IAdditionalDataHolder, IParsable
+    public partial class TokenQueryDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Code { get; set; }
 #endif
         /// <summary>The grant type for the token request.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDtoGrantType? GrantType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDtoGrantType? GrantType { get; set; }
         /// <summary>The ID of the organization whose connection the subject token is validated against. Required when `grant_type` is `urn:ietf:params:oauth:grant-type:token-exchange`. Must be sent in the request body.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,21 +59,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The type of the subject token. Required when `grant_type` is `urn:ietf:params:oauth:grant-type:token-exchange`. Must be sent in the request body.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonIdTokenSubjectTokenType? SubjectTokenType { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDto"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto"/> and sets the default values.
         /// </summary>
-        public TokenBodyDto()
+        public TokenQueryDto()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDto"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDto CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDto();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDto();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,7 +86,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDtoGrantType>(); } },
+                { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDtoGrantType>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "subject_token", n => { SubjectToken = n.GetStringValue(); } },
                 { "subject_token_type", n => { SubjectTokenType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonIdTokenSubjectTokenType>(); } },
@@ -102,7 +102,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("code", Code);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TokenBodyDtoGrantType>("grant_type", GrantType);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDtoGrantType>("grant_type", GrantType);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("subject_token", SubjectToken);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UrnColonIetfColonParamsColonOAuthColonTokenTypeColonIdTokenSubjectTokenType>("subject_token_type", SubjectTokenType);

@@ -10,21 +10,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UserlandSessionsControllerAuthenticate0403Response : ApiException, IAdditionalDataHolder, IParsable
+    public partial class AgentBlueprintsTokenControllerValidateToken400Response : ApiException, IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The error code identifying the type of error.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.MfaEnrollmentCode? Code { get; set; }
-        /// <summary>Pass this to the `email-completion` grant, with the address the user supplies, to finish authenticating.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EmailCompletionToken { get; set; }
-#nullable restore
-#else
-        public string EmailCompletionToken { get; set; }
-#endif
+        public global::Soenneker.WorkOs.OpenApiClient.Models.InvalidRequestCode? Code { get; set; }
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
         /// <summary>A human-readable description of the error.</summary>
@@ -36,21 +28,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string MessageEscaped { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0403Response"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerValidateToken400Response"/> and sets the default values.
         /// </summary>
-        public UserlandSessionsControllerAuthenticate0403Response()
+        public AgentBlueprintsTokenControllerValidateToken400Response()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0403Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerValidateToken400Response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0403Response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerValidateToken400Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0403Response();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerValidateToken400Response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,8 +52,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.MfaEnrollmentCode>(); } },
-                { "email_completion_token", n => { EmailCompletionToken = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.InvalidRequestCode>(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
             };
         }
@@ -72,8 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.MfaEnrollmentCode>("code", Code);
-            writer.WriteStringValue("email_completion_token", EmailCompletionToken);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.InvalidRequestCode>("code", Code);
             writer.WriteStringValue("message", MessageEscaped);
             writer.WriteAdditionalData(AdditionalData);
         }

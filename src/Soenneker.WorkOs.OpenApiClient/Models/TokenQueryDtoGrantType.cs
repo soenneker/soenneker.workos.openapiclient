@@ -5,7 +5,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>The grant type for the token request.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum TokenBodyDtoGrantType
+    public enum TokenQueryDtoGrantType
     {
         [EnumMember(Value = "authorization_code")]
         #pragma warning disable CS1591

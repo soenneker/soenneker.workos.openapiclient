@@ -78,6 +78,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Email { get; set; }
 #endif
+        /// <summary>The token from the `email_completion_required` response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EmailCompletionToken { get; set; }
+#nullable restore
+#else
+        public string EmailCompletionToken { get; set; }
+#endif
         /// <summary>The grant_type property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType? GrantType { get; set; }
         /// <summary>An invitation token to accept during authentication.</summary>
@@ -209,6 +217,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "device_code", n => { DeviceCode = n.GetStringValue(); } },
                 { "device_id", n => { DeviceId = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
+                { "email_completion_token", n => { EmailCompletionToken = n.GetStringValue(); } },
                 { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType>(); } },
                 { "invitation_token", n => { InvitationToken = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
@@ -239,6 +248,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("device_code", DeviceCode);
             writer.WriteStringValue("device_id", DeviceId);
             writer.WriteStringValue("email", Email);
+            writer.WriteStringValue("email_completion_token", EmailCompletionToken);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationCodeGrantType>("grant_type", GrantType);
             writer.WriteStringValue("invitation_token", InvitationToken);
             writer.WriteStringValue("ip_address", IpAddress);
