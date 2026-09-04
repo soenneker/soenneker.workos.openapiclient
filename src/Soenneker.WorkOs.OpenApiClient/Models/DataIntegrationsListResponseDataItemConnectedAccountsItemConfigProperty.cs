@@ -7,29 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding any it declares as secret. Only present when `auth_method` is `client_credentials`.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ProfileRoleMember1 : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty"/> and sets the default values.
         /// </summary>
-        public ProfileRoleMember1()
+        public DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ProfileRoleMember1();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty();
         }
         /// <summary>
         /// The deserialization information for the current model

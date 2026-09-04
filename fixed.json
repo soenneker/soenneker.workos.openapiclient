@@ -7939,7 +7939,7 @@
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Data integration not found for the given provider slug.",
+            "description": "The data integration or selected connected account was not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8026,7 +8026,7 @@
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Data integration not found for the given provider slug.",
+            "description": "The data integration or selected connected account was not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15652,6 +15652,16 @@
               "type": "string",
               "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
             }
+          },
+          {
+            "name": "connected_account_id",
+            "in": "query",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider.",
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
           }
         ],
         "responses": {
@@ -15661,6 +15671,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ConnectedAccount"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The connected account selector is malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerGetUserDataInstallation400Response"
                 }
               }
             }
@@ -15726,11 +15746,31 @@
               "type": "string",
               "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
             }
+          },
+          {
+            "name": "connected_account_id",
+            "in": "query",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to delete.",
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
           }
         ],
         "responses": {
           "204": {
             "description": "The connected account was deleted successfully."
+          },
+          "400": {
+            "description": "The connected account selector is malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerDeleteUserDataInstallation400Response"
+                }
+              }
+            }
           },
           "401": {
             "description": "The request is missing a valid API key."
@@ -15887,6 +15927,16 @@
               "type": "string",
               "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
             }
+          },
+          {
+            "name": "connected_account_id",
+            "in": "query",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to update.",
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
           }
         ],
         "requestBody": {
@@ -15906,6 +15956,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ConnectedAccount"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The connected account selector is malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerUpdateUserDataInstallation400Response"
                 }
               }
             }
@@ -25121,7 +25181,7 @@
             "items": {
               "$ref": "#/components/schemas/DataIntegrationsListResponseDataItem"
             },
-            "description": "A list of [providers](/reference/pipes/provider), each including a [\u0060connected_account\u0060](/reference/pipes/connected-account) field with the user\u0027s connection status."
+            "description": "A list of [providers](/reference/pipes/provider), each including the legacy \u0060connected_account\u0060 field and the additive \u0060connected_accounts\u0060 collection."
           }
         }
       },
@@ -27829,6 +27889,9 @@
         }
       },
       "ApiKeyOwner": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -27848,6 +27911,9 @@
             "type": "string",
             "description": "Unique identifier of the organization the API Key can access.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The entity that owns the API Key.",
@@ -34911,7 +34977,8 @@
           "credentialsType",
           "createdAt",
           "updatedAt",
-          "connected_account"
+          "connected_account",
+          "connected_accounts"
         ],
         "type": "object",
         "properties": {
@@ -35003,6 +35070,13 @@
           },
           "connected_account": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccount"
+          },
+          "connected_accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItem"
+            },
+            "description": "The user\u0027s connected accounts for this provider in the requested ownership context."
           }
         }
       },
@@ -41560,6 +41634,125 @@
         },
         "description": "The user\u0027s [connected account](/reference/pipes/connected-account) for this provider, or \u0060null\u0060 if the user has not connected."
       },
+      "DataIntegrationsListResponseDataItemConnectedAccountsItem": {
+        "required": [
+          "object",
+          "id",
+          "user_id",
+          "organization_id",
+          "scopes",
+          "state",
+          "created_at",
+          "updated_at",
+          "userlandUserId",
+          "organizationId",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ConnectedAccountObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the connected account.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The [User](/reference/authkit/user) identifier associated with this connection.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The [Organization](/reference/organization) identifier associated with this connection, or \u0060null\u0060 if not scoped to an organization.",
+            "example": null
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes granted for this connection."
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod"
+          },
+          "api_key_last_4": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
+            "example": null
+          },
+          "client_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The client ID supplied for this connection. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "example": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc"
+          },
+          "client_secret_last_4": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last four characters of the client secret supplied for this connection, or \u0060null\u0060 when it can\u0027t be read. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "example": "cdef"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty"
+          },
+          "state": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItemState"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the connection was created.",
+            "example": "2024-01-16T14:20:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the connection was last updated.",
+            "example": "2024-01-16T14:20:00.000Z"
+          },
+          "userlandUserId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Use \u0060user_id\u0060 instead.",
+            "deprecated": true
+          },
+          "organizationId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Use \u0060organization_id\u0060 instead.",
+            "deprecated": true
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Use \u0060created_at\u0060 instead.",
+            "deprecated": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Use \u0060updated_at\u0060 instead.",
+            "deprecated": true
+          }
+        }
+      },
       "EventSchemaAllOf2OneOf3DataInvocableBy": {
         "required": [
           "role_slugs",
@@ -42910,6 +43103,16 @@
           "instance_url": "https://example.my.salesforce.com"
         }
       },
+      "DataIntegrationsListResponseDataItemConnectedAccountsItemConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+        "example": {
+          "instance_url": "https://example.my.salesforce.com"
+        }
+      },
       "EventSchemaAllOf2OneOf60ContextConfiguredTargetsOrganizationsItem": {
         "required": [
           "id",
@@ -43324,6 +43527,9 @@
         }
       },
       "AgentBlueprintsTokenControllerMintTokenRequest": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -43370,6 +43576,9 @@
             "type": "string",
             "description": "The refresh token issued with a previous agent access token. Refresh tokens are single-use: each refresh rotates it.",
             "example": "njGkA8Wyht0GBEGGA0Zh1Q3wZzL2..."
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "How to mint the agent session, discriminated by \u0060type\u0060. \u0060intent\u0060 is optional on every variant.",
@@ -43573,6 +43782,9 @@
         }
       },
       "AgentAdminControllerValidateCredentialRequest": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -43594,6 +43806,9 @@
             "type": "string",
             "description": "When provided, the access token\u0027s \u0060aud\u0060 claim is verified against this value. Tokens issued for a different resource are rejected.",
             "example": "https://api.example.com"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The agent credential to validate. Either an \u0060api_key\u0060 or an \u0060access_token\u0060, discriminated by \u0060type\u0060.",
@@ -48403,6 +48618,12 @@
             "type": "string",
             "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connected_account_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           }
         }
       },
@@ -48473,6 +48694,12 @@
             "type": "string",
             "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connected_account_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           }
         }
       },
@@ -52922,6 +53149,19 @@
           }
         }
       },
+      "DataIntegrationsUserManagementControllerGetUserDataInstallation400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "DataIntegrationsUserManagementControllerGetUserDataInstallation404Response": {
         "required": [
           "message"
@@ -52936,6 +53176,19 @@
         }
       },
       "DataIntegrationsUserManagementControllerGetUserDataInstallation409Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerDeleteUserDataInstallation400Response": {
         "required": [
           "message"
         ],
@@ -53001,6 +53254,19 @@
         }
       },
       "DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerUpdateUserDataInstallation400Response": {
         "required": [
           "message"
         ],
@@ -54772,6 +55038,13 @@
         "type": "object"
       },
       "DataIntegrationsListResponseDataItemConnectedAccountConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060."
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -66989,6 +67262,64 @@
         "example": "connected",
         "x-ms-enum": {
           "name": "DataIntegrationsListResponseDataItemConnectedAccountState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected",
+              "name": "Connected"
+            },
+            {
+              "value": "needs_reauthorization",
+              "name": "NeedsReauthorization"
+            },
+            {
+              "value": "disconnected",
+              "name": "Disconnected"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod": {
+        "enum": [
+          "oauth",
+          "api_key",
+          "client_credentials"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The authentication method used for this connection (\u0060oauth\u0060, \u0060api_key\u0060, or \u0060client_credentials\u0060). Defaults to \u0060oauth\u0060 if absent.",
+        "example": "oauth",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountsItemState": {
+        "enum": [
+          "connected",
+          "needs_reauthorization",
+          "disconnected"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed.\n- \u0060disconnected\u0060: The connection has been disconnected.",
+        "example": "connected",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountsItemState",
           "modelAsString": false,
           "values": [
             {

@@ -30,6 +30,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount ConnectedAccount { get; set; }
 #endif
+        /// <summary>The user&apos;s connected accounts for this provider in the requested ownership context.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItem>? ConnectedAccounts { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItem> ConnectedAccounts { get; set; }
+#endif
         /// <summary>The timestamp when the provider was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -169,6 +177,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "auth_methods", n => { AuthMethods = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemAuthMethodsItem>()?.AsList(); } },
                 { "connected_account", n => { ConnectedAccount = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount.CreateFromDiscriminatorValue); } },
+                { "connected_accounts", n => { ConnectedAccounts = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItem>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
                 { "credentialsType", n => { CredentialsType = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -195,6 +204,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemAuthMethodsItem>("auth_methods", AuthMethods);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount>("connected_account", ConnectedAccount);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItem>("connected_accounts", ConnectedAccounts);
             writer.WriteStringValue("created_at", Created_at);
             writer.WriteStringValue("createdAt", CreatedAt);
             writer.WriteStringValue("credentials_type", Credentials_type);

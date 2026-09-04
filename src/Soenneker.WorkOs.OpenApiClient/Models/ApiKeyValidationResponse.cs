@@ -25,10 +25,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The api_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey? ApiKey { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey? ApiKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey ApiKey { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey ApiKey { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponse"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agent_registration_id", n => { AgentRegistrationId = n.GetStringValue(); } },
-                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey.CreateFromDiscriminatorValue); } },
+                { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("agent_registration_id", AgentRegistrationId);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyValidationResponseApiKey>("api_key", ApiKey);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey>("api_key", ApiKey);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

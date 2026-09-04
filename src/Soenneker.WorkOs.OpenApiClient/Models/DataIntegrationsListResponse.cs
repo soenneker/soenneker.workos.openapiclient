@@ -14,7 +14,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A list of [providers](/reference/pipes/provider), each including a [`connected_account`](/reference/pipes/connected-account) field with the user&apos;s connection status.</summary>
+        /// <summary>A list of [providers](/reference/pipes/provider), each including the legacy `connected_account` field and the additive `connected_accounts` collection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItem>? Data { get; set; }

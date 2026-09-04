@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>
-    /// The audit log event to create.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class AuditLogEventDto : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Identifier of what happened.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

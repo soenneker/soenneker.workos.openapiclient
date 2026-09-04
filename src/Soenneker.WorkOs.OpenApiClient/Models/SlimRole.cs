@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// The role included in the assignment.
+    /// The primary role assigned to the user.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SlimRole : IAdditionalDataHolder, IParsable
