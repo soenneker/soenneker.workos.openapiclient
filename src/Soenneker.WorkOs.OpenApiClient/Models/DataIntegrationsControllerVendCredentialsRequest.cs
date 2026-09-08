@@ -22,7 +22,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ConnectedAccountId { get; set; }
 #endif
-        /// <summary>An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.</summary>
+        /// <summary>Which connection to vend from. `user` (the default) vends the user&apos;s own connection and requires `user_id`. `organization` vends the organization&apos;s shared connection and requires `organization_id`.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner? ConnectionOwner { get; set; }
+        /// <summary>An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when `connection_owner` is `organization`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationId { get; set; }
@@ -30,7 +32,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
-        /// <summary>A [User](/reference/authkit/user) identifier.</summary>
+        /// <summary>A [User](/reference/authkit/user) identifier. When `connection_owner` is `organization`, this is the user the credentials are vended on behalf of; they must be an active member of the organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }
@@ -64,6 +66,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
+                { "connection_owner", n => { ConnectionOwner = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
@@ -76,6 +79,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("connected_account_id", ConnectedAccountId);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner>("connection_owner", ConnectionOwner);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);

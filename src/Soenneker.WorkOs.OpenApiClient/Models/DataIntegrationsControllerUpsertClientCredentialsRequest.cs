@@ -38,6 +38,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig Config { get; set; }
 #endif
+        /// <summary>A [connected account](/reference/pipes/connected-account) identifier. Use this to rotate a specific existing connection.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ConnectedAccountId { get; set; }
+#nullable restore
+#else
+        public string ConnectedAccountId { get; set; }
+#endif
         /// <summary>An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,6 +90,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig.CreateFromDiscriminatorValue); } },
+                { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
@@ -96,6 +105,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig>("config", Config);
+            writer.WriteStringValue("connected_account_id", ConnectedAccountId);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);

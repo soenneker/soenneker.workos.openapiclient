@@ -7254,7 +7254,7 @@
           "pipes"
         ],
         "summary": "Create a data integration",
-        "description": "Creates a data integration for a provider. Set \u0060credentials.type\u0060 to \u0060custom\u0060 to use your own OAuth app credentials or \u0060organization\u0060 to have each organization supply its own. Set \u0060auth_methods\u0060 to \u0060[\u0022api_key\u0022]\u0060 to create an API key integration; you may optionally supply an \u0060api_key\u0060 block to install a first tenant in the same call. Set \u0060auth_methods\u0060 to \u0060[\u0022client_credentials\u0022]\u0060 to create a client-credentials integration; client credentials are installed per-tenant afterwards. For a built-in provider, pass its slug as \u0060provider\u0060. For a custom provider, pass a new slug plus a \u0060custom_provider\u0060 definition.",
+        "description": "Creates a data integration for a provider. Set \u0060credentials.type\u0060 to \u0060custom\u0060 to use your own OAuth app credentials or \u0060organization\u0060 to have each organization supply its own. Set \u0060auth_methods\u0060 to \u0060[\u0022api_key\u0022]\u0060 to create an API key integration; you may optionally supply an \u0060api_key\u0060 block to install a first tenant in the same call. Set \u0060auth_methods\u0060 to \u0060[\u0022client_credentials\u0022]\u0060 to create a client-credentials integration; client credentials are installed per-tenant afterwards. Set \u0060ownership\u0060 to \u0060organization\u0060 to create the integration organizations connect to instead of the default user-owned one; a provider may have one of each. For a built-in provider, pass its slug as \u0060provider\u0060. For a custom provider, pass a new slug plus a \u0060custom_provider\u0060 definition, or the slug of an existing custom provider (without \u0060custom_provider\u0060) to add the other ownership.",
         "operationId": "DataIntegrationsManagementControllerCreateDataIntegration",
         "requestBody": {
           "content": {
@@ -7653,7 +7653,7 @@
             }
           },
           "404": {
-            "description": "Data integration not found for the given provider slug.",
+            "description": "The data integration or selected connected account was not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7667,7 +7667,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKey409Response"
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
                 }
               }
             }
@@ -7838,7 +7838,7 @@
             }
           },
           "404": {
-            "description": "Data integration not found for the given provider slug.",
+            "description": "The data integration or selected connected account was not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7852,7 +7852,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentials409Response"
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
                 }
               }
             }
@@ -7938,6 +7938,16 @@
           "401": {
             "description": "Unauthorized"
           },
+          "403": {
+            "description": "The user is not an active member of the organization named for an organization connection.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerVendCredentials403Response"
+                }
+              }
+            }
+          },
           "404": {
             "description": "The data integration or selected connected account was not found.",
             "content": {
@@ -7953,7 +7963,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DataIntegrationsControllerVendCredentials409Response"
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
                 }
               }
             }
@@ -8025,6 +8035,16 @@
           "401": {
             "description": "Unauthorized"
           },
+          "403": {
+            "description": "The user is not an active member of the organization named for an organization connection.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerGetUserlandUserToken403Response"
+                }
+              }
+            }
+          },
           "404": {
             "description": "The data integration or selected connected account was not found.",
             "content": {
@@ -8040,7 +8060,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DataIntegrationsControllerGetUserlandUserToken409Response"
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
                 }
               }
             }
@@ -15703,7 +15723,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerGetUserDataInstallation409Response"
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
                 }
               }
             }
@@ -15790,7 +15810,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerDeleteUserDataInstallation409Response"
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
                 }
               }
             }
@@ -15988,7 +16008,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerUpdateUserDataInstallation409Response"
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
                 }
               }
             }
@@ -19571,6 +19591,9 @@
             "description": "The provider to create a Data Integration for. For a built-in provider use its slug (e.g. \u0060github\u0060, \u0060slack\u0060). For a custom provider, this is the new provider slug and \u0060custom_provider\u0060 must be supplied. A custom provider slug cannot shadow an existing global provider slug.",
             "example": "github"
           },
+          "ownership": {
+            "$ref": "#/components/schemas/CreateDataIntegrationDtoOwnership"
+          },
           "description": {
             "type": [
               "null",
@@ -19759,12 +19782,12 @@
         "properties": {
           "return_url": {
             "type": "string",
-            "description": "The URL to go to when an admin clicks on your logo in the Admin Portal. If not specified, the return URL configured on the [Redirects](https://dashboard.workos.com/redirects) page will be used.",
+            "description": "The URL to go to when an admin clicks on your logo in the Admin Portal. If not specified, the return URL configured on the [Admin Portal](https://dashboard.workos.com/admin-portal) page will be used.",
             "example": "https://example.com/admin-portal/return"
           },
           "success_url": {
             "type": "string",
-            "description": "The URL to redirect the admin to when they finish setup. If not specified, the success URL configured on the [Redirects](https://dashboard.workos.com/redirects) page will be used.",
+            "description": "The URL to redirect the admin to when they finish setup. If not specified, the success URL configured on the [Admin Portal](https://dashboard.workos.com/admin-portal) page will be used.",
             "example": "https://example.com/admin-portal/success"
           },
           "organization": {
@@ -24886,6 +24909,7 @@
           "id",
           "slug",
           "integration_type",
+          "ownership",
           "description",
           "enabled",
           "state",
@@ -24918,6 +24942,9 @@
             "type": "string",
             "description": "The integration type derived from the provider.",
             "example": "github"
+          },
+          "ownership": {
+            "$ref": "#/components/schemas/DataIntegrationOwnership"
           },
           "description": {
             "type": [
@@ -25035,6 +25062,23 @@
           },
           "error": {
             "$ref": "#/components/schemas/DataIntegrationAccessTokenResponseOneOf2Error"
+          }
+        }
+      },
+      "AccountSelectionRequiredError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/AccountSelectionRequiredCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable explanation of the ambiguity.",
+            "example": "Several connected accounts match this user for this provider. Name one with a connected account id."
           }
         }
       },
@@ -34808,8 +34852,11 @@
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "user_id": {
-            "type": "string",
-            "description": "The User the API key was installed for.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The User the API key was installed for. Null on an \u0060organization\u0060-owned integration, whose installations belong to the organization.",
             "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "organization_id": {
@@ -34817,7 +34864,7 @@
               "null",
               "string"
             ],
-            "description": "The Organization the installation is scoped to, or null when unscoped.",
+            "description": "The Organization the installation is scoped to (or owned by, on an \u0060organization\u0060-owned integration), or null when unscoped.",
             "example": null
           },
           "api_key_last_4": {
@@ -48390,6 +48437,12 @@
             "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
+          "connected_account_id": {
+            "pattern": "^data_installation_.\u002B$",
+            "type": "string",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to rotate a specific existing connection.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
           "secret": {
             "minLength": 1,
             "type": "string",
@@ -48425,19 +48478,6 @@
         }
       },
       "DataIntegrationsControllerUpsertApiKey404Response": {
-        "required": [
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
-          }
-        }
-      },
-      "DataIntegrationsControllerUpsertApiKey409Response": {
         "required": [
           "message"
         ],
@@ -48534,6 +48574,12 @@
             "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
+          "connected_account_id": {
+            "pattern": "^data_installation_.\u002B$",
+            "type": "string",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to rotate a specific existing connection.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
           "client_id": {
             "minLength": 1,
             "type": "string",
@@ -48590,19 +48636,6 @@
           }
         }
       },
-      "DataIntegrationsControllerUpsertClientCredentials409Response": {
-        "required": [
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
-          }
-        }
-      },
       "DataIntegrationsControllerVendCredentialsRequest": {
         "required": [
           "user_id"
@@ -48611,12 +48644,12 @@
         "properties": {
           "user_id": {
             "type": "string",
-            "description": "A [User](/reference/authkit/user) identifier.",
+            "description": "A [User](/reference/authkit/user) identifier. When \u0060connection_owner\u0060 is \u0060organization\u0060, this is the user the credentials are vended on behalf of; they must be an active member of the organization.",
             "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "organization_id": {
             "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "connected_account_id": {
@@ -48624,6 +48657,9 @@
             "type": "string",
             "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerVendCredentialsRequestConnectionOwner"
           }
         }
       },
@@ -48640,7 +48676,7 @@
           }
         }
       },
-      "DataIntegrationsControllerVendCredentials404Response": {
+      "DataIntegrationsControllerVendCredentials403Response": {
         "required": [
           "message"
         ],
@@ -48653,7 +48689,7 @@
           }
         }
       },
-      "DataIntegrationsControllerVendCredentials409Response": {
+      "DataIntegrationsControllerVendCredentials404Response": {
         "required": [
           "message"
         ],
@@ -48687,12 +48723,12 @@
         "properties": {
           "user_id": {
             "type": "string",
-            "description": "A [User](/reference/authkit/user) identifier.",
+            "description": "A [User](/reference/authkit/user) identifier. When \u0060connection_owner\u0060 is \u0060organization\u0060, this is the user the credentials are vended on behalf of; they must be an active member of the organization.",
             "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "organization_id": {
             "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "connected_account_id": {
@@ -48700,6 +48736,9 @@
             "type": "string",
             "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetUserlandUserTokenRequestConnectionOwner"
           }
         }
       },
@@ -48716,7 +48755,7 @@
           }
         }
       },
-      "DataIntegrationsControllerGetUserlandUserToken404Response": {
+      "DataIntegrationsControllerGetUserlandUserToken403Response": {
         "required": [
           "message"
         ],
@@ -48729,7 +48768,7 @@
           }
         }
       },
-      "DataIntegrationsControllerGetUserlandUserToken409Response": {
+      "DataIntegrationsControllerGetUserlandUserToken404Response": {
         "required": [
           "message"
         ],
@@ -53175,19 +53214,6 @@
           }
         }
       },
-      "DataIntegrationsUserManagementControllerGetUserDataInstallation409Response": {
-        "required": [
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
-          }
-        }
-      },
       "DataIntegrationsUserManagementControllerDeleteUserDataInstallation400Response": {
         "required": [
           "message"
@@ -53202,19 +53228,6 @@
         }
       },
       "DataIntegrationsUserManagementControllerDeleteUserDataInstallation404Response": {
-        "required": [
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
-          }
-        }
-      },
-      "DataIntegrationsUserManagementControllerDeleteUserDataInstallation409Response": {
         "required": [
           "message"
         ],
@@ -53280,19 +53293,6 @@
         }
       },
       "DataIntegrationsUserManagementControllerUpdateUserDataInstallation404Response": {
-        "required": [
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
-          }
-        }
-      },
-      "DataIntegrationsUserManagementControllerUpdateUserDataInstallation409Response": {
         "required": [
           "message"
         ],
@@ -56685,6 +56685,30 @@
             {
               "value": "basic_auth_header",
               "name": "BasicAuthHeader"
+            }
+          ]
+        }
+      },
+      "CreateDataIntegrationDtoOwnership": {
+        "enum": [
+          "userland_user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Who owns the Data Integration. \u0060userland_user\u0060 (the default) creates the integration users connect their own accounts to; \u0060organization\u0060 creates the root organizations connect to. Ownership is fixed at creation, and one integration of each ownership may exist per provider. Independent of \u0060credentials.type\u0060.",
+        "example": "userland_user",
+        "x-ms-enum": {
+          "name": "CreateDataIntegrationDtoOwnership",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "userland_user",
+              "name": "UserlandUser"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
             }
           ]
         }
@@ -60531,6 +60555,30 @@
           ]
         }
       },
+      "DataIntegrationOwnership": {
+        "enum": [
+          "userland_user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Who owns the Data Integration: \u0060userland_user\u0060 when users connect their own accounts, \u0060organization\u0060 when organizations connect. Fixed at creation.",
+        "example": "userland_user",
+        "x-ms-enum": {
+          "name": "DataIntegrationOwnership",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "userland_user",
+              "name": "UserlandUser"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
       "DataIntegrationState": {
         "enum": [
           "valid",
@@ -60583,6 +60631,25 @@
             {
               "value": "client_credentials",
               "name": "ClientCredentials"
+            }
+          ]
+        }
+      },
+      "AccountSelectionRequiredCode": {
+        "const": null,
+        "enum": [
+          "account_selection_required"
+        ],
+        "type": "string",
+        "description": "Indicates that several connected accounts match and the request must name one.",
+        "example": "account_selection_required",
+        "x-ms-enum": {
+          "name": "AccountSelectionRequiredCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "account_selection_required",
+              "name": "AccountSelectionRequired"
             }
           ]
         }
@@ -68492,6 +68559,54 @@
             {
               "value": "connection_type_not_updatable",
               "name": "ConnectionTypeNotUpdatable"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerVendCredentialsRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Which connection to vend from. \u0060user\u0060 (the default) vends the user\u0027s own connection and requires \u0060user_id\u0060. \u0060organization\u0060 vends the organization\u0027s shared connection and requires \u0060organization_id\u0060.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerVendCredentialsRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerGetUserlandUserTokenRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Which connection to vend from. \u0060user\u0060 (the default) vends the user\u0027s own connection and requires \u0060user_id\u0060. \u0060organization\u0060 vends the organization\u0027s shared connection and requires \u0060organization_id\u0060.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerGetUserlandUserTokenRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
             }
           ]
         }

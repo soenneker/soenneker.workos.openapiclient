@@ -31,7 +31,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The Organization the installation is scoped to, or null when unscoped.</summary>
+        /// <summary>The Organization the installation is scoped to (or owned by, on an `organization`-owned integration), or null when unscoped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationId { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
-        /// <summary>The User the API key was installed for.</summary>
+        /// <summary>The User the API key was installed for. Null on an `organization`-owned integration, whose installations belong to the organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }
