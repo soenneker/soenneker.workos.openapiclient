@@ -7582,7 +7582,7 @@
           "pipes"
         ],
         "summary": "Upsert an API key for a connected account",
-        "description": "Creates or updates an API-key-based installation for the specified integration and user. If an installation already exists, the stored API key is rotated to the new value.",
+        "description": "Creates or updates an API-key-based installation for the specified integration, owned by the user or, when \u0060connection_owner\u0060 is \u0060organization\u0060, shared by the organization. If an installation already exists, the stored API key is rotated to the new value.",
         "operationId": "DataIntegrationsControllerUpsertApiKey",
         "parameters": [
           {
@@ -7663,7 +7663,7 @@
             }
           },
           "409": {
-            "description": "Several connected accounts match this user for the provider; one must be named.",
+            "description": "Several connected accounts match the connection owner for the provider; one must be named.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7768,7 +7768,7 @@
           "pipes"
         ],
         "summary": "Upsert client credentials for a connected account",
-        "description": "Creates or updates a client-credentials-based installation for the specified integration and user. If an installation already exists, the stored client credentials are rotated to the new values.",
+        "description": "Creates or updates a client-credentials-based installation for the specified integration, owned by the user or, when \u0060connection_owner\u0060 is \u0060organization\u0060, shared by the organization. If an installation already exists, the stored client credentials are rotated to the new values.",
         "operationId": "DataIntegrationsControllerUpsertClientCredentials",
         "parameters": [
           {
@@ -7848,7 +7848,7 @@
             }
           },
           "409": {
-            "description": "Several connected accounts match this user for the provider; one must be named.",
+            "description": "Several connected accounts match the connection owner for the provider; one must be named.",
             "content": {
               "application/json": {
                 "schema": {
@@ -48434,7 +48434,7 @@
           },
           "organization_id": {
             "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "connected_account_id": {
@@ -48442,6 +48442,9 @@
             "type": "string",
             "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to rotate a specific existing connection.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner"
           },
           "secret": {
             "minLength": 1,
@@ -48571,7 +48574,7 @@
           },
           "organization_id": {
             "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization.",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "connected_account_id": {
@@ -48579,6 +48582,9 @@
             "type": "string",
             "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to rotate a specific existing connection.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner"
           },
           "client_id": {
             "minLength": 1,
@@ -68559,6 +68565,54 @@
             {
               "value": "connection_type_not_updatable",
               "name": "ConnectionTypeNotUpdatable"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
             }
           ]
         }
