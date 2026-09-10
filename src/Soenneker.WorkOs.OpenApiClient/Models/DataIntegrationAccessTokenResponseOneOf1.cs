@@ -21,7 +21,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1AccessToken AccessToken { get; set; }
 #endif
         /// <summary>Indicates whether the access token is valid and ready for use, or if reauthorization is required.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueActive? Active { get; set; }
+        public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
@@ -30,6 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public DataIntegrationAccessTokenResponseOneOf1()
         {
             AdditionalData = new Dictionary<string, object>();
+            Active = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -50,7 +51,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "access_token", n => { AccessToken = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1AccessToken>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1AccessToken.CreateFromDiscriminatorValue); } },
-                { "active", n => { Active = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueActive>(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -61,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponseOneOf1AccessToken>("access_token", AccessToken);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueActive>("active", Active);
+            writer.WriteBoolValue("active", Active);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

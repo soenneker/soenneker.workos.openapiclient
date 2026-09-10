@@ -71,13 +71,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string SessionExpiresAt { get; set; }
 #endif
         /// <summary>Always `true`: an invalid token is reported as an error with a stable code, never as a `200`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueValid? Valid { get; set; }
+        public bool? Valid { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentTokenValidation"/> and sets the default values.
         /// </summary>
         public AgentTokenValidation()
         {
             AdditionalData = new Dictionary<string, object>();
+            Valid = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -104,7 +105,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "session_expires_at", n => { SessionExpiresAt = n.GetStringValue(); } },
-                { "valid", n => { Valid = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueValid>(); } },
+                { "valid", n => { Valid = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -121,7 +122,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
             writer.WriteStringValue("session_expires_at", SessionExpiresAt);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TrueValueValid>("valid", Valid);
+            writer.WriteBoolValue("valid", Valid);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

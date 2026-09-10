@@ -21445,7 +21445,10 @@
         "type": "object",
         "properties": {
           "valid": {
-            "$ref": "#/components/schemas/TrueValueValid"
+            "const": null,
+            "type": "boolean",
+            "description": "Always \u0060true\u0060: an invalid token is reported as an error with a stable code, never as a \u0060200\u0060.",
+            "default": true
           },
           "agent_instance_id": {
             "type": "string",
@@ -25057,6 +25060,12 @@
           }
         ],
         "properties": {
+          "active": {
+            "const": null,
+            "type": "boolean",
+            "description": "Indicates whether the access token is valid and ready for use, or if reauthorization is required.",
+            "default": true
+          },
           "access_token": {
             "$ref": "#/components/schemas/DataIntegrationAccessTokenResponseOneOf1AccessToken"
           },
@@ -25116,6 +25125,12 @@
           }
         ],
         "properties": {
+          "active": {
+            "const": null,
+            "type": "boolean",
+            "description": "Indicates credentials are available.",
+            "default": true
+          },
           "error": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf4Error"
           }
@@ -28136,7 +28151,11 @@
         "type": "object",
         "properties": {
           "is_first_party": {
-            "$ref": "#/components/schemas/TrueValueIsFirstParty"
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application is a first-party application.",
+            "default": true,
+            "example": true
           }
         }
       },
@@ -28149,10 +28168,18 @@
         "type": "object",
         "properties": {
           "is_first_party": {
-            "$ref": "#/components/schemas/FalseValueIsFirstParty"
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application is a first-party application.",
+            "default": false,
+            "example": false
           },
           "was_dynamically_registered": {
-            "$ref": "#/components/schemas/FalseValueWasDynamicallyRegistered"
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application was dynamically registered.",
+            "default": false,
+            "example": false
           },
           "organization_id": {
             "type": "string",
@@ -28169,10 +28196,18 @@
         "type": "object",
         "properties": {
           "is_first_party": {
-            "$ref": "#/components/schemas/FalseValueIsFirstParty"
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application is a first-party application.",
+            "default": false,
+            "example": false
           },
           "was_dynamically_registered": {
-            "$ref": "#/components/schemas/TrueValueWasDynamicallyRegistered"
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application was dynamically registered.",
+            "default": true,
+            "example": true
           }
         }
       },
@@ -32677,7 +32712,10 @@
         "type": "object",
         "properties": {
           "active": {
-            "$ref": "#/components/schemas/TrueValueActive"
+            "const": null,
+            "type": "boolean",
+            "description": "Indicates whether the access token is valid and ready for use, or if reauthorization is required.",
+            "default": true
           },
           "access_token": {
             "$ref": "#/components/schemas/DataIntegrationAccessTokenResponseOneOf1AccessToken"
@@ -32692,7 +32730,10 @@
         "type": "object",
         "properties": {
           "active": {
-            "$ref": "#/components/schemas/FalseValueActive"
+            "const": null,
+            "type": "boolean",
+            "description": "Indicates whether the access token is valid and ready for use, or if reauthorization is required.",
+            "default": false
           },
           "error": {
             "$ref": "#/components/schemas/DataIntegrationAccessTokenResponseOneOf2Error"
@@ -32707,7 +32748,10 @@
         "type": "object",
         "properties": {
           "active": {
-            "$ref": "#/components/schemas/TrueValueActive"
+            "const": null,
+            "type": "boolean",
+            "description": "Indicates credentials are available.",
+            "default": true
           },
           "credential": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf1Credential"
@@ -32722,7 +32766,10 @@
         "type": "object",
         "properties": {
           "active": {
-            "$ref": "#/components/schemas/TrueValueActive"
+            "const": null,
+            "type": "boolean",
+            "description": "Indicates credentials are available.",
+            "default": true
           },
           "credential": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf2Credential"
@@ -32737,7 +32784,10 @@
         "type": "object",
         "properties": {
           "active": {
-            "$ref": "#/components/schemas/TrueValueActive"
+            "const": null,
+            "type": "boolean",
+            "description": "Indicates credentials are available.",
+            "default": true
           },
           "credential": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf3Credential"
@@ -32752,7 +32802,10 @@
         "type": "object",
         "properties": {
           "active": {
-            "$ref": "#/components/schemas/FalseValueActive"
+            "const": null,
+            "type": "boolean",
+            "description": "Indicates credentials are not available.",
+            "default": false
           },
           "error": {
             "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf4Error"
@@ -59091,24 +59144,6 @@
         "type": "string",
         "description": "Always \u0060Bearer\u0060."
       },
-      "TrueValueValid": {
-        "const": null,
-        "enum": [
-          "True"
-        ],
-        "type": "boolean",
-        "description": "Always \u0060true\u0060: an invalid token is reported as an error with a stable code, never as a \u0060200\u0060.",
-        "x-ms-enum": {
-          "name": "TrueValueValid",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "True",
-              "name": "TrueValue"
-            }
-          ]
-        }
-      },
       "AgentInstanceSessionObject": {
         "const": null,
         "enum": [
@@ -61774,82 +61809,6 @@
           ]
         }
       },
-      "TrueValueIsFirstParty": {
-        "const": null,
-        "enum": [
-          "True"
-        ],
-        "type": "boolean",
-        "description": "Whether the application is a first-party application.",
-        "example": true,
-        "x-ms-enum": {
-          "name": "TrueValueIsFirstParty",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "True",
-              "name": "TrueValue"
-            }
-          ]
-        }
-      },
-      "FalseValueIsFirstParty": {
-        "const": null,
-        "enum": [
-          "False"
-        ],
-        "type": "boolean",
-        "description": "Whether the application is a first-party application.",
-        "example": false,
-        "x-ms-enum": {
-          "name": "FalseValueIsFirstParty",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "False",
-              "name": "FalseValue"
-            }
-          ]
-        }
-      },
-      "FalseValueWasDynamicallyRegistered": {
-        "const": null,
-        "enum": [
-          "False"
-        ],
-        "type": "boolean",
-        "description": "Whether the application was dynamically registered.",
-        "example": false,
-        "x-ms-enum": {
-          "name": "FalseValueWasDynamicallyRegistered",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "False",
-              "name": "FalseValue"
-            }
-          ]
-        }
-      },
-      "TrueValueWasDynamicallyRegistered": {
-        "const": null,
-        "enum": [
-          "True"
-        ],
-        "type": "boolean",
-        "description": "Whether the application was dynamically registered.",
-        "example": true,
-        "x-ms-enum": {
-          "name": "TrueValueWasDynamicallyRegistered",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "True",
-              "name": "TrueValue"
-            }
-          ]
-        }
-      },
       "ActionAuthenticationDeniedEvent": {
         "const": null,
         "enum": [
@@ -63920,42 +63879,6 @@
             {
               "value": "waitlist_user.denied",
               "name": "WaitlistUserDenied"
-            }
-          ]
-        }
-      },
-      "TrueValueActive": {
-        "const": null,
-        "enum": [
-          "True"
-        ],
-        "type": "boolean",
-        "description": "Indicates whether the access token is valid and ready for use, or if reauthorization is required.",
-        "x-ms-enum": {
-          "name": "TrueValueActive",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "True",
-              "name": "TrueValue"
-            }
-          ]
-        }
-      },
-      "FalseValueActive": {
-        "const": null,
-        "enum": [
-          "False"
-        ],
-        "type": "boolean",
-        "description": "Indicates whether the access token is valid and ready for use, or if reauthorization is required.",
-        "x-ms-enum": {
-          "name": "FalseValueActive",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "False",
-              "name": "FalseValue"
             }
           ]
         }
@@ -66615,7 +66538,8 @@
           "organizations",
           "events",
           "sessions",
-          "auditLogEvents"
+          "auditLogEvents",
+          "connections"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -66644,6 +66568,10 @@
             {
               "value": "auditLogEvents",
               "name": "AuditLogEvents"
+            },
+            {
+              "value": "connections",
+              "name": "Connections"
             }
           ]
         }
@@ -66654,7 +66582,8 @@
           "organizations",
           "events",
           "sessions",
-          "auditLogEvents"
+          "auditLogEvents",
+          "connections"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -66683,6 +66612,10 @@
             {
               "value": "auditLogEvents",
               "name": "AuditLogEvents"
+            },
+            {
+              "value": "connections",
+              "name": "Connections"
             }
           ]
         }
@@ -66693,7 +66626,8 @@
           "organizations",
           "events",
           "sessions",
-          "auditLogEvents"
+          "auditLogEvents",
+          "connections"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -66722,6 +66656,10 @@
             {
               "value": "auditLogEvents",
               "name": "AuditLogEvents"
+            },
+            {
+              "value": "connections",
+              "name": "Connections"
             }
           ]
         }
@@ -66732,7 +66670,8 @@
           "organizations",
           "events",
           "sessions",
-          "auditLogEvents"
+          "auditLogEvents",
+          "connections"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -66761,6 +66700,10 @@
             {
               "value": "auditLogEvents",
               "name": "AuditLogEvents"
+            },
+            {
+              "value": "connections",
+              "name": "Connections"
             }
           ]
         }
