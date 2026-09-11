@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Data_provide
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_providersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/data_providers{?organization_id*}", pathParameters)
+        public Data_providersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/data_providers{?organization_id*,supports_multiple_connections*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Data_provide
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_providersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/data_providers{?organization_id*}", rawUrl)
+        public Data_providersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/data_providers{?organization_id*,supports_multiple_connections*}", rawUrl)
         {
         }
         /// <summary>
@@ -100,6 +100,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Data_provide
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
 #endif
+            /// <summary>Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered.</summary>
+            [QueryParameter("supports_multiple_connections")]
+            public bool? SupportsMultipleConnections { get; set; }
         }
     }
 }

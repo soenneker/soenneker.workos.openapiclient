@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/connected_accounts/{slug}{?connected_account_id*,organization_id*}", pathParameters)
+        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/connected_accounts/{slug}{?connected_account_id*,organization_id*,supports_multiple_connections*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/connected_accounts/{slug}{?connected_account_id*,organization_id*}", rawUrl)
+        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/connected_accounts/{slug}{?connected_account_id*,organization_id*,supports_multiple_connections*}", rawUrl)
         {
         }
         /// <summary>
@@ -261,6 +261,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
 #endif
+            /// <summary>Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered.</summary>
+            [QueryParameter("supports_multiple_connections")]
+            public bool? SupportsMultipleConnections { get; set; }
         }
         /// <summary>
         /// Retrieves a user&apos;s [connected account](/reference/pipes/connected-account) for a specific provider.
@@ -288,6 +291,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
 #endif
+            /// <summary>Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered.</summary>
+            [QueryParameter("supports_multiple_connections")]
+            public bool? SupportsMultipleConnections { get; set; }
         }
         /// <summary>
         /// Imports a [connected account](/reference/pipes/connected-account) for a user by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.
@@ -332,6 +338,9 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
 #endif
+            /// <summary>Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered.</summary>
+            [QueryParameter("supports_multiple_connections")]
+            public bool? SupportsMultipleConnections { get; set; }
         }
     }
 }

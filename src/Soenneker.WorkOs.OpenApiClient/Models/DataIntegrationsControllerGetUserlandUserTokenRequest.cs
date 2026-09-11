@@ -32,6 +32,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
+        /// <summary>Set to `true` to use the plural connection contract. If no `connected_account_id` is supplied and several connections match, the request returns `account_selection_required`. When omitted or `false`, only the compatibility connection is considered.</summary>
+        public bool? SupportsMultipleConnections { get; set; }
         /// <summary>A [User](/reference/authkit/user) identifier. When `connection_owner` is `organization`, this is the user the credentials are vended on behalf of; they must be an active member of the organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +70,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
                 { "connection_owner", n => { ConnectionOwner = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetUserlandUserTokenRequestConnectionOwner>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "supports_multiple_connections", n => { SupportsMultipleConnections = n.GetBoolValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
         }
@@ -81,6 +84,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("connected_account_id", ConnectedAccountId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetUserlandUserTokenRequestConnectionOwner>("connection_owner", ConnectionOwner);
             writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteBoolValue("supports_multiple_connections", SupportsMultipleConnections);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);
         }

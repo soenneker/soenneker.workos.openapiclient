@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// The user&apos;s [connected account](/reference/pipes/connected-account) for this provider, or `null` if the user has not connected.
+    /// The user&apos;s compatibility [connected account](/reference/pipes/connected-account) for this provider, or `null` when the compatibility slot is empty. This legacy field never selects a standard connection.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataIntegrationsListResponseDataItemConnectedAccount : IAdditionalDataHolder, IParsable

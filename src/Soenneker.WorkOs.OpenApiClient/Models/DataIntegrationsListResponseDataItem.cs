@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemAuthMethodsItem?> AuthMethods { get; set; }
 #endif
-        /// <summary>The user&apos;s [connected account](/reference/pipes/connected-account) for this provider, or `null` if the user has not connected.</summary>
+        /// <summary>The user&apos;s compatibility [connected account](/reference/pipes/connected-account) for this provider, or `null` when the compatibility slot is empty. This legacy field never selects a standard connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount? ConnectedAccount { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount ConnectedAccount { get; set; }
 #endif
-        /// <summary>The user&apos;s connected accounts for this provider in the requested ownership context.</summary>
+        /// <summary>The user&apos;s connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless `supports_multiple_connections` is `true`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItem>? ConnectedAccounts { get; set; }

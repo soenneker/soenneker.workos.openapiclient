@@ -12169,6 +12169,7 @@
             "description": "The authorization code received from the authorization callback. Required when \u0060grant_type\u0060 is \u0060authorization_code\u0060.",
             "schema": {
               "type": "string",
+              "format": "password",
               "example": "authorization_code_value"
             }
           },
@@ -15674,6 +15675,15 @@
             }
           },
           {
+            "name": "supports_multiple_connections",
+            "in": "query",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
+          },
+          {
             "name": "connected_account_id",
             "in": "query",
             "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider.",
@@ -15765,6 +15775,15 @@
             "schema": {
               "type": "string",
               "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "supports_multiple_connections",
+            "in": "query",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "schema": {
+              "type": "boolean",
+              "example": true
             }
           },
           {
@@ -15949,6 +15968,15 @@
             }
           },
           {
+            "name": "supports_multiple_connections",
+            "in": "query",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
+          },
+          {
             "name": "connected_account_id",
             "in": "query",
             "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to update.",
@@ -16042,6 +16070,15 @@
             "schema": {
               "type": "string",
               "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "supports_multiple_connections",
+            "in": "query",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "schema": {
+              "type": "boolean",
+              "example": true
             }
           }
         ],
@@ -17654,6 +17691,7 @@
           "value": {
             "type": "string",
             "description": "The value for an API key.",
+            "format": "password",
             "example": "sk_example_1234567890abcdef"
           }
         }
@@ -18752,6 +18790,7 @@
           "key": {
             "type": "string",
             "description": "The PEM-encoded private key.",
+            "format": "password",
             "example": "-----BEGIN PRIVATE KEY-----\nMIIE...\n-----END PRIVATE KEY-----"
           },
           "cert": {
@@ -20470,6 +20509,7 @@
           "code": {
             "type": "string",
             "description": "The one-time email verification code.",
+            "format": "password",
             "example": "123456"
           }
         }
@@ -20529,6 +20569,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code used to confirm the email change.",
+            "format": "password",
             "example": "123456"
           }
         }
@@ -20672,6 +20713,7 @@
           "code": {
             "type": "string",
             "description": "The authorization code received from the authorization callback. Required when \u0060grant_type\u0060 is \u0060authorization_code\u0060.",
+            "format": "password",
             "example": "authorization_code_value"
           },
           "grant_type": {
@@ -20776,6 +20818,7 @@
           "value": {
             "type": "string",
             "description": "Plaintext data to encrypt and store.",
+            "format": "password",
             "example": "s3cr3t-v4lu3"
           }
         }
@@ -20899,6 +20942,7 @@
           "value": {
             "type": "string",
             "description": "Decrypted plaintext value.",
+            "format": "password",
             "example": "s3cr3t-v4lu3"
           }
         },
@@ -21100,6 +21144,7 @@
           "value": {
             "type": "string",
             "description": "New plaintext value.",
+            "format": "password",
             "example": "upd4t3d-v4lu3"
           },
           "version_check": {
@@ -21247,6 +21292,7 @@
           "user_code": {
             "type": "string",
             "description": "The user code the agent needs to complete the claim.",
+            "format": "password",
             "example": "BCDF-GHJK"
           },
           "organizations": {
@@ -22012,6 +22058,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code for the challenge.",
+            "format": "password",
             "example": "123456"
           },
           "authentication_factor_id": {
@@ -24555,6 +24602,7 @@
           "value": {
             "type": "string",
             "description": "The full API Key value. Only returned once at creation time.",
+            "format": "password",
             "example": "sk_abcdefghijklmnop123456"
           }
         }
@@ -25253,6 +25301,7 @@
           "link": {
             "type": "string",
             "description": "An ephemeral link to initiate the Admin Portal.",
+            "format": "password",
             "example": "https://setup.workos.com?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
           }
         }
@@ -25313,6 +25362,7 @@
           "code": {
             "type": "string",
             "description": "The code used to verify the Radar Challenge.",
+            "format": "password",
             "example": "123456"
           }
         }
@@ -25750,6 +25800,7 @@
           "code": {
             "type": "string",
             "description": "The code used to verify the Magic Auth code.",
+            "format": "password",
             "example": "123456"
           }
         }
@@ -25866,6 +25917,7 @@
           "accept_invitation_url": {
             "type": "string",
             "description": "The URL where the recipient can accept the invitation.",
+            "format": "password",
             "example": "https://your-app.com/invite?invitation_token=Z1uX3RbwcIl5fIGJJJCXXisdI"
           }
         }
@@ -26170,6 +26222,7 @@
           "value": {
             "type": "string",
             "description": "The full API Key value. Only returned once at creation time.",
+            "format": "password",
             "example": "sk_abcdefghijklmnop123456"
           }
         }
@@ -26249,6 +26302,7 @@
           "code": {
             "type": "string",
             "description": "The code used to verify the email.",
+            "format": "password",
             "example": "123456"
           }
         }
@@ -26328,6 +26382,7 @@
           "password_reset_url": {
             "type": "string",
             "description": "The URL where the user can reset their password.",
+            "format": "password",
             "example": "https://your-app.com/reset-password?token=Z1uX3RbwcIl5fIGJJJCXXisdI"
           }
         }
@@ -26400,6 +26455,7 @@
           "authkit_authorization_code": {
             "type": "string",
             "description": "An authorization code that can be exchanged for tokens by a different application.",
+            "format": "password",
             "example": "authkit_authz_code_abc123"
           },
           "access_token": {
@@ -26435,11 +26491,13 @@
           "device_code": {
             "type": "string",
             "description": "The device verification code.",
+            "format": "password",
             "example": "CVE2wOfIFK4vhmiDBntpX9s8KT2f0qngpWYL0LGy9HxYgBRXUKIUkZB9BgIFho5h"
           },
           "user_code": {
             "type": "string",
             "description": "The end-user verification code.",
+            "format": "password",
             "example": "BCDF-GHJK"
           },
           "verification_uri": {
@@ -26820,6 +26878,7 @@
           "logout_url": {
             "type": "string",
             "description": "The URL to redirect the user to in order to log out ([Logout Redirect](/reference/sso/logout) endpoint ready to use).",
+            "format": "password",
             "example": "https://auth.workos.com/sso/logout?token=eyJhbGciOiJSUzI1NiJ9"
           },
           "logout_token": {
@@ -33862,16 +33921,19 @@
           "secret": {
             "type": "string",
             "description": "TOTP secret that can be manually entered into some authenticator apps in place of scanning a QR code.",
+            "format": "password",
             "example": "JBSWY3DPEHPK3PXP"
           },
           "qr_code": {
             "type": "string",
             "description": "Base64 encoded image containing scannable QR code.",
+            "format": "password",
             "example": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg..."
           },
           "uri": {
             "type": "string",
             "description": "The \u0060otpauth\u0060 URI that is encoded by the provided \u0060qr_code\u0060.",
+            "format": "password",
             "example": "otpauth://totp/WorkOS:user@example.com?secret=JBSWY3DPEHPK3PXP\u0026issuer=WorkOS"
           }
         },
@@ -35176,7 +35238,7 @@
             "items": {
               "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItem"
             },
-            "description": "The user\u0027s connected accounts for this provider in the requested ownership context."
+            "description": "The user\u0027s connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless \u0060supports_multiple_connections\u0060 is \u0060true\u0060."
           }
         }
       },
@@ -41400,6 +41462,7 @@
           "value": {
             "type": "string",
             "description": "The OAuth access token.",
+            "format": "password",
             "example": "gho_16C7e42F292c6912E7710c838347Ae178B4a"
           },
           "expires_at": {
@@ -41445,6 +41508,7 @@
           "value": {
             "type": "string",
             "description": "The API key secret.",
+            "format": "password",
             "example": "sk-1234567890abcdef"
           }
         },
@@ -41471,6 +41535,7 @@
           "value": {
             "type": "string",
             "description": "The client-credentials access token.",
+            "format": "password",
             "example": "00D5g000000XXXX!AQEAQ..."
           },
           "expires_at": {
@@ -41732,7 +41797,7 @@
             "deprecated": true
           }
         },
-        "description": "The user\u0027s [connected account](/reference/pipes/connected-account) for this provider, or \u0060null\u0060 if the user has not connected."
+        "description": "The user\u0027s compatibility [connected account](/reference/pipes/connected-account) for this provider, or \u0060null\u0060 when the compatibility slot is empty. This legacy field never selects a standard connection."
       },
       "DataIntegrationsListResponseDataItemConnectedAccountsItem": {
         "required": [
@@ -43899,6 +43964,7 @@
             "minLength": 1,
             "type": "string",
             "description": "The credential value to validate: the API key value for \u0060api_key\u0060, or the access token (JWT) for \u0060access_token\u0060.",
+            "format": "password",
             "example": "sk_agent_example_1234567890"
           },
           "audience": {
@@ -44371,6 +44437,7 @@
           "code": {
             "type": "string",
             "description": "The one-time code to verify.",
+            "format": "password",
             "example": "123456"
           }
         }
@@ -48719,6 +48786,11 @@
           },
           "connection_owner": {
             "$ref": "#/components/schemas/DataIntegrationsControllerVendCredentialsRequestConnectionOwner"
+          },
+          "supports_multiple_connections": {
+            "type": "boolean",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. If no \u0060connected_account_id\u0060 is supplied and several connections match, the request returns \u0060account_selection_required\u0060. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "example": true
           }
         }
       },
@@ -48798,6 +48870,11 @@
           },
           "connection_owner": {
             "$ref": "#/components/schemas/DataIntegrationsControllerGetUserlandUserTokenRequestConnectionOwner"
+          },
+          "supports_multiple_connections": {
+            "type": "boolean",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. If no \u0060connected_account_id\u0060 is supplied and several connections match, the request returns \u0060account_selection_required\u0060. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "example": true
           }
         }
       },
@@ -50849,11 +50926,13 @@
           "code": {
             "type": "string",
             "description": "The authorization code received from the redirect.",
+            "format": "password",
             "example": "vBqZKaPpsnJlPfXiDqN7b6VTz"
           },
           "code_verifier": {
             "type": "string",
             "description": "The PKCE code verifier used to derive the code challenge passed to the authorization URL.",
+            "format": "password",
             "example": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
           },
           "invitation_token": {
@@ -50939,6 +51018,7 @@
           "device_code": {
             "type": "string",
             "description": "The device verification code.",
+            "format": "password",
             "example": "Ao4fMrDS..."
           }
         }
@@ -51462,6 +51542,7 @@
           "accept_invitation_url": {
             "type": "string",
             "description": "The URL where the recipient can accept the invitation.",
+            "format": "password",
             "example": "https://your-app.com/invite?invitation_token=Z1uX3RbwcIl5fIGJJJCXXisdI"
           }
         },
@@ -51656,6 +51737,7 @@
           "accept_invitation_url": {
             "type": "string",
             "description": "The URL where the recipient can accept the invitation.",
+            "format": "password",
             "example": "https://your-app.com/invite?invitation_token=Z1uX3RbwcIl5fIGJJJCXXisdI"
           }
         },
@@ -51760,6 +51842,7 @@
           "code": {
             "type": "string",
             "description": "The code used to verify the Magic Auth code.",
+            "format": "password",
             "example": "123456"
           },
           "radar_auth_attempt_id": {
@@ -54057,6 +54140,7 @@
             "minLength": 1,
             "type": "string",
             "description": "The credential value to validate: the API key value for \u0060api_key\u0060, or the access token (JWT) for \u0060access_token\u0060.",
+            "format": "password",
             "example": "sk_agent_example_1234567890"
           }
         }
@@ -54075,6 +54159,7 @@
             "minLength": 1,
             "type": "string",
             "description": "The credential value to validate: the API key value for \u0060api_key\u0060, or the access token (JWT) for \u0060access_token\u0060.",
+            "format": "password",
             "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6..."
           },
           "audience": {
