@@ -84,7 +84,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>Distinguishes the Data Integration object.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationObject? Object { get; set; }
-        /// <summary>Who owns the Data Integration: `userland_user` when users connect their own accounts, `organization` when organizations connect. Fixed at creation.</summary>
+        /// <summary>Who owns the Data Integration: `user` when users connect their own accounts, `organization` when organizations connect. Fixed at creation.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationOwnership? Ownership { get; set; }
         /// <summary>The OAuth redirect URI to register with the provider when configuring the custom application. Empty for `api_key` and `client_credentials` integrations, which run no authorization redirect.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

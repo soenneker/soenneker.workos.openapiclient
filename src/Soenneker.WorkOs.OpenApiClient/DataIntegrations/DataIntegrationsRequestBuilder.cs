@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DataIntegrationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/data-integrations{?after*,before*,limit*,order*}", pathParameters)
+        public DataIntegrationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/data-integrations{?after*,before*,limit*,order*,ownership*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,15 +43,17 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DataIntegrationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/data-integrations{?after*,before*,limit*,order*}", rawUrl)
+        public DataIntegrationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/data-integrations{?after*,before*,limit*,order*,ownership*}", rawUrl)
         {
         }
         /// <summary>
-        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations.
+        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations. Both user-owned and organization-owned roots are returned, each as its own row with an `ownership`; filter with `ownership` to return only one kind.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerListDataIntegrations404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerListDataIntegrations422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.DataIntegrationsRequestBuilder.DataIntegrationsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -62,7 +64,12 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerListDataIntegrations404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerListDataIntegrations422Response.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `[&quot;api_key&quot;]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. Set `auth_methods` to `[&quot;client_credentials&quot;]` to create a client-credentials integration; client credentials are installed per-tenant afterwards. Set `ownership` to `organization` to create the integration organizations connect to instead of the default user-owned one; a provider may have one of each. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition, or the slug of an existing custom provider (without `custom_provider`) to add the other ownership.
@@ -98,7 +105,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations.
+        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations. Both user-owned and organization-owned roots are returned, each as its own row with an `ownership`; filter with `ownership` to return only one kind.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +155,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             return new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.DataIntegrationsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations.
+        /// Lists the environment&apos;s data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations. Both user-owned and organization-owned roots are returned, each as its own row with an `ownership`; filter with `ownership` to return only one kind.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataIntegrationsRequestBuilderGetQueryParameters 
@@ -179,6 +186,9 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
             /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`.</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
+            /// <summary>Only return Data Integrations with this ownership: `user` for the integrations users connect their own accounts to, or `organization` for the roots organizations connect to. Omit to return both.</summary>
+            [QueryParameter("ownership")]
+            public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerListDataIntegrationsOwnershipParameter? Ownership { get; set; }
         }
     }
 }

@@ -3,78 +3,42 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey;
-using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize;
-using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ClientCredentials;
-using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials;
-using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization;
-using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token;
 using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
+namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization
 {
     /// <summary>
-    /// Builds and executes requests for operations under \data-integrations\{slug}
+    /// Builds and executes requests for operations under \data-integrations\{slug}\organization
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class WithSlugItemRequestBuilder : BaseRequestBuilder
+    public partial class OrganizationRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The apiKey property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey.ApiKeyRequestBuilder ApiKey
-        {
-            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey.ApiKeyRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The authorize property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize.AuthorizeRequestBuilder Authorize
-        {
-            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize.AuthorizeRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The clientCredentials property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ClientCredentials.ClientCredentialsRequestBuilder ClientCredentials
-        {
-            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ClientCredentials.ClientCredentialsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The credentials property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials.CredentialsRequestBuilder Credentials
-        {
-            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials.CredentialsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The organization property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization.OrganizationRequestBuilder Organization
-        {
-            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization.OrganizationRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The token property</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token.TokenRequestBuilder Token
-        {
-            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token.TokenRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.WithSlugItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization.OrganizationRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/data-integrations/{slug}", pathParameters)
+        public OrganizationRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/data-integrations/{slug}/organization", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.WithSlugItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization.OrganizationRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/data-integrations/{slug}", rawUrl)
+        public OrganizationRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/data-integrations/{slug}/organization", rawUrl)
         {
         }
         /// <summary>
-        /// Deletes the user-owned data integration and all of its connected installations. For a custom provider, the provider definition is deleted once no organization-owned root references it either.
+        /// Deletes the organization-owned data integration for a provider and all of its connected installations. For a custom provider, the provider definition is deleted once no user-owned root references it either. The `/organization` suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerDeleteDataIntegration404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerDeleteOrganizationDataIntegration404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -87,17 +51,17 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerDeleteDataIntegration404Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerDeleteOrganizationDataIntegration404Response.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves the user-owned data integration by its slug.
+        /// Retrieves the organization-owned data integration for a provider by its slug. The `/organization` suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerGetDataIntegration404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerGetOrganizationDataIntegration404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -110,22 +74,22 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerGetDataIntegration404Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerGetOrganizationDataIntegration404Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates the description, enabled state, or custom credentials of the user-owned data integration. For custom providers, `custom_provider` updates the OAuth definition.
+        /// Updates the description, enabled state, or custom credentials of the organization-owned data integration for a provider. For custom providers, `custom_provider` updates the OAuth definition, which is shared with the user-owned root. The `/organization` suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration400Response">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration403Response">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration404Response">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration409Response">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration409Response">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateDataIntegrationDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -139,16 +103,16 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration400Response.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration403Response.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration404Response.CreateFromDiscriminatorValue },
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration409Response.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration422Response.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration404Response.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration409Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateOrganizationDataIntegration422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deletes the user-owned data integration and all of its connected installations. For a custom provider, the provider definition is deleted once no organization-owned root references it either.
+        /// Deletes the organization-owned data integration for a provider and all of its connected installations. For a custom provider, the provider definition is deleted once no user-owned root references it either. The `/organization` suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -167,7 +131,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
             return requestInfo;
         }
         /// <summary>
-        /// Retrieves the user-owned data integration by its slug.
+        /// Retrieves the organization-owned data integration for a provider by its slug. The `/organization` suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -186,7 +150,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
             return requestInfo;
         }
         /// <summary>
-        /// Updates the description, enabled state, or custom credentials of the user-owned data integration. For custom providers, `custom_provider` updates the OAuth definition.
+        /// Updates the description, enabled state, or custom credentials of the organization-owned data integration for a provider. For custom providers, `custom_provider` updates the OAuth definition, which is shared with the user-owned root. The `/organization` suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -210,11 +174,11 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.WithSlugItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization.OrganizationRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.WithSlugItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization.OrganizationRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.WithSlugItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Organization.OrganizationRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

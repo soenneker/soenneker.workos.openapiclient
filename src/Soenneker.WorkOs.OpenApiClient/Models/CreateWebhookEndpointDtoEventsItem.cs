@@ -372,6 +372,26 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         PermissionUpdated,
         #pragma warning restore CS1591
+        [EnumMember(Value = "pipes.account_connection.add_failed")]
+        #pragma warning disable CS1591
+        PipesAccountConnectionAddFailed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pipes.account_connection.connected")]
+        #pragma warning disable CS1591
+        PipesAccountConnectionConnected,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pipes.account_connection.connection_failed")]
+        #pragma warning disable CS1591
+        PipesAccountConnectionConnectionFailed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pipes.account_connection.disconnected")]
+        #pragma warning disable CS1591
+        PipesAccountConnectionDisconnected,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pipes.account_connection.reauthorization_needed")]
+        #pragma warning disable CS1591
+        PipesAccountConnectionReauthorizationNeeded,
+        #pragma warning restore CS1591
         [EnumMember(Value = "pipes.connected_account.connected")]
         #pragma warning disable CS1591
         PipesConnectedAccountConnected,

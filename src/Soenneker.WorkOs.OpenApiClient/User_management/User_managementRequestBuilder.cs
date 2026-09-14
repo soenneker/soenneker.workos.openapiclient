@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.User_management.Authenticate;
+using Soenneker.WorkOs.OpenApiClient.User_management.Authkit_oauth_resources;
 using Soenneker.WorkOs.OpenApiClient.User_management.Authorize;
 using Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins;
 using Soenneker.WorkOs.OpenApiClient.User_management.Email_verification;
@@ -33,6 +34,11 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Authenticate.AuthenticateRequestBuilder Authenticate
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Authenticate.AuthenticateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The authkit_oauth_resources property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Authkit_oauth_resources.Authkit_oauth_resourcesRequestBuilder Authkit_oauth_resources
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Authkit_oauth_resources.Authkit_oauth_resourcesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The authorize property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Authorize.AuthorizeRequestBuilder Authorize

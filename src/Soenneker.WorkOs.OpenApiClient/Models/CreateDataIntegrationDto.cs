@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>Whether the Data Integration is enabled. Defaults to `false`.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>Who owns the Data Integration. `userland_user` (the default) creates the integration users connect their own accounts to; `organization` creates the root organizations connect to. Ownership is fixed at creation, and one integration of each ownership may exist per provider. Independent of `credentials.type`.</summary>
+        /// <summary>Who owns the Data Integration. `user` (the default) creates the integration users connect their own accounts to; `organization` creates the root organizations connect to. Ownership is fixed at creation, and one integration of each ownership may exist per provider. Independent of `credentials.type`.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoOwnership? Ownership { get; set; }
         /// <summary>The provider to create a Data Integration for. For a built-in provider use its slug (e.g. `github`, `slack`). For a custom provider, this is the new provider slug and `custom_provider` must be supplied. A custom provider slug cannot shadow an existing global provider slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

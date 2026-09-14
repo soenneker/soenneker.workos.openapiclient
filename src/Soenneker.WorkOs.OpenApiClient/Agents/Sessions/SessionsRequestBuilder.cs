@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Sessions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/agents/sessions{?after*,agent_blueprint_id*,agent_instance_id*,before*,limit*,order*}", pathParameters)
+        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/agents/sessions{?after*,agent_blueprint_id*,agent_instance_id*,before*,limit*,order*,organization_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Sessions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/agents/sessions{?after*,agent_blueprint_id*,agent_instance_id*,before*,limit*,order*}", rawUrl)
+        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/agents/sessions{?after*,agent_blueprint_id*,agent_instance_id*,before*,limit*,order*,organization_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -151,6 +151,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Sessions
             /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`.</summary>
             [QueryParameter("order")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
+            /// <summary>Only return sessions of instances acting within this organization.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("organization_id")]
+            public string? OrganizationId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("organization_id")]
+            public string OrganizationId { get; set; }
+#endif
         }
     }
 }

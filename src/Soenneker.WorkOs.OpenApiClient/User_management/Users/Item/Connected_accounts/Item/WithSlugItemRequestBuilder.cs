@@ -34,13 +34,14 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         {
         }
         /// <summary>
-        /// Disconnects WorkOS&apos;s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. This does not revoke access on the provider side.
+        /// Disconnects WorkOS&apos;s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. Access is not revoked on the provider side, except for the WorkOS OAuth provider, whose underlying AuthKit grant is revoked.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerDeleteUserDataInstallation400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerDeleteUserDataInstallation404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerDeleteUserDataInstallation503Response">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -56,6 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerDeleteUserDataInstallation400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerDeleteUserDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerDeleteUserDataInstallation503Response.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -96,6 +98,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation409Response">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation503Response">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -112,6 +115,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation503Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -125,6 +129,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation503Response">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -141,11 +147,13 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation422Response.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation503Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Disconnects WorkOS&apos;s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. This does not revoke access on the provider side.
+        /// Disconnects WorkOS&apos;s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. Access is not revoked on the provider side, except for the WorkOS OAuth provider, whose underlying AuthKit grant is revoked.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -236,7 +244,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             return new global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Disconnects WorkOS&apos;s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. This does not revoke access on the provider side.
+        /// Disconnects WorkOS&apos;s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. Access is not revoked on the provider side, except for the WorkOS OAuth provider, whose underlying AuthKit grant is revoked.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithSlugItemRequestBuilderDeleteQueryParameters 

@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>Who owns the Data Integration: `user` when users connect their own accounts, `organization` when organizations connect. Fixed at creation.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationOwnership
+    #pragma warning disable CS1591
+    public enum DataIntegrationsManagementControllerListDataIntegrationsOwnershipParameter
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "user")]
         #pragma warning disable CS1591

@@ -9,35 +9,37 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ChallengeAuthenticationFactorDto : IAdditionalDataHolder, IParsable
+    public partial class CreateAuthkitOAuthResourceDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A custom template for the SMS message. Use the {{code}} placeholder to include the verification code. Must not contain URLs or domain names.</summary>
+        /// <summary>Whether the resource being created becomes the environment default, clearing any previous default. Applies at creation only — this API has no update endpoint yet, so changing the default on an existing resource is done from the dashboard. A wildcard pattern cannot be the default.</summary>
+        public bool? Default { get; set; }
+        /// <summary>The resource URI. May be a wildcard pattern with a single `*` in the leftmost hostname label, where enabled for the environment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SmsTemplate { get; set; }
+        public string? Uri { get; set; }
 #nullable restore
 #else
-        public string SmsTemplate { get; set; }
+        public string Uri { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ChallengeAuthenticationFactorDto"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthkitOAuthResourceDto"/> and sets the default values.
         /// </summary>
-        public ChallengeAuthenticationFactorDto()
+        public CreateAuthkitOAuthResourceDto()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ChallengeAuthenticationFactorDto"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthkitOAuthResourceDto"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.ChallengeAuthenticationFactorDto CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthkitOAuthResourceDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.ChallengeAuthenticationFactorDto();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthkitOAuthResourceDto();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,7 +49,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "sms_template", n => { SmsTemplate = n.GetStringValue(); } },
+                { "default", n => { Default = n.GetBoolValue(); } },
+                { "uri", n => { Uri = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -57,7 +60,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("sms_template", SmsTemplate);
+            writer.WriteBoolValue("default", Default);
+            writer.WriteStringValue("uri", Uri);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

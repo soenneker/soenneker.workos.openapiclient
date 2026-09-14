@@ -831,6 +831,15 @@
             }
           },
           {
+            "name": "organization_id",
+            "in": "query",
+            "description": "Only return sessions of instances acting within this organization.",
+            "schema": {
+              "type": "string",
+              "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          },
+          {
             "name": "agent_blueprint_id",
             "in": "query",
             "description": "Only return sessions of instances minted from this blueprint.",
@@ -7337,7 +7346,7 @@
           "pipes"
         ],
         "summary": "List data integrations",
-        "description": "Lists the environment\u0027s data integrations configured with \u0060custom\u0060 or \u0060organization\u0060 credentials, including custom providers and API key integrations.",
+        "description": "Lists the environment\u0027s data integrations configured with \u0060custom\u0060 or \u0060organization\u0060 credentials, including custom providers and API key integrations. Both user-owned and organization-owned roots are returned, each as its own row with an \u0060ownership\u0060; filter with \u0060ownership\u0060 to return only one kind.",
         "operationId": "DataIntegrationsManagementControllerListDataIntegrations",
         "parameters": [
           {
@@ -7377,6 +7386,14 @@
             "schema": {
               "$ref": "#/components/schemas/PaginationOrder"
             }
+          },
+          {
+            "name": "ownership",
+            "in": "query",
+            "description": "Only return Data Integrations with this ownership: \u0060user\u0060 for the integrations users connect their own accounts to, or \u0060organization\u0060 for the roots organizations connect to. Omit to return both.",
+            "schema": {
+              "$ref": "#/components/schemas/DataIntegrationsManagementControllerListDataIntegrationsOwnershipParameter"
+            }
           }
         ],
         "responses": {
@@ -7392,6 +7409,26 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Organization-owned data integrations are not available for this environment.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerListDataIntegrations404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerListDataIntegrations422Response"
+                }
+              }
+            }
           }
         }
       }
@@ -7402,7 +7439,7 @@
           "pipes"
         ],
         "summary": "Get a data integration",
-        "description": "Retrieves a data integration by its slug.",
+        "description": "Retrieves the user-owned data integration by its slug.",
         "operationId": "DataIntegrationsManagementControllerGetDataIntegration",
         "parameters": [
           {
@@ -7447,7 +7484,7 @@
           "pipes"
         ],
         "summary": "Update a data integration",
-        "description": "Updates the description, enabled state, or custom credentials of a data integration. For custom providers, \u0060custom_provider\u0060 updates the OAuth definition.",
+        "description": "Updates the description, enabled state, or custom credentials of the user-owned data integration. For custom providers, \u0060custom_provider\u0060 updates the OAuth definition.",
         "operationId": "DataIntegrationsManagementControllerUpdateDataIntegration",
         "parameters": [
           {
@@ -7542,7 +7579,7 @@
           "pipes"
         ],
         "summary": "Delete a data integration",
-        "description": "Deletes a data integration and all of its connected installations. For a custom provider, also deletes the custom provider definition.",
+        "description": "Deletes the user-owned data integration and all of its connected installations. For a custom provider, the provider definition is deleted once no organization-owned root references it either.",
         "operationId": "DataIntegrationsManagementControllerDeleteDataIntegration",
         "parameters": [
           {
@@ -7974,6 +8011,274 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataIntegrationsControllerVendCredentials422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/data-integrations/{slug}/organization": {
+      "get": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Get an organization-owned data integration",
+        "description": "Retrieves the organization-owned data integration for a provider by its slug. The \u0060/organization\u0060 suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.",
+        "operationId": "DataIntegrationsManagementControllerGetOrganizationDataIntegration",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the data integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegration"
+                },
+                "example": {
+                  "object": "data_integration",
+                  "id": "data_integration_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "slug": "github",
+                  "integration_type": "github",
+                  "ownership": "organization",
+                  "description": "Production GitHub app",
+                  "enabled": true,
+                  "state": "valid",
+                  "scopes": [
+                    "repo",
+                    "read:org"
+                  ],
+                  "redirect_uri": "https://api.workos.com/data-integrations/github/dik_01EHZNVPK3SFK441A1RGBFSHRT/callback",
+                  "auth_methods": [
+                    "oauth"
+                  ],
+                  "credentials": {
+                    "type": "custom",
+                    "client_id": "Iv1.abc123",
+                    "redacted_client_secret": "6789"
+                  },
+                  "installation": null,
+                  "config": {
+                    "account": "myorg-myaccount"
+                  },
+                  "custom_provider": {
+                    "name": "My OAuth App",
+                    "authorization_url": "https://provider.example.com/oauth/authorize",
+                    "token_url": "https://provider.example.com/oauth/token",
+                    "refresh_token_url": "https://provider.example.com/oauth/token",
+                    "pkce_enabled": true,
+                    "request_scope_separator": " ",
+                    "scopes_required": false,
+                    "client_secret_required": true,
+                    "additional_authorization_parameters": {
+                      "prompt": "consent"
+                    },
+                    "token_body_content_type": "application/x-www-form-urlencoded",
+                    "authenticate_via": "request_body"
+                  },
+                  "created_at": "2026-01-15T12:00:00.000Z",
+                  "updated_at": "2026-01-15T12:00:00.000Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerGetOrganizationDataIntegration404Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Update an organization-owned data integration",
+        "description": "Updates the description, enabled state, or custom credentials of the organization-owned data integration for a provider. For custom providers, \u0060custom_provider\u0060 updates the OAuth definition, which is shared with the user-owned root. The \u0060/organization\u0060 suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.",
+        "operationId": "DataIntegrationsManagementControllerUpdateOrganizationDataIntegration",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the data integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDataIntegrationDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegration"
+                },
+                "example": {
+                  "object": "data_integration",
+                  "id": "data_integration_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "slug": "github",
+                  "integration_type": "github",
+                  "ownership": "organization",
+                  "description": "Production GitHub app",
+                  "enabled": true,
+                  "state": "valid",
+                  "scopes": [
+                    "repo",
+                    "read:org"
+                  ],
+                  "redirect_uri": "https://api.workos.com/data-integrations/github/dik_01EHZNVPK3SFK441A1RGBFSHRT/callback",
+                  "auth_methods": [
+                    "oauth"
+                  ],
+                  "credentials": {
+                    "type": "custom",
+                    "client_id": "Iv1.abc123",
+                    "redacted_client_secret": "6789"
+                  },
+                  "installation": null,
+                  "config": {
+                    "account": "myorg-myaccount"
+                  },
+                  "custom_provider": {
+                    "name": "My OAuth App",
+                    "authorization_url": "https://provider.example.com/oauth/authorize",
+                    "token_url": "https://provider.example.com/oauth/token",
+                    "refresh_token_url": "https://provider.example.com/oauth/token",
+                    "pkce_enabled": true,
+                    "request_scope_separator": " ",
+                    "scopes_required": false,
+                    "client_secret_required": true,
+                    "additional_authorization_parameters": {
+                      "prompt": "consent"
+                    },
+                    "token_body_content_type": "application/x-www-form-urlencoded",
+                    "authenticate_via": "request_body"
+                  },
+                  "created_at": "2026-01-15T12:00:00.000Z",
+                  "updated_at": "2026-01-15T12:00:00.000Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateOrganizationDataIntegration400Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateOrganizationDataIntegration403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateOrganizationDataIntegration404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "409 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateOrganizationDataIntegration409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerUpdateOrganizationDataIntegration422Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Delete an organization-owned data integration",
+        "description": "Deletes the organization-owned data integration for a provider and all of its connected installations. For a custom provider, the provider definition is deleted once no user-owned root references it either. The \u0060/organization\u0060 suffix selects the environment-level organization-owned root for the provider; it does not name a particular organization.",
+        "operationId": "DataIntegrationsManagementControllerDeleteOrganizationDataIntegration",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the data integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsManagementControllerDeleteOrganizationDataIntegration404Response"
                 }
               }
             }
@@ -12323,6 +12628,198 @@
         }
       }
     },
+    "/user_management/authkit_oauth_resources": {
+      "post": {
+        "tags": [
+          "user-management.authkit-oauth-resources"
+        ],
+        "summary": "Create an MCP resource indicator",
+        "description": "Adds an MCP resource indicator (RFC 8707) to an environment, leaving any others in place.",
+        "operationId": "AuthkitOAuthResourcesControllerCreate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAuthkitOAuthResourceDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "MCP resource indicator created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthkitOAuthResource"
+                },
+                "example": {
+                  "object": "authkit_oauth_resource",
+                  "id": "authkit_oauth_resource_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "uri": "https://api.example.com",
+                  "default": false,
+                  "created_at": "2026-01-15T12:00:00.000Z",
+                  "updated_at": "2026-01-15T12:00:00.000Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthkitOAuthResourcesControllerCreate401Response"
+                },
+                "example": {
+                  "message": "Unauthorized"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthkitOAuthResourcesControllerCreate422Response"
+                },
+                "example": {
+                  "message": "AuthKit OAuth resource \u0027https://api.example.com\u0027 already exists."
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "user-management.authkit-oauth-resources"
+        ],
+        "summary": "List MCP resource indicators",
+        "description": "Lists the MCP resource indicators configured for an environment.",
+        "operationId": "AuthkitOAuthResourcesControllerList",
+        "parameters": [
+          {
+            "name": "before",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060after=\u0022obj_123\u0022\u0060 to fetch a new batch of objects after \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ987654321KJIHGFEDCBA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Upper limit on the number of objects to return, between \u00601\u0060 and \u0060100\u0060.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10,
+              "example": 10
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records). Defaults to \u0060normal\u0060.",
+            "schema": {
+              "$ref": "#/components/schemas/PaginationOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "MCP resource indicators listed successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthkitOAuthResourcesControllerList200Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthkitOAuthResourcesControllerList401Response"
+                },
+                "example": {
+                  "message": "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user_management/authkit_oauth_resources/{id}": {
+      "delete": {
+        "tags": [
+          "user-management.authkit-oauth-resources"
+        ],
+        "summary": "Delete an MCP resource indicator",
+        "description": "Removes an MCP resource indicator from an environment. Any application consents granted against it are removed too.",
+        "operationId": "AuthkitOAuthResourcesControllerDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the MCP resource indicator to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "authkit_oauth_resource_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "MCP resource indicator deleted successfully."
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthkitOAuthResourcesControllerDelete401Response"
+                },
+                "example": {
+                  "message": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "MCP resource indicator not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthkitOAuthResourcesControllerDelete404Response"
+                },
+                "example": {
+                  "message": "AuthKit OAuth resource not found: \u0027authkit_oauth_resource_01EHZNVPK3SFK441A1RGBFSHRT\u0027."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user_management/authorize": {
       "get": {
         "tags": [
@@ -15745,7 +16242,7 @@
           "user-management.data-providers"
         ],
         "summary": "Delete a connected account",
-        "description": "Disconnects WorkOS\u0027s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. This does not revoke access on the provider side.",
+        "description": "Disconnects WorkOS\u0027s account for the user, including removing any stored access and refresh tokens. The user will need to reauthorize if they want to reconnect. Access is not revoked on the provider side, except for the WorkOS OAuth provider, whose underlying AuthKit grant is revoked.",
         "operationId": "DataIntegrationsUserManagementControllerDeleteUserDataInstallation",
         "parameters": [
           {
@@ -15830,6 +16327,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AccountSelectionRequiredError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The connected account or its WorkOS OAuth grant is being changed by another request. Retry the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerDeleteUserDataInstallation503Response"
                 }
               }
             }
@@ -15919,11 +16426,21 @@
             }
           },
           "422": {
-            "description": "The data integration is not in a valid state or the token combination is invalid.",
+            "description": "The request body is malformed (\u0060invalid_request_parameters\u0060), the data integration is not in a valid state (\u0060invalid_data_integration_state\u0060), the token combination is invalid (\u0060invalid_token_combination\u0060), or \u0060refresh_token\u0060 is not an active WorkOS OAuth grant of this user (\u0060invalid_refresh_token\u0060).",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The WorkOS OAuth grant behind \u0060refresh_token\u0060 is being changed by another request. Retry the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation503Response"
                 }
               }
             }
@@ -16037,6 +16554,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AccountSelectionRequiredError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request body is malformed (\u0060invalid_request_parameters\u0060), or \u0060refresh_token\u0060 is not an active WorkOS OAuth grant of this user (\u0060invalid_refresh_token\u0060).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerUpdateUserDataInstallation422Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The WorkOS OAuth grant behind \u0060refresh_token\u0060 is being changed by another request. Retry the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerUpdateUserDataInstallation503Response"
                 }
               }
             }
@@ -18168,8 +18705,9 @@
         "type": "object",
         "properties": {
           "sms_template": {
+            "maxLength": 160,
             "type": "string",
-            "description": "A custom template for the SMS message. Use the {{code}} placeholder to include the verification code.",
+            "description": "A custom template for the SMS message. Use the {{code}} placeholder to include the verification code. Must not contain URLs or domain names.",
             "example": "Your verification code is {{code}}."
           }
         }
@@ -19880,6 +20418,24 @@
             "type": "string",
             "description": "The user agent string from the user\u0027s request.",
             "example": "Mozilla/5.0"
+          }
+        }
+      },
+      "CreateAuthkitOAuthResourceDto": {
+        "required": [
+          "uri"
+        ],
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string",
+            "description": "The resource URI. May be a wildcard pattern with a single \u0060*\u0060 in the leftmost hostname label, where enabled for the environment.",
+            "example": "https://api.example.com"
+          },
+          "default": {
+            "type": "boolean",
+            "description": "Whether the resource being created becomes the environment default, clearing any previous default. Applies at creation only \u2014 this API has no update endpoint yet, so changing the default on an existing resource is done from the dashboard. A wildcard pattern cannot be the default.",
+            "example": false
           }
         }
       },
@@ -24116,6 +24672,21 @@
               },
               {
                 "$ref": "#/components/schemas/EventSchemaAllOf2OneOf122"
+              },
+              {
+                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf123"
+              },
+              {
+                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf124"
+              },
+              {
+                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf125"
+              },
+              {
+                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf126"
+              },
+              {
+                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf127"
               }
             ]
           }
@@ -25425,6 +25996,47 @@
             "type": "string",
             "description": "A message indicating the entry already exists.",
             "example": "Entry already present in list"
+          }
+        }
+      },
+      "AuthkitOAuthResource": {
+        "required": [
+          "object",
+          "id",
+          "uri",
+          "default",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/AuthkitOAuthResourceObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the MCP resource indicator.",
+            "example": "authkit_oauth_resource_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "uri": {
+            "type": "string",
+            "description": "The resource URI.",
+            "example": "https://api.example.com"
+          },
+          "default": {
+            "type": "boolean",
+            "description": "Whether this is the default MCP resource indicator for the environment.",
+            "example": false
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the MCP resource indicator was created.",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the MCP resource indicator was last updated.",
+            "example": "2026-01-15T12:00:00.000Z"
           }
         }
       },
@@ -31618,11 +32230,10 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/PipesConnectedAccountConnectedEvent"
+            "$ref": "#/components/schemas/PipesAccountConnectionAddFailedEvent"
           },
           "data": {
-            "description": "The event payload.",
-            "$ref": "#/components/schemas/PipesConnectedAccount"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf91Data"
           },
           "created_at": {
             "type": "string",
@@ -31655,10 +32266,11 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/PipesConnectedAccountConnectionFailedEvent"
+            "$ref": "#/components/schemas/PipesAccountConnectionConnectedEvent"
           },
           "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf92Data"
+            "description": "The event payload.",
+            "$ref": "#/components/schemas/PipesConnectedAccount"
           },
           "created_at": {
             "type": "string",
@@ -31691,11 +32303,10 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/PipesConnectedAccountDisconnectedEvent"
+            "$ref": "#/components/schemas/PipesAccountConnectionConnectionFailedEvent"
           },
           "data": {
-            "description": "The event payload.",
-            "$ref": "#/components/schemas/PipesConnectedAccount"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf93Data"
           },
           "created_at": {
             "type": "string",
@@ -31728,7 +32339,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/PipesConnectedAccountReauthorizationNeededEvent"
+            "$ref": "#/components/schemas/PipesAccountConnectionDisconnectedEvent"
           },
           "data": {
             "description": "The event payload.",
@@ -31765,10 +32376,11 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/RadarChallengeCreatedEvent"
+            "$ref": "#/components/schemas/PipesAccountConnectionReauthorizationNeededEvent"
           },
           "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf95Data"
+            "description": "The event payload.",
+            "$ref": "#/components/schemas/PipesConnectedAccount"
           },
           "created_at": {
             "type": "string",
@@ -31801,10 +32413,11 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/ResourceExportCompletedEvent"
+            "$ref": "#/components/schemas/PipesConnectedAccountConnectedEvent"
           },
           "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf96Data"
+            "description": "The event payload.",
+            "$ref": "#/components/schemas/PipesConnectedAccount"
           },
           "created_at": {
             "type": "string",
@@ -31837,7 +32450,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/ResourceExportCreatedEvent"
+            "$ref": "#/components/schemas/PipesConnectedAccountConnectionFailedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf97Data"
@@ -31873,10 +32486,11 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/ResourceExportDownloadedEvent"
+            "$ref": "#/components/schemas/PipesConnectedAccountDisconnectedEvent"
           },
           "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf98Data"
+            "description": "The event payload.",
+            "$ref": "#/components/schemas/PipesConnectedAccount"
           },
           "created_at": {
             "type": "string",
@@ -31909,10 +32523,11 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/ResourceExportFailedEvent"
+            "$ref": "#/components/schemas/PipesConnectedAccountReauthorizationNeededEvent"
           },
           "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf99Data"
+            "description": "The event payload.",
+            "$ref": "#/components/schemas/PipesConnectedAccount"
           },
           "created_at": {
             "type": "string",
@@ -31945,7 +32560,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/RoleCreatedEvent"
+            "$ref": "#/components/schemas/RadarChallengeCreatedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf100Data"
@@ -31981,7 +32596,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/RoleDeletedEvent"
+            "$ref": "#/components/schemas/ResourceExportCompletedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf101Data"
@@ -32017,7 +32632,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/RoleUpdatedEvent"
+            "$ref": "#/components/schemas/ResourceExportCreatedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf102Data"
@@ -32053,7 +32668,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/SessionCreatedEvent"
+            "$ref": "#/components/schemas/ResourceExportDownloadedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf103Data"
@@ -32089,7 +32704,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/SessionRevokedEvent"
+            "$ref": "#/components/schemas/ResourceExportFailedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf104Data"
@@ -32110,6 +32725,186 @@
         }
       },
       "EventSchemaAllOf2OneOf105": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/RoleCreatedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf105Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf106": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/RoleDeletedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf106Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf107": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/RoleUpdatedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf107Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf108": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/SessionCreatedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf108Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf109": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/SessionRevokedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf109Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf110": {
         "required": [
           "id",
           "event",
@@ -32146,7 +32941,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf106": {
+      "EventSchemaAllOf2OneOf111": {
         "required": [
           "id",
           "event",
@@ -32183,7 +32978,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf107": {
+      "EventSchemaAllOf2OneOf112": {
         "required": [
           "id",
           "event",
@@ -32220,186 +33015,6 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf108": {
-        "required": [
-          "id",
-          "event",
-          "data",
-          "created_at",
-          "object"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the event.",
-            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "event": {
-            "$ref": "#/components/schemas/VaultByokKeyDeletedEvent"
-          },
-          "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf108Data"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "context": {
-            "description": "Additional context about the event.",
-            "$ref": "#/components/schemas/EventContextDto"
-          },
-          "object": {
-            "$ref": "#/components/schemas/EventValueObject"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf109": {
-        "required": [
-          "id",
-          "event",
-          "data",
-          "created_at",
-          "object"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the event.",
-            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "event": {
-            "$ref": "#/components/schemas/VaultByokKeyVerificationCompletedEvent"
-          },
-          "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf109Data"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "context": {
-            "description": "Additional context about the event.",
-            "$ref": "#/components/schemas/EventContextDto"
-          },
-          "object": {
-            "$ref": "#/components/schemas/EventValueObject"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf110": {
-        "required": [
-          "id",
-          "event",
-          "data",
-          "created_at",
-          "object"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the event.",
-            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "event": {
-            "$ref": "#/components/schemas/VaultDataCreatedEvent"
-          },
-          "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf110Data"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "context": {
-            "description": "Additional context about the event.",
-            "$ref": "#/components/schemas/EventContextDto"
-          },
-          "object": {
-            "$ref": "#/components/schemas/EventValueObject"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf111": {
-        "required": [
-          "id",
-          "event",
-          "data",
-          "created_at",
-          "object"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the event.",
-            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "event": {
-            "$ref": "#/components/schemas/VaultDataDeletedEvent"
-          },
-          "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf111Data"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "context": {
-            "description": "Additional context about the event.",
-            "$ref": "#/components/schemas/EventContextDto"
-          },
-          "object": {
-            "$ref": "#/components/schemas/EventValueObject"
-          }
-        }
-      },
-      "EventSchemaAllOf2OneOf112": {
-        "required": [
-          "id",
-          "event",
-          "data",
-          "created_at",
-          "object"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the event.",
-            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "event": {
-            "$ref": "#/components/schemas/VaultDataReadEvent"
-          },
-          "data": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf112Data"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "context": {
-            "description": "Additional context about the event.",
-            "$ref": "#/components/schemas/EventContextDto"
-          },
-          "object": {
-            "$ref": "#/components/schemas/EventValueObject"
-          }
-        }
-      },
       "EventSchemaAllOf2OneOf113": {
         "required": [
           "id",
@@ -32416,7 +33031,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultDataUpdatedEvent"
+            "$ref": "#/components/schemas/VaultByokKeyDeletedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf113Data"
@@ -32452,7 +33067,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultDekDecryptedEvent"
+            "$ref": "#/components/schemas/VaultByokKeyVerificationCompletedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf114Data"
@@ -32488,7 +33103,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultDekReadEvent"
+            "$ref": "#/components/schemas/VaultDataCreatedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf115Data"
@@ -32524,7 +33139,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultKekCreatedEvent"
+            "$ref": "#/components/schemas/VaultDataDeletedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf116Data"
@@ -32560,7 +33175,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultKekDeletedEvent"
+            "$ref": "#/components/schemas/VaultDataReadEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf117Data"
@@ -32596,7 +33211,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultMetadataReadEvent"
+            "$ref": "#/components/schemas/VaultDataUpdatedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf118Data"
@@ -32632,7 +33247,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultNamesListedEvent"
+            "$ref": "#/components/schemas/VaultDekDecryptedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf119Data"
@@ -32653,6 +33268,186 @@
         }
       },
       "EventSchemaAllOf2OneOf120": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/VaultDekReadEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf120Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf121": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/VaultKekCreatedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf121Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf122": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/VaultKekDeletedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf122Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf123": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/VaultMetadataReadEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf123Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf124": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/VaultNamesListedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf124Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf125": {
         "required": [
           "id",
           "event",
@@ -32689,7 +33484,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf121": {
+      "EventSchemaAllOf2OneOf126": {
         "required": [
           "id",
           "event",
@@ -32726,7 +33521,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf122": {
+      "EventSchemaAllOf2OneOf127": {
         "required": [
           "id",
           "event",
@@ -40518,7 +41313,7 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf92Data": {
+      "EventSchemaAllOf2OneOf91Data": {
         "title": "PipesConnectionFailed",
         "required": [
           "object",
@@ -40601,7 +41396,173 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf95Data": {
+      "EventSchemaAllOf2OneOf93Data": {
+        "title": "PipesConnectionFailed",
+        "required": [
+          "object",
+          "data_integration_id",
+          "provider_slug",
+          "user_id",
+          "organization_id",
+          "error_code",
+          "error_reason",
+          "provider_error",
+          "provider_error_description",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ConnectionFailedObject"
+          },
+          "data_integration_id": {
+            "type": "string",
+            "description": "The unique ID of the data integration.",
+            "example": "data_integration_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "provider_slug": {
+            "type": "string",
+            "description": "The provider slug for this connection attempt.",
+            "example": "github"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the User the connection attempt belongs to.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the Organization the connection attempt belongs to.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "error_code": {
+            "type": "string",
+            "description": "A machine-readable error code for the failure.",
+            "example": "authorization_code_exchange_error"
+          },
+          "error_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A human-readable explanation of the failure.",
+            "example": "The authorization code has expired."
+          },
+          "provider_error": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The raw error code returned by the OAuth provider.",
+            "example": "access_denied"
+          },
+          "provider_error_description": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The raw error description returned by the OAuth provider.",
+            "example": "The user denied the authorization request."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf97Data": {
+        "title": "PipesConnectionFailed",
+        "required": [
+          "object",
+          "data_integration_id",
+          "provider_slug",
+          "user_id",
+          "organization_id",
+          "error_code",
+          "error_reason",
+          "provider_error",
+          "provider_error_description",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ConnectionFailedObject"
+          },
+          "data_integration_id": {
+            "type": "string",
+            "description": "The unique ID of the data integration.",
+            "example": "data_integration_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "provider_slug": {
+            "type": "string",
+            "description": "The provider slug for this connection attempt.",
+            "example": "github"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the User the connection attempt belongs to.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the Organization the connection attempt belongs to.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "error_code": {
+            "type": "string",
+            "description": "A machine-readable error code for the failure.",
+            "example": "authorization_code_exchange_error"
+          },
+          "error_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A human-readable explanation of the failure.",
+            "example": "The authorization code has expired."
+          },
+          "provider_error": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The raw error code returned by the OAuth provider.",
+            "example": "access_denied"
+          },
+          "provider_error_description": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The raw error description returned by the OAuth provider.",
+            "example": "The user denied the authorization request."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf100Data": {
         "required": [
           "type",
           "radar_challenge_id",
@@ -40631,170 +41592,80 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf96Data": {
-        "required": [
-          "id",
-          "resource_type"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The ID of the resource export.",
-            "example": "resource_export_01HWZBQZY2M3AMQW166Q22K88F"
-          },
-          "resource_type": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf96DataResourceType"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf97Data": {
-        "required": [
-          "id",
-          "resource_type"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The ID of the resource export.",
-            "example": "resource_export_01HWZBQZY2M3AMQW166Q22K88F"
-          },
-          "resource_type": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf97DataResourceType"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf98Data": {
-        "required": [
-          "id",
-          "resource_type"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The ID of the resource export.",
-            "example": "resource_export_01HWZBQZY2M3AMQW166Q22K88F"
-          },
-          "resource_type": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf98DataResourceType"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf99Data": {
-        "required": [
-          "id",
-          "resource_type"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The ID of the resource export.",
-            "example": "resource_export_01HWZBQZY2M3AMQW166Q22K88F"
-          },
-          "resource_type": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf99DataResourceType"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf100Data": {
-        "required": [
-          "object",
-          "slug",
-          "resource_type_slug",
-          "created_at",
-          "updated_at"
-        ],
-        "type": "object",
-        "properties": {
-          "object": {
-            "$ref": "#/components/schemas/RoleObject"
-          },
-          "slug": {
-            "type": "string",
-            "description": "The slug identifier of the role.",
-            "example": "admin"
-          },
-          "resource_type_slug": {
-            "type": "string",
-            "description": "The slug of the resource type the role applies to.",
-            "example": "organization"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The permissions granted by the role."
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          }
-        },
-        "description": "The event payload."
-      },
       "EventSchemaAllOf2OneOf101Data": {
         "required": [
-          "object",
-          "slug",
-          "resource_type_slug",
-          "created_at",
-          "updated_at"
+          "id",
+          "resource_type"
         ],
         "type": "object",
         "properties": {
-          "object": {
-            "$ref": "#/components/schemas/RoleObject"
-          },
-          "slug": {
+          "id": {
             "type": "string",
-            "description": "The slug identifier of the role.",
-            "example": "admin"
+            "description": "The ID of the resource export.",
+            "example": "resource_export_01HWZBQZY2M3AMQW166Q22K88F"
           },
-          "resource_type_slug": {
-            "type": "string",
-            "description": "The slug of the resource type the role applies to.",
-            "example": "organization"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The permissions granted by the role."
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
+          "resource_type": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf101DataResourceType"
           }
         },
         "description": "The event payload."
       },
       "EventSchemaAllOf2OneOf102Data": {
         "required": [
+          "id",
+          "resource_type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the resource export.",
+            "example": "resource_export_01HWZBQZY2M3AMQW166Q22K88F"
+          },
+          "resource_type": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf102DataResourceType"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf103Data": {
+        "required": [
+          "id",
+          "resource_type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the resource export.",
+            "example": "resource_export_01HWZBQZY2M3AMQW166Q22K88F"
+          },
+          "resource_type": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf103DataResourceType"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf104Data": {
+        "required": [
+          "id",
+          "resource_type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the resource export.",
+            "example": "resource_export_01HWZBQZY2M3AMQW166Q22K88F"
+          },
+          "resource_type": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf104DataResourceType"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf105Data": {
+        "required": [
           "object",
           "slug",
           "resource_type_slug",
@@ -40838,79 +41709,35 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf103Data": {
+      "EventSchemaAllOf2OneOf106Data": {
         "required": [
           "object",
-          "id",
-          "ip_address",
-          "user_agent",
-          "user_id",
-          "auth_method",
-          "status",
-          "expires_at",
-          "ended_at",
+          "slug",
+          "resource_type_slug",
           "created_at",
           "updated_at"
         ],
         "type": "object",
         "properties": {
           "object": {
-            "$ref": "#/components/schemas/SessionObject"
+            "$ref": "#/components/schemas/RoleObject"
           },
-          "id": {
+          "slug": {
             "type": "string",
-            "description": "The unique ID of the session.",
-            "example": "session_01H93ZY4F80QPBEZ1R5B2SHQG8"
+            "description": "The slug identifier of the role.",
+            "example": "admin"
           },
-          "impersonator": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf103DataImpersonator"
-          },
-          "ip_address": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The IP address from which the session was created.",
-            "example": "198.51.100.42"
-          },
-          "organization_id": {
+          "resource_type_slug": {
             "type": "string",
-            "description": "The ID of the organization this session is associated with.",
-            "example": "org_01H945H0YD4F97JN9MATX7BYAG"
+            "description": "The slug of the resource type the role applies to.",
+            "example": "organization"
           },
-          "user_agent": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The user agent string from the device that created the session.",
-            "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "The ID of the user this session belongs to.",
-            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
-          },
-          "auth_method": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf103DataAuthMethod"
-          },
-          "status": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf103DataStatus"
-          },
-          "expires_at": {
-            "type": "string",
-            "description": "The timestamp when the session expires.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "ended_at": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The timestamp when the session ended.",
-            "format": "date-time",
-            "example": null
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The permissions granted by the role."
           },
           "created_at": {
             "type": "string",
@@ -40927,79 +41754,35 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf104Data": {
+      "EventSchemaAllOf2OneOf107Data": {
         "required": [
           "object",
-          "id",
-          "ip_address",
-          "user_agent",
-          "user_id",
-          "auth_method",
-          "status",
-          "expires_at",
-          "ended_at",
+          "slug",
+          "resource_type_slug",
           "created_at",
           "updated_at"
         ],
         "type": "object",
         "properties": {
           "object": {
-            "$ref": "#/components/schemas/SessionObject"
+            "$ref": "#/components/schemas/RoleObject"
           },
-          "id": {
+          "slug": {
             "type": "string",
-            "description": "The unique ID of the session.",
-            "example": "session_01H93ZY4F80QPBEZ1R5B2SHQG8"
+            "description": "The slug identifier of the role.",
+            "example": "admin"
           },
-          "impersonator": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf104DataImpersonator"
-          },
-          "ip_address": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The IP address from which the session was created.",
-            "example": "198.51.100.42"
-          },
-          "organization_id": {
+          "resource_type_slug": {
             "type": "string",
-            "description": "The ID of the organization this session is associated with.",
-            "example": "org_01H945H0YD4F97JN9MATX7BYAG"
+            "description": "The slug of the resource type the role applies to.",
+            "example": "organization"
           },
-          "user_agent": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The user agent string from the device that created the session.",
-            "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "The ID of the user this session belongs to.",
-            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
-          },
-          "auth_method": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf104DataAuthMethod"
-          },
-          "status": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf104DataStatus"
-          },
-          "expires_at": {
-            "type": "string",
-            "description": "The timestamp when the session expires.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "ended_at": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The timestamp when the session ended.",
-            "format": "date-time",
-            "example": null
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The permissions granted by the role."
           },
           "created_at": {
             "type": "string",
@@ -41018,6 +41801,184 @@
       },
       "EventSchemaAllOf2OneOf108Data": {
         "required": [
+          "object",
+          "id",
+          "ip_address",
+          "user_agent",
+          "user_id",
+          "auth_method",
+          "status",
+          "expires_at",
+          "ended_at",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/SessionObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the session.",
+            "example": "session_01H93ZY4F80QPBEZ1R5B2SHQG8"
+          },
+          "impersonator": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf108DataImpersonator"
+          },
+          "ip_address": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The IP address from which the session was created.",
+            "example": "198.51.100.42"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization this session is associated with.",
+            "example": "org_01H945H0YD4F97JN9MATX7BYAG"
+          },
+          "user_agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user agent string from the device that created the session.",
+            "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user this session belongs to.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf108DataAuthMethod"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf108DataStatus"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The timestamp when the session expires.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "ended_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The timestamp when the session ended.",
+            "format": "date-time",
+            "example": null
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf109Data": {
+        "required": [
+          "object",
+          "id",
+          "ip_address",
+          "user_agent",
+          "user_id",
+          "auth_method",
+          "status",
+          "expires_at",
+          "ended_at",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/SessionObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the session.",
+            "example": "session_01H93ZY4F80QPBEZ1R5B2SHQG8"
+          },
+          "impersonator": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf109DataImpersonator"
+          },
+          "ip_address": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The IP address from which the session was created.",
+            "example": "198.51.100.42"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization this session is associated with.",
+            "example": "org_01H945H0YD4F97JN9MATX7BYAG"
+          },
+          "user_agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user agent string from the device that created the session.",
+            "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user this session belongs to.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf109DataAuthMethod"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf109DataStatus"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The timestamp when the session expires.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "ended_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The timestamp when the session ended.",
+            "format": "date-time",
+            "example": null
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf113Data": {
+        "required": [
           "organization_id",
           "key_provider"
         ],
@@ -41035,7 +41996,7 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf109Data": {
+      "EventSchemaAllOf2OneOf114Data": {
         "required": [
           "organization_id",
           "key_provider",
@@ -41060,188 +42021,13 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf110Data": {
-        "required": [
-          "actor_id",
-          "actor_source",
-          "actor_name",
-          "kv_name",
-          "key_id",
-          "key_context"
-        ],
-        "type": "object",
-        "properties": {
-          "actor_id": {
-            "type": "string",
-            "description": "The unique identifier of the actor.",
-            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf110DataActorSource"
-          },
-          "actor_name": {
-            "type": "string",
-            "description": "The name of the actor.",
-            "example": "Jane Doe"
-          },
-          "kv_name": {
-            "type": "string",
-            "description": "The name of the key-value store.",
-            "example": "user-secrets"
-          },
-          "key_id": {
-            "type": "string",
-            "description": "The unique identifier of the encryption key.",
-            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "key_context": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf110DataKeyContextProperty"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf111Data": {
-        "required": [
-          "actor_id",
-          "actor_source",
-          "actor_name",
-          "kv_name"
-        ],
-        "type": "object",
-        "properties": {
-          "actor_id": {
-            "type": "string",
-            "description": "The unique identifier of the actor.",
-            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf111DataActorSource"
-          },
-          "actor_name": {
-            "type": "string",
-            "description": "The name of the actor.",
-            "example": "Jane Doe"
-          },
-          "kv_name": {
-            "type": "string",
-            "description": "The name of the key-value store.",
-            "example": "user-secrets"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf112Data": {
-        "required": [
-          "actor_id",
-          "actor_source",
-          "actor_name",
-          "kv_name",
-          "key_id"
-        ],
-        "type": "object",
-        "properties": {
-          "actor_id": {
-            "type": "string",
-            "description": "The unique identifier of the actor.",
-            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf112DataActorSource"
-          },
-          "actor_name": {
-            "type": "string",
-            "description": "The name of the actor.",
-            "example": "Jane Doe"
-          },
-          "kv_name": {
-            "type": "string",
-            "description": "The name of the key-value store.",
-            "example": "user-secrets"
-          },
-          "key_id": {
-            "type": "string",
-            "description": "The unique identifier of the encryption key.",
-            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf113Data": {
-        "required": [
-          "actor_id",
-          "actor_source",
-          "actor_name",
-          "kv_name",
-          "key_id",
-          "key_context"
-        ],
-        "type": "object",
-        "properties": {
-          "actor_id": {
-            "type": "string",
-            "description": "The unique identifier of the actor.",
-            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf113DataActorSource"
-          },
-          "actor_name": {
-            "type": "string",
-            "description": "The name of the actor.",
-            "example": "Jane Doe"
-          },
-          "kv_name": {
-            "type": "string",
-            "description": "The name of the key-value store.",
-            "example": "user-secrets"
-          },
-          "key_id": {
-            "type": "string",
-            "description": "The unique identifier of the encryption key.",
-            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "key_context": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf113DataKeyContextProperty"
-          }
-        },
-        "description": "The event payload."
-      },
-      "EventSchemaAllOf2OneOf114Data": {
-        "required": [
-          "actor_id",
-          "actor_source",
-          "actor_name",
-          "key_id"
-        ],
-        "type": "object",
-        "properties": {
-          "actor_id": {
-            "type": "string",
-            "description": "The unique identifier of the actor.",
-            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          },
-          "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf114DataActorSource"
-          },
-          "actor_name": {
-            "type": "string",
-            "description": "The name of the actor.",
-            "example": "Jane Doe"
-          },
-          "key_id": {
-            "type": "string",
-            "description": "The unique identifier of the data encryption key.",
-            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
-          }
-        },
-        "description": "The event payload."
-      },
       "EventSchemaAllOf2OneOf115Data": {
         "required": [
           "actor_id",
           "actor_source",
           "actor_name",
-          "key_ids",
+          "kv_name",
+          "key_id",
           "key_context"
         ],
         "type": "object",
@@ -41259,12 +42045,15 @@
             "description": "The name of the actor.",
             "example": "Jane Doe"
           },
-          "key_ids": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The unique identifiers of the data encryption keys."
+          "kv_name": {
+            "type": "string",
+            "description": "The name of the key-value store.",
+            "example": "user-secrets"
+          },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "key_context": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf115DataKeyContextProperty"
@@ -41277,8 +42066,7 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "key_name",
-          "key_id"
+          "kv_name"
         ],
         "type": "object",
         "properties": {
@@ -41295,15 +42083,10 @@
             "description": "The name of the actor.",
             "example": "Jane Doe"
           },
-          "key_name": {
+          "kv_name": {
             "type": "string",
-            "description": "The name of the key encryption key.",
-            "example": "production-kek"
-          },
-          "key_id": {
-            "type": "string",
-            "description": "The unique identifier of the key encryption key.",
-            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            "description": "The name of the key-value store.",
+            "example": "user-secrets"
           }
         },
         "description": "The event payload."
@@ -41313,7 +42096,7 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "key_name",
+          "kv_name",
           "key_id"
         ],
         "type": "object",
@@ -41331,14 +42114,14 @@
             "description": "The name of the actor.",
             "example": "Jane Doe"
           },
-          "key_name": {
+          "kv_name": {
             "type": "string",
-            "description": "The name of the key encryption key.",
-            "example": "production-kek"
+            "description": "The name of the key-value store.",
+            "example": "user-secrets"
           },
           "key_id": {
             "type": "string",
-            "description": "The unique identifier of the key encryption key.",
+            "description": "The unique identifier of the encryption key.",
             "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
           }
         },
@@ -41349,7 +42132,9 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "kv_name"
+          "kv_name",
+          "key_id",
+          "key_context"
         ],
         "type": "object",
         "properties": {
@@ -41370,11 +42155,187 @@
             "type": "string",
             "description": "The name of the key-value store.",
             "example": "user-secrets"
+          },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "key_context": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf118DataKeyContextProperty"
           }
         },
         "description": "The event payload."
       },
       "EventSchemaAllOf2OneOf119Data": {
+        "required": [
+          "actor_id",
+          "actor_source",
+          "actor_name",
+          "key_id"
+        ],
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "description": "The unique identifier of the actor.",
+            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "actor_source": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf119DataActorSource"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "The name of the actor.",
+            "example": "Jane Doe"
+          },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the data encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf120Data": {
+        "required": [
+          "actor_id",
+          "actor_source",
+          "actor_name",
+          "key_ids",
+          "key_context"
+        ],
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "description": "The unique identifier of the actor.",
+            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "actor_source": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf120DataActorSource"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "The name of the actor.",
+            "example": "Jane Doe"
+          },
+          "key_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The unique identifiers of the data encryption keys."
+          },
+          "key_context": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf120DataKeyContextProperty"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf121Data": {
+        "required": [
+          "actor_id",
+          "actor_source",
+          "actor_name",
+          "key_name",
+          "key_id"
+        ],
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "description": "The unique identifier of the actor.",
+            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "actor_source": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf121DataActorSource"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "The name of the actor.",
+            "example": "Jane Doe"
+          },
+          "key_name": {
+            "type": "string",
+            "description": "The name of the key encryption key.",
+            "example": "production-kek"
+          },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the key encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf122Data": {
+        "required": [
+          "actor_id",
+          "actor_source",
+          "actor_name",
+          "key_name",
+          "key_id"
+        ],
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "description": "The unique identifier of the actor.",
+            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "actor_source": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf122DataActorSource"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "The name of the actor.",
+            "example": "Jane Doe"
+          },
+          "key_name": {
+            "type": "string",
+            "description": "The name of the key encryption key.",
+            "example": "production-kek"
+          },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the key encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf123Data": {
+        "required": [
+          "actor_id",
+          "actor_source",
+          "actor_name",
+          "kv_name"
+        ],
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "description": "The unique identifier of the actor.",
+            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "actor_source": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf123DataActorSource"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "The name of the actor.",
+            "example": "Jane Doe"
+          },
+          "kv_name": {
+            "type": "string",
+            "description": "The name of the key-value store.",
+            "example": "user-secrets"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf124Data": {
         "required": [
           "actor_id",
           "actor_source",
@@ -41388,7 +42349,7 @@
             "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf119DataActorSource"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf124DataActorSource"
           },
           "actor_name": {
             "type": "string",
@@ -43184,7 +44145,7 @@
           "tier": "diamond"
         }
       },
-      "EventSchemaAllOf2OneOf103DataImpersonator": {
+      "EventSchemaAllOf2OneOf108DataImpersonator": {
         "required": [
           "email",
           "reason"
@@ -43207,7 +44168,7 @@
         },
         "description": "Information about the impersonator if this session was created via impersonation."
       },
-      "EventSchemaAllOf2OneOf104DataImpersonator": {
+      "EventSchemaAllOf2OneOf109DataImpersonator": {
         "required": [
           "email",
           "reason"
@@ -43229,20 +44190,20 @@
           }
         },
         "description": "Information about the impersonator if this session was created via impersonation."
-      },
-      "EventSchemaAllOf2OneOf110DataKeyContext": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
-      },
-      "EventSchemaAllOf2OneOf113DataKeyContext": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
       },
       "EventSchemaAllOf2OneOf115DataKeyContext": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "EventSchemaAllOf2OneOf118DataKeyContext": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "EventSchemaAllOf2OneOf120DataKeyContext": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -48449,6 +49410,32 @@
           }
         }
       },
+      "DataIntegrationsManagementControllerListDataIntegrations404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerListDataIntegrations422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "DataIntegrationsManagementControllerGetDataIntegration404Response": {
         "required": [
           "message"
@@ -48834,6 +49821,97 @@
         }
       },
       "DataIntegrationsControllerVendCredentials422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerGetOrganizationDataIntegration404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateOrganizationDataIntegration400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateOrganizationDataIntegration403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateOrganizationDataIntegration404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateOrganizationDataIntegration409Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerUpdateOrganizationDataIntegration422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsManagementControllerDeleteOrganizationDataIntegration404Response": {
         "required": [
           "message"
         ],
@@ -51213,6 +52291,89 @@
           }
         }
       },
+      "AuthkitOAuthResourcesControllerCreate401Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthkitOAuthResourcesControllerCreate422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthkitOAuthResourcesControllerList200Response": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ListObject"
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/AuthkitOAuthResourcesControllerList200ResponseListMetadata"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuthkitOAuthResource"
+            },
+            "description": "The list of records for the current page."
+          }
+        }
+      },
+      "AuthkitOAuthResourcesControllerList401Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthkitOAuthResourcesControllerDelete401Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthkitOAuthResourcesControllerDelete404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "UserlandSsoControllerDeviceAuthorizationRequest": {
         "required": [
           "client_id"
@@ -53382,6 +54543,23 @@
           }
         }
       },
+      "DataIntegrationsUserManagementControllerDeleteUserDataInstallation503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "DataIntegrationsUserManagementControllerCreateUserDataInstallation404Response": {
         "required": [
           "message"
@@ -53410,14 +54588,42 @@
       },
       "DataIntegrationsUserManagementControllerCreateUserDataInstallation422Response": {
         "required": [
+          "code",
           "message"
         ],
         "type": "object",
         "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation422ResponseCode"
+          },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "example": "Request could not be processed."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation422ResponseErrorsItem"
+            },
+            "description": "The list of validation errors."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerCreateUserDataInstallation503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -53444,6 +54650,47 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerUpdateUserDataInstallation422Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/InvalidRefreshTokenCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerUpdateUserDataInstallation422ResponseErrorsItem"
+            },
+            "description": "The list of validation errors."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerUpdateUserDataInstallation503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -55147,19 +56394,19 @@
         },
         "description": "Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization."
       },
-      "EventSchemaAllOf2OneOf110DataKeyContextProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
-      },
-      "EventSchemaAllOf2OneOf113DataKeyContextProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        }
-      },
       "EventSchemaAllOf2OneOf115DataKeyContextProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "EventSchemaAllOf2OneOf118DataKeyContextProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "EventSchemaAllOf2OneOf120DataKeyContextProperty": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -55737,6 +56984,32 @@
           }
         }
       },
+      "AuthkitOAuthResourcesControllerList200ResponseListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "authkit_oauth_resource_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "authkit_oauth_resource_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
+      },
       "CorsOriginsControllerCreateCorsOrigin422ResponseErrorsItem": {
         "type": "object",
         "properties": {
@@ -56151,6 +57424,44 @@
             "type": "string",
             "description": "The field that failed validation.",
             "example": "event.action"
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerCreateUserDataInstallation422ResponseErrorsItem": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The validation error code.",
+            "example": "unknown_event_type"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the validation error.",
+            "example": "Invalid enum value."
+          }
+        }
+      },
+      "DataIntegrationsUserManagementControllerUpdateUserDataInstallation422ResponseErrorsItem": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The validation error code.",
+            "example": "unknown_event_type"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the validation error.",
+            "example": "Invalid enum value."
           }
         }
       },
@@ -56835,20 +58146,20 @@
       },
       "CreateDataIntegrationDtoOwnership": {
         "enum": [
-          "userland_user",
+          "user",
           "organization"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Who owns the Data Integration. \u0060userland_user\u0060 (the default) creates the integration users connect their own accounts to; \u0060organization\u0060 creates the root organizations connect to. Ownership is fixed at creation, and one integration of each ownership may exist per provider. Independent of \u0060credentials.type\u0060.",
-        "example": "userland_user",
+        "description": "Who owns the Data Integration. \u0060user\u0060 (the default) creates the integration users connect their own accounts to; \u0060organization\u0060 creates the root organizations connect to. Ownership is fixed at creation, and one integration of each ownership may exist per provider. Independent of \u0060credentials.type\u0060.",
+        "example": "user",
         "x-ms-enum": {
           "name": "CreateDataIntegrationDtoOwnership",
           "modelAsString": false,
           "values": [
             {
-              "value": "userland_user",
-              "name": "UserlandUser"
+              "value": "user",
+              "name": "User"
             },
             {
               "value": "organization",
@@ -58021,6 +59332,11 @@
           "permission.created",
           "permission.deleted",
           "permission.updated",
+          "pipes.account_connection.add_failed",
+          "pipes.account_connection.connected",
+          "pipes.account_connection.connection_failed",
+          "pipes.account_connection.disconnected",
+          "pipes.account_connection.reauthorization_needed",
           "pipes.connected_account.connected",
           "pipes.connected_account.connection_failed",
           "pipes.connected_account.disconnected",
@@ -58402,6 +59718,26 @@
               "name": "PermissionUpdated"
             },
             {
+              "value": "pipes.account_connection.add_failed",
+              "name": "PipesAccountConnectionAddFailed"
+            },
+            {
+              "value": "pipes.account_connection.connected",
+              "name": "PipesAccountConnectionConnected"
+            },
+            {
+              "value": "pipes.account_connection.connection_failed",
+              "name": "PipesAccountConnectionConnectionFailed"
+            },
+            {
+              "value": "pipes.account_connection.disconnected",
+              "name": "PipesAccountConnectionDisconnected"
+            },
+            {
+              "value": "pipes.account_connection.reauthorization_needed",
+              "name": "PipesAccountConnectionReauthorizationNeeded"
+            },
+            {
               "value": "pipes.connected_account.connected",
               "name": "PipesConnectedAccountConnected"
             },
@@ -58557,6 +59893,11 @@
           "permission.created",
           "permission.deleted",
           "permission.updated",
+          "pipes.account_connection.add_failed",
+          "pipes.account_connection.connected",
+          "pipes.account_connection.connection_failed",
+          "pipes.account_connection.disconnected",
+          "pipes.account_connection.reauthorization_needed",
           "pipes.connected_account.connected",
           "pipes.connected_account.connection_failed",
           "pipes.connected_account.disconnected",
@@ -58936,6 +60277,26 @@
             {
               "value": "permission.updated",
               "name": "PermissionUpdated"
+            },
+            {
+              "value": "pipes.account_connection.add_failed",
+              "name": "PipesAccountConnectionAddFailed"
+            },
+            {
+              "value": "pipes.account_connection.connected",
+              "name": "PipesAccountConnectionConnected"
+            },
+            {
+              "value": "pipes.account_connection.connection_failed",
+              "name": "PipesAccountConnectionConnectionFailed"
+            },
+            {
+              "value": "pipes.account_connection.disconnected",
+              "name": "PipesAccountConnectionDisconnected"
+            },
+            {
+              "value": "pipes.account_connection.reauthorization_needed",
+              "name": "PipesAccountConnectionReauthorizationNeeded"
             },
             {
               "value": "pipes.connected_account.connected",
@@ -60683,20 +62044,20 @@
       },
       "DataIntegrationOwnership": {
         "enum": [
-          "userland_user",
+          "user",
           "organization"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Who owns the Data Integration: \u0060userland_user\u0060 when users connect their own accounts, \u0060organization\u0060 when organizations connect. Fixed at creation.",
-        "example": "userland_user",
+        "description": "Who owns the Data Integration: \u0060user\u0060 when users connect their own accounts, \u0060organization\u0060 when organizations connect. Fixed at creation.",
+        "example": "user",
         "x-ms-enum": {
           "name": "DataIntegrationOwnership",
           "modelAsString": false,
           "values": [
             {
-              "value": "userland_user",
-              "name": "UserlandUser"
+              "value": "user",
+              "name": "User"
             },
             {
               "value": "organization",
@@ -61017,6 +62378,24 @@
             {
               "value": "country",
               "name": "Country"
+            }
+          ]
+        }
+      },
+      "AuthkitOAuthResourceObject": {
+        "const": null,
+        "enum": [
+          "authkit_oauth_resource"
+        ],
+        "type": "string",
+        "description": "The object type.",
+        "x-ms-enum": {
+          "name": "AuthkitOAuthResourceObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "authkit_oauth_resource",
+              "name": "AuthkitOAuthResource"
             }
           ]
         }
@@ -63420,6 +64799,91 @@
             {
               "value": "permission.updated",
               "name": "PermissionUpdated"
+            }
+          ]
+        }
+      },
+      "PipesAccountConnectionAddFailedEvent": {
+        "const": null,
+        "enum": [
+          "pipes.account_connection.add_failed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "PipesAccountConnectionAddFailedEvent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pipes.account_connection.add_failed",
+              "name": "PipesAccountConnectionAddFailed"
+            }
+          ]
+        }
+      },
+      "PipesAccountConnectionConnectedEvent": {
+        "const": null,
+        "enum": [
+          "pipes.account_connection.connected"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "PipesAccountConnectionConnectedEvent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pipes.account_connection.connected",
+              "name": "PipesAccountConnectionConnected"
+            }
+          ]
+        }
+      },
+      "PipesAccountConnectionConnectionFailedEvent": {
+        "const": null,
+        "enum": [
+          "pipes.account_connection.connection_failed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "PipesAccountConnectionConnectionFailedEvent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pipes.account_connection.connection_failed",
+              "name": "PipesAccountConnectionConnectionFailed"
+            }
+          ]
+        }
+      },
+      "PipesAccountConnectionDisconnectedEvent": {
+        "const": null,
+        "enum": [
+          "pipes.account_connection.disconnected"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "PipesAccountConnectionDisconnectedEvent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pipes.account_connection.disconnected",
+              "name": "PipesAccountConnectionDisconnected"
+            }
+          ]
+        }
+      },
+      "PipesAccountConnectionReauthorizationNeededEvent": {
+        "const": null,
+        "enum": [
+          "pipes.account_connection.reauthorization_needed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "PipesAccountConnectionReauthorizationNeededEvent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "pipes.account_connection.reauthorization_needed",
+              "name": "PipesAccountConnectionReauthorizationNeeded"
             }
           ]
         }
@@ -66617,21 +68081,22 @@
           ]
         }
       },
-      "EventSchemaAllOf2OneOf96DataResourceType": {
+      "EventSchemaAllOf2OneOf101DataResourceType": {
         "enum": [
           "users",
           "organizations",
           "events",
           "sessions",
           "auditLogEvents",
-          "connections"
+          "connections",
+          "directoryUsers"
         ],
         "type": "string",
         "additionalProperties": false,
         "description": "The type of resource being exported.",
         "example": "users",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf96DataResourceType",
+          "name": "EventSchemaAllOf2OneOf101DataResourceType",
           "modelAsString": false,
           "values": [
             {
@@ -66657,25 +68122,30 @@
             {
               "value": "connections",
               "name": "Connections"
+            },
+            {
+              "value": "directoryUsers",
+              "name": "DirectoryUsers"
             }
           ]
         }
       },
-      "EventSchemaAllOf2OneOf97DataResourceType": {
+      "EventSchemaAllOf2OneOf102DataResourceType": {
         "enum": [
           "users",
           "organizations",
           "events",
           "sessions",
           "auditLogEvents",
-          "connections"
+          "connections",
+          "directoryUsers"
         ],
         "type": "string",
         "additionalProperties": false,
         "description": "The type of resource being exported.",
         "example": "users",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf97DataResourceType",
+          "name": "EventSchemaAllOf2OneOf102DataResourceType",
           "modelAsString": false,
           "values": [
             {
@@ -66701,25 +68171,30 @@
             {
               "value": "connections",
               "name": "Connections"
+            },
+            {
+              "value": "directoryUsers",
+              "name": "DirectoryUsers"
             }
           ]
         }
       },
-      "EventSchemaAllOf2OneOf98DataResourceType": {
+      "EventSchemaAllOf2OneOf103DataResourceType": {
         "enum": [
           "users",
           "organizations",
           "events",
           "sessions",
           "auditLogEvents",
-          "connections"
+          "connections",
+          "directoryUsers"
         ],
         "type": "string",
         "additionalProperties": false,
         "description": "The type of resource being exported.",
         "example": "users",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf98DataResourceType",
+          "name": "EventSchemaAllOf2OneOf103DataResourceType",
           "modelAsString": false,
           "values": [
             {
@@ -66745,25 +68220,30 @@
             {
               "value": "connections",
               "name": "Connections"
+            },
+            {
+              "value": "directoryUsers",
+              "name": "DirectoryUsers"
             }
           ]
         }
       },
-      "EventSchemaAllOf2OneOf99DataResourceType": {
+      "EventSchemaAllOf2OneOf104DataResourceType": {
         "enum": [
           "users",
           "organizations",
           "events",
           "sessions",
           "auditLogEvents",
-          "connections"
+          "connections",
+          "directoryUsers"
         ],
         "type": "string",
         "additionalProperties": false,
         "description": "The type of resource being exported.",
         "example": "users",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf99DataResourceType",
+          "name": "EventSchemaAllOf2OneOf104DataResourceType",
           "modelAsString": false,
           "values": [
             {
@@ -66789,6 +68269,10 @@
             {
               "value": "connections",
               "name": "Connections"
+            },
+            {
+              "value": "directoryUsers",
+              "name": "DirectoryUsers"
             }
           ]
         }
@@ -66811,7 +68295,7 @@
           ]
         }
       },
-      "EventSchemaAllOf2OneOf103DataAuthMethod": {
+      "EventSchemaAllOf2OneOf108DataAuthMethod": {
         "enum": [
           "cross_app_auth",
           "external_auth",
@@ -66829,7 +68313,7 @@
         "description": "The authentication method used to create this session.",
         "example": "sso",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf103DataAuthMethod",
+          "name": "EventSchemaAllOf2OneOf108DataAuthMethod",
           "modelAsString": false,
           "values": [
             {
@@ -66875,7 +68359,7 @@
           ]
         }
       },
-      "EventSchemaAllOf2OneOf103DataStatus": {
+      "EventSchemaAllOf2OneOf108DataStatus": {
         "enum": [
           "active",
           "expired",
@@ -66886,7 +68370,7 @@
         "description": "The current status of the session.",
         "example": "active",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf103DataStatus",
+          "name": "EventSchemaAllOf2OneOf108DataStatus",
           "modelAsString": false,
           "values": [
             {
@@ -66904,7 +68388,7 @@
           ]
         }
       },
-      "EventSchemaAllOf2OneOf104DataAuthMethod": {
+      "EventSchemaAllOf2OneOf109DataAuthMethod": {
         "enum": [
           "cross_app_auth",
           "external_auth",
@@ -66922,7 +68406,7 @@
         "description": "The authentication method used to create this session.",
         "example": "sso",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf104DataAuthMethod",
+          "name": "EventSchemaAllOf2OneOf109DataAuthMethod",
           "modelAsString": false,
           "values": [
             {
@@ -66968,7 +68452,7 @@
           ]
         }
       },
-      "EventSchemaAllOf2OneOf104DataStatus": {
+      "EventSchemaAllOf2OneOf109DataStatus": {
         "enum": [
           "active",
           "expired",
@@ -66979,7 +68463,7 @@
         "description": "The current status of the session.",
         "example": "active",
         "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf104DataStatus",
+          "name": "EventSchemaAllOf2OneOf109DataStatus",
           "modelAsString": false,
           "values": [
             {
@@ -66993,116 +68477,6 @@
             {
               "value": "revoked",
               "name": "Revoked"
-            }
-          ]
-        }
-      },
-      "EventSchemaAllOf2OneOf110DataActorSource": {
-        "enum": [
-          "api",
-          "dashboard"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf110DataActorSource",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "api",
-              "name": "Api"
-            },
-            {
-              "value": "dashboard",
-              "name": "Dashboard"
-            }
-          ]
-        }
-      },
-      "EventSchemaAllOf2OneOf111DataActorSource": {
-        "enum": [
-          "api",
-          "dashboard"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf111DataActorSource",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "api",
-              "name": "Api"
-            },
-            {
-              "value": "dashboard",
-              "name": "Dashboard"
-            }
-          ]
-        }
-      },
-      "EventSchemaAllOf2OneOf112DataActorSource": {
-        "enum": [
-          "api",
-          "dashboard"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf112DataActorSource",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "api",
-              "name": "Api"
-            },
-            {
-              "value": "dashboard",
-              "name": "Dashboard"
-            }
-          ]
-        }
-      },
-      "EventSchemaAllOf2OneOf113DataActorSource": {
-        "enum": [
-          "api",
-          "dashboard"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf113DataActorSource",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "api",
-              "name": "Api"
-            },
-            {
-              "value": "dashboard",
-              "name": "Dashboard"
-            }
-          ]
-        }
-      },
-      "EventSchemaAllOf2OneOf114DataActorSource": {
-        "enum": [
-          "api",
-          "dashboard"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "x-ms-enum": {
-          "name": "EventSchemaAllOf2OneOf114DataActorSource",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "api",
-              "name": "Api"
-            },
-            {
-              "value": "dashboard",
-              "name": "Dashboard"
             }
           ]
         }
@@ -67204,6 +68578,116 @@
         "additionalProperties": false,
         "x-ms-enum": {
           "name": "EventSchemaAllOf2OneOf119DataActorSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api",
+              "name": "Api"
+            },
+            {
+              "value": "dashboard",
+              "name": "Dashboard"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf120DataActorSource": {
+        "enum": [
+          "api",
+          "dashboard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf120DataActorSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api",
+              "name": "Api"
+            },
+            {
+              "value": "dashboard",
+              "name": "Dashboard"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf121DataActorSource": {
+        "enum": [
+          "api",
+          "dashboard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf121DataActorSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api",
+              "name": "Api"
+            },
+            {
+              "value": "dashboard",
+              "name": "Dashboard"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf122DataActorSource": {
+        "enum": [
+          "api",
+          "dashboard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf122DataActorSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api",
+              "name": "Api"
+            },
+            {
+              "value": "dashboard",
+              "name": "Dashboard"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf123DataActorSource": {
+        "enum": [
+          "api",
+          "dashboard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf123DataActorSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api",
+              "name": "Api"
+            },
+            {
+              "value": "dashboard",
+              "name": "Dashboard"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf124DataActorSource": {
+        "enum": [
+          "api",
+          "dashboard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf124DataActorSource",
           "modelAsString": false,
           "values": [
             {
@@ -69609,6 +71093,54 @@
           ]
         }
       },
+      "DataIntegrationsUserManagementControllerCreateUserDataInstallation422ResponseCode": {
+        "enum": [
+          "invalid_refresh_token",
+          "invalid_token_combination",
+          "invalid_data_integration_state"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "invalid_refresh_token",
+        "x-ms-enum": {
+          "name": "DataIntegrationsUserManagementControllerCreateUserDataInstallation422ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "invalid_refresh_token",
+              "name": "InvalidRefreshToken"
+            },
+            {
+              "value": "invalid_token_combination",
+              "name": "InvalidTokenCombination"
+            },
+            {
+              "value": "invalid_data_integration_state",
+              "name": "InvalidDataIntegrationState"
+            }
+          ]
+        }
+      },
+      "InvalidRefreshTokenCode": {
+        "const": null,
+        "enum": [
+          "invalid_refresh_token"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "invalid_refresh_token",
+        "x-ms-enum": {
+          "name": "InvalidRefreshTokenCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "invalid_refresh_token",
+              "name": "InvalidRefreshToken"
+            }
+          ]
+        }
+      },
       "WaitlistEntriesControllerApprove200ResponseState": {
         "enum": [
           "pending",
@@ -70735,6 +72267,29 @@
           ]
         }
       },
+      "DataIntegrationsManagementControllerListDataIntegrationsOwnershipParameter": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsManagementControllerListDataIntegrationsOwnershipParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
       "RadarStandaloneControllerUpdateRadarListTypeParameter": {
         "enum": [
           "ip_address",
@@ -71257,6 +72812,10 @@
     {
       "name": "user-management.authentication",
       "description": "User authentication endpoints."
+    },
+    {
+      "name": "user-management.authkit-oauth-resources",
+      "description": "Manage MCP resource indicators (RFC 8707)."
     },
     {
       "name": "user-management.cors-origins",
