@@ -13,6 +13,22 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataIntegrationInstallation : IAdditionalDataHolder, IParsable
     {
+        /// <summary>A mutable, non-unique display name for this connection.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountDisplayName { get; set; }
+#nullable restore
+#else
+        public string AccountDisplayName { get; set; }
+#endif
+        /// <summary>A best-effort provider account identifier used for correlation, not connection selection.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountIdentifier { get; set; }
+#nullable restore
+#else
+        public string AccountIdentifier { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The last four characters of the stored API key. The full key is never returned.</summary>
@@ -23,6 +39,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ApiKeyLast4 { get; set; }
 #endif
+        /// <summary>Whether this is the compatibility connection visible to undeclared clients or a standard connection for plural-aware clients.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallationConnectionRole? ConnectionRole { get; set; }
         /// <summary>Unique identifier of the installation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,7 +90,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_display_name", n => { AccountDisplayName = n.GetStringValue(); } },
+                { "account_identifier", n => { AccountIdentifier = n.GetStringValue(); } },
                 { "api_key_last_4", n => { ApiKeyLast4 = n.GetStringValue(); } },
+                { "connection_role", n => { ConnectionRole = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallationConnectionRole>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -85,7 +106,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("account_display_name", AccountDisplayName);
+            writer.WriteStringValue("account_identifier", AccountIdentifier);
             writer.WriteStringValue("api_key_last_4", ApiKeyLast4);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationInstallationConnectionRole>("connection_role", ConnectionRole);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("user_id", UserId);

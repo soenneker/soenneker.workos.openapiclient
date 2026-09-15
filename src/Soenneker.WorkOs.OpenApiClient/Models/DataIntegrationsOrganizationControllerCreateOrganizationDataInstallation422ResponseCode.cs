@@ -5,12 +5,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>The error code identifying the type of error.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationsUserManagementControllerCreateUserDataInstallation422ResponseCode
+    public enum DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseCode
     {
-        [EnumMember(Value = "invalid_refresh_token")]
-        #pragma warning disable CS1591
-        InvalidRefreshToken,
-        #pragma warning restore CS1591
         [EnumMember(Value = "invalid_token_combination")]
         #pragma warning disable CS1591
         InvalidTokenCombination,

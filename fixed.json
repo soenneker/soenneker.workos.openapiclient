@@ -1886,6 +1886,16 @@
                 }
               }
             }
+          },
+          "429": {
+            "description": "429 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationFactorsControllerChallenge429Response"
+                }
+              }
+            }
           }
         }
       }
@@ -7654,6 +7664,9 @@
                 "example": {
                   "object": "connected_account",
                   "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "connection_role": "compatibility",
+                  "account_identifier": null,
+                  "account_display_name": null,
                   "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "scopes": [],
@@ -7840,6 +7853,9 @@
                 "example": {
                   "object": "connected_account",
                   "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "connection_role": "compatibility",
+                  "account_identifier": null,
+                  "account_display_name": null,
                   "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "scopes": [],
@@ -11273,6 +11289,607 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/OrganizationAuthorizedApplicationsControllerList422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/connected_accounts/{slug}": {
+      "get": {
+        "tags": [
+          "organizations.data-providers"
+        ],
+        "summary": "Get an organization connected account",
+        "description": "Retrieves an organization\u0027s [connected account](/reference/pipes/connected-account) for a specific provider.",
+        "operationId": "DataIntegrationsOrganizationControllerGetOrganizationDataInstallation",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "An [Organization](/reference/organization) identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the provider (e.g., \u0060github\u0060, \u0060slack\u0060, \u0060notion\u0060).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          },
+          {
+            "name": "supports_multiple_connections",
+            "in": "query",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
+          },
+          {
+            "name": "connected_account_id",
+            "in": "query",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the organization has several for this provider.",
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The connected account was retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectedAccount"
+                },
+                "example": {
+                  "object": "connected_account",
+                  "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "user_id": null,
+                  "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "connection_role": "compatibility",
+                  "account_identifier": "acme-workspace",
+                  "account_display_name": "Acme production",
+                  "scopes": [
+                    "repo",
+                    "user:email"
+                  ],
+                  "auth_method": "oauth",
+                  "api_key_last_4": null,
+                  "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
+                  "client_secret_last_4": "cdef",
+                  "config": {
+                    "instance_url": "https://example.my.salesforce.com"
+                  },
+                  "state": "connected",
+                  "created_at": "2024-01-16T14:20:00.000Z",
+                  "updated_at": "2024-01-16T14:20:00.000Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The connected account selector is malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerGetOrganizationDataInstallation400Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request is missing a valid API key."
+          },
+          "404": {
+            "description": "The organization or connected account was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerGetOrganizationDataInstallation404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Several connected accounts match this organization for the provider; one must be named.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "organizations.data-providers"
+        ],
+        "summary": "Delete an organization connected account",
+        "description": "Disconnects the organization\u0027s account for the provider, including removing any stored access and refresh tokens. A member will need to reauthorize if the organization wants to reconnect. This does not revoke access on the provider side.",
+        "operationId": "DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "An [Organization](/reference/organization) identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the provider (e.g., \u0060github\u0060, \u0060slack\u0060, \u0060notion\u0060).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          },
+          {
+            "name": "supports_multiple_connections",
+            "in": "query",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
+          },
+          {
+            "name": "connected_account_id",
+            "in": "query",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to delete.",
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The connected account was deleted successfully."
+          },
+          "400": {
+            "description": "The connected account selector is malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation400Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request is missing a valid API key."
+          },
+          "404": {
+            "description": "The organization or connected account was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Several connected accounts match this organization for the provider; one must be named.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The connected account or its WorkOS OAuth grant is being changed by another request. Retry the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation503Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "organizations.data-providers"
+        ],
+        "summary": "Import an organization connected account",
+        "description": "Imports an organization-owned [connected account](/reference/pipes/connected-account) by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.",
+        "operationId": "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "An [Organization](/reference/organization) identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the provider (e.g., \u0060github\u0060, \u0060slack\u0060, \u0060notion\u0060).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConnectedAccountDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "The connected account was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectedAccount"
+                },
+                "example": {
+                  "object": "connected_account",
+                  "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "user_id": null,
+                  "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "connection_role": "compatibility",
+                  "account_identifier": "acme-workspace",
+                  "account_display_name": "Acme production",
+                  "scopes": [
+                    "repo",
+                    "user:email"
+                  ],
+                  "auth_method": "oauth",
+                  "api_key_last_4": null,
+                  "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
+                  "client_secret_last_4": "cdef",
+                  "config": {
+                    "instance_url": "https://example.my.salesforce.com"
+                  },
+                  "state": "connected",
+                  "created_at": "2024-01-16T14:20:00.000Z",
+                  "updated_at": "2024-01-16T14:20:00.000Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request is missing a valid API key."
+          },
+          "404": {
+            "description": "The organization or data integration was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "A connected account already exists for this organization and integration.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request body is malformed (\u0060invalid_request_parameters\u0060), the data integration is not in a valid state (\u0060invalid_data_integration_state\u0060), the token combination is invalid (\u0060invalid_token_combination\u0060), or no client credentials are configured for the data integration (\u0060client_credentials_not_configured\u0060).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "organizations.data-providers"
+        ],
+        "summary": "Update an organization connected account",
+        "description": "Updates an organization\u0027s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.",
+        "operationId": "DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "An [Organization](/reference/organization) identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The slug identifier of the provider (e.g., \u0060github\u0060, \u0060slack\u0060, \u0060notion\u0060).",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          },
+          {
+            "name": "supports_multiple_connections",
+            "in": "query",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
+          },
+          {
+            "name": "connected_account_id",
+            "in": "query",
+            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to update.",
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConnectedAccountDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The connected account was updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectedAccount"
+                },
+                "example": {
+                  "object": "connected_account",
+                  "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "user_id": null,
+                  "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "connection_role": "compatibility",
+                  "account_identifier": "acme-workspace",
+                  "account_display_name": "Acme production",
+                  "scopes": [
+                    "repo",
+                    "user:email"
+                  ],
+                  "auth_method": "oauth",
+                  "api_key_last_4": null,
+                  "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
+                  "client_secret_last_4": "cdef",
+                  "config": {
+                    "instance_url": "https://example.my.salesforce.com"
+                  },
+                  "state": "connected",
+                  "created_at": "2024-01-16T14:20:00.000Z",
+                  "updated_at": "2024-01-16T14:20:00.000Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The connected account selector is malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation400Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request is missing a valid API key."
+          },
+          "404": {
+            "description": "The organization or connected account was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Several connected accounts match this organization for the provider; one must be named.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountSelectionRequiredError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request body is malformed (\u0060invalid_request_parameters\u0060).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/data_providers": {
+      "get": {
+        "tags": [
+          "organizations.data-providers"
+        ],
+        "summary": "List providers for an organization",
+        "description": "Retrieves the organization-owned providers configured for your environment and the organization\u0027s [connected account](/reference/pipes/connected-account) information for each. Providers owned by individual users are not included.",
+        "operationId": "DataIntegrationsOrganizationControllerGetOrganizationDataIntegrations",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "An [Organization](/reference/organization) identifier to list providers and connected accounts for.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "supports_multiple_connections",
+            "in": "query",
+            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of data providers was retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsListResponse"
+                },
+                "example": {
+                  "object": "list",
+                  "data": [
+                    {
+                      "object": "data_provider",
+                      "id": "data_integration_01EHZNVPK3SFK441A1RGBFSHRT",
+                      "name": "GitHub",
+                      "description": "Connect your GitHub account to access repositories.",
+                      "slug": "github",
+                      "integration_type": "github",
+                      "credentials_type": "oauth2",
+                      "scopes": [
+                        "repo",
+                        "user:email"
+                      ],
+                      "auth_methods": [
+                        "oauth"
+                      ],
+                      "ownership": "organization",
+                      "created_at": "2024-01-15T10:30:00.000Z",
+                      "updated_at": "2024-01-15T10:30:00.000Z",
+                      "integrationType": "github",
+                      "credentialsType": "oauth2",
+                      "createdAt": "2024-01-15T10:30:00.000Z",
+                      "updatedAt": "2024-01-15T10:30:00.000Z",
+                      "connected_account": {
+                        "object": "connected_account",
+                        "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                        "user_id": null,
+                        "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                        "connection_role": "compatibility",
+                        "account_identifier": "acme-workspace",
+                        "account_display_name": "Acme production",
+                        "scopes": [
+                          "repo",
+                          "user:email"
+                        ],
+                        "auth_method": "oauth",
+                        "api_key_last_4": null,
+                        "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
+                        "client_secret_last_4": "cdef",
+                        "config": {
+                          "instance_url": "https://example.my.salesforce.com"
+                        },
+                        "state": "connected",
+                        "created_at": "2024-01-16T14:20:00.000Z",
+                        "updated_at": "2024-01-16T14:20:00.000Z",
+                        "userlandUserId": null,
+                        "organizationId": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                        "createdAt": "2024-01-16T14:20:00.000Z",
+                        "updatedAt": "2024-01-16T14:20:00.000Z"
+                      },
+                      "connected_accounts": [
+                        {
+                          "object": "connected_account",
+                          "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                          "user_id": null,
+                          "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                          "connection_role": "compatibility",
+                          "account_identifier": "acme-workspace",
+                          "account_display_name": "Acme production",
+                          "scopes": [
+                            "repo",
+                            "user:email"
+                          ],
+                          "auth_method": "oauth",
+                          "api_key_last_4": null,
+                          "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
+                          "client_secret_last_4": "cdef",
+                          "config": {
+                            "instance_url": "https://example.my.salesforce.com"
+                          },
+                          "state": "connected",
+                          "created_at": "2024-01-16T14:20:00.000Z",
+                          "updated_at": "2024-01-16T14:20:00.000Z",
+                          "userlandUserId": null,
+                          "organizationId": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                          "createdAt": "2024-01-16T14:20:00.000Z",
+                          "updatedAt": "2024-01-16T14:20:00.000Z"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request is missing a valid API key."
+          },
+          "404": {
+            "description": "The organization was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerGetOrganizationDataIntegrations404Response"
                 }
               }
             }
@@ -16426,7 +17043,7 @@
             }
           },
           "422": {
-            "description": "The request body is malformed (\u0060invalid_request_parameters\u0060), the data integration is not in a valid state (\u0060invalid_data_integration_state\u0060), the token combination is invalid (\u0060invalid_token_combination\u0060), or \u0060refresh_token\u0060 is not an active WorkOS OAuth grant of this user (\u0060invalid_refresh_token\u0060).",
+            "description": "The request body is malformed (\u0060invalid_request_parameters\u0060), the data integration is not in a valid state (\u0060invalid_data_integration_state\u0060), the token combination is invalid (\u0060invalid_token_combination\u0060), no client credentials are configured for the data integration (\u0060client_credentials_not_configured\u0060), or \u0060refresh_token\u0060 is not an active WorkOS OAuth grant of this user (\u0060invalid_refresh_token\u0060).",
             "content": {
               "application/json": {
                 "schema": {
@@ -20429,7 +21046,7 @@
         "properties": {
           "uri": {
             "type": "string",
-            "description": "The resource URI. May be a wildcard pattern with a single \u0060*\u0060 in the leftmost hostname label, where enabled for the environment.",
+            "description": "The resource URI. May be a wildcard pattern with a single \u0060*\u0060, either in the leftmost hostname label or as the final path segment, where enabled for the environment.",
             "example": "https://api.example.com"
           },
           "default": {
@@ -24153,6 +24770,25 @@
             "description": "The unique ID of the connected account.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           },
+          "connection_role": {
+            "$ref": "#/components/schemas/PipesConnectedAccountConnectionRole"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort identifier for the provider account this connection points at. It is not the connection identifier or a selector. Historical events may omit this field.",
+            "example": "workspace_123"
+          },
+          "account_display_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique display name for the provider account connection. Historical events may omit this field.",
+            "example": "Acme production"
+          },
           "data_integration_id": {
             "type": "string",
             "description": "The unique ID of the data integration.",
@@ -24185,6 +24821,17 @@
               "type": "string"
             },
             "description": "The OAuth scopes granted for this connected account."
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/PipesConnectedAccountAuthMethod"
+          },
+          "api_key_last_4": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last four characters of the API key, or null for other authentication methods. Historical events may omit this field.",
+            "example": null
           },
           "state": {
             "$ref": "#/components/schemas/PipesConnectedAccountState"
@@ -25759,6 +26406,9 @@
         "required": [
           "object",
           "id",
+          "connection_role",
+          "account_identifier",
+          "account_display_name",
           "user_id",
           "organization_id",
           "scopes",
@@ -25775,6 +26425,25 @@
             "type": "string",
             "description": "The unique identifier of the connected account.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_role": {
+            "$ref": "#/components/schemas/ConnectedAccountConnectionRole"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort identifier for the provider account this connection points at. It is correlation metadata, not the connection identifier or a selector.",
+            "example": "workspace_123"
+          },
+          "account_display_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique display name for the provider account connection.",
+            "example": "Acme production"
           },
           "user_id": {
             "type": [
@@ -35747,6 +36416,9 @@
       "DataIntegrationInstallation": {
         "required": [
           "id",
+          "connection_role",
+          "account_identifier",
+          "account_display_name",
           "user_id",
           "organization_id",
           "api_key_last_4"
@@ -35760,6 +36432,25 @@
             "type": "string",
             "description": "Unique identifier of the installation.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_role": {
+            "$ref": "#/components/schemas/DataIntegrationInstallationConnectionRole"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort provider account identifier used for correlation, not connection selection.",
+            "example": "workspace_123"
+          },
+          "account_display_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique display name for this connection.",
+            "example": "Acme production"
           },
           "user_id": {
             "type": [
@@ -41358,6 +42049,14 @@
             "description": "The ID of the Organization the connection attempt belongs to.",
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort identifier for the provider account involved in the attempt. It is not a connection identifier or selector. Historical events may omit this field.",
+            "example": null
+          },
           "error_code": {
             "type": "string",
             "description": "A machine-readable error code for the failure.",
@@ -41441,6 +42140,14 @@
             "description": "The ID of the Organization the connection attempt belongs to.",
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort identifier for the provider account involved in the attempt. It is not a connection identifier or selector. Historical events may omit this field.",
+            "example": null
+          },
           "error_code": {
             "type": "string",
             "description": "A machine-readable error code for the failure.",
@@ -41523,6 +42230,14 @@
             ],
             "description": "The ID of the Organization the connection attempt belongs to.",
             "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort identifier for the provider account involved in the attempt. It is not a connection identifier or selector. Historical events may omit this field.",
+            "example": null
           },
           "error_code": {
             "type": "string",
@@ -42641,6 +43356,9 @@
         "required": [
           "object",
           "id",
+          "connection_role",
+          "account_identifier",
+          "account_display_name",
           "user_id",
           "organization_id",
           "scopes",
@@ -42664,6 +43382,25 @@
             "type": "string",
             "description": "The unique identifier of the connected account.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_role": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountConnectionRole"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort identifier for the provider account this connection points at. It is correlation metadata, not the connection identifier or a selector.",
+            "example": "workspace_123"
+          },
+          "account_display_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique display name for the provider account connection.",
+            "example": "Acme production"
           },
           "user_id": {
             "type": [
@@ -42764,6 +43501,9 @@
         "required": [
           "object",
           "id",
+          "connection_role",
+          "account_identifier",
+          "account_display_name",
           "user_id",
           "organization_id",
           "scopes",
@@ -42784,6 +43524,25 @@
             "type": "string",
             "description": "The unique identifier of the connected account.",
             "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_role": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort identifier for the provider account this connection points at. It is correlation metadata, not the connection identifier or a selector.",
+            "example": "workspace_123"
+          },
+          "account_display_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique display name for the provider account connection.",
+            "example": "Acme production"
           },
           "user_id": {
             "type": [
@@ -45539,6 +46298,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthenticationFactorsControllerChallenge429Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/SmsChallengeRateLimitedCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -49608,13 +50384,16 @@
         "properties": {
           "user_id": {
             "type": "string",
-            "description": "The ID of the user to authorize.",
+            "description": "The ID of the user to authorize. When \u0060connection_owner\u0060 is \u0060organization\u0060, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.",
             "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "organization_id": {
             "type": "string",
-            "description": "An organization ID to scope the authorization to a specific organization.",
+            "description": "An organization ID to scope the authorization to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner"
           },
           "return_to": {
             "type": "string",
@@ -51322,6 +52101,189 @@
         }
       },
       "OrganizationAuthorizedApplicationsControllerList422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerGetOrganizationDataInstallation400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerGetOrganizationDataInstallation404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseErrorsItem"
+            },
+            "description": "The list of validation errors."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation422Response": {
+        "required": [
+          "code",
+          "message",
+          "errors"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/InvalidRequestParametersCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Validation failed."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation422ResponseErrorsItem"
+            },
+            "description": "The list of validation errors."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerGetOrganizationDataIntegrations404Response": {
         "required": [
           "message"
         ],
@@ -56984,6 +57946,44 @@
           }
         }
       },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseErrorsItem": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The validation error code.",
+            "example": "unknown_event_type"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the validation error.",
+            "example": "Invalid enum value."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation422ResponseErrorsItem": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The validation error code.",
+            "example": "unknown_event_type"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the validation error.",
+            "example": "Invalid enum value."
+          }
+        }
+      },
       "AuthkitOAuthResourcesControllerList200ResponseListMetadata": {
         "required": [
           "before",
@@ -61704,6 +62704,59 @@
           ]
         }
       },
+      "PipesConnectedAccountConnectionRole": {
+        "enum": [
+          "compatibility",
+          "standard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether this is the compatibility connection visible to undeclared clients or a standard connection for plural-aware clients. Historical events may omit this field.",
+        "example": "compatibility",
+        "x-ms-enum": {
+          "name": "PipesConnectedAccountConnectionRole",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "compatibility",
+              "name": "Compatibility"
+            },
+            {
+              "value": "standard",
+              "name": "Standard"
+            }
+          ]
+        }
+      },
+      "PipesConnectedAccountAuthMethod": {
+        "enum": [
+          "oauth",
+          "api_key",
+          "client_credentials"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "How the connection authenticates. Historical events may omit this field.",
+        "example": "oauth",
+        "x-ms-enum": {
+          "name": "PipesConnectedAccountAuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
+            }
+          ]
+        }
+      },
       "PipesConnectedAccountState": {
         "enum": [
           "connected",
@@ -62156,6 +63209,30 @@
             {
               "value": "auth_method_mismatch",
               "name": "AuthMethodMismatch"
+            }
+          ]
+        }
+      },
+      "ConnectedAccountConnectionRole": {
+        "enum": [
+          "compatibility",
+          "standard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order.",
+        "example": "compatibility",
+        "x-ms-enum": {
+          "name": "ConnectedAccountConnectionRole",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "compatibility",
+              "name": "Compatibility"
+            },
+            {
+              "value": "standard",
+              "name": "Standard"
             }
           ]
         }
@@ -65782,6 +66859,30 @@
           ]
         }
       },
+      "DataIntegrationInstallationConnectionRole": {
+        "enum": [
+          "compatibility",
+          "standard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether this is the compatibility connection visible to undeclared clients or a standard connection for plural-aware clients.",
+        "example": "compatibility",
+        "x-ms-enum": {
+          "name": "DataIntegrationInstallationConnectionRole",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "compatibility",
+              "name": "Compatibility"
+            },
+            {
+              "value": "standard",
+              "name": "Standard"
+            }
+          ]
+        }
+      },
       "DataIntegrationCustomProviderAuthenticateVia": {
         "enum": [
           "request_body",
@@ -68806,6 +69907,30 @@
           ]
         }
       },
+      "DataIntegrationsListResponseDataItemConnectedAccountConnectionRole": {
+        "enum": [
+          "compatibility",
+          "standard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order.",
+        "example": "compatibility",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountConnectionRole",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "compatibility",
+              "name": "Compatibility"
+            },
+            {
+              "value": "standard",
+              "name": "Standard"
+            }
+          ]
+        }
+      },
       "DataIntegrationsListResponseDataItemConnectedAccountAuthMethod": {
         "enum": [
           "oauth",
@@ -68860,6 +69985,30 @@
             {
               "value": "disconnected",
               "name": "Disconnected"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole": {
+        "enum": [
+          "compatibility",
+          "standard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order.",
+        "example": "compatibility",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "compatibility",
+              "name": "Compatibility"
+            },
+            {
+              "value": "standard",
+              "name": "Standard"
             }
           ]
         }
@@ -69592,6 +70741,25 @@
           ]
         }
       },
+      "SmsChallengeRateLimitedCode": {
+        "const": null,
+        "enum": [
+          "sms_challenge_rate_limited"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "sms_challenge_rate_limited",
+        "x-ms-enum": {
+          "name": "SmsChallengeRateLimitedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "sms_challenge_rate_limited",
+              "name": "SmsChallengeRateLimited"
+            }
+          ]
+        }
+      },
       "ExternalAuthSessionAlreadyCompletedCode": {
         "const": null,
         "enum": [
@@ -70105,6 +71273,30 @@
           ]
         }
       },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Who will own the connected account. \u0060user\u0060 (the default) connects the user\u0027s own account. \u0060organization\u0060 connects the organization\u0027s shared account and requires \u0060organization_id\u0060.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
       "DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner": {
         "enum": [
           "user",
@@ -70329,6 +71521,35 @@
             {
               "value": "group_membership_limit_exceeded",
               "name": "GroupMembershipLimitExceeded"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseCode": {
+        "enum": [
+          "invalid_token_combination",
+          "invalid_data_integration_state",
+          "client_credentials_not_configured"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "invalid_token_combination",
+        "x-ms-enum": {
+          "name": "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "invalid_token_combination",
+              "name": "InvalidTokenCombination"
+            },
+            {
+              "value": "invalid_data_integration_state",
+              "name": "InvalidDataIntegrationState"
+            },
+            {
+              "value": "client_credentials_not_configured",
+              "name": "ClientCredentialsNotConfigured"
             }
           ]
         }
@@ -71097,7 +72318,8 @@
         "enum": [
           "invalid_refresh_token",
           "invalid_token_combination",
-          "invalid_data_integration_state"
+          "invalid_data_integration_state",
+          "client_credentials_not_configured"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -71118,6 +72340,10 @@
             {
               "value": "invalid_data_integration_state",
               "name": "InvalidDataIntegrationState"
+            },
+            {
+              "value": "client_credentials_not_configured",
+              "name": "ClientCredentialsNotConfigured"
             }
           ]
         }
@@ -72776,6 +74002,10 @@
     {
       "name": "organizations.authorized-applications",
       "description": "Manage authorized applications for organizations."
+    },
+    {
+      "name": "organizations.data-providers",
+      "description": "Manage organization-owned data providers and connected accounts."
     },
     {
       "name": "organizations.feature-flags",

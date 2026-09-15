@@ -13,6 +13,22 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataIntegrationsListResponseDataItemConnectedAccount : IAdditionalDataHolder, IParsable
     {
+        /// <summary>A mutable, non-unique display name for the provider account connection.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountDisplayName { get; set; }
+#nullable restore
+#else
+        public string AccountDisplayName { get; set; }
+#endif
+        /// <summary>A best-effort identifier for the provider account this connection points at. It is correlation metadata, not the connection identifier or a selector.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountIdentifier { get; set; }
+#nullable restore
+#else
+        public string AccountIdentifier { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The last four characters of the API key, or `null` for OAuth connections.</summary>
@@ -49,6 +65,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty Config { get; set; }
 #endif
+        /// <summary>Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConnectionRole? ConnectionRole { get; set; }
         /// <summary>The timestamp when the connection was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -162,11 +180,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_display_name", n => { AccountDisplayName = n.GetStringValue(); } },
+                { "account_identifier", n => { AccountIdentifier = n.GetStringValue(); } },
                 { "api_key_last_4", n => { ApiKeyLast4 = n.GetStringValue(); } },
                 { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountAuthMethod>(); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret_last_4", n => { ClientSecretLast4 = n.GetStringValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty.CreateFromDiscriminatorValue); } },
+                { "connection_role", n => { ConnectionRole = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConnectionRole>(); } },
                 { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountObject>(); } },
@@ -188,11 +209,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("account_display_name", AccountDisplayName);
+            writer.WriteStringValue("account_identifier", AccountIdentifier);
             writer.WriteStringValue("api_key_last_4", ApiKeyLast4);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountAuthMethod>("auth_method", AuthMethod);
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret_last_4", ClientSecretLast4);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConfigProperty>("config", Config);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountConnectionRole>("connection_role", ConnectionRole);
             writer.WriteStringValue("created_at", Created_at);
             writer.WriteStringValue("createdAt", CreatedAt);
             writer.WriteStringValue("id", Id);

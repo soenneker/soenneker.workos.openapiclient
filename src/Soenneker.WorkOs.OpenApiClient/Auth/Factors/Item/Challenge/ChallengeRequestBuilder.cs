@@ -42,6 +42,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item.Challenge
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerChallenge404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerChallenge422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerChallenge429Response">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ChallengeAuthenticationFactorDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -57,6 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item.Challenge
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerChallenge404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerChallenge422Response.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerChallenge429Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

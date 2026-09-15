@@ -22,7 +22,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig Config { get; set; }
 #endif
-        /// <summary>An organization ID to scope the authorization to a specific organization.</summary>
+        /// <summary>Who will own the connected account. `user` (the default) connects the user&apos;s own account. `organization` connects the organization&apos;s shared account and requires `organization_id`.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner? ConnectionOwner { get; set; }
+        /// <summary>An organization ID to scope the authorization to a specific organization. Required when `connection_owner` is `organization`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationId { get; set; }
@@ -38,7 +40,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ReturnTo { get; set; }
 #endif
-        /// <summary>The ID of the user to authorize.</summary>
+        /// <summary>The ID of the user to authorize. When `connection_owner` is `organization`, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }
@@ -72,6 +74,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig.CreateFromDiscriminatorValue); } },
+                { "connection_owner", n => { ConnectionOwner = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "return_to", n => { ReturnTo = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -85,6 +88,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig>("config", Config);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner>("connection_owner", ConnectionOwner);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("return_to", ReturnTo);
             writer.WriteStringValue("user_id", UserId);
