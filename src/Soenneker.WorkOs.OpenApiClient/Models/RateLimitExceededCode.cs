@@ -5,11 +5,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>The error code identifying the type of error.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum SmsChallengeRateLimitedCode
+    public enum RateLimitExceededCode
     {
-        [EnumMember(Value = "sms_challenge_rate_limited")]
+        [EnumMember(Value = "rate_limit_exceeded")]
         #pragma warning disable CS1591
-        SmsChallengeRateLimited,
+        RateLimitExceeded,
         #pragma warning restore CS1591
     }
 }

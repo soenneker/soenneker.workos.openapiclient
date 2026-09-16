@@ -11812,6 +11812,7 @@
                       "auth_methods": [
                         "oauth"
                       ],
+                      "connection_owner": "organization",
                       "ownership": "organization",
                       "created_at": "2024-01-15T10:30:00.000Z",
                       "updated_at": "2024-01-15T10:30:00.000Z",
@@ -36618,6 +36619,7 @@
           "integration_type",
           "credentials_type",
           "scopes",
+          "connection_owner",
           "ownership",
           "created_at",
           "updated_at",
@@ -36682,6 +36684,9 @@
               "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemAuthMethodsItem"
             },
             "description": "The authentication methods supported by this provider (\u0060oauth\u0060, \u0060api_key\u0060, \u0060client_credentials\u0060, or a combination). Defaults to \u0060[\u0022oauth\u0022]\u0060 if absent."
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectionOwner"
           },
           "ownership": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemOwnership"
@@ -46309,12 +46314,17 @@
         "type": "object",
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/SmsChallengeRateLimitedCode"
+            "$ref": "#/components/schemas/RateLimitExceededCode"
           },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Request could not be processed."
+          },
+          "retry_after": {
+            "type": "number",
+            "description": "Seconds to wait before retrying.",
+            "example": 60
           }
         }
       },
@@ -66952,6 +66962,30 @@
           ]
         }
       },
+      "DataIntegrationsListResponseDataItemConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Who owns connections made through this provider: \u0060user\u0060 for connections owned by individual users, or \u0060organization\u0060 for a connection shared by every member of the organization. A provider row can exist before any connected account does.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
       "DataIntegrationsListResponseDataItemOwnership": {
         "enum": [
           "userland_user",
@@ -66959,7 +66993,8 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Whether the provider is owned by a user or organization.",
+        "description": "Use \u0060connection_owner\u0060 instead. Legacy spelling of the same value: \u0060userland_user\u0060 corresponds to \u0060connection_owner: \u0022user\u0022\u0060 and \u0060organization\u0060 to \u0060connection_owner: \u0022organization\u0022\u0060.",
+        "deprecated": true,
         "x-ms-enum": {
           "name": "DataIntegrationsListResponseDataItemOwnership",
           "modelAsString": false,
@@ -70741,21 +70776,21 @@
           ]
         }
       },
-      "SmsChallengeRateLimitedCode": {
+      "RateLimitExceededCode": {
         "const": null,
         "enum": [
-          "sms_challenge_rate_limited"
+          "rate_limit_exceeded"
         ],
         "type": "string",
         "description": "The error code identifying the type of error.",
-        "example": "sms_challenge_rate_limited",
+        "example": "rate_limit_exceeded",
         "x-ms-enum": {
-          "name": "SmsChallengeRateLimitedCode",
+          "name": "RateLimitExceededCode",
           "modelAsString": false,
           "values": [
             {
-              "value": "sms_challenge_rate_limited",
-              "name": "SmsChallengeRateLimited"
+              "value": "rate_limit_exceeded",
+              "name": "RateLimitExceeded"
             }
           ]
         }

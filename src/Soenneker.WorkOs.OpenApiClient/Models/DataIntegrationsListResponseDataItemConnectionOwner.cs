@@ -3,14 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>Use `connection_owner` instead. Legacy spelling of the same value: `userland_user` corresponds to `connection_owner: &quot;user&quot;` and `organization` to `connection_owner: &quot;organization&quot;`.</summary>
+    /// <summary>Who owns connections made through this provider: `user` for connections owned by individual users, or `organization` for a connection shared by every member of the organization. A provider row can exist before any connected account does.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    [Obsolete("")]
-    public enum DataIntegrationsListResponseDataItemOwnership
+    public enum DataIntegrationsListResponseDataItemConnectionOwner
     {
-        [EnumMember(Value = "userland_user")]
+        [EnumMember(Value = "user")]
         #pragma warning disable CS1591
-        UserlandUser,
+        User,
         #pragma warning restore CS1591
         [EnumMember(Value = "organization")]
         #pragma warning disable CS1591
