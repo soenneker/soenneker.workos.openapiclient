@@ -32,6 +32,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>How sessions may be minted from this blueprint.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintInvocableAs? InvocableAs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintInvocableAs InvocableAs { get; set; }
+#endif
         /// <summary>Who may mint sessions from this blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,6 +104,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "invocable_as", n => { InvocableAs = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintInvocableAs>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintInvocableAs.CreateFromDiscriminatorValue); } },
                 { "invocable_by", n => { InvocableBy = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintInvocableBy>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintInvocableBy.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintObject>(); } },
@@ -114,6 +123,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintInvocableAs>("invocable_as", InvocableAs);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintInvocableBy>("invocable_by", InvocableBy);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintObject>("object", Object);

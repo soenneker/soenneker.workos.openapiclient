@@ -23,6 +23,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>How sessions may be minted from this blueprint.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs? InvocableAs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs InvocableAs { get; set; }
+#endif
         /// <summary>Who may mint sessions from this blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,6 +89,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "invocable_as", n => { InvocableAs = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs.CreateFromDiscriminatorValue); } },
                 { "invocable_by", n => { InvocableBy = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -95,6 +104,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs>("invocable_as", InvocableAs);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy>("invocable_by", InvocableBy);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);

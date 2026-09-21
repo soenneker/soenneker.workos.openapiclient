@@ -84,7 +84,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       },
       "get": {
         "tags": [
@@ -154,7 +155,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/agents/blueprints/{agentBlueprintId}": {
@@ -198,7 +200,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       },
       "patch": {
         "tags": [
@@ -280,7 +283,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       },
       "delete": {
         "tags": [
@@ -315,7 +319,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/agents/blueprints/{agentBlueprintId}/tokens": {
@@ -389,7 +394,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/agents/blueprints/{agentBlueprintId}/tokens/validate": {
@@ -453,7 +459,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/agents/claims/attempts": {
@@ -657,7 +664,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/agents/instances/{agentInstanceId}": {
@@ -701,7 +709,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       },
       "delete": {
         "tags": [
@@ -736,7 +745,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/agents/registrations/{id}": {
@@ -889,7 +899,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/agents/sessions/{agentInstanceSessionId}": {
@@ -933,7 +944,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/agents/sessions/{agentInstanceSessionId}/revoke": {
@@ -977,7 +989,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "agent-blueprints-public-api"
       }
     },
     "/api_keys/validations": {
@@ -2463,6 +2476,20 @@
               }
             }
           }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "resource_target": {
+            "optional": false,
+            "variants": {
+              "by_id": [
+                "resource_id"
+              ],
+              "by_external_id": [
+                "resource_external_id",
+                "resource_type_slug"
+              ]
+            }
+          }
         }
       }
     },
@@ -2610,6 +2637,20 @@
                   "$ref": "#/components/schemas/AuthorizationControllerListResourcesForMembership422Response"
                 }
               }
+            }
+          }
+        },
+        "x-mutually-exclusive-parameter-groups": {
+          "parent_resource": {
+            "optional": false,
+            "variants": {
+              "by_id": [
+                "parent_resource_id"
+              ],
+              "by_external_id": [
+                "parent_resource_type_slug",
+                "parent_resource_external_id"
+              ]
             }
           }
         }
@@ -3056,6 +3097,20 @@
               }
             }
           }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "resource_target": {
+            "optional": false,
+            "variants": {
+              "by_id": [
+                "resource_id"
+              ],
+              "by_external_id": [
+                "resource_external_id",
+                "resource_type_slug"
+              ]
+            }
+          }
         }
       },
       "delete": {
@@ -3119,6 +3174,20 @@
                   "$ref": "#/components/schemas/AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria422Response"
                 }
               }
+            }
+          }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "resource_target": {
+            "optional": false,
+            "variants": {
+              "by_id": [
+                "resource_id"
+              ],
+              "by_external_id": [
+                "resource_external_id",
+                "resource_type_slug"
+              ]
             }
           }
         }
@@ -3991,6 +4060,20 @@
               }
             }
           }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "parent_resource": {
+            "optional": true,
+            "variants": {
+              "by_id": [
+                "parent_resource_id"
+              ],
+              "by_external_id": [
+                "parent_resource_external_id",
+                "parent_resource_type_slug"
+              ]
+            }
+          }
         }
       },
       "delete": {
@@ -4806,6 +4889,20 @@
               }
             }
           }
+        },
+        "x-mutually-exclusive-parameter-groups": {
+          "parent": {
+            "optional": true,
+            "variants": {
+              "by_id": [
+                "parent_resource_id"
+              ],
+              "by_external_id": [
+                "parent_resource_type_slug",
+                "parent_external_id"
+              ]
+            }
+          }
         }
       },
       "post": {
@@ -4884,6 +4981,20 @@
                   "$ref": "#/components/schemas/AuthorizationResourcesControllerCreate422Response"
                 }
               }
+            }
+          }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "parent_resource": {
+            "optional": true,
+            "variants": {
+              "by_id": [
+                "parent_resource_id"
+              ],
+              "by_external_id": [
+                "parent_resource_external_id",
+                "parent_resource_type_slug"
+              ]
             }
           }
         }
@@ -5040,6 +5151,20 @@
                   "$ref": "#/components/schemas/AuthorizationResourcesControllerUpdate422Response"
                 }
               }
+            }
+          }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "parent_resource": {
+            "optional": true,
+            "variants": {
+              "by_id": [
+                "parent_resource_id"
+              ],
+              "by_external_id": [
+                "parent_resource_external_id",
+                "parent_resource_type_slug"
+              ]
             }
           }
         }
@@ -6336,6 +6461,20 @@
               }
             }
           }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api",
+        "x-mutually-exclusive-body-groups": {
+          "protocol_options": {
+            "optional": false,
+            "variants": {
+              "saml": [
+                "saml_options"
+              ],
+              "oidc": [
+                "oidc_options"
+              ]
+            }
+          }
         }
       },
       "get": {
@@ -6515,7 +6654,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       },
       "post": {
         "tags": [
@@ -6597,7 +6737,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       }
     },
     "/connections/{connectionId}/saml_idp_signing_certs/{certificateId}": {
@@ -6664,7 +6805,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       }
     },
     "/connections/{connectionId}/saml_sp_encryption_certs": {
@@ -6728,7 +6870,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       },
       "post": {
         "tags": [
@@ -6810,7 +6953,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       }
     },
     "/connections/{connectionId}/saml_sp_encryption_certs/{certificateId}": {
@@ -6867,7 +7011,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       }
     },
     "/connections/{connectionId}/saml_sp_signing_cert": {
@@ -6931,7 +7076,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       },
       "post": {
         "tags": [
@@ -7013,7 +7159,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       }
     },
     "/connections/{connectionId}/saml_sp_signing_cert/{certificateId}": {
@@ -7070,7 +7217,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api"
       }
     },
     "/connections/{id}": {
@@ -7162,6 +7310,20 @@
                   "$ref": "#/components/schemas/ConnectionsControllerPatch422Response"
                 }
               }
+            }
+          }
+        },
+        "x-feature-flag": "connections-api-migrations-capabilities-api",
+        "x-mutually-exclusive-body-groups": {
+          "protocol_options": {
+            "optional": true,
+            "variants": {
+              "saml": [
+                "saml_options"
+              ],
+              "oidc": [
+                "oidc_options"
+              ]
             }
           }
         }
@@ -10186,6 +10348,19 @@
               }
             }
           }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "retention": {
+            "optional": false,
+            "variants": {
+              "period": [
+                "retention_period"
+              ],
+              "period_in_days": [
+                "retention_period_in_days"
+              ]
+            }
+          }
         }
       }
     },
@@ -11412,7 +11587,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "pipes-org-integrations"
       },
       "delete": {
         "tags": [
@@ -11509,7 +11685,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "pipes-org-integrations"
       },
       "post": {
         "tags": [
@@ -11544,7 +11721,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConnectedAccountDto"
+                "$ref": "#/components/schemas/OrganizationConnectedAccountDto"
               }
             }
           },
@@ -11587,8 +11764,18 @@
           "401": {
             "description": "The request is missing a valid API key."
           },
+          "403": {
+            "description": "The \u0060user_id\u0060 is not an active member of the organization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation403Response"
+                }
+              }
+            }
+          },
           "404": {
-            "description": "The organization or data integration was not found.",
+            "description": "The organization, user, or data integration was not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11617,7 +11804,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "pipes-org-integrations"
       },
       "put": {
         "tags": [
@@ -11671,7 +11859,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConnectedAccountDto"
+                "$ref": "#/components/schemas/OrganizationConnectedAccountDto"
               }
             }
           },
@@ -11724,8 +11912,18 @@
           "401": {
             "description": "The request is missing a valid API key."
           },
+          "403": {
+            "description": "The \u0060user_id\u0060 is not an active member of the organization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation403Response"
+                }
+              }
+            }
+          },
           "404": {
-            "description": "The organization or connected account was not found.",
+            "description": "The organization, user, or connected account was not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11754,7 +11952,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "pipes-org-integrations"
       }
     },
     "/organizations/{organizationId}/data_providers": {
@@ -11895,7 +12094,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "pipes-org-integrations"
       }
     },
     "/organizations/{organizationId}/it_contacts": {
@@ -12205,7 +12405,8 @@
               }
             }
           }
-        }
+        },
+        "x-sends-email": true
       }
     },
     "/organizations/{organizationId}/it_contacts/{contactId}/revoke": {
@@ -14010,7 +14211,8 @@
               }
             }
           }
-        }
+        },
+        "x-sends-email": true
       }
     },
     "/user_management/invitations/by_token/{token}": {
@@ -14226,7 +14428,8 @@
               }
             }
           }
-        }
+        },
+        "x-sends-email": true
       }
     },
     "/user_management/invitations/{id}/revoke": {
@@ -14404,7 +14607,8 @@
               }
             }
           }
-        }
+        },
+        "x-sends-email": true
       }
     },
     "/user_management/magic_auth/{id}": {
@@ -14633,6 +14837,19 @@
               }
             }
           }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "role": {
+            "optional": true,
+            "variants": {
+              "single": [
+                "role_slug"
+              ],
+              "multiple": [
+                "role_slugs"
+              ]
+            }
+          }
         }
       }
     },
@@ -14772,6 +14989,19 @@
                   "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerUpdate422Response"
                 }
               }
+            }
+          }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "role": {
+            "optional": true,
+            "variants": {
+              "single": [
+                "role_slug"
+              ],
+              "multiple": [
+                "role_slugs"
+              ]
             }
           }
         }
@@ -15056,7 +15286,8 @@
               }
             }
           }
-        }
+        },
+        "x-sends-email": true
       }
     },
     "/user_management/password_reset/confirm": {
@@ -15727,6 +15958,26 @@
               }
             }
           }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "password": {
+            "optional": true,
+            "variants": {
+              "plaintext": [
+                "password"
+              ],
+              "hashed": [
+                "password_hash",
+                "password_hash_type",
+                "password_salt_position"
+              ]
+            },
+            "optionalFields": {
+              "hashed": [
+                "password_salt_position"
+              ]
+            }
+          }
         }
       }
     },
@@ -15833,6 +16084,26 @@
                   "$ref": "#/components/schemas/UserlandUsersControllerUpdate0422Response"
                 }
               }
+            }
+          }
+        },
+        "x-mutually-exclusive-body-groups": {
+          "password": {
+            "optional": true,
+            "variants": {
+              "plaintext": [
+                "password"
+              ],
+              "hashed": [
+                "password_hash",
+                "password_hash_type",
+                "password_salt_position"
+              ]
+            },
+            "optionalFields": {
+              "hashed": [
+                "password_salt_position"
+              ]
             }
           }
         }
@@ -16090,7 +16361,8 @@
               }
             }
           }
-        }
+        },
+        "x-sends-email": true
       }
     },
     "/user_management/users/{id}/email_verification/confirm": {
@@ -16455,7 +16727,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "user-api-keys"
       },
       "post": {
         "tags": [
@@ -16527,7 +16800,8 @@
               }
             }
           }
-        }
+        },
+        "x-feature-flag": "user-api-keys"
       }
     },
     "/user_management/users/{userId}/feature-flags": {
@@ -17486,7 +17760,8 @@
               }
             }
           }
-        }
+        },
+        "x-sends-email": true
       }
     },
     "/user_management/waitlist_entries/{id}/deny": {
@@ -17777,7 +18052,8 @@
               }
             }
           }
-        }
+        },
+        "x-sends-email": true
       }
     },
     "/vault/v1/keys/data-key": {
@@ -20938,6 +21214,45 @@
           }
         }
       },
+      "OrganizationConnectedAccountDto": {
+        "required": [
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "The OAuth access token for the connected account.",
+            "example": "gho_16C7e42F292c6912E7710c838347Ae178B4a"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "The OAuth refresh token for the connected account.",
+            "example": "ghr_xxxxxxxxxxxxxxxxxxxx"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The ISO-8601 timestamp when the access token expires. Required when \u0060access_token\u0060 is provided for tokens that expire.",
+            "format": "date-time",
+            "example": "2025-12-31T23:59:59.000Z"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes granted for this connection."
+          },
+          "state": {
+            "$ref": "#/components/schemas/OrganizationConnectedAccountDtoState"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The [User](/reference/authkit/user) identifier of the organization member on whose behalf the connected account is being imported or updated. The user must be an active member of the organization.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          }
+        }
+      },
       "ConnectedAccountDto": {
         "type": "object",
         "properties": {
@@ -22486,6 +22801,7 @@
           "description",
           "permissions",
           "invocable_by",
+          "invocable_as",
           "session_settings",
           "created_at",
           "updated_at"
@@ -22522,6 +22838,9 @@
           },
           "invocable_by": {
             "$ref": "#/components/schemas/AgentBlueprintInvocableBy"
+          },
+          "invocable_as": {
+            "$ref": "#/components/schemas/AgentBlueprintInvocableAs"
           },
           "session_settings": {
             "$ref": "#/components/schemas/AgentBlueprintSessionSettings"
@@ -35118,6 +35437,22 @@
         },
         "description": "Who may mint sessions from this blueprint."
       },
+      "AgentBlueprintInvocableAs": {
+        "required": [
+          "instance_types"
+        ],
+        "type": "object",
+        "properties": {
+          "instance_types": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentBlueprintInvocableAsInstanceTypesItem"
+            },
+            "description": "Instance types that may be minted from this blueprint: \u0060delegated\u0060 and/or \u0060autonomous\u0060."
+          }
+        },
+        "description": "How sessions may be minted from this blueprint."
+      },
       "AgentBlueprintSessionSettings": {
         "required": [
           "max_age_seconds",
@@ -37356,6 +37691,7 @@
           "description",
           "permissions",
           "invocable_by",
+          "invocable_as",
           "session_settings",
           "created_at",
           "updated_at"
@@ -37392,6 +37728,9 @@
           },
           "invocable_by": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf3DataInvocableBy"
+          },
+          "invocable_as": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf3DataInvocableAs"
           },
           "session_settings": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf3DataSessionSettings"
@@ -37453,6 +37792,7 @@
           "description",
           "permissions",
           "invocable_by",
+          "invocable_as",
           "session_settings",
           "created_at",
           "updated_at"
@@ -37489,6 +37829,9 @@
           },
           "invocable_by": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf5DataInvocableBy"
+          },
+          "invocable_as": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf5DataInvocableAs"
           },
           "session_settings": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf5DataSessionSettings"
@@ -43667,6 +44010,22 @@
         },
         "description": "Who may mint sessions from this blueprint."
       },
+      "EventSchemaAllOf2OneOf3DataInvocableAs": {
+        "required": [
+          "instance_types"
+        ],
+        "type": "object",
+        "properties": {
+          "instance_types": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventSchemaAllOf2OneOf3DataInvocableAsInstanceTypesItem"
+            },
+            "description": "Instance types that may be minted from this blueprint: \u0060delegated\u0060 (acting for a user) and/or \u0060autonomous\u0060 (acting as the agent itself)."
+          }
+        },
+        "description": "How sessions may be minted from this blueprint."
+      },
       "EventSchemaAllOf2OneOf3DataSessionSettings": {
         "required": [
           "max_age_seconds",
@@ -43716,6 +44075,22 @@
           }
         },
         "description": "Who may mint sessions from this blueprint."
+      },
+      "EventSchemaAllOf2OneOf5DataInvocableAs": {
+        "required": [
+          "instance_types"
+        ],
+        "type": "object",
+        "properties": {
+          "instance_types": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventSchemaAllOf2OneOf5DataInvocableAsInstanceTypesItem"
+            },
+            "description": "Instance types that may be minted from this blueprint: \u0060delegated\u0060 (acting for a user) and/or \u0060autonomous\u0060 (acting as the agent itself)."
+          }
+        },
+        "description": "How sessions may be minted from this blueprint."
       },
       "EventSchemaAllOf2OneOf5DataSessionSettings": {
         "required": [
@@ -45200,6 +45575,9 @@
           "invocable_by": {
             "$ref": "#/components/schemas/AgentBlueprintsControllerCreateRequestInvocableBy"
           },
+          "invocable_as": {
+            "$ref": "#/components/schemas/AgentBlueprintsControllerCreateRequestInvocableAs"
+          },
           "session_settings": {
             "$ref": "#/components/schemas/AgentBlueprintsControllerCreateRequestSessionSettings"
           }
@@ -45332,6 +45710,9 @@
           },
           "invocable_by": {
             "$ref": "#/components/schemas/AgentBlueprintsControllerUpdateRequestInvocableBy"
+          },
+          "invocable_as": {
+            "$ref": "#/components/schemas/AgentBlueprintsControllerUpdateRequestInvocableAs"
           },
           "session_settings": {
             "$ref": "#/components/schemas/AgentBlueprintsControllerUpdateRequestSessionSettings"
@@ -52192,6 +52573,19 @@
           }
         }
       },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response": {
         "required": [
           "message"
@@ -52243,6 +52637,19 @@
         }
       },
       "DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation403Response": {
         "required": [
           "message"
         ],
@@ -57467,6 +57874,25 @@
         },
         "description": "Who may mint sessions from this blueprint."
       },
+      "AgentBlueprintsControllerCreateRequestInvocableAs": {
+        "type": "object",
+        "properties": {
+          "instance_types": {
+            "maxItems": 2,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentBlueprintsControllerCreateRequestInvocableAsInstanceTypesItem"
+            },
+            "description": "Instance types that may be minted from this blueprint: \u0060delegated\u0060 (a user-delegated session, minted with a user access token) and/or \u0060autonomous\u0060 (a session acting as the agent itself, minted with an agent registration credential). Agent-delegated chaining and refreshes are checked against the type of the presenting instance. Defaults to both.",
+            "default": [
+              "delegated",
+              "autonomous"
+            ]
+          }
+        },
+        "description": "How sessions may be minted from this blueprint."
+      },
       "AgentBlueprintsControllerCreateRequestSessionSettings": {
         "required": [
           "max_age_seconds",
@@ -57553,6 +57979,21 @@
           }
         },
         "description": "Who may mint sessions from this blueprint. Omitted lists are left unchanged."
+      },
+      "AgentBlueprintsControllerUpdateRequestInvocableAs": {
+        "type": "object",
+        "properties": {
+          "instance_types": {
+            "maxItems": 2,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem"
+            },
+            "description": "Instance types that may be minted from this blueprint: \u0060delegated\u0060 and/or \u0060autonomous\u0060. At least one is required; existing sessions of a removed type are refused at their next refresh."
+          }
+        },
+        "description": "How sessions may be minted from this blueprint. Omitted lists are left unchanged."
       },
       "AgentBlueprintsControllerUpdateRequestSessionSettings": {
         "type": "object",
@@ -59225,6 +59666,30 @@
             {
               "value": "basic_auth_header",
               "name": "BasicAuthHeader"
+            }
+          ]
+        }
+      },
+      "OrganizationConnectedAccountDtoState": {
+        "enum": [
+          "connected",
+          "needs_reauthorization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided.",
+        "example": "connected",
+        "x-ms-enum": {
+          "name": "OrganizationConnectedAccountDtoState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected",
+              "name": "Connected"
+            },
+            {
+              "value": "needs_reauthorization",
+              "name": "NeedsReauthorization"
             }
           ]
         }
@@ -66645,6 +67110,28 @@
           ]
         }
       },
+      "AgentBlueprintInvocableAsInstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "AgentBlueprintInvocableAsInstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
+            }
+          ]
+        }
+      },
       "AuthorizedConnectApplicationObject": {
         "const": null,
         "enum": [
@@ -69225,7 +69712,8 @@
           "sessions",
           "auditLogEvents",
           "connections",
-          "directoryUsers"
+          "directoryUsers",
+          "scimLogs"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -69262,6 +69750,10 @@
             {
               "value": "directoryUsers",
               "name": "DirectoryUsers"
+            },
+            {
+              "value": "scimLogs",
+              "name": "ScimLogs"
             }
           ]
         }
@@ -69274,7 +69766,8 @@
           "sessions",
           "auditLogEvents",
           "connections",
-          "directoryUsers"
+          "directoryUsers",
+          "scimLogs"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -69311,6 +69804,10 @@
             {
               "value": "directoryUsers",
               "name": "DirectoryUsers"
+            },
+            {
+              "value": "scimLogs",
+              "name": "ScimLogs"
             }
           ]
         }
@@ -69323,7 +69820,8 @@
           "sessions",
           "auditLogEvents",
           "connections",
-          "directoryUsers"
+          "directoryUsers",
+          "scimLogs"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -69360,6 +69858,10 @@
             {
               "value": "directoryUsers",
               "name": "DirectoryUsers"
+            },
+            {
+              "value": "scimLogs",
+              "name": "ScimLogs"
             }
           ]
         }
@@ -69372,7 +69874,8 @@
           "sessions",
           "auditLogEvents",
           "connections",
-          "directoryUsers"
+          "directoryUsers",
+          "scimLogs"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -69409,6 +69912,10 @@
             {
               "value": "directoryUsers",
               "name": "DirectoryUsers"
+            },
+            {
+              "value": "scimLogs",
+              "name": "ScimLogs"
             }
           ]
         }
@@ -70102,6 +70609,50 @@
             {
               "value": "disconnected",
               "name": "Disconnected"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf3DataInvocableAsInstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf3DataInvocableAsInstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf5DataInvocableAsInstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf5DataInvocableAsInstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
             }
           ]
         }
@@ -73132,6 +73683,50 @@
             {
               "value": "invalid_grant",
               "name": "InvalidGrant"
+            }
+          ]
+        }
+      },
+      "AgentBlueprintsControllerCreateRequestInvocableAsInstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "AgentBlueprintsControllerCreateRequestInvocableAsInstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
+            }
+          ]
+        }
+      },
+      "AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
             }
           ]
         }

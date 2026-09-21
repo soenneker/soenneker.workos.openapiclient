@@ -95,22 +95,24 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409Response">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response.CreateFromDiscriminatorValue },
@@ -125,16 +127,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -142,6 +145,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation422Response.CreateFromDiscriminatorValue },
@@ -194,11 +198,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -216,11 +220,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
