@@ -11693,7 +11693,7 @@
           "organizations.data-providers"
         ],
         "summary": "Import an organization connected account",
-        "description": "Imports an organization-owned [connected account](/reference/pipes/connected-account) by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.",
+        "description": "Imports an organization-owned [connected account](/reference/pipes/connected-account) by providing OAuth tokens directly. Omit \u0060connection_intent\u0060 to create only the compatibility connection, or set it to \u0060add\u0060 to explicitly create another connection. This creation-only endpoint does not accept \u0060connected_account_id\u0060 or reauthorization intent.",
         "operationId": "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation",
         "parameters": [
           {
@@ -11721,7 +11721,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrganizationConnectedAccountDto"
+                "$ref": "#/components/schemas/CreateOrganizationConnectedAccountDto"
               }
             }
           },
@@ -11785,7 +11785,7 @@
             }
           },
           "409": {
-            "description": "A connected account already exists for this organization and integration.",
+            "description": "The compatibility connection already exists for this organization and integration.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11800,6 +11800,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Another connection is being created for this owner and provider. Retry the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation503Response"
                 }
               }
             }
@@ -11838,7 +11848,7 @@
           {
             "name": "supports_multiple_connections",
             "in": "query",
-            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "description": "Accepted for compatibility; does not change update targeting. Omit intent and selector to update the compatibility connection, or supply \u0060connected_account_id\u0060 to update an exact connection.",
             "schema": {
               "type": "boolean",
               "example": true
@@ -11852,6 +11862,14 @@
               "minLength": 1,
               "type": "string",
               "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "connection_intent",
+            "in": "query",
+            "description": "Set to \u0060reauthorize\u0060 with \u0060connected_account_id\u0060 to update one exact connection. The intent may be omitted when supplying an ID. Omit both for permanent compatibility behavior.",
+            "schema": {
+              "$ref": "#/components/schemas/ReauthorizeConnectionIntent"
             }
           }
         ],
@@ -17277,7 +17295,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ConnectedAccountDto"
+                "$ref": "#/components/schemas/CreateConnectedAccountDto"
               }
             }
           },
@@ -17328,7 +17346,7 @@
             }
           },
           "503": {
-            "description": "The WorkOS OAuth grant behind \u0060refresh_token\u0060 is being changed by another request. Retry the request.",
+            "description": "Another connection is being created for this owner and provider, or the WorkOS OAuth grant behind \u0060refresh_token\u0060 is being changed. Retry the request.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17379,7 +17397,7 @@
           {
             "name": "supports_multiple_connections",
             "in": "query",
-            "description": "Set to \u0060true\u0060 to use the plural connection contract. When omitted or \u0060false\u0060, only the compatibility connection is considered.",
+            "description": "Accepted for compatibility; does not change update targeting. Omit intent and selector to update the compatibility connection, or supply \u0060connected_account_id\u0060 to update an exact connection.",
             "schema": {
               "type": "boolean",
               "example": true
@@ -17393,6 +17411,14 @@
               "minLength": 1,
               "type": "string",
               "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+            }
+          },
+          {
+            "name": "connection_intent",
+            "in": "query",
+            "description": "Set to \u0060reauthorize\u0060 with \u0060connected_account_id\u0060 to update one exact connection. The intent may be omitted when supplying an ID. Omit both for permanent compatibility behavior.",
+            "schema": {
+              "$ref": "#/components/schemas/ReauthorizeConnectionIntent"
             }
           }
         ],
@@ -21214,6 +21240,48 @@
           }
         }
       },
+      "CreateOrganizationConnectedAccountDto": {
+        "required": [
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "The OAuth access token for the connected account.",
+            "example": "gho_16C7e42F292c6912E7710c838347Ae178B4a"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "The OAuth refresh token for the connected account.",
+            "example": "ghr_xxxxxxxxxxxxxxxxxxxx"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The ISO-8601 timestamp when the access token expires. Required when \u0060access_token\u0060 is provided for tokens that expire.",
+            "format": "date-time",
+            "example": "2025-12-31T23:59:59.000Z"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes granted for this connection."
+          },
+          "state": {
+            "$ref": "#/components/schemas/CreateOrganizationConnectedAccountDtoState"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The [User](/reference/authkit/user) identifier of the organization member on whose behalf the connected account is being imported or updated. The user must be an active member of the organization.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/AddConnectionIntent"
+          }
+        }
+      },
       "OrganizationConnectedAccountDto": {
         "required": [
           "user_id"
@@ -21250,6 +21318,40 @@
             "type": "string",
             "description": "The [User](/reference/authkit/user) identifier of the organization member on whose behalf the connected account is being imported or updated. The user must be an active member of the organization.",
             "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          }
+        }
+      },
+      "CreateConnectedAccountDto": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "The OAuth access token for the connected account.",
+            "example": "gho_16C7e42F292c6912E7710c838347Ae178B4a"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "The OAuth refresh token for the connected account.",
+            "example": "ghr_xxxxxxxxxxxxxxxxxxxx"
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "The ISO-8601 timestamp when the access token expires. Required when \u0060access_token\u0060 is provided for tokens that expire.",
+            "format": "date-time",
+            "example": "2025-12-31T23:59:59.000Z"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes granted for this connection."
+          },
+          "state": {
+            "$ref": "#/components/schemas/CreateConnectedAccountDtoState"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/AddConnectionIntent"
           }
         }
       },
@@ -50711,12 +50813,6 @@
             "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
-          "connected_account_id": {
-            "pattern": "^data_installation_.\u002B$",
-            "type": "string",
-            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to rotate a specific existing connection.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
           "connection_owner": {
             "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner"
           },
@@ -50725,6 +50821,15 @@
             "type": "string",
             "description": "The API key secret to store for this integration.",
             "example": "sk-1234567890abcdef"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/AddConnectionIntent"
+          },
+          "connected_account_id": {
+            "pattern": "^data_installation_.\u002B$",
+            "type": "string",
+            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           }
         }
       },
@@ -50854,12 +50959,6 @@
             "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
-          "connected_account_id": {
-            "pattern": "^data_installation_.\u002B$",
-            "type": "string",
-            "description": "A [connected account](/reference/pipes/connected-account) identifier. Use this to rotate a specific existing connection.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
           "connection_owner": {
             "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner"
           },
@@ -50877,6 +50976,15 @@
           },
           "config": {
             "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestConfig"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/AddConnectionIntent"
+          },
+          "connected_account_id": {
+            "pattern": "^data_installation_.\u002B$",
+            "type": "string",
+            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           }
         }
       },
@@ -52633,6 +52741,23 @@
               "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseErrorsItem"
             },
             "description": "The list of validation errors."
+          }
+        }
+      },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -59670,6 +59795,49 @@
           ]
         }
       },
+      "CreateOrganizationConnectedAccountDtoState": {
+        "enum": [
+          "connected",
+          "needs_reauthorization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided.",
+        "example": "connected",
+        "x-ms-enum": {
+          "name": "CreateOrganizationConnectedAccountDtoState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected",
+              "name": "Connected"
+            },
+            {
+              "value": "needs_reauthorization",
+              "name": "NeedsReauthorization"
+            }
+          ]
+        }
+      },
+      "AddConnectionIntent": {
+        "const": null,
+        "enum": [
+          "add"
+        ],
+        "type": "string",
+        "description": "Set to \u0060add\u0060 to create another connected account. Omit this field for permanent compatibility behavior.",
+        "example": "add",
+        "x-ms-enum": {
+          "name": "AddConnectionIntent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "add",
+              "name": "Add"
+            }
+          ]
+        }
+      },
       "OrganizationConnectedAccountDtoState": {
         "enum": [
           "connected",
@@ -59681,6 +59849,30 @@
         "example": "connected",
         "x-ms-enum": {
           "name": "OrganizationConnectedAccountDtoState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected",
+              "name": "Connected"
+            },
+            {
+              "value": "needs_reauthorization",
+              "name": "NeedsReauthorization"
+            }
+          ]
+        }
+      },
+      "CreateConnectedAccountDtoState": {
+        "enum": [
+          "connected",
+          "needs_reauthorization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided.",
+        "example": "connected",
+        "x-ms-enum": {
+          "name": "CreateConnectedAccountDtoState",
           "modelAsString": false,
           "values": [
             {
@@ -74142,6 +74334,24 @@
             {
               "value": "organization",
               "name": "Organization"
+            }
+          ]
+        }
+      },
+      "ReauthorizeConnectionIntent": {
+        "const": null,
+        "enum": [
+          "reauthorize"
+        ],
+        "type": "string",
+        "example": "reauthorize",
+        "x-ms-enum": {
+          "name": "ReauthorizeConnectionIntent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "reauthorize",
+              "name": "Reauthorize"
             }
           ]
         }

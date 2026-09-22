@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/connected_accounts/{slug}{?connected_account_id*,supports_multiple_connections*}", pathParameters)
+        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/connected_accounts/{slug}{?connected_account_id*,connection_intent*,supports_multiple_connections*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/connected_accounts/{slug}{?connected_account_id*,supports_multiple_connections*}", rawUrl)
+        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/connected_accounts/{slug}{?connected_account_id*,connection_intent*,supports_multiple_connections*}", rawUrl)
         {
         }
         /// <summary>
@@ -89,7 +89,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Imports an organization-owned [connected account](/reference/pipes/connected-account) by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.
+        /// Imports an organization-owned [connected account](/reference/pipes/connected-account) by providing OAuth tokens directly. Omit `connection_intent` to create only the compatibility connection, or set it to `add` to explicitly create another connection. This creation-only endpoint does not accept `connected_account_id` or reauthorization intent.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount"/></returns>
         /// <param name="body">The request body</param>
@@ -99,13 +99,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409Response">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation503Response">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateOrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateOrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -116,6 +117,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation503Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -191,18 +193,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             return requestInfo;
         }
         /// <summary>
-        /// Imports an organization-owned [connected account](/reference/pipes/connected-account) by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow.
+        /// Imports an organization-owned [connected account](/reference/pipes/connected-account) by providing OAuth tokens directly. Omit `connection_intent` to create only the compatibility connection, or set it to `add` to explicitly create another connection. This creation-only endpoint does not accept `connected_account_id` or reauthorization intent.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.CreateOrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.CreateOrganizationConnectedAccountDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -299,7 +301,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             [QueryParameter("connected_account_id")]
             public string ConnectedAccountId { get; set; }
 #endif
-            /// <summary>Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered.</summary>
+            /// <summary>Set to `reauthorize` with `connected_account_id` to update one exact connection. The intent may be omitted when supplying an ID. Omit both for permanent compatibility behavior.</summary>
+            [QueryParameter("connection_intent")]
+            public global::Soenneker.WorkOs.OpenApiClient.Models.ReauthorizeConnectionIntent? ConnectionIntent { get; set; }
+            /// <summary>Accepted for compatibility; does not change update targeting. Omit intent and selector to update the compatibility connection, or supply `connected_account_id` to update an exact connection.</summary>
             [QueryParameter("supports_multiple_connections")]
             public bool? SupportsMultipleConnections { get; set; }
         }

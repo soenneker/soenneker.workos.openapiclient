@@ -14,7 +14,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A [connected account](/reference/pipes/connected-account) identifier. Use this to rotate a specific existing connection.</summary>
+        /// <summary>The exact connected account to reauthorize. Required with `connection_intent: reauthorize`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConnectedAccountId { get; set; }
@@ -22,6 +22,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ConnectedAccountId { get; set; }
 #endif
+        /// <summary>Set to `add` to create another connected account. Omit this field for permanent compatibility behavior.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent? ConnectionIntent { get; set; }
         /// <summary>Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner? ConnectionOwner { get; set; }
         /// <summary>An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when `connection_owner` is `organization`.</summary>
@@ -74,6 +76,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
+                { "connection_intent", n => { ConnectionIntent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent>(); } },
                 { "connection_owner", n => { ConnectionOwner = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "secret", n => { Secret = n.GetStringValue(); } },
@@ -88,6 +91,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("connected_account_id", ConnectedAccountId);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent>("connection_intent", ConnectionIntent);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner>("connection_owner", ConnectionOwner);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("secret", Secret);
