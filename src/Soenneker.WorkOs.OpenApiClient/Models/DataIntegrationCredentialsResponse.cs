@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataIntegrationCredentialsResponse : IComposedTypeWrapper, IParsable
@@ -29,22 +29,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf2 DataIntegrationCredentialsResponseOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3? DataIntegrationCredentialsResponseOneOf3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3 DataIntegrationCredentialsResponseOneOf3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4? DataIntegrationCredentialsResponseOneOf4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4 DataIntegrationCredentialsResponseOneOf4 { get; set; }
-#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,14 +47,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 result.DataIntegrationCredentialsResponseOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf2();
             }
-            else if("DataIntegrationCredentialsResponseOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DataIntegrationCredentialsResponseOneOf3 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3();
-            }
-            else if("DataIntegrationCredentialsResponseOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DataIntegrationCredentialsResponseOneOf4 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4();
-            }
             return result;
         }
         /// <summary>
@@ -86,14 +62,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if(DataIntegrationCredentialsResponseOneOf2 != null)
             {
                 return DataIntegrationCredentialsResponseOneOf2.GetFieldDeserializers();
-            }
-            else if(DataIntegrationCredentialsResponseOneOf3 != null)
-            {
-                return DataIntegrationCredentialsResponseOneOf3.GetFieldDeserializers();
-            }
-            else if(DataIntegrationCredentialsResponseOneOf4 != null)
-            {
-                return DataIntegrationCredentialsResponseOneOf4.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -111,14 +79,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if(DataIntegrationCredentialsResponseOneOf2 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf2>(null, DataIntegrationCredentialsResponseOneOf2);
-            }
-            else if(DataIntegrationCredentialsResponseOneOf3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3>(null, DataIntegrationCredentialsResponseOneOf3);
-            }
-            else if(DataIntegrationCredentialsResponseOneOf4 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf4>(null, DataIntegrationCredentialsResponseOneOf4);
             }
         }
     }

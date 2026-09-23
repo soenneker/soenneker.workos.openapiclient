@@ -19,10 +19,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The credential object containing the vended secret.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential? Credential { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredential? Credential { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential Credential { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredential Credential { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1"/> and sets the default values.
@@ -51,7 +51,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
-                { "credential", n => { Credential = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential.CreateFromDiscriminatorValue); } },
+                { "credential", n => { Credential = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredential>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredential.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential>("credential", Credential);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredential>("credential", Credential);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

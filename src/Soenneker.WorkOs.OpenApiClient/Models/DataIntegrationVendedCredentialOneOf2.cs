@@ -9,38 +9,39 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DataIntegrationCredentialsResponseOneOf3 : IAdditionalDataHolder, IParsable
+    public partial class DataIntegrationVendedCredentialOneOf2 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates credentials are available.</summary>
-        public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The credential object containing the vended secret.</summary>
+        /// <summary>The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyAuthMethod? AuthMethod { get; set; }
+        /// <summary>Distinguishes the credential object.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject? Object { get; set; }
+        /// <summary>The API key secret.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential? Credential { get; set; }
+        public string? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential Credential { get; set; }
+        public string Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf2"/> and sets the default values.
         /// </summary>
-        public DataIntegrationCredentialsResponseOneOf3()
+        public DataIntegrationVendedCredentialOneOf2()
         {
             AdditionalData = new Dictionary<string, object>();
-            Active = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf2"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf2();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,8 +51,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active", n => { Active = n.GetBoolValue(); } },
-                { "credential", n => { Credential = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential.CreateFromDiscriminatorValue); } },
+                { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyAuthMethod>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject>(); } },
+                { "value", n => { Value = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -61,8 +63,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf3Credential>("credential", Credential);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyAuthMethod>("auth_method", AuthMethod);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject>("object", Object);
+            writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

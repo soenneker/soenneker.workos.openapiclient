@@ -7,17 +7,16 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>
-    /// The credential object containing the vended secret.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DataIntegrationCredentialsResponseOneOf1Credential : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class DataIntegrationVendedCredentialOneOf1 : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.OAuthAuthMethod? AuthMethod { get; set; }
-        /// <summary>The ISO-8601 formatted timestamp indicating when the credential expires.</summary>
+        /// <summary>The ISO-8601 formatted timestamp indicating when the credential expires, or `null` if it does not expire. Present for `oauth` and `client_credentials` credentials; absent for `api_key`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExpiresAt { get; set; }
@@ -25,7 +24,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ExpiresAt { get; set; }
 #endif
-        /// <summary>If the integration has requested scopes that aren&apos;t present on the access token, they&apos;re listed here.</summary>
+        /// <summary>If the integration has requested scopes that aren&apos;t present on the access token, they&apos;re listed here. Present for `oauth` and `client_credentials` credentials; absent for `api_key`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? MissingScopes { get; set; }
@@ -35,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #endif
         /// <summary>Distinguishes the credential object.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject? Object { get; set; }
-        /// <summary>The scopes granted to the access token.</summary>
+        /// <summary>The scopes granted to the access token. Present for `oauth` and `client_credentials` credentials; absent for `api_key`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Scopes { get; set; }
@@ -43,7 +42,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public List<string> Scopes { get; set; }
 #endif
-        /// <summary>The OAuth access token.</summary>
+        /// <summary>The vended secret. An OAuth access token when `auth_method` is `oauth`, the API key when `api_key`, or the client-credentials access token when `client_credentials`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Value { get; set; }
@@ -52,21 +51,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1"/> and sets the default values.
         /// </summary>
-        public DataIntegrationCredentialsResponseOneOf1Credential()
+        public DataIntegrationVendedCredentialOneOf1()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponseOneOf1Credential();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1();
         }
         /// <summary>
         /// The deserialization information for the current model

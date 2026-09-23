@@ -25756,6 +25756,9 @@
               },
               {
                 "$ref": "#/components/schemas/EventSchemaAllOf2OneOf127"
+              },
+              {
+                "$ref": "#/components/schemas/EventSchemaAllOf2OneOf128"
               }
             ]
           }
@@ -26796,6 +26799,71 @@
           }
         }
       },
+      "DataIntegrationVendedCredential": {
+        "required": [
+          "auth_method"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3"
+          }
+        ],
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/CredentialObject"
+          },
+          "value": {
+            "type": "string",
+            "description": "The vended secret. An OAuth access token when \u0060auth_method\u0060 is \u0060oauth\u0060, the API key when \u0060api_key\u0060, or the client-credentials access token when \u0060client_credentials\u0060.",
+            "format": "password",
+            "example": "gho_16C7e42F292c6912E7710c838347Ae178B4a"
+          },
+          "expires_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ISO-8601 formatted timestamp indicating when the credential expires, or \u0060null\u0060 if it does not expire. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
+            "example": "2025-12-31T23:59:59.000Z"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The scopes granted to the access token. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060."
+          },
+          "missing_scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If the integration has requested scopes that aren\u0027t present on the access token, they\u0027re listed here. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
+            "example": []
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3MetadataProperty"
+          },
+          "auth_method": {
+            "type": "string"
+          }
+        },
+        "discriminator": {
+          "propertyName": "auth_method",
+          "mapping": {
+            "DataIntegrationVendedCredentialOneOf1": "#/components/schemas/DataIntegrationVendedCredentialOneOf1",
+            "DataIntegrationVendedCredentialOneOf2": "#/components/schemas/DataIntegrationVendedCredentialOneOf2",
+            "DataIntegrationVendedCredentialOneOf3": "#/components/schemas/DataIntegrationVendedCredentialOneOf3"
+          }
+        }
+      },
       "DataIntegrationCredentialsResponse": {
         "type": "object",
         "oneOf": [
@@ -26804,12 +26872,6 @@
           },
           {
             "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf2"
-          },
-          {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf3"
-          },
-          {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf4"
           }
         ],
         "properties": {
@@ -26819,8 +26881,12 @@
             "description": "Indicates credentials are available.",
             "default": true
           },
+          "credential": {
+            "description": "The credential object containing the vended secret.",
+            "$ref": "#/components/schemas/DataIntegrationVendedCredential"
+          },
           "error": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf4Error"
+            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf2Error"
           }
         }
       },
@@ -34410,7 +34476,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultKekCreatedEvent"
+            "$ref": "#/components/schemas/VaultDekRekeyedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf121Data"
@@ -34446,7 +34512,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultKekDeletedEvent"
+            "$ref": "#/components/schemas/VaultKekCreatedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf122Data"
@@ -34482,7 +34548,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultMetadataReadEvent"
+            "$ref": "#/components/schemas/VaultKekDeletedEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf123Data"
@@ -34518,7 +34584,7 @@
             "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "event": {
-            "$ref": "#/components/schemas/VaultNamesListedEvent"
+            "$ref": "#/components/schemas/VaultMetadataReadEvent"
           },
           "data": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf124Data"
@@ -34539,6 +34605,42 @@
         }
       },
       "EventSchemaAllOf2OneOf125": {
+        "required": [
+          "id",
+          "event",
+          "data",
+          "created_at",
+          "object"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the event.",
+            "example": "event_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "event": {
+            "$ref": "#/components/schemas/VaultNamesListedEvent"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf125Data"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "context": {
+            "description": "Additional context about the event.",
+            "$ref": "#/components/schemas/EventContextDto"
+          },
+          "object": {
+            "$ref": "#/components/schemas/EventValueObject"
+          }
+        }
+      },
+      "EventSchemaAllOf2OneOf126": {
         "required": [
           "id",
           "event",
@@ -34575,7 +34677,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf126": {
+      "EventSchemaAllOf2OneOf127": {
         "required": [
           "id",
           "event",
@@ -34612,7 +34714,7 @@
           }
         }
       },
-      "EventSchemaAllOf2OneOf127": {
+      "EventSchemaAllOf2OneOf128": {
         "required": [
           "id",
           "event",
@@ -34685,6 +34787,128 @@
           }
         }
       },
+      "DataIntegrationVendedCredentialOneOf1": {
+        "required": [
+          "object",
+          "auth_method",
+          "value",
+          "expires_at",
+          "scopes",
+          "missing_scopes"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/CredentialObject"
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/OAuthAuthMethod"
+          },
+          "value": {
+            "type": "string",
+            "description": "The vended secret. An OAuth access token when \u0060auth_method\u0060 is \u0060oauth\u0060, the API key when \u0060api_key\u0060, or the client-credentials access token when \u0060client_credentials\u0060.",
+            "format": "password",
+            "example": "gho_16C7e42F292c6912E7710c838347Ae178B4a"
+          },
+          "expires_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ISO-8601 formatted timestamp indicating when the credential expires, or \u0060null\u0060 if it does not expire. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
+            "example": "2025-12-31T23:59:59.000Z"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The scopes granted to the access token. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060."
+          },
+          "missing_scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If the integration has requested scopes that aren\u0027t present on the access token, they\u0027re listed here. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
+            "example": []
+          }
+        }
+      },
+      "DataIntegrationVendedCredentialOneOf2": {
+        "required": [
+          "object",
+          "auth_method",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/CredentialObject"
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/ApiKeyAuthMethod"
+          },
+          "value": {
+            "type": "string",
+            "description": "The API key secret.",
+            "format": "password",
+            "example": "sk-1234567890abcdef"
+          }
+        }
+      },
+      "DataIntegrationVendedCredentialOneOf3": {
+        "required": [
+          "object",
+          "auth_method",
+          "value",
+          "expires_at",
+          "scopes",
+          "missing_scopes",
+          "metadata"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/CredentialObject"
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/ClientCredentialsAuthMethod"
+          },
+          "value": {
+            "type": "string",
+            "description": "The client-credentials access token.",
+            "format": "password",
+            "example": "00D5g000000XXXX!AQEAQ..."
+          },
+          "expires_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ISO-8601 formatted timestamp indicating when the credential expires.",
+            "example": "2025-12-31T23:59:59.000Z"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The scopes granted to the access token."
+          },
+          "missing_scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If the integration has requested scopes that aren\u0027t present on the access token, they\u0027re listed here. The scopes granted to a client-credentials token are governed by the connected organization\u0027s client application, so the integration\u0027s configured scopes are requests or defaults rather than guarantees.",
+            "example": []
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3MetadataProperty"
+          }
+        }
+      },
       "DataIntegrationCredentialsResponseOneOf1": {
         "required": [
           "active",
@@ -34699,47 +34923,12 @@
             "default": true
           },
           "credential": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf1Credential"
+            "description": "The credential object containing the vended secret.",
+            "$ref": "#/components/schemas/DataIntegrationVendedCredential"
           }
         }
       },
       "DataIntegrationCredentialsResponseOneOf2": {
-        "required": [
-          "active",
-          "credential"
-        ],
-        "type": "object",
-        "properties": {
-          "active": {
-            "const": null,
-            "type": "boolean",
-            "description": "Indicates credentials are available.",
-            "default": true
-          },
-          "credential": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf2Credential"
-          }
-        }
-      },
-      "DataIntegrationCredentialsResponseOneOf3": {
-        "required": [
-          "active",
-          "credential"
-        ],
-        "type": "object",
-        "properties": {
-          "active": {
-            "const": null,
-            "type": "boolean",
-            "description": "Indicates credentials are available.",
-            "default": true
-          },
-          "credential": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf3Credential"
-          }
-        }
-      },
-      "DataIntegrationCredentialsResponseOneOf4": {
         "required": [
           "active",
           "error"
@@ -34753,7 +34942,7 @@
             "default": false
           },
           "error": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf4Error"
+            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf2Error"
           }
         }
       },
@@ -43403,8 +43592,8 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "key_name",
-          "key_id"
+          "key_ids",
+          "key_context"
         ],
         "type": "object",
         "properties": {
@@ -43421,15 +43610,15 @@
             "description": "The name of the actor.",
             "example": "Jane Doe"
           },
-          "key_name": {
-            "type": "string",
-            "description": "The name of the key encryption key.",
-            "example": "production-kek"
+          "key_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The unique identifiers of the re-encrypted data encryption keys."
           },
-          "key_id": {
-            "type": "string",
-            "description": "The unique identifier of the key encryption key.",
-            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          "key_context": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf121DataKeyContextProperty"
           }
         },
         "description": "The event payload."
@@ -43475,7 +43664,8 @@
           "actor_id",
           "actor_source",
           "actor_name",
-          "kv_name"
+          "key_name",
+          "key_id"
         ],
         "type": "object",
         "properties": {
@@ -43492,6 +43682,41 @@
             "description": "The name of the actor.",
             "example": "Jane Doe"
           },
+          "key_name": {
+            "type": "string",
+            "description": "The name of the key encryption key.",
+            "example": "production-kek"
+          },
+          "key_id": {
+            "type": "string",
+            "description": "The unique identifier of the key encryption key.",
+            "example": "key_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          }
+        },
+        "description": "The event payload."
+      },
+      "EventSchemaAllOf2OneOf124Data": {
+        "required": [
+          "actor_id",
+          "actor_source",
+          "actor_name",
+          "kv_name"
+        ],
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "description": "The unique identifier of the actor.",
+            "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "actor_source": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf124DataActorSource"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "The name of the actor.",
+            "example": "Jane Doe"
+          },
           "kv_name": {
             "type": "string",
             "description": "The name of the key-value store.",
@@ -43500,7 +43725,7 @@
         },
         "description": "The event payload."
       },
-      "EventSchemaAllOf2OneOf124Data": {
+      "EventSchemaAllOf2OneOf125Data": {
         "required": [
           "actor_id",
           "actor_source",
@@ -43514,7 +43739,7 @@
             "example": "user_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "actor_source": {
-            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf124DataActorSource"
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf125DataActorSource"
           },
           "actor_name": {
             "type": "string",
@@ -43568,130 +43793,15 @@
         },
         "description": "The [access token](/reference/pipes/access-token) object, present when \u0060active\u0060 is \u0060true\u0060."
       },
-      "DataIntegrationCredentialsResponseOneOf1Credential": {
-        "required": [
-          "object",
-          "auth_method",
-          "value",
-          "expires_at",
-          "scopes",
-          "missing_scopes"
-        ],
+      "DataIntegrationVendedCredentialOneOf3Metadata": {
         "type": "object",
-        "properties": {
-          "object": {
-            "$ref": "#/components/schemas/CredentialObject"
-          },
-          "auth_method": {
-            "$ref": "#/components/schemas/OAuthAuthMethod"
-          },
-          "value": {
-            "type": "string",
-            "description": "The OAuth access token.",
-            "format": "password",
-            "example": "gho_16C7e42F292c6912E7710c838347Ae178B4a"
-          },
-          "expires_at": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ISO-8601 formatted timestamp indicating when the credential expires.",
-            "example": "2025-12-31T23:59:59.000Z"
-          },
-          "scopes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The scopes granted to the access token."
-          },
-          "missing_scopes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "If the integration has requested scopes that aren\u0027t present on the access token, they\u0027re listed here.",
-            "example": []
-          }
+        "additionalProperties": {
+          "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3MetadataAdditionalProperties"
         },
-        "description": "The credential object containing the vended secret."
-      },
-      "DataIntegrationCredentialsResponseOneOf2Credential": {
-        "required": [
-          "object",
-          "auth_method",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "object": {
-            "$ref": "#/components/schemas/CredentialObject"
-          },
-          "auth_method": {
-            "$ref": "#/components/schemas/ApiKeyAuthMethod"
-          },
-          "value": {
-            "type": "string",
-            "description": "The API key secret.",
-            "format": "password",
-            "example": "sk-1234567890abcdef"
-          }
-        },
-        "description": "The credential object containing the vended secret."
-      },
-      "DataIntegrationCredentialsResponseOneOf3Credential": {
-        "required": [
-          "object",
-          "auth_method",
-          "value",
-          "expires_at",
-          "scopes",
-          "missing_scopes",
-          "metadata"
-        ],
-        "type": "object",
-        "properties": {
-          "object": {
-            "$ref": "#/components/schemas/CredentialObject"
-          },
-          "auth_method": {
-            "$ref": "#/components/schemas/ClientCredentialsAuthMethod"
-          },
-          "value": {
-            "type": "string",
-            "description": "The client-credentials access token.",
-            "format": "password",
-            "example": "00D5g000000XXXX!AQEAQ..."
-          },
-          "expires_at": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ISO-8601 formatted timestamp indicating when the credential expires.",
-            "example": "2025-12-31T23:59:59.000Z"
-          },
-          "scopes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The scopes granted to the access token."
-          },
-          "missing_scopes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "If the integration has requested scopes that aren\u0027t present on the access token, they\u0027re listed here. The scopes granted to a client-credentials token are governed by the connected organization\u0027s client application, so the integration\u0027s configured scopes are requests or defaults rather than guarantees.",
-            "example": []
-          },
-          "metadata": {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf3CredentialMetadataProperty"
-          }
-        },
-        "description": "The credential object containing the vended secret."
+        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Only present for \u0060client_credentials\u0060 credentials.",
+        "example": {
+          "instance_url": "https://acme.my.salesforce.com"
+        }
       },
       "AgentRegistrationClaimClaimCompletion": {
         "required": [
@@ -45450,14 +45560,10 @@
           "type": "string"
         }
       },
-      "DataIntegrationCredentialsResponseOneOf3CredentialMetadata": {
+      "EventSchemaAllOf2OneOf121DataKeyContext": {
         "type": "object",
         "additionalProperties": {
-          "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf3CredentialMetadataAdditionalProperties"
-        },
-        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider.",
-        "example": {
-          "instance_url": "https://acme.my.salesforce.com"
+          "type": "string"
         }
       },
       "DataIntegrationsListResponseDataItemConnectedAccountConfig": {
@@ -57753,6 +57859,13 @@
         },
         "description": "Additional context about the event."
       },
+      "DataIntegrationVendedCredentialOneOf3MetadataProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3MetadataPropertyAdditionalProperties"
+        },
+        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Only present for \u0060client_credentials\u0060 credentials."
+      },
       "AuditLogSchemaJsonActorMetadataProperty": {
         "type": "object",
         "additionalProperties": {
@@ -57916,12 +58029,14 @@
           "type": "string"
         }
       },
-      "DataIntegrationCredentialsResponseOneOf3CredentialMetadataProperty": {
+      "EventSchemaAllOf2OneOf121DataKeyContextProperty": {
         "type": "object",
         "additionalProperties": {
-          "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf3CredentialMetadataPropertyAdditionalProperties"
-        },
-        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider."
+          "type": "string"
+        }
+      },
+      "DataIntegrationVendedCredentialOneOf3MetadataAdditionalProperties": {
+        "type": "object"
       },
       "AuditLogSchemaJsonActorMetadataAdditionalProperties": {
         "type": "object"
@@ -57968,9 +58083,6 @@
         "type": "object"
       },
       "EventSchemaAllOf2OneOf81DataCustomAttributesAdditionalProperties": {
-        "type": "object"
-      },
-      "DataIntegrationCredentialsResponseOneOf3CredentialMetadataAdditionalProperties": {
         "type": "object"
       },
       "AgentBlueprintsControllerCreateRequestInvocableBy": {
@@ -59258,6 +59370,9 @@
       "ProfileRawAttributesPropertyAdditionalProperties": {
         "type": "object"
       },
+      "DataIntegrationVendedCredentialOneOf3MetadataPropertyAdditionalProperties": {
+        "type": "object"
+      },
       "AuditLogSchemaJsonActorMetadataPropertyAdditionalProperties": {
         "type": "object"
       },
@@ -59289,9 +59404,6 @@
         "type": "object"
       },
       "EventSchemaAllOf2OneOf81DataCustomAttributesPropertyAdditionalProperties": {
-        "type": "object"
-      },
-      "DataIntegrationCredentialsResponseOneOf3CredentialMetadataPropertyAdditionalProperties": {
         "type": "object"
       },
       "CorsOriginsControllerCreateCorsOrigin422ResponseErrorsItemConstraints": {
@@ -67057,6 +67169,23 @@
           ]
         }
       },
+      "VaultDekRekeyedEvent": {
+        "const": null,
+        "enum": [
+          "vault.dek.rekeyed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "VaultDekRekeyedEvent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "vault.dek.rekeyed",
+              "name": "VaultDekRekeyed"
+            }
+          ]
+        }
+      },
       "VaultKekCreatedEvent": {
         "const": null,
         "enum": [
@@ -67200,7 +67329,94 @@
           ]
         }
       },
-      "DataIntegrationCredentialsResponseOneOf4Error": {
+      "CredentialObject": {
+        "const": null,
+        "enum": [
+          "credential"
+        ],
+        "type": "string",
+        "description": "Distinguishes the credential object.",
+        "x-ms-enum": {
+          "name": "CredentialObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "credential",
+              "name": "Credential"
+            }
+          ]
+        }
+      },
+      "OAuthAuthMethod": {
+        "const": null,
+        "enum": [
+          "oauth"
+        ],
+        "type": "string",
+        "description": "The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.",
+        "x-extensible-enum": [
+          "oauth",
+          "api_key",
+          "client_credentials"
+        ],
+        "x-ms-enum": {
+          "name": "OAuthAuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            }
+          ]
+        }
+      },
+      "ApiKeyAuthMethod": {
+        "const": null,
+        "enum": [
+          "api_key"
+        ],
+        "type": "string",
+        "description": "The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.",
+        "x-extensible-enum": [
+          "oauth",
+          "api_key",
+          "client_credentials"
+        ],
+        "x-ms-enum": {
+          "name": "ApiKeyAuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api_key",
+              "name": "ApiKey"
+            }
+          ]
+        }
+      },
+      "ClientCredentialsAuthMethod": {
+        "const": null,
+        "enum": [
+          "client_credentials"
+        ],
+        "type": "string",
+        "description": "The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.",
+        "x-extensible-enum": [
+          "oauth",
+          "api_key",
+          "client_credentials"
+        ],
+        "x-ms-enum": {
+          "name": "ClientCredentialsAuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
+            }
+          ]
+        }
+      },
+      "DataIntegrationCredentialsResponseOneOf2Error": {
         "enum": [
           "not_installed",
           "needs_reauthorization"
@@ -67214,7 +67430,7 @@
           "needs_reauthorization"
         ],
         "x-ms-enum": {
-          "name": "DataIntegrationCredentialsResponseOneOf4Error",
+          "name": "DataIntegrationCredentialsResponseOneOf2Error",
           "modelAsString": false,
           "values": [
             {
@@ -70536,6 +70752,28 @@
           ]
         }
       },
+      "EventSchemaAllOf2OneOf125DataActorSource": {
+        "enum": [
+          "api",
+          "dashboard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf125DataActorSource",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "api",
+              "name": "Api"
+            },
+            {
+              "value": "dashboard",
+              "name": "Dashboard"
+            }
+          ]
+        }
+      },
       "AccessTokenObject": {
         "const": null,
         "enum": [
@@ -70550,93 +70788,6 @@
             {
               "value": "access_token",
               "name": "AccessToken"
-            }
-          ]
-        }
-      },
-      "CredentialObject": {
-        "const": null,
-        "enum": [
-          "credential"
-        ],
-        "type": "string",
-        "description": "Distinguishes the credential object.",
-        "x-ms-enum": {
-          "name": "CredentialObject",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "credential",
-              "name": "Credential"
-            }
-          ]
-        }
-      },
-      "OAuthAuthMethod": {
-        "const": null,
-        "enum": [
-          "oauth"
-        ],
-        "type": "string",
-        "description": "The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.",
-        "x-extensible-enum": [
-          "oauth",
-          "api_key",
-          "client_credentials"
-        ],
-        "x-ms-enum": {
-          "name": "OAuthAuthMethod",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "oauth",
-              "name": "OAuth"
-            }
-          ]
-        }
-      },
-      "ApiKeyAuthMethod": {
-        "const": null,
-        "enum": [
-          "api_key"
-        ],
-        "type": "string",
-        "description": "The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.",
-        "x-extensible-enum": [
-          "oauth",
-          "api_key",
-          "client_credentials"
-        ],
-        "x-ms-enum": {
-          "name": "ApiKeyAuthMethod",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "api_key",
-              "name": "ApiKey"
-            }
-          ]
-        }
-      },
-      "ClientCredentialsAuthMethod": {
-        "const": null,
-        "enum": [
-          "client_credentials"
-        ],
-        "type": "string",
-        "description": "The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.",
-        "x-extensible-enum": [
-          "oauth",
-          "api_key",
-          "client_credentials"
-        ],
-        "x-ms-enum": {
-          "name": "ClientCredentialsAuthMethod",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "client_credentials",
-              "name": "ClientCredentials"
             }
           ]
         }

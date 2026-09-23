@@ -9866,6 +9866,20 @@ paths:
                     required:
                       - code
                       - message
+                  - type: object
+                    properties:
+                      code:
+                        type: string
+                        description: The error code identifying the type of error.
+                        example: saml_request_binding_unsupported_for_signing
+                        const: saml_request_binding_unsupported_for_signing
+                      message:
+                        type: string
+                        description: A human-readable description of the error.
+                        example: Request could not be processed.
+                    required:
+                      - code
+                      - message
         '403':
           description: Forbidden
           content:
@@ -43687,6 +43701,68 @@ components:
                   example: event_01EHZNVPK3SFK441A1RGBFSHRT
                 event:
                   type: string
+                  const: vault.dek.rekeyed
+                data:
+                  type: object
+                  properties:
+                    actor_id:
+                      type: string
+                      description: The unique identifier of the actor.
+                      example: user_01EHWNCE74X7JSDV0X3SZ3KJNY
+                    actor_source:
+                      type: string
+                      enum:
+                        - api
+                        - dashboard
+                    actor_name:
+                      type: string
+                      description: The name of the actor.
+                      example: Jane Doe
+                    key_ids:
+                      type: array
+                      items:
+                        type: string
+                      description: >-
+                        The unique identifiers of the re-encrypted data
+                        encryption keys.
+                      example:
+                        - dek_01EHWNCE74X7JSDV0X3SZ3KJNY
+                    key_context:
+                      type: object
+                      additionalProperties:
+                        type: string
+                  required:
+                    - actor_id
+                    - actor_source
+                    - actor_name
+                    - key_ids
+                    - key_context
+                  description: The event payload.
+                created_at:
+                  format: date-time
+                  type: string
+                  description: An ISO 8601 timestamp.
+                  example: '2026-01-15T12:00:00.000Z'
+                context:
+                  $ref: '#/components/schemas/EventContextDto'
+                object:
+                  type: string
+                  description: Distinguishes the Event object.
+                  const: event
+              required:
+                - id
+                - event
+                - data
+                - created_at
+                - object
+            - type: object
+              properties:
+                id:
+                  type: string
+                  description: Unique identifier for the event.
+                  example: event_01EHZNVPK3SFK441A1RGBFSHRT
+                event:
+                  type: string
                   const: vault.kek.created
                 data:
                   type: object
@@ -45439,6 +45515,159 @@ components:
       required:
         - code
         - message
+    DataIntegrationVendedCredential:
+      discriminator:
+        propertyName: auth_method
+      oneOf:
+        - type: object
+          properties:
+            object:
+              type: string
+              description: Distinguishes the credential object.
+              const: credential
+            auth_method:
+              type: string
+              description: >-
+                The authentication method for this credential. Additional values
+                may be added in the future; handle unknown values gracefully.
+              x-extensible-enum:
+                - oauth
+                - api_key
+                - client_credentials
+              const: oauth
+            value:
+              type: string
+              format: password
+              description: >-
+                The vended secret. An OAuth access token when `auth_method` is
+                `oauth`, the API key when `api_key`, or the client-credentials
+                access token when `client_credentials`.
+              example: gho_16C7e42F292c6912E7710c838347Ae178B4a
+            expires_at:
+              type:
+                - string
+                - 'null'
+              description: >-
+                The ISO-8601 formatted timestamp indicating when the credential
+                expires, or `null` if it does not expire. Present for `oauth`
+                and `client_credentials` credentials; absent for `api_key`.
+              example: '2025-12-31T23:59:59.000Z'
+            scopes:
+              type: array
+              items:
+                type: string
+              description: >-
+                The scopes granted to the access token. Present for `oauth` and
+                `client_credentials` credentials; absent for `api_key`.
+              example:
+                - repo
+                - user:email
+            missing_scopes:
+              type: array
+              items:
+                type: string
+              description: >-
+                If the integration has requested scopes that aren't present on
+                the access token, they're listed here. Present for `oauth` and
+                `client_credentials` credentials; absent for `api_key`.
+              example: []
+          required:
+            - object
+            - auth_method
+            - value
+            - expires_at
+            - scopes
+            - missing_scopes
+        - type: object
+          properties:
+            object:
+              type: string
+              description: Distinguishes the credential object.
+              const: credential
+            auth_method:
+              type: string
+              description: >-
+                The authentication method for this credential. Additional values
+                may be added in the future; handle unknown values gracefully.
+              x-extensible-enum:
+                - oauth
+                - api_key
+                - client_credentials
+              const: api_key
+            value:
+              type: string
+              format: password
+              description: The API key secret.
+              example: sk-1234567890abcdef
+          required:
+            - object
+            - auth_method
+            - value
+        - type: object
+          properties:
+            object:
+              type: string
+              description: Distinguishes the credential object.
+              const: credential
+            auth_method:
+              type: string
+              description: >-
+                The authentication method for this credential. Additional values
+                may be added in the future; handle unknown values gracefully.
+              x-extensible-enum:
+                - oauth
+                - api_key
+                - client_credentials
+              const: client_credentials
+            value:
+              type: string
+              format: password
+              description: The client-credentials access token.
+              example: 00D5g000000XXXX!AQEAQ...
+            expires_at:
+              type:
+                - string
+                - 'null'
+              description: >-
+                The ISO-8601 formatted timestamp indicating when the credential
+                expires.
+              example: '2025-12-31T23:59:59.000Z'
+            scopes:
+              type: array
+              items:
+                type: string
+              description: The scopes granted to the access token.
+              example:
+                - api
+            missing_scopes:
+              type: array
+              items:
+                type: string
+              description: >-
+                If the integration has requested scopes that aren't present on
+                the access token, they're listed here. The scopes granted to a
+                client-credentials token are governed by the connected
+                organization's client application, so the integration's
+                configured scopes are requests or defaults rather than
+                guarantees.
+              example: []
+            metadata:
+              type: object
+              additionalProperties: {}
+              description: >-
+                Non-sensitive fields captured from the provider token response
+                (e.g. Salesforce `instance_url`), as configured for the
+                provider. Only present for `client_credentials` credentials.
+              example:
+                instance_url: https://acme.my.salesforce.com
+          required:
+            - object
+            - auth_method
+            - value
+            - expires_at
+            - scopes
+            - missing_scopes
+            - metadata
     DataIntegrationCredentialsResponse:
       oneOf:
         - type: object
@@ -45448,173 +45677,7 @@ components:
               description: Indicates credentials are available.
               const: true
             credential:
-              type: object
-              properties:
-                object:
-                  type: string
-                  description: Distinguishes the credential object.
-                  const: credential
-                auth_method:
-                  type: string
-                  description: >-
-                    The authentication method for this credential. Additional
-                    values may be added in the future; handle unknown values
-                    gracefully.
-                  x-extensible-enum:
-                    - oauth
-                    - api_key
-                    - client_credentials
-                  const: oauth
-                value:
-                  type: string
-                  format: password
-                  description: The OAuth access token.
-                  example: gho_16C7e42F292c6912E7710c838347Ae178B4a
-                expires_at:
-                  type:
-                    - string
-                    - 'null'
-                  description: >-
-                    The ISO-8601 formatted timestamp indicating when the
-                    credential expires.
-                  example: '2025-12-31T23:59:59.000Z'
-                scopes:
-                  type: array
-                  items:
-                    type: string
-                  description: The scopes granted to the access token.
-                  example:
-                    - repo
-                    - user:email
-                missing_scopes:
-                  type: array
-                  items:
-                    type: string
-                  description: >-
-                    If the integration has requested scopes that aren't present
-                    on the access token, they're listed here.
-                  example: []
-              required:
-                - object
-                - auth_method
-                - value
-                - expires_at
-                - scopes
-                - missing_scopes
-              description: The credential object containing the vended secret.
-          required:
-            - active
-            - credential
-        - type: object
-          properties:
-            active:
-              type: boolean
-              description: Indicates credentials are available.
-              const: true
-            credential:
-              type: object
-              properties:
-                object:
-                  type: string
-                  description: Distinguishes the credential object.
-                  const: credential
-                auth_method:
-                  type: string
-                  description: >-
-                    The authentication method for this credential. Additional
-                    values may be added in the future; handle unknown values
-                    gracefully.
-                  x-extensible-enum:
-                    - oauth
-                    - api_key
-                    - client_credentials
-                  const: api_key
-                value:
-                  type: string
-                  format: password
-                  description: The API key secret.
-                  example: sk-1234567890abcdef
-              required:
-                - object
-                - auth_method
-                - value
-              description: The credential object containing the vended secret.
-          required:
-            - active
-            - credential
-        - type: object
-          properties:
-            active:
-              type: boolean
-              description: Indicates credentials are available.
-              const: true
-            credential:
-              type: object
-              properties:
-                object:
-                  type: string
-                  description: Distinguishes the credential object.
-                  const: credential
-                auth_method:
-                  type: string
-                  description: >-
-                    The authentication method for this credential. Additional
-                    values may be added in the future; handle unknown values
-                    gracefully.
-                  x-extensible-enum:
-                    - oauth
-                    - api_key
-                    - client_credentials
-                  const: client_credentials
-                value:
-                  type: string
-                  format: password
-                  description: The client-credentials access token.
-                  example: 00D5g000000XXXX!AQEAQ...
-                expires_at:
-                  type:
-                    - string
-                    - 'null'
-                  description: >-
-                    The ISO-8601 formatted timestamp indicating when the
-                    credential expires.
-                  example: '2025-12-31T23:59:59.000Z'
-                scopes:
-                  type: array
-                  items:
-                    type: string
-                  description: The scopes granted to the access token.
-                  example:
-                    - api
-                missing_scopes:
-                  type: array
-                  items:
-                    type: string
-                  description: >-
-                    If the integration has requested scopes that aren't present
-                    on the access token, they're listed here. The scopes granted
-                    to a client-credentials token are governed by the connected
-                    organization's client application, so the integration's
-                    configured scopes are requests or defaults rather than
-                    guarantees.
-                  example: []
-                metadata:
-                  type: object
-                  additionalProperties: {}
-                  description: >-
-                    Non-sensitive fields captured from the provider token
-                    response (e.g. Salesforce `instance_url`), as configured for
-                    the provider.
-                  example:
-                    instance_url: https://acme.my.salesforce.com
-              required:
-                - object
-                - auth_method
-                - value
-                - expires_at
-                - scopes
-                - missing_scopes
-                - metadata
+              $ref: '#/components/schemas/DataIntegrationVendedCredential'
               description: The credential object containing the vended secret.
           required:
             - active
