@@ -3059,7 +3059,8 @@
                   },
                   "source": {
                     "type": "direct",
-                    "group_role_assignment_id": null
+                    "group_role_assignment_id": null,
+                    "group": null
                   },
                   "created_at": "2026-01-15T12:00:00.000Z",
                   "updated_at": "2026-01-15T12:00:00.000Z"
@@ -36197,7 +36198,8 @@
       "UserRoleAssignmentSource": {
         "required": [
           "type",
-          "group_role_assignment_id"
+          "group_role_assignment_id",
+          "group"
         ],
         "type": "object",
         "properties": {
@@ -36211,6 +36213,9 @@
             ],
             "description": "The ID of the group role assignment the role was derived from, or null if direct.",
             "example": null
+          },
+          "group": {
+            "$ref": "#/components/schemas/UserRoleAssignmentSourceGroup"
           }
         },
         "description": "The origin of the role assignment."
@@ -43869,6 +43874,30 @@
             }
           }
         }
+      },
+      "UserRoleAssignmentSourceGroup": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": [
+          "null",
+          "object"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the Group the role was derived from.",
+            "example": "group_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the Group the role was derived from.",
+            "example": "Marketing team"
+          }
+        },
+        "description": "The group the role was derived from, or null if direct.",
+        "example": null
       },
       "DirectoryMetadataUsers": {
         "required": [

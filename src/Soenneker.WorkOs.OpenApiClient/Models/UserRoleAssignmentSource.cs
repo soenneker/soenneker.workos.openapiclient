@@ -15,6 +15,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The group the role was derived from, or null if direct.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup? Group { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup Group { get; set; }
+#endif
         /// <summary>The ID of the group role assignment the role was derived from, or null if direct.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,6 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "group", n => { Group = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup>(global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup.CreateFromDiscriminatorValue); } },
                 { "group_role_assignment_id", n => { GroupRoleAssignmentId = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType>(); } },
             };
@@ -61,6 +70,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup>("group", Group);
             writer.WriteStringValue("group_role_assignment_id", GroupRoleAssignmentId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
