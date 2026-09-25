@@ -56,7 +56,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ClientSecretLast4 { get; set; }
 #endif
-        /// <summary>The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding any it declares as secret. Only present when `auth_method` is `client_credentials`.</summary>
+        /// <summary>The connection-level configuration values stored for this connection — the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty? Config { get; set; }

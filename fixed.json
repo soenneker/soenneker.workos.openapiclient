@@ -7787,12 +7787,113 @@
       }
     },
     "/data-integrations/{slug}/api-key": {
+      "post": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Create another API key connected account",
+        "description": "Creates another API key-based connected account for the specified integration, owned by the user or, when \u0060connection_owner\u0060 is \u0060organization\u0060, shared by the organization. Requires \u0060connection_intent: add\u0060 and does not accept \u0060connected_account_id\u0060; use PUT to create or rotate the compatibility connection or to update an exact connection. Creating an additional connection is not yet available: until it is, this endpoint succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 \u0060multiple_connections_unavailable\u0060.",
+        "operationId": "DataIntegrationsControllerCreateApiKeyConnection",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The identifier of the integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "github"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnectionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "The connected account that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectedAccount"
+                },
+                "example": {
+                  "object": "connected_account",
+                  "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "connection_role": "standard",
+                  "account_identifier": null,
+                  "account_display_name": null,
+                  "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "scopes": [],
+                  "auth_method": "api_key",
+                  "api_key_last_4": "cdef",
+                  "state": "connected",
+                  "created_at": "2024-01-16T14:20:00.000Z",
+                  "updated_at": "2024-01-16T14:20:00.000Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid, including a missing \u0060connection_intent: add\u0060 or a supplied \u0060connected_account_id\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnection400Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnection403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The data integration was not found, or \u0060multiple_connections_unavailable\u0060 when creating an additional connection is not yet available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnection404Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Another connection is being created for this owner and provider. Retry the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnection503Response"
+                }
+              }
+            }
+          }
+        },
+        "x-feature-flag": "pipes-multiple-connections"
+      },
       "put": {
         "tags": [
           "pipes"
         ],
         "summary": "Upsert an API key for a connected account",
-        "description": "Creates or updates an API-key-based installation for the specified integration, owned by the user or, when \u0060connection_owner\u0060 is \u0060organization\u0060, shared by the organization. If an installation already exists, the stored API key is rotated to the new value.",
+        "description": "Creates or updates an API-key-based installation for the specified integration, owned by the user or, when \u0060connection_owner\u0060 is \u0060organization\u0060, shared by the organization. If an installation already exists, the stored API key is rotated to the new value. To create another connection, use POST.",
         "operationId": "DataIntegrationsControllerUpsertApiKey",
         "parameters": [
           {
@@ -7976,12 +8077,112 @@
       }
     },
     "/data-integrations/{slug}/client-credentials": {
+      "post": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Create another client credentials connected account",
+        "description": "Creates another client credentials-based connected account for the specified integration, owned by the user or, when \u0060connection_owner\u0060 is \u0060organization\u0060, shared by the organization. Requires \u0060connection_intent: add\u0060 and does not accept \u0060connected_account_id\u0060; use PUT to create or rotate the compatibility connection or to update an exact connection. Creating an additional connection is not yet available: until it is, this endpoint succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 \u0060multiple_connections_unavailable\u0060.",
+        "operationId": "DataIntegrationsControllerCreateClientCredentialsConnection",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The identifier of the integration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "salesforce"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnectionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "The connected account that was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectedAccount"
+                },
+                "example": {
+                  "object": "connected_account",
+                  "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "connection_role": "standard",
+                  "account_identifier": null,
+                  "account_display_name": null,
+                  "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "scopes": [],
+                  "auth_method": "client_credentials",
+                  "state": "connected",
+                  "created_at": "2024-01-16T14:20:00.000Z",
+                  "updated_at": "2024-01-16T14:20:00.000Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid, including a missing \u0060connection_intent: add\u0060 or a supplied \u0060connected_account_id\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection400Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The data integration was not found, or \u0060multiple_connections_unavailable\u0060 when creating an additional connection is not yet available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection404Response"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Another connection is being created for this owner and provider. Retry the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection503Response"
+                }
+              }
+            }
+          }
+        },
+        "x-feature-flag": "pipes-multiple-connections"
+      },
       "put": {
         "tags": [
           "pipes"
         ],
         "summary": "Upsert client credentials for a connected account",
-        "description": "Creates or updates a client-credentials-based installation for the specified integration, owned by the user or, when \u0060connection_owner\u0060 is \u0060organization\u0060, shared by the organization. If an installation already exists, the stored client credentials are rotated to the new values.",
+        "description": "Creates or updates a client-credentials-based installation for the specified integration, owned by the user or, when \u0060connection_owner\u0060 is \u0060organization\u0060, shared by the organization. If an installation already exists, the stored client credentials are rotated to the new values. To create another connection, use POST.",
         "operationId": "DataIntegrationsControllerUpsertClientCredentials",
         "parameters": [
           {
@@ -8092,7 +8293,7 @@
           "pipes"
         ],
         "summary": "Vend credentials for a connected account",
-        "description": "Returns credentials for a user\u0027s connected account. Branches on the installation\u0027s \u0060auth_method\u0060: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret.",
+        "description": "Returns credentials for a user\u0027s connected account. Branches on the installation\u0027s \u0060auth_method\u0060: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret. Every active credential includes \u0060config\u0060: provider-declared, non-secret values from the installation snapshot, with current provider defaults for unset fields. Editing integration or organization configuration does not change the snapshot; reconnect or explicitly rebind the connection to adopt those edits. Defaults remain live, so a changed default can appear in \u0060config\u0060 before a cached token is refreshed or re-minted. Credentials that never refresh require a reconnect or rebind when a default changes their routing.",
         "operationId": "DataIntegrationsControllerVendCredentials",
         "parameters": [
           {
@@ -8135,7 +8336,8 @@
                       "repo",
                       "user:email"
                     ],
-                    "missing_scopes": []
+                    "missing_scopes": [],
+                    "config": {}
                   }
                 }
               }
@@ -8175,7 +8377,7 @@
             }
           },
           "409": {
-            "description": "Several connected accounts match this user for the provider; one must be named.",
+            "description": "Several connected accounts match this user or organization for the provider; one must be named.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8540,7 +8742,7 @@
             }
           },
           "409": {
-            "description": "Several connected accounts match this user for the provider; one must be named.",
+            "description": "Several connected accounts match this user or organization for the provider; one must be named.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11776,7 +11978,7 @@
             }
           },
           "404": {
-            "description": "The organization, user, or data integration was not found.",
+            "description": "The organization, user, or data integration was not found, or \u0060multiple_connections_unavailable\u0060 when \u0060connection_intent: add\u0060 would create an additional connection before that capability is available.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16104,6 +16306,16 @@
                 }
               }
             }
+          },
+          "503": {
+            "description": "Another request is updating the same user. Retry the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserlandUsersControllerUpdate0503Response"
+                }
+              }
+            }
           }
         },
         "x-mutually-exclusive-body-groups": {
@@ -17317,7 +17529,7 @@
             "description": "The request is missing a valid API key."
           },
           "404": {
-            "description": "The user, organization, or data integration was not found.",
+            "description": "The user, organization, or data integration was not found, or \u0060multiple_connections_unavailable\u0060 when \u0060connection_intent: add\u0060 would create an additional connection before that capability is available.",
             "content": {
               "application/json": {
                 "schema": {
@@ -34795,7 +35007,8 @@
           "value",
           "expires_at",
           "scopes",
-          "missing_scopes"
+          "missing_scopes",
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -34833,6 +35046,9 @@
             },
             "description": "If the integration has requested scopes that aren\u0027t present on the access token, they\u0027re listed here. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
             "example": []
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf1ConfigProperty"
           }
         }
       },
@@ -34840,7 +35056,8 @@
         "required": [
           "object",
           "auth_method",
-          "value"
+          "value",
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -34855,6 +35072,9 @@
             "description": "The API key secret.",
             "format": "password",
             "example": "sk-1234567890abcdef"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf2ConfigProperty"
           }
         }
       },
@@ -34866,7 +35086,8 @@
           "expires_at",
           "scopes",
           "missing_scopes",
-          "metadata"
+          "metadata",
+          "config"
         ],
         "type": "object",
         "properties": {
@@ -34907,6 +35128,9 @@
           },
           "metadata": {
             "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3MetadataProperty"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3ConfigProperty"
           }
         }
       },
@@ -37235,7 +37459,7 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.",
         "example": {
           "instance_url": "https://example.my.salesforce.com"
         }
@@ -43798,6 +44022,26 @@
         },
         "description": "The [access token](/reference/pipes/access-token) object, present when \u0060active\u0060 is \u0060true\u0060."
       },
+      "DataIntegrationVendedCredentialOneOf1Config": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake\u0027s \u0060account\u0060 or Zendesk\u0027s \u0060subdomain\u0060. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token\u0027s audience until refresh or re-mint.",
+        "example": {
+          "account": "myorg-myaccount"
+        }
+      },
+      "DataIntegrationVendedCredentialOneOf2Config": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake\u0027s \u0060account\u0060 or Zendesk\u0027s \u0060subdomain\u0060. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token\u0027s audience until refresh or re-mint.",
+        "example": {
+          "account": "myorg-myaccount"
+        }
+      },
       "DataIntegrationVendedCredentialOneOf3Metadata": {
         "type": "object",
         "additionalProperties": {
@@ -43806,6 +44050,16 @@
         "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Only present for \u0060client_credentials\u0060 credentials.",
         "example": {
           "instance_url": "https://acme.my.salesforce.com"
+        }
+      },
+      "DataIntegrationVendedCredentialOneOf3Config": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake\u0027s \u0060account\u0060 or Zendesk\u0027s \u0060subdomain\u0060. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token\u0027s audience until refresh or re-mint.",
+        "example": {
+          "account": "myorg-myaccount"
         }
       },
       "AgentRegistrationClaimClaimCompletion": {
@@ -45600,7 +45854,7 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.",
         "example": {
           "instance_url": "https://example.my.salesforce.com"
         }
@@ -45610,7 +45864,7 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.",
         "example": {
           "instance_url": "https://example.my.salesforce.com"
         }
@@ -50931,6 +51185,98 @@
           }
         }
       },
+      "DataIntegrationsControllerCreateApiKeyConnectionRequest": {
+        "required": [
+          "user_id",
+          "secret",
+          "connection_intent"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "A [User](/reference/authkit/user) identifier.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnectionRequestConnectionOwner"
+          },
+          "secret": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The API key secret to store for this integration.",
+            "example": "sk-1234567890abcdef"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/AddConnectionIntent"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataIntegrationsControllerCreateApiKeyConnection400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsControllerCreateApiKeyConnection403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsControllerCreateApiKeyConnection404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnection404ResponseCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "DataIntegrationsControllerCreateApiKeyConnection503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "DataIntegrationsControllerUpsertApiKeyRequest": {
         "required": [
           "user_id",
@@ -50958,7 +51304,7 @@
             "example": "sk-1234567890abcdef"
           },
           "connection_intent": {
-            "$ref": "#/components/schemas/AddConnectionIntent"
+            "$ref": "#/components/schemas/ReauthorizeConnectionIntent"
           },
           "connected_account_id": {
             "pattern": "^data_installation_.\u002B$",
@@ -51076,6 +51422,108 @@
           }
         }
       },
+      "DataIntegrationsControllerCreateClientCredentialsConnectionRequest": {
+        "required": [
+          "user_id",
+          "client_id",
+          "client_secret",
+          "connection_intent"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "A [User](/reference/authkit/user) identifier.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionOwner"
+          },
+          "client_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The OAuth client ID to store for this integration.",
+            "example": "3MVG9..."
+          },
+          "client_secret": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The OAuth client secret to store for this integration.",
+            "example": "shhh-secret"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnectionRequestConfig"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/AddConnectionIntent"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnection400Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnection403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnection404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection404ResponseCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnection503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "DataIntegrationsControllerUpsertClientCredentialsRequest": {
         "required": [
           "user_id",
@@ -51113,7 +51561,7 @@
             "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestConfig"
           },
           "connection_intent": {
-            "$ref": "#/components/schemas/AddConnectionIntent"
+            "$ref": "#/components/schemas/ReauthorizeConnectionIntent"
           },
           "connected_account_id": {
             "pattern": "^data_installation_.\u002B$",
@@ -52835,10 +53283,13 @@
         ],
         "type": "object",
         "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404ResponseCode"
+          },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "example": "Request could not be processed."
           }
         }
       },
@@ -55670,6 +56121,23 @@
           }
         }
       },
+      "UserlandUsersControllerUpdate0503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "UserlandUsersControllerGet0404Response": {
         "required": [
           "message"
@@ -56205,10 +56673,13 @@
         ],
         "type": "object",
         "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation404ResponseCode"
+          },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "example": "Request could not be processed."
           }
         }
       },
@@ -57828,7 +58299,7 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060."
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed."
       },
       "UserlandUserOrganizationMembershipCustomAttributesProperty": {
         "type": "object",
@@ -57888,12 +58359,33 @@
         },
         "description": "Additional context about the event."
       },
+      "DataIntegrationVendedCredentialOneOf1ConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake\u0027s \u0060account\u0060 or Zendesk\u0027s \u0060subdomain\u0060. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token\u0027s audience until refresh or re-mint."
+      },
+      "DataIntegrationVendedCredentialOneOf2ConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake\u0027s \u0060account\u0060 or Zendesk\u0027s \u0060subdomain\u0060. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token\u0027s audience until refresh or re-mint."
+      },
       "DataIntegrationVendedCredentialOneOf3MetadataProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3MetadataPropertyAdditionalProperties"
         },
         "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Only present for \u0060client_credentials\u0060 credentials."
+      },
+      "DataIntegrationVendedCredentialOneOf3ConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake\u0027s \u0060account\u0060 or Zendesk\u0027s \u0060subdomain\u0060. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token\u0027s audience until refresh or re-mint."
       },
       "AuditLogSchemaJsonActorMetadataProperty": {
         "type": "object",
@@ -58081,14 +58573,14 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060."
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed."
       },
       "DataIntegrationsListResponseDataItemConnectedAccountsItemConfigProperty": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding any it declares as secret. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060."
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed."
       },
       "EventSchemaAllOf2OneOf49DataRawAttributesAdditionalProperties": {
         "type": "object"
@@ -58543,6 +59035,16 @@
         "description": "Connect-time config values for the provider-declared \u0060installation\u0060-scope fields (e.g. a Zendesk \u0060subdomain\u0060), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.",
         "example": {
           "subdomain": "acme"
+        }
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnectionRequestConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific configuration values collected for this installation, keyed by the provider\u0027s config field descriptors.",
+        "example": {
+          "salesforce_host": "acme.my.salesforce.com"
         }
       },
       "DataIntegrationsControllerUpsertClientCredentialsRequestConfig": {
@@ -59966,7 +60468,7 @@
           "add"
         ],
         "type": "string",
-        "description": "Set to \u0060add\u0060 to create another connected account. Omit this field for permanent compatibility behavior.",
+        "description": "Set to \u0060add\u0060 to create another connected account. Omit this field for permanent compatibility behavior. Creating an additional connection is not yet available: until it is, \u0060add\u0060 succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 \u0060multiple_connections_unavailable\u0060.",
         "example": "add",
         "x-ms-enum": {
           "name": "AddConnectionIntent",
@@ -72207,6 +72709,54 @@
           ]
         }
       },
+      "DataIntegrationsControllerCreateApiKeyConnectionRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerCreateApiKeyConnectionRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerCreateApiKeyConnection404ResponseCode": {
+        "enum": [
+          "multiple_connections_unavailable",
+          "entity_not_found"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "multiple_connections_unavailable",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerCreateApiKeyConnection404ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "multiple_connections_unavailable",
+              "name": "MultipleConnectionsUnavailable"
+            },
+            {
+              "value": "entity_not_found",
+              "name": "EntityNotFound"
+            }
+          ]
+        }
+      },
       "DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner": {
         "enum": [
           "user",
@@ -72231,6 +72781,25 @@
           ]
         }
       },
+      "ReauthorizeConnectionIntent": {
+        "const": null,
+        "enum": [
+          "reauthorize"
+        ],
+        "type": "string",
+        "description": "Reauthorize exactly the connection named by \u0060connected_account_id\u0060.",
+        "example": "reauthorize",
+        "x-ms-enum": {
+          "name": "ReauthorizeConnectionIntent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "reauthorize",
+              "name": "Reauthorize"
+            }
+          ]
+        }
+      },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner": {
         "enum": [
           "user",
@@ -72251,6 +72820,54 @@
             {
               "value": "organization",
               "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnection404ResponseCode": {
+        "enum": [
+          "multiple_connections_unavailable",
+          "entity_not_found"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "multiple_connections_unavailable",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerCreateClientCredentialsConnection404ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "multiple_connections_unavailable",
+              "name": "MultipleConnectionsUnavailable"
+            },
+            {
+              "value": "entity_not_found",
+              "name": "EntityNotFound"
             }
           ]
         }
@@ -72479,6 +73096,30 @@
             {
               "value": "group_membership_limit_exceeded",
               "name": "GroupMembershipLimitExceeded"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404ResponseCode": {
+        "enum": [
+          "multiple_connections_unavailable",
+          "entity_not_found"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "multiple_connections_unavailable",
+        "x-ms-enum": {
+          "name": "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "multiple_connections_unavailable",
+              "name": "MultipleConnectionsUnavailable"
+            },
+            {
+              "value": "entity_not_found",
+              "name": "EntityNotFound"
             }
           ]
         }
@@ -73268,6 +73909,30 @@
             {
               "value": "email_already_verified",
               "name": "EmailAlreadyVerified"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsUserManagementControllerCreateUserDataInstallation404ResponseCode": {
+        "enum": [
+          "multiple_connections_unavailable",
+          "entity_not_found"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "multiple_connections_unavailable",
+        "x-ms-enum": {
+          "name": "DataIntegrationsUserManagementControllerCreateUserDataInstallation404ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "multiple_connections_unavailable",
+              "name": "MultipleConnectionsUnavailable"
+            },
+            {
+              "value": "entity_not_found",
+              "name": "EntityNotFound"
             }
           ]
         }
@@ -74514,24 +75179,6 @@
             {
               "value": "organization",
               "name": "Organization"
-            }
-          ]
-        }
-      },
-      "ReauthorizeConnectionIntent": {
-        "const": null,
-        "enum": [
-          "reauthorize"
-        ],
-        "type": "string",
-        "example": "reauthorize",
-        "x-ms-enum": {
-          "name": "ReauthorizeConnectionIntent",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "reauthorize",
-              "name": "Reauthorize"
             }
           ]
         }

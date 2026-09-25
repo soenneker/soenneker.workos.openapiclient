@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials
         {
         }
         /// <summary>
-        /// Returns credentials for a user&apos;s connected account. Branches on the installation&apos;s `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret.
+        /// Returns credentials for a user&apos;s connected account. Branches on the installation&apos;s `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret. Every active credential includes `config`: provider-declared, non-secret values from the installation snapshot, with current provider defaults for unset fields. Editing integration or organization configuration does not change the snapshot; reconnect or explicitly rebind the connection to adopt those edits. Defaults remain live, so a changed default can appear in `config` before a cached token is refreshed or re-minted. Credentials that never refresh require a reconnect or rebind when a default changes their routing.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -67,7 +67,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Credentials
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns credentials for a user&apos;s connected account. Branches on the installation&apos;s `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret.
+        /// Returns credentials for a user&apos;s connected account. Branches on the installation&apos;s `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret. Every active credential includes `config`: provider-declared, non-secret values from the installation snapshot, with current provider defaults for unset fields. Editing integration or organization configuration does not change the snapshot; reconnect or explicitly rebind the connection to adopt those edits. Defaults remain live, so a changed default can appear in `config` before a cached token is refreshed or re-minted. Credentials that never refresh require a reconnect or rebind when a default changes their routing.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
