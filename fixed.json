@@ -7875,6 +7875,16 @@
               }
             }
           },
+          "409": {
+            "description": "\u0060connected_account_limit_reached\u0060 when the provider and owner already have 25 connections.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnection409Response"
+                }
+              }
+            }
+          },
           "503": {
             "description": "Another connection is being created for this owner and provider. Retry the request.",
             "content": {
@@ -7967,7 +7977,7 @@
             }
           },
           "404": {
-            "description": "The data integration or selected connected account was not found.",
+            "description": "The data integration or selected connected account was not found (\u0060entity_not_found\u0060).",
             "content": {
               "application/json": {
                 "schema": {
@@ -8064,11 +8074,31 @@
             }
           },
           "404": {
-            "description": "Not Found",
+            "description": "The integration or user was not found (\u0060entity_not_found\u0060); \u0060connected_account_not_found\u0060 when \u0060connected_account_id\u0060 does not name a connection for this owner and integration; or \u0060multiple_connections_unavailable\u0060 when \u0060connection_intent: add\u0060 would create an additional connection before that capability is available.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "\u0060connected_account_limit_reached\u0060 when explicit add would create a standard connection for a provider and owner that already has 25 connections.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The selected connected account does not use OAuth authentication.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthMethodMismatchError"
                 }
               }
             }
@@ -8164,6 +8194,16 @@
               }
             }
           },
+          "409": {
+            "description": "\u0060connected_account_limit_reached\u0060 when the provider and owner already have 25 connections.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection409Response"
+                }
+              }
+            }
+          },
           "503": {
             "description": "Another connection is being created for this owner and provider. Retry the request.",
             "content": {
@@ -8255,7 +8295,7 @@
             }
           },
           "404": {
-            "description": "The data integration or selected connected account was not found.",
+            "description": "The data integration or selected connected account was not found (\u0060entity_not_found\u0060).",
             "content": {
               "application/json": {
                 "schema": {
@@ -8966,6 +9006,109 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DirectoriesControllerDeleteDirectory403Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/directories/{id}/sync": {
+      "post": {
+        "tags": [
+          "directories"
+        ],
+        "summary": "Sync a Directory",
+        "description": "Request an asynchronous sync from the directory provider. Currently supports Google Workspace directories in linked or validating state. Manual requests share a five-minute per-directory cooldown across the API, Dashboard, Admin Portal, and MCP. Acceptance means the request was queued, not that the sync has started or completed. A running sync prevents another request from being queued.",
+        "operationId": "DirectoriesControllerSyncDirectory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier for the Directory.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "directory_01ECAZ4NV9QMV47GW873HDCX74"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "202 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectorySyncResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoriesControllerSyncDirectory403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoriesControllerSyncDirectory404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "A sync is already in progress. No additional sync was queued.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoriesControllerSyncDirectory409Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The directory provider or state does not support manual sync.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoriesControllerSyncDirectory422Response"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The directory is within the manual-sync cooldown window.",
+            "headers": {
+              "Retry-After": {
+                "description": "Seconds to wait before requesting another manual sync.",
+                "schema": {
+                  "minimum": 1,
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectorySyncRateLimitError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Directory syncing is temporarily paused. No sync was queued.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoriesControllerSyncDirectory503Response"
                 }
               }
             }
@@ -11988,7 +12131,7 @@
             }
           },
           "409": {
-            "description": "The compatibility connection already exists for this organization and integration.",
+            "description": "The compatibility connection already exists for this organization and integration, or \u0060connected_account_limit_reached\u0060 when \u0060connection_intent: add\u0060 would create a standard connection and the owner already has 25 connections.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17539,7 +17682,7 @@
             }
           },
           "409": {
-            "description": "A connected account already exists for this user, integration, and organization.",
+            "description": "The compatibility connection already exists for this user, integration, and organization, or \u0060connected_account_limit_reached\u0060 when \u0060connection_intent: add\u0060 would create a standard connection and the owner already has 25 connections.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24847,6 +24990,41 @@
           }
         }
       },
+      "DirectorySyncResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/QueuedStatus"
+          }
+        }
+      },
+      "DirectorySyncRateLimitError": {
+        "required": [
+          "code",
+          "message",
+          "retry_after_seconds"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DirectorySyncRateLimitedCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          },
+          "retry_after_seconds": {
+            "exclusiveMinimum": 0,
+            "type": "integer",
+            "description": "The number of seconds to wait before requesting another manual sync of this directory.",
+            "example": 120
+          }
+        }
+      },
       "DirectoryGroup": {
         "required": [
           "object",
@@ -26953,6 +27131,23 @@
           }
         }
       },
+      "AuthMethodMismatchError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/AuthMethodMismatchCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable explanation of the mismatch.",
+            "example": "This installation uses oauth authentication. Use the POST /:slug/token endpoint instead."
+          }
+        }
+      },
       "DataIntegrationAccessTokenResponse": {
         "type": "object",
         "oneOf": [
@@ -26992,23 +27187,6 @@
             "type": "string",
             "description": "A human-readable explanation of the ambiguity.",
             "example": "Several connected accounts match this user for this provider. Name one with a connected account id."
-          }
-        }
-      },
-      "AuthMethodMismatchError": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/AuthMethodMismatchCode"
-          },
-          "message": {
-            "type": "string",
-            "description": "A human-readable explanation of the mismatch.",
-            "example": "This installation uses oauth authentication. Use the POST /:slug/token endpoint instead."
           }
         }
       },
@@ -51260,6 +51438,22 @@
           }
         }
       },
+      "DataIntegrationsControllerCreateApiKeyConnection409Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "DataIntegrationsControllerCreateApiKeyConnection503Response": {
         "required": [
           "code",
@@ -51346,10 +51540,13 @@
         ],
         "type": "object",
         "properties": {
+          "code": {
+            "$ref": "#/components/schemas/EntityNotFoundCode"
+          },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "example": "Request could not be processed."
           }
         }
       },
@@ -51380,6 +51577,15 @@
           },
           "config": {
             "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/AddConnectionIntent"
+          },
+          "connected_account_id": {
+            "pattern": "^data_installation_.\u002B$",
+            "type": "string",
+            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           }
         }
       },
@@ -51415,10 +51621,29 @@
         ],
         "type": "object",
         "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl404ResponseCode"
+          },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl409Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -51499,6 +51724,22 @@
         "properties": {
           "code": {
             "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection404ResponseCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnection409Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
           },
           "message": {
             "type": "string",
@@ -51603,10 +51844,13 @@
         ],
         "type": "object",
         "properties": {
+          "code": {
+            "$ref": "#/components/schemas/EntityNotFoundCode"
+          },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "example": "Request could not be processed."
           }
         }
       },
@@ -51921,6 +52165,83 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DirectoriesControllerSyncDirectory403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DirectoriesControllerSyncDirectory404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "DirectoriesControllerSyncDirectory409Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DirectorySyncInProgressCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "DirectoriesControllerSyncDirectory422Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DirectorySyncUnsupportedCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "DirectoriesControllerSyncDirectory503Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DirectorySyncDisabledCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -53299,10 +53620,13 @@
         ],
         "type": "object",
         "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
+          },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "example": "Request could not be processed."
           }
         }
       },
@@ -56689,10 +57013,13 @@
         ],
         "type": "object",
         "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
+          },
           "message": {
             "type": "string",
             "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "example": "Request could not be processed."
           }
         }
       },
@@ -63849,6 +64176,44 @@
           ]
         }
       },
+      "QueuedStatus": {
+        "const": null,
+        "enum": [
+          "queued"
+        ],
+        "type": "string",
+        "description": "The sync request was queued for asynchronous processing. This does not indicate that the sync has started or completed.",
+        "example": "queued",
+        "x-ms-enum": {
+          "name": "QueuedStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "queued",
+              "name": "Queued"
+            }
+          ]
+        }
+      },
+      "DirectorySyncRateLimitedCode": {
+        "const": null,
+        "enum": [
+          "directory_sync_rate_limited"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "directory_sync_rate_limited",
+        "x-ms-enum": {
+          "name": "DirectorySyncRateLimitedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "directory_sync_rate_limited",
+              "name": "DirectorySyncRateLimited"
+            }
+          ]
+        }
+      },
       "DirectoryGroupObject": {
         "const": null,
         "enum": [
@@ -64485,25 +64850,6 @@
           ]
         }
       },
-      "AccountSelectionRequiredCode": {
-        "const": null,
-        "enum": [
-          "account_selection_required"
-        ],
-        "type": "string",
-        "description": "Indicates that several connected accounts match and the request must name one.",
-        "example": "account_selection_required",
-        "x-ms-enum": {
-          "name": "AccountSelectionRequiredCode",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "account_selection_required",
-              "name": "AccountSelectionRequired"
-            }
-          ]
-        }
-      },
       "AuthMethodMismatchCode": {
         "const": null,
         "enum": [
@@ -64519,6 +64865,25 @@
             {
               "value": "auth_method_mismatch",
               "name": "AuthMethodMismatch"
+            }
+          ]
+        }
+      },
+      "AccountSelectionRequiredCode": {
+        "const": null,
+        "enum": [
+          "account_selection_required"
+        ],
+        "type": "string",
+        "description": "Indicates that several connected accounts match and the request must name one.",
+        "example": "account_selection_required",
+        "x-ms-enum": {
+          "name": "AccountSelectionRequiredCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "account_selection_required",
+              "name": "AccountSelectionRequired"
             }
           ]
         }
@@ -72757,6 +73122,25 @@
           ]
         }
       },
+      "ConnectedAccountLimitReachedCode": {
+        "const": null,
+        "enum": [
+          "connected_account_limit_reached"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "connected_account_limit_reached",
+        "x-ms-enum": {
+          "name": "ConnectedAccountLimitReachedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected_account_limit_reached",
+              "name": "ConnectedAccountLimitReached"
+            }
+          ]
+        }
+      },
       "DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner": {
         "enum": [
           "user",
@@ -72800,6 +73184,25 @@
           ]
         }
       },
+      "EntityNotFoundCode": {
+        "const": null,
+        "enum": [
+          "entity_not_found"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "entity_not_found",
+        "x-ms-enum": {
+          "name": "EntityNotFoundCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "entity_not_found",
+              "name": "EntityNotFound"
+            }
+          ]
+        }
+      },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner": {
         "enum": [
           "user",
@@ -72820,6 +73223,35 @@
             {
               "value": "organization",
               "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl404ResponseCode": {
+        "enum": [
+          "multiple_connections_unavailable",
+          "connected_account_not_found",
+          "entity_not_found"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "multiple_connections_unavailable",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl404ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "multiple_connections_unavailable",
+              "name": "MultipleConnectionsUnavailable"
+            },
+            {
+              "value": "connected_account_not_found",
+              "name": "ConnectedAccountNotFound"
+            },
+            {
+              "value": "entity_not_found",
+              "name": "EntityNotFound"
             }
           ]
         }
@@ -72940,6 +73372,63 @@
             {
               "value": "organization",
               "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DirectorySyncInProgressCode": {
+        "const": null,
+        "enum": [
+          "directory_sync_in_progress"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "directory_sync_in_progress",
+        "x-ms-enum": {
+          "name": "DirectorySyncInProgressCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "directory_sync_in_progress",
+              "name": "DirectorySyncInProgress"
+            }
+          ]
+        }
+      },
+      "DirectorySyncUnsupportedCode": {
+        "const": null,
+        "enum": [
+          "directory_sync_unsupported"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "directory_sync_unsupported",
+        "x-ms-enum": {
+          "name": "DirectorySyncUnsupportedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "directory_sync_unsupported",
+              "name": "DirectorySyncUnsupported"
+            }
+          ]
+        }
+      },
+      "DirectorySyncDisabledCode": {
+        "const": null,
+        "enum": [
+          "directory_sync_disabled"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "directory_sync_disabled",
+        "x-ms-enum": {
+          "name": "DirectorySyncDisabledCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "directory_sync_disabled",
+              "name": "DirectorySyncDisabled"
             }
           ]
         }
@@ -74101,25 +74590,6 @@
             {
               "value": "invalid_url",
               "name": "InvalidUrl"
-            }
-          ]
-        }
-      },
-      "EntityNotFoundCode": {
-        "const": null,
-        "enum": [
-          "entity_not_found"
-        ],
-        "type": "string",
-        "description": "The error code identifying the type of error.",
-        "example": "entity_not_found",
-        "x-ms-enum": {
-          "name": "EntityNotFoundCode",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "entity_not_found",
-              "name": "EntityNotFound"
             }
           ]
         }

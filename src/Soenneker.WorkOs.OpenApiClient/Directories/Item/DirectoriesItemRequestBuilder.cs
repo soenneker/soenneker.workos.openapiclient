@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Directories.Item.Sync;
 using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DirectoriesItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The sync property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Directories.Item.Sync.SyncRequestBuilder Sync
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Directories.Item.Sync.SyncRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder"/> and sets the default values.
         /// </summary>
