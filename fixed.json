@@ -7822,14 +7822,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccount"
+                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
                 },
                 "example": {
                   "object": "connected_account",
                   "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
                   "connection_role": "standard",
-                  "account_identifier": null,
-                  "account_display_name": null,
+                  "account_identifier": "workspace_123",
+                  "account_display_name": "Acme production",
                   "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "scopes": [],
@@ -7933,14 +7933,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccount"
+                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
                 },
                 "example": {
                   "object": "connected_account",
                   "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
                   "connection_role": "compatibility",
-                  "account_identifier": null,
-                  "account_display_name": null,
+                  "account_identifier": "workspace_123",
+                  "account_display_name": "Acme production",
                   "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "scopes": [],
@@ -8142,14 +8142,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccount"
+                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
                 },
                 "example": {
                   "object": "connected_account",
                   "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
                   "connection_role": "standard",
-                  "account_identifier": null,
-                  "account_display_name": null,
+                  "account_identifier": "workspace_123",
+                  "account_display_name": "Acme production",
                   "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "scopes": [],
@@ -8252,14 +8252,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccount"
+                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
                 },
                 "example": {
                   "object": "connected_account",
                   "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
                   "connection_role": "compatibility",
-                  "account_identifier": null,
-                  "account_display_name": null,
+                  "account_identifier": "workspace_123",
+                  "account_display_name": "Acme production",
                   "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "scopes": [],
@@ -8397,7 +8397,7 @@
             "description": "Unauthorized"
           },
           "403": {
-            "description": "The user is not an active member of the organization named for an organization connection.",
+            "description": "The user is not an active member of the organization named for an organization connection or an organization-scoped personal connection.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8762,7 +8762,7 @@
             "description": "Unauthorized"
           },
           "403": {
-            "description": "The user is not an active member of the organization named for an organization connection.",
+            "description": "The user is not an active member of the organization named for an organization connection or an organization-scoped personal connection.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11880,7 +11880,7 @@
                   "user_id": null,
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "connection_role": "compatibility",
-                  "account_identifier": "acme-workspace",
+                  "account_identifier": "workspace_123",
                   "account_display_name": "Acme production",
                   "scopes": [
                     "repo",
@@ -12079,7 +12079,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccount"
+                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
                 },
                 "example": {
                   "object": "connected_account",
@@ -12087,7 +12087,7 @@
                   "user_id": null,
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "connection_role": "compatibility",
-                  "account_identifier": "acme-workspace",
+                  "account_identifier": "workspace_123",
                   "account_display_name": "Acme production",
                   "scopes": [
                     "repo",
@@ -12235,7 +12235,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccount"
+                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
                 },
                 "example": {
                   "object": "connected_account",
@@ -12243,7 +12243,7 @@
                   "user_id": null,
                   "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                   "connection_role": "compatibility",
-                  "account_identifier": "acme-workspace",
+                  "account_identifier": "workspace_123",
                   "account_display_name": "Acme production",
                   "scopes": [
                     "repo",
@@ -12389,7 +12389,7 @@
                         "user_id": null,
                         "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                         "connection_role": "compatibility",
-                        "account_identifier": "acme-workspace",
+                        "account_identifier": "workspace_123",
                         "account_display_name": "Acme production",
                         "scopes": [
                           "repo",
@@ -12417,7 +12417,7 @@
                           "user_id": null,
                           "organization_id": "org_01EHZNVPK3SFK441A1RGBFSHRT",
                           "connection_role": "compatibility",
-                          "account_identifier": "acme-workspace",
+                          "account_identifier": "workspace_123",
                           "account_display_name": "Acme production",
                           "scopes": [
                             "repo",
@@ -15292,6 +15292,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerDelete422Response"
+                }
+              }
+            }
           }
         }
       },
@@ -17663,7 +17673,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccount"
+                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
                 }
               }
             }
@@ -17794,7 +17804,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccount"
+                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
                 }
               }
             }
@@ -21602,6 +21612,23 @@
         ],
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique connection label; null clears it. Not an account identifier.",
+            "example": "Acme production"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested account identifier; null clears it.",
+            "example": "workspace_123"
+          },
           "access_token": {
             "type": "string",
             "description": "The OAuth access token for the connected account.",
@@ -21644,6 +21671,23 @@
         ],
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique connection label; null clears it. Not an account identifier.",
+            "example": "Acme production"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested account identifier; null clears it.",
+            "example": "workspace_123"
+          },
           "access_token": {
             "type": "string",
             "description": "The OAuth access token for the connected account.",
@@ -21680,6 +21724,23 @@
       "CreateConnectedAccountDto": {
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique connection label; null clears it. Not an account identifier.",
+            "example": "Acme production"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested account identifier; null clears it.",
+            "example": "workspace_123"
+          },
           "access_token": {
             "type": "string",
             "description": "The OAuth access token for the connected account.",
@@ -21714,6 +21775,23 @@
       "ConnectedAccountDto": {
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique connection label; null clears it. Not an account identifier.",
+            "example": "Acme production"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested account identifier; null clears it.",
+            "example": "workspace_123"
+          },
           "access_token": {
             "type": "string",
             "description": "The OAuth access token for the connected account.",
@@ -27281,6 +27359,143 @@
           }
         }
       },
+      "ConnectedAccountWriteResponse": {
+        "required": [
+          "object",
+          "id",
+          "connection_role",
+          "account_identifier",
+          "account_display_name",
+          "user_id",
+          "organization_id",
+          "scopes",
+          "state",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ConnectedAccountObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the connected account.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_role": {
+            "$ref": "#/components/schemas/ConnectedAccountWriteResponseConnectionRole"
+          },
+          "account_identifier": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A best-effort identifier for the provider account this connection points at. It is correlation metadata, not the connection identifier or a selector.",
+            "example": "workspace_123"
+          },
+          "account_display_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique display name for the provider account connection.",
+            "example": "Acme production"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The [User](/reference/authkit/user) identifier associated with this connection.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The [Organization](/reference/organization) identifier associated with this connection, or \u0060null\u0060 if not scoped to an organization.",
+            "example": null
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The OAuth scopes granted for this connection."
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/ConnectedAccountWriteResponseAuthMethod"
+          },
+          "api_key_last_4": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
+            "example": null
+          },
+          "client_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The client ID supplied for this connection. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "example": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc"
+          },
+          "client_secret_last_4": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last four characters of the client secret supplied for this connection, or \u0060null\u0060 when it can\u0027t be read. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
+            "example": "cdef"
+          },
+          "config": {
+            "$ref": "#/components/schemas/ConnectedAccountWriteResponseConfigProperty"
+          },
+          "state": {
+            "$ref": "#/components/schemas/ConnectedAccountWriteResponseState"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the connection was created.",
+            "example": "2024-01-16T14:20:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the connection was last updated.",
+            "example": "2024-01-16T14:20:00.000Z"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConnectedAccountWriteResponseWarningsItem"
+            },
+            "description": "Non-blocking warnings about an explicitly supplied label, omitted when no duplicate exists. Reads do not include this field."
+          }
+        }
+      },
+      "DataIntegrationsListResponse": {
+        "required": [
+          "object",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/ListObject"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsListResponseDataItem"
+            },
+            "description": "A list of [providers](/reference/pipes/provider), each including the legacy \u0060connected_account\u0060 field and the additive \u0060connected_accounts\u0060 collection."
+          }
+        }
+      },
       "ConnectedAccount": {
         "required": [
           "object",
@@ -27389,25 +27604,6 @@
             "type": "string",
             "description": "The timestamp when the connection was last updated.",
             "example": "2024-01-16T14:20:00.000Z"
-          }
-        }
-      },
-      "DataIntegrationsListResponse": {
-        "required": [
-          "object",
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "object": {
-            "$ref": "#/components/schemas/ListObject"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataIntegrationsListResponseDataItem"
-            },
-            "description": "A list of [providers](/reference/pipes/provider), each including the legacy \u0060connected_account\u0060 field and the additive \u0060connected_accounts\u0060 collection."
           }
         }
       },
@@ -37632,7 +37828,7 @@
         },
         "description": "Pagination cursors for navigating between pages of results."
       },
-      "ConnectedAccountConfig": {
+      "ConnectedAccountWriteResponseConfig": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -37640,6 +37836,23 @@
         "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.",
         "example": {
           "instance_url": "https://example.my.salesforce.com"
+        }
+      },
+      "ConnectedAccountWriteResponseWarningsItem": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DuplicateAccountDisplayNameCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable explanation of the non-blocking warning.",
+            "example": "Another connection for this provider and owner has the same label."
+          }
         }
       },
       "DataIntegrationsListResponseDataItem": {
@@ -37764,6 +37977,16 @@
             },
             "description": "The user\u0027s connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless \u0060supports_multiple_connections\u0060 is \u0060true\u0060."
           }
+        }
+      },
+      "ConnectedAccountConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.",
+        "example": {
+          "instance_url": "https://example.my.salesforce.com"
         }
       },
       "UserlandUserAuthenticationFactorListListMetadata": {
@@ -51371,6 +51594,24 @@
         ],
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
+            "example": "Acme production"
+          },
+          "account_identifier": {
+            "minLength": 1,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
+            "example": "workspace_123"
+          },
           "user_id": {
             "type": "string",
             "description": "A [User](/reference/authkit/user) identifier.",
@@ -51403,9 +51644,7 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnection400ResponseMessage"
           }
         }
       },
@@ -51478,6 +51717,24 @@
         ],
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
+            "example": "Acme production"
+          },
+          "account_identifier": {
+            "minLength": 1,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
+            "example": "workspace_123"
+          },
           "user_id": {
             "type": "string",
             "description": "A [User](/reference/authkit/user) identifier.",
@@ -51515,9 +51772,7 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKey400ResponseMessage"
           }
         }
       },
@@ -51556,6 +51811,15 @@
         ],
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
+            "example": "Acme production"
+          },
           "user_id": {
             "type": "string",
             "description": "The ID of the user to authorize. When \u0060connection_owner\u0060 is \u0060organization\u0060, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.",
@@ -51596,9 +51860,7 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseMessage"
           }
         }
       },
@@ -51656,6 +51918,24 @@
         ],
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
+            "example": "Acme production"
+          },
+          "account_identifier": {
+            "minLength": 1,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
+            "example": "workspace_123"
+          },
           "user_id": {
             "type": "string",
             "description": "A [User](/reference/authkit/user) identifier.",
@@ -51697,9 +51977,7 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection400ResponseMessage"
           }
         }
       },
@@ -51773,6 +52051,24 @@
         ],
         "type": "object",
         "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
+            "example": "Acme production"
+          },
+          "account_identifier": {
+            "minLength": 1,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
+            "example": "workspace_123"
+          },
           "user_id": {
             "type": "string",
             "description": "A [User](/reference/authkit/user) identifier.",
@@ -51819,9 +52115,7 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
-            "description": "A human-readable description of the error.",
-            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentials400ResponseMessage"
           }
         }
       },
@@ -55692,6 +55986,23 @@
           }
         }
       },
+      "UserlandUserOrganizationMembershipsControllerDelete422Response": {
+        "required": [
+          "message",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "This organization membership is managed by a directory and cannot be deleted. Remove the user from the directory in the identity provider instead."
+          },
+          "code": {
+            "$ref": "#/components/schemas/OrganizationMembershipDirectoryManagedCode"
+          }
+        }
+      },
       "UserlandUserOrganizationMembershipsControllerUpdate404Response": {
         "required": [
           "message"
@@ -57854,6 +58165,76 @@
           }
         }
       },
+      "DataIntegrationsControllerCreateApiKeyConnection400ResponseMessage": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "DataIntegrationsControllerUpsertApiKey400ResponseMessage": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseMessage": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnection400ResponseMessage": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "DataIntegrationsControllerUpsertClientCredentials400ResponseMessage": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
       "UserlandSessionsControllerAuthenticate0400ResponseOneOf1": {
         "required": [
           "code",
@@ -58620,6 +59001,13 @@
           "type": "string"
         },
         "description": "Provider-specific config values set on the Data Integration (e.g. a Snowflake \u0060account\u0060), keyed by config field. Only fields the provider declares are accepted."
+      },
+      "ConnectedAccountWriteResponseConfigProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed."
       },
       "ConnectedAccountConfigProperty": {
         "type": "object",
@@ -64888,6 +65276,88 @@
           ]
         }
       },
+      "ConnectedAccountWriteResponseConnectionRole": {
+        "enum": [
+          "compatibility",
+          "standard"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order.",
+        "example": "compatibility",
+        "x-ms-enum": {
+          "name": "ConnectedAccountWriteResponseConnectionRole",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "compatibility",
+              "name": "Compatibility"
+            },
+            {
+              "value": "standard",
+              "name": "Standard"
+            }
+          ]
+        }
+      },
+      "ConnectedAccountWriteResponseAuthMethod": {
+        "enum": [
+          "oauth",
+          "api_key",
+          "client_credentials"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The authentication method used for this connection (\u0060oauth\u0060, \u0060api_key\u0060, or \u0060client_credentials\u0060). Defaults to \u0060oauth\u0060 if absent.",
+        "example": "oauth",
+        "x-ms-enum": {
+          "name": "ConnectedAccountWriteResponseAuthMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "oauth",
+              "name": "OAuth"
+            },
+            {
+              "value": "api_key",
+              "name": "ApiKey"
+            },
+            {
+              "value": "client_credentials",
+              "name": "ClientCredentials"
+            }
+          ]
+        }
+      },
+      "ConnectedAccountWriteResponseState": {
+        "enum": [
+          "connected",
+          "needs_reauthorization",
+          "disconnected"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed.\n- \u0060disconnected\u0060: The connection has been disconnected.",
+        "example": "connected",
+        "x-ms-enum": {
+          "name": "ConnectedAccountWriteResponseState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected",
+              "name": "Connected"
+            },
+            {
+              "value": "needs_reauthorization",
+              "name": "NeedsReauthorization"
+            },
+            {
+              "value": "disconnected",
+              "name": "Disconnected"
+            }
+          ]
+        }
+      },
       "ConnectedAccountConnectionRole": {
         "enum": [
           "compatibility",
@@ -68704,6 +69174,23 @@
             {
               "value": "basic_auth_header",
               "name": "BasicAuthHeader"
+            }
+          ]
+        }
+      },
+      "DuplicateAccountDisplayNameCode": {
+        "const": null,
+        "enum": [
+          "duplicate_account_display_name"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "DuplicateAccountDisplayNameCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "duplicate_account_display_name",
+              "name": "DuplicateAccountDisplayName"
             }
           ]
         }
@@ -74161,6 +74648,25 @@
             {
               "value": "cannot_reactivate_pending_organization_membership",
               "name": "CannotReactivatePendingOrganizationMembership"
+            }
+          ]
+        }
+      },
+      "OrganizationMembershipDirectoryManagedCode": {
+        "const": null,
+        "enum": [
+          "organization_membership_directory_managed"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "organization_membership_directory_managed",
+        "x-ms-enum": {
+          "name": "OrganizationMembershipDirectoryManagedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "organization_membership_directory_managed",
+              "name": "OrganizationMembershipDirectoryManaged"
             }
           ]
         }

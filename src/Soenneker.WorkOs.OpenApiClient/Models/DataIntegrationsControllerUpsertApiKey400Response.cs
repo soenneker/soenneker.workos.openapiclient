@@ -16,14 +16,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The primary error message.</summary>
-        public override string Message { get => MessageEscaped ?? string.Empty; }
-        /// <summary>A human-readable description of the error.</summary>
+        public override string Message { get => base.Message; }
+        /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MessageEscaped { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey400ResponseMessage? MessageEscaped { get; set; }
 #nullable restore
 #else
-        public string MessageEscaped { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey400ResponseMessage MessageEscaped { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey400Response"/> and sets the default values.
@@ -50,7 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "message", n => { MessageEscaped = n.GetStringValue(); } },
+                { "message", n => { MessageEscaped = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey400ResponseMessage>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey400ResponseMessage.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -60,7 +60,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("message", MessageEscaped);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey400ResponseMessage>("message", MessageEscaped);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

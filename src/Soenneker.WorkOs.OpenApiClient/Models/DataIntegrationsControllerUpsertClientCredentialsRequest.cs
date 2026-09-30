@@ -12,6 +12,22 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     public partial class DataIntegrationsControllerUpsertClientCredentialsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountDisplayName { get; set; }
+#nullable restore
+#else
+        public string AccountDisplayName { get; set; }
+#endif
+        /// <summary>A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountIdentifier { get; set; }
+#nullable restore
+#else
+        public string AccountIdentifier { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The OAuth client ID to store for this integration.</summary>
@@ -91,6 +107,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_display_name", n => { AccountDisplayName = n.GetStringValue(); } },
+                { "account_identifier", n => { AccountIdentifier = n.GetStringValue(); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig.CreateFromDiscriminatorValue); } },
@@ -108,6 +126,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("account_display_name", AccountDisplayName);
+            writer.WriteStringValue("account_identifier", AccountIdentifier);
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig>("config", Config);
