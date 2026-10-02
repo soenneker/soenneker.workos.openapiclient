@@ -22744,6 +22744,12 @@
           "grant_type": {
             "$ref": "#/components/schemas/TokenQueryDtoGrantType"
           },
+          "code_verifier": {
+            "type": "string",
+            "description": "The PKCE code verifier matching the \u0060code_challenge\u0060 sent with the authorization request. Required when the authorization request included a \u0060code_challenge\u0060. Must be sent in the request body.",
+            "format": "password",
+            "example": "code_verifier_value"
+          },
           "subject_token": {
             "type": "string",
             "description": "The OIDC ID token to exchange. Required when \u0060grant_type\u0060 is \u0060urn:ietf:params:oauth:grant-type:token-exchange\u0060. Must be sent in the request body.",

@@ -38,6 +38,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Code { get; set; }
 #endif
+        /// <summary>The PKCE code verifier matching the `code_challenge` sent with the authorization request. Required when the authorization request included a `code_challenge`. Must be sent in the request body.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CodeVerifier { get; set; }
+#nullable restore
+#else
+        public string CodeVerifier { get; set; }
+#endif
         /// <summary>The grant type for the token request.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDtoGrantType? GrantType { get; set; }
         /// <summary>The ID of the organization whose connection the subject token is validated against. Required when `grant_type` is `urn:ietf:params:oauth:grant-type:token-exchange`. Must be sent in the request body.</summary>
@@ -86,6 +94,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "code", n => { Code = n.GetStringValue(); } },
+                { "code_verifier", n => { CodeVerifier = n.GetStringValue(); } },
                 { "grant_type", n => { GrantType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDtoGrantType>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "subject_token", n => { SubjectToken = n.GetStringValue(); } },
@@ -102,6 +111,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("code", Code);
+            writer.WriteStringValue("code_verifier", CodeVerifier);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TokenQueryDtoGrantType>("grant_type", GrantType);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("subject_token", SubjectToken);
