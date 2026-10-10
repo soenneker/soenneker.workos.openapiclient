@@ -2,7 +2,7 @@
   "descriptionHash": "720F3A5D5D840E1FFD65B3528797336F6A1C6E0EA8CA020FCEF1C60340D4A7E0562D888352A59AB274A38A77DB1011B3FA780C59C4B693BBC2D0A34DFB132D48",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.35.0",
+  "kiotaVersion": "1.36.0",
   "clientClassName": "WorkOsOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.WorkOs.OpenApiClient",
