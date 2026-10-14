@@ -41,6 +41,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Portal.Generate_link
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate402Response">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate422Response">When receiving a 422 status code</exception>
@@ -58,6 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Portal.Generate_link
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate400Response.CreateFromDiscriminatorValue },
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate402Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate422Response.CreateFromDiscriminatorValue },

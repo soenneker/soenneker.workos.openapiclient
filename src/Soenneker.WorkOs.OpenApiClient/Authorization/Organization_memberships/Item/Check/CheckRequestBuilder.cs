@@ -40,6 +40,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck402Response">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck422Response">When receiving a 422 status code</exception>
@@ -56,6 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck402Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerCheck422Response.CreateFromDiscriminatorValue },

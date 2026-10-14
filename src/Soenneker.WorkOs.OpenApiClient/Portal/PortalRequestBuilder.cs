@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.Portal.Generate_link;
+using Soenneker.WorkOs.OpenApiClient.Portal.Revoke_link;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Portal
         public global::Soenneker.WorkOs.OpenApiClient.Portal.Generate_link.Generate_linkRequestBuilder Generate_link
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Portal.Generate_link.Generate_linkRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The revoke_link property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Portal.Revoke_link.Revoke_linkRequestBuilder Revoke_link
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Portal.Revoke_link.Revoke_linkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Portal.PortalRequestBuilder"/> and sets the default values.

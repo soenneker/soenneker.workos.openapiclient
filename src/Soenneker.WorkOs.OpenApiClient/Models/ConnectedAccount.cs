@@ -74,6 +74,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string CreatedAt { get; set; }
 #endif
+        /// <summary>The [User](/reference/authkit/user) whose authorization established this connection. `null` when the connection is developer-managed or its establisher is unknown, and when the establishing member lost access to the organization — in which case `state_reason` is `establishing_member_membership_ended`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EstablishedByUserId { get; set; }
+#nullable restore
+#else
+        public string EstablishedByUserId { get; set; }
+#endif
         /// <summary>The unique identifier of the connected account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,8 +108,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public List<string> Scopes { get; set; }
 #endif
-        /// <summary>The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed.- `disconnected`: The connection has been disconnected.</summary>
+        /// <summary>The state of the connected account:- `connected`: The connection is active and tokens are valid.- `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. `state_reason` explains why when WorkOS invalidated the connection itself.- `disconnected`: The connection has been disconnected.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState? State { get; set; }
+        /// <summary>Why WorkOS put the connection in its current `state`, or `null` when there is no WorkOS-recorded reason:- `establishing_member_membership_ended`: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.Additional values may be added; treat an unrecognized value as an unknown reason.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StateReason { get; set; }
+#nullable restore
+#else
+        public string StateReason { get; set; }
+#endif
         /// <summary>The timestamp when the connection was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -152,11 +168,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty.CreateFromDiscriminatorValue); } },
                 { "connection_role", n => { ConnectionRole = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConnectionRole>(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
+                { "established_by_user_id", n => { EstablishedByUserId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountObject>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState>(); } },
+                { "state_reason", n => { StateReason = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
             };
@@ -177,11 +195,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConfigProperty>("config", Config);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountConnectionRole>("connection_role", ConnectionRole);
             writer.WriteStringValue("created_at", CreatedAt);
+            writer.WriteStringValue("established_by_user_id", EstablishedByUserId);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountObject>("object", Object);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountState>("state", State);
+            writer.WriteStringValue("state_reason", StateReason);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteAdditionalData(AdditionalData);

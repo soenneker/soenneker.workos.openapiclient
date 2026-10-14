@@ -39,6 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas402Response">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,6 +54,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas402Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas422Response.CreateFromDiscriminatorValue },
             };
@@ -65,6 +67,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerCreate402Response">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerCreate422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,6 +82,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerCreate402Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerCreate422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);

@@ -41,6 +41,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Invitations.Item.Resend
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerResend400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerResend402Response">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerResend404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerResend422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,6 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Invitations.Item.Resend
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerResend400Response.CreateFromDiscriminatorValue },
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerResend402Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerResend404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserInvitesControllerResend422Response.CreateFromDiscriminatorValue },
             };

@@ -40,6 +40,7 @@ namespace Soenneker.WorkOs.OpenApiClient.FeatureFlags.Item.Enable
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.FeatureFlagsControllerEnableFlag404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.FeatureFlagsControllerEnableFlag409Response">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.FeatureFlagsControllerEnableFlag200Response?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -53,6 +54,7 @@ namespace Soenneker.WorkOs.OpenApiClient.FeatureFlags.Item.Enable
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.FeatureFlagsControllerEnableFlag404Response.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.FeatureFlagsControllerEnableFlag409Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.FeatureFlagsControllerEnableFlag200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.FeatureFlagsControllerEnableFlag200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

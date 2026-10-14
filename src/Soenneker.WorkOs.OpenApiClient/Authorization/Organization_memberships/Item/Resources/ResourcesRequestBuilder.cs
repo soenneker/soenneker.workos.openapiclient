@@ -53,6 +53,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership402Response">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership422Response">When receiving a 422 status code</exception>
@@ -69,6 +70,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership400Response.CreateFromDiscriminatorValue },
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership402Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationControllerListResourcesForMembership422Response.CreateFromDiscriminatorValue },

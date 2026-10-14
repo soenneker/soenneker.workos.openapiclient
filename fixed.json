@@ -1243,6 +1243,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogValidatorsControllerList402Response"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -1303,6 +1313,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogSchemaJson"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogValidatorVersionsControllerCreate402Response"
                 }
               }
             }
@@ -1387,6 +1407,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogValidatorVersionsControllerSchemas402Response"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -1416,13 +1446,13 @@
           "audit-logs"
         ],
         "summary": "Create Event",
-        "description": "Create an Audit Log Event.\n\nThis API supports idempotency which guarantees that performing the same operation multiple times will have the same result as if the operation were performed only once. This is handy in situations where you may need to retry a request due to a failure or prevent accidental duplicate requests from creating more than one resource.\n\nTo achieve idempotency, you can add \u0060Idempotency-Key\u0060 request header to a Create Event request with a unique string as the value. Each subsequent request matching this unique string will return the same response. We suggest using [v4 UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) for idempotency keys to avoid collisions.\n\nIdempotency keys expire after 24 hours. The API will generate a new response if you submit a request with an expired key.",
+        "description": "Create an Audit Log Event.\n\nThis API supports idempotency which guarantees that performing the same operation multiple times will have the same result as if the operation were performed only once. This is handy in situations where you may need to retry a request due to a failure or prevent accidental duplicate requests from creating more than one resource.\n\nTo achieve idempotency, you can add \u0060Idempotency-Key\u0060 request header to a Create Event request with a unique string as the value. Each subsequent request matching this unique string will return the same response. We suggest using [v4 UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) for idempotency keys to avoid collisions.",
         "operationId": "AuditLogEventsControllerCreate",
         "parameters": [
           {
             "name": "idempotency-key",
             "in": "header",
-            "description": "A unique string to prevent duplicate requests. Each subsequent request matching this unique string will return the same response. We suggest using v4 UUIDs. Keys expire after 24 hours.",
+            "description": "A unique string to prevent duplicate requests. Each subsequent request matching this unique string will return the same response. We suggest using v4 UUIDs.",
             "schema": {
               "type": "string",
               "example": "884793cd-bef4-46cf-8790-e3d4957a09ce"
@@ -1468,6 +1498,16 @@
                       "instancePath": "/targets"
                     }
                   ]
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogEventsControllerCreate402Response"
                 }
               }
             }
@@ -1570,6 +1610,16 @@
                 }
               }
             }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogExportsControllerExports402Response"
+                }
+              }
+            }
           }
         }
       }
@@ -1609,6 +1659,16 @@
                   "url": "https://exports.audit-logs.com/audit-log-exports/export.csv",
                   "created_at": "2022-09-02T17:14:57.094Z",
                   "updated_at": "2022-09-02T17:14:57.094Z"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogExportsControllerExport402Response"
                 }
               }
             }
@@ -2044,6 +2104,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerList402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -2102,6 +2172,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GroupRoleAssignment"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerCreate402Response"
                 }
               }
             }
@@ -2184,6 +2264,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GroupRoleAssignmentList"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments402Response"
                 }
               }
             }
@@ -2327,6 +2417,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerGet402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -2442,6 +2542,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthorizationCheck"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationControllerCheck402Response"
                 }
               }
             }
@@ -2609,6 +2719,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationControllerListResourcesForMembership402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -2735,6 +2855,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationControllerListEffectivePermissions402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -2853,6 +2983,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthorizationPermissionList"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationControllerListEffectivePermissionsByExternalId402Response"
                 }
               }
             }
@@ -2986,6 +3126,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationRoleAssignmentsControllerListRoleAssignments402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -3064,6 +3214,16 @@
                   },
                   "created_at": "2026-01-15T12:00:00.000Z",
                   "updated_at": "2026-01-15T12:00:00.000Z"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationRoleAssignmentsControllerAssignRole402Response"
                 }
               }
             }
@@ -3929,6 +4089,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesByExternalIdControllerGetByExternalId402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -4017,6 +4187,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthorizationResourcesByExternalIdControllerUpdateByExternalId400Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesByExternalIdControllerUpdateByExternalId402Response"
                 }
               }
             }
@@ -4290,6 +4470,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -4417,6 +4607,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserRoleAssignmentList"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalId402Response"
                 }
               }
             }
@@ -4870,6 +5070,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesControllerList402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -4940,6 +5150,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthorizationResourcesControllerCreate400Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesControllerCreate402Response"
                 }
               }
             }
@@ -5032,6 +5252,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesControllerFindById402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -5110,6 +5340,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthorizationResourcesControllerUpdate400Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesControllerUpdate402Response"
                 }
               }
             }
@@ -5343,6 +5583,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationResourcesControllerListOrganizationMembershipsForResource402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -5450,6 +5700,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserRoleAssignmentList"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource402Response"
                 }
               }
             }
@@ -7804,6 +8064,15 @@
               "type": "string",
               "example": "github"
             }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "description": "Makes retries of this explicit add return the connection the first attempt created instead of creating another. Reuse the same key for every retry of one request. A matching retry within 24 hours returns the existing connection; reusing the key for a different owner, integration, or authentication method, or after 24 hours while that connection exists, returns 409 \u0060idempotency_key_conflict\u0060. If that connection was deleted, the key creates a new one. Requests without a key are not retry-safe.",
+            "schema": {
+              "type": "string",
+              "example": "0b6c3f0e-7a51-4c3a-9d8e-2f1b5a6c7d80"
+            }
           }
         ],
         "requestBody": {
@@ -7876,7 +8145,7 @@
             }
           },
           "409": {
-            "description": "\u0060connected_account_limit_reached\u0060 when the provider and owner already have 25 connections.",
+            "description": "\u0060connected_account_limit_reached\u0060 when the provider and owner already have 25 connections, or \u0060idempotency_key_conflict\u0060 when the \u0060Idempotency-Key\u0060 was already used for a different connection request or its replay window has passed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8124,6 +8393,15 @@
               "type": "string",
               "example": "salesforce"
             }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "description": "Makes retries of this explicit add return the connection the first attempt created instead of creating another. Reuse the same key for every retry of one request. A matching retry within 24 hours returns the existing connection; reusing the key for a different owner, integration, or authentication method, or after 24 hours while that connection exists, returns 409 \u0060idempotency_key_conflict\u0060. If that connection was deleted, the key creates a new one. Requests without a key are not retry-safe.",
+            "schema": {
+              "type": "string",
+              "example": "0b6c3f0e-7a51-4c3a-9d8e-2f1b5a6c7d80"
+            }
           }
         ],
         "requestBody": {
@@ -8195,7 +8473,7 @@
             }
           },
           "409": {
-            "description": "\u0060connected_account_limit_reached\u0060 when the provider and owner already have 25 connections.",
+            "description": "\u0060connected_account_limit_reached\u0060 when the provider and owner already have 25 connections, or \u0060idempotency_key_conflict\u0060 when the \u0060Idempotency-Key\u0060 was already used for a different connection request or its replay window has passed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9774,6 +10052,16 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": "409 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeatureFlagsControllerDisableFlag409Response"
+                }
+              }
+            }
           }
         }
       }
@@ -9815,6 +10103,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FeatureFlagsControllerEnableFlag404Response"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "409 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeatureFlagsControllerEnableFlag409Response"
                 }
               }
             }
@@ -10622,6 +10920,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsRetentionControllerAuditLogsRetention402Response"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -10670,6 +10978,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuditLogsRetentionJson"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogsRetentionControllerUpdateAuditLogsRetention402Response"
                 }
               }
             }
@@ -11894,6 +12212,8 @@
                     "instance_url": "https://example.my.salesforce.com"
                   },
                   "state": "connected",
+                  "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "state_reason": null,
                   "created_at": "2024-01-16T14:20:00.000Z",
                   "updated_at": "2024-01-16T14:20:00.000Z"
                 }
@@ -12061,6 +12381,15 @@
               "type": "string",
               "example": "github"
             }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "description": "Makes retries of this explicit add return the connection the first attempt created instead of creating another. Reuse the same key for every retry of one request. A matching retry within 24 hours returns the existing connection; reusing the key for a different owner, integration, or authentication method, or after 24 hours while that connection exists, returns 409 \u0060idempotency_key_conflict\u0060. If that connection was deleted, the key creates a new one. Requests without a key are not retry-safe.",
+            "schema": {
+              "type": "string",
+              "example": "0b6c3f0e-7a51-4c3a-9d8e-2f1b5a6c7d80"
+            }
           }
         ],
         "requestBody": {
@@ -12101,6 +12430,8 @@
                     "instance_url": "https://example.my.salesforce.com"
                   },
                   "state": "connected",
+                  "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "state_reason": null,
                   "created_at": "2024-01-16T14:20:00.000Z",
                   "updated_at": "2024-01-16T14:20:00.000Z"
                 }
@@ -12131,7 +12462,7 @@
             }
           },
           "409": {
-            "description": "The compatibility connection already exists for this organization and integration, or \u0060connected_account_limit_reached\u0060 when \u0060connection_intent: add\u0060 would create a standard connection and the owner already has 25 connections.",
+            "description": "The compatibility connection already exists for this organization and integration, \u0060connected_account_limit_reached\u0060 when \u0060connection_intent: add\u0060 would create a standard connection and the owner already has 25 connections, or \u0060idempotency_key_conflict\u0060 when the \u0060Idempotency-Key\u0060 was already used for a different connection request or its replay window has passed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12257,6 +12588,8 @@
                     "instance_url": "https://example.my.salesforce.com"
                   },
                   "state": "connected",
+                  "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+                  "state_reason": null,
                   "created_at": "2024-01-16T14:20:00.000Z",
                   "updated_at": "2024-01-16T14:20:00.000Z"
                 }
@@ -12403,6 +12736,8 @@
                           "instance_url": "https://example.my.salesforce.com"
                         },
                         "state": "connected",
+                        "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+                        "state_reason": null,
                         "created_at": "2024-01-16T14:20:00.000Z",
                         "updated_at": "2024-01-16T14:20:00.000Z",
                         "userlandUserId": null,
@@ -12431,6 +12766,8 @@
                             "instance_url": "https://example.my.salesforce.com"
                           },
                           "state": "connected",
+                          "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+                          "state_reason": null,
                           "created_at": "2024-01-16T14:20:00.000Z",
                           "updated_at": "2024-01-16T14:20:00.000Z",
                           "userlandUserId": null,
@@ -12719,6 +13056,16 @@
           "204": {
             "description": "No Content"
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerInvite402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -12975,6 +13322,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalSessionsControllerCreate402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -13001,6 +13358,51 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PortalSessionsControllerCreate422Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/portal/revoke_link": {
+      "post": {
+        "tags": [
+          "admin-portal"
+        ],
+        "summary": "Revoke Portal Links",
+        "description": "Revokes every Portal Link generated for the given organization with the given \u0060external_user_id\u0060, and immediately ends any Admin Portal sessions that were started from those links. Use this when an admin is deprovisioned from your application: unopened links stop working, and their already-open portal sessions are ended. Only links that were generated with an \u0060external_user_id\u0060 can be revoked, so pass one to \u0060generate_link\u0060 for every admin you may later need to deprovision.",
+        "operationId": "PortalSessionsControllerRevokeLink",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeLinkDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalSessionsControllerRevokeLink404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalSessionsControllerRevokeLink422Response"
                 }
               }
             }
@@ -13043,6 +13445,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RadarStandaloneControllerAssess400Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RadarStandaloneControllerAssess402Response"
                 }
               }
             }
@@ -13090,6 +13502,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RadarStandaloneControllerUpdateRadarAttempt400Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RadarStandaloneControllerUpdateRadarAttempt402Response"
                 }
               }
             }
@@ -13168,6 +13590,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RadarStandaloneControllerUpdateRadarList400Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RadarStandaloneControllerUpdateRadarList402Response"
                 }
               }
             }
@@ -14555,6 +14987,16 @@
               }
             }
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserlandUserInvitesControllerCreate402Response"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -14768,6 +15210,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserlandUserInvitesControllerResend400Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserlandUserInvitesControllerResend402Response"
                 }
               }
             }
@@ -17655,6 +18107,15 @@
               "type": "string",
               "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
             }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "description": "Makes retries of this explicit add return the connection the first attempt created instead of creating another. Reuse the same key for every retry of one request. A matching retry within 24 hours returns the existing connection; reusing the key for a different owner, integration, or authentication method, or after 24 hours while that connection exists, returns 409 \u0060idempotency_key_conflict\u0060. If that connection was deleted, the key creates a new one. Requests without a key are not retry-safe.",
+            "schema": {
+              "type": "string",
+              "example": "0b6c3f0e-7a51-4c3a-9d8e-2f1b5a6c7d80"
+            }
           }
         ],
         "requestBody": {
@@ -17692,7 +18153,7 @@
             }
           },
           "409": {
-            "description": "The compatibility connection already exists for this user, integration, and organization, or \u0060connected_account_limit_reached\u0060 when \u0060connection_intent: add\u0060 would create a standard connection and the owner already has 25 connections.",
+            "description": "The compatibility connection already exists for this user, integration, and organization, \u0060connected_account_limit_reached\u0060 when \u0060connection_intent: add\u0060 would create a standard connection and the owner already has 25 connections, or \u0060idempotency_key_conflict\u0060 when the \u0060Idempotency-Key\u0060 was already used for a different connection request or its replay window has passed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18128,6 +18589,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/WaitlistEntriesControllerApprove200Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WaitlistEntriesControllerApprove402Response"
                 }
               }
             }
@@ -21841,6 +22312,13 @@
             "description": "An [Organization](/reference/organization) identifier.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
+          "external_user_id": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "description": "The ID of the user in your application the link is generated for. The link and any Admin Portal sessions started from it can later be revoked by this ID, for example when that user is deprovisioned from your application.",
+            "example": "user_12345"
+          },
           "intent": {
             "$ref": "#/components/schemas/GenerateLinkDtoIntent"
           },
@@ -21852,6 +22330,27 @@
               "format": "email"
             },
             "description": "The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails."
+          }
+        }
+      },
+      "RevokeLinkDto": {
+        "required": [
+          "organization",
+          "external_user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "organization": {
+            "type": "string",
+            "description": "An [Organization](/reference/organization) identifier.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "external_user_id": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "description": "The \u0060external_user_id\u0060 the Portal Links were generated with for this organization. Every matching link is revoked, along with any Admin Portal sessions started from those links.",
+            "example": "user_12345"
           }
         }
       },
@@ -25733,6 +26232,22 @@
           "state": {
             "$ref": "#/components/schemas/PipesConnectedAccountState"
           },
+          "established_by_user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the User whose authorization established the connected account, or null when it is developer-managed, its establisher is unknown, or the establishing member left the organization. Historical events may omit this field.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "state_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why WorkOS put the connected account in its current state, or null when there is no WorkOS-recorded reason. \u0060establishing_member_membership_ended\u0060 means the member who established an organization-owned connection is no longer an active member. Additional values may be added. Historical events may omit this field.",
+            "example": null
+          },
           "created_at": {
             "type": "string",
             "description": "An ISO 8601 timestamp.",
@@ -27464,6 +27979,22 @@
           "state": {
             "$ref": "#/components/schemas/ConnectedAccountWriteResponseState"
           },
+          "established_by_user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The [User](/reference/authkit/user) whose authorization established this connection. \u0060null\u0060 when the connection is developer-managed or its establisher is unknown, and when the establishing member lost access to the organization \u2014 in which case \u0060state_reason\u0060 is \u0060establishing_member_membership_ended\u0060.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "state_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why WorkOS put the connection in its current \u0060state\u0060, or \u0060null\u0060 when there is no WorkOS-recorded reason:\n- \u0060establishing_member_membership_ended\u0060: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.\n\nAdditional values may be added; treat an unrecognized value as an unknown reason.",
+            "example": null
+          },
           "created_at": {
             "type": "string",
             "description": "The timestamp when the connection was created.",
@@ -27601,6 +28132,22 @@
           "state": {
             "$ref": "#/components/schemas/ConnectedAccountState"
           },
+          "established_by_user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The [User](/reference/authkit/user) whose authorization established this connection. \u0060null\u0060 when the connection is developer-managed or its establisher is unknown, and when the establishing member lost access to the organization \u2014 in which case \u0060state_reason\u0060 is \u0060establishing_member_membership_ended\u0060.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "state_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why WorkOS put the connection in its current \u0060state\u0060, or \u0060null\u0060 when there is no WorkOS-recorded reason:\n- \u0060establishing_member_membership_ended\u0060: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.\n\nAdditional values may be added; treat an unrecognized value as an unknown reason.",
+            "example": null
+          },
           "created_at": {
             "type": "string",
             "description": "The timestamp when the connection was created.",
@@ -27623,7 +28170,7 @@
             "type": "string",
             "description": "An ephemeral link to initiate the Admin Portal.",
             "format": "password",
-            "example": "https://setup.workos.com?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            "example": "https://setup.workos.com/init?apiToken=01EHZNVPK3SFK441A1RGBFSHRT"
           }
         }
       },
@@ -44708,6 +45255,22 @@
           "state": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountState"
           },
+          "established_by_user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The [User](/reference/authkit/user) whose authorization established this connection. \u0060null\u0060 when the connection is developer-managed or its establisher is unknown, and when the establishing member lost access to the organization \u2014 in which case \u0060state_reason\u0060 is \u0060establishing_member_membership_ended\u0060.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "state_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why WorkOS put the connection in its current \u0060state\u0060, or \u0060null\u0060 when there is no WorkOS-recorded reason:\n- \u0060establishing_member_membership_ended\u0060: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.\n\nAdditional values may be added; treat an unrecognized value as an unknown reason.",
+            "example": null
+          },
           "created_at": {
             "type": "string",
             "description": "The timestamp when the connection was created.",
@@ -44849,6 +45412,22 @@
           },
           "state": {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItemState"
+          },
+          "established_by_user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The [User](/reference/authkit/user) whose authorization established this connection. \u0060null\u0060 when the connection is developer-managed or its establisher is unknown, and when the establishing member lost access to the organization \u2014 in which case \u0060state_reason\u0060 is \u0060establishing_member_membership_ended\u0060.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "state_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why WorkOS put the connection in its current \u0060state\u0060, or \u0060null\u0060 when there is no WorkOS-recorded reason:\n- \u0060establishing_member_membership_ended\u0060: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.\n\nAdditional values may be added; treat an unrecognized value as an unknown reason.",
+            "example": null
           },
           "created_at": {
             "type": "string",
@@ -47240,6 +47819,23 @@
           }
         }
       },
+      "AuditLogValidatorsControllerList402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuditLogValidatorsControllerList404Response": {
         "required": [
           "message"
@@ -47263,6 +47859,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuditLogValidatorVersionsControllerCreate402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -47294,6 +47907,23 @@
               "$ref": "#/components/schemas/AuditLogSchemaJson"
             },
             "description": "The list of records for the current page."
+          }
+        }
+      },
+      "AuditLogValidatorVersionsControllerSchemas402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -47345,6 +47975,23 @@
             "type": "string",
             "description": "The error code identifying the type of error.",
             "example": "invalid_audit_log_event"
+          }
+        }
+      },
+      "AuditLogEventsControllerCreate402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -47416,6 +48063,40 @@
             "type": "string",
             "description": "The error type.",
             "example": "Bad Request"
+          }
+        }
+      },
+      "AuditLogExportsControllerExports402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AuditLogExportsControllerExport402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -47654,6 +48335,23 @@
           }
         }
       },
+      "AuthorizationGroupRoleAssignmentsControllerList402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationGroupRoleAssignmentsControllerList403Response": {
         "required": [
           "message"
@@ -47677,6 +48375,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerCreate402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -47733,6 +48448,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -47814,6 +48546,23 @@
           }
         }
       },
+      "AuthorizationGroupRoleAssignmentsControllerGet402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationGroupRoleAssignmentsControllerGet403Response": {
         "required": [
           "message"
@@ -47863,6 +48612,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationControllerCheck402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -47922,6 +48688,23 @@
           }
         }
       },
+      "AuthorizationControllerListResourcesForMembership402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationControllerListResourcesForMembership403Response": {
         "required": [
           "message"
@@ -47958,6 +48741,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationControllerListEffectivePermissions402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -48000,6 +48800,23 @@
           }
         }
       },
+      "AuthorizationControllerListEffectivePermissionsByExternalId402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationControllerListEffectivePermissionsByExternalId403Response": {
         "required": [
           "message"
@@ -48039,6 +48856,23 @@
           }
         }
       },
+      "AuthorizationRoleAssignmentsControllerListRoleAssignments402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationRoleAssignmentsControllerListRoleAssignments403Response": {
         "required": [
           "message"
@@ -48062,6 +48896,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationRoleAssignmentsControllerAssignRole402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -48886,6 +49737,23 @@
           }
         }
       },
+      "AuthorizationResourcesByExternalIdControllerGetByExternalId402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationResourcesByExternalIdControllerGetByExternalId403Response": {
         "required": [
           "message"
@@ -48995,6 +49863,23 @@
         "properties": {
           "code": {
             "$ref": "#/components/schemas/LockTimeoutCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AuthorizationResourcesByExternalIdControllerUpdateByExternalId402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
           },
           "message": {
             "type": "string",
@@ -49136,6 +50021,23 @@
           }
         }
       },
+      "AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalId403Response": {
         "required": [
           "message"
@@ -49172,6 +50074,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalId402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -49434,6 +50353,23 @@
           }
         }
       },
+      "AuthorizationResourcesControllerList402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationResourcesControllerList403Response": {
         "required": [
           "message"
@@ -49551,6 +50487,23 @@
           }
         }
       },
+      "AuthorizationResourcesControllerCreate402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationResourcesControllerCreate403Response": {
         "required": [
           "message"
@@ -49604,6 +50557,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationResourcesControllerFindById402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -49729,6 +50699,23 @@
         "properties": {
           "code": {
             "$ref": "#/components/schemas/LockTimeoutCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AuthorizationResourcesControllerUpdate402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
           },
           "message": {
             "type": "string",
@@ -49870,6 +50857,23 @@
           }
         }
       },
+      "AuthorizationResourcesControllerListOrganizationMembershipsForResource402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuthorizationResourcesControllerListOrganizationMembershipsForResource403Response": {
         "required": [
           "message"
@@ -49906,6 +50910,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -51690,7 +52711,7 @@
         "type": "object",
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateApiKeyConnection409ResponseCode"
           },
           "message": {
             "type": "string",
@@ -52023,7 +53044,7 @@
         "type": "object",
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
+            "$ref": "#/components/schemas/DataIntegrationsControllerCreateClientCredentialsConnection409ResponseCode"
           },
           "message": {
             "type": "string",
@@ -52862,6 +53883,23 @@
           }
         }
       },
+      "FeatureFlagsControllerDisableFlag409Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentFlagTargetUpdateCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "FeatureFlagsControllerEnableFlag200Response": {
         "required": [
           "object",
@@ -52949,6 +53987,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "FeatureFlagsControllerEnableFlag409Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ConcurrentFlagTargetUpdateCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -53341,6 +54396,23 @@
           }
         }
       },
+      "AuditLogsRetentionControllerAuditLogsRetention402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "AuditLogsRetentionControllerAuditLogsRetention404Response": {
         "required": [
           "message"
@@ -53351,6 +54423,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuditLogsRetentionControllerUpdateAuditLogsRetention402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -53921,7 +55010,7 @@
         "type": "object",
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
+            "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409ResponseCode"
           },
           "message": {
             "type": "string",
@@ -54190,6 +55279,23 @@
           }
         }
       },
+      "ItContactsControllerInvite402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "ItContactsControllerInvite403Response": {
         "required": [
           "message"
@@ -54366,6 +55472,23 @@
           }
         }
       },
+      "PortalSessionsControllerCreate402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "PortalSessionsControllerCreate403Response": {
         "required": [
           "message"
@@ -54393,6 +55516,32 @@
         }
       },
       "PortalSessionsControllerCreate422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "PortalSessionsControllerRevokeLink404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "PortalSessionsControllerRevokeLink422Response": {
         "required": [
           "message"
         ],
@@ -54457,6 +55606,23 @@
           }
         }
       },
+      "RadarStandaloneControllerAssess402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "RadarStandaloneControllerUpdateRadarAttemptRequest": {
         "type": "object",
         "properties": {
@@ -54478,6 +55644,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "RadarStandaloneControllerUpdateRadarAttempt402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -54517,6 +55700,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "RadarStandaloneControllerUpdateRadarList402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -55249,6 +56449,23 @@
           }
         }
       },
+      "UserlandUserInvitesControllerCreate402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "UserlandUserInvitesControllerCreate404Response": {
         "required": [
           "message"
@@ -55467,6 +56684,23 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "Invite has expired."
+          }
+        }
+      },
+      "UserlandUserInvitesControllerResend402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -57331,7 +58565,7 @@
         "type": "object",
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/ConnectedAccountLimitReachedCode"
+            "$ref": "#/components/schemas/DataIntegrationsUserManagementControllerCreateUserDataInstallation409ResponseCode"
           },
           "message": {
             "type": "string",
@@ -57562,6 +58796,23 @@
           }
         },
         "x-inline-with-overrides": true
+      },
+      "WaitlistEntriesControllerApprove402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
       },
       "WaitlistEntriesControllerApprove404Response": {
         "required": [
@@ -65343,7 +66594,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed.\n- \u0060disconnected\u0060: The connection has been disconnected.",
+        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed. \u0060state_reason\u0060 explains why when WorkOS invalidated the connection itself.\n- \u0060disconnected\u0060: The connection has been disconnected.",
         "example": "connected",
         "x-ms-enum": {
           "name": "ConnectedAccountWriteResponseState",
@@ -65425,7 +66676,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed.\n- \u0060disconnected\u0060: The connection has been disconnected.",
+        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed. \u0060state_reason\u0060 explains why when WorkOS invalidated the connection itself.\n- \u0060disconnected\u0060: The connection has been disconnected.",
         "example": "connected",
         "x-ms-enum": {
           "name": "ConnectedAccountState",
@@ -72242,7 +73493,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed.\n- \u0060disconnected\u0060: The connection has been disconnected.",
+        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed. \u0060state_reason\u0060 explains why when WorkOS invalidated the connection itself.\n- \u0060disconnected\u0060: The connection has been disconnected.",
         "example": "connected",
         "x-ms-enum": {
           "name": "DataIntegrationsListResponseDataItemConnectedAccountState",
@@ -72324,7 +73575,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed.\n- \u0060disconnected\u0060: The connection has been disconnected.",
+        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed. \u0060state_reason\u0060 explains why when WorkOS invalidated the connection itself.\n- \u0060disconnected\u0060: The connection has been disconnected.",
         "example": "connected",
         "x-ms-enum": {
           "name": "DataIntegrationsListResponseDataItemConnectedAccountsItemState",
@@ -73011,6 +74262,25 @@
           ]
         }
       },
+      "ProductionFeatureRequiresBillingCode": {
+        "const": null,
+        "enum": [
+          "production_feature_requires_billing"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "production_feature_requires_billing",
+        "x-ms-enum": {
+          "name": "ProductionFeatureRequiresBillingCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "production_feature_requires_billing",
+              "name": "ProductionFeatureRequiresBilling"
+            }
+          ]
+        }
+      },
       "OneTimeCodeTooManyAttemptsCode": {
         "const": null,
         "enum": [
@@ -73615,21 +74885,26 @@
           ]
         }
       },
-      "ConnectedAccountLimitReachedCode": {
-        "const": null,
+      "DataIntegrationsControllerCreateApiKeyConnection409ResponseCode": {
         "enum": [
-          "connected_account_limit_reached"
+          "connected_account_limit_reached",
+          "idempotency_key_conflict"
         ],
         "type": "string",
+        "additionalProperties": false,
         "description": "The error code identifying the type of error.",
         "example": "connected_account_limit_reached",
         "x-ms-enum": {
-          "name": "ConnectedAccountLimitReachedCode",
+          "name": "DataIntegrationsControllerCreateApiKeyConnection409ResponseCode",
           "modelAsString": false,
           "values": [
             {
               "value": "connected_account_limit_reached",
               "name": "ConnectedAccountLimitReached"
+            },
+            {
+              "value": "idempotency_key_conflict",
+              "name": "IdempotencyKeyConflict"
             }
           ]
         }
@@ -73749,6 +75024,25 @@
           ]
         }
       },
+      "ConnectedAccountLimitReachedCode": {
+        "const": null,
+        "enum": [
+          "connected_account_limit_reached"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "connected_account_limit_reached",
+        "x-ms-enum": {
+          "name": "ConnectedAccountLimitReachedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected_account_limit_reached",
+              "name": "ConnectedAccountLimitReached"
+            }
+          ]
+        }
+      },
       "DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionOwner": {
         "enum": [
           "user",
@@ -73793,6 +75087,30 @@
             {
               "value": "entity_not_found",
               "name": "EntityNotFound"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerCreateClientCredentialsConnection409ResponseCode": {
+        "enum": [
+          "connected_account_limit_reached",
+          "idempotency_key_conflict"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "connected_account_limit_reached",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerCreateClientCredentialsConnection409ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected_account_limit_reached",
+              "name": "ConnectedAccountLimitReached"
+            },
+            {
+              "value": "idempotency_key_conflict",
+              "name": "IdempotencyKeyConflict"
             }
           ]
         }
@@ -73941,6 +75259,25 @@
             {
               "value": "invalid_request_parameters",
               "name": "InvalidRequestParameters"
+            }
+          ]
+        }
+      },
+      "ConcurrentFlagTargetUpdateCode": {
+        "const": null,
+        "enum": [
+          "concurrent_flag_target_update"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "concurrent_flag_target_update",
+        "x-ms-enum": {
+          "name": "ConcurrentFlagTargetUpdateCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "concurrent_flag_target_update",
+              "name": "ConcurrentFlagTargetUpdate"
             }
           ]
         }
@@ -74102,6 +75439,30 @@
             {
               "value": "entity_not_found",
               "name": "EntityNotFound"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409ResponseCode": {
+        "enum": [
+          "connected_account_limit_reached",
+          "idempotency_key_conflict"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "connected_account_limit_reached",
+        "x-ms-enum": {
+          "name": "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected_account_limit_reached",
+              "name": "ConnectedAccountLimitReached"
+            },
+            {
+              "value": "idempotency_key_conflict",
+              "name": "IdempotencyKeyConflict"
             }
           ]
         }
@@ -74934,6 +76295,30 @@
             {
               "value": "entity_not_found",
               "name": "EntityNotFound"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsUserManagementControllerCreateUserDataInstallation409ResponseCode": {
+        "enum": [
+          "connected_account_limit_reached",
+          "idempotency_key_conflict"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The error code identifying the type of error.",
+        "example": "connected_account_limit_reached",
+        "x-ms-enum": {
+          "name": "DataIntegrationsUserManagementControllerCreateUserDataInstallation409ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "connected_account_limit_reached",
+              "name": "ConnectedAccountLimitReached"
+            },
+            {
+              "value": "idempotency_key_conflict",
+              "name": "IdempotencyKeyConflict"
             }
           ]
         }
