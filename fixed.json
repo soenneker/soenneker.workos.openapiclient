@@ -15403,6 +15403,16 @@
               }
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserlandMagicAuthControllerSendMagicAuthCodeAndReturn403Response"
+                }
+              }
+            }
+          },
           "422": {
             "description": "Unprocessable Entity",
             "content": {
@@ -16760,6 +16770,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserlandUsersControllerCreate0400Response"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserlandUsersControllerCreate0403Response"
                 }
               }
             }
@@ -56982,6 +57002,23 @@
           }
         }
       },
+      "UserlandMagicAuthControllerSendMagicAuthCodeAndReturn403Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/PolicyDeniedCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
       "UserlandMagicAuthControllerSendMagicAuthCodeAndReturn422Response": {
         "required": [
           "message"
@@ -57909,6 +57946,23 @@
               "$ref": "#/components/schemas/UserlandUsersControllerCreate0400ResponseErrorsItem"
             },
             "description": "The list of validation errors."
+          }
+        }
+      },
+      "UserlandUsersControllerCreate0403Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/PolicyDeniedCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
         }
       },
@@ -75967,6 +76021,25 @@
             {
               "value": "email_domain_not_deliverable",
               "name": "EmailDomainNotDeliverable"
+            }
+          ]
+        }
+      },
+      "PolicyDeniedCode": {
+        "const": null,
+        "enum": [
+          "policy_denied"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "policy_denied",
+        "x-ms-enum": {
+          "name": "PolicyDeniedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "policy_denied",
+              "name": "PolicyDenied"
             }
           ]
         }
