@@ -793,6 +793,50 @@
         }
       }
     },
+    "/agents/registrations/{id}/revoke": {
+      "post": {
+        "tags": [
+          "agents.registrations"
+        ],
+        "summary": "Revoke an agent registration",
+        "description": "Revoke an agent registration by ID. Revocation is permanent: the registration, its identity assertions, and every access token or API key issued from it stop working, and the agent must register again. Revoking an already revoked registration succeeds and returns the original \u0060revoked_at\u0060. The registration is scoped to the environment of the API key used to authenticate the request.",
+        "operationId": "AgentAdminControllerRevokeRegistration",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the agent registration.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "agent_reg_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentRegistration"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentAdminControllerRevokeRegistration404Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agents/sessions": {
       "get": {
         "tags": [
@@ -23747,6 +23791,7 @@
           "agent_identity",
           "organization_id",
           "status",
+          "revoked_at",
           "kind",
           "claim",
           "created_at",
@@ -23769,6 +23814,15 @@
           },
           "status": {
             "$ref": "#/components/schemas/AgentRegistrationStatus"
+          },
+          "revoked_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The timestamp when the registration was revoked, or \u0060null\u0060 if it has not been revoked.",
+            "format": "date-time",
+            "example": null
           },
           "kind": {
             "$ref": "#/components/schemas/AgentRegistrationKind"
@@ -46964,6 +47018,9 @@
             },
             "description": "The previous tags of the flag."
           },
+          "owner": {
+            "$ref": "#/components/schemas/EventSchemaAllOf2OneOf61ContextPreviousAttributesDataOwner"
+          },
           "enabled": {
             "type": "boolean",
             "description": "Whether the flag was previously enabled.",
@@ -47000,6 +47057,41 @@
           }
         },
         "description": "The previous configured targets for the flag rule."
+      },
+      "EventSchemaAllOf2OneOf61ContextPreviousAttributesDataOwner": {
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": [
+          "null",
+          "object"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the flag owner.",
+            "example": "jane@example.com"
+          },
+          "first_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The first name of the flag owner.",
+            "example": "Jane"
+          },
+          "last_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last name of the flag owner.",
+            "example": "Doe"
+          }
+        },
+        "description": "The previous owner of the flag, or \u0060null\u0060 if it had none."
       },
       "EventSchemaAllOf2OneOf60ContextPreviousAttributesContextConfiguredTargetsOrganizationsItem": {
         "required": [
@@ -47660,6 +47752,19 @@
         }
       },
       "AgentAdminControllerGetRegistration404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AgentAdminControllerRevokeRegistration404Response": {
         "required": [
           "message"
         ],

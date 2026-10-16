@@ -50,6 +50,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
+        /// <summary>The timestamp when the registration was revoked, or `null` if it has not been revoked.</summary>
+        public DateTimeOffset? RevokedAt { get; set; }
         /// <summary>The current verification status of the registration.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationStatus? Status { get; set; }
         /// <summary>The timestamp when the registration was last updated.</summary>
@@ -85,6 +87,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationKind>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "revoked_at", n => { RevokedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -102,6 +105,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationKind>("kind", Kind);
             writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteDateTimeOffsetValue("revoked_at", RevokedAt);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

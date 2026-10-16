@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Agents.Registrations.Item.Revoke;
 using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Registrations.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RegistrationsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The revoke property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Agents.Registrations.Item.Revoke.RevokeRequestBuilder Revoke
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Agents.Registrations.Item.Revoke.RevokeRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Agents.Registrations.Item.RegistrationsItemRequestBuilder"/> and sets the default values.
         /// </summary>
