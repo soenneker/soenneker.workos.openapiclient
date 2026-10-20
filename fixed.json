@@ -9861,18 +9861,22 @@
           {
             "name": "range_start",
             "in": "query",
-            "description": "ISO-8601 date string to filter events created after this date.",
+            "description": "ISO 8601 UTC timestamp with a \u0060Z\u0060 suffix to filter events created after this date. Timezone offsets such as \u0060\u002B00:00\u0060 are not accepted.",
             "schema": {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d\u002B)?Z$",
               "type": "string",
+              "format": "date-time",
               "example": "2025-01-01T00:00:00Z"
             }
           },
           {
             "name": "range_end",
             "in": "query",
-            "description": "ISO-8601 date string to filter events created before this date.",
+            "description": "ISO 8601 UTC timestamp with a \u0060Z\u0060 suffix to filter events created before this date. Timezone offsets such as \u0060\u002B00:00\u0060 are not accepted.",
             "schema": {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d\u002B)?Z$",
               "type": "string",
+              "format": "date-time",
               "example": "2025-12-31T23:59:59Z"
             }
           },

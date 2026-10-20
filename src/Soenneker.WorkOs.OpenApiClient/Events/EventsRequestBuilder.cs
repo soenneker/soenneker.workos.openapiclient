@@ -138,26 +138,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Events
             [QueryParameter("organization_id")]
             public string OrganizationId { get; set; }
 #endif
-            /// <summary>ISO-8601 date string to filter events created before this date.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+            /// <summary>ISO 8601 UTC timestamp with a `Z` suffix to filter events created before this date. Timezone offsets such as `+00:00` are not accepted.</summary>
             [QueryParameter("range_end")]
-            public string? RangeEnd { get; set; }
-#nullable restore
-#else
-            [QueryParameter("range_end")]
-            public string RangeEnd { get; set; }
-#endif
-            /// <summary>ISO-8601 date string to filter events created after this date.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+            public DateTimeOffset? RangeEnd { get; set; }
+            /// <summary>ISO 8601 UTC timestamp with a `Z` suffix to filter events created after this date. Timezone offsets such as `+00:00` are not accepted.</summary>
             [QueryParameter("range_start")]
-            public string? RangeStart { get; set; }
-#nullable restore
-#else
-            [QueryParameter("range_start")]
-            public string RangeStart { get; set; }
-#endif
+            public DateTimeOffset? RangeStart { get; set; }
         }
     }
 }
