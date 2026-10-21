@@ -28,7 +28,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string AccountIdentifier { get; set; }
 #endif
-        /// <summary>Set to `add` to create another connected account. Omit this field for permanent compatibility behavior. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 `multiple_connections_unavailable`.</summary>
+        /// <summary>Set to `add` to create another connected account. Omit this field for permanent compatibility behavior.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent? ConnectionIntent { get; set; }
         /// <summary>Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnectionRequestConnectionOwner? ConnectionOwner { get; set; }

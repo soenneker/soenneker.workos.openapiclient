@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey
         {
         }
         /// <summary>
-        /// Creates another API key-based connected account for the specified integration, owned by the user or, when `connection_owner` is `organization`, shared by the organization. Requires `connection_intent: add` and does not accept `connected_account_id`; use PUT to create or rotate the compatibility connection or to update an exact connection. Creating an additional connection is not yet available: until it is, this endpoint succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 `multiple_connections_unavailable`.
+        /// Creates another API key-based connected account for the specified integration, owned by the user or, when `connection_owner` is `organization`, shared by the organization. Requires `connection_intent: add` and does not accept `connected_account_id`; use PUT to create or rotate the compatibility connection or to update an exact connection.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWriteResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -100,7 +100,7 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWriteResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWriteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates another API key-based connected account for the specified integration, owned by the user or, when `connection_owner` is `organization`, shared by the organization. Requires `connection_intent: add` and does not accept `connected_account_id`; use PUT to create or rotate the compatibility connection or to update an exact connection. Creating an additional connection is not yet available: until it is, this endpoint succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 `multiple_connections_unavailable`.
+        /// Creates another API key-based connected account for the specified integration, owned by the user or, when `connection_owner` is `organization`, shared by the organization. Requires `connection_intent: add` and does not accept `connected_account_id`; use PUT to create or rotate the compatibility connection or to update an exact connection.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
