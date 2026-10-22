@@ -14,6 +14,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Updated origins allowed to call the OAuth token endpoint for this application from a browser. Replaces the existing list. OAuth applications only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? CorsOrigins { get; set; }
+#nullable restore
+#else
+        public List<string> CorsOrigins { get; set; }
+#endif
         /// <summary>A description for the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,6 +79,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "cors_origins", n => { CorsOrigins = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "redirect_uris", n => { RedirectUris = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto>(global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -84,6 +93,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("cors_origins", CorsOrigins);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto>("redirect_uris", RedirectUris);

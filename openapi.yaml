@@ -17745,6 +17745,25 @@ paths:
       responses:
         '204':
           description: No Content
+        '402':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code identifying the type of error.
+                    example: production_feature_requires_billing
+                    const: production_feature_requires_billing
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                    example: Request could not be processed.
+                required:
+                  - code
+                  - message
         '403':
           description: Forbidden
           content:
@@ -28421,6 +28440,18 @@ components:
             - 'null'
           items:
             $ref: '#/components/schemas/RedirectUriDto'
+        cors_origins:
+          description: >-
+            Origins allowed to call the OAuth token endpoint for this
+            application from a browser.
+          example:
+            - https://app.example.com
+          maxItems: 1000
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
         uses_pkce:
           type:
             - boolean
@@ -28512,6 +28543,19 @@ components:
             - 'null'
           items:
             $ref: '#/components/schemas/RedirectUriDto'
+        cors_origins:
+          description: >-
+            Updated origins allowed to call the OAuth token endpoint for this
+            application from a browser. Replaces the existing list. OAuth
+            applications only.
+          example:
+            - https://app.example.com
+          maxItems: 1000
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
     CreateApplicationSecretDto:
       type: object
       properties: {}
@@ -33198,6 +33242,15 @@ components:
                           - uri
                           - default
                       description: The redirect URIs configured for this application.
+                    cors_origins:
+                      type: array
+                      items:
+                        type: string
+                      description: >-
+                        The CORS origins allowed to call the OAuth token
+                        endpoint for this application from a browser.
+                      example:
+                        - https://app.example.com
                     uses_pkce:
                       type: boolean
                       description: Whether the application uses PKCE for authorization.
@@ -33205,6 +33258,7 @@ components:
                   required:
                     - application_type
                     - redirect_uris
+                    - cors_origins
                     - uses_pkce
                 - oneOf:
                     - type: object

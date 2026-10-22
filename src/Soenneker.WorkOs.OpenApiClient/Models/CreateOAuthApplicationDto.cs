@@ -16,6 +16,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The type of application to create.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.OAuthApplicationType? ApplicationType { get; set; }
+        /// <summary>Origins allowed to call the OAuth token endpoint for this application from a browser.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? CorsOrigins { get; set; }
+#nullable restore
+#else
+        public List<string> CorsOrigins { get; set; }
+#endif
         /// <summary>A description for the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,6 +94,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "application_type", n => { ApplicationType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OAuthApplicationType>(); } },
+                { "cors_origins", n => { CorsOrigins = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "is_first_party", n => { IsFirstParty = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -103,6 +112,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OAuthApplicationType>("application_type", ApplicationType);
+            writer.WriteCollectionOfPrimitiveValues<string>("cors_origins", CorsOrigins);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("is_first_party", IsFirstParty);
             writer.WriteStringValue("name", Name);

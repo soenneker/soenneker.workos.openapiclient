@@ -13102,6 +13102,16 @@
           "204": {
             "description": "No Content"
           },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItContactsControllerInvite402Response"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -20105,6 +20115,17 @@
             },
             "description": "Redirect URIs for the application."
           },
+          "cors_origins": {
+            "maxItems": 1000,
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "Origins allowed to call the OAuth token endpoint for this application from a browser."
+          },
           "uses_pkce": {
             "type": [
               "null",
@@ -20204,6 +20225,17 @@
               "$ref": "#/components/schemas/RedirectUriDto"
             },
             "description": "Updated redirect URIs for the application. OAuth applications only."
+          },
+          "cors_origins": {
+            "maxItems": 1000,
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "Updated origins allowed to call the OAuth token endpoint for this application from a browser. Replaces the existing list. OAuth applications only."
           }
         }
       },
@@ -31137,6 +31169,7 @@
         "required": [
           "application_type",
           "redirect_uris",
+          "cors_origins",
           "uses_pkce"
         ],
         "type": "object",
@@ -31150,6 +31183,13 @@
               "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem"
             },
             "description": "The redirect URIs configured for this application."
+          },
+          "cors_origins": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The CORS origins allowed to call the OAuth token endpoint for this application from a browser."
           },
           "uses_pkce": {
             "type": "boolean",
@@ -51713,6 +51753,17 @@
             },
             "description": "Redirect URIs for the application."
           },
+          "cors_origins": {
+            "maxItems": 1000,
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "Origins allowed to call the OAuth token endpoint for this application from a browser."
+          },
           "uses_pkce": {
             "type": [
               "null",
@@ -55368,6 +55419,23 @@
         "properties": {
           "code": {
             "$ref": "#/components/schemas/ConcurrentRequestCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "ItContactsControllerInvite402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ProductionFeatureRequiresBillingCode"
           },
           "message": {
             "type": "string",
@@ -59321,6 +59389,7 @@
         "required": [
           "application_type",
           "redirect_uris",
+          "cors_origins",
           "uses_pkce"
         ],
         "type": "object",
@@ -59350,6 +59419,13 @@
               "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem"
             },
             "description": "The redirect URIs configured for this application."
+          },
+          "cors_origins": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The CORS origins allowed to call the OAuth token endpoint for this application from a browser."
           },
           "uses_pkce": {
             "type": "boolean",

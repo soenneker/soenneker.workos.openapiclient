@@ -39,6 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.Item.Inv
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerInvite402Response">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerInvite403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerInvite404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerInvite409Response">When receiving a 409 status code</exception>
@@ -58,6 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.Item.Inv
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerInvite402Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerInvite403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerInvite404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerInvite409Response.CreateFromDiscriminatorValue },
