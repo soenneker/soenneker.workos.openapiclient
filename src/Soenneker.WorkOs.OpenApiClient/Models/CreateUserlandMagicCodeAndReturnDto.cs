@@ -38,6 +38,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string IpAddress { get; set; }
 #endif
+        /// <summary>The locale to use when rendering the Magic Auth email. Defaults to the environment&apos;s default locale. See [supported locales](/authkit/hosted-ui#localization).</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandMagicCodeAndReturnDtoLocale? Locale { get; set; }
         /// <summary>The ID of an existing Radar authentication attempt to associate with this request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,6 +92,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "invitation_token", n => { InvitationToken = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
+                { "locale", n => { Locale = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandMagicCodeAndReturnDtoLocale>(); } },
                 { "radar_auth_attempt_id", n => { RadarAuthAttemptId = n.GetStringValue(); } },
                 { "signals_id", n => { SignalsId = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
@@ -105,6 +108,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("invitation_token", InvitationToken);
             writer.WriteStringValue("ip_address", IpAddress);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandMagicCodeAndReturnDtoLocale>("locale", Locale);
             writer.WriteStringValue("radar_auth_attempt_id", RadarAuthAttemptId);
             writer.WriteStringValue("signals_id", SignalsId);
             writer.WriteStringValue("user_agent", UserAgent);

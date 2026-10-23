@@ -14,6 +14,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The locale to use when rendering the email change email. Defaults to the environment&apos;s default locale. See [supported locales](/authkit/hosted-ui#localization).</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SendEmailChangeDtoLocale? Locale { get; set; }
         /// <summary>The new email address to change to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +49,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "locale", n => { Locale = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SendEmailChangeDtoLocale>(); } },
                 { "new_email", n => { NewEmail = n.GetStringValue(); } },
             };
         }
@@ -57,6 +60,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SendEmailChangeDtoLocale>("locale", Locale);
             writer.WriteStringValue("new_email", NewEmail);
             writer.WriteAdditionalData(AdditionalData);
         }

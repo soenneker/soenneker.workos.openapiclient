@@ -32,7 +32,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string InviterUserId { get; set; }
 #endif
-        /// <summary>The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization).</summary>
+        /// <summary>The locale to use when rendering the invitation email. Defaults to the environment&apos;s default locale. See [supported locales](/authkit/hosted-ui#localization).</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDtoLocale? Locale { get; set; }
         /// <summary>The ID of the [organization](/reference/organization) that the recipient will join.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

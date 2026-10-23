@@ -17351,6 +17351,15 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendVerificationEmailDto"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -17378,6 +17387,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserlandUsersControllerSendVerificationEmail0404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserlandUsersControllerSendVerificationEmail0422Response"
                 }
               }
             }
@@ -22583,6 +22602,9 @@
             "type": "string",
             "description": "An optional Radar signals ID to correlate client-side signals with this request.",
             "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
+          },
+          "locale": {
+            "$ref": "#/components/schemas/CreateUserlandMagicCodeAndReturnDtoLocale"
           }
         }
       },
@@ -23092,6 +23114,14 @@
           }
         }
       },
+      "SendVerificationEmailDto": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "$ref": "#/components/schemas/SendVerificationEmailDtoLocale"
+          }
+        }
+      },
       "VerifyEmailAddressDto": {
         "required": [
           "code"
@@ -23117,6 +23147,9 @@
             "description": "The email address of the user requesting a password reset.",
             "format": "email",
             "example": "marcelina.davis@example.com"
+          },
+          "locale": {
+            "$ref": "#/components/schemas/CreatePasswordResetTokenDtoLocale"
           }
         }
       },
@@ -23149,6 +23182,9 @@
             "type": "string",
             "description": "The new email address to change to.",
             "example": "new.email@example.com"
+          },
+          "locale": {
+            "$ref": "#/components/schemas/SendEmailChangeDtoLocale"
           }
         }
       },
@@ -58442,6 +58478,23 @@
           }
         }
       },
+      "UserlandUsersControllerSendVerificationEmail0422Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/InvalidRequestParametersCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Validation failed."
+          }
+        }
+      },
       "UserlandUsersControllerSendVerificationEmail0429Response": {
         "required": [
           "code",
@@ -62749,6 +62802,470 @@
           ]
         }
       },
+      "CreateUserlandMagicCodeAndReturnDtoLocale": {
+        "enum": [
+          "af",
+          "am",
+          "ar",
+          "bg",
+          "bn",
+          "bs",
+          "ca",
+          "cs",
+          "da",
+          "de",
+          "de-DE",
+          "el",
+          "en",
+          "en-AU",
+          "en-CA",
+          "en-GB",
+          "en-US",
+          "es",
+          "es-419",
+          "es-ES",
+          "es-US",
+          "et",
+          "fa",
+          "fi",
+          "fil",
+          "fr",
+          "fr-BE",
+          "fr-CA",
+          "fr-FR",
+          "fy",
+          "gl",
+          "gu",
+          "ha",
+          "he",
+          "hi",
+          "hr",
+          "hu",
+          "hy",
+          "id",
+          "is",
+          "it",
+          "it-IT",
+          "ja",
+          "jv",
+          "ka",
+          "kk",
+          "km",
+          "kn",
+          "ko",
+          "lt",
+          "lv",
+          "mk",
+          "ml",
+          "mn",
+          "mr",
+          "ms",
+          "my",
+          "nb",
+          "ne",
+          "nl",
+          "nl-BE",
+          "nl-NL",
+          "nn",
+          "no",
+          "pa",
+          "pl",
+          "pt",
+          "pt-BR",
+          "pt-PT",
+          "ro",
+          "ru",
+          "sk",
+          "sl",
+          "sq",
+          "sr",
+          "sv",
+          "sw",
+          "ta",
+          "te",
+          "th",
+          "tr",
+          "uk",
+          "ur",
+          "uz",
+          "vi",
+          "zh",
+          "zh-CN",
+          "zh-HK",
+          "zh-TW",
+          "zu"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The locale to use when rendering the Magic Auth email. Defaults to the environment\u0027s default locale. See [supported locales](/authkit/hosted-ui#localization).",
+        "example": "en",
+        "x-ms-enum": {
+          "name": "CreateUserlandMagicCodeAndReturnDtoLocale",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "af",
+              "name": "Af"
+            },
+            {
+              "value": "am",
+              "name": "Am"
+            },
+            {
+              "value": "ar",
+              "name": "Ar"
+            },
+            {
+              "value": "bg",
+              "name": "Bg"
+            },
+            {
+              "value": "bn",
+              "name": "Bn"
+            },
+            {
+              "value": "bs",
+              "name": "Bs"
+            },
+            {
+              "value": "ca",
+              "name": "Ca"
+            },
+            {
+              "value": "cs",
+              "name": "Cs"
+            },
+            {
+              "value": "da",
+              "name": "Da"
+            },
+            {
+              "value": "de",
+              "name": "De"
+            },
+            {
+              "value": "de-DE",
+              "name": "DeDe"
+            },
+            {
+              "value": "el",
+              "name": "El"
+            },
+            {
+              "value": "en",
+              "name": "En"
+            },
+            {
+              "value": "en-AU",
+              "name": "EnAu"
+            },
+            {
+              "value": "en-CA",
+              "name": "EnCa"
+            },
+            {
+              "value": "en-GB",
+              "name": "EnGb"
+            },
+            {
+              "value": "en-US",
+              "name": "EnUs"
+            },
+            {
+              "value": "es",
+              "name": "Es"
+            },
+            {
+              "value": "es-419",
+              "name": "Es419"
+            },
+            {
+              "value": "es-ES",
+              "name": "EsEs"
+            },
+            {
+              "value": "es-US",
+              "name": "EsUs"
+            },
+            {
+              "value": "et",
+              "name": "Et"
+            },
+            {
+              "value": "fa",
+              "name": "Fa"
+            },
+            {
+              "value": "fi",
+              "name": "Fi"
+            },
+            {
+              "value": "fil",
+              "name": "Fil"
+            },
+            {
+              "value": "fr",
+              "name": "Fr"
+            },
+            {
+              "value": "fr-BE",
+              "name": "FrBe"
+            },
+            {
+              "value": "fr-CA",
+              "name": "FrCa"
+            },
+            {
+              "value": "fr-FR",
+              "name": "FrFr"
+            },
+            {
+              "value": "fy",
+              "name": "Fy"
+            },
+            {
+              "value": "gl",
+              "name": "Gl"
+            },
+            {
+              "value": "gu",
+              "name": "Gu"
+            },
+            {
+              "value": "ha",
+              "name": "Ha"
+            },
+            {
+              "value": "he",
+              "name": "He"
+            },
+            {
+              "value": "hi",
+              "name": "Hi"
+            },
+            {
+              "value": "hr",
+              "name": "Hr"
+            },
+            {
+              "value": "hu",
+              "name": "Hu"
+            },
+            {
+              "value": "hy",
+              "name": "Hy"
+            },
+            {
+              "value": "id",
+              "name": "Id"
+            },
+            {
+              "value": "is",
+              "name": "IsValue"
+            },
+            {
+              "value": "it",
+              "name": "It"
+            },
+            {
+              "value": "it-IT",
+              "name": "ItIt"
+            },
+            {
+              "value": "ja",
+              "name": "Ja"
+            },
+            {
+              "value": "jv",
+              "name": "Jv"
+            },
+            {
+              "value": "ka",
+              "name": "Ka"
+            },
+            {
+              "value": "kk",
+              "name": "Kk"
+            },
+            {
+              "value": "km",
+              "name": "Km"
+            },
+            {
+              "value": "kn",
+              "name": "Kn"
+            },
+            {
+              "value": "ko",
+              "name": "Ko"
+            },
+            {
+              "value": "lt",
+              "name": "Lt"
+            },
+            {
+              "value": "lv",
+              "name": "Lv"
+            },
+            {
+              "value": "mk",
+              "name": "Mk"
+            },
+            {
+              "value": "ml",
+              "name": "Ml"
+            },
+            {
+              "value": "mn",
+              "name": "Mn"
+            },
+            {
+              "value": "mr",
+              "name": "Mr"
+            },
+            {
+              "value": "ms",
+              "name": "Ms"
+            },
+            {
+              "value": "my",
+              "name": "My"
+            },
+            {
+              "value": "nb",
+              "name": "Nb"
+            },
+            {
+              "value": "ne",
+              "name": "Ne"
+            },
+            {
+              "value": "nl",
+              "name": "Nl"
+            },
+            {
+              "value": "nl-BE",
+              "name": "NlBe"
+            },
+            {
+              "value": "nl-NL",
+              "name": "NlNl"
+            },
+            {
+              "value": "nn",
+              "name": "Nn"
+            },
+            {
+              "value": "no",
+              "name": "No"
+            },
+            {
+              "value": "pa",
+              "name": "Pa"
+            },
+            {
+              "value": "pl",
+              "name": "Pl"
+            },
+            {
+              "value": "pt",
+              "name": "Pt"
+            },
+            {
+              "value": "pt-BR",
+              "name": "PtBr"
+            },
+            {
+              "value": "pt-PT",
+              "name": "PtPt"
+            },
+            {
+              "value": "ro",
+              "name": "Ro"
+            },
+            {
+              "value": "ru",
+              "name": "Ru"
+            },
+            {
+              "value": "sk",
+              "name": "Sk"
+            },
+            {
+              "value": "sl",
+              "name": "Sl"
+            },
+            {
+              "value": "sq",
+              "name": "Sq"
+            },
+            {
+              "value": "sr",
+              "name": "Sr"
+            },
+            {
+              "value": "sv",
+              "name": "Sv"
+            },
+            {
+              "value": "sw",
+              "name": "Sw"
+            },
+            {
+              "value": "ta",
+              "name": "Ta"
+            },
+            {
+              "value": "te",
+              "name": "Te"
+            },
+            {
+              "value": "th",
+              "name": "Th"
+            },
+            {
+              "value": "tr",
+              "name": "Tr"
+            },
+            {
+              "value": "uk",
+              "name": "Uk"
+            },
+            {
+              "value": "ur",
+              "name": "Ur"
+            },
+            {
+              "value": "uz",
+              "name": "Uz"
+            },
+            {
+              "value": "vi",
+              "name": "Vi"
+            },
+            {
+              "value": "zh",
+              "name": "Zh"
+            },
+            {
+              "value": "zh-CN",
+              "name": "ZhCn"
+            },
+            {
+              "value": "zh-HK",
+              "name": "ZhHk"
+            },
+            {
+              "value": "zh-TW",
+              "name": "ZhTw"
+            },
+            {
+              "value": "zu",
+              "name": "Zu"
+            }
+          ]
+        }
+      },
       "CreateUserlandUserInviteOptionsDtoLocale": {
         "enum": [
           "af",
@@ -62844,7 +63361,7 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization).",
+        "description": "The locale to use when rendering the invitation email. Defaults to the environment\u0027s default locale. See [supported locales](/authkit/hosted-ui#localization).",
         "example": "en",
         "x-ms-enum": {
           "name": "CreateUserlandUserInviteOptionsDtoLocale",
@@ -63308,10 +63825,1402 @@
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization).",
+        "description": "The locale to use when rendering the invitation email. Defaults to the environment\u0027s default locale. See [supported locales](/authkit/hosted-ui#localization).",
         "example": "en",
         "x-ms-enum": {
           "name": "ResendUserlandUserInviteOptionsDtoLocale",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "af",
+              "name": "Af"
+            },
+            {
+              "value": "am",
+              "name": "Am"
+            },
+            {
+              "value": "ar",
+              "name": "Ar"
+            },
+            {
+              "value": "bg",
+              "name": "Bg"
+            },
+            {
+              "value": "bn",
+              "name": "Bn"
+            },
+            {
+              "value": "bs",
+              "name": "Bs"
+            },
+            {
+              "value": "ca",
+              "name": "Ca"
+            },
+            {
+              "value": "cs",
+              "name": "Cs"
+            },
+            {
+              "value": "da",
+              "name": "Da"
+            },
+            {
+              "value": "de",
+              "name": "De"
+            },
+            {
+              "value": "de-DE",
+              "name": "DeDe"
+            },
+            {
+              "value": "el",
+              "name": "El"
+            },
+            {
+              "value": "en",
+              "name": "En"
+            },
+            {
+              "value": "en-AU",
+              "name": "EnAu"
+            },
+            {
+              "value": "en-CA",
+              "name": "EnCa"
+            },
+            {
+              "value": "en-GB",
+              "name": "EnGb"
+            },
+            {
+              "value": "en-US",
+              "name": "EnUs"
+            },
+            {
+              "value": "es",
+              "name": "Es"
+            },
+            {
+              "value": "es-419",
+              "name": "Es419"
+            },
+            {
+              "value": "es-ES",
+              "name": "EsEs"
+            },
+            {
+              "value": "es-US",
+              "name": "EsUs"
+            },
+            {
+              "value": "et",
+              "name": "Et"
+            },
+            {
+              "value": "fa",
+              "name": "Fa"
+            },
+            {
+              "value": "fi",
+              "name": "Fi"
+            },
+            {
+              "value": "fil",
+              "name": "Fil"
+            },
+            {
+              "value": "fr",
+              "name": "Fr"
+            },
+            {
+              "value": "fr-BE",
+              "name": "FrBe"
+            },
+            {
+              "value": "fr-CA",
+              "name": "FrCa"
+            },
+            {
+              "value": "fr-FR",
+              "name": "FrFr"
+            },
+            {
+              "value": "fy",
+              "name": "Fy"
+            },
+            {
+              "value": "gl",
+              "name": "Gl"
+            },
+            {
+              "value": "gu",
+              "name": "Gu"
+            },
+            {
+              "value": "ha",
+              "name": "Ha"
+            },
+            {
+              "value": "he",
+              "name": "He"
+            },
+            {
+              "value": "hi",
+              "name": "Hi"
+            },
+            {
+              "value": "hr",
+              "name": "Hr"
+            },
+            {
+              "value": "hu",
+              "name": "Hu"
+            },
+            {
+              "value": "hy",
+              "name": "Hy"
+            },
+            {
+              "value": "id",
+              "name": "Id"
+            },
+            {
+              "value": "is",
+              "name": "IsValue"
+            },
+            {
+              "value": "it",
+              "name": "It"
+            },
+            {
+              "value": "it-IT",
+              "name": "ItIt"
+            },
+            {
+              "value": "ja",
+              "name": "Ja"
+            },
+            {
+              "value": "jv",
+              "name": "Jv"
+            },
+            {
+              "value": "ka",
+              "name": "Ka"
+            },
+            {
+              "value": "kk",
+              "name": "Kk"
+            },
+            {
+              "value": "km",
+              "name": "Km"
+            },
+            {
+              "value": "kn",
+              "name": "Kn"
+            },
+            {
+              "value": "ko",
+              "name": "Ko"
+            },
+            {
+              "value": "lt",
+              "name": "Lt"
+            },
+            {
+              "value": "lv",
+              "name": "Lv"
+            },
+            {
+              "value": "mk",
+              "name": "Mk"
+            },
+            {
+              "value": "ml",
+              "name": "Ml"
+            },
+            {
+              "value": "mn",
+              "name": "Mn"
+            },
+            {
+              "value": "mr",
+              "name": "Mr"
+            },
+            {
+              "value": "ms",
+              "name": "Ms"
+            },
+            {
+              "value": "my",
+              "name": "My"
+            },
+            {
+              "value": "nb",
+              "name": "Nb"
+            },
+            {
+              "value": "ne",
+              "name": "Ne"
+            },
+            {
+              "value": "nl",
+              "name": "Nl"
+            },
+            {
+              "value": "nl-BE",
+              "name": "NlBe"
+            },
+            {
+              "value": "nl-NL",
+              "name": "NlNl"
+            },
+            {
+              "value": "nn",
+              "name": "Nn"
+            },
+            {
+              "value": "no",
+              "name": "No"
+            },
+            {
+              "value": "pa",
+              "name": "Pa"
+            },
+            {
+              "value": "pl",
+              "name": "Pl"
+            },
+            {
+              "value": "pt",
+              "name": "Pt"
+            },
+            {
+              "value": "pt-BR",
+              "name": "PtBr"
+            },
+            {
+              "value": "pt-PT",
+              "name": "PtPt"
+            },
+            {
+              "value": "ro",
+              "name": "Ro"
+            },
+            {
+              "value": "ru",
+              "name": "Ru"
+            },
+            {
+              "value": "sk",
+              "name": "Sk"
+            },
+            {
+              "value": "sl",
+              "name": "Sl"
+            },
+            {
+              "value": "sq",
+              "name": "Sq"
+            },
+            {
+              "value": "sr",
+              "name": "Sr"
+            },
+            {
+              "value": "sv",
+              "name": "Sv"
+            },
+            {
+              "value": "sw",
+              "name": "Sw"
+            },
+            {
+              "value": "ta",
+              "name": "Ta"
+            },
+            {
+              "value": "te",
+              "name": "Te"
+            },
+            {
+              "value": "th",
+              "name": "Th"
+            },
+            {
+              "value": "tr",
+              "name": "Tr"
+            },
+            {
+              "value": "uk",
+              "name": "Uk"
+            },
+            {
+              "value": "ur",
+              "name": "Ur"
+            },
+            {
+              "value": "uz",
+              "name": "Uz"
+            },
+            {
+              "value": "vi",
+              "name": "Vi"
+            },
+            {
+              "value": "zh",
+              "name": "Zh"
+            },
+            {
+              "value": "zh-CN",
+              "name": "ZhCn"
+            },
+            {
+              "value": "zh-HK",
+              "name": "ZhHk"
+            },
+            {
+              "value": "zh-TW",
+              "name": "ZhTw"
+            },
+            {
+              "value": "zu",
+              "name": "Zu"
+            }
+          ]
+        }
+      },
+      "SendVerificationEmailDtoLocale": {
+        "enum": [
+          "af",
+          "am",
+          "ar",
+          "bg",
+          "bn",
+          "bs",
+          "ca",
+          "cs",
+          "da",
+          "de",
+          "de-DE",
+          "el",
+          "en",
+          "en-AU",
+          "en-CA",
+          "en-GB",
+          "en-US",
+          "es",
+          "es-419",
+          "es-ES",
+          "es-US",
+          "et",
+          "fa",
+          "fi",
+          "fil",
+          "fr",
+          "fr-BE",
+          "fr-CA",
+          "fr-FR",
+          "fy",
+          "gl",
+          "gu",
+          "ha",
+          "he",
+          "hi",
+          "hr",
+          "hu",
+          "hy",
+          "id",
+          "is",
+          "it",
+          "it-IT",
+          "ja",
+          "jv",
+          "ka",
+          "kk",
+          "km",
+          "kn",
+          "ko",
+          "lt",
+          "lv",
+          "mk",
+          "ml",
+          "mn",
+          "mr",
+          "ms",
+          "my",
+          "nb",
+          "ne",
+          "nl",
+          "nl-BE",
+          "nl-NL",
+          "nn",
+          "no",
+          "pa",
+          "pl",
+          "pt",
+          "pt-BR",
+          "pt-PT",
+          "ro",
+          "ru",
+          "sk",
+          "sl",
+          "sq",
+          "sr",
+          "sv",
+          "sw",
+          "ta",
+          "te",
+          "th",
+          "tr",
+          "uk",
+          "ur",
+          "uz",
+          "vi",
+          "zh",
+          "zh-CN",
+          "zh-HK",
+          "zh-TW",
+          "zu"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The locale to use when rendering the verification email. Defaults to the environment\u0027s default locale. See [supported locales](/authkit/hosted-ui#localization).",
+        "example": "en",
+        "x-ms-enum": {
+          "name": "SendVerificationEmailDtoLocale",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "af",
+              "name": "Af"
+            },
+            {
+              "value": "am",
+              "name": "Am"
+            },
+            {
+              "value": "ar",
+              "name": "Ar"
+            },
+            {
+              "value": "bg",
+              "name": "Bg"
+            },
+            {
+              "value": "bn",
+              "name": "Bn"
+            },
+            {
+              "value": "bs",
+              "name": "Bs"
+            },
+            {
+              "value": "ca",
+              "name": "Ca"
+            },
+            {
+              "value": "cs",
+              "name": "Cs"
+            },
+            {
+              "value": "da",
+              "name": "Da"
+            },
+            {
+              "value": "de",
+              "name": "De"
+            },
+            {
+              "value": "de-DE",
+              "name": "DeDe"
+            },
+            {
+              "value": "el",
+              "name": "El"
+            },
+            {
+              "value": "en",
+              "name": "En"
+            },
+            {
+              "value": "en-AU",
+              "name": "EnAu"
+            },
+            {
+              "value": "en-CA",
+              "name": "EnCa"
+            },
+            {
+              "value": "en-GB",
+              "name": "EnGb"
+            },
+            {
+              "value": "en-US",
+              "name": "EnUs"
+            },
+            {
+              "value": "es",
+              "name": "Es"
+            },
+            {
+              "value": "es-419",
+              "name": "Es419"
+            },
+            {
+              "value": "es-ES",
+              "name": "EsEs"
+            },
+            {
+              "value": "es-US",
+              "name": "EsUs"
+            },
+            {
+              "value": "et",
+              "name": "Et"
+            },
+            {
+              "value": "fa",
+              "name": "Fa"
+            },
+            {
+              "value": "fi",
+              "name": "Fi"
+            },
+            {
+              "value": "fil",
+              "name": "Fil"
+            },
+            {
+              "value": "fr",
+              "name": "Fr"
+            },
+            {
+              "value": "fr-BE",
+              "name": "FrBe"
+            },
+            {
+              "value": "fr-CA",
+              "name": "FrCa"
+            },
+            {
+              "value": "fr-FR",
+              "name": "FrFr"
+            },
+            {
+              "value": "fy",
+              "name": "Fy"
+            },
+            {
+              "value": "gl",
+              "name": "Gl"
+            },
+            {
+              "value": "gu",
+              "name": "Gu"
+            },
+            {
+              "value": "ha",
+              "name": "Ha"
+            },
+            {
+              "value": "he",
+              "name": "He"
+            },
+            {
+              "value": "hi",
+              "name": "Hi"
+            },
+            {
+              "value": "hr",
+              "name": "Hr"
+            },
+            {
+              "value": "hu",
+              "name": "Hu"
+            },
+            {
+              "value": "hy",
+              "name": "Hy"
+            },
+            {
+              "value": "id",
+              "name": "Id"
+            },
+            {
+              "value": "is",
+              "name": "IsValue"
+            },
+            {
+              "value": "it",
+              "name": "It"
+            },
+            {
+              "value": "it-IT",
+              "name": "ItIt"
+            },
+            {
+              "value": "ja",
+              "name": "Ja"
+            },
+            {
+              "value": "jv",
+              "name": "Jv"
+            },
+            {
+              "value": "ka",
+              "name": "Ka"
+            },
+            {
+              "value": "kk",
+              "name": "Kk"
+            },
+            {
+              "value": "km",
+              "name": "Km"
+            },
+            {
+              "value": "kn",
+              "name": "Kn"
+            },
+            {
+              "value": "ko",
+              "name": "Ko"
+            },
+            {
+              "value": "lt",
+              "name": "Lt"
+            },
+            {
+              "value": "lv",
+              "name": "Lv"
+            },
+            {
+              "value": "mk",
+              "name": "Mk"
+            },
+            {
+              "value": "ml",
+              "name": "Ml"
+            },
+            {
+              "value": "mn",
+              "name": "Mn"
+            },
+            {
+              "value": "mr",
+              "name": "Mr"
+            },
+            {
+              "value": "ms",
+              "name": "Ms"
+            },
+            {
+              "value": "my",
+              "name": "My"
+            },
+            {
+              "value": "nb",
+              "name": "Nb"
+            },
+            {
+              "value": "ne",
+              "name": "Ne"
+            },
+            {
+              "value": "nl",
+              "name": "Nl"
+            },
+            {
+              "value": "nl-BE",
+              "name": "NlBe"
+            },
+            {
+              "value": "nl-NL",
+              "name": "NlNl"
+            },
+            {
+              "value": "nn",
+              "name": "Nn"
+            },
+            {
+              "value": "no",
+              "name": "No"
+            },
+            {
+              "value": "pa",
+              "name": "Pa"
+            },
+            {
+              "value": "pl",
+              "name": "Pl"
+            },
+            {
+              "value": "pt",
+              "name": "Pt"
+            },
+            {
+              "value": "pt-BR",
+              "name": "PtBr"
+            },
+            {
+              "value": "pt-PT",
+              "name": "PtPt"
+            },
+            {
+              "value": "ro",
+              "name": "Ro"
+            },
+            {
+              "value": "ru",
+              "name": "Ru"
+            },
+            {
+              "value": "sk",
+              "name": "Sk"
+            },
+            {
+              "value": "sl",
+              "name": "Sl"
+            },
+            {
+              "value": "sq",
+              "name": "Sq"
+            },
+            {
+              "value": "sr",
+              "name": "Sr"
+            },
+            {
+              "value": "sv",
+              "name": "Sv"
+            },
+            {
+              "value": "sw",
+              "name": "Sw"
+            },
+            {
+              "value": "ta",
+              "name": "Ta"
+            },
+            {
+              "value": "te",
+              "name": "Te"
+            },
+            {
+              "value": "th",
+              "name": "Th"
+            },
+            {
+              "value": "tr",
+              "name": "Tr"
+            },
+            {
+              "value": "uk",
+              "name": "Uk"
+            },
+            {
+              "value": "ur",
+              "name": "Ur"
+            },
+            {
+              "value": "uz",
+              "name": "Uz"
+            },
+            {
+              "value": "vi",
+              "name": "Vi"
+            },
+            {
+              "value": "zh",
+              "name": "Zh"
+            },
+            {
+              "value": "zh-CN",
+              "name": "ZhCn"
+            },
+            {
+              "value": "zh-HK",
+              "name": "ZhHk"
+            },
+            {
+              "value": "zh-TW",
+              "name": "ZhTw"
+            },
+            {
+              "value": "zu",
+              "name": "Zu"
+            }
+          ]
+        }
+      },
+      "CreatePasswordResetTokenDtoLocale": {
+        "enum": [
+          "af",
+          "am",
+          "ar",
+          "bg",
+          "bn",
+          "bs",
+          "ca",
+          "cs",
+          "da",
+          "de",
+          "de-DE",
+          "el",
+          "en",
+          "en-AU",
+          "en-CA",
+          "en-GB",
+          "en-US",
+          "es",
+          "es-419",
+          "es-ES",
+          "es-US",
+          "et",
+          "fa",
+          "fi",
+          "fil",
+          "fr",
+          "fr-BE",
+          "fr-CA",
+          "fr-FR",
+          "fy",
+          "gl",
+          "gu",
+          "ha",
+          "he",
+          "hi",
+          "hr",
+          "hu",
+          "hy",
+          "id",
+          "is",
+          "it",
+          "it-IT",
+          "ja",
+          "jv",
+          "ka",
+          "kk",
+          "km",
+          "kn",
+          "ko",
+          "lt",
+          "lv",
+          "mk",
+          "ml",
+          "mn",
+          "mr",
+          "ms",
+          "my",
+          "nb",
+          "ne",
+          "nl",
+          "nl-BE",
+          "nl-NL",
+          "nn",
+          "no",
+          "pa",
+          "pl",
+          "pt",
+          "pt-BR",
+          "pt-PT",
+          "ro",
+          "ru",
+          "sk",
+          "sl",
+          "sq",
+          "sr",
+          "sv",
+          "sw",
+          "ta",
+          "te",
+          "th",
+          "tr",
+          "uk",
+          "ur",
+          "uz",
+          "vi",
+          "zh",
+          "zh-CN",
+          "zh-HK",
+          "zh-TW",
+          "zu"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The locale to use when rendering the password reset email. Defaults to the environment\u0027s default locale. See [supported locales](/authkit/hosted-ui#localization).",
+        "example": "en",
+        "x-ms-enum": {
+          "name": "CreatePasswordResetTokenDtoLocale",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "af",
+              "name": "Af"
+            },
+            {
+              "value": "am",
+              "name": "Am"
+            },
+            {
+              "value": "ar",
+              "name": "Ar"
+            },
+            {
+              "value": "bg",
+              "name": "Bg"
+            },
+            {
+              "value": "bn",
+              "name": "Bn"
+            },
+            {
+              "value": "bs",
+              "name": "Bs"
+            },
+            {
+              "value": "ca",
+              "name": "Ca"
+            },
+            {
+              "value": "cs",
+              "name": "Cs"
+            },
+            {
+              "value": "da",
+              "name": "Da"
+            },
+            {
+              "value": "de",
+              "name": "De"
+            },
+            {
+              "value": "de-DE",
+              "name": "DeDe"
+            },
+            {
+              "value": "el",
+              "name": "El"
+            },
+            {
+              "value": "en",
+              "name": "En"
+            },
+            {
+              "value": "en-AU",
+              "name": "EnAu"
+            },
+            {
+              "value": "en-CA",
+              "name": "EnCa"
+            },
+            {
+              "value": "en-GB",
+              "name": "EnGb"
+            },
+            {
+              "value": "en-US",
+              "name": "EnUs"
+            },
+            {
+              "value": "es",
+              "name": "Es"
+            },
+            {
+              "value": "es-419",
+              "name": "Es419"
+            },
+            {
+              "value": "es-ES",
+              "name": "EsEs"
+            },
+            {
+              "value": "es-US",
+              "name": "EsUs"
+            },
+            {
+              "value": "et",
+              "name": "Et"
+            },
+            {
+              "value": "fa",
+              "name": "Fa"
+            },
+            {
+              "value": "fi",
+              "name": "Fi"
+            },
+            {
+              "value": "fil",
+              "name": "Fil"
+            },
+            {
+              "value": "fr",
+              "name": "Fr"
+            },
+            {
+              "value": "fr-BE",
+              "name": "FrBe"
+            },
+            {
+              "value": "fr-CA",
+              "name": "FrCa"
+            },
+            {
+              "value": "fr-FR",
+              "name": "FrFr"
+            },
+            {
+              "value": "fy",
+              "name": "Fy"
+            },
+            {
+              "value": "gl",
+              "name": "Gl"
+            },
+            {
+              "value": "gu",
+              "name": "Gu"
+            },
+            {
+              "value": "ha",
+              "name": "Ha"
+            },
+            {
+              "value": "he",
+              "name": "He"
+            },
+            {
+              "value": "hi",
+              "name": "Hi"
+            },
+            {
+              "value": "hr",
+              "name": "Hr"
+            },
+            {
+              "value": "hu",
+              "name": "Hu"
+            },
+            {
+              "value": "hy",
+              "name": "Hy"
+            },
+            {
+              "value": "id",
+              "name": "Id"
+            },
+            {
+              "value": "is",
+              "name": "IsValue"
+            },
+            {
+              "value": "it",
+              "name": "It"
+            },
+            {
+              "value": "it-IT",
+              "name": "ItIt"
+            },
+            {
+              "value": "ja",
+              "name": "Ja"
+            },
+            {
+              "value": "jv",
+              "name": "Jv"
+            },
+            {
+              "value": "ka",
+              "name": "Ka"
+            },
+            {
+              "value": "kk",
+              "name": "Kk"
+            },
+            {
+              "value": "km",
+              "name": "Km"
+            },
+            {
+              "value": "kn",
+              "name": "Kn"
+            },
+            {
+              "value": "ko",
+              "name": "Ko"
+            },
+            {
+              "value": "lt",
+              "name": "Lt"
+            },
+            {
+              "value": "lv",
+              "name": "Lv"
+            },
+            {
+              "value": "mk",
+              "name": "Mk"
+            },
+            {
+              "value": "ml",
+              "name": "Ml"
+            },
+            {
+              "value": "mn",
+              "name": "Mn"
+            },
+            {
+              "value": "mr",
+              "name": "Mr"
+            },
+            {
+              "value": "ms",
+              "name": "Ms"
+            },
+            {
+              "value": "my",
+              "name": "My"
+            },
+            {
+              "value": "nb",
+              "name": "Nb"
+            },
+            {
+              "value": "ne",
+              "name": "Ne"
+            },
+            {
+              "value": "nl",
+              "name": "Nl"
+            },
+            {
+              "value": "nl-BE",
+              "name": "NlBe"
+            },
+            {
+              "value": "nl-NL",
+              "name": "NlNl"
+            },
+            {
+              "value": "nn",
+              "name": "Nn"
+            },
+            {
+              "value": "no",
+              "name": "No"
+            },
+            {
+              "value": "pa",
+              "name": "Pa"
+            },
+            {
+              "value": "pl",
+              "name": "Pl"
+            },
+            {
+              "value": "pt",
+              "name": "Pt"
+            },
+            {
+              "value": "pt-BR",
+              "name": "PtBr"
+            },
+            {
+              "value": "pt-PT",
+              "name": "PtPt"
+            },
+            {
+              "value": "ro",
+              "name": "Ro"
+            },
+            {
+              "value": "ru",
+              "name": "Ru"
+            },
+            {
+              "value": "sk",
+              "name": "Sk"
+            },
+            {
+              "value": "sl",
+              "name": "Sl"
+            },
+            {
+              "value": "sq",
+              "name": "Sq"
+            },
+            {
+              "value": "sr",
+              "name": "Sr"
+            },
+            {
+              "value": "sv",
+              "name": "Sv"
+            },
+            {
+              "value": "sw",
+              "name": "Sw"
+            },
+            {
+              "value": "ta",
+              "name": "Ta"
+            },
+            {
+              "value": "te",
+              "name": "Te"
+            },
+            {
+              "value": "th",
+              "name": "Th"
+            },
+            {
+              "value": "tr",
+              "name": "Tr"
+            },
+            {
+              "value": "uk",
+              "name": "Uk"
+            },
+            {
+              "value": "ur",
+              "name": "Ur"
+            },
+            {
+              "value": "uz",
+              "name": "Uz"
+            },
+            {
+              "value": "vi",
+              "name": "Vi"
+            },
+            {
+              "value": "zh",
+              "name": "Zh"
+            },
+            {
+              "value": "zh-CN",
+              "name": "ZhCn"
+            },
+            {
+              "value": "zh-HK",
+              "name": "ZhHk"
+            },
+            {
+              "value": "zh-TW",
+              "name": "ZhTw"
+            },
+            {
+              "value": "zu",
+              "name": "Zu"
+            }
+          ]
+        }
+      },
+      "SendEmailChangeDtoLocale": {
+        "enum": [
+          "af",
+          "am",
+          "ar",
+          "bg",
+          "bn",
+          "bs",
+          "ca",
+          "cs",
+          "da",
+          "de",
+          "de-DE",
+          "el",
+          "en",
+          "en-AU",
+          "en-CA",
+          "en-GB",
+          "en-US",
+          "es",
+          "es-419",
+          "es-ES",
+          "es-US",
+          "et",
+          "fa",
+          "fi",
+          "fil",
+          "fr",
+          "fr-BE",
+          "fr-CA",
+          "fr-FR",
+          "fy",
+          "gl",
+          "gu",
+          "ha",
+          "he",
+          "hi",
+          "hr",
+          "hu",
+          "hy",
+          "id",
+          "is",
+          "it",
+          "it-IT",
+          "ja",
+          "jv",
+          "ka",
+          "kk",
+          "km",
+          "kn",
+          "ko",
+          "lt",
+          "lv",
+          "mk",
+          "ml",
+          "mn",
+          "mr",
+          "ms",
+          "my",
+          "nb",
+          "ne",
+          "nl",
+          "nl-BE",
+          "nl-NL",
+          "nn",
+          "no",
+          "pa",
+          "pl",
+          "pt",
+          "pt-BR",
+          "pt-PT",
+          "ro",
+          "ru",
+          "sk",
+          "sl",
+          "sq",
+          "sr",
+          "sv",
+          "sw",
+          "ta",
+          "te",
+          "th",
+          "tr",
+          "uk",
+          "ur",
+          "uz",
+          "vi",
+          "zh",
+          "zh-CN",
+          "zh-HK",
+          "zh-TW",
+          "zu"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The locale to use when rendering the email change email. Defaults to the environment\u0027s default locale. See [supported locales](/authkit/hosted-ui#localization).",
+        "example": "en",
+        "x-ms-enum": {
+          "name": "SendEmailChangeDtoLocale",
           "modelAsString": false,
           "values": [
             {

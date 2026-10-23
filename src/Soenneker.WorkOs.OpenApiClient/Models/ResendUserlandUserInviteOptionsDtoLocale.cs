@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization).</summary>
+    /// <summary>The locale to use when rendering the invitation email. Defaults to the environment&apos;s default locale. See [supported locales](/authkit/hosted-ui#localization).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ResendUserlandUserInviteOptionsDtoLocale
     {

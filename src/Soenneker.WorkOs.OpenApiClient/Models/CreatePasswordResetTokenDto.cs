@@ -22,6 +22,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string Email { get; set; }
 #endif
+        /// <summary>The locale to use when rendering the password reset email. Defaults to the environment&apos;s default locale. See [supported locales](/authkit/hosted-ui#localization).</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreatePasswordResetTokenDtoLocale? Locale { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreatePasswordResetTokenDto"/> and sets the default values.
         /// </summary>
@@ -48,6 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "email", n => { Email = n.GetStringValue(); } },
+                { "locale", n => { Locale = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreatePasswordResetTokenDtoLocale>(); } },
             };
         }
         /// <summary>
@@ -58,6 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("email", Email);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreatePasswordResetTokenDtoLocale>("locale", Locale);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
