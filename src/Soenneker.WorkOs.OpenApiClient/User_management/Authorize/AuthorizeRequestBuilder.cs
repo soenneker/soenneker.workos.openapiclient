@@ -210,7 +210,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
 #endif
             /// <summary>The response type of the application.</summary>
             [QueryParameter("response_type")]
-            public global::Soenneker.WorkOs.OpenApiClient.Models.CodeResponseType? ResponseType { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSsoControllerAuthorizeResponseTypeParameter? ResponseType { get; set; }
             /// <summary>Used to specify which screen to display when the provider is `authkit`.</summary>
             [QueryParameter("screen_hint")]
             public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSsoControllerAuthorizeScreenHintParameter? ScreenHint { get; set; }

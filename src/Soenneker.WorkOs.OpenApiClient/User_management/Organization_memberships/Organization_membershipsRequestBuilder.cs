@@ -20,14 +20,14 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
     {
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.user_management.organization_memberships.item collection</summary>
         /// <param name="position">The unique ID of the organization membership.</param>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.ItemRequestBuilder"/></returns>
-        public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Organization_membershipsItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Organization_membershipsItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("%2Did", position);
-                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Organization_memberships.Item.Organization_membershipsItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -52,7 +52,6 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,7 +66,6 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerList422Response.CreateFromDiscriminatorValue },
             };
@@ -82,7 +80,6 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate404Response">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201Response?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -98,7 +95,6 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Organization_membership
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate404Response.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipsControllerCreate201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

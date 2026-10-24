@@ -7,94 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMember1"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class CreateUserlandUserDto : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class CreateUserlandUserDto : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf2? CreateUserlandUserDtoAllOf2OneOf2 { get; set; }
 #nullable restore
 #else
-        public string Email { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf2 CreateUserlandUserDtoAllOf2OneOf2 { get; set; }
 #endif
-        /// <summary>Whether the user&apos;s email has been verified.</summary>
-        public bool? EmailVerified { get; set; }
-        /// <summary>The external ID of the user.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3? CreateUserlandUserDtoAllOf2OneOf3 { get; set; }
 #nullable restore
 #else
-        public string ExternalId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3 CreateUserlandUserDtoAllOf2OneOf3 { get; set; }
 #endif
-        /// <summary>The first name of the user.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstName { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMember1? CreateUserlandUserDtoMember1 { get; set; }
 #nullable restore
 #else
-        public string FirstName { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMember1 CreateUserlandUserDtoMember1 { get; set; }
 #endif
-        /// <summary>The IP address of the user&apos;s request.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? IpAddress { get; set; }
-#nullable restore
-#else
-        public string IpAddress { get; set; }
-#endif
-        /// <summary>The last name of the user.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LastName { get; set; }
-#nullable restore
-#else
-        public string LastName { get; set; }
-#endif
-        /// <summary>Object containing metadata key/value pairs associated with the user.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata? Metadata { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata Metadata { get; set; }
-#endif
-        /// <summary>The user&apos;s full name.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
-        /// <summary>An optional Radar signals ID to correlate client-side signals with this request.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SignalsId { get; set; }
-#nullable restore
-#else
-        public string SignalsId { get; set; }
-#endif
-        /// <summary>The user agent string from the user&apos;s request.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? UserAgent { get; set; }
-#nullable restore
-#else
-        public string UserAgent { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDto"/> and sets the default values.
-        /// </summary>
-        public CreateUserlandUserDto()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -103,7 +45,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDto();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDto();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -111,19 +55,19 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(CreateUserlandUserDtoAllOf2OneOf2 != null)
             {
-                { "email", n => { Email = n.GetStringValue(); } },
-                { "email_verified", n => { EmailVerified = n.GetBoolValue(); } },
-                { "external_id", n => { ExternalId = n.GetStringValue(); } },
-                { "first_name", n => { FirstName = n.GetStringValue(); } },
-                { "ip_address", n => { IpAddress = n.GetStringValue(); } },
-                { "last_name", n => { LastName = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata.CreateFromDiscriminatorValue); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "signals_id", n => { SignalsId = n.GetStringValue(); } },
-                { "user_agent", n => { UserAgent = n.GetStringValue(); } },
-            };
+                return CreateUserlandUserDtoAllOf2OneOf2.GetFieldDeserializers();
+            }
+            else if(CreateUserlandUserDtoAllOf2OneOf3 != null)
+            {
+                return CreateUserlandUserDtoAllOf2OneOf3.GetFieldDeserializers();
+            }
+            else if(CreateUserlandUserDtoMember1 != null)
+            {
+                return CreateUserlandUserDtoMember1.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -132,17 +76,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("email", Email);
-            writer.WriteBoolValue("email_verified", EmailVerified);
-            writer.WriteStringValue("external_id", ExternalId);
-            writer.WriteStringValue("first_name", FirstName);
-            writer.WriteStringValue("ip_address", IpAddress);
-            writer.WriteStringValue("last_name", LastName);
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMetadata>("metadata", Metadata);
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("signals_id", SignalsId);
-            writer.WriteStringValue("user_agent", UserAgent);
-            writer.WriteAdditionalData(AdditionalData);
+            if(CreateUserlandUserDtoAllOf2OneOf2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf2>(null, CreateUserlandUserDtoAllOf2OneOf2);
+            }
+            else if(CreateUserlandUserDtoAllOf2OneOf3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3>(null, CreateUserlandUserDtoAllOf2OneOf3);
+            }
+            else if(CreateUserlandUserDtoMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoMember1>(null, CreateUserlandUserDtoMember1);
+            }
         }
     }
 }

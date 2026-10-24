@@ -53,7 +53,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId404Response">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId409Response">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resources.Item.Item.WithExternalItemRequestBuilder.WithExternalItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -69,7 +68,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId404Response.CreateFromDiscriminatorValue },
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId409Response.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

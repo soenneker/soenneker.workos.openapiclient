@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \organizations\{-id}\connected_accounts\{slug}
+    /// Builds and executes requests for operations under \organizations\{id}\connected_accounts\{slug}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithSlugItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/connected_accounts/{slug}{?connected_account_id*,connection_intent*,supports_multiple_connections*}", pathParameters)
+        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/connected_accounts/{slug}{?connected_account_id*,connection_intent*,supports_multiple_connections*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/connected_accounts/{slug}{?connected_account_id*,connection_intent*,supports_multiple_connections*}", rawUrl)
+        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/connected_accounts/{slug}{?connected_account_id*,connection_intent*,supports_multiple_connections*}", rawUrl)
         {
         }
         /// <summary>
@@ -96,9 +96,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation403Response">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409Response">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation503Response">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -114,9 +111,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation403Response.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation404Response.CreateFromDiscriminatorValue },
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation409Response.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation503Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWriteResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWriteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -303,7 +297,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
 #endif
             /// <summary>Set to `reauthorize` with `connected_account_id` to update one exact connection. The intent may be omitted when supplying an ID. Omit both for permanent compatibility behavior.</summary>
             [QueryParameter("connection_intent")]
-            public global::Soenneker.WorkOs.OpenApiClient.Models.ReauthorizeConnectionIntent? ConnectionIntent { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallationConnectionIntentParameter? ConnectionIntent { get; set; }
             /// <summary>Accepted for compatibility; does not change update targeting. Omit intent and selector to update the compatibility connection, or supply `connected_account_id` to update an exact connection.</summary>
             [QueryParameter("supports_multiple_connections")]
             public bool? SupportsMultipleConnections { get; set; }

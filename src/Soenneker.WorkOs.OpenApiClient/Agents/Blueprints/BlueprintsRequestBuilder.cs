@@ -78,7 +78,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreate400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreate409Response">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreate422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint?> PostAsync(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -94,7 +93,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreate400Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreate409Response.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreate422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

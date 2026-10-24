@@ -49,7 +49,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public List<string> MissingScopes { get; set; }
 #endif
         /// <summary>Distinguishes the credential object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3Object? Object { get; set; }
         /// <summary>The scopes granted to the access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,7 +96,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty.CreateFromDiscriminatorValue); } },
                 { "missing_scopes", n => { MissingScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3Object>(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
@@ -113,7 +113,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("expires_at", ExpiresAt);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty>("metadata", Metadata);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_scopes", MissingScopes);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3Object>("object", Object);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);

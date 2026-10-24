@@ -37,13 +37,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("application_type")?.GetStringValue();
             var result = new global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreateRequest();
-            if("CreateM2MApplicationDto".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("m2m".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateM2MApplicationDto = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateM2MApplicationDto();
             }
-            else if("CreateOAuthApplicationDto".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("oauth".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateOAuthApplicationDto = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto();
             }

@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.OrganizationMemberships
 {
     /// <summary>
-    /// Builds and executes requests for operations under \organizations\{-id}\groups\{groupId}\organization-memberships
+    /// Builds and executes requests for operations under \organizations\{id}\groups\{groupId}\organization-memberships
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OrganizationMembershipsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.Organiza
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OrganizationMembershipsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/groups/{groupId}/organization-memberships{?after*,before*,limit*,order*}", pathParameters)
+        public OrganizationMembershipsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/groups/{groupId}/organization-memberships{?after*,before*,limit*,order*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.Organiza
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OrganizationMembershipsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/groups/{groupId}/organization-memberships{?after*,before*,limit*,order*}", rawUrl)
+        public OrganizationMembershipsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/groups/{groupId}/organization-memberships{?after*,before*,limit*,order*}", rawUrl)
         {
         }
         /// <summary>

@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.Item.Permissions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \authorization\organization_memberships\{organizationMembershipId}\resources\{resource-id}\{externalId}\permissions
+    /// Builds and executes requests for operations under \authorization\organization_memberships\{organizationMembershipId}\resources\{resourceId}\{externalId}\permissions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PermissionsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PermissionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/resources/{resource%2Did}/{externalId}/permissions{?after*,before*,limit*,order*}", pathParameters)
+        public PermissionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/resources/{resourceId}/{externalId}/permissions{?after*,before*,limit*,order*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PermissionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/resources/{resource%2Did}/{externalId}/permissions{?after*,before*,limit*,order*}", rawUrl)
+        public PermissionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authorization/organization_memberships/{organizationMembershipId}/resources/{resourceId}/{externalId}/permissions{?after*,before*,limit*,order*}", rawUrl)
         {
         }
         /// <summary>

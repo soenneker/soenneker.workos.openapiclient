@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set to `add` to create another connected account. Omit this field for permanent compatibility behavior.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent? ConnectionIntent { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectedAccountDtoConnectionIntent? ConnectionIntent { get; set; }
         /// <summary>The ISO-8601 timestamp when the access token expires. Required when `access_token` is provided for tokens that expire.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
         /// <summary>The OAuth refresh token for the connected account.</summary>
@@ -88,7 +88,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "access_token", n => { AccessToken = n.GetStringValue(); } },
                 { "account_display_name", n => { AccountDisplayName = n.GetStringValue(); } },
                 { "account_identifier", n => { AccountIdentifier = n.GetStringValue(); } },
-                { "connection_intent", n => { ConnectionIntent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent>(); } },
+                { "connection_intent", n => { ConnectionIntent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectedAccountDtoConnectionIntent>(); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "refresh_token", n => { RefreshToken = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -105,7 +105,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("access_token", AccessToken);
             writer.WriteStringValue("account_display_name", AccountDisplayName);
             writer.WriteStringValue("account_identifier", AccountIdentifier);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent>("connection_intent", ConnectionIntent);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectedAccountDtoConnectionIntent>("connection_intent", ConnectionIntent);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("refresh_token", RefreshToken);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);

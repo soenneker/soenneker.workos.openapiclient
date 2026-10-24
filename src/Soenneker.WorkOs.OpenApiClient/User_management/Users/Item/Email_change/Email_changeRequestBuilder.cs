@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change
 {
     /// <summary>
-    /// Builds and executes requests for operations under \user_management\users\{-id}\email_change
+    /// Builds and executes requests for operations under \user_management\users\{id}\email_change
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Email_changeRequestBuilder : BaseRequestBuilder
@@ -31,7 +31,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Email_changeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/email_change", pathParameters)
+        public Email_changeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{id}/email_change", pathParameters)
         {
         }
         /// <summary>
@@ -39,7 +39,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Email_changeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{%2Did}/email_change", rawUrl)
+        public Email_changeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user_management/users/{id}/email_change", rawUrl)
         {
         }
     }

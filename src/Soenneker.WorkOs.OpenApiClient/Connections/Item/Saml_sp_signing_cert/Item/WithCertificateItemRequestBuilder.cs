@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \connections\{connection-id}\saml_sp_signing_cert\{certificateId}
+    /// Builds and executes requests for operations under \connections\{connectionId}\saml_sp_signing_cert\{certificateId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithCertificateItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert.I
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCertificateItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_sp_signing_cert/{certificateId}", pathParameters)
+        public WithCertificateItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_sp_signing_cert/{certificateId}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert.I
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCertificateItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_sp_signing_cert/{certificateId}", rawUrl)
+        public WithCertificateItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_sp_signing_cert/{certificateId}", rawUrl)
         {
         }
         /// <summary>

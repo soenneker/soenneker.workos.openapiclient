@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \organizations\{-id}\it_contacts\{contactId}
+    /// Builds and executes requests for operations under \organizations\{id}\it_contacts\{contactId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithContactItemRequestBuilder : BaseRequestBuilder
@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithContactItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/it_contacts/{contactId}", pathParameters)
+        public WithContactItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/it_contacts/{contactId}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithContactItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{%2Did}/it_contacts/{contactId}", rawUrl)
+        public WithContactItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/it_contacts/{contactId}", rawUrl)
         {
         }
         /// <summary>

@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_encryption_certs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \connections\{connection-id}\saml_sp_encryption_certs
+    /// Builds and executes requests for operations under \connections\{connectionId}\saml_sp_encryption_certs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Saml_sp_encryption_certsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_encryption_cer
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Saml_sp_encryption_certsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_sp_encryption_certs", pathParameters)
+        public Saml_sp_encryption_certsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_sp_encryption_certs", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_encryption_cer
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Saml_sp_encryption_certsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_sp_encryption_certs", rawUrl)
+        public Saml_sp_encryption_certsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_sp_encryption_certs", rawUrl)
         {
         }
         /// <summary>
@@ -79,7 +79,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_encryption_cer
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificate"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate409Response">When receiving a 409 status code</exception>
@@ -96,7 +95,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_encryption_cer
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate409Response.CreateFromDiscriminatorValue },

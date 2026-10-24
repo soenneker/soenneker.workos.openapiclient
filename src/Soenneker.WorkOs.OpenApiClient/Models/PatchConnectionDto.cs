@@ -7,52 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoMember1"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class PatchConnectionDto : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class PatchConnectionDto : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How IdP attributes or claims map onto WorkOS profile fields. Only the provided fields are updated.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionAttributeMapsDto? AttributeMaps { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf2? PatchConnectionDtoAllOf2OneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionAttributeMapsDto AttributeMaps { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf2 PatchConnectionDtoAllOf2OneOf2 { get; set; }
 #endif
-        /// <summary>The type of the Connection. Immutable after creation — it may be sent, but only with the Connection current type.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectionType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf3? PatchConnectionDtoAllOf2OneOf3 { get; set; }
 #nullable restore
 #else
-        public string ConnectionType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf3 PatchConnectionDtoAllOf2OneOf3 { get; set; }
 #endif
-        /// <summary>The customer-owned identifier for the Connection. Set to `null` to stop tracking one.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoMember1? PatchConnectionDtoMember1 { get; set; }
 #nullable restore
 #else
-        public string ExternalId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoMember1 PatchConnectionDtoMember1 { get; set; }
 #endif
-        /// <summary>A human-readable name for the Connection.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDto"/> and sets the default values.
-        /// </summary>
-        public PatchConnectionDto()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -61,7 +45,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDto();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDto();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,13 +55,19 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(PatchConnectionDtoAllOf2OneOf2 != null)
             {
-                { "attribute_maps", n => { AttributeMaps = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionAttributeMapsDto>(global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionAttributeMapsDto.CreateFromDiscriminatorValue); } },
-                { "connection_type", n => { ConnectionType = n.GetStringValue(); } },
-                { "external_id", n => { ExternalId = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-            };
+                return PatchConnectionDtoAllOf2OneOf2.GetFieldDeserializers();
+            }
+            else if(PatchConnectionDtoAllOf2OneOf3 != null)
+            {
+                return PatchConnectionDtoAllOf2OneOf3.GetFieldDeserializers();
+            }
+            else if(PatchConnectionDtoMember1 != null)
+            {
+                return PatchConnectionDtoMember1.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -84,11 +76,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionAttributeMapsDto>("attribute_maps", AttributeMaps);
-            writer.WriteStringValue("connection_type", ConnectionType);
-            writer.WriteStringValue("external_id", ExternalId);
-            writer.WriteStringValue("name", Name);
-            writer.WriteAdditionalData(AdditionalData);
+            if(PatchConnectionDtoAllOf2OneOf2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf2>(null, PatchConnectionDtoAllOf2OneOf2);
+            }
+            else if(PatchConnectionDtoAllOf2OneOf3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoAllOf2OneOf3>(null, PatchConnectionDtoAllOf2OneOf3);
+            }
+            else if(PatchConnectionDtoMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionDtoMember1>(null, PatchConnectionDtoMember1);
+            }
         }
     }
 }

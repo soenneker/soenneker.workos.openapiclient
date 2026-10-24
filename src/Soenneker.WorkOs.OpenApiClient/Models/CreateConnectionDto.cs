@@ -7,60 +7,28 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf2"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class CreateConnectionDto : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class CreateConnectionDto : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How IdP attributes or claims map onto WorkOS profile fields. Provided fields override the defaults for the connection type.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDto? AttributeMaps { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf1? CreateConnectionDtoAllOf2OneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDto AttributeMaps { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf1 CreateConnectionDtoAllOf2OneOf1 { get; set; }
 #endif
-        /// <summary>The type of the Connection. Only SAML and OIDC connection types may be created. When omitted, the type is inferred from the provided options.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectionType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf2? CreateConnectionDtoAllOf2OneOf2 { get; set; }
 #nullable restore
 #else
-        public string ConnectionType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf2 CreateConnectionDtoAllOf2OneOf2 { get; set; }
 #endif
-        /// <summary>The customer-owned identifier for the Connection.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ExternalId { get; set; }
-#nullable restore
-#else
-        public string ExternalId { get; set; }
-#endif
-        /// <summary>A human-readable name for the Connection. This will most commonly be the organization&apos;s name.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
-        /// <summary>Unique identifier for the Organization in which the Connection resides.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? OrganizationId { get; set; }
-#nullable restore
-#else
-        public string OrganizationId { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDto"/> and sets the default values.
-        /// </summary>
-        public CreateConnectionDto()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -69,7 +37,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDto();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDto();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,14 +47,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(CreateConnectionDtoAllOf2OneOf1 != null)
             {
-                { "attribute_maps", n => { AttributeMaps = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDto>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDto.CreateFromDiscriminatorValue); } },
-                { "connection_type", n => { ConnectionType = n.GetStringValue(); } },
-                { "external_id", n => { ExternalId = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-            };
+                return CreateConnectionDtoAllOf2OneOf1.GetFieldDeserializers();
+            }
+            else if(CreateConnectionDtoAllOf2OneOf2 != null)
+            {
+                return CreateConnectionDtoAllOf2OneOf2.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -93,12 +64,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDto>("attribute_maps", AttributeMaps);
-            writer.WriteStringValue("connection_type", ConnectionType);
-            writer.WriteStringValue("external_id", ExternalId);
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteAdditionalData(AdditionalData);
+            if(CreateConnectionDtoAllOf2OneOf1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf1>(null, CreateConnectionDtoAllOf2OneOf1);
+            }
+            else if(CreateConnectionDtoAllOf2OneOf2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionDtoAllOf2OneOf2>(null, CreateConnectionDtoAllOf2OneOf2);
+            }
         }
     }
 }

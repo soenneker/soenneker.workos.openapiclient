@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>Distinguishes the Waitlist Entry object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntryObject? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200ResponseObject? Object { get; set; }
         /// <summary>The state of the waitlist entry.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200ResponseState? State { get; set; }
         /// <summary>An ISO 8601 timestamp.</summary>
@@ -86,7 +86,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntryObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200ResponseObject>(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200ResponseState>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "waitlist_id", n => { WaitlistId = n.GetStringValue(); } },
@@ -104,7 +104,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntryObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200ResponseObject>("object", Object);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerApprove200ResponseState>("state", State);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("waitlist_id", WaitlistId);

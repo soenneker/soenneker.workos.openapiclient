@@ -46,8 +46,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.Item.Tokens
         /// <param name="body">How to mint the agent session, discriminated by `type`. `intent` is optional on every variant.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintToken400Response">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintToken403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintToken404Response">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,8 +60,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.Item.Tokens
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintToken400Response.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintToken403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintToken404Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentToken>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentToken.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);

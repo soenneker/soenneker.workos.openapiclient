@@ -94,7 +94,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.Item
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate409Response">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint?> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -111,7 +110,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.Item
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate409Response.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

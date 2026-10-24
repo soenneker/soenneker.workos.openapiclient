@@ -20,14 +20,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
     {
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.authorization.organization_memberships.item.resources.item collection</summary>
         /// <param name="position">The ID of the authorization resource.</param>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.ResourceItemRequestBuilder"/></returns>
-        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.ResourceItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.WithResourceItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.WithResourceItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("resource%2Did", position);
-                return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.ResourceItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("resourceId", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.Item.Resources.Item.WithResourceItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

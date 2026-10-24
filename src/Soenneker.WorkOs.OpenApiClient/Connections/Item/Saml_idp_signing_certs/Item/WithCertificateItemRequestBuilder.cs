@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \connections\{connection-id}\saml_idp_signing_certs\{certificateId}
+    /// Builds and executes requests for operations under \connections\{connectionId}\saml_idp_signing_certs\{certificateId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithCertificateItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCertificateItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_idp_signing_certs/{certificateId}", pathParameters)
+        public WithCertificateItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_idp_signing_certs/{certificateId}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCertificateItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_idp_signing_certs/{certificateId}", rawUrl)
+        public WithCertificateItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_idp_signing_certs/{certificateId}", rawUrl)
         {
         }
         /// <summary>

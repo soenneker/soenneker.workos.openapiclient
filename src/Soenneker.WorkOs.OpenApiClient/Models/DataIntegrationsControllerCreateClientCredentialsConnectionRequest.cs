@@ -52,8 +52,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConfig Config { get; set; }
 #endif
-        /// <summary>Set to `add` to create another connected account. Omit this field for permanent compatibility behavior.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent? ConnectionIntent { get; set; }
+        /// <summary>Must be `add`: this endpoint only creates another connection. The first connection for an owner shape fills the compatibility slot; later connections are standard.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionIntent? ConnectionIntent { get; set; }
         /// <summary>Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionOwner? ConnectionOwner { get; set; }
         /// <summary>An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when `connection_owner` is `organization`.</summary>
@@ -95,7 +95,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConfig>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConfig.CreateFromDiscriminatorValue); } },
-                { "connection_intent", n => { ConnectionIntent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent>(); } },
+                { "connection_intent", n => { ConnectionIntent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionIntent>(); } },
                 { "connection_owner", n => { ConnectionOwner = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionOwner>(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
@@ -113,7 +113,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConfig>("config", Config);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AddConnectionIntent>("connection_intent", ConnectionIntent);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionIntent>("connection_intent", ConnectionIntent);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionOwner>("connection_owner", ConnectionOwner);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("user_id", UserId);

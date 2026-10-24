@@ -26,14 +26,14 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users
         }
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.user_management.users.item collection</summary>
         /// <param name="position">The unique ID of the user.</param>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.ItemRequestBuilder"/></returns>
-        public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UsersItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UsersItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("%2Did", position);
-                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.UsersItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -82,7 +82,6 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0422Response">When receiving a 422 status code</exception>
@@ -99,7 +98,6 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreate0422Response.CreateFromDiscriminatorValue },

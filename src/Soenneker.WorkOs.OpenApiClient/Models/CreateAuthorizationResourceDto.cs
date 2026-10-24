@@ -7,60 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class CreateAuthorizationResourceDto : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class CreateAuthorizationResourceDto : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>An optional description of the resource.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2? CreateAuthorizationResourceDtoAllOf2OneOf2 { get; set; }
 #nullable restore
 #else
-        public string Description { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2 CreateAuthorizationResourceDtoAllOf2OneOf2 { get; set; }
 #endif
-        /// <summary>An external identifier for the resource.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3? CreateAuthorizationResourceDtoAllOf2OneOf3 { get; set; }
 #nullable restore
 #else
-        public string ExternalId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3 CreateAuthorizationResourceDtoAllOf2OneOf3 { get; set; }
 #endif
-        /// <summary>A display name for the resource.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1? CreateAuthorizationResourceDtoMember1 { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1 CreateAuthorizationResourceDtoMember1 { get; set; }
 #endif
-        /// <summary>The ID of the organization this resource belongs to.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? OrganizationId { get; set; }
-#nullable restore
-#else
-        public string OrganizationId { get; set; }
-#endif
-        /// <summary>The slug of the resource type.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ResourceTypeSlug { get; set; }
-#nullable restore
-#else
-        public string ResourceTypeSlug { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto"/> and sets the default values.
-        /// </summary>
-        public CreateAuthorizationResourceDto()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -69,7 +45,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,14 +55,19 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(CreateAuthorizationResourceDtoAllOf2OneOf2 != null)
             {
-                { "description", n => { Description = n.GetStringValue(); } },
-                { "external_id", n => { ExternalId = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "resource_type_slug", n => { ResourceTypeSlug = n.GetStringValue(); } },
-            };
+                return CreateAuthorizationResourceDtoAllOf2OneOf2.GetFieldDeserializers();
+            }
+            else if(CreateAuthorizationResourceDtoAllOf2OneOf3 != null)
+            {
+                return CreateAuthorizationResourceDtoAllOf2OneOf3.GetFieldDeserializers();
+            }
+            else if(CreateAuthorizationResourceDtoMember1 != null)
+            {
+                return CreateAuthorizationResourceDtoMember1.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -93,12 +76,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("external_id", ExternalId);
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteStringValue("resource_type_slug", ResourceTypeSlug);
-            writer.WriteAdditionalData(AdditionalData);
+            if(CreateAuthorizationResourceDtoAllOf2OneOf2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2>(null, CreateAuthorizationResourceDtoAllOf2OneOf2);
+            }
+            else if(CreateAuthorizationResourceDtoAllOf2OneOf3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3>(null, CreateAuthorizationResourceDtoAllOf2OneOf3);
+            }
+            else if(CreateAuthorizationResourceDtoMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1>(null, CreateAuthorizationResourceDtoMember1);
+            }
         }
     }
 }

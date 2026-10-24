@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \connections\{connection-id}\saml_idp_signing_certs
+    /// Builds and executes requests for operations under \connections\{connectionId}\saml_idp_signing_certs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Saml_idp_signing_certsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Saml_idp_signing_certsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_idp_signing_certs", pathParameters)
+        public Saml_idp_signing_certsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_idp_signing_certs", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Saml_idp_signing_certsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_idp_signing_certs", rawUrl)
+        public Saml_idp_signing_certsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_idp_signing_certs", rawUrl)
         {
         }
         /// <summary>
@@ -80,7 +80,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate422Response">When receiving a 422 status code</exception>
@@ -97,7 +96,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate422Response.CreateFromDiscriminatorValue },

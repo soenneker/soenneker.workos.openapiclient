@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert
 {
     /// <summary>
-    /// Builds and executes requests for operations under \connections\{connection-id}\saml_sp_signing_cert
+    /// Builds and executes requests for operations under \connections\{connectionId}\saml_sp_signing_cert
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Saml_sp_signing_certRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Saml_sp_signing_certRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_sp_signing_cert", pathParameters)
+        public Saml_sp_signing_certRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_sp_signing_cert", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Saml_sp_signing_certRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connection%2Did}/saml_sp_signing_cert", rawUrl)
+        public Saml_sp_signing_certRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections/{connectionId}/saml_sp_signing_cert", rawUrl)
         {
         }
         /// <summary>
@@ -79,7 +79,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificate"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerCreate400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerCreate403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerCreate404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerCreate409Response">When receiving a 409 status code</exception>
@@ -96,7 +95,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerCreate400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerCreate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerCreate409Response.CreateFromDiscriminatorValue },

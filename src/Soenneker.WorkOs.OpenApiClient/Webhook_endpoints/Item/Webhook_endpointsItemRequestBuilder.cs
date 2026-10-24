@@ -64,7 +64,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Webhook_endpoints.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointsControllerUpdate404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointsControllerUpdate409Response">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointsControllerUpdate422Response">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson?> PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.UpdateWebhookEndpointDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -80,7 +79,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Webhook_endpoints.Item
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointsControllerUpdate404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointsControllerUpdate409Response.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointsControllerUpdate422Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

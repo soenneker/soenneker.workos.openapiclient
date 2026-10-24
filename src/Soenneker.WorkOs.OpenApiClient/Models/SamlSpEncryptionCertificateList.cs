@@ -22,8 +22,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public List<global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificate> Data { get; set; }
 #endif
-        /// <summary>Indicates this is a list response.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ListObject? Object { get; set; }
+        /// <summary>The object property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificateListObject? Object { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificateList"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificate>(global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificate.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ListObject>(); } },
+                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificateListObject>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificate>("data", Data);
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ListObject>("object", Object);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificateListObject>("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

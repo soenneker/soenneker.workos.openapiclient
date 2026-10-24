@@ -7,36 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoMember1"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class CreateUserlandUserOrganizationMembershipDto : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class CreateUserlandUserOrganizationMembershipDto : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ID of the [organization](/reference/organization) which the user belongs to.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2? CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2 { get; set; }
 #nullable restore
 #else
-        public string OrganizationId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2 CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2 { get; set; }
 #endif
-        /// <summary>The ID of the [user](/reference/authkit/user).</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3? CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3 { get; set; }
 #nullable restore
 #else
-        public string UserId { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3 CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3 { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto"/> and sets the default values.
-        /// </summary>
-        public CreateUserlandUserOrganizationMembershipDto()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoMember1? CreateUserlandUserOrganizationMembershipDtoMember1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoMember1 CreateUserlandUserOrganizationMembershipDtoMember1 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -45,7 +45,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDto();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,11 +55,19 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2 != null)
             {
-                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
-                { "user_id", n => { UserId = n.GetStringValue(); } },
-            };
+                return CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2.GetFieldDeserializers();
+            }
+            else if(CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3 != null)
+            {
+                return CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3.GetFieldDeserializers();
+            }
+            else if(CreateUserlandUserOrganizationMembershipDtoMember1 != null)
+            {
+                return CreateUserlandUserOrganizationMembershipDtoMember1.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -66,9 +76,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("organization_id", OrganizationId);
-            writer.WriteStringValue("user_id", UserId);
-            writer.WriteAdditionalData(AdditionalData);
+            if(CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2>(null, CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2);
+            }
+            else if(CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3>(null, CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3);
+            }
+            else if(CreateUserlandUserOrganizationMembershipDtoMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserOrganizationMembershipDtoMember1>(null, CreateUserlandUserOrganizationMembershipDtoMember1);
+            }
         }
     }
 }

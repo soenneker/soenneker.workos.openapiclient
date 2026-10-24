@@ -42,8 +42,6 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection403Response">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection404Response">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection409Response">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection503Response">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,8 +58,6 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection403Response.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection404Response.CreateFromDiscriminatorValue },
-                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection409Response.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection503Response.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWriteResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWriteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -75,7 +71,6 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey403Response">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey404Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -93,7 +88,6 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey403Response.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError.CreateFromDiscriminatorValue },
             };
