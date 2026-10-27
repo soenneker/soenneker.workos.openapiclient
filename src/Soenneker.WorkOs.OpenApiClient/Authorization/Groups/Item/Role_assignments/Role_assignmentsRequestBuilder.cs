@@ -102,6 +102,38 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Add and remove role assignments for a group in a single atomic operation. Additions that already exist and removals that match no assignment are skipped. An assignment in both lists is rejected. `add` and `remove` must contain between 1 and 100 entries combined.
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments402Response">When receiving a 402 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments422Response">When receiving a 422 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.PatchGroupRoleAssignmentsDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.PatchGroupRoleAssignmentsDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments400Response.CreateFromDiscriminatorValue },
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments402Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments422Response.CreateFromDiscriminatorValue },
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Assign a role to a group on a specific resource.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignment"/></returns>
@@ -204,6 +236,28 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Add and remove role assignments for a group in a single atomic operation. Additions that already exist and removals that match no assignment are skipped. An assignment in both lists is rejected. `add` and `remove` must contain between 1 and 100 entries combined.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.PatchGroupRoleAssignmentsDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.PatchGroupRoleAssignmentsDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

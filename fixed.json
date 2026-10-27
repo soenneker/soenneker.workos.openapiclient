@@ -2272,6 +2272,91 @@
           }
         }
       },
+      "patch": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "Update role assignments for a group",
+        "description": "Add and remove role assignments for a group in a single atomic operation. Additions that already exist and removals that match no assignment are skipped. An assignment in both lists is rejected. \u0060add\u0060 and \u0060remove\u0060 must contain between 1 and 100 entries combined.",
+        "operationId": "AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments",
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "The ID of the group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "group_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchGroupRoleAssignmentsDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments400Response"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments402Response"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments422Response"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
           "authorization"
@@ -20671,6 +20756,43 @@
             "type": "string",
             "description": "The resource type slug.",
             "example": "project"
+          }
+        }
+      },
+      "PatchGroupRoleAssignmentsDto": {
+        "type": "object",
+        "properties": {
+          "add": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReplaceGroupRoleAssignmentEntryDto"
+            },
+            "description": "Role assignments to add to the group. Assignments that already exist are skipped.",
+            "default": [],
+            "example": [
+              {
+                "role_slug": "admin"
+              },
+              {
+                "role_slug": "member",
+                "resource_id": "authz_resource_01HXYZ123456789ABCDEFGH"
+              }
+            ]
+          },
+          "remove": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReplaceGroupRoleAssignmentEntryDto"
+            },
+            "description": "Role assignments to remove from the group. Entries that match no assignment are skipped.",
+            "default": [],
+            "example": [
+              {
+                "role_slug": "editor",
+                "resource_type_slug": "project",
+                "resource_external_id": "proj-789"
+              }
+            ]
           }
         }
       },
@@ -49375,6 +49497,79 @@
         }
       },
       "AuthorizationGroupRoleAssignmentsControllerCreate422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments400Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/GroupRoleAssignmentUpdateOverlapCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments402Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments402ResponseCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments422Response": {
         "required": [
           "message"
         ],
@@ -87567,6 +87762,44 @@
             {
               "value": "duplicate_group_role_assignment",
               "name": "DuplicateGroupRoleAssignment"
+            }
+          ]
+        }
+      },
+      "GroupRoleAssignmentUpdateOverlapCode": {
+        "const": null,
+        "enum": [
+          "group_role_assignment_update_overlap"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "group_role_assignment_update_overlap",
+        "x-ms-enum": {
+          "name": "GroupRoleAssignmentUpdateOverlapCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "group_role_assignment_update_overlap",
+              "name": "GroupRoleAssignmentUpdateOverlap"
+            }
+          ]
+        }
+      },
+      "AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments402ResponseCode": {
+        "const": null,
+        "enum": [
+          "production_feature_requires_billing"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "production_feature_requires_billing",
+        "x-ms-enum": {
+          "name": "AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments402ResponseCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "production_feature_requires_billing",
+              "name": "ProductionFeatureRequiresBilling"
             }
           ]
         }
