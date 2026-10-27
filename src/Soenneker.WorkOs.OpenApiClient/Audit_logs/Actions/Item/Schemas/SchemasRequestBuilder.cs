@@ -61,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a new Audit Log schema used to validate the payload of incoming Audit Log Events. If the `action` does not exist, it will also be created.
+        /// Creates an Audit Log schema used to validate incoming Audit Log events, or returns the latest version if the submitted schema matches it. If the schema differs from the latest version, creates and returns a new version. If the action does not exist, creates the action and its first schema version.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJson"/></returns>
         /// <param name="body">The request body</param>
@@ -107,7 +107,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
             return requestInfo;
         }
         /// <summary>
-        /// Creates a new Audit Log schema used to validate the payload of incoming Audit Log Events. If the `action` does not exist, it will also be created.
+        /// Creates an Audit Log schema used to validate incoming Audit Log events, or returns the latest version if the submitted schema matches it. If the schema differs from the latest version, creates and returns a new version. If the action does not exist, creates the action and its first schema version.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
