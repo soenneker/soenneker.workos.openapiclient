@@ -7,35 +7,62 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf3"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DataIntegrationsControllerUpsertApiKeyRequest : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class DataIntegrationsControllerUpsertApiKeyRequest : IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf1"/></summary>
+        /// <summary>A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf1? DataIntegrationsControllerUpsertApiKeyRequestOneOf1 { get; set; }
+        public string? AccountDisplayName { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf1 DataIntegrationsControllerUpsertApiKeyRequestOneOf1 { get; set; }
+        public string AccountDisplayName { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf2"/></summary>
+        /// <summary>A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf2? DataIntegrationsControllerUpsertApiKeyRequestOneOf2 { get; set; }
+        public string? AccountIdentifier { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf2 DataIntegrationsControllerUpsertApiKeyRequestOneOf2 { get; set; }
+        public string AccountIdentifier { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf3"/></summary>
+        /// <summary>The exact connected account to reauthorize. Required with `connection_intent: reauthorize`; it may also be sent on its own to reauthorize that connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf3? DataIntegrationsControllerUpsertApiKeyRequestOneOf3 { get; set; }
+        public string? ConnectedAccountId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf3 DataIntegrationsControllerUpsertApiKeyRequestOneOf3 { get; set; }
+        public string ConnectedAccountId { get; set; }
+#endif
+        /// <summary>Send `reauthorize` with `connected_account_id` to reauthorize one exact connection. Omit it to use the compatibility connection; creating another connection lives on the POST route.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ReauthorizeConnectionIntent? ConnectionIntent { get; set; }
+        /// <summary>Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner? ConnectionOwner { get; set; }
+        /// <summary>An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when `connection_owner` is `organization`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OrganizationId { get; set; }
+#nullable restore
+#else
+        public string OrganizationId { get; set; }
+#endif
+        /// <summary>The API key secret to store for this integration.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Secret { get; set; }
+#nullable restore
+#else
+        public string Secret { get; set; }
+#endif
+        /// <summary>A [User](/reference/authkit/user) identifier.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserId { get; set; }
+#nullable restore
+#else
+        public string UserId { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -45,21 +72,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequest();
-            if("DataIntegrationsControllerUpsertApiKeyRequestOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DataIntegrationsControllerUpsertApiKeyRequestOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf1();
-            }
-            else if("DataIntegrationsControllerUpsertApiKeyRequestOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DataIntegrationsControllerUpsertApiKeyRequestOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf2();
-            }
-            else if("DataIntegrationsControllerUpsertApiKeyRequestOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DataIntegrationsControllerUpsertApiKeyRequestOneOf3 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf3();
-            }
-            return result;
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,19 +80,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DataIntegrationsControllerUpsertApiKeyRequestOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return DataIntegrationsControllerUpsertApiKeyRequestOneOf1.GetFieldDeserializers();
-            }
-            else if(DataIntegrationsControllerUpsertApiKeyRequestOneOf2 != null)
-            {
-                return DataIntegrationsControllerUpsertApiKeyRequestOneOf2.GetFieldDeserializers();
-            }
-            else if(DataIntegrationsControllerUpsertApiKeyRequestOneOf3 != null)
-            {
-                return DataIntegrationsControllerUpsertApiKeyRequestOneOf3.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "account_display_name", n => { AccountDisplayName = n.GetStringValue(); } },
+                { "account_identifier", n => { AccountIdentifier = n.GetStringValue(); } },
+                { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
+                { "connection_intent", n => { ConnectionIntent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ReauthorizeConnectionIntent>(); } },
+                { "connection_owner", n => { ConnectionOwner = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner>(); } },
+                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "secret", n => { Secret = n.GetStringValue(); } },
+                { "user_id", n => { UserId = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -88,18 +99,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DataIntegrationsControllerUpsertApiKeyRequestOneOf1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf1>(null, DataIntegrationsControllerUpsertApiKeyRequestOneOf1);
-            }
-            else if(DataIntegrationsControllerUpsertApiKeyRequestOneOf2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf2>(null, DataIntegrationsControllerUpsertApiKeyRequestOneOf2);
-            }
-            else if(DataIntegrationsControllerUpsertApiKeyRequestOneOf3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestOneOf3>(null, DataIntegrationsControllerUpsertApiKeyRequestOneOf3);
-            }
+            writer.WriteStringValue("account_display_name", AccountDisplayName);
+            writer.WriteStringValue("account_identifier", AccountIdentifier);
+            writer.WriteStringValue("connected_account_id", ConnectedAccountId);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ReauthorizeConnectionIntent>("connection_intent", ConnectionIntent);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner>("connection_owner", ConnectionOwner);
+            writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteStringValue("secret", Secret);
+            writer.WriteStringValue("user_id", UserId);
         }
     }
 }

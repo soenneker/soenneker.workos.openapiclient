@@ -5,7 +5,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2ConnectionOwner
+    public enum DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner
     {
         [EnumMember(Value = "user")]
         #pragma warning disable CS1591

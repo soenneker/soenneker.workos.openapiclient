@@ -8,29 +8,29 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Connect-time config values for the provider-declared `installation`-scope fields (e.g. a Zendesk `subdomain`), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.
+    /// Provider-specific configuration values collected for this installation, keyed by the provider&apos;s config field descriptors.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2Config : IAdditionalDataHolder, IParsable
+    public partial class DataIntegrationsControllerUpsertClientCredentialsRequestConfig : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2Config"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig"/> and sets the default values.
         /// </summary>
-        public DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2Config()
+        public DataIntegrationsControllerUpsertClientCredentialsRequestConfig()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2Config"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2Config CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2Config();
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertClientCredentialsRequestConfig();
         }
         /// <summary>
         /// The deserialization information for the current model

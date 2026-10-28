@@ -32,7 +32,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ExpiresAt { get; set; }
 #endif
-        /// <summary>Non-sensitive fields captured from the provider token response (e.g. Salesforce `instance_url`), as configured for the provider. Only present for `client_credentials` credentials.</summary>
+        /// <summary>Non-sensitive fields captured from the provider token response (e.g. Salesforce `instance_url`), as configured for the provider. Captured on OAuth code exchange and refresh, and on each `client_credentials` mint. A field a later OAuth refresh omits keeps its stored value. Present for `oauth` and `client_credentials` credentials; absent for `api_key`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty? Metadata { get; set; }

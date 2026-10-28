@@ -3,9 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization.</summary>
+    /// <summary>Who will own the connected account. `user` (the default) connects the user&apos;s own account. `organization` connects the organization&apos;s shared account and requires `organization_id`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationsControllerUpsertClientCredentialsRequestOneOf1ConnectionOwner
+    public enum DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner
     {
         [EnumMember(Value = "user")]
         #pragma warning disable CS1591

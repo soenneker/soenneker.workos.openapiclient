@@ -7,35 +7,62 @@ using System.IO;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest : IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1"/></summary>
+        /// <summary>A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1? DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1 { get; set; }
+        public string? AccountDisplayName { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1 DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1 { get; set; }
+        public string AccountDisplayName { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2"/></summary>
+        /// <summary>Connect-time config values for the provider-declared `installation`-scope fields (e.g. a Zendesk `subdomain`), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2? DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2 DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig Config { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3"/></summary>
+        /// <summary>The exact connected account to reauthorize. Required with `connection_intent: reauthorize` and not accepted otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3? DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3 { get; set; }
+        public string? ConnectedAccountId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3 DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3 { get; set; }
+        public string ConnectedAccountId { get; set; }
+#endif
+        /// <summary>Which connection the request targets. Omit it to use the compatibility connection. Send `add` to create another connection: the first connection for an owner shape fills the compatibility slot, and later connections are standard. Send `reauthorize` with `connected_account_id` to reauthorize one exact connection.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent? ConnectionIntent { get; set; }
+        /// <summary>Who will own the connected account. `user` (the default) connects the user&apos;s own account. `organization` connects the organization&apos;s shared account and requires `organization_id`.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner? ConnectionOwner { get; set; }
+        /// <summary>An organization ID to scope the authorization to a specific organization. Required when `connection_owner` is `organization`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OrganizationId { get; set; }
+#nullable restore
+#else
+        public string OrganizationId { get; set; }
+#endif
+        /// <summary>The URL to redirect the user to after authorization.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReturnTo { get; set; }
+#nullable restore
+#else
+        public string ReturnTo { get; set; }
+#endif
+        /// <summary>The ID of the user to authorize. When `connection_owner` is `organization`, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserId { get; set; }
+#nullable restore
+#else
+        public string UserId { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -45,21 +72,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest();
-            if("DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1();
-            }
-            else if("DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2();
-            }
-            else if("DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3();
-            }
-            return result;
+            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,19 +80,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1.GetFieldDeserializers();
-            }
-            else if(DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2 != null)
-            {
-                return DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2.GetFieldDeserializers();
-            }
-            else if(DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3 != null)
-            {
-                return DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "account_display_name", n => { AccountDisplayName = n.GetStringValue(); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig.CreateFromDiscriminatorValue); } },
+                { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
+                { "connection_intent", n => { ConnectionIntent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent>(); } },
+                { "connection_owner", n => { ConnectionOwner = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner>(); } },
+                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
+                { "return_to", n => { ReturnTo = n.GetStringValue(); } },
+                { "user_id", n => { UserId = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -88,18 +99,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1>(null, DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1);
-            }
-            else if(DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2>(null, DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2);
-            }
-            else if(DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3>(null, DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3);
-            }
+            writer.WriteStringValue("account_display_name", AccountDisplayName);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig>("config", Config);
+            writer.WriteStringValue("connected_account_id", ConnectedAccountId);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent>("connection_intent", ConnectionIntent);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner>("connection_owner", ConnectionOwner);
+            writer.WriteStringValue("organization_id", OrganizationId);
+            writer.WriteStringValue("return_to", ReturnTo);
+            writer.WriteStringValue("user_id", UserId);
         }
     }
 }

@@ -165,6 +165,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string UserlandUserId { get; set; }
 #endif
+        /// <summary>Non-blocking warnings about an explicitly supplied label. Only writes return it, and only when another connection already uses the label; reads omit it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountWarningsItem>? Warnings { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountWarningsItem> Warnings { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount"/> and sets the default values.
         /// </summary>
@@ -209,6 +217,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "updatedAt", n => { UpdatedAt = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
                 { "userlandUserId", n => { UserlandUserId = n.GetStringValue(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountWarningsItem>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountWarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { Created_at = n.GetStringValue(); } },
                 { "organization_id", n => { Organization_id = n.GetStringValue(); } },
                 { "updated_at", n => { Updated_at = n.GetStringValue(); } },
@@ -243,6 +252,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("updatedAt", UpdatedAt);
             writer.WriteStringValue("user_id", UserId);
             writer.WriteStringValue("userlandUserId", UserlandUserId);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccountWarningsItem>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

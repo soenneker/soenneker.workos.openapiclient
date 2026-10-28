@@ -3,13 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
-    /// <summary>Reauthorize exactly the connection named by `connected_account_id`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3ConnectionIntent
+    #pragma warning disable CS1591
+    public enum DataIntegrationsListResponseDataItemConnectedAccountsItemWarningsItemCode
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "reauthorize")]
+        [EnumMember(Value = "duplicate_account_display_name")]
         #pragma warning disable CS1591
-        Reauthorize,
+        DuplicateAccountDisplayName,
         #pragma warning restore CS1591
     }
 }

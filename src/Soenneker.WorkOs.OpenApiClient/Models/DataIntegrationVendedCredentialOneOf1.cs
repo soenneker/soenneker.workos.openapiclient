@@ -32,6 +32,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string ExpiresAt { get; set; }
 #endif
+        /// <summary>Non-sensitive fields captured from the provider token response (e.g. Salesforce `instance_url`), as configured for the provider. Captured on OAuth code exchange and refresh, and on each `client_credentials` mint. A field a later OAuth refresh omits keeps its stored value. Present for `oauth` and `client_credentials` credentials; absent for `api_key`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1MetadataProperty? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1MetadataProperty Metadata { get; set; }
+#endif
         /// <summary>If the integration has requested scopes that aren&apos;t present on the access token, they&apos;re listed here. Present for `oauth` and `client_credentials` credentials; absent for `api_key`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,6 +94,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "auth_method", n => { AuthMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OAuthAuthMethod>(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1ConfigProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1ConfigProperty.CreateFromDiscriminatorValue); } },
                 { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1MetadataProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1MetadataProperty.CreateFromDiscriminatorValue); } },
                 { "missing_scopes", n => { MissingScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject>(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -102,6 +111,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OAuthAuthMethod>("auth_method", AuthMethod);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1ConfigProperty>("config", Config);
             writer.WriteStringValue("expires_at", ExpiresAt);
+            writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1MetadataProperty>("metadata", Metadata);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_scopes", MissingScopes);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CredentialObject>("object", Object);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);

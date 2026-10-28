@@ -128,6 +128,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string UserId { get; set; }
 #endif
+        /// <summary>Non-blocking warnings about an explicitly supplied label. Only writes return it, and only when another connection already uses the label; reads omit it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWarningsItem>? Warnings { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWarningsItem> Warnings { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount"/> and sets the default values.
         /// </summary>
@@ -171,6 +179,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "state_reason", n => { StateReason = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountStateReasonOneOf1>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWarningsItem>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -198,6 +207,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountStateReasonOneOf1>("state_reason", StateReason);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteStringValue("user_id", UserId);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccountWarningsItem>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

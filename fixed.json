@@ -8220,7 +8220,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
+                  "$ref": "#/components/schemas/ConnectedAccount"
                 },
                 "example": {
                   "object": "connected_account",
@@ -8330,7 +8330,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
+                  "$ref": "#/components/schemas/ConnectedAccount"
                 },
                 "example": {
                   "object": "connected_account",
@@ -8548,7 +8548,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
+                  "$ref": "#/components/schemas/ConnectedAccount"
                 },
                 "example": {
                   "object": "connected_account",
@@ -8657,7 +8657,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
+                  "$ref": "#/components/schemas/ConnectedAccount"
                 },
                 "example": {
                   "object": "connected_account",
@@ -8782,6 +8782,7 @@
                       "user:email"
                     ],
                     "missing_scopes": [],
+                    "metadata": {},
                     "config": {}
                   }
                 }
@@ -12539,7 +12540,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
+                  "$ref": "#/components/schemas/ConnectedAccount"
                 },
                 "example": {
                   "object": "connected_account",
@@ -12697,7 +12698,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
+                  "$ref": "#/components/schemas/ConnectedAccount"
                 },
                 "example": {
                   "object": "connected_account",
@@ -18294,7 +18295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
+                  "$ref": "#/components/schemas/ConnectedAccount"
                 }
               }
             }
@@ -18425,7 +18426,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ConnectedAccountWriteResponse"
+                  "$ref": "#/components/schemas/ConnectedAccount"
                 }
               }
             }
@@ -28862,158 +28863,6 @@
           }
         ]
       },
-      "ConnectedAccountWriteResponse": {
-        "required": [
-          "object",
-          "id",
-          "connection_role",
-          "account_identifier",
-          "account_display_name",
-          "user_id",
-          "organization_id",
-          "scopes",
-          "state",
-          "created_at",
-          "updated_at"
-        ],
-        "type": "object",
-        "properties": {
-          "object": {
-            "$ref": "#/components/schemas/ConnectedAccountWriteResponseObject"
-          },
-          "id": {
-            "type": "string",
-            "description": "The unique identifier of the connected account.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_role": {
-            "$ref": "#/components/schemas/ConnectedAccountWriteResponseConnectionRole"
-          },
-          "account_identifier": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A best-effort identifier for the provider account this connection points at. It is correlation metadata, not the connection identifier or a selector.",
-            "example": "workspace_123"
-          },
-          "account_display_name": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique display name for the provider account connection.",
-            "example": "Acme production"
-          },
-          "user_id": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The [User](/reference/authkit/user) identifier associated with this connection.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The [Organization](/reference/organization) identifier associated with this connection, or \u0060null\u0060 if not scoped to an organization.",
-            "example": null
-          },
-          "scopes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The OAuth scopes granted for this connection.",
-            "example": [
-              "repo",
-              "user:email"
-            ]
-          },
-          "auth_method": {
-            "$ref": "#/components/schemas/ConnectedAccountWriteResponseAuthMethod"
-          },
-          "api_key_last_4": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The last four characters of the API key, or \u0060null\u0060 for OAuth connections.",
-            "example": null
-          },
-          "client_id": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The client ID supplied for this connection. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
-            "example": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc"
-          },
-          "client_secret_last_4": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The last four characters of the client secret supplied for this connection, or \u0060null\u0060 when it can\u0027t be read. Only present when \u0060auth_method\u0060 is \u0060client_credentials\u0060.",
-            "example": "cdef"
-          },
-          "config": {
-            "$ref": "#/components/schemas/ConnectedAccountWriteResponseConfigProperty"
-          },
-          "state": {
-            "$ref": "#/components/schemas/ConnectedAccountWriteResponseState"
-          },
-          "established_by_user_id": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The [User](/reference/authkit/user) whose authorization established this connection. \u0060null\u0060 when the connection is developer-managed or its establisher is unknown, and when the establishing member lost access to the organization \u2014 in which case \u0060state_reason\u0060 is \u0060establishing_member_membership_ended\u0060.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "state_reason": {
-            "$ref": "#/components/schemas/ConnectedAccountWriteResponseStateReason"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The timestamp when the connection was created.",
-            "example": "2024-01-16T14:20:00.000Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "The timestamp when the connection was last updated.",
-            "example": "2024-01-16T14:20:00.000Z"
-          },
-          "warnings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConnectedAccountWriteResponseWarningsItem"
-            },
-            "description": "Non-blocking warnings about an explicitly supplied label, omitted when no duplicate exists. Reads do not include this field."
-          }
-        }
-      },
-      "DataIntegrationsListResponse": {
-        "required": [
-          "object",
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "object": {
-            "$ref": "#/components/schemas/DataIntegrationsListResponseObject"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataIntegrationsListResponseDataItem"
-            },
-            "description": "A list of [providers](/reference/pipes/provider), each including the legacy \u0060connected_account\u0060 field and the additive \u0060connected_accounts\u0060 collection."
-          }
-        }
-      },
       "ConnectedAccount": {
         "required": [
           "object",
@@ -29137,6 +28986,32 @@
             "type": "string",
             "description": "The timestamp when the connection was last updated.",
             "example": "2024-01-16T14:20:00.000Z"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConnectedAccountWarningsItem"
+            },
+            "description": "Non-blocking warnings about an explicitly supplied label. Only writes return it, and only when another connection already uses the label; reads omit it."
+          }
+        }
+      },
+      "DataIntegrationsListResponse": {
+        "required": [
+          "object",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseObject"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsListResponseDataItem"
+            },
+            "description": "A list of [providers](/reference/pipes/provider), each including the legacy \u0060connected_account\u0060 field and the additive \u0060connected_accounts\u0060 collection."
           }
         }
       },
@@ -36825,6 +36700,7 @@
           "expires_at",
           "scopes",
           "missing_scopes",
+          "metadata",
           "config"
         ],
         "type": "object",
@@ -36867,6 +36743,9 @@
             },
             "description": "If the integration has requested scopes that aren\u0027t present on the access token, they\u0027re listed here. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
             "example": []
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf1MetadataProperty"
           },
           "config": {
             "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf1ConfigProperty"
@@ -36995,10 +36874,10 @@
           }
         }
       },
-      "ConnectedAccountWriteResponseStateReason": {
+      "ConnectedAccountStateReason": {
         "oneOf": [
           {
-            "$ref": "#/components/schemas/ConnectedAccountWriteResponseStateReasonOneOf1"
+            "$ref": "#/components/schemas/ConnectedAccountStateReasonOneOf1"
           },
           {
             "type": "null"
@@ -37023,18 +36902,6 @@
         "oneOf": [
           {
             "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItemStateReasonOneOf1"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "Why WorkOS put the connection in its current \u0060state\u0060, or \u0060null\u0060 when there is no WorkOS-recorded reason:\n- \u0060establishing_member_membership_ended\u0060: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.\n\nAdditional values may be added; treat an unrecognized value as an unknown reason.",
-        "example": null
-      },
-      "ConnectedAccountStateReason": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ConnectedAccountStateReasonOneOf1"
           },
           {
             "type": "null"
@@ -39307,7 +39174,7 @@
         },
         "description": "Pagination cursors for navigating between pages of results."
       },
-      "ConnectedAccountWriteResponseConfig": {
+      "ConnectedAccountConfig": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -39317,7 +39184,7 @@
           "instance_url": "https://example.my.salesforce.com"
         }
       },
-      "ConnectedAccountWriteResponseWarningsItem": {
+      "ConnectedAccountWarningsItem": {
         "required": [
           "code",
           "message"
@@ -39459,16 +39326,6 @@
             },
             "description": "The user\u0027s connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless \u0060supports_multiple_connections\u0060 is \u0060true\u0060."
           }
-        }
-      },
-      "ConnectedAccountConfig": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.",
-        "example": {
-          "instance_url": "https://example.my.salesforce.com"
         }
       },
       "UserlandUserAuthenticationFactorListListMetadata": {
@@ -45977,6 +45834,14 @@
         },
         "description": "The [access token](/reference/pipes/access-token) object, present when \u0060active\u0060 is \u0060true\u0060."
       },
+      "DataIntegrationVendedCredentialOneOf1Metadata": {
+        "type": "object",
+        "additionalProperties": {},
+        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Captured on OAuth code exchange and refresh, and on each \u0060client_credentials\u0060 mint. A field a later OAuth refresh omits keeps its stored value. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
+        "example": {
+          "instance_url": "https://acme.my.salesforce.com"
+        }
+      },
       "DataIntegrationVendedCredentialOneOf1Config": {
         "type": "object",
         "additionalProperties": {
@@ -46000,7 +45865,7 @@
       "DataIntegrationVendedCredentialOneOf3Metadata": {
         "type": "object",
         "additionalProperties": {},
-        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Only present for \u0060client_credentials\u0060 credentials.",
+        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Captured on OAuth code exchange and refresh, and on each \u0060client_credentials\u0060 mint. A field a later OAuth refresh omits keeps its stored value. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
         "example": {
           "instance_url": "https://acme.my.salesforce.com"
         }
@@ -46273,6 +46138,13 @@
             "description": "The timestamp when the connection was last updated.",
             "example": "2024-01-16T14:20:00.000Z"
           },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountWarningsItem"
+            },
+            "description": "Non-blocking warnings about an explicitly supplied label. Only writes return it, and only when another connection already uses the label; reads omit it."
+          },
           "userlandUserId": {
             "type": [
               "null",
@@ -46429,6 +46301,13 @@
             "type": "string",
             "description": "The timestamp when the connection was last updated.",
             "example": "2024-01-16T14:20:00.000Z"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItemWarningsItem"
+            },
+            "description": "Non-blocking warnings about an explicitly supplied label. Only writes return it, and only when another connection already uses the label; reads omit it."
           },
           "userlandUserId": {
             "type": [
@@ -47840,6 +47719,23 @@
           "instance_url": "https://example.my.salesforce.com"
         }
       },
+      "DataIntegrationsListResponseDataItemConnectedAccountWarningsItem": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountWarningsItemCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable explanation of the non-blocking warning.",
+            "example": "Another connection for this provider and owner has the same label."
+          }
+        }
+      },
       "DataIntegrationsListResponseDataItemConnectedAccountsItemConfig": {
         "type": "object",
         "additionalProperties": {
@@ -47848,6 +47744,23 @@
         "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.",
         "example": {
           "instance_url": "https://example.my.salesforce.com"
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountsItemWarningsItem": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsListResponseDataItemConnectedAccountsItemWarningsItemCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable explanation of the non-blocking warning.",
+            "example": "Another connection for this provider and owner has the same label."
+          }
         }
       },
       "EventSchemaAllOf2OneOf60ContextConfiguredTargetsOrganizationsItem": {
@@ -53953,17 +53866,60 @@
         }
       },
       "DataIntegrationsControllerUpsertApiKeyRequest": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestOneOf1"
+        "required": [
+          "user_id",
+          "secret"
+        ],
+        "type": "object",
+        "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
+            "example": "Acme production"
           },
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestOneOf2"
+          "account_identifier": {
+            "minLength": 1,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
+            "example": "workspace_123"
           },
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestOneOf3"
+          "user_id": {
+            "type": "string",
+            "description": "A [User](/reference/authkit/user) identifier.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner"
+          },
+          "secret": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The API key secret to store for this integration.",
+            "example": "sk-1234567890abcdef"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/ReauthorizeConnectionIntent"
+          },
+          "connected_account_id": {
+            "pattern": "^data_installation_.\u002B$",
+            "type": "string",
+            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060; it may also be sent on its own to reauthorize that connection.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           }
-        ]
+        },
+        "additionalProperties": false
       },
       "DataIntegrationsControllerUpsertApiKey400Response": {
         "required": [
@@ -54000,17 +53956,53 @@
         ]
       },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1"
+        "required": [
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
+            "example": "Acme production"
           },
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2"
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user to authorize. When \u0060connection_owner\u0060 is \u0060organization\u0060, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
           },
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3"
+          "organization_id": {
+            "type": "string",
+            "description": "An organization ID to scope the authorization to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner"
+          },
+          "return_to": {
+            "type": "string",
+            "description": "The URL to redirect the user to after authorization.",
+            "format": "uri",
+            "example": "https://example.com/callback"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent"
+          },
+          "connected_account_id": {
+            "pattern": "^data_installation_.\u002B$",
+            "type": "string",
+            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060 and not accepted otherwise.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           }
-        ]
+        },
+        "additionalProperties": false
       },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400Response": {
         "required": [
@@ -54179,17 +54171,70 @@
         }
       },
       "DataIntegrationsControllerUpsertClientCredentialsRequest": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf1"
+        "required": [
+          "user_id",
+          "client_id",
+          "client_secret"
+        ],
+        "type": "object",
+        "properties": {
+          "account_display_name": {
+            "maxLength": 255,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
+            "example": "Acme production"
           },
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2"
+          "account_identifier": {
+            "minLength": 1,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
+            "example": "workspace_123"
           },
-          {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf3"
+          "user_id": {
+            "type": "string",
+            "description": "A [User](/reference/authkit/user) identifier.",
+            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "connection_owner": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner"
+          },
+          "client_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The OAuth client ID to store for this integration.",
+            "example": "3MVG9..."
+          },
+          "client_secret": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The OAuth client secret to store for this integration.",
+            "example": "shhh-secret"
+          },
+          "config": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestConfig"
+          },
+          "connection_intent": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestConnectionIntent"
+          },
+          "connected_account_id": {
+            "pattern": "^data_installation_.\u002B$",
+            "type": "string",
+            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060; it may also be sent on its own to reauthorize that connection.",
+            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
           }
-        ]
+        },
+        "additionalProperties": false
       },
       "DataIntegrationsControllerUpsertClientCredentials400Response": {
         "required": [
@@ -62490,165 +62535,6 @@
           }
         }
       },
-      "DataIntegrationsControllerUpsertApiKeyRequestOneOf1": {
-        "required": [
-          "user_id",
-          "secret"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "account_identifier": {
-            "minLength": 1,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
-            "example": "workspace_123"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "A [User](/reference/authkit/user) identifier.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestOneOf1ConnectionOwner"
-          },
-          "secret": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The API key secret to store for this integration.",
-            "example": "sk-1234567890abcdef"
-          }
-        },
-        "additionalProperties": false
-      },
-      "DataIntegrationsControllerUpsertApiKeyRequestOneOf2": {
-        "required": [
-          "user_id",
-          "secret",
-          "connection_intent",
-          "connected_account_id"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "account_identifier": {
-            "minLength": 1,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
-            "example": "workspace_123"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "A [User](/reference/authkit/user) identifier.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestOneOf2ConnectionOwner"
-          },
-          "secret": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The API key secret to store for this integration.",
-            "example": "sk-1234567890abcdef"
-          },
-          "connection_intent": {
-            "$ref": "#/components/schemas/ReauthorizeConnectionIntent"
-          },
-          "connected_account_id": {
-            "pattern": "^data_installation_.\u002B$",
-            "type": "string",
-            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          }
-        },
-        "additionalProperties": false
-      },
-      "DataIntegrationsControllerUpsertApiKeyRequestOneOf3": {
-        "required": [
-          "user_id",
-          "secret",
-          "connected_account_id"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "account_identifier": {
-            "minLength": 1,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
-            "example": "workspace_123"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "A [User](/reference/authkit/user) identifier.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertApiKeyRequestOneOf3ConnectionOwner"
-          },
-          "secret": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The API key secret to store for this integration.",
-            "example": "sk-1234567890abcdef"
-          },
-          "connected_account_id": {
-            "pattern": "^data_installation_.\u002B$",
-            "type": "string",
-            "description": "The exact connected account to reauthorize. The reauthorize intent may be omitted for compatibility.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          }
-        },
-        "additionalProperties": false
-      },
       "DataIntegrationsControllerUpsertApiKey400ResponseMessage": {
         "oneOf": [
           {
@@ -62691,141 +62577,6 @@
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
           }
         }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1": {
-        "required": [
-          "user_id"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "The ID of the user to authorize. When \u0060connection_owner\u0060 is \u0060organization\u0060, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An organization ID to scope the authorization to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1ConnectionOwner"
-          },
-          "return_to": {
-            "type": "string",
-            "description": "The URL to redirect the user to after authorization.",
-            "format": "uri",
-            "example": "https://example.com/callback"
-          },
-          "config": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1Config"
-          }
-        },
-        "additionalProperties": false
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2": {
-        "required": [
-          "user_id",
-          "connection_intent"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "The ID of the user to authorize. When \u0060connection_owner\u0060 is \u0060organization\u0060, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An organization ID to scope the authorization to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2ConnectionOwner"
-          },
-          "return_to": {
-            "type": "string",
-            "description": "The URL to redirect the user to after authorization.",
-            "format": "uri",
-            "example": "https://example.com/callback"
-          },
-          "config": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2Config"
-          },
-          "connection_intent": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2ConnectionIntent"
-          }
-        },
-        "additionalProperties": false
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3": {
-        "required": [
-          "user_id",
-          "connection_intent",
-          "connected_account_id"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "The ID of the user to authorize. When \u0060connection_owner\u0060 is \u0060organization\u0060, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An organization ID to scope the authorization to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3ConnectionOwner"
-          },
-          "return_to": {
-            "type": "string",
-            "description": "The URL to redirect the user to after authorization.",
-            "format": "uri",
-            "example": "https://example.com/callback"
-          },
-          "config": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3Config"
-          },
-          "connection_intent": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3ConnectionIntent"
-          },
-          "connected_account_id": {
-            "pattern": "^data_installation_.\u002B$",
-            "type": "string",
-            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          }
-        },
-        "additionalProperties": false
       },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseMessage": {
         "oneOf": [
@@ -62972,195 +62723,6 @@
             "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
           }
         }
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf1": {
-        "required": [
-          "user_id",
-          "client_id",
-          "client_secret"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "account_identifier": {
-            "minLength": 1,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
-            "example": "workspace_123"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "A [User](/reference/authkit/user) identifier.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf1ConnectionOwner"
-          },
-          "client_id": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The OAuth client ID to store for this integration.",
-            "example": "3MVG9..."
-          },
-          "client_secret": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The OAuth client secret to store for this integration.",
-            "example": "shhh-secret"
-          },
-          "config": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf1Config"
-          }
-        },
-        "additionalProperties": false
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2": {
-        "required": [
-          "user_id",
-          "client_id",
-          "client_secret",
-          "connection_intent",
-          "connected_account_id"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "account_identifier": {
-            "minLength": 1,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
-            "example": "workspace_123"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "A [User](/reference/authkit/user) identifier.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2ConnectionOwner"
-          },
-          "client_id": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The OAuth client ID to store for this integration.",
-            "example": "3MVG9..."
-          },
-          "client_secret": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The OAuth client secret to store for this integration.",
-            "example": "shhh-secret"
-          },
-          "config": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2Config"
-          },
-          "connection_intent": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2ConnectionIntent"
-          },
-          "connected_account_id": {
-            "pattern": "^data_installation_.\u002B$",
-            "type": "string",
-            "description": "The exact connected account to reauthorize. Required with \u0060connection_intent: reauthorize\u0060.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          }
-        },
-        "additionalProperties": false
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf3": {
-        "required": [
-          "user_id",
-          "client_id",
-          "client_secret",
-          "connected_account_id"
-        ],
-        "type": "object",
-        "properties": {
-          "account_display_name": {
-            "maxLength": 255,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.",
-            "example": "Acme production"
-          },
-          "account_identifier": {
-            "minLength": 1,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "A developer-attested provider account identifier, never inferred from a label or credential. Omit to preserve an existing identifier; null clears it.",
-            "example": "workspace_123"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "A [User](/reference/authkit/user) identifier.",
-            "example": "user_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when \u0060connection_owner\u0060 is \u0060organization\u0060.",
-            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-          },
-          "connection_owner": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf3ConnectionOwner"
-          },
-          "client_id": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The OAuth client ID to store for this integration.",
-            "example": "3MVG9..."
-          },
-          "client_secret": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The OAuth client secret to store for this integration.",
-            "example": "shhh-secret"
-          },
-          "config": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerUpsertClientCredentialsRequestOneOf3Config"
-          },
-          "connected_account_id": {
-            "pattern": "^data_installation_.\u002B$",
-            "type": "string",
-            "description": "The exact connected account to reauthorize. The reauthorize intent may be omitted for compatibility.",
-            "example": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT"
-          }
-        },
-        "additionalProperties": false
       },
       "DataIntegrationsControllerUpsertClientCredentials400ResponseMessage": {
         "oneOf": [
@@ -66819,16 +66381,6 @@
           "account": "myorg-myaccount"
         }
       },
-      "ConnectedAccountWriteResponseConfigProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "The connection-level configuration values stored for this connection \u2014 the fields the provider declares at \u0060installation\u0060 scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed.",
-        "example": {
-          "instance_url": "https://example.my.salesforce.com"
-        }
-      },
       "ConnectedAccountConfigProperty": {
         "type": "object",
         "additionalProperties": {
@@ -66938,6 +66490,14 @@
         "additionalProperties": {},
         "description": "Additional context about the event."
       },
+      "DataIntegrationVendedCredentialOneOf1MetadataProperty": {
+        "type": "object",
+        "additionalProperties": {},
+        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Captured on OAuth code exchange and refresh, and on each \u0060client_credentials\u0060 mint. A field a later OAuth refresh omits keeps its stored value. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
+        "example": {
+          "instance_url": "https://acme.my.salesforce.com"
+        }
+      },
       "DataIntegrationVendedCredentialOneOf1ConfigProperty": {
         "type": "object",
         "additionalProperties": {
@@ -66961,7 +66521,7 @@
       "DataIntegrationVendedCredentialOneOf3MetadataProperty": {
         "type": "object",
         "additionalProperties": {},
-        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Only present for \u0060client_credentials\u0060 credentials.",
+        "description": "Non-sensitive fields captured from the provider token response (e.g. Salesforce \u0060instance_url\u0060), as configured for the provider. Captured on OAuth code exchange and refresh, and on each \u0060client_credentials\u0060 mint. A field a later OAuth refresh omits keeps its stored value. Present for \u0060oauth\u0060 and \u0060client_credentials\u0060 credentials; absent for \u0060api_key\u0060.",
         "example": {
           "instance_url": "https://acme.my.salesforce.com"
         }
@@ -67555,7 +67115,27 @@
           }
         }
       },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Connect-time config values for the provider-declared \u0060installation\u0060-scope fields (e.g. a Zendesk \u0060subdomain\u0060), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.",
+        "example": {
+          "subdomain": "acme"
+        }
+      },
       "DataIntegrationsControllerCreateClientCredentialsConnectionRequestConfig": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Provider-specific configuration values collected for this installation, keyed by the provider\u0027s config field descriptors.",
+        "example": {
+          "salesforce_host": "acme.my.salesforce.com"
+        }
+      },
+      "DataIntegrationsControllerUpsertClientCredentialsRequestConfig": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -68270,66 +67850,6 @@
             "description": "The JSON path to the invalid field in the event payload.",
             "example": "/targets"
           }
-        }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1Config": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Connect-time config values for the provider-declared \u0060installation\u0060-scope fields (e.g. a Zendesk \u0060subdomain\u0060), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.",
-        "example": {
-          "subdomain": "acme"
-        }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2Config": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Connect-time config values for the provider-declared \u0060installation\u0060-scope fields (e.g. a Zendesk \u0060subdomain\u0060), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.",
-        "example": {
-          "subdomain": "acme"
-        }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3Config": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Connect-time config values for the provider-declared \u0060installation\u0060-scope fields (e.g. a Zendesk \u0060subdomain\u0060), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.",
-        "example": {
-          "subdomain": "acme"
-        }
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf1Config": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Provider-specific configuration values collected for this installation, keyed by the provider\u0027s config field descriptors.",
-        "example": {
-          "salesforce_host": "acme.my.salesforce.com"
-        }
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2Config": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Provider-specific configuration values collected for this installation, keyed by the provider\u0027s config field descriptors.",
-        "example": {
-          "salesforce_host": "acme.my.salesforce.com"
-        }
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf3Config": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Provider-specific configuration values collected for this installation, keyed by the provider\u0027s config field descriptors.",
-        "example": {
-          "salesforce_host": "acme.my.salesforce.com"
         }
       },
       "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseOneOf2ErrorsItem": {
@@ -73041,6 +72561,8 @@
       "WidgetSessionTokenDtoScopesItem": {
         "enum": [
           "widgets:users-table:manage",
+          "widgets:user-api-keys:manage-self",
+          "widgets:user-api-keys:manage-all",
           "widgets:domain-verification:manage",
           "widgets:sso:manage",
           "widgets:api-keys:manage",
@@ -73056,6 +72578,14 @@
             {
               "value": "widgets:users-table:manage",
               "name": "WidgetsColonUsersTableColonManage"
+            },
+            {
+              "value": "widgets:user-api-keys:manage-self",
+              "name": "WidgetsColonUserApiKeysColonManageSelf"
+            },
+            {
+              "value": "widgets:user-api-keys:manage-all",
+              "name": "WidgetsColonUserApiKeysColonManageAll"
             },
             {
               "value": "widgets:domain-verification:manage",
@@ -75371,121 +74901,6 @@
           ]
         }
       },
-      "ConnectedAccountWriteResponseObject": {
-        "const": null,
-        "enum": [
-          "connected_account"
-        ],
-        "type": "string",
-        "description": "Distinguishes the connected account object.",
-        "x-ms-enum": {
-          "name": "ConnectedAccountWriteResponseObject",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "connected_account",
-              "name": "ConnectedAccount"
-            }
-          ]
-        }
-      },
-      "ConnectedAccountWriteResponseConnectionRole": {
-        "enum": [
-          "compatibility",
-          "standard"
-        ],
-        "type": "string",
-        "description": "Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order.",
-        "example": "compatibility",
-        "x-ms-enum": {
-          "name": "ConnectedAccountWriteResponseConnectionRole",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "compatibility",
-              "name": "Compatibility"
-            },
-            {
-              "value": "standard",
-              "name": "Standard"
-            }
-          ]
-        }
-      },
-      "ConnectedAccountWriteResponseAuthMethod": {
-        "enum": [
-          "oauth",
-          "api_key",
-          "client_credentials"
-        ],
-        "type": "string",
-        "description": "The authentication method used for this connection (\u0060oauth\u0060, \u0060api_key\u0060, or \u0060client_credentials\u0060). Defaults to \u0060oauth\u0060 if absent.",
-        "example": "oauth",
-        "x-ms-enum": {
-          "name": "ConnectedAccountWriteResponseAuthMethod",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "oauth",
-              "name": "OAuth"
-            },
-            {
-              "value": "api_key",
-              "name": "ApiKey"
-            },
-            {
-              "value": "client_credentials",
-              "name": "ClientCredentials"
-            }
-          ]
-        }
-      },
-      "ConnectedAccountWriteResponseState": {
-        "enum": [
-          "connected",
-          "needs_reauthorization",
-          "disconnected"
-        ],
-        "type": "string",
-        "description": "The state of the connected account:\n- \u0060connected\u0060: The connection is active and tokens are valid.\n- \u0060needs_reauthorization\u0060: The user needs to reauthorize the connection, typically because required scopes have changed. \u0060state_reason\u0060 explains why when WorkOS invalidated the connection itself.\n- \u0060disconnected\u0060: The connection has been disconnected.",
-        "example": "connected",
-        "x-ms-enum": {
-          "name": "ConnectedAccountWriteResponseState",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "connected",
-              "name": "Connected"
-            },
-            {
-              "value": "needs_reauthorization",
-              "name": "NeedsReauthorization"
-            },
-            {
-              "value": "disconnected",
-              "name": "Disconnected"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsListResponseObject": {
-        "const": null,
-        "enum": [
-          "list"
-        ],
-        "type": "string",
-        "description": "Indicates this is a list response.",
-        "x-ms-enum": {
-          "name": "DataIntegrationsListResponseObject",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "list",
-              "name": "List"
-            }
-          ]
-        }
-      },
       "ConnectedAccountObjectEnum": {
         "const": null,
         "enum": [
@@ -75579,6 +74994,24 @@
             {
               "value": "disconnected",
               "name": "Disconnected"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsListResponseObject": {
+        "const": null,
+        "enum": [
+          "list"
+        ],
+        "type": "string",
+        "description": "Indicates this is a list response.",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
             }
           ]
         }
@@ -81536,14 +80969,14 @@
           ]
         }
       },
-      "ConnectedAccountWriteResponseStateReasonOneOf1": {
+      "ConnectedAccountStateReasonOneOf1": {
         "const": null,
         "enum": [
           "establishing_member_membership_ended"
         ],
         "type": "string",
         "x-ms-enum": {
-          "name": "ConnectedAccountWriteResponseStateReasonOneOf1",
+          "name": "ConnectedAccountStateReasonOneOf1",
           "modelAsString": false,
           "values": [
             {
@@ -81578,23 +81011,6 @@
         "type": "string",
         "x-ms-enum": {
           "name": "DataIntegrationsListResponseDataItemConnectedAccountsItemStateReasonOneOf1",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "establishing_member_membership_ended",
-              "name": "EstablishingMemberMembershipEnded"
-            }
-          ]
-        }
-      },
-      "ConnectedAccountStateReasonOneOf1": {
-        "const": null,
-        "enum": [
-          "establishing_member_membership_ended"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "ConnectedAccountStateReasonOneOf1",
           "modelAsString": false,
           "values": [
             {
@@ -87298,6 +86714,40 @@
           ]
         }
       },
+      "DataIntegrationsListResponseDataItemConnectedAccountWarningsItemCode": {
+        "const": null,
+        "enum": [
+          "duplicate_account_display_name"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountWarningsItemCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "duplicate_account_display_name",
+              "name": "DuplicateAccountDisplayName"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsListResponseDataItemConnectedAccountsItemWarningsItemCode": {
+        "const": null,
+        "enum": [
+          "duplicate_account_display_name"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "DataIntegrationsListResponseDataItemConnectedAccountsItemWarningsItemCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "duplicate_account_display_name",
+              "name": "DuplicateAccountDisplayName"
+            }
+          ]
+        }
+      },
       "EventSchemaAllOf2OneOf60ContextPreviousAttributesContextAccessType": {
         "enum": [
           "none",
@@ -89120,6 +88570,94 @@
           ]
         }
       },
+      "DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerUpsertApiKeyRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "ReauthorizeConnectionIntent": {
+        "const": null,
+        "enum": [
+          "reauthorize"
+        ],
+        "type": "string",
+        "description": "Send \u0060reauthorize\u0060 with \u0060connected_account_id\u0060 to reauthorize one exact connection. Omit it to use the compatibility connection; creating another connection lives on the POST route.",
+        "example": "reauthorize",
+        "x-ms-enum": {
+          "name": "ReauthorizeConnectionIntent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "reauthorize",
+              "name": "Reauthorize"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "description": "Who will own the connected account. \u0060user\u0060 (the default) connects the user\u0027s own account. \u0060organization\u0060 connects the organization\u0027s shared account and requires \u0060organization_id\u0060.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent": {
+        "enum": [
+          "add",
+          "reauthorize"
+        ],
+        "type": "string",
+        "description": "Which connection the request targets. Omit it to use the compatibility connection. Send \u0060add\u0060 to create another connection: the first connection for an owner shape fills the compatibility slot, and later connections are standard. Send \u0060reauthorize\u0060 with \u0060connected_account_id\u0060 to reauthorize one exact connection.",
+        "example": "add",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "add",
+              "name": "Add"
+            },
+            {
+              "value": "reauthorize",
+              "name": "Reauthorize"
+            }
+          ]
+        }
+      },
       "DataIntegrationsControllerCreateClientCredentialsConnectionRequestConnectionOwner": {
         "enum": [
           "user",
@@ -89177,6 +88715,48 @@
             {
               "value": "concurrent_request",
               "name": "ConcurrentRequest"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerUpsertClientCredentialsRequestConnectionOwner",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerUpsertClientCredentialsRequestConnectionIntent": {
+        "const": null,
+        "enum": [
+          "reauthorize"
+        ],
+        "type": "string",
+        "description": "Send \u0060reauthorize\u0060 with \u0060connected_account_id\u0060 to reauthorize one exact connection. Omit it to use the compatibility connection; creating another connection lives on the POST route.",
+        "example": "reauthorize",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerUpsertClientCredentialsRequestConnectionIntent",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "reauthorize",
+              "name": "Reauthorize"
             }
           ]
         }
@@ -93223,94 +92803,6 @@
           ]
         }
       },
-      "DataIntegrationsControllerUpsertApiKeyRequestOneOf1ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerUpsertApiKeyRequestOneOf1ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerUpsertApiKeyRequestOneOf2ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerUpsertApiKeyRequestOneOf2ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
-      "ReauthorizeConnectionIntent": {
-        "const": null,
-        "enum": [
-          "reauthorize"
-        ],
-        "type": "string",
-        "description": "Reauthorize exactly the connection named by \u0060connected_account_id\u0060.",
-        "example": "reauthorize",
-        "x-ms-enum": {
-          "name": "ReauthorizeConnectionIntent",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "reauthorize",
-              "name": "Reauthorize"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerUpsertApiKeyRequestOneOf3ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerUpsertApiKeyRequestOneOf3ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
       "DataIntegrationsControllerUpsertApiKey404ResponseAnyOf1Code": {
         "const": null,
         "enum": [
@@ -93326,113 +92818,6 @@
             {
               "value": "entity_not_found",
               "name": "EntityNotFound"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Who will own the connected account. \u0060user\u0060 (the default) connects the user\u0027s own account. \u0060organization\u0060 connects the organization\u0027s shared account and requires \u0060organization_id\u0060.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf1ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Who will own the connected account. \u0060user\u0060 (the default) connects the user\u0027s own account. \u0060organization\u0060 connects the organization\u0027s shared account and requires \u0060organization_id\u0060.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2ConnectionIntent": {
-        "const": null,
-        "enum": [
-          "add"
-        ],
-        "type": "string",
-        "description": "Create another connection. The first connection for an owner shape fills the compatibility slot; later connections are standard. Omit \u0060connection_intent\u0060 to use the compatibility connection, or send \u0060reauthorize\u0060 with \u0060connected_account_id\u0060 to reauthorize one exact connection.",
-        "example": "add",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf2ConnectionIntent",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "add",
-              "name": "Add"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Who will own the connected account. \u0060user\u0060 (the default) connects the user\u0027s own account. \u0060organization\u0060 connects the organization\u0027s shared account and requires \u0060organization_id\u0060.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3ConnectionIntent": {
-        "const": null,
-        "enum": [
-          "reauthorize"
-        ],
-        "type": "string",
-        "description": "Reauthorize exactly the connection named by \u0060connected_account_id\u0060.",
-        "example": "reauthorize",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestOneOf3ConnectionIntent",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "reauthorize",
-              "name": "Reauthorize"
             }
           ]
         }
@@ -93526,94 +92911,6 @@
             {
               "value": "idempotency_key_conflict",
               "name": "IdempotencyKeyConflict"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf1ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf1ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2ConnectionIntent": {
-        "const": null,
-        "enum": [
-          "reauthorize"
-        ],
-        "type": "string",
-        "description": "Reauthorize exactly the connection named by \u0060connected_account_id\u0060.",
-        "example": "reauthorize",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf2ConnectionIntent",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "reauthorize",
-              "name": "Reauthorize"
-            }
-          ]
-        }
-      },
-      "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf3ConnectionOwner": {
-        "enum": [
-          "user",
-          "organization"
-        ],
-        "type": "string",
-        "description": "Whose connection to create or rotate. \u0060user\u0060 (the default) addresses the connection owned by \u0060user_id\u0060. \u0060organization\u0060 addresses the connection shared by every member of \u0060organization_id\u0060; \u0060user_id\u0060 then identifies the member performing the request and must be an active member of the organization.",
-        "example": "user",
-        "x-ms-enum": {
-          "name": "DataIntegrationsControllerUpsertClientCredentialsRequestOneOf3ConnectionOwner",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "user",
-              "name": "User"
-            },
-            {
-              "value": "organization",
-              "name": "Organization"
             }
           ]
         }

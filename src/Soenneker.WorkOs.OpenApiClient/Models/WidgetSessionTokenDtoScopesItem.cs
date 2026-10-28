@@ -12,6 +12,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         WidgetsColonUsersTableColonManage,
         #pragma warning restore CS1591
+        [EnumMember(Value = "widgets:user-api-keys:manage-self")]
+        #pragma warning disable CS1591
+        WidgetsColonUserApiKeysColonManageSelf,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "widgets:user-api-keys:manage-all")]
+        #pragma warning disable CS1591
+        WidgetsColonUserApiKeysColonManageAll,
+        #pragma warning restore CS1591
         [EnumMember(Value = "widgets:domain-verification:manage")]
         #pragma warning disable CS1591
         WidgetsColonDomainVerificationColonManage,
