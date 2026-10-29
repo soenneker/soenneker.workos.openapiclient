@@ -7995,6 +7995,61 @@
         }
       }
     },
+    "/data-integrations/finish": {
+      "post": {
+        "tags": [
+          "pipes"
+        ],
+        "summary": "Finish connection",
+        "description": "Saves a connection that was started with \u0060code_challenge\u0060. After the user authorizes, WorkOS redirects them to \u0060return_to\u0060 with a \u0060connect_code\u0060 and \u0060state\u0060. Call this endpoint from your server with that \u0060connect_code\u0060 and the \u0060code_verifier\u0060 behind the challenge to save the connected account.",
+        "operationId": "DataIntegrationsControllerFinishConnection",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataIntegrationsControllerFinishConnectionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationFinishConnectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The connection could not be completed, and the user must connect again. \u0060invalid_connect_code\u0060 when the \u0060connect_code\u0060 is unknown, expired, already used, or from another environment, or the \u0060code_verifier\u0060 does not match the \u0060code_challenge\u0060. Other codes report why saving the connection failed, such as \u0060target_deleted\u0060 when the connected account being reauthorized was deleted in the meantime. A malformed request body returns validation messages instead.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerFinishConnection400Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataIntegrationsControllerFinishConnection403Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/data-integrations/{slug}": {
       "get": {
         "tags": [
@@ -8448,7 +8503,7 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "The request was invalid. With \u0060code_challenge\u0060: \u0060invalid_return_to\u0060 when \u0060return_to\u0060 is missing or does not exactly match a registered redirect URI, \u0060return_to_requires_exact_match\u0060 when only a wildcard redirect URI matches it, and \u0060connect_finish_unavailable\u0060 when \u0060code_challenge\u0060 is not available for the environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12338,11 +12393,7 @@
                   ],
                   "auth_method": "oauth",
                   "api_key_last_4": null,
-                  "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
-                  "client_secret_last_4": "cdef",
-                  "config": {
-                    "instance_url": "https://example.my.salesforce.com"
-                  },
+                  "config": {},
                   "state": "connected",
                   "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "state_reason": null,
@@ -12556,11 +12607,7 @@
                   ],
                   "auth_method": "oauth",
                   "api_key_last_4": null,
-                  "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
-                  "client_secret_last_4": "cdef",
-                  "config": {
-                    "instance_url": "https://example.my.salesforce.com"
-                  },
+                  "config": {},
                   "state": "connected",
                   "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "state_reason": null,
@@ -12714,11 +12761,7 @@
                   ],
                   "auth_method": "oauth",
                   "api_key_last_4": null,
-                  "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
-                  "client_secret_last_4": "cdef",
-                  "config": {
-                    "instance_url": "https://example.my.salesforce.com"
-                  },
+                  "config": {},
                   "state": "connected",
                   "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                   "state_reason": null,
@@ -12862,11 +12905,7 @@
                         ],
                         "auth_method": "oauth",
                         "api_key_last_4": null,
-                        "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
-                        "client_secret_last_4": "cdef",
-                        "config": {
-                          "instance_url": "https://example.my.salesforce.com"
-                        },
+                        "config": {},
                         "state": "connected",
                         "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                         "state_reason": null,
@@ -12892,11 +12931,7 @@
                           ],
                           "auth_method": "oauth",
                           "api_key_last_4": null,
-                          "client_id": "3MVG9dZJodJWxft2VoStSCVwPFsx0eDcpVc",
-                          "client_secret_last_4": "cdef",
-                          "config": {
-                            "instance_url": "https://example.my.salesforce.com"
-                          },
+                          "config": {},
                           "state": "connected",
                           "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
                           "state_reason": null,
@@ -14591,7 +14626,7 @@
             "in": "query",
             "description": "The only valid PKCE code challenge method is \u0060\u0022S256\u0022\u0060. Required when specifying a \u0060code_challenge\u0060.",
             "schema": {
-              "$ref": "#/components/schemas/S256CodeChallengeMethod"
+              "$ref": "#/components/schemas/UserlandSsoControllerAuthorizeCodeChallengeMethodParameter"
             }
           },
           {
@@ -28767,102 +28802,6 @@
           }
         }
       },
-      "DataIntegrationAuthorizeUrlResponse": {
-        "required": [
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string",
-            "description": "The OAuth authorization URL to redirect the user to.",
-            "example": "https://api.workos.com/data-integrations/q2czJKmVAraSBg8xFpT7M9uR/authorize-redirect"
-          }
-        }
-      },
-      "AuthMethodMismatchError": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/AuthMethodMismatchCode"
-          },
-          "message": {
-            "type": "string",
-            "description": "A human-readable explanation of the mismatch.",
-            "example": "This installation uses oauth authentication. Use the POST /:slug/token endpoint instead."
-          }
-        }
-      },
-      "DataIntegrationAccessTokenResponse": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationAccessTokenResponseOneOf1"
-          },
-          {
-            "$ref": "#/components/schemas/DataIntegrationAccessTokenResponseOneOf2"
-          }
-        ]
-      },
-      "AccountSelectionRequiredError": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/AccountSelectionRequiredCode"
-          },
-          "message": {
-            "type": "string",
-            "description": "A human-readable explanation of the ambiguity.",
-            "example": "Several connected accounts match this user for this provider. Name one with a connected account id."
-          }
-        }
-      },
-      "DataIntegrationVendedCredential": {
-        "required": [
-          "auth_method"
-        ],
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf1"
-          },
-          {
-            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf2"
-          },
-          {
-            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3"
-          }
-        ],
-        "properties": {
-          "auth_method": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
-          "propertyName": "auth_method",
-          "mapping": {
-            "DataIntegrationVendedCredentialOneOf1": "#/components/schemas/DataIntegrationVendedCredentialOneOf1",
-            "DataIntegrationVendedCredentialOneOf2": "#/components/schemas/DataIntegrationVendedCredentialOneOf2",
-            "DataIntegrationVendedCredentialOneOf3": "#/components/schemas/DataIntegrationVendedCredentialOneOf3"
-          }
-        }
-      },
-      "DataIntegrationCredentialsResponse": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf1"
-          },
-          {
-            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf2"
-          }
-        ]
-      },
       "ConnectedAccount": {
         "required": [
           "object",
@@ -28994,7 +28933,139 @@
             },
             "description": "Non-blocking warnings about an explicitly supplied label. Only writes return it, and only when another connection already uses the label; reads omit it."
           }
+        },
+        "example": {
+          "object": "connected_account",
+          "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+          "connection_role": "compatibility",
+          "account_identifier": "workspace_123",
+          "account_display_name": "Acme production",
+          "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+          "organization_id": null,
+          "scopes": [
+            "repo",
+            "user:email"
+          ],
+          "auth_method": "oauth",
+          "api_key_last_4": null,
+          "config": {},
+          "state": "connected",
+          "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+          "state_reason": null,
+          "created_at": "2024-01-16T14:20:00.000Z",
+          "updated_at": "2024-01-16T14:20:00.000Z"
         }
+      },
+      "DataIntegrationFinishConnectionResponse": {
+        "required": [
+          "connected_account"
+        ],
+        "type": "object",
+        "properties": {
+          "connected_account": {
+            "description": "The connected account that was saved.",
+            "$ref": "#/components/schemas/ConnectedAccount"
+          }
+        }
+      },
+      "DataIntegrationAuthorizeUrlResponse": {
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The OAuth authorization URL to redirect the user to.",
+            "example": "https://api.workos.com/data-integrations/q2czJKmVAraSBg8xFpT7M9uR/authorize-redirect"
+          },
+          "completion": {
+            "$ref": "#/components/schemas/FinishRequiredCompletion"
+          }
+        }
+      },
+      "AuthMethodMismatchError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/AuthMethodMismatchCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable explanation of the mismatch.",
+            "example": "This installation uses oauth authentication. Use the POST /:slug/token endpoint instead."
+          }
+        }
+      },
+      "DataIntegrationAccessTokenResponse": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationAccessTokenResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/DataIntegrationAccessTokenResponseOneOf2"
+          }
+        ]
+      },
+      "AccountSelectionRequiredError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/AccountSelectionRequiredCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable explanation of the ambiguity.",
+            "example": "Several connected accounts match this user for this provider. Name one with a connected account id."
+          }
+        }
+      },
+      "DataIntegrationVendedCredential": {
+        "required": [
+          "auth_method"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3"
+          }
+        ],
+        "properties": {
+          "auth_method": {
+            "type": "string"
+          }
+        },
+        "discriminator": {
+          "propertyName": "auth_method",
+          "mapping": {
+            "DataIntegrationVendedCredentialOneOf1": "#/components/schemas/DataIntegrationVendedCredentialOneOf1",
+            "DataIntegrationVendedCredentialOneOf2": "#/components/schemas/DataIntegrationVendedCredentialOneOf2",
+            "DataIntegrationVendedCredentialOneOf3": "#/components/schemas/DataIntegrationVendedCredentialOneOf3"
+          }
+        }
+      },
+      "DataIntegrationCredentialsResponse": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf2"
+          }
+        ]
       },
       "DataIntegrationsListResponse": {
         "required": [
@@ -36656,6 +36727,18 @@
           }
         }
       },
+      "ConnectedAccountStateReason": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ConnectedAccountStateReasonOneOf1"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "Why WorkOS put the connection in its current \u0060state\u0060, or \u0060null\u0060 when there is no WorkOS-recorded reason:\n- \u0060establishing_member_membership_ended\u0060: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.\n\nAdditional values may be added; treat an unrecognized value as an unknown reason.",
+        "example": null
+      },
       "DataIntegrationAccessTokenResponseOneOf1": {
         "required": [
           "active",
@@ -36873,18 +36956,6 @@
             "$ref": "#/components/schemas/DataIntegrationCredentialsResponseOneOf2Error"
           }
         }
-      },
-      "ConnectedAccountStateReason": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ConnectedAccountStateReasonOneOf1"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "Why WorkOS put the connection in its current \u0060state\u0060, or \u0060null\u0060 when there is no WorkOS-recorded reason:\n- \u0060establishing_member_membership_ended\u0060: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.\n\nAdditional values may be added; treat an unrecognized value as an unknown reason.",
-        "example": null
       },
       "DataIntegrationsListResponseDataItemConnectedAccountStateReason": {
         "oneOf": [
@@ -46172,7 +46243,32 @@
             "deprecated": true
           }
         },
-        "description": "The user\u0027s compatibility [connected account](/reference/pipes/connected-account) for this provider, or \u0060null\u0060 when the compatibility slot is empty. This legacy field never selects a standard connection."
+        "description": "The user\u0027s compatibility [connected account](/reference/pipes/connected-account) for this provider, or \u0060null\u0060 when the compatibility slot is empty. This legacy field never selects a standard connection.",
+        "example": {
+          "object": "connected_account",
+          "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+          "connection_role": "compatibility",
+          "account_identifier": "workspace_123",
+          "account_display_name": "Acme production",
+          "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+          "organization_id": null,
+          "scopes": [
+            "repo",
+            "user:email"
+          ],
+          "auth_method": "oauth",
+          "api_key_last_4": null,
+          "config": {},
+          "state": "connected",
+          "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+          "state_reason": null,
+          "created_at": "2024-01-16T14:20:00.000Z",
+          "updated_at": "2024-01-16T14:20:00.000Z",
+          "userlandUserId": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+          "organizationId": null,
+          "createdAt": "2024-01-16T14:20:00.000Z",
+          "updatedAt": "2024-01-16T14:20:00.000Z"
+        }
       },
       "DataIntegrationsListResponseDataItemConnectedAccountsItem": {
         "required": [
@@ -46335,6 +46431,31 @@
             "description": "Use \u0060updated_at\u0060 instead.",
             "deprecated": true
           }
+        },
+        "example": {
+          "object": "connected_account",
+          "id": "data_installation_01EHZNVPK3SFK441A1RGBFSHRT",
+          "connection_role": "compatibility",
+          "account_identifier": "workspace_123",
+          "account_display_name": "Acme production",
+          "user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+          "organization_id": null,
+          "scopes": [
+            "repo",
+            "user:email"
+          ],
+          "auth_method": "oauth",
+          "api_key_last_4": null,
+          "config": {},
+          "state": "connected",
+          "established_by_user_id": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+          "state_reason": null,
+          "created_at": "2024-01-16T14:20:00.000Z",
+          "updated_at": "2024-01-16T14:20:00.000Z",
+          "userlandUserId": "user_01EHZNVPK3SFK441A1RGBFSHRT",
+          "organizationId": null,
+          "createdAt": "2024-01-16T14:20:00.000Z",
+          "updatedAt": "2024-01-16T14:20:00.000Z"
         }
       },
       "EventSchemaAllOf2OneOf3DataInvocableBy": {
@@ -53662,6 +53783,55 @@
           }
         }
       },
+      "DataIntegrationsControllerFinishConnectionRequest": {
+        "required": [
+          "connect_code",
+          "code_verifier"
+        ],
+        "type": "object",
+        "properties": {
+          "connect_code": {
+            "pattern": "^[A-Za-z0-9_-]{43}$",
+            "type": "string",
+            "description": "The \u0060connect_code\u0060 WorkOS added to \u0060return_to\u0060 when the user finished authorizing. It can be used once and expires 90 seconds after the redirect.",
+            "example": "Q3n0bWh2b0tqZ1VtV2ZsYkJ3cE9aV0J6T1hGb1lYaGo"
+          },
+          "code_verifier": {
+            "pattern": "^[A-Za-z0-9._~-]{43,128}$",
+            "type": "string",
+            "description": "The code verifier \u0060code_challenge\u0060 was derived from: 43 to 128 characters from \u0060A-Z\u0060, \u0060a-z\u0060, \u00600-9\u0060, \u0060-\u0060, \u0060.\u0060, \u0060_\u0060 and \u0060~\u0060. A wrong verifier uses up the \u0060connect_code\u0060, and the user has to connect again.",
+            "example": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
+          },
+          "state": {
+            "type": "string",
+            "description": "The \u0060state\u0060 WorkOS added to \u0060return_to\u0060 alongside \u0060connect_code\u0060. Optional; it is only used to correlate the request in logs.",
+            "example": "q2czJKmVAraSBg8xFpT7M9uR"
+          }
+        }
+      },
+      "DataIntegrationsControllerFinishConnection400Response": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationsControllerFinishConnection400ResponseAnyOf1"
+          },
+          {
+            "$ref": "#/components/schemas/DataIntegrationsControllerFinishConnection400ResponseAnyOf2"
+          }
+        ]
+      },
+      "DataIntegrationsControllerFinishConnection403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "DataIntegrationsManagementControllerGetDataIntegration404Response": {
         "required": [
           "message"
@@ -53985,9 +54155,18 @@
           },
           "return_to": {
             "type": "string",
-            "description": "The URL to redirect the user to after authorization.",
+            "description": "The URL to redirect the user to after authorization. Required with \u0060code_challenge\u0060, and must then exactly match a redirect URI registered on one of the environment\u0027s applications. Loopback URLs match on any port; wildcard redirect URIs are not honored, and a \u0060return_to\u0060 with a query string or fragment never matches.",
             "format": "uri",
             "example": "https://example.com/callback"
+          },
+          "code_challenge": {
+            "pattern": "^[A-Za-z0-9_-]{43}$",
+            "type": "string",
+            "description": "A PKCE-style code challenge: the base64url-encoded SHA-256 of a \u0060code_verifier\u0060 your app keeps. When set, the connection isn\u0027t saved when the user finishes authorizing. Instead, the user is redirected to \u0060return_to\u0060 with a \u0060connect_code\u0060 and \u0060state\u0060, and your app must call [Finish connection](/reference/pipes/connected-account/finish-connection) with the \u0060connect_code\u0060 and \u0060code_verifier\u0060 within 90 seconds to save it.",
+            "example": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"
+          },
+          "code_challenge_method": {
+            "$ref": "#/components/schemas/S256CodeChallengeMethod"
           },
           "config": {
             "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig"
@@ -54005,15 +54184,14 @@
         "additionalProperties": false
       },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400Response": {
-        "required": [
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "message": {
-            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseMessage"
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf1"
+          },
+          {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf2"
           }
-        }
+        ]
       },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl403Response": {
         "required": [
@@ -62462,6 +62640,34 @@
           }
         }
       },
+      "DataIntegrationsControllerFinishConnection400ResponseAnyOf1": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerFinishConnection400ResponseAnyOf1Code"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "DataIntegrationsControllerFinishConnection400ResponseAnyOf2": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerFinishConnection400ResponseAnyOf2Message"
+          }
+        }
+      },
       "DataIntegrationsControllerCreateApiKeyConnection400ResponseMessage": {
         "oneOf": [
           {
@@ -62578,18 +62784,33 @@
           }
         }
       },
-      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseMessage": {
-        "oneOf": [
-          {
-            "type": "string"
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf1": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf1Code"
           },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
           }
-        ]
+        }
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf2": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "$ref": "#/components/schemas/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf2Message"
+          }
+        }
       },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl404ResponseAnyOf1": {
         "required": [
@@ -65969,6 +66190,32 @@
             "example": "Bad Request"
           }
         }
+      },
+      "DataIntegrationsControllerFinishConnection400ResponseAnyOf2Message": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf2Message": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "UserObjectMetadataProperty": {
         "propertyNames": {
@@ -74863,44 +75110,6 @@
           ]
         }
       },
-      "AuthMethodMismatchCode": {
-        "const": null,
-        "enum": [
-          "auth_method_mismatch"
-        ],
-        "type": "string",
-        "description": "Error code indicating the endpoint does not match the installation auth method.",
-        "example": "auth_method_mismatch",
-        "x-ms-enum": {
-          "name": "AuthMethodMismatchCode",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "auth_method_mismatch",
-              "name": "AuthMethodMismatch"
-            }
-          ]
-        }
-      },
-      "AccountSelectionRequiredCode": {
-        "const": null,
-        "enum": [
-          "account_selection_required"
-        ],
-        "type": "string",
-        "description": "Indicates that several connected accounts match and the request must name one.",
-        "example": "account_selection_required",
-        "x-ms-enum": {
-          "name": "AccountSelectionRequiredCode",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "account_selection_required",
-              "name": "AccountSelectionRequired"
-            }
-          ]
-        }
-      },
       "ConnectedAccountObjectEnum": {
         "const": null,
         "enum": [
@@ -74994,6 +75203,63 @@
             {
               "value": "disconnected",
               "name": "Disconnected"
+            }
+          ]
+        }
+      },
+      "FinishRequiredCompletion": {
+        "const": null,
+        "enum": [
+          "finish_required"
+        ],
+        "type": "string",
+        "description": "\u0060finish_required\u0060 when the request included \u0060code_challenge\u0060: the connection will be held until your app finishes it. Omitted otherwise. If you sent \u0060code_challenge\u0060 and this is missing, don\u0027t redirect the user.",
+        "example": "finish_required",
+        "x-ms-enum": {
+          "name": "FinishRequiredCompletion",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "finish_required",
+              "name": "FinishRequired"
+            }
+          ]
+        }
+      },
+      "AuthMethodMismatchCode": {
+        "const": null,
+        "enum": [
+          "auth_method_mismatch"
+        ],
+        "type": "string",
+        "description": "Error code indicating the endpoint does not match the installation auth method.",
+        "example": "auth_method_mismatch",
+        "x-ms-enum": {
+          "name": "AuthMethodMismatchCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "auth_method_mismatch",
+              "name": "AuthMethodMismatch"
+            }
+          ]
+        }
+      },
+      "AccountSelectionRequiredCode": {
+        "const": null,
+        "enum": [
+          "account_selection_required"
+        ],
+        "type": "string",
+        "description": "Indicates that several connected accounts match and the request must name one.",
+        "example": "account_selection_required",
+        "x-ms-enum": {
+          "name": "AccountSelectionRequiredCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "account_selection_required",
+              "name": "AccountSelectionRequired"
             }
           ]
         }
@@ -80796,6 +81062,23 @@
           ]
         }
       },
+      "ConnectedAccountStateReasonOneOf1": {
+        "const": null,
+        "enum": [
+          "establishing_member_membership_ended"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ConnectedAccountStateReasonOneOf1",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "establishing_member_membership_ended",
+              "name": "EstablishingMemberMembershipEnded"
+            }
+          ]
+        }
+      },
       "DataIntegrationAccessTokenResponseOneOf2Error": {
         "enum": [
           "needs_reauthorization",
@@ -80965,23 +81248,6 @@
             {
               "value": "needs_reauthorization",
               "name": "NeedsReauthorization"
-            }
-          ]
-        }
-      },
-      "ConnectedAccountStateReasonOneOf1": {
-        "const": null,
-        "enum": [
-          "establishing_member_membership_ended"
-        ],
-        "type": "string",
-        "x-ms-enum": {
-          "name": "ConnectedAccountStateReasonOneOf1",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "establishing_member_membership_ended",
-              "name": "EstablishingMemberMembershipEnded"
             }
           ]
         }
@@ -88635,6 +88901,15 @@
           ]
         }
       },
+      "S256CodeChallengeMethod": {
+        "const": null,
+        "enum": [
+          "S256"
+        ],
+        "type": "string",
+        "description": "The method used to derive \u0060code_challenge\u0060. Only \u0060S256\u0060 is supported, and it is the default. Requires \u0060code_challenge\u0060.",
+        "example": "S256"
+      },
       "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent": {
         "enum": [
           "add",
@@ -92757,6 +93032,109 @@
           ]
         }
       },
+      "DataIntegrationsControllerFinishConnection400ResponseAnyOf1Code": {
+        "enum": [
+          "invalid_connect_code",
+          "authorization_code_exchange_error",
+          "authorization_state_expired",
+          "auth_method_mismatch",
+          "concurrent_request",
+          "connected_account_limit_reached",
+          "connected_account_not_found",
+          "installation_failed",
+          "invalid_authorization_url",
+          "invalid_client_id",
+          "invalid_data_integration",
+          "missing_access_token",
+          "missing_code",
+          "multiple_connections_unavailable",
+          "provider_error",
+          "reauthorization_needed",
+          "target_deleted",
+          "unexpected_response_format"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "invalid_connect_code",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerFinishConnection400ResponseAnyOf1Code",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "invalid_connect_code",
+              "name": "InvalidConnectCode"
+            },
+            {
+              "value": "authorization_code_exchange_error",
+              "name": "AuthorizationCodeExchangeError"
+            },
+            {
+              "value": "authorization_state_expired",
+              "name": "AuthorizationStateExpired"
+            },
+            {
+              "value": "auth_method_mismatch",
+              "name": "AuthMethodMismatch"
+            },
+            {
+              "value": "concurrent_request",
+              "name": "ConcurrentRequest"
+            },
+            {
+              "value": "connected_account_limit_reached",
+              "name": "ConnectedAccountLimitReached"
+            },
+            {
+              "value": "connected_account_not_found",
+              "name": "ConnectedAccountNotFound"
+            },
+            {
+              "value": "installation_failed",
+              "name": "InstallationFailed"
+            },
+            {
+              "value": "invalid_authorization_url",
+              "name": "InvalidAuthorizationUrl"
+            },
+            {
+              "value": "invalid_client_id",
+              "name": "InvalidClientId"
+            },
+            {
+              "value": "invalid_data_integration",
+              "name": "InvalidDataIntegration"
+            },
+            {
+              "value": "missing_access_token",
+              "name": "MissingAccessToken"
+            },
+            {
+              "value": "missing_code",
+              "name": "MissingCode"
+            },
+            {
+              "value": "multiple_connections_unavailable",
+              "name": "MultipleConnectionsUnavailable"
+            },
+            {
+              "value": "provider_error",
+              "name": "ProviderError"
+            },
+            {
+              "value": "reauthorization_needed",
+              "name": "ReauthorizationNeeded"
+            },
+            {
+              "value": "target_deleted",
+              "name": "TargetDeleted"
+            },
+            {
+              "value": "unexpected_response_format",
+              "name": "UnexpectedResponseFormat"
+            }
+          ]
+        }
+      },
       "DataIntegrationsControllerCreateApiKeyConnection404ResponseAnyOf1Code": {
         "enum": [
           "multiple_connections_unavailable",
@@ -92818,6 +93196,34 @@
             {
               "value": "entity_not_found",
               "name": "EntityNotFound"
+            }
+          ]
+        }
+      },
+      "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf1Code": {
+        "enum": [
+          "invalid_return_to",
+          "return_to_requires_exact_match",
+          "connect_finish_unavailable"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "invalid_return_to",
+        "x-ms-enum": {
+          "name": "DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400ResponseAnyOf1Code",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "invalid_return_to",
+              "name": "InvalidReturnTo"
+            },
+            {
+              "value": "return_to_requires_exact_match",
+              "name": "ReturnToRequiresExactMatch"
+            },
+            {
+              "value": "connect_finish_unavailable",
+              "name": "ConnectFinishUnavailable"
             }
           ]
         }
@@ -96560,7 +96966,7 @@
           ]
         }
       },
-      "S256CodeChallengeMethod": {
+      "UserlandSsoControllerAuthorizeCodeChallengeMethodParameter": {
         "const": null,
         "enum": [
           "S256"

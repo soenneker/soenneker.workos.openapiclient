@@ -14,6 +14,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>`finish_required` when the request included `code_challenge`: the connection will be held until your app finishes it. Omitted otherwise. If you sent `code_challenge` and this is missing, don&apos;t redirect the user.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.FinishRequiredCompletion? Completion { get; set; }
         /// <summary>The OAuth authorization URL to redirect the user to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +49,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "completion", n => { Completion = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.FinishRequiredCompletion>(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -57,6 +60,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.FinishRequiredCompletion>("completion", Completion);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
+    /// <summary>The method used to derive `code_challenge`. Only `S256` is supported, and it is the default. Requires `code_challenge`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum S256CodeChallengeMethod
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "S256")]
         #pragma warning disable CS1591

@@ -40,7 +40,6 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400Response">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrl403Response">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,7 +55,6 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrl400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrl403Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError.CreateFromDiscriminatorValue },
             };

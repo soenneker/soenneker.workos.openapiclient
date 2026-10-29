@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Finish;
 using Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item;
 using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataIntegrationsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The finish property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Finish.FinishRequestBuilder Finish
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Finish.FinishRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.dataIntegrations.item collection</summary>
         /// <param name="position">The slug identifier of the data integration.</param>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.WithSlugItemRequestBuilder"/></returns>

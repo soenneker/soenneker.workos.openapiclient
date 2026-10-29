@@ -20,6 +20,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string AccountDisplayName { get; set; }
 #endif
+        /// <summary>A PKCE-style code challenge: the base64url-encoded SHA-256 of a `code_verifier` your app keeps. When set, the connection isn&apos;t saved when the user finishes authorizing. Instead, the user is redirected to `return_to` with a `connect_code` and `state`, and your app must call [Finish connection](/reference/pipes/connected-account/finish-connection) with the `connect_code` and `code_verifier` within 90 seconds to save it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CodeChallenge { get; set; }
+#nullable restore
+#else
+        public string CodeChallenge { get; set; }
+#endif
+        /// <summary>The method used to derive `code_challenge`. Only `S256` is supported, and it is the default. Requires `code_challenge`.</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.S256CodeChallengeMethod? CodeChallengeMethod { get; set; }
         /// <summary>Connect-time config values for the provider-declared `installation`-scope fields (e.g. a Zendesk `subdomain`), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,7 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string OrganizationId { get; set; }
 #endif
-        /// <summary>The URL to redirect the user to after authorization.</summary>
+        /// <summary>The URL to redirect the user to after authorization. Required with `code_challenge`, and must then exactly match a redirect URI registered on one of the environment&apos;s applications. Loopback URLs match on any port; wildcard redirect URIs are not honored, and a `return_to` with a query string or fragment never matches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReturnTo { get; set; }
@@ -83,6 +93,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account_display_name", n => { AccountDisplayName = n.GetStringValue(); } },
+                { "code_challenge", n => { CodeChallenge = n.GetStringValue(); } },
+                { "code_challenge_method", n => { CodeChallengeMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.S256CodeChallengeMethod>(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig.CreateFromDiscriminatorValue); } },
                 { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
                 { "connection_intent", n => { ConnectionIntent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent>(); } },
@@ -100,6 +112,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_display_name", AccountDisplayName);
+            writer.WriteStringValue("code_challenge", CodeChallenge);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.S256CodeChallengeMethod>("code_challenge_method", CodeChallengeMethod);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig>("config", Config);
             writer.WriteStringValue("connected_account_id", ConnectedAccountId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent>("connection_intent", ConnectionIntent);

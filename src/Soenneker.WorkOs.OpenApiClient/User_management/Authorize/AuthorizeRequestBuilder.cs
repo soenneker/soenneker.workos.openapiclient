@@ -111,7 +111,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize
 #endif
             /// <summary>The only valid PKCE code challenge method is `&quot;S256&quot;`. Required when specifying a `code_challenge`.</summary>
             [QueryParameter("code_challenge_method")]
-            public global::Soenneker.WorkOs.OpenApiClient.Models.S256CodeChallengeMethod? CodeChallengeMethod { get; set; }
+            public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSsoControllerAuthorizeCodeChallengeMethodParameter? CodeChallengeMethod { get; set; }
             /// <summary>The ID of an SSO connection to use for authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
