@@ -25,8 +25,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Error code indicating the endpoint does not match the installation auth method.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchCode? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
-        private global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchCode? _explicitNullValueCode = default!;
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchErrorCode? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchErrorCode? _explicitNullValueCode = default!;
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
         /// <summary>A human-readable explanation of the mismatch.</summary>
@@ -64,7 +64,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchCode>(); } },
+                { "code", n => { Code = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchErrorCode>(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
             };
         }
@@ -75,7 +75,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchCode>("code", Code);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchErrorCode>("code", Code);
             writer.WriteStringValue("message", MessageEscaped);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

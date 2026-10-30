@@ -52,8 +52,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Sessions
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList401Response">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList422Response">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCodeFieldErrors">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Agents.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -66,8 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Sessions
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "401", global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList401Response.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList422Response.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCodeFieldErrors.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };

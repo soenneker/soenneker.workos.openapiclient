@@ -27,8 +27,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The error code identifying the type of error.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseOneOf1Code? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
-        private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseOneOf1Code? _explicitNullValueCode = default!;
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DailyQuotaExceededCode? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DailyQuotaExceededCode? _explicitNullValueCode = default!;
         /// <summary>The OAuth error code.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.TooManyRequestsError? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.TooManyRequestsError? _explicitNullValueError = default!;
@@ -79,7 +79,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseOneOf1Code>(); } },
+                { "code", n => { Code = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DailyQuotaExceededCode>(); } },
                 { "error", n => { Error = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TooManyRequestsError>(); } },
                 { "error_description", n => { ErrorDescription = n.GetStringValue(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
@@ -92,7 +92,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseOneOf1Code>("code", Code);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DailyQuotaExceededCode>("code", Code);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TooManyRequestsError>("error", Error);
             writer.WriteStringValue("error_description", ErrorDescription);
             writer.WriteStringValue("message", MessageEscaped);
