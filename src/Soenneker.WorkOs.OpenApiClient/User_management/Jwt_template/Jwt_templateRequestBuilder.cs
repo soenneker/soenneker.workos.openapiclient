@@ -53,6 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Jwt_template
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplatesControllerGetJwtTemplate404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplate>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplate.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -78,6 +80,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Jwt_template
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplatesControllerUpdateJwtTemplate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplate>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.JwtTemplate.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

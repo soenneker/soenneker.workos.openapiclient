@@ -11,27 +11,42 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AgentBlueprintsTokenControllerMintTokenRequestOneOf3 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_access_token") is { } nullNodeAgentAccessToken && nullNodeAgentAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentAccessToken = null;
+            if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent&apos;s own access token to exchange for a new session on the same instance. The token must have been minted from this blueprint; permissions are re-derived from current authority.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentAccessToken { get; set; }
+        public string? AgentAccessToken { get => _explicitNullValueAgentAccessToken; set { _explicitNullValueAgentAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_access_token"); else _explicitNullProperties?.Remove("agent_access_token"); } }
+        private string? _explicitNullValueAgentAccessToken = default!;
 #nullable restore
 #else
-        public string AgentAccessToken { get; set; }
+        public string AgentAccessToken { get => _explicitNullValueAgentAccessToken; set { _explicitNullValueAgentAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_access_token"); else _explicitNullProperties?.Remove("agent_access_token"); } }
+        private string _explicitNullValueAgentAccessToken = default!;
 #endif
         /// <summary>Optional caller-supplied context, echoed as an object with a `text` field in the `intent` claim of the minted access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Intent { get; set; }
+        public string? Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        private string? _explicitNullValueIntent = default!;
 #nullable restore
 #else
-        public string Intent { get; set; }
+        public string Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        private string _explicitNullValueIntent = default!;
 #endif
         /// <summary>How the session is minted: `user_delegated`, `autonomous`, `agent_delegated`, or `refresh`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentDelegatedType? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentDelegatedType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentDelegatedType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf3"/> and sets the default values.
         /// </summary>
@@ -47,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf3 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf3();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf3(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("agent_access_token", AgentAccessToken);
             writer.WriteStringValue("intent", Intent);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentDelegatedType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

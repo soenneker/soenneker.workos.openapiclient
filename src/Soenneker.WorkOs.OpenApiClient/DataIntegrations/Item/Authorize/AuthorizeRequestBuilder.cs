@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Authorize
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrl403Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthorizeUrlResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAuthorizeUrlResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

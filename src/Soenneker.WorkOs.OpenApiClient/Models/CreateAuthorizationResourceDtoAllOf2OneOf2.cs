@@ -11,16 +11,26 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateAuthorizationResourceDtoAllOf2OneOf2 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("parent_resource_id") is { } nullNodeParentResourceId && nullNodeParentResourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentResourceId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of the parent resource. Mutually exclusive with `parent_resource_external_id` and `parent_resource_type_slug`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ParentResourceId { get; set; }
+        public string? ParentResourceId { get => _explicitNullValueParentResourceId; set { _explicitNullValueParentResourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_id"); else _explicitNullProperties?.Remove("parent_resource_id"); } }
+        private string? _explicitNullValueParentResourceId = default!;
 #nullable restore
 #else
-        public string ParentResourceId { get; set; }
+        public string ParentResourceId { get => _explicitNullValueParentResourceId; set { _explicitNullValueParentResourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_id"); else _explicitNullProperties?.Remove("parent_resource_id"); } }
+        private string _explicitNullValueParentResourceId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2"/> and sets the default values.
@@ -37,7 +47,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +68,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("parent_resource_id", ParentResourceId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

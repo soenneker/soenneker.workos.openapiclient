@@ -58,6 +58,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerDelete404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -81,6 +83,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerGet404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -110,6 +114,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.Item
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdate409Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

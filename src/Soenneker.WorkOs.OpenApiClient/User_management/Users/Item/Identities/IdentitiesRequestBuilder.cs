@@ -53,6 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Identities
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

@@ -54,6 +54,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_signing_cert.I
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerDelete403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpSigningCertificatesControllerDelete404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

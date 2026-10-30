@@ -11,24 +11,37 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SsoLogoutAuthorizeResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("logout_token") is { } nullNodeLogoutToken && nullNodeLogoutToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogoutToken = null;
+            if (parseNode.GetChildNode("logout_url") is { } nullNodeLogoutUrl && nullNodeLogoutUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogoutUrl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The logout token to be used in the [Logout Redirect](/reference/sso/logout) endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LogoutToken { get; set; }
+        public string? LogoutToken { get => _explicitNullValueLogoutToken; set { _explicitNullValueLogoutToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_token"); else _explicitNullProperties?.Remove("logout_token"); } }
+        private string? _explicitNullValueLogoutToken = default!;
 #nullable restore
 #else
-        public string LogoutToken { get; set; }
+        public string LogoutToken { get => _explicitNullValueLogoutToken; set { _explicitNullValueLogoutToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_token"); else _explicitNullProperties?.Remove("logout_token"); } }
+        private string _explicitNullValueLogoutToken = default!;
 #endif
         /// <summary>The URL to redirect the user to in order to log out ([Logout Redirect](/reference/sso/logout) endpoint ready to use).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LogoutUrl { get; set; }
+        public string? LogoutUrl { get => _explicitNullValueLogoutUrl; set { _explicitNullValueLogoutUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_url"); else _explicitNullProperties?.Remove("logout_url"); } }
+        private string? _explicitNullValueLogoutUrl = default!;
 #nullable restore
 #else
-        public string LogoutUrl { get; set; }
+        public string LogoutUrl { get => _explicitNullValueLogoutUrl; set { _explicitNullValueLogoutUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_url"); else _explicitNullProperties?.Remove("logout_url"); } }
+        private string _explicitNullValueLogoutUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SsoLogoutAuthorizeResponse"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.SsoLogoutAuthorizeResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.SsoLogoutAuthorizeResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.SsoLogoutAuthorizeResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("logout_token", LogoutToken);
             writer.WriteStringValue("logout_url", LogoutUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

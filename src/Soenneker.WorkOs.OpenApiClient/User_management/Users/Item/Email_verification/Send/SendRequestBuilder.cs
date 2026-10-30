@@ -61,6 +61,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_verifi
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0422Response.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerSendVerificationEmail0429Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SendVerificationEmailResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

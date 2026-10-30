@@ -12,7 +12,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdateAuditLogsRetentionDto : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,13 +46,20 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             var result = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDto();
             if("UpdateAuditLogsRetentionDtoOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UpdateAuditLogsRetentionDtoOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1();
+                
             }
             else if("UpdateAuditLogsRetentionDtoOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UpdateAuditLogsRetentionDtoOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf2();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("retention_period") != null && (parseNode.GetChildNode("retention_period")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("1_MONTH".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "2_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "3_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "4_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "5_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "6_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "7_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "8_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "9_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "10_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "11_MONTHS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "1_YEAR".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "2_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "3_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "4_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "5_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "6_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "7_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "8_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "9_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "10_YEARS".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("retention_period_in_days") != null))();
+            if (result.UpdateAuditLogsRetentionDtoOneOf1 == null && result.UpdateAuditLogsRetentionDtoOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.UpdateAuditLogsRetentionDtoOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1(), parseNode);
+            if (result.UpdateAuditLogsRetentionDtoOneOf1 == null && result.UpdateAuditLogsRetentionDtoOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.UpdateAuditLogsRetentionDtoOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf2(), parseNode);
+            if (result.UpdateAuditLogsRetentionDtoOneOf1 == null && result.UpdateAuditLogsRetentionDtoOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,13 +83,20 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (UpdateAuditLogsRetentionDtoOneOf1 == null && UpdateAuditLogsRetentionDtoOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (UpdateAuditLogsRetentionDtoOneOf1 != null && UpdateAuditLogsRetentionDtoOneOf2 == null) { if (UpdateAuditLogsRetentionDtoOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateAuditLogsRetentionDtoOneOf1); return; }
+            if (UpdateAuditLogsRetentionDtoOneOf2 != null && UpdateAuditLogsRetentionDtoOneOf1 == null) { if (UpdateAuditLogsRetentionDtoOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateAuditLogsRetentionDtoOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(UpdateAuditLogsRetentionDtoOneOf1 != null)
             {
+                if (UpdateAuditLogsRetentionDtoOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1>(null, UpdateAuditLogsRetentionDtoOneOf1);
             }
             else if(UpdateAuditLogsRetentionDtoOneOf2 != null)
             {
+                if (UpdateAuditLogsRetentionDtoOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf2>(null, UpdateAuditLogsRetentionDtoOneOf2);
             }
         }

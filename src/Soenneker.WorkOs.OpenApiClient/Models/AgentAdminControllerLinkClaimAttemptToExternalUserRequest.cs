@@ -11,34 +11,52 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AgentAdminControllerLinkClaimAttemptToExternalUserRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("claim_attempt_token") is { } nullNodeClaimAttemptToken && nullNodeClaimAttemptToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimAttemptToken = null;
+            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The token identifying the claim attempt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClaimAttemptToken { get; set; }
+        public string? ClaimAttemptToken { get => _explicitNullValueClaimAttemptToken; set { _explicitNullValueClaimAttemptToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_attempt_token"); else _explicitNullProperties?.Remove("claim_attempt_token"); } }
+        private string? _explicitNullValueClaimAttemptToken = default!;
 #nullable restore
 #else
-        public string ClaimAttemptToken { get; set; }
+        public string ClaimAttemptToken { get => _explicitNullValueClaimAttemptToken; set { _explicitNullValueClaimAttemptToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_attempt_token"); else _explicitNullProperties?.Remove("claim_attempt_token"); } }
+        private string _explicitNullValueClaimAttemptToken = default!;
 #endif
         /// <summary>The organization to place the agent in. Required when the user belongs to more than one organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get; set; }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get; set; }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>The operation to perform on the claim attempt. Currently only `link_external_user` is supported.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.LinkExternalUserType? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.LinkExternalUserType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.LinkExternalUserType? _explicitNullValueType = default!;
         /// <summary>The user to attach to the claim attempt, identified by email and external ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser? User { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser User { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser _explicitNullValueUser = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequest"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.LinkExternalUserType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser>("user", User);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

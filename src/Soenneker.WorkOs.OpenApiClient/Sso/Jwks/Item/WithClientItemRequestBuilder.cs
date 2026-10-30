@@ -53,6 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Jwks.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerJsonWebKeySet404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.JwksResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

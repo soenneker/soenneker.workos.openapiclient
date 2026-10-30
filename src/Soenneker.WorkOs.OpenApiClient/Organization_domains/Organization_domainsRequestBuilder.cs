@@ -68,6 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organization_domains
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainsControllerCreate409Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainsControllerCreate201Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainsControllerCreate201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

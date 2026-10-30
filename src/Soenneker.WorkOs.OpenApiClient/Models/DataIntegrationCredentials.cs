@@ -12,36 +12,56 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataIntegrationCredentials : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
+            if (parseNode.GetChildNode("client_secret_last_four") is { } nullNodeClientSecretLastFour && nullNodeClientSecretLastFour.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecretLastFour = null;
+            if (parseNode.GetChildNode("credentials_type") is { } nullNodeCredentialsType && nullNodeCredentialsType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CredentialsType = null;
+            if (parseNode.GetChildNode("has_credentials") is { } nullNodeHasCredentials && nullNodeHasCredentials.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasCredentials = null;
+            if (parseNode.GetChildNode("redirect_uri") is { } nullNodeRedirectUri && nullNodeRedirectUri.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedirectUri = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The OAuth client ID supplied by the organization, or `null` when none is configured.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientId { get; set; }
+        public string? ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        private string? _explicitNullValueClientId = default!;
 #nullable restore
 #else
-        public string ClientId { get; set; }
+        public string ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        private string _explicitNullValueClientId = default!;
 #endif
         /// <summary>The last four characters of the organization-supplied OAuth client secret, or `null` when none is configured.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientSecretLastFour { get; set; }
+        public string? ClientSecretLastFour { get => _explicitNullValueClientSecretLastFour; set { _explicitNullValueClientSecretLastFour = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret_last_four"); else _explicitNullProperties?.Remove("client_secret_last_four"); } }
+        private string? _explicitNullValueClientSecretLastFour = default!;
 #nullable restore
 #else
-        public string ClientSecretLastFour { get; set; }
+        public string ClientSecretLastFour { get => _explicitNullValueClientSecretLastFour; set { _explicitNullValueClientSecretLastFour = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret_last_four"); else _explicitNullProperties?.Remove("client_secret_last_four"); } }
+        private string _explicitNullValueClientSecretLastFour = default!;
 #endif
         /// <summary>The credentials type for this integration (e.g., `shared`, `custom`, or `organization`).</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsCredentialsType? CredentialsType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsCredentialsType? CredentialsType { get => _explicitNullValueCredentialsType; set { _explicitNullValueCredentialsType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credentials_type"); else _explicitNullProperties?.Remove("credentials_type"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsCredentialsType? _explicitNullValueCredentialsType = default!;
         /// <summary>Whether the organization has supplied OAuth credentials for this integration.</summary>
-        public bool? HasCredentials { get; set; }
+        public bool? HasCredentials { get => _explicitNullValueHasCredentials; set { _explicitNullValueHasCredentials = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_credentials"); else _explicitNullProperties?.Remove("has_credentials"); } }
+        private bool? _explicitNullValueHasCredentials = default!;
         /// <summary>The redirect URI to register with the provider when configuring the organization-managed OAuth application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RedirectUri { get; set; }
+        public string? RedirectUri { get => _explicitNullValueRedirectUri; set { _explicitNullValueRedirectUri = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uri"); else _explicitNullProperties?.Remove("redirect_uri"); } }
+        private string? _explicitNullValueRedirectUri = default!;
 #nullable restore
 #else
-        public string RedirectUri { get; set; }
+        public string RedirectUri { get => _explicitNullValueRedirectUri; set { _explicitNullValueRedirectUri = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uri"); else _explicitNullProperties?.Remove("redirect_uri"); } }
+        private string _explicitNullValueRedirectUri = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentials"/> and sets the default values.
@@ -58,7 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentials CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentials();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentials(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,6 +107,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsCredentialsType>("credentials_type", CredentialsType);
             writer.WriteBoolValue("has_credentials", HasCredentials);
             writer.WriteStringValue("redirect_uri", RedirectUri);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,29 +11,46 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AuditLogConfiguration : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("log_stream") is { } nullNodeLogStream && nullNodeLogStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogStream = null;
+            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("retention_period_in_days") is { } nullNodeRetentionPeriodInDays && nullNodeRetentionPeriodInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriodInDays = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The Audit Log Stream currently configured for the organization, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream? LogStream { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream? LogStream { get => _explicitNullValueLogStream; set { _explicitNullValueLogStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_stream"); else _explicitNullProperties?.Remove("log_stream"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream? _explicitNullValueLogStream = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream LogStream { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream LogStream { get => _explicitNullValueLogStream; set { _explicitNullValueLogStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_stream"); else _explicitNullProperties?.Remove("log_stream"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream _explicitNullValueLogStream = default!;
 #endif
         /// <summary>Unique identifier of the Organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get; set; }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get; set; }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>The number of days Audit Log events will be retained before being permanently deleted.</summary>
-        public int? RetentionPeriodInDays { get; set; }
+        public int? RetentionPeriodInDays { get => _explicitNullValueRetentionPeriodInDays; set { _explicitNullValueRetentionPeriodInDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period_in_days"); else _explicitNullProperties?.Remove("retention_period_in_days"); } }
+        private int? _explicitNullValueRetentionPeriodInDays = default!;
         /// <summary>The current state of the audit log configuration for the organization.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState? State { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState? _explicitNullValueState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration"/> and sets the default values.
         /// </summary>
@@ -49,7 +66,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteIntValue("retention_period_in_days", RetentionPeriodInDays);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState>("state", State);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas402Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerSchemas200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -84,6 +86,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Actions.Item.Schemas
             {
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerCreate402Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogValidatorVersionsControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogSchemaJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

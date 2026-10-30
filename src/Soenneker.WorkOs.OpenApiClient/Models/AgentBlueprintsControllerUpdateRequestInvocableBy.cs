@@ -12,24 +12,37 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AgentBlueprintsControllerUpdateRequestInvocableBy : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("organization_ids") is { } nullNodeOrganizationIds && nullNodeOrganizationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationIds = null;
+            if (parseNode.GetChildNode("role_slugs") is { } nullNodeRoleSlugs && nullNodeRoleSlugs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleSlugs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OrganizationIds { get; set; }
+        public List<string>? OrganizationIds { get => _explicitNullValueOrganizationIds; set { _explicitNullValueOrganizationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_ids"); else _explicitNullProperties?.Remove("organization_ids"); } }
+        private List<string>? _explicitNullValueOrganizationIds = default!;
 #nullable restore
 #else
-        public List<string> OrganizationIds { get; set; }
+        public List<string> OrganizationIds { get => _explicitNullValueOrganizationIds; set { _explicitNullValueOrganizationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_ids"); else _explicitNullProperties?.Remove("organization_ids"); } }
+        private List<string> _explicitNullValueOrganizationIds = default!;
 #endif
         /// <summary>Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RoleSlugs { get; set; }
+        public List<string>? RoleSlugs { get => _explicitNullValueRoleSlugs; set { _explicitNullValueRoleSlugs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slugs"); else _explicitNullProperties?.Remove("role_slugs"); } }
+        private List<string>? _explicitNullValueRoleSlugs = default!;
 #nullable restore
 #else
-        public List<string> RoleSlugs { get; set; }
+        public List<string> RoleSlugs { get => _explicitNullValueRoleSlugs; set { _explicitNullValueRoleSlugs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slugs"); else _explicitNullProperties?.Remove("role_slugs"); } }
+        private List<string> _explicitNullValueRoleSlugs = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableBy"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableBy CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableBy();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableBy(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("organization_ids", OrganizationIds);
             writer.WriteCollectionOfPrimitiveValues<string>("role_slugs", RoleSlugs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

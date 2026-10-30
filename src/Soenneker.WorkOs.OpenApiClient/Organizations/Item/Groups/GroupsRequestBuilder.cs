@@ -68,6 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerList403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerList404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.GroupList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.GroupList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -99,6 +101,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Group>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Group.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

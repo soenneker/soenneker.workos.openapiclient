@@ -55,6 +55,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.Item.Versions
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.VersionListResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.VersionListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

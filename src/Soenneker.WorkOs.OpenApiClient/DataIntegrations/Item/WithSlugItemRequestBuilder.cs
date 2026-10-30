@@ -88,6 +88,8 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerDeleteDataIntegration404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -111,6 +113,8 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerGetDataIntegration404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -144,6 +148,8 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsManagementControllerUpdateDataIntegration422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegration.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -70,6 +70,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_encryption_cer
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerList400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerList403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerList404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificateList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificateList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -99,6 +101,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_sp_encryption_cer
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate409Response.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificatesControllerCreate503Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificate>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SamlSpEncryptionCertificate.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

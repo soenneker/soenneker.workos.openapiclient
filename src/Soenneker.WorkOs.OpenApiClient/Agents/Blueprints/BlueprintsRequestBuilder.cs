@@ -66,6 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "401", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerList401Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -93,6 +95,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreate400Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreate409Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprint.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

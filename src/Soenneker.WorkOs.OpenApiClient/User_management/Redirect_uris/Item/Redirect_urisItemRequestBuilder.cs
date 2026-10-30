@@ -56,6 +56,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris.Item
                 { "401", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerDelete401Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerDelete404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerDelete409Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

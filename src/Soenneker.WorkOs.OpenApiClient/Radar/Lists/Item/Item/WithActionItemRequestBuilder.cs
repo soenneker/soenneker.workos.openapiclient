@@ -56,6 +56,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Lists.Item.Item
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntry400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerDeleteRadarListEntry404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -83,6 +85,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Lists.Item.Item
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarList400Response.CreateFromDiscriminatorValue },
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarList402Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.RadarListEntryAlreadyPresentResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.RadarListEntryAlreadyPresentResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

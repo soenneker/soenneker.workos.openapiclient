@@ -53,6 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Api_keys
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeysControllerList404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -82,6 +84,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Api_keys
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeysControllerCreate400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeysControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeysControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValue>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserApiKeyWithValue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -69,6 +69,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.Item
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DeleteObjectResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DeleteObjectResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -94,6 +96,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.Item
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ObjectValue>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ObjectValue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -121,6 +125,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Kv.Item
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ObjectWithoutValue>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ObjectWithoutValue.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

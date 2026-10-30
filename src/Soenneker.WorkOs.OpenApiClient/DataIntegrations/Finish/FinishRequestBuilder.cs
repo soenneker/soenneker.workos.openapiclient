@@ -55,6 +55,8 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Finish
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerFinishConnection403Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationFinishConnectionResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationFinishConnectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

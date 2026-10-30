@@ -55,6 +55,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Events
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.EventsControllerList400Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.EventsControllerList422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.EventList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.EventList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

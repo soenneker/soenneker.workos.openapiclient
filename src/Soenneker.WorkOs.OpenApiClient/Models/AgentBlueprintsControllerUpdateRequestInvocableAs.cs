@@ -12,16 +12,26 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AgentBlueprintsControllerUpdateRequestInvocableAs : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("instance_types") is { } nullNodeInstanceTypes && nullNodeInstanceTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceTypes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. At least one is required; existing sessions of a removed type are refused at their next refresh.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?>? InstanceTypes { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?>? InstanceTypes { get => _explicitNullValueInstanceTypes; set { _explicitNullValueInstanceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_types"); else _explicitNullProperties?.Remove("instance_types"); } }
+        private List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?>? _explicitNullValueInstanceTypes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?> InstanceTypes { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?> InstanceTypes { get => _explicitNullValueInstanceTypes; set { _explicitNullValueInstanceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_types"); else _explicitNullProperties?.Remove("instance_types"); } }
+        private List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?> _explicitNullValueInstanceTypes = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAs"/> and sets the default values.
@@ -38,7 +48,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAs CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAs();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAs(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,6 +69,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem>("instance_types", InstanceTypes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

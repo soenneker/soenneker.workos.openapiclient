@@ -12,56 +12,81 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AgentBlueprintsControllerCreateRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("invocable_as") is { } nullNodeInvocableAs && nullNodeInvocableAs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvocableAs = null;
+            if (parseNode.GetChildNode("invocable_by") is { } nullNodeInvocableBy && nullNodeInvocableBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvocableBy = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
+            if (parseNode.GetChildNode("session_settings") is { } nullNodeSessionSettings && nullNodeSessionSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionSettings = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Human-readable description of the agent blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>How sessions may be minted from this blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs? InvocableAs { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs? InvocableAs { get => _explicitNullValueInvocableAs; set { _explicitNullValueInvocableAs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocable_as"); else _explicitNullProperties?.Remove("invocable_as"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs? _explicitNullValueInvocableAs = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs InvocableAs { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs InvocableAs { get => _explicitNullValueInvocableAs; set { _explicitNullValueInvocableAs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocable_as"); else _explicitNullProperties?.Remove("invocable_as"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs _explicitNullValueInvocableAs = default!;
 #endif
         /// <summary>Who may mint sessions from this blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy? InvocableBy { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy? InvocableBy { get => _explicitNullValueInvocableBy; set { _explicitNullValueInvocableBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocable_by"); else _explicitNullProperties?.Remove("invocable_by"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy? _explicitNullValueInvocableBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy InvocableBy { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy InvocableBy { get => _explicitNullValueInvocableBy; set { _explicitNullValueInvocableBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocable_by"); else _explicitNullProperties?.Remove("invocable_by"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy _explicitNullValueInvocableBy = default!;
 #endif
         /// <summary>Human-readable name of the agent blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Permissions { get; set; }
+        public List<string>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private List<string>? _explicitNullValuePermissions = default!;
 #nullable restore
 #else
-        public List<string> Permissions { get; set; }
+        public List<string> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private List<string> _explicitNullValuePermissions = default!;
 #endif
         /// <summary>Token and session lifetimes for sessions minted from this blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings? SessionSettings { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings? SessionSettings { get => _explicitNullValueSessionSettings; set { _explicitNullValueSessionSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_settings"); else _explicitNullProperties?.Remove("session_settings"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings? _explicitNullValueSessionSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings SessionSettings { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings SessionSettings { get => _explicitNullValueSessionSettings; set { _explicitNullValueSessionSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_settings"); else _explicitNullProperties?.Remove("session_settings"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings _explicitNullValueSessionSettings = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequest"/> and sets the default values.
@@ -78,7 +103,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -109,6 +134,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings>("session_settings", SessionSettings);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

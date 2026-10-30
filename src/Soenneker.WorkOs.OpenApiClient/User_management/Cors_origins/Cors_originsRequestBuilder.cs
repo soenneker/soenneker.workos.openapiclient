@@ -53,6 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "401", global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList401Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -80,6 +82,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
             {
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerCreateCorsOrigin409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginsControllerCreateCorsOrigin422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.CorsOriginResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

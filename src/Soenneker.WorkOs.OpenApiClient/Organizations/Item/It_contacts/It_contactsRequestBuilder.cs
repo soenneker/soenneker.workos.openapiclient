@@ -68,6 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerList403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerList404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ItContactList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ItContactList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -101,6 +103,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerCreate409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerCreate422Response.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerCreate503Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ItContact>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ItContact.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

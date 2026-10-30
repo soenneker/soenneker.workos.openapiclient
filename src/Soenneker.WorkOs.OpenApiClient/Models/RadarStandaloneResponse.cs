@@ -11,31 +11,50 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RadarStandaloneResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("attempt_id") is { } nullNodeAttemptId && nullNodeAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptId = null;
+            if (parseNode.GetChildNode("blocklist_type") is { } nullNodeBlocklistType && nullNodeBlocklistType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlocklistType = null;
+            if (parseNode.GetChildNode("control") is { } nullNodeControl && nullNodeControl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Control = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("verdict") is { } nullNodeVerdict && nullNodeVerdict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verdict = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Unique identifier of the authentication attempt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AttemptId { get; set; }
+        public string? AttemptId { get => _explicitNullValueAttemptId; set { _explicitNullValueAttemptId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_id"); else _explicitNullProperties?.Remove("attempt_id"); } }
+        private string? _explicitNullValueAttemptId = default!;
 #nullable restore
 #else
-        public string AttemptId { get; set; }
+        public string AttemptId { get => _explicitNullValueAttemptId; set { _explicitNullValueAttemptId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_id"); else _explicitNullProperties?.Remove("attempt_id"); } }
+        private string _explicitNullValueAttemptId = default!;
 #endif
         /// <summary>The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType? BlocklistType { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType? BlocklistType { get => _explicitNullValueBlocklistType; set { _explicitNullValueBlocklistType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocklist_type"); else _explicitNullProperties?.Remove("blocklist_type"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType? _explicitNullValueBlocklistType = default!;
         /// <summary>The Radar control that triggered the verdict. Only present if the verdict is `block` or `challenge`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl? Control { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl? Control { get => _explicitNullValueControl; set { _explicitNullValueControl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("control"); else _explicitNullProperties?.Remove("control"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl? _explicitNullValueControl = default!;
         /// <summary>A human-readable reason for the verdict.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>The verdict of the risk assessment.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict? Verdict { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict? Verdict { get => _explicitNullValueVerdict; set { _explicitNullValueVerdict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verdict"); else _explicitNullProperties?.Remove("verdict"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict? _explicitNullValueVerdict = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse"/> and sets the default values.
         /// </summary>
@@ -51,7 +70,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +99,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl>("control", Control);
             writer.WriteStringValue("reason", Reason);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict>("verdict", Verdict);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

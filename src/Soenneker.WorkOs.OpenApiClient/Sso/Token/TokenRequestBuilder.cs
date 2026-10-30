@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Token
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerToken404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerToken422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

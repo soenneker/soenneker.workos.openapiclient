@@ -11,21 +11,35 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UserlandUserIdentitiesControllerGet200ResponseSchemaItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("idp_id") is { } nullNodeIdpId && nullNodeIdpId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpId = null;
+            if (parseNode.GetChildNode("provider") is { } nullNodeProvider && nullNodeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Provider = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The unique ID of the user in the external identity provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdpId { get; set; }
+        public string? IdpId { get => _explicitNullValueIdpId; set { _explicitNullValueIdpId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_id"); else _explicitNullProperties?.Remove("idp_id"); } }
+        private string? _explicitNullValueIdpId = default!;
 #nullable restore
 #else
-        public string IdpId { get; set; }
+        public string IdpId { get => _explicitNullValueIdpId; set { _explicitNullValueIdpId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_id"); else _explicitNullProperties?.Remove("idp_id"); } }
+        private string _explicitNullValueIdpId = default!;
 #endif
         /// <summary>The type of OAuth provider for the identity.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemProvider? Provider { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemProvider? Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemProvider? _explicitNullValueProvider = default!;
         /// <summary>The type of the identity.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemType? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseSchemaItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("idp_id", IdpId);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemProvider>("provider", Provider);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserIdentitiesControllerGet200ResponseItemType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

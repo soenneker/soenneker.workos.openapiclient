@@ -12161,6 +12161,91 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "groups"
+        ],
+        "summary": "Update Group members",
+        "description": "Adds and removes organization memberships for a group in a single atomic operation. Organization memberships not listed in \u0060add\u0060 or \u0060remove\u0060 are left unchanged. Adding a member that is already in the group or removing a member that isn\u0027t in the group has no effect. A membership listed in both \u0060add\u0060 and \u0060remove\u0060 is rejected. \u0060add\u0060 and \u0060remove\u0060 must contain between 1 and 100 entries combined.",
+        "operationId": "GroupMembershipsControllerUpdateMembers",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the Organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+            }
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Unique identifier of the Group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "group_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchGroupMembershipsDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupMembershipsControllerUpdateMembers400Response"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupMembershipsControllerUpdateMembers403Response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupMembershipsControllerUpdateMembers404Response"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupMembershipsControllerUpdateMembers422Response"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/organizations/{id}/groups/{groupId}/organization-memberships/{omId}": {
@@ -14412,7 +14497,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0429Response"
+                  "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0429ResponseError"
                 }
               }
             }
@@ -20702,40 +20787,10 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CheckAuthorizationDtoAllOf2OneOf1"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "permission_slug": {
-                "type": "string",
-                "description": "The slug of the permission to check.",
-                "example": "posts:create"
-              }
-            },
-            "required": [
-              "permission_slug"
-            ]
+            "$ref": "#/components/schemas/CheckAuthorizationDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CheckAuthorizationDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "permission_slug": {
-                "type": "string",
-                "description": "The slug of the permission to check.",
-                "example": "posts:create"
-              }
-            },
-            "required": [
-              "permission_slug"
-            ]
+            "$ref": "#/components/schemas/CheckAuthorizationDtoOneOf2"
           }
         ]
       },
@@ -20893,40 +20948,10 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AssignRoleDtoAllOf2OneOf1"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "role_slug": {
-                "type": "string",
-                "description": "The slug of the role to assign.",
-                "example": "editor"
-              }
-            },
-            "required": [
-              "role_slug"
-            ]
+            "$ref": "#/components/schemas/AssignRoleDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AssignRoleDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "role_slug": {
-                "type": "string",
-                "description": "The slug of the role to assign.",
-                "example": "editor"
-              }
-            },
-            "required": [
-              "role_slug"
-            ]
+            "$ref": "#/components/schemas/AssignRoleDtoOneOf2"
           }
         ]
       },
@@ -20947,40 +20972,10 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RemoveRoleDtoAllOf2OneOf1"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "role_slug": {
-                "type": "string",
-                "description": "The slug of the role to remove.",
-                "example": "editor"
-              }
-            },
-            "required": [
-              "role_slug"
-            ]
+            "$ref": "#/components/schemas/RemoveRoleDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RemoveRoleDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "role_slug": {
-                "type": "string",
-                "description": "The slug of the role to remove.",
-                "example": "editor"
-              }
-            },
-            "required": [
-              "role_slug"
-            ]
+            "$ref": "#/components/schemas/RemoveRoleDtoOneOf2"
           }
         ]
       },
@@ -21202,113 +21197,13 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "type": "object",
-                "not": {
-                  "anyOf": [
-                    {
-                      "required": [
-                        "parent_resource_id"
-                      ],
-                      "properties": {
-                        "parent_resource_id": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "parent_resource_external_id"
-                      ],
-                      "properties": {
-                        "parent_resource_external_id": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "parent_resource_type_slug"
-                      ],
-                      "properties": {
-                        "parent_resource_type_slug": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "name": {
-                "maxLength": 48,
-                "type": "string",
-                "description": "A display name for the resource.",
-                "example": "Updated Name"
-              },
-              "description": {
-                "maxLength": 150,
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "An optional description of the resource.",
-                "example": "Updated description"
-              }
-            }
+            "$ref": "#/components/schemas/UpdateAuthorizationResourceDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UpdateAuthorizationResourceDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "name": {
-                "maxLength": 48,
-                "type": "string",
-                "description": "A display name for the resource.",
-                "example": "Updated Name"
-              },
-              "description": {
-                "maxLength": 150,
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "An optional description of the resource.",
-                "example": "Updated description"
-              }
-            }
+            "$ref": "#/components/schemas/UpdateAuthorizationResourceDtoOneOf2"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UpdateAuthorizationResourceDtoAllOf2OneOf3"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "name": {
-                "maxLength": 48,
-                "type": "string",
-                "description": "A display name for the resource.",
-                "example": "Updated Name"
-              },
-              "description": {
-                "maxLength": 150,
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "An optional description of the resource.",
-                "example": "Updated description"
-              }
-            }
+            "$ref": "#/components/schemas/UpdateAuthorizationResourceDtoOneOf3"
           }
         ]
       },
@@ -21329,182 +21224,13 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "type": "object",
-                "not": {
-                  "anyOf": [
-                    {
-                      "required": [
-                        "parent_resource_id"
-                      ],
-                      "properties": {
-                        "parent_resource_id": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "parent_resource_external_id"
-                      ],
-                      "properties": {
-                        "parent_resource_external_id": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "parent_resource_type_slug"
-                      ],
-                      "properties": {
-                        "parent_resource_type_slug": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": "string",
-                "description": "An external identifier for the resource.",
-                "example": "my-workspace-01"
-              },
-              "name": {
-                "maxLength": 48,
-                "type": "string",
-                "description": "A display name for the resource.",
-                "example": "Acme Workspace"
-              },
-              "description": {
-                "maxLength": 150,
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "An optional description of the resource.",
-                "example": "Primary workspace for the Acme team"
-              },
-              "resource_type_slug": {
-                "type": "string",
-                "description": "The slug of the resource type.",
-                "example": "workspace"
-              },
-              "organization_id": {
-                "type": "string",
-                "description": "The ID of the organization this resource belongs to.",
-                "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
-              }
-            },
-            "required": [
-              "external_id",
-              "name",
-              "resource_type_slug",
-              "organization_id"
-            ]
+            "$ref": "#/components/schemas/CreateAuthorizationResourceDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateAuthorizationResourceDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": "string",
-                "description": "An external identifier for the resource.",
-                "example": "my-workspace-01"
-              },
-              "name": {
-                "maxLength": 48,
-                "type": "string",
-                "description": "A display name for the resource.",
-                "example": "Acme Workspace"
-              },
-              "description": {
-                "maxLength": 150,
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "An optional description of the resource.",
-                "example": "Primary workspace for the Acme team"
-              },
-              "resource_type_slug": {
-                "type": "string",
-                "description": "The slug of the resource type.",
-                "example": "workspace"
-              },
-              "organization_id": {
-                "type": "string",
-                "description": "The ID of the organization this resource belongs to.",
-                "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
-              }
-            },
-            "required": [
-              "external_id",
-              "name",
-              "resource_type_slug",
-              "organization_id"
-            ]
+            "$ref": "#/components/schemas/CreateAuthorizationResourceDtoOneOf2"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateAuthorizationResourceDtoAllOf2OneOf3"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": "string",
-                "description": "An external identifier for the resource.",
-                "example": "my-workspace-01"
-              },
-              "name": {
-                "maxLength": 48,
-                "type": "string",
-                "description": "A display name for the resource.",
-                "example": "Acme Workspace"
-              },
-              "description": {
-                "maxLength": 150,
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "An optional description of the resource.",
-                "example": "Primary workspace for the Acme team"
-              },
-              "resource_type_slug": {
-                "type": "string",
-                "description": "The slug of the resource type.",
-                "example": "workspace"
-              },
-              "organization_id": {
-                "type": "string",
-                "description": "The ID of the organization this resource belongs to.",
-                "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
-              }
-            },
-            "required": [
-              "external_id",
-              "name",
-              "resource_type_slug",
-              "organization_id"
-            ]
+            "$ref": "#/components/schemas/CreateAuthorizationResourceDtoOneOf3"
           }
         ]
       },
@@ -21703,82 +21429,10 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateConnectionDtoAllOf2OneOf1"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "organization_id": {
-                "type": "string",
-                "description": "Unique identifier for the Organization in which the Connection resides.",
-                "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
-              },
-              "name": {
-                "type": "string",
-                "description": "A human-readable name for the Connection. This will most commonly be the organization\u0027s name.",
-                "example": "Foo Corp"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": "string",
-                "description": "The customer-owned identifier for the Connection.",
-                "example": "acme-legacy-conn-42"
-              },
-              "connection_type": {
-                "type": "string",
-                "description": "The type of the Connection. Only SAML and OIDC connection types may be created. When omitted, the type is inferred from the provided options.",
-                "example": "OktaSAML"
-              },
-              "attribute_maps": {
-                "description": "How IdP attributes or claims map onto WorkOS profile fields. Provided fields override the defaults for the connection type.",
-                "$ref": "#/components/schemas/CreateConnectionAttributeMapsDto"
-              }
-            },
-            "required": [
-              "organization_id"
-            ]
+            "$ref": "#/components/schemas/CreateConnectionDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateConnectionDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "organization_id": {
-                "type": "string",
-                "description": "Unique identifier for the Organization in which the Connection resides.",
-                "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
-              },
-              "name": {
-                "type": "string",
-                "description": "A human-readable name for the Connection. This will most commonly be the organization\u0027s name.",
-                "example": "Foo Corp"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": "string",
-                "description": "The customer-owned identifier for the Connection.",
-                "example": "acme-legacy-conn-42"
-              },
-              "connection_type": {
-                "type": "string",
-                "description": "The type of the Connection. Only SAML and OIDC connection types may be created. When omitted, the type is inferred from the provided options.",
-                "example": "OktaSAML"
-              },
-              "attribute_maps": {
-                "description": "How IdP attributes or claims map onto WorkOS profile fields. Provided fields override the defaults for the connection type.",
-                "$ref": "#/components/schemas/CreateConnectionAttributeMapsDto"
-              }
-            },
-            "required": [
-              "organization_id"
-            ]
+            "$ref": "#/components/schemas/CreateConnectionDtoOneOf2"
           }
         ]
       },
@@ -21939,130 +21593,13 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "type": "object",
-                "not": {
-                  "anyOf": [
-                    {
-                      "required": [
-                        "saml_options"
-                      ],
-                      "properties": {
-                        "saml_options": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "oidc_options"
-                      ],
-                      "properties": {
-                        "oidc_options": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "A human-readable name for the Connection.",
-                "example": "Foo Corp"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The customer-owned identifier for the Connection. Set to \u0060null\u0060 to stop tracking one.",
-                "example": "acme-legacy-conn-42"
-              },
-              "connection_type": {
-                "type": "string",
-                "description": "The type of the Connection. Immutable after creation \u2014 it may be sent, but only with the Connection current type.",
-                "example": "OktaSAML"
-              },
-              "attribute_maps": {
-                "description": "How IdP attributes or claims map onto WorkOS profile fields. Only the provided fields are updated.",
-                "$ref": "#/components/schemas/PatchConnectionAttributeMapsDto"
-              }
-            }
+            "$ref": "#/components/schemas/PatchConnectionDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchConnectionDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "A human-readable name for the Connection.",
-                "example": "Foo Corp"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The customer-owned identifier for the Connection. Set to \u0060null\u0060 to stop tracking one.",
-                "example": "acme-legacy-conn-42"
-              },
-              "connection_type": {
-                "type": "string",
-                "description": "The type of the Connection. Immutable after creation \u2014 it may be sent, but only with the Connection current type.",
-                "example": "OktaSAML"
-              },
-              "attribute_maps": {
-                "description": "How IdP attributes or claims map onto WorkOS profile fields. Only the provided fields are updated.",
-                "$ref": "#/components/schemas/PatchConnectionAttributeMapsDto"
-              }
-            }
+            "$ref": "#/components/schemas/PatchConnectionDtoOneOf2"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PatchConnectionDtoAllOf2OneOf3"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "A human-readable name for the Connection.",
-                "example": "Foo Corp"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The customer-owned identifier for the Connection. Set to \u0060null\u0060 to stop tracking one.",
-                "example": "acme-legacy-conn-42"
-              },
-              "connection_type": {
-                "type": "string",
-                "description": "The type of the Connection. Immutable after creation \u2014 it may be sent, but only with the Connection current type.",
-                "example": "OktaSAML"
-              },
-              "attribute_maps": {
-                "description": "How IdP attributes or claims map onto WorkOS profile fields. Only the provided fields are updated.",
-                "$ref": "#/components/schemas/PatchConnectionAttributeMapsDto"
-              }
-            }
+            "$ref": "#/components/schemas/PatchConnectionDtoOneOf3"
           }
         ]
       },
@@ -22089,6 +21626,33 @@
             "type": "string",
             "description": "The ID of the Organization Membership to add to the group.",
             "example": "om_01HXYZ123456789ABCDEFGHIJ"
+          }
+        }
+      },
+      "PatchGroupMembershipsDto": {
+        "type": "object",
+        "properties": {
+          "add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the organization memberships to add to the group. Adding a membership that\u0027s already in the group has no effect.",
+            "default": [],
+            "example": [
+              "om_01HXYZ123456789ABCDEFGHIJ"
+            ]
+          },
+          "remove": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the organization memberships to remove from the group. Removing a membership that isn\u0027t in the group has no effect.",
+            "default": [],
+            "example": [
+              "om_01HXYZ987654321ABCDEFGHIJ"
+            ]
           }
         }
       },
@@ -23150,100 +22714,13 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "type": "object",
-                "not": {
-                  "anyOf": [
-                    {
-                      "required": [
-                        "role_slug"
-                      ],
-                      "properties": {
-                        "role_slug": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "role_slugs"
-                      ],
-                      "properties": {
-                        "role_slugs": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "user_id": {
-                "type": "string",
-                "description": "The ID of the [user](/reference/authkit/user).",
-                "example": "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E"
-              },
-              "organization_id": {
-                "type": "string",
-                "description": "The ID of the [organization](/reference/organization) which the user belongs to.",
-                "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
-              }
-            },
-            "required": [
-              "user_id",
-              "organization_id"
-            ]
+            "$ref": "#/components/schemas/CreateUserlandUserOrganizationMembershipDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "user_id": {
-                "type": "string",
-                "description": "The ID of the [user](/reference/authkit/user).",
-                "example": "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E"
-              },
-              "organization_id": {
-                "type": "string",
-                "description": "The ID of the [organization](/reference/organization) which the user belongs to.",
-                "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
-              }
-            },
-            "required": [
-              "user_id",
-              "organization_id"
-            ]
+            "$ref": "#/components/schemas/CreateUserlandUserOrganizationMembershipDtoOneOf2"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "user_id": {
-                "type": "string",
-                "description": "The ID of the [user](/reference/authkit/user).",
-                "example": "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E"
-              },
-              "organization_id": {
-                "type": "string",
-                "description": "The ID of the [organization](/reference/organization) which the user belongs to.",
-                "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
-              }
-            },
-            "required": [
-              "user_id",
-              "organization_id"
-            ]
+            "$ref": "#/components/schemas/CreateUserlandUserOrganizationMembershipDtoOneOf3"
           }
         ]
       },
@@ -23356,303 +22833,13 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "type": "object",
-                "not": {
-                  "anyOf": [
-                    {
-                      "required": [
-                        "password"
-                      ],
-                      "properties": {
-                        "password": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "password_hash"
-                      ],
-                      "properties": {
-                        "password_hash": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "password_hash_type"
-                      ],
-                      "properties": {
-                        "password_hash_type": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "password_salt_position"
-                      ],
-                      "properties": {
-                        "password_salt_position": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "email": {
-                "type": "string",
-                "description": "The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it.",
-                "format": "email",
-                "example": "marcelina.davis@example.com"
-              },
-              "first_name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The first name of the user.",
-                "example": "Marcelina"
-              },
-              "last_name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The last name of the user.",
-                "example": "Davis"
-              },
-              "name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user\u0027s full name.",
-                "example": "Marcelina Davis"
-              },
-              "email_verified": {
-                "type": [
-                  "null",
-                  "boolean"
-                ],
-                "description": "Whether the user\u0027s email has been verified.",
-                "example": true
-              },
-              "metadata": {
-                "$ref": "#/components/schemas/CreateUserlandUserDtoMetadata"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The external ID of the user.",
-                "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
-              },
-              "ip_address": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The IP address of the user\u0027s request.",
-                "example": "203.0.113.42"
-              },
-              "user_agent": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user agent string from the user\u0027s request.",
-                "example": "Mozilla/5.0"
-              },
-              "signals_id": {
-                "type": "string",
-                "description": "An optional Radar signals ID to correlate client-side signals with this request.",
-                "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
-              }
-            },
-            "required": [
-              "email"
-            ]
+            "$ref": "#/components/schemas/CreateUserlandUserDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "email": {
-                "type": "string",
-                "description": "The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it.",
-                "format": "email",
-                "example": "marcelina.davis@example.com"
-              },
-              "first_name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The first name of the user.",
-                "example": "Marcelina"
-              },
-              "last_name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The last name of the user.",
-                "example": "Davis"
-              },
-              "name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user\u0027s full name.",
-                "example": "Marcelina Davis"
-              },
-              "email_verified": {
-                "type": [
-                  "null",
-                  "boolean"
-                ],
-                "description": "Whether the user\u0027s email has been verified.",
-                "example": true
-              },
-              "metadata": {
-                "$ref": "#/components/schemas/CreateUserlandUserDtoMetadata"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The external ID of the user.",
-                "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
-              },
-              "ip_address": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The IP address of the user\u0027s request.",
-                "example": "203.0.113.42"
-              },
-              "user_agent": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user agent string from the user\u0027s request.",
-                "example": "Mozilla/5.0"
-              },
-              "signals_id": {
-                "type": "string",
-                "description": "An optional Radar signals ID to correlate client-side signals with this request.",
-                "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
-              }
-            },
-            "required": [
-              "email"
-            ]
+            "$ref": "#/components/schemas/CreateUserlandUserDtoOneOf2"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf2OneOf3"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "email": {
-                "type": "string",
-                "description": "The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it.",
-                "format": "email",
-                "example": "marcelina.davis@example.com"
-              },
-              "first_name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The first name of the user.",
-                "example": "Marcelina"
-              },
-              "last_name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The last name of the user.",
-                "example": "Davis"
-              },
-              "name": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user\u0027s full name.",
-                "example": "Marcelina Davis"
-              },
-              "email_verified": {
-                "type": [
-                  "null",
-                  "boolean"
-                ],
-                "description": "Whether the user\u0027s email has been verified.",
-                "example": true
-              },
-              "metadata": {
-                "$ref": "#/components/schemas/CreateUserlandUserDtoMetadata"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The external ID of the user.",
-                "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
-              },
-              "ip_address": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The IP address of the user\u0027s request.",
-                "example": "203.0.113.42"
-              },
-              "user_agent": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user agent string from the user\u0027s request.",
-                "example": "Mozilla/5.0"
-              },
-              "signals_id": {
-                "type": "string",
-                "description": "An optional Radar signals ID to correlate client-side signals with this request.",
-                "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
-              }
-            },
-            "required": [
-              "email"
-            ]
+            "$ref": "#/components/schemas/CreateUserlandUserDtoOneOf3"
           }
         ]
       },
@@ -23679,219 +22866,13 @@
         },
         "oneOf": [
           {
-            "allOf": [
-              {
-                "type": "object",
-                "not": {
-                  "anyOf": [
-                    {
-                      "required": [
-                        "password"
-                      ],
-                      "properties": {
-                        "password": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "password_hash"
-                      ],
-                      "properties": {
-                        "password_hash": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "password_hash_type"
-                      ],
-                      "properties": {
-                        "password_hash_type": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    },
-                    {
-                      "required": [
-                        "password_salt_position"
-                      ],
-                      "properties": {
-                        "password_salt_position": {
-                          "x-exclude-from-lint": true
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "email": {
-                "type": "string",
-                "description": "The email address of the user.",
-                "format": "email",
-                "example": "marcelina.davis@example.com"
-              },
-              "first_name": {
-                "type": "string",
-                "description": "The first name of the user.",
-                "example": "Marcelina"
-              },
-              "last_name": {
-                "type": "string",
-                "description": "The last name of the user.",
-                "example": "Davis"
-              },
-              "name": {
-                "type": "string",
-                "description": "The user\u0027s full name.",
-                "example": "Marcelina Davis"
-              },
-              "email_verified": {
-                "type": "boolean",
-                "description": "Whether the user\u0027s email has been verified.",
-                "example": true
-              },
-              "metadata": {
-                "$ref": "#/components/schemas/UpdateUserlandUserDtoMetadata"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The external ID of the user.",
-                "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
-              },
-              "locale": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user\u0027s preferred locale.",
-                "example": "en-US"
-              }
-            }
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoOneOf1"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf2OneOf2"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "email": {
-                "type": "string",
-                "description": "The email address of the user.",
-                "format": "email",
-                "example": "marcelina.davis@example.com"
-              },
-              "first_name": {
-                "type": "string",
-                "description": "The first name of the user.",
-                "example": "Marcelina"
-              },
-              "last_name": {
-                "type": "string",
-                "description": "The last name of the user.",
-                "example": "Davis"
-              },
-              "name": {
-                "type": "string",
-                "description": "The user\u0027s full name.",
-                "example": "Marcelina Davis"
-              },
-              "email_verified": {
-                "type": "boolean",
-                "description": "Whether the user\u0027s email has been verified.",
-                "example": true
-              },
-              "metadata": {
-                "$ref": "#/components/schemas/UpdateUserlandUserDtoMetadata"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The external ID of the user.",
-                "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
-              },
-              "locale": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user\u0027s preferred locale.",
-                "example": "en-US"
-              }
-            }
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoOneOf2"
           },
           {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf2OneOf3"
-              }
-            ],
-            "type": "object",
-            "properties": {
-              "email": {
-                "type": "string",
-                "description": "The email address of the user.",
-                "format": "email",
-                "example": "marcelina.davis@example.com"
-              },
-              "first_name": {
-                "type": "string",
-                "description": "The first name of the user.",
-                "example": "Marcelina"
-              },
-              "last_name": {
-                "type": "string",
-                "description": "The last name of the user.",
-                "example": "Davis"
-              },
-              "name": {
-                "type": "string",
-                "description": "The user\u0027s full name.",
-                "example": "Marcelina Davis"
-              },
-              "email_verified": {
-                "type": "boolean",
-                "description": "Whether the user\u0027s email has been verified.",
-                "example": true
-              },
-              "metadata": {
-                "$ref": "#/components/schemas/UpdateUserlandUserDtoMetadata"
-              },
-              "external_id": {
-                "maxLength": 128,
-                "pattern": "^[\\x00-\\x7F]\u002B$",
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The external ID of the user.",
-                "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
-              },
-              "locale": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "description": "The user\u0027s preferred locale.",
-                "example": "en-US"
-              }
-            }
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoOneOf3"
           }
         ]
       },
@@ -29029,9 +28010,6 @@
         }
       },
       "DataIntegrationVendedCredential": {
-        "required": [
-          "auth_method"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf1"
@@ -29043,12 +28021,7 @@
             "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3"
           }
         ],
-        "properties": {
-          "auth_method": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "auth_method",
           "mapping": {
             "DataIntegrationVendedCredentialOneOf1": "#/components/schemas/DataIntegrationVendedCredentialOneOf1",
@@ -31796,9 +30769,6 @@
         }
       },
       "ApiKeyOwner": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ApiKeyOwnerOneOf1"
@@ -31807,22 +30777,17 @@
             "$ref": "#/components/schemas/ApiKeyOwnerOneOf2"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The entity that owns the API Key.",
-        "discriminator": {
+        "example": {
+          "type": "organization",
+          "id": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+        },
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "ApiKeyOwnerOneOf1": "#/components/schemas/ApiKeyOwnerOneOf1",
             "ApiKeyOwnerOneOf2": "#/components/schemas/ApiKeyOwnerOneOf2"
           }
-        },
-        "example": {
-          "type": "organization",
-          "id": "org_01EHZNVPK3SFK441A1RGBFSHRT"
         }
       },
       "ApiKeyValidationResponseApiKey": {
@@ -48362,9 +47327,6 @@
         }
       },
       "AgentBlueprintsTokenControllerMintTokenRequest": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestOneOf1"
@@ -48379,13 +47341,8 @@
             "$ref": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestOneOf4"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "How to mint the agent session, discriminated by \u0060type\u0060. \u0060intent\u0060 is optional on every variant.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type"
         }
       },
@@ -48646,9 +47603,6 @@
         }
       },
       "AgentAdminControllerValidateCredentialRequest": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/AgentAdminControllerValidateCredentialRequestOneOf1"
@@ -48657,13 +47611,8 @@
             "$ref": "#/components/schemas/AgentAdminControllerValidateCredentialRequestOneOf2"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The agent credential to validate. Either an \u0060api_key\u0060 or an \u0060access_token\u0060, discriminated by \u0060type\u0060.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type"
         }
       },
@@ -56134,6 +55083,62 @@
           }
         }
       },
+      "GroupMembershipsControllerUpdateMembers400Response": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/GroupMembershipUpdateOverlapCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "GroupMembershipsControllerUpdateMembers403Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "GroupMembershipsControllerUpdateMembers404Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
+      "GroupMembershipsControllerUpdateMembers422Response": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Organization not found: \u0027org_01EHQMYV6MBK39QC5PZXHY59C3\u0027."
+          }
+        }
+      },
       "GroupMembershipsControllerRemoveMember403Response": {
         "required": [
           "message"
@@ -57393,6 +56398,9 @@
           },
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf13"
+          },
+          {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf14"
           }
         ],
         "discriminator": {
@@ -57410,7 +56418,8 @@
             "radar_sign_up_challenge": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf10",
             "radar_sms_sign_in_challenge": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf11",
             "application_consent_required": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf12",
-            "policy_denied": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf13"
+            "policy_denied": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf13",
+            "action_denied": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf14"
           }
         }
       },
@@ -60539,158 +59548,13 @@
       "ConnectApplicationAllOf1OneOf1": {
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "is_first_party": {
-                "const": null,
-                "type": "boolean",
-                "description": "Whether the application is a first-party application.",
-                "default": true,
-                "example": true
-              },
-              "application_type": {
-                "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1ApplicationType"
-              },
-              "redirect_uris": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem"
-                },
-                "description": "The redirect URIs configured for this application."
-              },
-              "cors_origins": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "The CORS origins allowed to call the OAuth token endpoint for this application from a browser.",
-                "example": [
-                  "https://app.example.com"
-                ]
-              },
-              "uses_pkce": {
-                "type": "boolean",
-                "description": "Whether the application uses PKCE for authorization.",
-                "example": true
-              }
-            },
-            "required": [
-              "is_first_party",
-              "application_type",
-              "redirect_uris",
-              "cors_origins",
-              "uses_pkce"
-            ]
+            "$ref": "#/components/schemas/ConnectApplicationAllOf1OneOf1OneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "is_first_party": {
-                "const": null,
-                "type": "boolean",
-                "description": "Whether the application is a first-party application.",
-                "default": false,
-                "example": false
-              },
-              "was_dynamically_registered": {
-                "const": null,
-                "type": "boolean",
-                "description": "Whether the application was dynamically registered.",
-                "default": false,
-                "example": false
-              },
-              "organization_id": {
-                "type": "string",
-                "description": "The ID of the organization the application belongs to.",
-                "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
-              },
-              "application_type": {
-                "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1ApplicationType"
-              },
-              "redirect_uris": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem"
-                },
-                "description": "The redirect URIs configured for this application."
-              },
-              "cors_origins": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "The CORS origins allowed to call the OAuth token endpoint for this application from a browser.",
-                "example": [
-                  "https://app.example.com"
-                ]
-              },
-              "uses_pkce": {
-                "type": "boolean",
-                "description": "Whether the application uses PKCE for authorization.",
-                "example": true
-              }
-            },
-            "required": [
-              "is_first_party",
-              "was_dynamically_registered",
-              "organization_id",
-              "application_type",
-              "redirect_uris",
-              "cors_origins",
-              "uses_pkce"
-            ]
+            "$ref": "#/components/schemas/ConnectApplicationAllOf1OneOf1OneOf2"
           },
           {
-            "type": "object",
-            "properties": {
-              "is_first_party": {
-                "const": null,
-                "type": "boolean",
-                "description": "Whether the application is a first-party application.",
-                "default": false,
-                "example": false
-              },
-              "was_dynamically_registered": {
-                "const": null,
-                "type": "boolean",
-                "description": "Whether the application was dynamically registered.",
-                "default": true,
-                "example": true
-              },
-              "application_type": {
-                "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1ApplicationType"
-              },
-              "redirect_uris": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem"
-                },
-                "description": "The redirect URIs configured for this application."
-              },
-              "cors_origins": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "The CORS origins allowed to call the OAuth token endpoint for this application from a browser.",
-                "example": [
-                  "https://app.example.com"
-                ]
-              },
-              "uses_pkce": {
-                "type": "boolean",
-                "description": "Whether the application uses PKCE for authorization.",
-                "example": true
-              }
-            },
-            "required": [
-              "is_first_party",
-              "was_dynamically_registered",
-              "application_type",
-              "redirect_uris",
-              "cors_origins",
-              "uses_pkce"
-            ]
+            "$ref": "#/components/schemas/ConnectApplicationAllOf1OneOf1OneOf3"
           }
         ]
       },
@@ -64675,6 +63539,23 @@
         "properties": {
           "code": {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOneOf13Code"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          }
+        }
+      },
+      "UserlandSessionsControllerAuthenticate0403ResponseOneOf14": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ActionDeniedCode"
           },
           "message": {
             "type": "string",
@@ -89442,6 +88323,25 @@
           ]
         }
       },
+      "GroupMembershipUpdateOverlapCode": {
+        "const": null,
+        "enum": [
+          "group_membership_update_overlap"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "group_membership_update_overlap",
+        "x-ms-enum": {
+          "name": "GroupMembershipUpdateOverlapCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "group_membership_update_overlap",
+              "name": "GroupMembershipUpdateOverlap"
+            }
+          ]
+        }
+      },
       "DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation503ResponseCode": {
         "const": null,
         "enum": [
@@ -94693,6 +93593,25 @@
           ]
         }
       },
+      "ActionDeniedCode": {
+        "const": null,
+        "enum": [
+          "action_denied"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "action_denied",
+        "x-ms-enum": {
+          "name": "ActionDeniedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "action_denied",
+              "name": "ActionDenied"
+            }
+          ]
+        }
+      },
       "UserlandSessionsControllerAuthenticate0429ResponseOneOf1Code": {
         "const": null,
         "enum": [
@@ -97135,6 +96054,1393 @@
               "name": "Desc"
             }
           ]
+        }
+      },
+      "CheckAuthorizationDtoOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CheckAuthorizationDtoAllOf2OneOf1"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "permission_slug": {
+            "type": "string",
+            "description": "The slug of the permission to check.",
+            "example": "posts:create"
+          }
+        },
+        "required": [
+          "permission_slug"
+        ]
+      },
+      "CheckAuthorizationDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CheckAuthorizationDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "permission_slug": {
+            "type": "string",
+            "description": "The slug of the permission to check.",
+            "example": "posts:create"
+          }
+        },
+        "required": [
+          "permission_slug"
+        ]
+      },
+      "AssignRoleDtoOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AssignRoleDtoAllOf2OneOf1"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role to assign.",
+            "example": "editor"
+          }
+        },
+        "required": [
+          "role_slug"
+        ]
+      },
+      "AssignRoleDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AssignRoleDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role to assign.",
+            "example": "editor"
+          }
+        },
+        "required": [
+          "role_slug"
+        ]
+      },
+      "RemoveRoleDtoOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/RemoveRoleDtoAllOf2OneOf1"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role to remove.",
+            "example": "editor"
+          }
+        },
+        "required": [
+          "role_slug"
+        ]
+      },
+      "RemoveRoleDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/RemoveRoleDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role to remove.",
+            "example": "editor"
+          }
+        },
+        "required": [
+          "role_slug"
+        ]
+      },
+      "UpdateAuthorizationResourceDtoOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "parent_resource_id"
+                  ],
+                  "properties": {
+                    "parent_resource_id": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "parent_resource_external_id"
+                  ],
+                  "properties": {
+                    "parent_resource_external_id": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "parent_resource_type_slug"
+                  ],
+                  "properties": {
+                    "parent_resource_type_slug": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 48,
+            "type": "string",
+            "description": "A display name for the resource.",
+            "example": "Updated Name"
+          },
+          "description": {
+            "maxLength": 150,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An optional description of the resource.",
+            "example": "Updated description"
+          }
+        }
+      },
+      "UpdateAuthorizationResourceDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/UpdateAuthorizationResourceDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 48,
+            "type": "string",
+            "description": "A display name for the resource.",
+            "example": "Updated Name"
+          },
+          "description": {
+            "maxLength": 150,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An optional description of the resource.",
+            "example": "Updated description"
+          }
+        }
+      },
+      "UpdateAuthorizationResourceDtoOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/UpdateAuthorizationResourceDtoAllOf2OneOf3"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 48,
+            "type": "string",
+            "description": "A display name for the resource.",
+            "example": "Updated Name"
+          },
+          "description": {
+            "maxLength": 150,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An optional description of the resource.",
+            "example": "Updated description"
+          }
+        }
+      },
+      "CreateAuthorizationResourceDtoOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "parent_resource_id"
+                  ],
+                  "properties": {
+                    "parent_resource_id": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "parent_resource_external_id"
+                  ],
+                  "properties": {
+                    "parent_resource_external_id": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "parent_resource_type_slug"
+                  ],
+                  "properties": {
+                    "parent_resource_type_slug": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": "string",
+            "description": "An external identifier for the resource.",
+            "example": "my-workspace-01"
+          },
+          "name": {
+            "maxLength": 48,
+            "type": "string",
+            "description": "A display name for the resource.",
+            "example": "Acme Workspace"
+          },
+          "description": {
+            "maxLength": 150,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An optional description of the resource.",
+            "example": "Primary workspace for the Acme team"
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The slug of the resource type.",
+            "example": "workspace"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization this resource belongs to.",
+            "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
+          }
+        },
+        "required": [
+          "external_id",
+          "name",
+          "resource_type_slug",
+          "organization_id"
+        ]
+      },
+      "CreateAuthorizationResourceDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CreateAuthorizationResourceDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": "string",
+            "description": "An external identifier for the resource.",
+            "example": "my-workspace-01"
+          },
+          "name": {
+            "maxLength": 48,
+            "type": "string",
+            "description": "A display name for the resource.",
+            "example": "Acme Workspace"
+          },
+          "description": {
+            "maxLength": 150,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An optional description of the resource.",
+            "example": "Primary workspace for the Acme team"
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The slug of the resource type.",
+            "example": "workspace"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization this resource belongs to.",
+            "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
+          }
+        },
+        "required": [
+          "external_id",
+          "name",
+          "resource_type_slug",
+          "organization_id"
+        ]
+      },
+      "CreateAuthorizationResourceDtoOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CreateAuthorizationResourceDtoAllOf2OneOf3"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": "string",
+            "description": "An external identifier for the resource.",
+            "example": "my-workspace-01"
+          },
+          "name": {
+            "maxLength": 48,
+            "type": "string",
+            "description": "A display name for the resource.",
+            "example": "Acme Workspace"
+          },
+          "description": {
+            "maxLength": 150,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An optional description of the resource.",
+            "example": "Primary workspace for the Acme team"
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The slug of the resource type.",
+            "example": "workspace"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization this resource belongs to.",
+            "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
+          }
+        },
+        "required": [
+          "external_id",
+          "name",
+          "resource_type_slug",
+          "organization_id"
+        ]
+      },
+      "CreateConnectionDtoOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CreateConnectionDtoAllOf2OneOf1"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "description": "Unique identifier for the Organization in which the Connection resides.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "name": {
+            "type": "string",
+            "description": "A human-readable name for the Connection. This will most commonly be the organization\u0027s name.",
+            "example": "Foo Corp"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": "string",
+            "description": "The customer-owned identifier for the Connection.",
+            "example": "acme-legacy-conn-42"
+          },
+          "connection_type": {
+            "type": "string",
+            "description": "The type of the Connection. Only SAML and OIDC connection types may be created. When omitted, the type is inferred from the provided options.",
+            "example": "OktaSAML"
+          },
+          "attribute_maps": {
+            "description": "How IdP attributes or claims map onto WorkOS profile fields. Provided fields override the defaults for the connection type.",
+            "$ref": "#/components/schemas/CreateConnectionAttributeMapsDto"
+          }
+        },
+        "required": [
+          "organization_id"
+        ]
+      },
+      "CreateConnectionDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CreateConnectionDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "description": "Unique identifier for the Organization in which the Connection resides.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "name": {
+            "type": "string",
+            "description": "A human-readable name for the Connection. This will most commonly be the organization\u0027s name.",
+            "example": "Foo Corp"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": "string",
+            "description": "The customer-owned identifier for the Connection.",
+            "example": "acme-legacy-conn-42"
+          },
+          "connection_type": {
+            "type": "string",
+            "description": "The type of the Connection. Only SAML and OIDC connection types may be created. When omitted, the type is inferred from the provided options.",
+            "example": "OktaSAML"
+          },
+          "attribute_maps": {
+            "description": "How IdP attributes or claims map onto WorkOS profile fields. Provided fields override the defaults for the connection type.",
+            "$ref": "#/components/schemas/CreateConnectionAttributeMapsDto"
+          }
+        },
+        "required": [
+          "organization_id"
+        ]
+      },
+      "PatchConnectionDtoOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "saml_options"
+                  ],
+                  "properties": {
+                    "saml_options": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "oidc_options"
+                  ],
+                  "properties": {
+                    "oidc_options": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A human-readable name for the Connection.",
+            "example": "Foo Corp"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The customer-owned identifier for the Connection. Set to \u0060null\u0060 to stop tracking one.",
+            "example": "acme-legacy-conn-42"
+          },
+          "connection_type": {
+            "type": "string",
+            "description": "The type of the Connection. Immutable after creation \u2014 it may be sent, but only with the Connection current type.",
+            "example": "OktaSAML"
+          },
+          "attribute_maps": {
+            "description": "How IdP attributes or claims map onto WorkOS profile fields. Only the provided fields are updated.",
+            "$ref": "#/components/schemas/PatchConnectionAttributeMapsDto"
+          }
+        }
+      },
+      "PatchConnectionDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PatchConnectionDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A human-readable name for the Connection.",
+            "example": "Foo Corp"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The customer-owned identifier for the Connection. Set to \u0060null\u0060 to stop tracking one.",
+            "example": "acme-legacy-conn-42"
+          },
+          "connection_type": {
+            "type": "string",
+            "description": "The type of the Connection. Immutable after creation \u2014 it may be sent, but only with the Connection current type.",
+            "example": "OktaSAML"
+          },
+          "attribute_maps": {
+            "description": "How IdP attributes or claims map onto WorkOS profile fields. Only the provided fields are updated.",
+            "$ref": "#/components/schemas/PatchConnectionAttributeMapsDto"
+          }
+        }
+      },
+      "PatchConnectionDtoOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PatchConnectionDtoAllOf2OneOf3"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A human-readable name for the Connection.",
+            "example": "Foo Corp"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The customer-owned identifier for the Connection. Set to \u0060null\u0060 to stop tracking one.",
+            "example": "acme-legacy-conn-42"
+          },
+          "connection_type": {
+            "type": "string",
+            "description": "The type of the Connection. Immutable after creation \u2014 it may be sent, but only with the Connection current type.",
+            "example": "OktaSAML"
+          },
+          "attribute_maps": {
+            "description": "How IdP attributes or claims map onto WorkOS profile fields. Only the provided fields are updated.",
+            "$ref": "#/components/schemas/PatchConnectionAttributeMapsDto"
+          }
+        }
+      },
+      "CreateUserlandUserOrganizationMembershipDtoOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "role_slug"
+                  ],
+                  "properties": {
+                    "role_slug": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "role_slugs"
+                  ],
+                  "properties": {
+                    "role_slugs": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the [user](/reference/authkit/user).",
+            "example": "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the [organization](/reference/organization) which the user belongs to.",
+            "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
+          }
+        },
+        "required": [
+          "user_id",
+          "organization_id"
+        ]
+      },
+      "CreateUserlandUserOrganizationMembershipDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the [user](/reference/authkit/user).",
+            "example": "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the [organization](/reference/organization) which the user belongs to.",
+            "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
+          }
+        },
+        "required": [
+          "user_id",
+          "organization_id"
+        ]
+      },
+      "CreateUserlandUserOrganizationMembershipDtoOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CreateUserlandUserOrganizationMembershipDtoAllOf2OneOf3"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the [user](/reference/authkit/user).",
+            "example": "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the [organization](/reference/organization) which the user belongs to.",
+            "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
+          }
+        },
+        "required": [
+          "user_id",
+          "organization_id"
+        ]
+      },
+      "CreateUserlandUserDtoOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "password"
+                  ],
+                  "properties": {
+                    "password": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "password_hash"
+                  ],
+                  "properties": {
+                    "password_hash": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "password_hash_type"
+                  ],
+                  "properties": {
+                    "password_hash_type": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "password_salt_position"
+                  ],
+                  "properties": {
+                    "password_salt_position": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it.",
+            "format": "email",
+            "example": "marcelina.davis@example.com"
+          },
+          "first_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The first name of the user.",
+            "example": "Marcelina"
+          },
+          "last_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last name of the user.",
+            "example": "Davis"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user\u0027s full name.",
+            "example": "Marcelina Davis"
+          },
+          "email_verified": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether the user\u0027s email has been verified.",
+            "example": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/CreateUserlandUserDtoMetadata"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The external ID of the user.",
+            "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "ip_address": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "user_agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user agent string from the user\u0027s request.",
+            "example": "Mozilla/5.0"
+          },
+          "signals_id": {
+            "type": "string",
+            "description": "An optional Radar signals ID to correlate client-side signals with this request.",
+            "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "CreateUserlandUserDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it.",
+            "format": "email",
+            "example": "marcelina.davis@example.com"
+          },
+          "first_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The first name of the user.",
+            "example": "Marcelina"
+          },
+          "last_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last name of the user.",
+            "example": "Davis"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user\u0027s full name.",
+            "example": "Marcelina Davis"
+          },
+          "email_verified": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether the user\u0027s email has been verified.",
+            "example": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/CreateUserlandUserDtoMetadata"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The external ID of the user.",
+            "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "ip_address": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "user_agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user agent string from the user\u0027s request.",
+            "example": "Mozilla/5.0"
+          },
+          "signals_id": {
+            "type": "string",
+            "description": "An optional Radar signals ID to correlate client-side signals with this request.",
+            "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "CreateUserlandUserDtoOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CreateUserlandUserDtoAllOf2OneOf3"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it.",
+            "format": "email",
+            "example": "marcelina.davis@example.com"
+          },
+          "first_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The first name of the user.",
+            "example": "Marcelina"
+          },
+          "last_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last name of the user.",
+            "example": "Davis"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user\u0027s full name.",
+            "example": "Marcelina Davis"
+          },
+          "email_verified": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether the user\u0027s email has been verified.",
+            "example": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/CreateUserlandUserDtoMetadata"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The external ID of the user.",
+            "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "ip_address": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The IP address of the user\u0027s request.",
+            "example": "203.0.113.42"
+          },
+          "user_agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user agent string from the user\u0027s request.",
+            "example": "Mozilla/5.0"
+          },
+          "signals_id": {
+            "type": "string",
+            "description": "An optional Radar signals ID to correlate client-side signals with this request.",
+            "example": "01JBS0GN92GC2RJQS4X9DBPQ2A"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "UpdateUserlandUserDtoOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "password"
+                  ],
+                  "properties": {
+                    "password": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "password_hash"
+                  ],
+                  "properties": {
+                    "password_hash": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "password_hash_type"
+                  ],
+                  "properties": {
+                    "password_hash_type": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "password_salt_position"
+                  ],
+                  "properties": {
+                    "password_salt_position": {
+                      "x-exclude-from-lint": true
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user.",
+            "format": "email",
+            "example": "marcelina.davis@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the user.",
+            "example": "Marcelina"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the user.",
+            "example": "Davis"
+          },
+          "name": {
+            "type": "string",
+            "description": "The user\u0027s full name.",
+            "example": "Marcelina Davis"
+          },
+          "email_verified": {
+            "type": "boolean",
+            "description": "Whether the user\u0027s email has been verified.",
+            "example": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoMetadata"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The external ID of the user.",
+            "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "locale": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user\u0027s preferred locale.",
+            "example": "en-US"
+          }
+        }
+      },
+      "UpdateUserlandUserDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user.",
+            "format": "email",
+            "example": "marcelina.davis@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the user.",
+            "example": "Marcelina"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the user.",
+            "example": "Davis"
+          },
+          "name": {
+            "type": "string",
+            "description": "The user\u0027s full name.",
+            "example": "Marcelina Davis"
+          },
+          "email_verified": {
+            "type": "boolean",
+            "description": "Whether the user\u0027s email has been verified.",
+            "example": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoMetadata"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The external ID of the user.",
+            "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "locale": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user\u0027s preferred locale.",
+            "example": "en-US"
+          }
+        }
+      },
+      "UpdateUserlandUserDtoOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoAllOf2OneOf3"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user.",
+            "format": "email",
+            "example": "marcelina.davis@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the user.",
+            "example": "Marcelina"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the user.",
+            "example": "Davis"
+          },
+          "name": {
+            "type": "string",
+            "description": "The user\u0027s full name.",
+            "example": "Marcelina Davis"
+          },
+          "email_verified": {
+            "type": "boolean",
+            "description": "Whether the user\u0027s email has been verified.",
+            "example": true
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/UpdateUserlandUserDtoMetadata"
+          },
+          "external_id": {
+            "maxLength": 128,
+            "pattern": "^[\\x00-\\x7F]\u002B$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The external ID of the user.",
+            "example": "f1ffa2b2-c20b-4d39-be5c-212726e11222"
+          },
+          "locale": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user\u0027s preferred locale.",
+            "example": "en-US"
+          }
+        }
+      },
+      "ConnectApplicationAllOf1OneOf1OneOf1": {
+        "type": "object",
+        "properties": {
+          "is_first_party": {
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application is a first-party application.",
+            "default": true,
+            "example": true
+          },
+          "application_type": {
+            "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1ApplicationType"
+          },
+          "redirect_uris": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem"
+            },
+            "description": "The redirect URIs configured for this application."
+          },
+          "cors_origins": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The CORS origins allowed to call the OAuth token endpoint for this application from a browser.",
+            "example": [
+              "https://app.example.com"
+            ]
+          },
+          "uses_pkce": {
+            "type": "boolean",
+            "description": "Whether the application uses PKCE for authorization.",
+            "example": true
+          }
+        },
+        "required": [
+          "is_first_party",
+          "application_type",
+          "redirect_uris",
+          "cors_origins",
+          "uses_pkce"
+        ]
+      },
+      "ConnectApplicationAllOf1OneOf1OneOf2": {
+        "type": "object",
+        "properties": {
+          "is_first_party": {
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application is a first-party application.",
+            "default": false,
+            "example": false
+          },
+          "was_dynamically_registered": {
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application was dynamically registered.",
+            "default": false,
+            "example": false
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization the application belongs to.",
+            "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
+          },
+          "application_type": {
+            "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1ApplicationType"
+          },
+          "redirect_uris": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem"
+            },
+            "description": "The redirect URIs configured for this application."
+          },
+          "cors_origins": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The CORS origins allowed to call the OAuth token endpoint for this application from a browser.",
+            "example": [
+              "https://app.example.com"
+            ]
+          },
+          "uses_pkce": {
+            "type": "boolean",
+            "description": "Whether the application uses PKCE for authorization.",
+            "example": true
+          }
+        },
+        "required": [
+          "is_first_party",
+          "was_dynamically_registered",
+          "organization_id",
+          "application_type",
+          "redirect_uris",
+          "cors_origins",
+          "uses_pkce"
+        ]
+      },
+      "ConnectApplicationAllOf1OneOf1OneOf3": {
+        "type": "object",
+        "properties": {
+          "is_first_party": {
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application is a first-party application.",
+            "default": false,
+            "example": false
+          },
+          "was_dynamically_registered": {
+            "const": null,
+            "type": "boolean",
+            "description": "Whether the application was dynamically registered.",
+            "default": true,
+            "example": true
+          },
+          "application_type": {
+            "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1ApplicationType"
+          },
+          "redirect_uris": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConnectApplicationAllOf2OneOf1AllOf1RedirectUrisItem"
+            },
+            "description": "The redirect URIs configured for this application."
+          },
+          "cors_origins": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The CORS origins allowed to call the OAuth token endpoint for this application from a browser.",
+            "example": [
+              "https://app.example.com"
+            ]
+          },
+          "uses_pkce": {
+            "type": "boolean",
+            "description": "Whether the application uses PKCE for authorization.",
+            "example": true
+          }
+        },
+        "required": [
+          "is_first_party",
+          "was_dynamically_registered",
+          "application_type",
+          "redirect_uris",
+          "cors_origins",
+          "uses_pkce"
+        ]
+      },
+      "UserlandSessionsControllerAuthenticate0429ResponseError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0429ResponseOneOf1Code"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          },
+          "error": {
+            "$ref": "#/components/schemas/TooManyRequestsError"
+          },
+          "error_description": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "The request failed due to: too_many_requests."
+          }
+        },
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0429Response"
         }
       }
     },

@@ -68,8 +68,42 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.Organiza
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerListMembers403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerListMembers404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Adds and removes organization memberships for a group in a single atomic operation. Organization memberships not listed in `add` or `remove` are left unchanged. Adding a member that is already in the group or removing a member that isn&apos;t in the group has no effect. A membership listed in both `add` and `remove` is rejected. `add` and `remove` must contain between 1 and 100 entries combined.
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerUpdateMembers400Response">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerUpdateMembers403Response">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerUpdateMembers404Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerUpdateMembers422Response">When receiving a 422 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.PatchGroupMembershipsDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.PatchGroupMembershipsDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerUpdateMembers400Response.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerUpdateMembers403Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerUpdateMembers404Response.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerUpdateMembers422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Add an organization membership to a group.
@@ -99,6 +133,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.Organiza
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerAddMember403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerAddMember404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerAddMember422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Group>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Group.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -119,6 +155,28 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.Organiza
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Adds and removes organization memberships for a group in a single atomic operation. Organization memberships not listed in `add` or `remove` are left unchanged. Adding a member that is already in the group or removing a member that isn&apos;t in the group has no effect. A membership listed in both `add` and `remove` is rejected. `add` and `remove` must contain between 1 and 100 entries combined.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.PatchGroupMembershipsDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.PatchGroupMembershipsDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

@@ -11,60 +11,89 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DataIntegrationVendedCredentialOneOf3 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("auth_method") is { } nullNodeAuthMethod && nullNodeAuthMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthMethod = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("expires_at") is { } nullNodeExpiresAt && nullNodeExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresAt = null;
+            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("missing_scopes") is { } nullNodeMissingScopes && nullNodeMissingScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissingScopes = null;
+            if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("scopes") is { } nullNodeScopes && nullNodeScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scopes = null;
+            if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ClientCredentialsAuthMethod? AuthMethod { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ClientCredentialsAuthMethod? AuthMethod { get => _explicitNullValueAuthMethod; set { _explicitNullValueAuthMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_method"); else _explicitNullProperties?.Remove("auth_method"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.ClientCredentialsAuthMethod? _explicitNullValueAuthMethod = default!;
         /// <summary>Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake&apos;s `account` or Zendesk&apos;s `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token&apos;s audience until refresh or re-mint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3ConfigProperty? Config { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3ConfigProperty? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3ConfigProperty? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3ConfigProperty Config { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3ConfigProperty Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3ConfigProperty _explicitNullValueConfig = default!;
 #endif
         /// <summary>The ISO-8601 formatted timestamp indicating when the credential expires.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpiresAt { get; set; }
+        public string? ExpiresAt { get => _explicitNullValueExpiresAt; set { _explicitNullValueExpiresAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_at"); else _explicitNullProperties?.Remove("expires_at"); } }
+        private string? _explicitNullValueExpiresAt = default!;
 #nullable restore
 #else
-        public string ExpiresAt { get; set; }
+        public string ExpiresAt { get => _explicitNullValueExpiresAt; set { _explicitNullValueExpiresAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_at"); else _explicitNullProperties?.Remove("expires_at"); } }
+        private string _explicitNullValueExpiresAt = default!;
 #endif
         /// <summary>Non-sensitive fields captured from the provider token response (e.g. Salesforce `instance_url`), as configured for the provider. Captured on OAuth code exchange and refresh, and on each `client_credentials` mint. A field a later OAuth refresh omits keeps its stored value. Present for `oauth` and `client_credentials` credentials; absent for `api_key`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty? Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty Metadata { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3MetadataProperty _explicitNullValueMetadata = default!;
 #endif
         /// <summary>If the integration has requested scopes that aren&apos;t present on the access token, they&apos;re listed here. The scopes granted to a client-credentials token are governed by the connected organization&apos;s client application, so the integration&apos;s configured scopes are requests or defaults rather than guarantees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MissingScopes { get; set; }
+        public List<string>? MissingScopes { get => _explicitNullValueMissingScopes; set { _explicitNullValueMissingScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_scopes"); else _explicitNullProperties?.Remove("missing_scopes"); } }
+        private List<string>? _explicitNullValueMissingScopes = default!;
 #nullable restore
 #else
-        public List<string> MissingScopes { get; set; }
+        public List<string> MissingScopes { get => _explicitNullValueMissingScopes; set { _explicitNullValueMissingScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_scopes"); else _explicitNullProperties?.Remove("missing_scopes"); } }
+        private List<string> _explicitNullValueMissingScopes = default!;
 #endif
         /// <summary>Distinguishes the credential object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3Object? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3Object? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3Object? _explicitNullValueObject = default!;
         /// <summary>The scopes granted to the access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Scopes { get; set; }
+        public List<string>? Scopes { get => _explicitNullValueScopes; set { _explicitNullValueScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes"); else _explicitNullProperties?.Remove("scopes"); } }
+        private List<string>? _explicitNullValueScopes = default!;
 #nullable restore
 #else
-        public List<string> Scopes { get; set; }
+        public List<string> Scopes { get => _explicitNullValueScopes; set { _explicitNullValueScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes"); else _explicitNullProperties?.Remove("scopes"); } }
+        private List<string> _explicitNullValueScopes = default!;
 #endif
         /// <summary>The client-credentials access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Value { get; set; }
+        public string? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private string? _explicitNullValueValue = default!;
 #nullable restore
 #else
-        public string Value { get; set; }
+        public string Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private string _explicitNullValueValue = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3"/> and sets the default values.
@@ -81,7 +110,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,6 +145,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3Object>("object", Object);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteStringValue("value", Value);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

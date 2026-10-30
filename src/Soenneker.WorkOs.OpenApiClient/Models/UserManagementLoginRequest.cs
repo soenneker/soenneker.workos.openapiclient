@@ -11,32 +11,48 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UserManagementLoginRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("external_auth_id") is { } nullNodeExternalAuthId && nullNodeExternalAuthId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalAuthId = null;
+            if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+            if (parseNode.GetChildNode("user_consent_options") is { } nullNodeUserConsentOptions && nullNodeUserConsentOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserConsentOptions = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifier provided when AuthKit redirected to your login page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalAuthId { get; set; }
+        public string? ExternalAuthId { get => _explicitNullValueExternalAuthId; set { _explicitNullValueExternalAuthId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_auth_id"); else _explicitNullProperties?.Remove("external_auth_id"); } }
+        private string? _explicitNullValueExternalAuthId = default!;
 #nullable restore
 #else
-        public string ExternalAuthId { get; set; }
+        public string ExternalAuthId { get => _explicitNullValueExternalAuthId; set { _explicitNullValueExternalAuthId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_auth_id"); else _explicitNullProperties?.Remove("external_auth_id"); } }
+        private string _explicitNullValueExternalAuthId = default!;
 #endif
         /// <summary>The user to create or update in AuthKit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserObject? User { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserObject? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.UserObject? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserObject User { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserObject User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.UserObject _explicitNullValueUser = default!;
 #endif
         /// <summary>Array of [User Consent Options](/reference/workos-connect/standalone/user-consent-options) to store with the session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption>? UserConsentOptions { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption>? UserConsentOptions { get => _explicitNullValueUserConsentOptions; set { _explicitNullValueUserConsentOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_consent_options"); else _explicitNullProperties?.Remove("user_consent_options"); } }
+        private List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption>? _explicitNullValueUserConsentOptions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption> UserConsentOptions { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption> UserConsentOptions { get => _explicitNullValueUserConsentOptions; set { _explicitNullValueUserConsentOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_consent_options"); else _explicitNullProperties?.Remove("user_consent_options"); } }
+        private List<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption> _explicitNullValueUserConsentOptions = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserManagementLoginRequest"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.UserManagementLoginRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserManagementLoginRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UserManagementLoginRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("external_auth_id", ExternalAuthId);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserObject>("user", User);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.UserConsentOption>("user_consent_options", UserConsentOptions);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

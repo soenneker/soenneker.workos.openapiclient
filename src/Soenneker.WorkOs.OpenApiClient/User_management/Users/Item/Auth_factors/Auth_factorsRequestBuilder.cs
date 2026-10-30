@@ -53,6 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Auth_factors
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorsControllerList0422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -78,6 +80,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Auth_factors
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorsControllerCreate0422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorEnrollResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorEnrollResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

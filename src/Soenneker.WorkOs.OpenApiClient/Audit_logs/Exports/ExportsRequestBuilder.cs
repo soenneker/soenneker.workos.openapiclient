@@ -68,6 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Exports
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportsControllerExports402Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

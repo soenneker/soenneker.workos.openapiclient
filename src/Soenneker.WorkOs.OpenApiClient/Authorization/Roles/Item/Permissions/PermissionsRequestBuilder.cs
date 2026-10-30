@@ -61,6 +61,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Roles.Item.Permissions
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerAddPermission403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerAddPermission404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerAddPermission422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerAddPermission200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerAddPermission200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -92,6 +94,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Roles.Item.Permissions
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerSetPermissions403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerSetPermissions404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerSetPermissions422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerSetPermissions200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRolePermissionsControllerSetPermissions200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -58,6 +58,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerDeleteOrganizationDataInstallation503Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -85,6 +87,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerGetOrganizationDataInstallation400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerGetOrganizationDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -112,6 +116,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation403Response.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation503Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -145,6 +151,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsOrganizationControllerUpdateOrganizationDataInstallation422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

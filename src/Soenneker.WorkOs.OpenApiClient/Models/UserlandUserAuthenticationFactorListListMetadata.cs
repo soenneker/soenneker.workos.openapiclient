@@ -12,24 +12,37 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserlandUserAuthenticationFactorListListMetadata : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("after") is { } nullNodeAfter && nullNodeAfter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) After = null;
+            if (parseNode.GetChildNode("before") is { } nullNodeBefore && nullNodeBefore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Before = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? After { get; set; }
+        public string? After { get => _explicitNullValueAfter; set { _explicitNullValueAfter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after"); else _explicitNullProperties?.Remove("after"); } }
+        private string? _explicitNullValueAfter = default!;
 #nullable restore
 #else
-        public string After { get; set; }
+        public string After { get => _explicitNullValueAfter; set { _explicitNullValueAfter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after"); else _explicitNullProperties?.Remove("after"); } }
+        private string _explicitNullValueAfter = default!;
 #endif
         /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Before { get; set; }
+        public string? Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private string? _explicitNullValueBefore = default!;
 #nullable restore
 #else
-        public string Before { get; set; }
+        public string Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private string _explicitNullValueBefore = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorListListMetadata"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorListListMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorListListMetadata();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorListListMetadata(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("after", After);
             writer.WriteStringValue("before", Before);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

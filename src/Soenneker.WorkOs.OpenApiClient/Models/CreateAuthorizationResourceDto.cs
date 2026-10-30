@@ -8,34 +8,39 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf1"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf2"/>, <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateAuthorizationResourceDto : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2? CreateAuthorizationResourceDtoAllOf2OneOf2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf1? CreateAuthorizationResourceDtoOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2 CreateAuthorizationResourceDtoAllOf2OneOf2 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf1 CreateAuthorizationResourceDtoOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3? CreateAuthorizationResourceDtoAllOf2OneOf3 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf2? CreateAuthorizationResourceDtoOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3 CreateAuthorizationResourceDtoAllOf2OneOf3 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf2 CreateAuthorizationResourceDtoOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1? CreateAuthorizationResourceDtoMember1 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf3? CreateAuthorizationResourceDtoOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1 CreateAuthorizationResourceDtoMember1 { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf3 CreateAuthorizationResourceDtoOneOf3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,7 +52,28 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDto();
-            return result;
+            if("CreateAuthorizationResourceDtoOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("CreateAuthorizationResourceDtoOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("CreateAuthorizationResourceDtoOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("external_id") != null && parseNode.GetChildNode("name") != null && parseNode.GetChildNode("resource_type_slug") != null && parseNode.GetChildNode("organization_id") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("external_id") != null && parseNode.GetChildNode("name") != null && parseNode.GetChildNode("resource_type_slug") != null && parseNode.GetChildNode("organization_id") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("external_id") != null && parseNode.GetChildNode("name") != null && parseNode.GetChildNode("resource_type_slug") != null && parseNode.GetChildNode("organization_id") != null))();
+            if (result.CreateAuthorizationResourceDtoOneOf1 == null && result.CreateAuthorizationResourceDtoOneOf2 == null && result.CreateAuthorizationResourceDtoOneOf3 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.CreateAuthorizationResourceDtoOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf1(), parseNode);
+            if (result.CreateAuthorizationResourceDtoOneOf1 == null && result.CreateAuthorizationResourceDtoOneOf2 == null && result.CreateAuthorizationResourceDtoOneOf3 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.CreateAuthorizationResourceDtoOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf2(), parseNode);
+            if (result.CreateAuthorizationResourceDtoOneOf1 == null && result.CreateAuthorizationResourceDtoOneOf2 == null && result.CreateAuthorizationResourceDtoOneOf3 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.CreateAuthorizationResourceDtoOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf3(), parseNode);
+            if (result.CreateAuthorizationResourceDtoOneOf1 == null && result.CreateAuthorizationResourceDtoOneOf2 == null && result.CreateAuthorizationResourceDtoOneOf3 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,17 +81,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CreateAuthorizationResourceDtoAllOf2OneOf2 != null)
+            if(CreateAuthorizationResourceDtoOneOf1 != null)
             {
-                return CreateAuthorizationResourceDtoAllOf2OneOf2.GetFieldDeserializers();
+                return CreateAuthorizationResourceDtoOneOf1.GetFieldDeserializers();
             }
-            else if(CreateAuthorizationResourceDtoAllOf2OneOf3 != null)
+            else if(CreateAuthorizationResourceDtoOneOf2 != null)
             {
-                return CreateAuthorizationResourceDtoAllOf2OneOf3.GetFieldDeserializers();
+                return CreateAuthorizationResourceDtoOneOf2.GetFieldDeserializers();
             }
-            else if(CreateAuthorizationResourceDtoMember1 != null)
+            else if(CreateAuthorizationResourceDtoOneOf3 != null)
             {
-                return CreateAuthorizationResourceDtoMember1.GetFieldDeserializers();
+                return CreateAuthorizationResourceDtoOneOf3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -75,18 +101,27 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (CreateAuthorizationResourceDtoOneOf1 == null && CreateAuthorizationResourceDtoOneOf2 == null && CreateAuthorizationResourceDtoOneOf3 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (CreateAuthorizationResourceDtoOneOf1 != null && CreateAuthorizationResourceDtoOneOf2 == null && CreateAuthorizationResourceDtoOneOf3 == null) { if (CreateAuthorizationResourceDtoOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateAuthorizationResourceDtoOneOf1); return; }
+            if (CreateAuthorizationResourceDtoOneOf2 != null && CreateAuthorizationResourceDtoOneOf1 == null && CreateAuthorizationResourceDtoOneOf3 == null) { if (CreateAuthorizationResourceDtoOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateAuthorizationResourceDtoOneOf2); return; }
+            if (CreateAuthorizationResourceDtoOneOf3 != null && CreateAuthorizationResourceDtoOneOf1 == null && CreateAuthorizationResourceDtoOneOf2 == null) { if (CreateAuthorizationResourceDtoOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateAuthorizationResourceDtoOneOf3); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(CreateAuthorizationResourceDtoAllOf2OneOf2 != null)
+            if(CreateAuthorizationResourceDtoOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf2>(null, CreateAuthorizationResourceDtoAllOf2OneOf2);
+                if (CreateAuthorizationResourceDtoOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf1>(null, CreateAuthorizationResourceDtoOneOf1);
             }
-            else if(CreateAuthorizationResourceDtoAllOf2OneOf3 != null)
+            else if(CreateAuthorizationResourceDtoOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoAllOf2OneOf3>(null, CreateAuthorizationResourceDtoAllOf2OneOf3);
+                if (CreateAuthorizationResourceDtoOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf2>(null, CreateAuthorizationResourceDtoOneOf2);
             }
-            else if(CreateAuthorizationResourceDtoMember1 != null)
+            else if(CreateAuthorizationResourceDtoOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoMember1>(null, CreateAuthorizationResourceDtoMember1);
+                if (CreateAuthorizationResourceDtoOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateAuthorizationResourceDtoOneOf3>(null, CreateAuthorizationResourceDtoOneOf3);
             }
         }
     }

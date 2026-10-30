@@ -61,6 +61,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organizati
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerListOrganizationMembershipsForResource403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerListOrganizationMembershipsForResource404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerListOrganizationMembershipsForResource422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUserList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserOrganizationMembershipBaseWithUserList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

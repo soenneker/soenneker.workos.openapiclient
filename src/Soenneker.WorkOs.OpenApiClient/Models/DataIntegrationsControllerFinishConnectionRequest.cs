@@ -11,32 +11,48 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DataIntegrationsControllerFinishConnectionRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("code_verifier") is { } nullNodeCodeVerifier && nullNodeCodeVerifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeVerifier = null;
+            if (parseNode.GetChildNode("connect_code") is { } nullNodeConnectCode && nullNodeConnectCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectCode = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The code verifier `code_challenge` was derived from: 43 to 128 characters from `A-Z`, `a-z`, `0-9`, `-`, `.`, `_` and `~`. A wrong verifier uses up the `connect_code`, and the user has to connect again.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CodeVerifier { get; set; }
+        public string? CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
+        private string? _explicitNullValueCodeVerifier = default!;
 #nullable restore
 #else
-        public string CodeVerifier { get; set; }
+        public string CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
+        private string _explicitNullValueCodeVerifier = default!;
 #endif
         /// <summary>The `connect_code` WorkOS added to `return_to` when the user finished authorizing. It can be used once and expires 90 seconds after the redirect.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectCode { get; set; }
+        public string? ConnectCode { get => _explicitNullValueConnectCode; set { _explicitNullValueConnectCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_code"); else _explicitNullProperties?.Remove("connect_code"); } }
+        private string? _explicitNullValueConnectCode = default!;
 #nullable restore
 #else
-        public string ConnectCode { get; set; }
+        public string ConnectCode { get => _explicitNullValueConnectCode; set { _explicitNullValueConnectCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_code"); else _explicitNullProperties?.Remove("connect_code"); } }
+        private string _explicitNullValueConnectCode = default!;
 #endif
         /// <summary>The `state` WorkOS added to `return_to` alongside `connect_code`. Optional; it is only used to correlate the request in logs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? State { get; set; }
+        public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private string? _explicitNullValueState = default!;
 #nullable restore
 #else
-        public string State { get; set; }
+        public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private string _explicitNullValueState = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerFinishConnectionRequest"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerFinishConnectionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerFinishConnectionRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerFinishConnectionRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("code_verifier", CodeVerifier);
             writer.WriteStringValue("connect_code", ConnectCode);
             writer.WriteStringValue("state", State);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

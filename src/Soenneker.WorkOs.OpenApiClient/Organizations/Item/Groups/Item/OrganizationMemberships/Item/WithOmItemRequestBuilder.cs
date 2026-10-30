@@ -54,6 +54,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item.Organiza
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerRemoveMember403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupMembershipsControllerRemoveMember404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

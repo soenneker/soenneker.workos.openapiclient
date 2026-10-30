@@ -51,7 +51,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Claims.Attempts
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ClaimViewResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Link an external user to a claim attempt and retrieve the code needed for the agent to complete the claim. The user is looked up by external ID; if no user exists, one is created. When the user belongs to multiple organizations, an explicit organization must be provided.

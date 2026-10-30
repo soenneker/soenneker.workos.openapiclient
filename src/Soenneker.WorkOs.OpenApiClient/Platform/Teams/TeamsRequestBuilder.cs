@@ -70,6 +70,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Platform.Teams
             {
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.TeamsControllerCreateTeam409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.TeamsControllerCreateTeam422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Team>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Team.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -62,6 +62,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerDelete400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerDelete403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerDelete404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -87,6 +89,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerGet403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerGet404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerGet200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerGet200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -118,6 +122,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Roles.
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerUpdate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerUpdate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerUpdate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerUpdate200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationOrganizationRolesControllerUpdate200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

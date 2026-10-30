@@ -66,6 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Instances
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "401", global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstancesControllerList401Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstancesControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstancesControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

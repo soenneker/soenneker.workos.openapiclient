@@ -53,6 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organization_domains.Item.Verify
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainsControllerVerify400Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationDomainStandAlone.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

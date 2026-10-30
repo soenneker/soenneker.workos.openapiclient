@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Auth.Factors.Item.Challenge
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerChallenge404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerChallenge422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -11,44 +11,67 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateUserlandUserInviteOptionsDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("expires_in_days") is { } nullNodeExpiresInDays && nullNodeExpiresInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresInDays = null;
+            if (parseNode.GetChildNode("inviter_user_id") is { } nullNodeInviterUserId && nullNodeInviterUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InviterUserId = null;
+            if (parseNode.GetChildNode("locale") is { } nullNodeLocale && nullNodeLocale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Locale = null;
+            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("role_slug") is { } nullNodeRoleSlug && nullNodeRoleSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleSlug = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The email address of the recipient.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get; set; }
+        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public string Email { get; set; }
+        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string _explicitNullValueEmail = default!;
 #endif
         /// <summary>How many days the invitations will be valid for. Must be between 1 and 30 days. Defaults to 7 days if not specified.</summary>
-        public int? ExpiresInDays { get; set; }
+        public int? ExpiresInDays { get => _explicitNullValueExpiresInDays; set { _explicitNullValueExpiresInDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_in_days"); else _explicitNullProperties?.Remove("expires_in_days"); } }
+        private int? _explicitNullValueExpiresInDays = default!;
         /// <summary>The ID of the [user](/reference/authkit/user) who invites the recipient. The invitation email will mention the name of this user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InviterUserId { get; set; }
+        public string? InviterUserId { get => _explicitNullValueInviterUserId; set { _explicitNullValueInviterUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inviter_user_id"); else _explicitNullProperties?.Remove("inviter_user_id"); } }
+        private string? _explicitNullValueInviterUserId = default!;
 #nullable restore
 #else
-        public string InviterUserId { get; set; }
+        public string InviterUserId { get => _explicitNullValueInviterUserId; set { _explicitNullValueInviterUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inviter_user_id"); else _explicitNullProperties?.Remove("inviter_user_id"); } }
+        private string _explicitNullValueInviterUserId = default!;
 #endif
         /// <summary>The locale to use when rendering the invitation email. Defaults to the environment&apos;s default locale. See [supported locales](/authkit/hosted-ui#localization).</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDtoLocale? Locale { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDtoLocale? Locale { get => _explicitNullValueLocale; set { _explicitNullValueLocale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale"); else _explicitNullProperties?.Remove("locale"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDtoLocale? _explicitNullValueLocale = default!;
         /// <summary>The ID of the [organization](/reference/organization) that the recipient will join.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get; set; }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get; set; }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>The [role](/authkit/roles) that the recipient will receive when they join the organization in the invitation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RoleSlug { get; set; }
+        public string? RoleSlug { get => _explicitNullValueRoleSlug; set { _explicitNullValueRoleSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slug"); else _explicitNullProperties?.Remove("role_slug"); } }
+        private string? _explicitNullValueRoleSlug = default!;
 #nullable restore
 #else
-        public string RoleSlug { get; set; }
+        public string RoleSlug { get => _explicitNullValueRoleSlug; set { _explicitNullValueRoleSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slug"); else _explicitNullProperties?.Remove("role_slug"); } }
+        private string _explicitNullValueRoleSlug = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDto"/> and sets the default values.
@@ -65,7 +88,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDto();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDto(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +119,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserInviteOptionsDtoLocale>("locale", Locale);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("role_slug", RoleSlug);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -71,6 +71,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignments422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -98,6 +100,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerList402Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerList403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerList404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -130,6 +134,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerPatchGroupRoleAssignments422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -163,6 +169,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerCreate409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignment>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -194,6 +202,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Groups.Item.Role_assignme
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignments422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.GroupRoleAssignmentList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

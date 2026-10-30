@@ -55,6 +55,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_groups.Item
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupsControllerFind403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupsControllerFind404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroup.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

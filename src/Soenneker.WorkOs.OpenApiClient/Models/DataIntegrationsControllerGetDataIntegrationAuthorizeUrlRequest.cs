@@ -11,68 +11,102 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("account_display_name") is { } nullNodeAccountDisplayName && nullNodeAccountDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountDisplayName = null;
+            if (parseNode.GetChildNode("code_challenge") is { } nullNodeCodeChallenge && nullNodeCodeChallenge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeChallenge = null;
+            if (parseNode.GetChildNode("code_challenge_method") is { } nullNodeCodeChallengeMethod && nullNodeCodeChallengeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeChallengeMethod = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("connected_account_id") is { } nullNodeConnectedAccountId && nullNodeConnectedAccountId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectedAccountId = null;
+            if (parseNode.GetChildNode("connection_intent") is { } nullNodeConnectionIntent && nullNodeConnectionIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectionIntent = null;
+            if (parseNode.GetChildNode("connection_owner") is { } nullNodeConnectionOwner && nullNodeConnectionOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectionOwner = null;
+            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("return_to") is { } nullNodeReturnTo && nullNodeReturnTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnTo = null;
+            if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
+        }
+
         /// <summary>A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccountDisplayName { get; set; }
+        public string? AccountDisplayName { get => _explicitNullValueAccountDisplayName; set { _explicitNullValueAccountDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_display_name"); else _explicitNullProperties?.Remove("account_display_name"); } }
+        private string? _explicitNullValueAccountDisplayName = default!;
 #nullable restore
 #else
-        public string AccountDisplayName { get; set; }
+        public string AccountDisplayName { get => _explicitNullValueAccountDisplayName; set { _explicitNullValueAccountDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_display_name"); else _explicitNullProperties?.Remove("account_display_name"); } }
+        private string _explicitNullValueAccountDisplayName = default!;
 #endif
         /// <summary>A PKCE-style code challenge: the base64url-encoded SHA-256 of a `code_verifier` your app keeps. When set, the connection isn&apos;t saved when the user finishes authorizing. Instead, the user is redirected to `return_to` with a `connect_code` and `state`, and your app must call [Finish connection](/reference/pipes/connected-account/finish-connection) with the `connect_code` and `code_verifier` within 90 seconds to save it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CodeChallenge { get; set; }
+        public string? CodeChallenge { get => _explicitNullValueCodeChallenge; set { _explicitNullValueCodeChallenge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_challenge"); else _explicitNullProperties?.Remove("code_challenge"); } }
+        private string? _explicitNullValueCodeChallenge = default!;
 #nullable restore
 #else
-        public string CodeChallenge { get; set; }
+        public string CodeChallenge { get => _explicitNullValueCodeChallenge; set { _explicitNullValueCodeChallenge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_challenge"); else _explicitNullProperties?.Remove("code_challenge"); } }
+        private string _explicitNullValueCodeChallenge = default!;
 #endif
         /// <summary>The method used to derive `code_challenge`. Only `S256` is supported, and it is the default. Requires `code_challenge`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.S256CodeChallengeMethod? CodeChallengeMethod { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.S256CodeChallengeMethod? CodeChallengeMethod { get => _explicitNullValueCodeChallengeMethod; set { _explicitNullValueCodeChallengeMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_challenge_method"); else _explicitNullProperties?.Remove("code_challenge_method"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.S256CodeChallengeMethod? _explicitNullValueCodeChallengeMethod = default!;
         /// <summary>Connect-time config values for the provider-declared `installation`-scope fields (e.g. a Zendesk `subdomain`), keyed by the config field. Only fields the provider declares may be supplied, and required fields must be provided unless already pinned on the integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig? Config { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig Config { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConfig _explicitNullValueConfig = default!;
 #endif
         /// <summary>The exact connected account to reauthorize. Required with `connection_intent: reauthorize` and not accepted otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectedAccountId { get; set; }
+        public string? ConnectedAccountId { get => _explicitNullValueConnectedAccountId; set { _explicitNullValueConnectedAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account_id"); else _explicitNullProperties?.Remove("connected_account_id"); } }
+        private string? _explicitNullValueConnectedAccountId = default!;
 #nullable restore
 #else
-        public string ConnectedAccountId { get; set; }
+        public string ConnectedAccountId { get => _explicitNullValueConnectedAccountId; set { _explicitNullValueConnectedAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account_id"); else _explicitNullProperties?.Remove("connected_account_id"); } }
+        private string _explicitNullValueConnectedAccountId = default!;
 #endif
         /// <summary>Which connection the request targets. Omit it to use the compatibility connection. Send `add` to create another connection: the first connection for an owner shape fills the compatibility slot, and later connections are standard. Send `reauthorize` with `connected_account_id` to reauthorize one exact connection.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent? ConnectionIntent { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent? ConnectionIntent { get => _explicitNullValueConnectionIntent; set { _explicitNullValueConnectionIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection_intent"); else _explicitNullProperties?.Remove("connection_intent"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionIntent? _explicitNullValueConnectionIntent = default!;
         /// <summary>Who will own the connected account. `user` (the default) connects the user&apos;s own account. `organization` connects the organization&apos;s shared account and requires `organization_id`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner? ConnectionOwner { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner? ConnectionOwner { get => _explicitNullValueConnectionOwner; set { _explicitNullValueConnectionOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection_owner"); else _explicitNullProperties?.Remove("connection_owner"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner? _explicitNullValueConnectionOwner = default!;
         /// <summary>An organization ID to scope the authorization to a specific organization. Required when `connection_owner` is `organization`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get; set; }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get; set; }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>The URL to redirect the user to after authorization. Required with `code_challenge`, and must then exactly match a redirect URI registered on one of the environment&apos;s applications. Loopback URLs match on any port; wildcard redirect URIs are not honored, and a `return_to` with a query string or fragment never matches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReturnTo { get; set; }
+        public string? ReturnTo { get => _explicitNullValueReturnTo; set { _explicitNullValueReturnTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_to"); else _explicitNullProperties?.Remove("return_to"); } }
+        private string? _explicitNullValueReturnTo = default!;
 #nullable restore
 #else
-        public string ReturnTo { get; set; }
+        public string ReturnTo { get => _explicitNullValueReturnTo; set { _explicitNullValueReturnTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_to"); else _explicitNullProperties?.Remove("return_to"); } }
+        private string _explicitNullValueReturnTo = default!;
 #endif
         /// <summary>The ID of the user to authorize. When `connection_owner` is `organization`, this is the user authorizing on behalf of the organization; they must be an active member of the organization and do not become the owner of the resulting connected account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserId { get; set; }
+        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        private string? _explicitNullValueUserId = default!;
 #nullable restore
 #else
-        public string UserId { get; set; }
+        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        private string _explicitNullValueUserId = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -82,7 +116,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,7 +154,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestConnectionOwner>("connection_owner", ConnectionOwner);
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteStringValue("return_to", ReturnTo);
-            writer.WriteStringValue("user_id", UserId);
+            writer.WriteStringValue("user_id", UserId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

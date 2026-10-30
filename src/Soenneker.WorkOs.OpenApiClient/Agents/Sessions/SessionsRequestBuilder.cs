@@ -68,6 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Sessions
             {
                 { "401", global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList401Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

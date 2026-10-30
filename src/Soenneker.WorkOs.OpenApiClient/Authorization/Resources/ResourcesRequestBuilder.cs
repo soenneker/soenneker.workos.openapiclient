@@ -72,6 +72,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerList402Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerList403Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerList422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourceList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourceList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -103,6 +105,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerCreate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerCreate201Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesControllerCreate201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

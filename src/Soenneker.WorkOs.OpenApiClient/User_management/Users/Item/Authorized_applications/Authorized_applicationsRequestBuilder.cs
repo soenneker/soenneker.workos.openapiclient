@@ -68,6 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Authorized_a
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedApplicationsControllerList404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedApplicationsControllerList422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

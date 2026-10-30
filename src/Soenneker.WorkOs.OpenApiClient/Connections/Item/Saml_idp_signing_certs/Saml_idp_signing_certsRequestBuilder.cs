@@ -70,6 +70,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerList400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerList403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerList404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificateList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificateList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -99,6 +101,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections.Item.Saml_idp_signing_certs
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificatesControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificate>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SamlIdpSigningCertificate.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

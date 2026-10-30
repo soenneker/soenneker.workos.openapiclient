@@ -56,6 +56,8 @@ namespace Soenneker.WorkOs.OpenApiClient.FeatureFlags.Item.Targets.Item
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.FlagTargetsControllerDeleteTarget400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.FlagTargetsControllerDeleteTarget403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.FlagTargetsControllerDeleteTarget404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -82,6 +84,8 @@ namespace Soenneker.WorkOs.OpenApiClient.FeatureFlags.Item.Targets.Item
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.FlagTargetsControllerCreateTarget400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.FlagTargetsControllerCreateTarget403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.FlagTargetsControllerCreateTarget404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

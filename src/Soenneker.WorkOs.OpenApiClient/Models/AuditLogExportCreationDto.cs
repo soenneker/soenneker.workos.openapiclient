@@ -11,61 +11,90 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AuditLogExportCreationDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("actor_ids") is { } nullNodeActorIds && nullNodeActorIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActorIds = null;
+            if (parseNode.GetChildNode("actor_names") is { } nullNodeActorNames && nullNodeActorNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActorNames = null;
+            if (parseNode.GetChildNode("actors") is { } nullNodeActors && nullNodeActors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actors = null;
+            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("range_end") is { } nullNodeRangeEnd && nullNodeRangeEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RangeEnd = null;
+            if (parseNode.GetChildNode("range_start") is { } nullNodeRangeStart && nullNodeRangeStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RangeStart = null;
+            if (parseNode.GetChildNode("targets") is { } nullNodeTargets && nullNodeTargets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Targets = null;
+        }
+
         /// <summary>List of actions to filter against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Actions { get; set; }
+        public List<string>? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<string>? _explicitNullValueActions = default!;
 #nullable restore
 #else
-        public List<string> Actions { get; set; }
+        public List<string> Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<string> _explicitNullValueActions = default!;
 #endif
         /// <summary>List of actor IDs to filter against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ActorIds { get; set; }
+        public List<string>? ActorIds { get => _explicitNullValueActorIds; set { _explicitNullValueActorIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actor_ids"); else _explicitNullProperties?.Remove("actor_ids"); } }
+        private List<string>? _explicitNullValueActorIds = default!;
 #nullable restore
 #else
-        public List<string> ActorIds { get; set; }
+        public List<string> ActorIds { get => _explicitNullValueActorIds; set { _explicitNullValueActorIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actor_ids"); else _explicitNullProperties?.Remove("actor_ids"); } }
+        private List<string> _explicitNullValueActorIds = default!;
 #endif
         /// <summary>List of actor names to filter against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ActorNames { get; set; }
+        public List<string>? ActorNames { get => _explicitNullValueActorNames; set { _explicitNullValueActorNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actor_names"); else _explicitNullProperties?.Remove("actor_names"); } }
+        private List<string>? _explicitNullValueActorNames = default!;
 #nullable restore
 #else
-        public List<string> ActorNames { get; set; }
+        public List<string> ActorNames { get => _explicitNullValueActorNames; set { _explicitNullValueActorNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actor_names"); else _explicitNullProperties?.Remove("actor_names"); } }
+        private List<string> _explicitNullValueActorNames = default!;
 #endif
         /// <summary>Deprecated. Use `actor_names` instead.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Actors { get; set; }
+        public List<string>? Actors { get => _explicitNullValueActors; set { _explicitNullValueActors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actors"); else _explicitNullProperties?.Remove("actors"); } }
+        private List<string>? _explicitNullValueActors = default!;
 #nullable restore
 #else
-        public List<string> Actors { get; set; }
+        public List<string> Actors { get => _explicitNullValueActors; set { _explicitNullValueActors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actors"); else _explicitNullProperties?.Remove("actors"); } }
+        private List<string> _explicitNullValueActors = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The unique ID of the Organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get; set; }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get; set; }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>ISO-8601 value for end of the export range.</summary>
-        public DateTimeOffset? RangeEnd { get; set; }
+        public DateTimeOffset? RangeEnd { get => _explicitNullValueRangeEnd; set { _explicitNullValueRangeEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range_end"); else _explicitNullProperties?.Remove("range_end"); } }
+        private DateTimeOffset? _explicitNullValueRangeEnd = default!;
         /// <summary>ISO-8601 value for start of the export range.</summary>
-        public DateTimeOffset? RangeStart { get; set; }
+        public DateTimeOffset? RangeStart { get => _explicitNullValueRangeStart; set { _explicitNullValueRangeStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range_start"); else _explicitNullProperties?.Remove("range_start"); } }
+        private DateTimeOffset? _explicitNullValueRangeStart = default!;
         /// <summary>List of target types to filter against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Targets { get; set; }
+        public List<string>? Targets { get => _explicitNullValueTargets; set { _explicitNullValueTargets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targets"); else _explicitNullProperties?.Remove("targets"); } }
+        private List<string>? _explicitNullValueTargets = default!;
 #nullable restore
 #else
-        public List<string> Targets { get; set; }
+        public List<string> Targets { get => _explicitNullValueTargets; set { _explicitNullValueTargets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targets"); else _explicitNullProperties?.Remove("targets"); } }
+        private List<string> _explicitNullValueTargets = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportCreationDto"/> and sets the default values.
@@ -82,7 +111,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportCreationDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportCreationDto();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogExportCreationDto(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -117,6 +146,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("range_end", RangeEnd);
             writer.WriteDateTimeOffsetValue("range_start", RangeStart);
             writer.WriteCollectionOfPrimitiveValues<string>("targets", Targets);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

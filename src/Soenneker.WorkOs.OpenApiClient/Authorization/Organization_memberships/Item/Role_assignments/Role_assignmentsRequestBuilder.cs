@@ -71,6 +71,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -98,6 +100,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignments402Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignments403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerListRoleAssignments404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -129,6 +133,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerAssignRole403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerAssignRole404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerAssignRole422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

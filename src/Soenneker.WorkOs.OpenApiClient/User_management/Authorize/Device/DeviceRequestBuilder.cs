@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Authorize.Device
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSsoControllerDeviceAuthorization400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSsoControllerDeviceAuthorization403Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DeviceAuthorizationResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DeviceAuthorizationResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

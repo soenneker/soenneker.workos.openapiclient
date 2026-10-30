@@ -11,76 +11,111 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateDataIntegrationDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("api_key") is { } nullNodeApiKey && nullNodeApiKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiKey = null;
+            if (parseNode.GetChildNode("auth_methods") is { } nullNodeAuthMethods && nullNodeAuthMethods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthMethods = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("credentials") is { } nullNodeCredentials && nullNodeCredentials.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Credentials = null;
+            if (parseNode.GetChildNode("custom_provider") is { } nullNodeCustomProvider && nullNodeCustomProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomProvider = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("ownership") is { } nullNodeOwnership && nullNodeOwnership.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ownership = null;
+            if (parseNode.GetChildNode("provider") is { } nullNodeProvider && nullNodeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Provider = null;
+            if (parseNode.GetChildNode("scopes") is { } nullNodeScopes && nullNodeScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scopes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>An optional API key to install for the first tenant on an `api_key` integration. Omit to declare a keyless integration; tenants can be added later via the per-installation API key path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto? ApiKey { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto? ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto? _explicitNullValueApiKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto ApiKey { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto _explicitNullValueApiKey = default!;
 #endif
         /// <summary>How accounts authenticate with the provider. Defaults to `[&quot;oauth&quot;]`. Use `[&quot;api_key&quot;]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request). Use `[&quot;client_credentials&quot;]` to declare a client-credentials integration; `credentials` is likewise not required and client credentials are supplied per-tenant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem?>? AuthMethods { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem?>? AuthMethods { get => _explicitNullValueAuthMethods; set { _explicitNullValueAuthMethods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_methods"); else _explicitNullProperties?.Remove("auth_methods"); } }
+        private List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem?>? _explicitNullValueAuthMethods = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem?> AuthMethods { get; set; }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem?> AuthMethods { get => _explicitNullValueAuthMethods; set { _explicitNullValueAuthMethods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_methods"); else _explicitNullProperties?.Remove("auth_methods"); } }
+        private List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem?> _explicitNullValueAuthMethods = default!;
 #endif
         /// <summary>Provider-specific config values (e.g. a Snowflake `account`), keyed by the config field. Only fields the built-in provider declares are accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty? Config { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty Config { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoConfigProperty _explicitNullValueConfig = default!;
 #endif
         /// <summary>The OAuth credentials to configure for the Data Integration. Required for OAuth integrations; omit when `auth_methods` is `[&quot;api_key&quot;]`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto? Credentials { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto? Credentials { get => _explicitNullValueCredentials; set { _explicitNullValueCredentials = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credentials"); else _explicitNullProperties?.Remove("credentials"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto? _explicitNullValueCredentials = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto Credentials { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto Credentials { get => _explicitNullValueCredentials; set { _explicitNullValueCredentials = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credentials"); else _explicitNullProperties?.Remove("credentials"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCredentialsDto _explicitNullValueCredentials = default!;
 #endif
         /// <summary>The OAuth definition for a custom provider. Supply this to define a custom provider; omit it to create an integration for a built-in provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto? CustomProvider { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto? CustomProvider { get => _explicitNullValueCustomProvider; set { _explicitNullValueCustomProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_provider"); else _explicitNullProperties?.Remove("custom_provider"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto? _explicitNullValueCustomProvider = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto CustomProvider { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto CustomProvider { get => _explicitNullValueCustomProvider; set { _explicitNullValueCustomProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_provider"); else _explicitNullProperties?.Remove("custom_provider"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDto _explicitNullValueCustomProvider = default!;
 #endif
         /// <summary>An optional description of the Data Integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Whether the Data Integration is enabled. Defaults to `false`.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Who owns the Data Integration. `user` (the default) creates the integration users connect their own accounts to; `organization` creates the root organizations connect to. Ownership is fixed at creation, and one integration of each ownership may exist per provider. Independent of `credentials.type`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoOwnership? Ownership { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoOwnership? Ownership { get => _explicitNullValueOwnership; set { _explicitNullValueOwnership = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ownership"); else _explicitNullProperties?.Remove("ownership"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoOwnership? _explicitNullValueOwnership = default!;
         /// <summary>The provider to create a Data Integration for. For a built-in provider use its slug (e.g. `github`, `slack`). For a custom provider, this is the new provider slug and `custom_provider` must be supplied. A custom provider slug cannot shadow an existing global provider slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Provider { get; set; }
+        public string? Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        private string? _explicitNullValueProvider = default!;
 #nullable restore
 #else
-        public string Provider { get; set; }
+        public string Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        private string _explicitNullValueProvider = default!;
 #endif
         /// <summary>The OAuth scopes to request for the Data Integration. Defaults to the provider&apos;s configured scopes when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Scopes { get; set; }
+        public List<string>? Scopes { get => _explicitNullValueScopes; set { _explicitNullValueScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes"); else _explicitNullProperties?.Remove("scopes"); } }
+        private List<string>? _explicitNullValueScopes = default!;
 #nullable restore
 #else
-        public List<string> Scopes { get; set; }
+        public List<string> Scopes { get => _explicitNullValueScopes; set { _explicitNullValueScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes"); else _explicitNullProperties?.Remove("scopes"); } }
+        private List<string> _explicitNullValueScopes = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDto"/> and sets the default values.
@@ -97,7 +132,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDto();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDto(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -136,6 +171,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoOwnership>("ownership", Ownership);
             writer.WriteStringValue("provider", Provider);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

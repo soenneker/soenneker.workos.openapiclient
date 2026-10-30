@@ -66,6 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "401", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerList401Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -95,6 +97,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Redirect_uris
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate400Response.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate401Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUrisControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUri.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

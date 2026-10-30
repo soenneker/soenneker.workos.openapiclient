@@ -55,6 +55,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Sessions
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

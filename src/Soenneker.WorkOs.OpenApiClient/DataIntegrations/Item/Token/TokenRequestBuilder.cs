@@ -63,6 +63,8 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.Token
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerGetUserlandUserToken404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationAccessTokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

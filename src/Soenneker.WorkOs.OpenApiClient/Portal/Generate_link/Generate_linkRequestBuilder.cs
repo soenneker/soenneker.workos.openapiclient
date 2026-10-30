@@ -63,6 +63,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Portal.Generate_link
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.PortalLinkResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.PortalLinkResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

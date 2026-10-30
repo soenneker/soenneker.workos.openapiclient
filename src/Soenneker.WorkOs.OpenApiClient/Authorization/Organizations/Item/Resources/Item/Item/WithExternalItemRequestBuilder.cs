@@ -68,6 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerDeleteByExternalId404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -95,6 +97,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerGetByExternalId402Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerGetByExternalId403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerGetByExternalId404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResource.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -130,6 +134,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organizations.Item.Resour
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationResourcesByExternalIdControllerUpdateByExternalId200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

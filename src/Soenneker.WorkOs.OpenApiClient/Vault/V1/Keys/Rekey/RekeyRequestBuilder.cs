@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Vault.V1.Keys.Rekey
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataKeyResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

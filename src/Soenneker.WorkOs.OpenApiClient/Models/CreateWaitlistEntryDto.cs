@@ -11,27 +11,42 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateWaitlistEntryDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("additional_fields") is { } nullNodeAdditionalFields && nullNodeAdditionalFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdditionalFields = null;
+            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("send_confirmation_email") is { } nullNodeSendConfirmationEmail && nullNodeSendConfirmationEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendConfirmationEmail = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Object containing additional key/value pairs collected with the waitlist entry. Supports up to 50 string pairs, with keys up to 40 characters and values up to 600 characters. Values are user-provided — treat them as untrusted input when rendering or exporting.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDtoAdditionalFieldsProperty? AdditionalFields { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDtoAdditionalFieldsProperty? AdditionalFields { get => _explicitNullValueAdditionalFields; set { _explicitNullValueAdditionalFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_fields"); else _explicitNullProperties?.Remove("additional_fields"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDtoAdditionalFieldsProperty? _explicitNullValueAdditionalFields = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDtoAdditionalFieldsProperty AdditionalFields { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDtoAdditionalFieldsProperty AdditionalFields { get => _explicitNullValueAdditionalFields; set { _explicitNullValueAdditionalFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_fields"); else _explicitNullProperties?.Remove("additional_fields"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDtoAdditionalFieldsProperty _explicitNullValueAdditionalFields = default!;
 #endif
         /// <summary>The email address of the user joining the waitlist.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get; set; }
+        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public string Email { get; set; }
+        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string _explicitNullValueEmail = default!;
 #endif
         /// <summary>Whether to send the waitlist confirmation email to the user. Defaults to `false`. No email is sent when the waitlist confirmation email is disabled in the environment, even if `send_confirmation_email` is `true`.</summary>
-        public bool? SendConfirmationEmail { get; set; }
+        public bool? SendConfirmationEmail { get => _explicitNullValueSendConfirmationEmail; set { _explicitNullValueSendConfirmationEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_confirmation_email"); else _explicitNullProperties?.Remove("send_confirmation_email"); } }
+        private bool? _explicitNullValueSendConfirmationEmail = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDto"/> and sets the default values.
         /// </summary>
@@ -48,7 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDto();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDto(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWaitlistEntryDtoAdditionalFieldsProperty>("additional_fields", AdditionalFields);
             writer.WriteStringValue("email", Email);
             writer.WriteBoolValue("send_confirmation_email", SendConfirmationEmail);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

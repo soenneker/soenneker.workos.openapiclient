@@ -60,6 +60,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerDelete403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerDelete404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -85,6 +87,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerGet403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerGet404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Group>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Group.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -116,6 +120,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.Item
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerUpdate403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerUpdate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.GroupsControllerUpdate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.Group>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.Group.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

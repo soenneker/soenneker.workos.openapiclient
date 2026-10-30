@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Email_change
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange404Response.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange429Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerConfirmEmailChange200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

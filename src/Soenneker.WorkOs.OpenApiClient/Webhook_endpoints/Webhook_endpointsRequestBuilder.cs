@@ -62,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Webhook_endpoints
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new webhook endpoint to receive event notifications.
@@ -86,6 +86,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Webhook_endpoints
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointsControllerCreate409Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

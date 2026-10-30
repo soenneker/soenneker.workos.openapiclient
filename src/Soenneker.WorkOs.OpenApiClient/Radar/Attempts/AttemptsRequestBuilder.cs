@@ -70,6 +70,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Attempts
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerAssess400Response.CreateFromDiscriminatorValue },
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerAssess402Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -11,12 +11,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UpdateAuditLogsRetentionDtoOneOf2 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("retention_period_in_days") is { } nullNodeRetentionPeriodInDays && nullNodeRetentionPeriodInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriodInDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of days Audit Log events will be retained. Valid values are `30` through `330` in 30-day increments and `365` through `3650` in 365-day increments. Deprecated: use `retention_period` instead. Mutually exclusive with `retention_period`.</summary>
         [Obsolete("")]
-        public int? RetentionPeriodInDays { get; set; }
+        public int? RetentionPeriodInDays { get => _explicitNullValueRetentionPeriodInDays; set { _explicitNullValueRetentionPeriodInDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period_in_days"); else _explicitNullProperties?.Remove("retention_period_in_days"); } }
+        private int? _explicitNullValueRetentionPeriodInDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf2"/> and sets the default values.
         /// </summary>
@@ -32,7 +41,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf2();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf2(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,6 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("retention_period_in_days", RetentionPeriodInDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

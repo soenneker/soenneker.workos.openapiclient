@@ -11,49 +11,76 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchConnectionOidcOptionsDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
+            if (parseNode.GetChildNode("client_secret") is { } nullNodeClientSecret && nullNodeClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecret = null;
+            if (parseNode.GetChildNode("discovery_endpoint") is { } nullNodeDiscoveryEndpoint && nullNodeDiscoveryEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiscoveryEndpoint = null;
+            if (parseNode.GetChildNode("fetch_user_info") is { } nullNodeFetchUserInfo && nullNodeFetchUserInfo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FetchUserInfo = null;
+            if (parseNode.GetChildNode("id_token_signature_algorithm") is { } nullNodeIdTokenSignatureAlgorithm && nullNodeIdTokenSignatureAlgorithm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdTokenSignatureAlgorithm = null;
+            if (parseNode.GetChildNode("pkce") is { } nullNodePkce && nullNodePkce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pkce = null;
+            if (parseNode.GetChildNode("redirect_uri") is { } nullNodeRedirectUri && nullNodeRedirectUri.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedirectUri = null;
+            if (parseNode.GetChildNode("token_authentication_method") is { } nullNodeTokenAuthenticationMethod && nullNodeTokenAuthenticationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenAuthenticationMethod = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The OIDC client ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientId { get; set; }
+        public string? ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        private string? _explicitNullValueClientId = default!;
 #nullable restore
 #else
-        public string ClientId { get; set; }
+        public string ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        private string _explicitNullValueClientId = default!;
 #endif
         /// <summary>The OIDC client secret. Required when moving the connection to `client_secret_basic` or `client_secret_post`, and rejected for `private_key_jwt`, which authenticates with a key pair instead. This value is write-only and is never returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientSecret { get; set; }
+        public string? ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
+        private string? _explicitNullValueClientSecret = default!;
 #nullable restore
 #else
-        public string ClientSecret { get; set; }
+        public string ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
+        private string _explicitNullValueClientSecret = default!;
 #endif
         /// <summary>The OIDC discovery endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DiscoveryEndpoint { get; set; }
+        public string? DiscoveryEndpoint { get => _explicitNullValueDiscoveryEndpoint; set { _explicitNullValueDiscoveryEndpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discovery_endpoint"); else _explicitNullProperties?.Remove("discovery_endpoint"); } }
+        private string? _explicitNullValueDiscoveryEndpoint = default!;
 #nullable restore
 #else
-        public string DiscoveryEndpoint { get; set; }
+        public string DiscoveryEndpoint { get => _explicitNullValueDiscoveryEndpoint; set { _explicitNullValueDiscoveryEndpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discovery_endpoint"); else _explicitNullProperties?.Remove("discovery_endpoint"); } }
+        private string _explicitNullValueDiscoveryEndpoint = default!;
 #endif
         /// <summary>Whether to fetch additional profile attributes from the userinfo endpoint.</summary>
-        public bool? FetchUserInfo { get; set; }
+        public bool? FetchUserInfo { get => _explicitNullValueFetchUserInfo; set { _explicitNullValueFetchUserInfo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fetch_user_info"); else _explicitNullProperties?.Remove("fetch_user_info"); } }
+        private bool? _explicitNullValueFetchUserInfo = default!;
         /// <summary>The ID-token signing algorithm.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm? IdTokenSignatureAlgorithm { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm? IdTokenSignatureAlgorithm { get => _explicitNullValueIdTokenSignatureAlgorithm; set { _explicitNullValueIdTokenSignatureAlgorithm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_token_signature_algorithm"); else _explicitNullProperties?.Remove("id_token_signature_algorithm"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm? _explicitNullValueIdTokenSignatureAlgorithm = default!;
         /// <summary>Whether PKCE is enabled for the connection.</summary>
-        public bool? Pkce { get; set; }
+        public bool? Pkce { get => _explicitNullValuePkce; set { _explicitNullValuePkce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pkce"); else _explicitNullProperties?.Remove("pkce"); } }
+        private bool? _explicitNullValuePkce = default!;
         /// <summary>A custom OAuth callback URL override. Set to `null` to revert to the standard WorkOS-generated redirect URI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RedirectUri { get; set; }
+        public string? RedirectUri { get => _explicitNullValueRedirectUri; set { _explicitNullValueRedirectUri = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uri"); else _explicitNullProperties?.Remove("redirect_uri"); } }
+        private string? _explicitNullValueRedirectUri = default!;
 #nullable restore
 #else
-        public string RedirectUri { get; set; }
+        public string RedirectUri { get => _explicitNullValueRedirectUri; set { _explicitNullValueRedirectUri = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uri"); else _explicitNullProperties?.Remove("redirect_uri"); } }
+        private string _explicitNullValueRedirectUri = default!;
 #endif
         /// <summary>The token-endpoint client authentication method. Moving to `private_key_jwt` generates a signing key pair if the connection has none; its certificate is returned in `oidc_options.jwt_signing_certs` and must be registered at the Identity Provider.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDtoTokenAuthenticationMethod? TokenAuthenticationMethod { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDtoTokenAuthenticationMethod? TokenAuthenticationMethod { get => _explicitNullValueTokenAuthenticationMethod; set { _explicitNullValueTokenAuthenticationMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_authentication_method"); else _explicitNullProperties?.Remove("token_authentication_method"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDtoTokenAuthenticationMethod? _explicitNullValueTokenAuthenticationMethod = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDto"/> and sets the default values.
         /// </summary>
@@ -69,7 +96,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDto();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDto(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,6 +131,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteBoolValue("pkce", Pkce);
             writer.WriteStringValue("redirect_uri", RedirectUri);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionOidcOptionsDtoTokenAuthenticationMethod>("token_authentication_method", TokenAuthenticationMethod);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

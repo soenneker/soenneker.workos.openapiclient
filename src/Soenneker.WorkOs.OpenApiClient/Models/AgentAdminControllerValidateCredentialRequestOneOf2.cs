@@ -11,27 +11,42 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AgentAdminControllerValidateCredentialRequestOneOf2 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("audience") is { } nullNodeAudience && nullNodeAudience.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audience = null;
+            if (parseNode.GetChildNode("credential") is { } nullNodeCredential && nullNodeCredential.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Credential = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When provided, the access token&apos;s `aud` claim is verified against this value. Tokens issued for a different resource are rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Audience { get; set; }
+        public string? Audience { get => _explicitNullValueAudience; set { _explicitNullValueAudience = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audience"); else _explicitNullProperties?.Remove("audience"); } }
+        private string? _explicitNullValueAudience = default!;
 #nullable restore
 #else
-        public string Audience { get; set; }
+        public string Audience { get => _explicitNullValueAudience; set { _explicitNullValueAudience = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audience"); else _explicitNullProperties?.Remove("audience"); } }
+        private string _explicitNullValueAudience = default!;
 #endif
         /// <summary>The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Credential { get; set; }
+        public string? Credential { get => _explicitNullValueCredential; set { _explicitNullValueCredential = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credential"); else _explicitNullProperties?.Remove("credential"); } }
+        private string? _explicitNullValueCredential = default!;
 #nullable restore
 #else
-        public string Credential { get; set; }
+        public string Credential { get => _explicitNullValueCredential; set { _explicitNullValueCredential = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credential"); else _explicitNullProperties?.Remove("credential"); } }
+        private string _explicitNullValueCredential = default!;
 #endif
         /// <summary>The kind of credential being validated — an agent API key or an agent access token.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AccessTokenType? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AccessTokenType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AccessTokenType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2"/> and sets the default values.
         /// </summary>
@@ -47,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("audience", Audience);
             writer.WriteStringValue("credential", Credential);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AccessTokenType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

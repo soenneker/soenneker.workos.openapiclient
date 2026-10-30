@@ -54,6 +54,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerRemoveRoleById403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerRemoveRoleById404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

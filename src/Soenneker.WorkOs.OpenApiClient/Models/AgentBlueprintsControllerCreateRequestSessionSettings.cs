@@ -12,15 +12,28 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AgentBlueprintsControllerCreateRequestSessionSettings : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("access_token_ttl_seconds") is { } nullNodeAccessTokenTtlSeconds && nullNodeAccessTokenTtlSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessTokenTtlSeconds = null;
+            if (parseNode.GetChildNode("max_age_seconds") is { } nullNodeMaxAgeSeconds && nullNodeMaxAgeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxAgeSeconds = null;
+            if (parseNode.GetChildNode("refresh_token_ttl_seconds") is { } nullNodeRefreshTokenTtlSeconds && nullNodeRefreshTokenTtlSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshTokenTtlSeconds = null;
+        }
+
         /// <summary>Lifetime of each minted access token in seconds. At most 3,600 (1 hour).</summary>
-        public int? AccessTokenTtlSeconds { get; set; }
+        public int? AccessTokenTtlSeconds { get => _explicitNullValueAccessTokenTtlSeconds; set { _explicitNullValueAccessTokenTtlSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token_ttl_seconds"); else _explicitNullProperties?.Remove("access_token_ttl_seconds"); } }
+        private int? _explicitNullValueAccessTokenTtlSeconds = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum lifetime of a session in seconds; refreshes never extend a session past this. At most 31,536,000 (365 days).</summary>
-        public int? MaxAgeSeconds { get; set; }
+        public int? MaxAgeSeconds { get => _explicitNullValueMaxAgeSeconds; set { _explicitNullValueMaxAgeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_age_seconds"); else _explicitNullProperties?.Remove("max_age_seconds"); } }
+        private int? _explicitNullValueMaxAgeSeconds = default!;
         /// <summary>Lifetime of each rotated refresh token in seconds. At most 5,184,000 (60 days).</summary>
-        public int? RefreshTokenTtlSeconds { get; set; }
+        public int? RefreshTokenTtlSeconds { get => _explicitNullValueRefreshTokenTtlSeconds; set { _explicitNullValueRefreshTokenTtlSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token_ttl_seconds"); else _explicitNullProperties?.Remove("refresh_token_ttl_seconds"); } }
+        private int? _explicitNullValueRefreshTokenTtlSeconds = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteIntValue("access_token_ttl_seconds", AccessTokenTtlSeconds);
             writer.WriteIntValue("max_age_seconds", MaxAgeSeconds);
             writer.WriteIntValue("refresh_token_ttl_seconds", RefreshTokenTtlSeconds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

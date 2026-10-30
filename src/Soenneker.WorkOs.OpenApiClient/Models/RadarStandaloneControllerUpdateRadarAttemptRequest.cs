@@ -11,13 +11,24 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RadarStandaloneControllerUpdateRadarAttemptRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("attempt_status") is { } nullNodeAttemptStatus && nullNodeAttemptStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptStatus = null;
+            if (parseNode.GetChildNode("challenge_status") is { } nullNodeChallengeStatus && nullNodeChallengeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChallengeStatus = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set to `&quot;success&quot;` to mark the authentication attempt as successful.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus? AttemptStatus { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus? AttemptStatus { get => _explicitNullValueAttemptStatus; set { _explicitNullValueAttemptStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_status"); else _explicitNullProperties?.Remove("attempt_status"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus? _explicitNullValueAttemptStatus = default!;
         /// <summary>Set to `&quot;success&quot;` to mark the challenge as completed.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus? ChallengeStatus { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus? ChallengeStatus { get => _explicitNullValueChallengeStatus; set { _explicitNullValueChallengeStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("challenge_status"); else _explicitNullProperties?.Remove("challenge_status"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus? _explicitNullValueChallengeStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest"/> and sets the default values.
         /// </summary>
@@ -33,7 +44,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,6 +67,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus>("attempt_status", AttemptStatus);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus>("challenge_status", ChallengeStatus);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

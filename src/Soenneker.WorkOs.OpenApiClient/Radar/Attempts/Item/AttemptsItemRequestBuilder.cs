@@ -58,6 +58,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar.Attempts.Item
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttempt400Response.CreateFromDiscriminatorValue },
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttempt402Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttempt404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -78,6 +78,8 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Password_reset
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken422Response.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUsersControllerCreatePasswordResetToken429Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.PasswordReset>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.PasswordReset.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

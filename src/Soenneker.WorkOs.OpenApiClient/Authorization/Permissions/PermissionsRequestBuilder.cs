@@ -66,6 +66,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Permissions
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerList404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -97,6 +99,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Permissions
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate409Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate201Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationPermissionsControllerCreate201Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

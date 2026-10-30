@@ -11,24 +11,37 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UserlandUserAuthenticationFactorEnrollResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("authentication_challenge") is { } nullNodeAuthenticationChallenge && nullNodeAuthenticationChallenge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationChallenge = null;
+            if (parseNode.GetChildNode("authentication_factor") is { } nullNodeAuthenticationFactor && nullNodeAuthenticationFactor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationFactor = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The [authentication challenge](/reference/authkit/mfa/authentication-challenge) object that is used to complete the authentication process.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? AuthenticationChallenge { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? AuthenticationChallenge { get => _explicitNullValueAuthenticationChallenge; set { _explicitNullValueAuthenticationChallenge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_challenge"); else _explicitNullProperties?.Remove("authentication_challenge"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? _explicitNullValueAuthenticationChallenge = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge AuthenticationChallenge { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge AuthenticationChallenge { get => _explicitNullValueAuthenticationChallenge; set { _explicitNullValueAuthenticationChallenge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_challenge"); else _explicitNullProperties?.Remove("authentication_challenge"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge _explicitNullValueAuthenticationChallenge = default!;
 #endif
         /// <summary>The [authentication factor](/reference/authkit/mfa/authentication-factor) object that represents the additional authentication method used on top of the existing authentication strategy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled? AuthenticationFactor { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled? AuthenticationFactor { get => _explicitNullValueAuthenticationFactor; set { _explicitNullValueAuthenticationFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_factor"); else _explicitNullProperties?.Remove("authentication_factor"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled? _explicitNullValueAuthenticationFactor = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled AuthenticationFactor { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled AuthenticationFactor { get => _explicitNullValueAuthenticationFactor; set { _explicitNullValueAuthenticationFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_factor"); else _explicitNullProperties?.Remove("authentication_factor"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled _explicitNullValueAuthenticationFactor = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorEnrollResponse"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorEnrollResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorEnrollResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserAuthenticationFactorEnrollResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge>("authentication_challenge", AuthenticationChallenge);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled>("authentication_factor", AuthenticationFactor);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

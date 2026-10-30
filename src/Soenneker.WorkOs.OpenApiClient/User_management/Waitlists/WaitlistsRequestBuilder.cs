@@ -62,7 +62,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Waitlists
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerList200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerList200Response>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistsControllerList200Response.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get a list of the waitlists in the environment. All waitlists are returned in a single response — this endpoint is not paginated, so the `list_metadata` cursors are always `null`.

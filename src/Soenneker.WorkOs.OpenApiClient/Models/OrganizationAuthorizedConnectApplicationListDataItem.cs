@@ -11,50 +11,74 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OrganizationAuthorizedConnectApplicationListDataItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("application") is { } nullNodeApplication && nullNodeApplication.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Application = null;
+            if (parseNode.GetChildNode("granted_scopes") is { } nullNodeGrantedScopes && nullNodeGrantedScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrantedScopes = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("oauth_resource") is { } nullNodeOauthResource && nullNodeOauthResource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthResource = null;
+            if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The application property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication? Application { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication? Application { get => _explicitNullValueApplication; set { _explicitNullValueApplication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application"); else _explicitNullProperties?.Remove("application"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication? _explicitNullValueApplication = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication Application { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication Application { get => _explicitNullValueApplication; set { _explicitNullValueApplication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application"); else _explicitNullProperties?.Remove("application"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication _explicitNullValueApplication = default!;
 #endif
         /// <summary>The scopes granted by the user to the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? GrantedScopes { get; set; }
+        public List<string>? GrantedScopes { get => _explicitNullValueGrantedScopes; set { _explicitNullValueGrantedScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granted_scopes"); else _explicitNullProperties?.Remove("granted_scopes"); } }
+        private List<string>? _explicitNullValueGrantedScopes = default!;
 #nullable restore
 #else
-        public List<string> GrantedScopes { get; set; }
+        public List<string> GrantedScopes { get => _explicitNullValueGrantedScopes; set { _explicitNullValueGrantedScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granted_scopes"); else _explicitNullProperties?.Remove("granted_scopes"); } }
+        private List<string> _explicitNullValueGrantedScopes = default!;
 #endif
         /// <summary>The unique ID of the authorized connect application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The OAuth resource associated with the authorized connect application, if one was requested.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OauthResource { get; set; }
+        public string? OauthResource { get => _explicitNullValueOauthResource; set { _explicitNullValueOauthResource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_resource"); else _explicitNullProperties?.Remove("oauth_resource"); } }
+        private string? _explicitNullValueOauthResource = default!;
 #nullable restore
 #else
-        public string OauthResource { get; set; }
+        public string OauthResource { get => _explicitNullValueOauthResource; set { _explicitNullValueOauthResource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_resource"); else _explicitNullProperties?.Remove("oauth_resource"); } }
+        private string _explicitNullValueOauthResource = default!;
 #endif
         /// <summary>Distinguishes the authorized connect application object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationAuthorizedConnectApplicationListDataItemObject? Object { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationAuthorizedConnectApplicationListDataItemObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationAuthorizedConnectApplicationListDataItemObject? _explicitNullValueObject = default!;
         /// <summary>The ID of the user who authorized the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserId { get; set; }
+        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        private string? _explicitNullValueUserId = default!;
 #nullable restore
 #else
-        public string UserId { get; set; }
+        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        private string _explicitNullValueUserId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationAuthorizedConnectApplicationListDataItem"/> and sets the default values.
@@ -71,7 +95,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationAuthorizedConnectApplicationListDataItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationAuthorizedConnectApplicationListDataItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationAuthorizedConnectApplicationListDataItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +126,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("oauth_resource", OauthResource);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OrganizationAuthorizedConnectApplicationListDataItemObject>("object", Object);
             writer.WriteStringValue("user_id", UserId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

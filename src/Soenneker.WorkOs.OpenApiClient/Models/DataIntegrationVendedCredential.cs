@@ -12,7 +12,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataIntegrationVendedCredential : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +50,30 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredential CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("auth_method")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredential();
             if("DataIntegrationVendedCredentialOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.DataIntegrationVendedCredentialOneOf1 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1();
+                
             }
             else if("DataIntegrationVendedCredentialOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.DataIntegrationVendedCredentialOneOf2 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf2();
+                
             }
             else if("DataIntegrationVendedCredentialOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.DataIntegrationVendedCredentialOneOf3 = new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("object") != null && (parseNode.GetChildNode("object")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("credential".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("auth_method") != null && (parseNode.GetChildNode("auth_method")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("oauth".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("value") != null && parseNode.GetChildNode("expires_at") != null && parseNode.GetChildNode("scopes") != null && parseNode.GetChildNode("missing_scopes") != null && parseNode.GetChildNode("metadata") != null && parseNode.GetChildNode("config") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("object") != null && (parseNode.GetChildNode("object")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("credential".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("auth_method") != null && (parseNode.GetChildNode("auth_method")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("api_key".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("value") != null && parseNode.GetChildNode("config") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("object") != null && (parseNode.GetChildNode("object")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("credential".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("auth_method") != null && (parseNode.GetChildNode("auth_method")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("client_credentials".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("value") != null && parseNode.GetChildNode("expires_at") != null && parseNode.GetChildNode("scopes") != null && parseNode.GetChildNode("missing_scopes") != null && parseNode.GetChildNode("metadata") != null && parseNode.GetChildNode("config") != null))();
+            if (result.DataIntegrationVendedCredentialOneOf1 == null && result.DataIntegrationVendedCredentialOneOf2 == null && result.DataIntegrationVendedCredentialOneOf3 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.DataIntegrationVendedCredentialOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1(), parseNode);
+            if (result.DataIntegrationVendedCredentialOneOf1 == null && result.DataIntegrationVendedCredentialOneOf2 == null && result.DataIntegrationVendedCredentialOneOf3 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.DataIntegrationVendedCredentialOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf2(), parseNode);
+            if (result.DataIntegrationVendedCredentialOneOf1 == null && result.DataIntegrationVendedCredentialOneOf2 == null && result.DataIntegrationVendedCredentialOneOf3 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.DataIntegrationVendedCredentialOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3(), parseNode);
+            if (result.DataIntegrationVendedCredentialOneOf1 == null && result.DataIntegrationVendedCredentialOneOf2 == null && result.DataIntegrationVendedCredentialOneOf3 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (DataIntegrationVendedCredentialOneOf1 == null && DataIntegrationVendedCredentialOneOf2 == null && DataIntegrationVendedCredentialOneOf3 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (DataIntegrationVendedCredentialOneOf1 != null && DataIntegrationVendedCredentialOneOf2 == null && DataIntegrationVendedCredentialOneOf3 == null) { if (DataIntegrationVendedCredentialOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataIntegrationVendedCredentialOneOf1); return; }
+            if (DataIntegrationVendedCredentialOneOf2 != null && DataIntegrationVendedCredentialOneOf1 == null && DataIntegrationVendedCredentialOneOf3 == null) { if (DataIntegrationVendedCredentialOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataIntegrationVendedCredentialOneOf2); return; }
+            if (DataIntegrationVendedCredentialOneOf3 != null && DataIntegrationVendedCredentialOneOf1 == null && DataIntegrationVendedCredentialOneOf2 == null) { if (DataIntegrationVendedCredentialOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataIntegrationVendedCredentialOneOf3); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(DataIntegrationVendedCredentialOneOf1 != null)
             {
+                if (DataIntegrationVendedCredentialOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1>(null, DataIntegrationVendedCredentialOneOf1);
             }
             else if(DataIntegrationVendedCredentialOneOf2 != null)
             {
+                if (DataIntegrationVendedCredentialOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf2>(null, DataIntegrationVendedCredentialOneOf2);
             }
             else if(DataIntegrationVendedCredentialOneOf3 != null)
             {
+                if (DataIntegrationVendedCredentialOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3>(null, DataIntegrationVendedCredentialOneOf3);
             }
         }

@@ -55,6 +55,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Blueprints.Item.Tokens.Validate
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerValidateToken404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentTokenValidation>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentTokenValidation.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

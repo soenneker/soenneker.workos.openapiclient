@@ -68,6 +68,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerList403Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerList422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

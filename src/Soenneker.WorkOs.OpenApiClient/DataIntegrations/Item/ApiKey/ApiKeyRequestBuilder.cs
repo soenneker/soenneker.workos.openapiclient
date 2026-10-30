@@ -59,6 +59,8 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection400Response.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection403Response.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerCreateApiKeyConnection503Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -90,6 +92,8 @@ namespace Soenneker.WorkOs.OpenApiClient.DataIntegrations.Item.ApiKey
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerUpsertApiKey403Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredError.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthMethodMismatchError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

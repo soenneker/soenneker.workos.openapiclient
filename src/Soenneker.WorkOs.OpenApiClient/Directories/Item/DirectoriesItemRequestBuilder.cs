@@ -59,6 +59,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerDeleteDirectory403Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<UntypedNode>(requestInfo, UntypedNode.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -84,6 +86,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories.Item
             {
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerFind403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DirectoriesControllerFind404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject1>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryObject1.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

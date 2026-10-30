@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Portal.Revoke_link
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerRevokeLink404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.PortalSessionsControllerRevokeLink422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -53,6 +53,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Agents.Sessions.Item.Revoke
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSessionsControllerRevoke404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSession>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AgentInstanceSession.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

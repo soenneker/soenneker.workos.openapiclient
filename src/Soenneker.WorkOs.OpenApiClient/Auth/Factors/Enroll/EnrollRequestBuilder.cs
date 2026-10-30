@@ -55,6 +55,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Auth.Factors.Enroll
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorsControllerCreate422Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

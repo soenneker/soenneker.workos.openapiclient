@@ -11,35 +11,53 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EnrollUserlandUserAuthenticationFactorDto : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("totp_issuer") is { } nullNodeTotpIssuer && nullNodeTotpIssuer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotpIssuer = null;
+            if (parseNode.GetChildNode("totp_secret") is { } nullNodeTotpSecret && nullNodeTotpSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotpSecret = null;
+            if (parseNode.GetChildNode("totp_user") is { } nullNodeTotpUser && nullNodeTotpUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotpUser = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Your application or company name displayed in the user&apos;s authenticator app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotpIssuer { get; set; }
+        public string? TotpIssuer { get => _explicitNullValueTotpIssuer; set { _explicitNullValueTotpIssuer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totp_issuer"); else _explicitNullProperties?.Remove("totp_issuer"); } }
+        private string? _explicitNullValueTotpIssuer = default!;
 #nullable restore
 #else
-        public string TotpIssuer { get; set; }
+        public string TotpIssuer { get => _explicitNullValueTotpIssuer; set { _explicitNullValueTotpIssuer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totp_issuer"); else _explicitNullProperties?.Remove("totp_issuer"); } }
+        private string _explicitNullValueTotpIssuer = default!;
 #endif
         /// <summary>The Base32-encoded shared secret for TOTP factors. This can be provided when creating the auth factor, otherwise it will be generated. The algorithm used to derive TOTP codes is SHA-1, the code length is 6 digits, and the timestep is 30 seconds – the secret must be compatible with these parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotpSecret { get; set; }
+        public string? TotpSecret { get => _explicitNullValueTotpSecret; set { _explicitNullValueTotpSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totp_secret"); else _explicitNullProperties?.Remove("totp_secret"); } }
+        private string? _explicitNullValueTotpSecret = default!;
 #nullable restore
 #else
-        public string TotpSecret { get; set; }
+        public string TotpSecret { get => _explicitNullValueTotpSecret; set { _explicitNullValueTotpSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totp_secret"); else _explicitNullProperties?.Remove("totp_secret"); } }
+        private string _explicitNullValueTotpSecret = default!;
 #endif
         /// <summary>The user&apos;s account name displayed in their authenticator app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TotpUser { get; set; }
+        public string? TotpUser { get => _explicitNullValueTotpUser; set { _explicitNullValueTotpUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totp_user"); else _explicitNullProperties?.Remove("totp_user"); } }
+        private string? _explicitNullValueTotpUser = default!;
 #nullable restore
 #else
-        public string TotpUser { get; set; }
+        public string TotpUser { get => _explicitNullValueTotpUser; set { _explicitNullValueTotpUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totp_user"); else _explicitNullProperties?.Remove("totp_user"); } }
+        private string _explicitNullValueTotpUser = default!;
 #endif
         /// <summary>The type of the factor to enroll.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.TotpType? Type { get; set; }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.TotpType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.TotpType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.EnrollUserlandUserAuthenticationFactorDto"/> and sets the default values.
         /// </summary>
@@ -55,7 +73,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public static global::Soenneker.WorkOs.OpenApiClient.Models.EnrollUserlandUserAuthenticationFactorDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.WorkOs.OpenApiClient.Models.EnrollUserlandUserAuthenticationFactorDto();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.EnrollUserlandUserAuthenticationFactorDto(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("totp_secret", TotpSecret);
             writer.WriteStringValue("totp_user", TotpUser);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TotpType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

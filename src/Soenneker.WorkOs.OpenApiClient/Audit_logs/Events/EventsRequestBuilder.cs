@@ -61,6 +61,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Events
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventsControllerCreate404Response.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventsControllerCreate422Response.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventsControllerCreate429Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventCreateResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventCreateResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

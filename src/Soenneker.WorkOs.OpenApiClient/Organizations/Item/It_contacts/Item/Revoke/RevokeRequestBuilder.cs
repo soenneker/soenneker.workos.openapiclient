@@ -56,6 +56,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.Item.Rev
                 { "403", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerRevoke403Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerRevoke404Response.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.ItContactsControllerRevoke503Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

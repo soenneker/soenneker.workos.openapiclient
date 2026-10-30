@@ -57,6 +57,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Sso.Logout.Authorize
             {
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerLogoutAuthorize400Response.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.SsoControllerLogoutAuthorize404Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.SsoLogoutAuthorizeResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.SsoLogoutAuthorizeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
