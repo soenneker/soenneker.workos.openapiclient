@@ -17,24 +17,32 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("acting_user_id") is { } nullNodeActingUserId && nullNodeActingUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActingUserId = null;
-            if (parseNode.GetChildNode("agent_instance_id") is { } nullNodeAgentInstanceId && nullNodeAgentInstanceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstanceId = null;
-            if (parseNode.GetChildNode("agent_instance_session_id") is { } nullNodeAgentInstanceSessionId && nullNodeAgentInstanceSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstanceSessionId = null;
-            if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
-            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
-            if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
-            if (parseNode.GetChildNode("session_expires_at") is { } nullNodeSessionExpiresAt && nullNodeSessionExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionExpiresAt = null;
-            if (parseNode.GetChildNode("valid") is { } nullNodeValid && nullNodeValid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Valid = null;
+            if (parseNode.GetChildNode("acting_user_id") is null) { _explicitNullValueActingUserId = default!; _explicitNullProperties?.Remove("acting_user_id"); }
+            else if (parseNode.GetChildNode("acting_user_id") is { } nullNodeActingUserId && nullNodeActingUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActingUserId = null;
+            if (parseNode.GetChildNode("agent_instance_id") is null) { _explicitNullValueAgentInstanceId = default!; _explicitNullProperties?.Remove("agent_instance_id"); }
+            else if (parseNode.GetChildNode("agent_instance_id") is { } nullNodeAgentInstanceId && nullNodeAgentInstanceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstanceId = null;
+            if (parseNode.GetChildNode("agent_instance_session_id") is null) { _explicitNullValueAgentInstanceSessionId = default!; _explicitNullProperties?.Remove("agent_instance_session_id"); }
+            else if (parseNode.GetChildNode("agent_instance_session_id") is { } nullNodeAgentInstanceSessionId && nullNodeAgentInstanceSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstanceSessionId = null;
+            if (parseNode.GetChildNode("intent") is null) { _explicitNullValueIntent = default!; _explicitNullProperties?.Remove("intent"); }
+            else if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
+            if (parseNode.GetChildNode("organization_id") is null) { _explicitNullValueOrganizationId = default!; _explicitNullProperties?.Remove("organization_id"); }
+            else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("permissions") is null) { _explicitNullValuePermissions = default!; _explicitNullProperties?.Remove("permissions"); }
+            else if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
+            if (parseNode.GetChildNode("session_expires_at") is null) { _explicitNullValueSessionExpiresAt = default!; _explicitNullProperties?.Remove("session_expires_at"); }
+            else if (parseNode.GetChildNode("session_expires_at") is { } nullNodeSessionExpiresAt && nullNodeSessionExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionExpiresAt = null;
+            if (parseNode.GetChildNode("valid") is null) { _explicitNullValueValid = default!; _explicitNullProperties?.Remove("valid"); }
+            else if (parseNode.GetChildNode("valid") is { } nullNodeValid && nullNodeValid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Valid = null;
         }
 
         /// <summary>The delegating user carried in the `act.sub` claim of the token, or `null` for autonomous sessions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ActingUserId { get => _explicitNullValueActingUserId; set { _explicitNullValueActingUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acting_user_id"); else _explicitNullProperties?.Remove("acting_user_id"); } }
+        public string? ActingUserId { get => _explicitNullValueActingUserId; set { _explicitNullValueActingUserId = value; AdditionalData?.Remove("acting_user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acting_user_id"); else _explicitNullProperties?.Remove("acting_user_id"); } }
         private string? _explicitNullValueActingUserId = default!;
 #nullable restore
 #else
-        public string ActingUserId { get => _explicitNullValueActingUserId; set { _explicitNullValueActingUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acting_user_id"); else _explicitNullProperties?.Remove("acting_user_id"); } }
+        public string ActingUserId { get => _explicitNullValueActingUserId; set { _explicitNullValueActingUserId = value; AdditionalData?.Remove("acting_user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acting_user_id"); else _explicitNullProperties?.Remove("acting_user_id"); } }
         private string _explicitNullValueActingUserId = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -42,65 +50,65 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The agent instance the token was minted for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentInstanceId { get => _explicitNullValueAgentInstanceId; set { _explicitNullValueAgentInstanceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_id"); else _explicitNullProperties?.Remove("agent_instance_id"); } }
+        public string? AgentInstanceId { get => _explicitNullValueAgentInstanceId; set { _explicitNullValueAgentInstanceId = value; AdditionalData?.Remove("agent_instance_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_id"); else _explicitNullProperties?.Remove("agent_instance_id"); } }
         private string? _explicitNullValueAgentInstanceId = default!;
 #nullable restore
 #else
-        public string AgentInstanceId { get => _explicitNullValueAgentInstanceId; set { _explicitNullValueAgentInstanceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_id"); else _explicitNullProperties?.Remove("agent_instance_id"); } }
+        public string AgentInstanceId { get => _explicitNullValueAgentInstanceId; set { _explicitNullValueAgentInstanceId = value; AdditionalData?.Remove("agent_instance_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_id"); else _explicitNullProperties?.Remove("agent_instance_id"); } }
         private string _explicitNullValueAgentInstanceId = default!;
 #endif
         /// <summary>The agent instance session backing the token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentInstanceSessionId { get => _explicitNullValueAgentInstanceSessionId; set { _explicitNullValueAgentInstanceSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_session_id"); else _explicitNullProperties?.Remove("agent_instance_session_id"); } }
+        public string? AgentInstanceSessionId { get => _explicitNullValueAgentInstanceSessionId; set { _explicitNullValueAgentInstanceSessionId = value; AdditionalData?.Remove("agent_instance_session_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_session_id"); else _explicitNullProperties?.Remove("agent_instance_session_id"); } }
         private string? _explicitNullValueAgentInstanceSessionId = default!;
 #nullable restore
 #else
-        public string AgentInstanceSessionId { get => _explicitNullValueAgentInstanceSessionId; set { _explicitNullValueAgentInstanceSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_session_id"); else _explicitNullProperties?.Remove("agent_instance_session_id"); } }
+        public string AgentInstanceSessionId { get => _explicitNullValueAgentInstanceSessionId; set { _explicitNullValueAgentInstanceSessionId = value; AdditionalData?.Remove("agent_instance_session_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_session_id"); else _explicitNullProperties?.Remove("agent_instance_session_id"); } }
         private string _explicitNullValueAgentInstanceSessionId = default!;
 #endif
         /// <summary>The caller-supplied context echoed into the token at mint time, or `null` when none was given.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        public string? Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; AdditionalData?.Remove("intent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
         private string? _explicitNullValueIntent = default!;
 #nullable restore
 #else
-        public string Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        public string Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; AdditionalData?.Remove("intent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
         private string _explicitNullValueIntent = default!;
 #endif
         /// <summary>The organization the agent acts within.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>The effective permission slugs carried by the token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        public List<string>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
         private List<string>? _explicitNullValuePermissions = default!;
 #nullable restore
 #else
-        public List<string> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        public List<string> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
         private List<string> _explicitNullValuePermissions = default!;
 #endif
         /// <summary>When the backing agent instance session expires.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionExpiresAt { get => _explicitNullValueSessionExpiresAt; set { _explicitNullValueSessionExpiresAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_expires_at"); else _explicitNullProperties?.Remove("session_expires_at"); } }
+        public string? SessionExpiresAt { get => _explicitNullValueSessionExpiresAt; set { _explicitNullValueSessionExpiresAt = value; AdditionalData?.Remove("session_expires_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_expires_at"); else _explicitNullProperties?.Remove("session_expires_at"); } }
         private string? _explicitNullValueSessionExpiresAt = default!;
 #nullable restore
 #else
-        public string SessionExpiresAt { get => _explicitNullValueSessionExpiresAt; set { _explicitNullValueSessionExpiresAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_expires_at"); else _explicitNullProperties?.Remove("session_expires_at"); } }
+        public string SessionExpiresAt { get => _explicitNullValueSessionExpiresAt; set { _explicitNullValueSessionExpiresAt = value; AdditionalData?.Remove("session_expires_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_expires_at"); else _explicitNullProperties?.Remove("session_expires_at"); } }
         private string _explicitNullValueSessionExpiresAt = default!;
 #endif
         /// <summary>Always `true`: an invalid token is reported as an error with a stable code, never as a `200`.</summary>
-        public bool? Valid { get => _explicitNullValueValid; set { _explicitNullValueValid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valid"); else _explicitNullProperties?.Remove("valid"); } }
+        public bool? Valid { get => _explicitNullValueValid; set { _explicitNullValueValid = value; AdditionalData?.Remove("valid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valid"); else _explicitNullProperties?.Remove("valid"); } }
         private bool? _explicitNullValueValid = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentTokenValidation"/> and sets the default values.

@@ -18,7 +18,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
             base.CaptureExplicitNulls(parseNode);
-            if (parseNode.GetChildNode("role_slug") is { } nullNodeRoleSlug && nullNodeRoleSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleSlug = null;
+            if (parseNode.GetChildNode("role_slug") is null) { _explicitNullValueRoleSlug = default!; _explicitNullProperties?.Remove("role_slug"); }
+            else if (parseNode.GetChildNode("role_slug") is { } nullNodeRoleSlug && nullNodeRoleSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleSlug = null;
         }
 
         /// <summary>The slug of the role to remove.</summary>

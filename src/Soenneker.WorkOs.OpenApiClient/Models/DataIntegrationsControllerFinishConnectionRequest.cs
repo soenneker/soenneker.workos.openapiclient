@@ -17,9 +17,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("code_verifier") is { } nullNodeCodeVerifier && nullNodeCodeVerifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeVerifier = null;
-            if (parseNode.GetChildNode("connect_code") is { } nullNodeConnectCode && nullNodeConnectCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectCode = null;
-            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("code_verifier") is null) { _explicitNullValueCodeVerifier = default!; _explicitNullProperties?.Remove("code_verifier"); }
+            else if (parseNode.GetChildNode("code_verifier") is { } nullNodeCodeVerifier && nullNodeCodeVerifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeVerifier = null;
+            if (parseNode.GetChildNode("connect_code") is null) { _explicitNullValueConnectCode = default!; _explicitNullProperties?.Remove("connect_code"); }
+            else if (parseNode.GetChildNode("connect_code") is { } nullNodeConnectCode && nullNodeConnectCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectCode = null;
+            if (parseNode.GetChildNode("state") is null) { _explicitNullValueState = default!; _explicitNullProperties?.Remove("state"); }
+            else if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The code verifier `code_challenge` was derived from: 43 to 128 characters from `A-Z`, `a-z`, `0-9`, `-`, `.`, `_` and `~`. A wrong verifier uses up the `connect_code`, and the user has to connect again.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
+        public string? CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; AdditionalData?.Remove("code_verifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
         private string? _explicitNullValueCodeVerifier = default!;
 #nullable restore
 #else
-        public string CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
+        public string CodeVerifier { get => _explicitNullValueCodeVerifier; set { _explicitNullValueCodeVerifier = value; AdditionalData?.Remove("code_verifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_verifier"); else _explicitNullProperties?.Remove("code_verifier"); } }
         private string _explicitNullValueCodeVerifier = default!;
 #endif
         /// <summary>The `connect_code` WorkOS added to `return_to` when the user finished authorizing. It can be used once and expires 90 seconds after the redirect.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectCode { get => _explicitNullValueConnectCode; set { _explicitNullValueConnectCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_code"); else _explicitNullProperties?.Remove("connect_code"); } }
+        public string? ConnectCode { get => _explicitNullValueConnectCode; set { _explicitNullValueConnectCode = value; AdditionalData?.Remove("connect_code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_code"); else _explicitNullProperties?.Remove("connect_code"); } }
         private string? _explicitNullValueConnectCode = default!;
 #nullable restore
 #else
-        public string ConnectCode { get => _explicitNullValueConnectCode; set { _explicitNullValueConnectCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_code"); else _explicitNullProperties?.Remove("connect_code"); } }
+        public string ConnectCode { get => _explicitNullValueConnectCode; set { _explicitNullValueConnectCode = value; AdditionalData?.Remove("connect_code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_code"); else _explicitNullProperties?.Remove("connect_code"); } }
         private string _explicitNullValueConnectCode = default!;
 #endif
         /// <summary>The `state` WorkOS added to `return_to` alongside `connect_code`. Optional; it is only used to correlate the request in logs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private string? _explicitNullValueState = default!;
 #nullable restore
 #else
-        public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private string _explicitNullValueState = default!;
 #endif
         /// <summary>

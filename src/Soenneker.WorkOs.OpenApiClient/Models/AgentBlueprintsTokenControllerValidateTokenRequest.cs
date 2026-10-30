@@ -18,7 +18,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agent_access_token") is { } nullNodeAgentAccessToken && nullNodeAgentAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentAccessToken = null;
+            if (parseNode.GetChildNode("agent_access_token") is null) { _explicitNullValueAgentAccessToken = default!; _explicitNullProperties?.Remove("agent_access_token"); }
+            else if (parseNode.GetChildNode("agent_access_token") is { } nullNodeAgentAccessToken && nullNodeAgentAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentAccessToken = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The agent access token (a JWT) to validate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentAccessToken { get => _explicitNullValueAgentAccessToken; set { _explicitNullValueAgentAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_access_token"); else _explicitNullProperties?.Remove("agent_access_token"); } }
+        public string? AgentAccessToken { get => _explicitNullValueAgentAccessToken; set { _explicitNullValueAgentAccessToken = value; AdditionalData?.Remove("agent_access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_access_token"); else _explicitNullProperties?.Remove("agent_access_token"); } }
         private string? _explicitNullValueAgentAccessToken = default!;
 #nullable restore
 #else
-        public string AgentAccessToken { get => _explicitNullValueAgentAccessToken; set { _explicitNullValueAgentAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_access_token"); else _explicitNullProperties?.Remove("agent_access_token"); } }
+        public string AgentAccessToken { get => _explicitNullValueAgentAccessToken; set { _explicitNullValueAgentAccessToken = value; AdditionalData?.Remove("agent_access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_access_token"); else _explicitNullProperties?.Remove("agent_access_token"); } }
         private string _explicitNullValueAgentAccessToken = default!;
 #endif
         /// <summary>

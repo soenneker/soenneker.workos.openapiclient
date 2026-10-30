@@ -17,7 +17,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("intents") is { } nullNodeIntents && nullNodeIntents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intents = null;
+            if (parseNode.GetChildNode("intents") is null) { _explicitNullValueIntents = default!; _explicitNullProperties?.Remove("intents"); }
+            else if (parseNode.GetChildNode("intents") is { } nullNodeIntents && nullNodeIntents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intents = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The Admin Portal features that the IT contact can configure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.InviteItContactDtoIntentsItem?>? Intents { get => _explicitNullValueIntents; set { _explicitNullValueIntents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intents"); else _explicitNullProperties?.Remove("intents"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.InviteItContactDtoIntentsItem?>? Intents { get => _explicitNullValueIntents; set { _explicitNullValueIntents = value; AdditionalData?.Remove("intents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intents"); else _explicitNullProperties?.Remove("intents"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.InviteItContactDtoIntentsItem?>? _explicitNullValueIntents = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.InviteItContactDtoIntentsItem?> Intents { get => _explicitNullValueIntents; set { _explicitNullValueIntents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intents"); else _explicitNullProperties?.Remove("intents"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.InviteItContactDtoIntentsItem?> Intents { get => _explicitNullValueIntents; set { _explicitNullValueIntents = value; AdditionalData?.Remove("intents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intents"); else _explicitNullProperties?.Remove("intents"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.InviteItContactDtoIntentsItem?> _explicitNullValueIntents = default!;
 #endif
         /// <summary>

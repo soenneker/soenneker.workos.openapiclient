@@ -17,14 +17,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("retention_period_in_days") is { } nullNodeRetentionPeriodInDays && nullNodeRetentionPeriodInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriodInDays = null;
+            if (parseNode.GetChildNode("retention_period_in_days") is null) { _explicitNullValueRetentionPeriodInDays = default!; _explicitNullProperties?.Remove("retention_period_in_days"); }
+            else if (parseNode.GetChildNode("retention_period_in_days") is { } nullNodeRetentionPeriodInDays && nullNodeRetentionPeriodInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriodInDays = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of days Audit Log events will be retained. Valid values are `30` through `330` in 30-day increments and `365` through `3650` in 365-day increments. Deprecated: use `retention_period` instead. Mutually exclusive with `retention_period`.</summary>
         [Obsolete("")]
-        public int? RetentionPeriodInDays { get => _explicitNullValueRetentionPeriodInDays; set { _explicitNullValueRetentionPeriodInDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period_in_days"); else _explicitNullProperties?.Remove("retention_period_in_days"); } }
+        public int? RetentionPeriodInDays { get => _explicitNullValueRetentionPeriodInDays; set { _explicitNullValueRetentionPeriodInDays = value; AdditionalData?.Remove("retention_period_in_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period_in_days"); else _explicitNullProperties?.Remove("retention_period_in_days"); } }
         private int? _explicitNullValueRetentionPeriodInDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf2"/> and sets the default values.

@@ -17,8 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("constraints") is { } nullNodeConstraints && nullNodeConstraints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Constraints = null;
-            if (parseNode.GetChildNode("property") is { } nullNodeProperty && nullNodeProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Property = null;
+            if (parseNode.GetChildNode("constraints") is null) { _explicitNullValueConstraints = default!; _explicitNullProperties?.Remove("constraints"); }
+            else if (parseNode.GetChildNode("constraints") is { } nullNodeConstraints && nullNodeConstraints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Constraints = null;
+            if (parseNode.GetChildNode("property") is null) { _explicitNullValueProperty = default!; _explicitNullProperties?.Remove("property"); }
+            else if (parseNode.GetChildNode("property") is { } nullNodeProperty && nullNodeProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Property = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The constraints property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithConstraintsPropertyErrorConstraintsProperty? Constraints { get => _explicitNullValueConstraints; set { _explicitNullValueConstraints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constraints"); else _explicitNullProperties?.Remove("constraints"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithConstraintsPropertyErrorConstraintsProperty? Constraints { get => _explicitNullValueConstraints; set { _explicitNullValueConstraints = value; AdditionalData?.Remove("constraints"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constraints"); else _explicitNullProperties?.Remove("constraints"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithConstraintsPropertyErrorConstraintsProperty? _explicitNullValueConstraints = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithConstraintsPropertyErrorConstraintsProperty Constraints { get => _explicitNullValueConstraints; set { _explicitNullValueConstraints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constraints"); else _explicitNullProperties?.Remove("constraints"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithConstraintsPropertyErrorConstraintsProperty Constraints { get => _explicitNullValueConstraints; set { _explicitNullValueConstraints = value; AdditionalData?.Remove("constraints"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("constraints"); else _explicitNullProperties?.Remove("constraints"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithConstraintsPropertyErrorConstraintsProperty _explicitNullValueConstraints = default!;
 #endif
         /// <summary>The property that failed validation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Property { get => _explicitNullValueProperty; set { _explicitNullValueProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property"); else _explicitNullProperties?.Remove("property"); } }
+        public string? Property { get => _explicitNullValueProperty; set { _explicitNullValueProperty = value; AdditionalData?.Remove("property"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property"); else _explicitNullProperties?.Remove("property"); } }
         private string? _explicitNullValueProperty = default!;
 #nullable restore
 #else
-        public string Property { get => _explicitNullValueProperty; set { _explicitNullValueProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property"); else _explicitNullProperties?.Remove("property"); } }
+        public string Property { get => _explicitNullValueProperty; set { _explicitNullValueProperty = value; AdditionalData?.Remove("property"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property"); else _explicitNullProperties?.Remove("property"); } }
         private string _explicitNullValueProperty = default!;
 #endif
         /// <summary>

@@ -17,89 +17,97 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("access_token") is { } nullNodeAccessToken && nullNodeAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessToken = null;
-            if (parseNode.GetChildNode("authentication_method") is { } nullNodeAuthenticationMethod && nullNodeAuthenticationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationMethod = null;
-            if (parseNode.GetChildNode("authkit_authorization_code") is { } nullNodeAuthkitAuthorizationCode && nullNodeAuthkitAuthorizationCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthkitAuthorizationCode = null;
-            if (parseNode.GetChildNode("impersonator") is { } nullNodeImpersonator && nullNodeImpersonator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Impersonator = null;
-            if (parseNode.GetChildNode("oauth_tokens") is { } nullNodeOauthTokens && nullNodeOauthTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthTokens = null;
-            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
-            if (parseNode.GetChildNode("refresh_token") is { } nullNodeRefreshToken && nullNodeRefreshToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshToken = null;
-            if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+            if (parseNode.GetChildNode("access_token") is null) { _explicitNullValueAccessToken = default!; _explicitNullProperties?.Remove("access_token"); }
+            else if (parseNode.GetChildNode("access_token") is { } nullNodeAccessToken && nullNodeAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessToken = null;
+            if (parseNode.GetChildNode("authentication_method") is null) { _explicitNullValueAuthenticationMethod = default!; _explicitNullProperties?.Remove("authentication_method"); }
+            else if (parseNode.GetChildNode("authentication_method") is { } nullNodeAuthenticationMethod && nullNodeAuthenticationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationMethod = null;
+            if (parseNode.GetChildNode("authkit_authorization_code") is null) { _explicitNullValueAuthkitAuthorizationCode = default!; _explicitNullProperties?.Remove("authkit_authorization_code"); }
+            else if (parseNode.GetChildNode("authkit_authorization_code") is { } nullNodeAuthkitAuthorizationCode && nullNodeAuthkitAuthorizationCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthkitAuthorizationCode = null;
+            if (parseNode.GetChildNode("impersonator") is null) { _explicitNullValueImpersonator = default!; _explicitNullProperties?.Remove("impersonator"); }
+            else if (parseNode.GetChildNode("impersonator") is { } nullNodeImpersonator && nullNodeImpersonator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Impersonator = null;
+            if (parseNode.GetChildNode("oauth_tokens") is null) { _explicitNullValueOauthTokens = default!; _explicitNullProperties?.Remove("oauth_tokens"); }
+            else if (parseNode.GetChildNode("oauth_tokens") is { } nullNodeOauthTokens && nullNodeOauthTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthTokens = null;
+            if (parseNode.GetChildNode("organization_id") is null) { _explicitNullValueOrganizationId = default!; _explicitNullProperties?.Remove("organization_id"); }
+            else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("refresh_token") is null) { _explicitNullValueRefreshToken = default!; _explicitNullProperties?.Remove("refresh_token"); }
+            else if (parseNode.GetChildNode("refresh_token") is { } nullNodeRefreshToken && nullNodeRefreshToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshToken = null;
+            if (parseNode.GetChildNode("user") is null) { _explicitNullValueUser = default!; _explicitNullProperties?.Remove("user"); }
+            else if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
         }
 
         /// <summary>A JWT containing information about the current session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
+        public string? AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; AdditionalData?.Remove("access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
         private string? _explicitNullValueAccessToken = default!;
 #nullable restore
 #else
-        public string AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
+        public string AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; AdditionalData?.Remove("access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
         private string _explicitNullValueAccessToken = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The authentication method used to initiate the session.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseAuthenticationMethod? AuthenticationMethod { get => _explicitNullValueAuthenticationMethod; set { _explicitNullValueAuthenticationMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_method"); else _explicitNullProperties?.Remove("authentication_method"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseAuthenticationMethod? AuthenticationMethod { get => _explicitNullValueAuthenticationMethod; set { _explicitNullValueAuthenticationMethod = value; AdditionalData?.Remove("authentication_method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_method"); else _explicitNullProperties?.Remove("authentication_method"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseAuthenticationMethod? _explicitNullValueAuthenticationMethod = default!;
         /// <summary>An authorization code that can be exchanged for tokens by a different application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuthkitAuthorizationCode { get => _explicitNullValueAuthkitAuthorizationCode; set { _explicitNullValueAuthkitAuthorizationCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authkit_authorization_code"); else _explicitNullProperties?.Remove("authkit_authorization_code"); } }
+        public string? AuthkitAuthorizationCode { get => _explicitNullValueAuthkitAuthorizationCode; set { _explicitNullValueAuthkitAuthorizationCode = value; AdditionalData?.Remove("authkit_authorization_code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authkit_authorization_code"); else _explicitNullProperties?.Remove("authkit_authorization_code"); } }
         private string? _explicitNullValueAuthkitAuthorizationCode = default!;
 #nullable restore
 #else
-        public string AuthkitAuthorizationCode { get => _explicitNullValueAuthkitAuthorizationCode; set { _explicitNullValueAuthkitAuthorizationCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authkit_authorization_code"); else _explicitNullProperties?.Remove("authkit_authorization_code"); } }
+        public string AuthkitAuthorizationCode { get => _explicitNullValueAuthkitAuthorizationCode; set { _explicitNullValueAuthkitAuthorizationCode = value; AdditionalData?.Remove("authkit_authorization_code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authkit_authorization_code"); else _explicitNullProperties?.Remove("authkit_authorization_code"); } }
         private string _explicitNullValueAuthkitAuthorizationCode = default!;
 #endif
         /// <summary>Information about the impersonator if this session was created via impersonation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator? Impersonator { get => _explicitNullValueImpersonator; set { _explicitNullValueImpersonator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impersonator"); else _explicitNullProperties?.Remove("impersonator"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator? Impersonator { get => _explicitNullValueImpersonator; set { _explicitNullValueImpersonator = value; AdditionalData?.Remove("impersonator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impersonator"); else _explicitNullProperties?.Remove("impersonator"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator? _explicitNullValueImpersonator = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator Impersonator { get => _explicitNullValueImpersonator; set { _explicitNullValueImpersonator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impersonator"); else _explicitNullProperties?.Remove("impersonator"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator Impersonator { get => _explicitNullValueImpersonator; set { _explicitNullValueImpersonator = value; AdditionalData?.Remove("impersonator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impersonator"); else _explicitNullProperties?.Remove("impersonator"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator _explicitNullValueImpersonator = default!;
 #endif
         /// <summary>The OAuth tokens from the identity provider, if applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOAuthTokens? OauthTokens { get => _explicitNullValueOauthTokens; set { _explicitNullValueOauthTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_tokens"); else _explicitNullProperties?.Remove("oauth_tokens"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOAuthTokens? OauthTokens { get => _explicitNullValueOauthTokens; set { _explicitNullValueOauthTokens = value; AdditionalData?.Remove("oauth_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_tokens"); else _explicitNullProperties?.Remove("oauth_tokens"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOAuthTokens? _explicitNullValueOauthTokens = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOAuthTokens OauthTokens { get => _explicitNullValueOauthTokens; set { _explicitNullValueOauthTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_tokens"); else _explicitNullProperties?.Remove("oauth_tokens"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOAuthTokens OauthTokens { get => _explicitNullValueOauthTokens; set { _explicitNullValueOauthTokens = value; AdditionalData?.Remove("oauth_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_tokens"); else _explicitNullProperties?.Remove("oauth_tokens"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOAuthTokens _explicitNullValueOauthTokens = default!;
 #endif
         /// <summary>The ID of the organization the user selected to sign in to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>[Exchange this token](/reference/authkit/authentication/refresh-token) for a new access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }
+        public string? RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; AdditionalData?.Remove("refresh_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }
         private string? _explicitNullValueRefreshToken = default!;
 #nullable restore
 #else
-        public string RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }
+        public string RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; AdditionalData?.Remove("refresh_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }
         private string _explicitNullValueRefreshToken = default!;
 #endif
         /// <summary>The corresponding [user](/reference/authkit/user) object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; AdditionalData?.Remove("user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; AdditionalData?.Remove("user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUser _explicitNullValueUser = default!;
 #endif
         /// <summary>
@@ -128,7 +136,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "access_token", n => { AccessToken = n.GetStringValue(); } },
-                { "authentication_method", n => { AuthenticationMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseAuthenticationMethod>(); } },
+                { "authentication_method", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseAuthenticationMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAuthenticationMethod = default; _explicitNullProperties?.Remove("authentication_method"); AdditionalData["authentication_method"] = unknown; } else { AuthenticationMethod = parsed; AdditionalData.Remove("authentication_method"); } } },
                 { "authkit_authorization_code", n => { AuthkitAuthorizationCode = n.GetStringValue(); } },
                 { "impersonator", n => { Impersonator = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseImpersonator.CreateFromDiscriminatorValue); } },
                 { "oauth_tokens", n => { OauthTokens = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOAuthTokens>(global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseOAuthTokens.CreateFromDiscriminatorValue); } },

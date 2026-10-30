@@ -18,9 +18,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("group") is { } nullNodeGroup && nullNodeGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Group = null;
-            if (parseNode.GetChildNode("group_role_assignment_id") is { } nullNodeGroupRoleAssignmentId && nullNodeGroupRoleAssignmentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupRoleAssignmentId = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("group") is null) { _explicitNullValueGroup = default!; _explicitNullProperties?.Remove("group"); }
+            else if (parseNode.GetChildNode("group") is { } nullNodeGroup && nullNodeGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Group = null;
+            if (parseNode.GetChildNode("group_role_assignment_id") is null) { _explicitNullValueGroupRoleAssignmentId = default!; _explicitNullProperties?.Remove("group_role_assignment_id"); }
+            else if (parseNode.GetChildNode("group_role_assignment_id") is { } nullNodeGroupRoleAssignmentId && nullNodeGroupRoleAssignmentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupRoleAssignmentId = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,25 +31,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The group the role was derived from, or null if direct.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup? Group { get => _explicitNullValueGroup; set { _explicitNullValueGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group"); else _explicitNullProperties?.Remove("group"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup? Group { get => _explicitNullValueGroup; set { _explicitNullValueGroup = value; AdditionalData?.Remove("group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group"); else _explicitNullProperties?.Remove("group"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup? _explicitNullValueGroup = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup Group { get => _explicitNullValueGroup; set { _explicitNullValueGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group"); else _explicitNullProperties?.Remove("group"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup Group { get => _explicitNullValueGroup; set { _explicitNullValueGroup = value; AdditionalData?.Remove("group"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group"); else _explicitNullProperties?.Remove("group"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup _explicitNullValueGroup = default!;
 #endif
         /// <summary>The ID of the group role assignment the role was derived from, or null if direct.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupRoleAssignmentId { get => _explicitNullValueGroupRoleAssignmentId; set { _explicitNullValueGroupRoleAssignmentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_role_assignment_id"); else _explicitNullProperties?.Remove("group_role_assignment_id"); } }
+        public string? GroupRoleAssignmentId { get => _explicitNullValueGroupRoleAssignmentId; set { _explicitNullValueGroupRoleAssignmentId = value; AdditionalData?.Remove("group_role_assignment_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_role_assignment_id"); else _explicitNullProperties?.Remove("group_role_assignment_id"); } }
         private string? _explicitNullValueGroupRoleAssignmentId = default!;
 #nullable restore
 #else
-        public string GroupRoleAssignmentId { get => _explicitNullValueGroupRoleAssignmentId; set { _explicitNullValueGroupRoleAssignmentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_role_assignment_id"); else _explicitNullProperties?.Remove("group_role_assignment_id"); } }
+        public string GroupRoleAssignmentId { get => _explicitNullValueGroupRoleAssignmentId; set { _explicitNullValueGroupRoleAssignmentId = value; AdditionalData?.Remove("group_role_assignment_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_role_assignment_id"); else _explicitNullProperties?.Remove("group_role_assignment_id"); } }
         private string _explicitNullValueGroupRoleAssignmentId = default!;
 #endif
         /// <summary>Whether the role was assigned directly or derived from a group.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSource"/> and sets the default values.
@@ -75,7 +78,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "group", n => { Group = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup>(global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceGroup.CreateFromDiscriminatorValue); } },
                 { "group_role_assignment_id", n => { GroupRoleAssignmentId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentSourceType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

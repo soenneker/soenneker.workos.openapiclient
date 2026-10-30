@@ -17,13 +17,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("retention_period") is { } nullNodeRetentionPeriod && nullNodeRetentionPeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriod = null;
+            if (parseNode.GetChildNode("retention_period") is null) { _explicitNullValueRetentionPeriod = default!; _explicitNullProperties?.Remove("retention_period"); }
+            else if (parseNode.GetChildNode("retention_period") is { } nullNodeRetentionPeriod && nullNodeRetentionPeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriod = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The period Audit Log events will be retained. Valid values are `1_MONTH` through `11_MONTHS` in one-month increments and `1_YEAR` through `10_YEARS` in one-year increments. Mutually exclusive with `retention_period_in_days`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod? RetentionPeriod { get => _explicitNullValueRetentionPeriod; set { _explicitNullValueRetentionPeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period"); else _explicitNullProperties?.Remove("retention_period"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod? RetentionPeriod { get => _explicitNullValueRetentionPeriod; set { _explicitNullValueRetentionPeriod = value; AdditionalData?.Remove("retention_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period"); else _explicitNullProperties?.Remove("retention_period"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod? _explicitNullValueRetentionPeriod = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1"/> and sets the default values.
@@ -50,7 +51,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "retention_period", n => { RetentionPeriod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod>(); } },
+                { "retention_period", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UpdateAuditLogsRetentionDtoOneOf1RetentionPeriod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRetentionPeriod = default; _explicitNullProperties?.Remove("retention_period"); AdditionalData["retention_period"] = unknown; } else { RetentionPeriod = parsed; AdditionalData.Remove("retention_period"); } } },
             };
         }
         /// <summary>

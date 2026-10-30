@@ -17,8 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_attributes") is { } nullNodeCustomAttributes && nullNodeCustomAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomAttributes = null;
-            if (parseNode.GetChildNode("standard_attributes") is { } nullNodeStandardAttributes && nullNodeStandardAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StandardAttributes = null;
+            if (parseNode.GetChildNode("custom_attributes") is null) { _explicitNullValueCustomAttributes = default!; _explicitNullProperties?.Remove("custom_attributes"); }
+            else if (parseNode.GetChildNode("custom_attributes") is { } nullNodeCustomAttributes && nullNodeCustomAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomAttributes = null;
+            if (parseNode.GetChildNode("standard_attributes") is null) { _explicitNullValueStandardAttributes = default!; _explicitNullProperties?.Remove("standard_attributes"); }
+            else if (parseNode.GetChildNode("standard_attributes") is { } nullNodeStandardAttributes && nullNodeStandardAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StandardAttributes = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDtoCustomAttributesProperty? CustomAttributes { get => _explicitNullValueCustomAttributes; set { _explicitNullValueCustomAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_attributes"); else _explicitNullProperties?.Remove("custom_attributes"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDtoCustomAttributesProperty? CustomAttributes { get => _explicitNullValueCustomAttributes; set { _explicitNullValueCustomAttributes = value; AdditionalData?.Remove("custom_attributes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_attributes"); else _explicitNullProperties?.Remove("custom_attributes"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDtoCustomAttributesProperty? _explicitNullValueCustomAttributes = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDtoCustomAttributesProperty CustomAttributes { get => _explicitNullValueCustomAttributes; set { _explicitNullValueCustomAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_attributes"); else _explicitNullProperties?.Remove("custom_attributes"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDtoCustomAttributesProperty CustomAttributes { get => _explicitNullValueCustomAttributes; set { _explicitNullValueCustomAttributes = value; AdditionalData?.Remove("custom_attributes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_attributes"); else _explicitNullProperties?.Remove("custom_attributes"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionAttributeMapsDtoCustomAttributesProperty _explicitNullValueCustomAttributes = default!;
 #endif
         /// <summary>How IdP attributes or claims map onto the standard WorkOS profile fields. Provided fields override the defaults for the connection type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionStandardAttributesDto? StandardAttributes { get => _explicitNullValueStandardAttributes; set { _explicitNullValueStandardAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("standard_attributes"); else _explicitNullProperties?.Remove("standard_attributes"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionStandardAttributesDto? StandardAttributes { get => _explicitNullValueStandardAttributes; set { _explicitNullValueStandardAttributes = value; AdditionalData?.Remove("standard_attributes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("standard_attributes"); else _explicitNullProperties?.Remove("standard_attributes"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionStandardAttributesDto? _explicitNullValueStandardAttributes = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionStandardAttributesDto StandardAttributes { get => _explicitNullValueStandardAttributes; set { _explicitNullValueStandardAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("standard_attributes"); else _explicitNullProperties?.Remove("standard_attributes"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionStandardAttributesDto StandardAttributes { get => _explicitNullValueStandardAttributes; set { _explicitNullValueStandardAttributes = value; AdditionalData?.Remove("standard_attributes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("standard_attributes"); else _explicitNullProperties?.Remove("standard_attributes"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionStandardAttributesDto _explicitNullValueStandardAttributes = default!;
 #endif
         /// <summary>

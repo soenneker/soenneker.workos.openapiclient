@@ -17,7 +17,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("role_slug") is { } nullNodeRoleSlug && nullNodeRoleSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleSlug = null;
+            if (parseNode.GetChildNode("role_slug") is null) { _explicitNullValueRoleSlug = default!; _explicitNullProperties?.Remove("role_slug"); }
+            else if (parseNode.GetChildNode("role_slug") is { } nullNodeRoleSlug && nullNodeRoleSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleSlug = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>A single role identifier. Defaults to `member` or the explicit default role. Mutually exclusive with `role_slugs`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RoleSlug { get => _explicitNullValueRoleSlug; set { _explicitNullValueRoleSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slug"); else _explicitNullProperties?.Remove("role_slug"); } }
+        public string? RoleSlug { get => _explicitNullValueRoleSlug; set { _explicitNullValueRoleSlug = value; AdditionalData?.Remove("role_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slug"); else _explicitNullProperties?.Remove("role_slug"); } }
         private string? _explicitNullValueRoleSlug = default!;
 #nullable restore
 #else
-        public string RoleSlug { get => _explicitNullValueRoleSlug; set { _explicitNullValueRoleSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slug"); else _explicitNullProperties?.Remove("role_slug"); } }
+        public string RoleSlug { get => _explicitNullValueRoleSlug; set { _explicitNullValueRoleSlug = value; AdditionalData?.Remove("role_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slug"); else _explicitNullProperties?.Remove("role_slug"); } }
         private string _explicitNullValueRoleSlug = default!;
 #endif
         /// <summary>

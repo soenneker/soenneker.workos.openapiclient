@@ -18,101 +18,112 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("additional_authorization_parameters") is { } nullNodeAdditionalAuthorizationParameters && nullNodeAdditionalAuthorizationParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdditionalAuthorizationParameters = null;
-            if (parseNode.GetChildNode("authenticate_via") is { } nullNodeAuthenticateVia && nullNodeAuthenticateVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticateVia = null;
-            if (parseNode.GetChildNode("authorization_url") is { } nullNodeAuthorizationUrl && nullNodeAuthorizationUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthorizationUrl = null;
-            if (parseNode.GetChildNode("client_secret_required") is { } nullNodeClientSecretRequired && nullNodeClientSecretRequired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecretRequired = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("pkce_enabled") is { } nullNodePkceEnabled && nullNodePkceEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PkceEnabled = null;
-            if (parseNode.GetChildNode("refresh_token_url") is { } nullNodeRefreshTokenUrl && nullNodeRefreshTokenUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshTokenUrl = null;
-            if (parseNode.GetChildNode("request_scope_separator") is { } nullNodeRequestScopeSeparator && nullNodeRequestScopeSeparator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestScopeSeparator = null;
-            if (parseNode.GetChildNode("scopes_required") is { } nullNodeScopesRequired && nullNodeScopesRequired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopesRequired = null;
-            if (parseNode.GetChildNode("token_body_content_type") is { } nullNodeTokenBodyContentType && nullNodeTokenBodyContentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenBodyContentType = null;
-            if (parseNode.GetChildNode("token_url") is { } nullNodeTokenUrl && nullNodeTokenUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenUrl = null;
+            if (parseNode.GetChildNode("additional_authorization_parameters") is null) { _explicitNullValueAdditionalAuthorizationParameters = default!; _explicitNullProperties?.Remove("additional_authorization_parameters"); }
+            else if (parseNode.GetChildNode("additional_authorization_parameters") is { } nullNodeAdditionalAuthorizationParameters && nullNodeAdditionalAuthorizationParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdditionalAuthorizationParameters = null;
+            if (parseNode.GetChildNode("authenticate_via") is null) { _explicitNullValueAuthenticateVia = default!; _explicitNullProperties?.Remove("authenticate_via"); }
+            else if (parseNode.GetChildNode("authenticate_via") is { } nullNodeAuthenticateVia && nullNodeAuthenticateVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticateVia = null;
+            if (parseNode.GetChildNode("authorization_url") is null) { _explicitNullValueAuthorizationUrl = default!; _explicitNullProperties?.Remove("authorization_url"); }
+            else if (parseNode.GetChildNode("authorization_url") is { } nullNodeAuthorizationUrl && nullNodeAuthorizationUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthorizationUrl = null;
+            if (parseNode.GetChildNode("client_secret_required") is null) { _explicitNullValueClientSecretRequired = default!; _explicitNullProperties?.Remove("client_secret_required"); }
+            else if (parseNode.GetChildNode("client_secret_required") is { } nullNodeClientSecretRequired && nullNodeClientSecretRequired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecretRequired = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("pkce_enabled") is null) { _explicitNullValuePkceEnabled = default!; _explicitNullProperties?.Remove("pkce_enabled"); }
+            else if (parseNode.GetChildNode("pkce_enabled") is { } nullNodePkceEnabled && nullNodePkceEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PkceEnabled = null;
+            if (parseNode.GetChildNode("refresh_token_url") is null) { _explicitNullValueRefreshTokenUrl = default!; _explicitNullProperties?.Remove("refresh_token_url"); }
+            else if (parseNode.GetChildNode("refresh_token_url") is { } nullNodeRefreshTokenUrl && nullNodeRefreshTokenUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshTokenUrl = null;
+            if (parseNode.GetChildNode("request_scope_separator") is null) { _explicitNullValueRequestScopeSeparator = default!; _explicitNullProperties?.Remove("request_scope_separator"); }
+            else if (parseNode.GetChildNode("request_scope_separator") is { } nullNodeRequestScopeSeparator && nullNodeRequestScopeSeparator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestScopeSeparator = null;
+            if (parseNode.GetChildNode("scopes_required") is null) { _explicitNullValueScopesRequired = default!; _explicitNullProperties?.Remove("scopes_required"); }
+            else if (parseNode.GetChildNode("scopes_required") is { } nullNodeScopesRequired && nullNodeScopesRequired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopesRequired = null;
+            if (parseNode.GetChildNode("token_body_content_type") is null) { _explicitNullValueTokenBodyContentType = default!; _explicitNullProperties?.Remove("token_body_content_type"); }
+            else if (parseNode.GetChildNode("token_body_content_type") is { } nullNodeTokenBodyContentType && nullNodeTokenBodyContentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenBodyContentType = null;
+            if (parseNode.GetChildNode("token_url") is null) { _explicitNullValueTokenUrl = default!; _explicitNullProperties?.Remove("token_url"); }
+            else if (parseNode.GetChildNode("token_url") is { } nullNodeTokenUrl && nullNodeTokenUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenUrl = null;
         }
 
         /// <summary>Additional static query parameters appended to the authorization request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty? AdditionalAuthorizationParameters { get => _explicitNullValueAdditionalAuthorizationParameters; set { _explicitNullValueAdditionalAuthorizationParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_authorization_parameters"); else _explicitNullProperties?.Remove("additional_authorization_parameters"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty? AdditionalAuthorizationParameters { get => _explicitNullValueAdditionalAuthorizationParameters; set { _explicitNullValueAdditionalAuthorizationParameters = value; AdditionalData?.Remove("additional_authorization_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_authorization_parameters"); else _explicitNullProperties?.Remove("additional_authorization_parameters"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty? _explicitNullValueAdditionalAuthorizationParameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty AdditionalAuthorizationParameters { get => _explicitNullValueAdditionalAuthorizationParameters; set { _explicitNullValueAdditionalAuthorizationParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_authorization_parameters"); else _explicitNullProperties?.Remove("additional_authorization_parameters"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty AdditionalAuthorizationParameters { get => _explicitNullValueAdditionalAuthorizationParameters; set { _explicitNullValueAdditionalAuthorizationParameters = value; AdditionalData?.Remove("additional_authorization_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("additional_authorization_parameters"); else _explicitNullProperties?.Remove("additional_authorization_parameters"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty _explicitNullValueAdditionalAuthorizationParameters = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How client credentials are sent when exchanging authorization codes and refreshing tokens.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAuthenticateVia? AuthenticateVia { get => _explicitNullValueAuthenticateVia; set { _explicitNullValueAuthenticateVia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authenticate_via"); else _explicitNullProperties?.Remove("authenticate_via"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAuthenticateVia? AuthenticateVia { get => _explicitNullValueAuthenticateVia; set { _explicitNullValueAuthenticateVia = value; AdditionalData?.Remove("authenticate_via"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authenticate_via"); else _explicitNullProperties?.Remove("authenticate_via"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAuthenticateVia? _explicitNullValueAuthenticateVia = default!;
         /// <summary>The provider&apos;s OAuth authorization endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuthorizationUrl { get => _explicitNullValueAuthorizationUrl; set { _explicitNullValueAuthorizationUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authorization_url"); else _explicitNullProperties?.Remove("authorization_url"); } }
+        public string? AuthorizationUrl { get => _explicitNullValueAuthorizationUrl; set { _explicitNullValueAuthorizationUrl = value; AdditionalData?.Remove("authorization_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authorization_url"); else _explicitNullProperties?.Remove("authorization_url"); } }
         private string? _explicitNullValueAuthorizationUrl = default!;
 #nullable restore
 #else
-        public string AuthorizationUrl { get => _explicitNullValueAuthorizationUrl; set { _explicitNullValueAuthorizationUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authorization_url"); else _explicitNullProperties?.Remove("authorization_url"); } }
+        public string AuthorizationUrl { get => _explicitNullValueAuthorizationUrl; set { _explicitNullValueAuthorizationUrl = value; AdditionalData?.Remove("authorization_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authorization_url"); else _explicitNullProperties?.Remove("authorization_url"); } }
         private string _explicitNullValueAuthorizationUrl = default!;
 #endif
         /// <summary>Whether a client secret is required for this provider.</summary>
-        public bool? ClientSecretRequired { get => _explicitNullValueClientSecretRequired; set { _explicitNullValueClientSecretRequired = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret_required"); else _explicitNullProperties?.Remove("client_secret_required"); } }
+        public bool? ClientSecretRequired { get => _explicitNullValueClientSecretRequired; set { _explicitNullValueClientSecretRequired = value; AdditionalData?.Remove("client_secret_required"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret_required"); else _explicitNullProperties?.Remove("client_secret_required"); } }
         private bool? _explicitNullValueClientSecretRequired = default!;
         /// <summary>A descriptive name for the custom provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Whether PKCE is used during the authorization code flow.</summary>
-        public bool? PkceEnabled { get => _explicitNullValuePkceEnabled; set { _explicitNullValuePkceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pkce_enabled"); else _explicitNullProperties?.Remove("pkce_enabled"); } }
+        public bool? PkceEnabled { get => _explicitNullValuePkceEnabled; set { _explicitNullValuePkceEnabled = value; AdditionalData?.Remove("pkce_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pkce_enabled"); else _explicitNullProperties?.Remove("pkce_enabled"); } }
         private bool? _explicitNullValuePkceEnabled = default!;
         /// <summary>The endpoint used to refresh tokens, if different from the token endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RefreshTokenUrl { get => _explicitNullValueRefreshTokenUrl; set { _explicitNullValueRefreshTokenUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token_url"); else _explicitNullProperties?.Remove("refresh_token_url"); } }
+        public string? RefreshTokenUrl { get => _explicitNullValueRefreshTokenUrl; set { _explicitNullValueRefreshTokenUrl = value; AdditionalData?.Remove("refresh_token_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token_url"); else _explicitNullProperties?.Remove("refresh_token_url"); } }
         private string? _explicitNullValueRefreshTokenUrl = default!;
 #nullable restore
 #else
-        public string RefreshTokenUrl { get => _explicitNullValueRefreshTokenUrl; set { _explicitNullValueRefreshTokenUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token_url"); else _explicitNullProperties?.Remove("refresh_token_url"); } }
+        public string RefreshTokenUrl { get => _explicitNullValueRefreshTokenUrl; set { _explicitNullValueRefreshTokenUrl = value; AdditionalData?.Remove("refresh_token_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token_url"); else _explicitNullProperties?.Remove("refresh_token_url"); } }
         private string _explicitNullValueRefreshTokenUrl = default!;
 #endif
         /// <summary>The separator used to join requested scopes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequestScopeSeparator { get => _explicitNullValueRequestScopeSeparator; set { _explicitNullValueRequestScopeSeparator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_scope_separator"); else _explicitNullProperties?.Remove("request_scope_separator"); } }
+        public string? RequestScopeSeparator { get => _explicitNullValueRequestScopeSeparator; set { _explicitNullValueRequestScopeSeparator = value; AdditionalData?.Remove("request_scope_separator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_scope_separator"); else _explicitNullProperties?.Remove("request_scope_separator"); } }
         private string? _explicitNullValueRequestScopeSeparator = default!;
 #nullable restore
 #else
-        public string RequestScopeSeparator { get => _explicitNullValueRequestScopeSeparator; set { _explicitNullValueRequestScopeSeparator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_scope_separator"); else _explicitNullProperties?.Remove("request_scope_separator"); } }
+        public string RequestScopeSeparator { get => _explicitNullValueRequestScopeSeparator; set { _explicitNullValueRequestScopeSeparator = value; AdditionalData?.Remove("request_scope_separator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_scope_separator"); else _explicitNullProperties?.Remove("request_scope_separator"); } }
         private string _explicitNullValueRequestScopeSeparator = default!;
 #endif
         /// <summary>Whether at least one scope must be selected when connecting an account.</summary>
-        public bool? ScopesRequired { get => _explicitNullValueScopesRequired; set { _explicitNullValueScopesRequired = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes_required"); else _explicitNullProperties?.Remove("scopes_required"); } }
+        public bool? ScopesRequired { get => _explicitNullValueScopesRequired; set { _explicitNullValueScopesRequired = value; AdditionalData?.Remove("scopes_required"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes_required"); else _explicitNullProperties?.Remove("scopes_required"); } }
         private bool? _explicitNullValueScopesRequired = default!;
         /// <summary>The Content-Type used when exchanging the token request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TokenBodyContentType { get => _explicitNullValueTokenBodyContentType; set { _explicitNullValueTokenBodyContentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_body_content_type"); else _explicitNullProperties?.Remove("token_body_content_type"); } }
+        public string? TokenBodyContentType { get => _explicitNullValueTokenBodyContentType; set { _explicitNullValueTokenBodyContentType = value; AdditionalData?.Remove("token_body_content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_body_content_type"); else _explicitNullProperties?.Remove("token_body_content_type"); } }
         private string? _explicitNullValueTokenBodyContentType = default!;
 #nullable restore
 #else
-        public string TokenBodyContentType { get => _explicitNullValueTokenBodyContentType; set { _explicitNullValueTokenBodyContentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_body_content_type"); else _explicitNullProperties?.Remove("token_body_content_type"); } }
+        public string TokenBodyContentType { get => _explicitNullValueTokenBodyContentType; set { _explicitNullValueTokenBodyContentType = value; AdditionalData?.Remove("token_body_content_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_body_content_type"); else _explicitNullProperties?.Remove("token_body_content_type"); } }
         private string _explicitNullValueTokenBodyContentType = default!;
 #endif
         /// <summary>The provider&apos;s OAuth token endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TokenUrl { get => _explicitNullValueTokenUrl; set { _explicitNullValueTokenUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_url"); else _explicitNullProperties?.Remove("token_url"); } }
+        public string? TokenUrl { get => _explicitNullValueTokenUrl; set { _explicitNullValueTokenUrl = value; AdditionalData?.Remove("token_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_url"); else _explicitNullProperties?.Remove("token_url"); } }
         private string? _explicitNullValueTokenUrl = default!;
 #nullable restore
 #else
-        public string TokenUrl { get => _explicitNullValueTokenUrl; set { _explicitNullValueTokenUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_url"); else _explicitNullProperties?.Remove("token_url"); } }
+        public string TokenUrl { get => _explicitNullValueTokenUrl; set { _explicitNullValueTokenUrl = value; AdditionalData?.Remove("token_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_url"); else _explicitNullProperties?.Remove("token_url"); } }
         private string _explicitNullValueTokenUrl = default!;
 #endif
         /// <summary>
@@ -143,7 +154,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "additional_authorization_parameters", n => { AdditionalAuthorizationParameters = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAdditionalAuthorizationParametersProperty.CreateFromDiscriminatorValue); } },
-                { "authenticate_via", n => { AuthenticateVia = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAuthenticateVia>(); } },
+                { "authenticate_via", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationCustomProviderAuthenticateVia>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAuthenticateVia = default; _explicitNullProperties?.Remove("authenticate_via"); AdditionalData["authenticate_via"] = unknown; } else { AuthenticateVia = parsed; AdditionalData.Remove("authenticate_via"); } } },
                 { "authorization_url", n => { AuthorizationUrl = n.GetStringValue(); } },
                 { "client_secret_required", n => { ClientSecretRequired = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },

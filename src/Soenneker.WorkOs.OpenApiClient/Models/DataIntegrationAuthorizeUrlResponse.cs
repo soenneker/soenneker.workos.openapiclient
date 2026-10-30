@@ -17,23 +17,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("completion") is { } nullNodeCompletion && nullNodeCompletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completion = null;
-            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+            if (parseNode.GetChildNode("completion") is null) { _explicitNullValueCompletion = default!; _explicitNullProperties?.Remove("completion"); }
+            else if (parseNode.GetChildNode("completion") is { } nullNodeCompletion && nullNodeCompletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completion = null;
+            if (parseNode.GetChildNode("url") is null) { _explicitNullValueUrl = default!; _explicitNullProperties?.Remove("url"); }
+            else if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>`finish_required` when the request included `code_challenge`: the connection will be held until your app finishes it. Omitted otherwise. If you sent `code_challenge` and this is missing, don&apos;t redirect the user.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.FinishRequiredCompletion? Completion { get => _explicitNullValueCompletion; set { _explicitNullValueCompletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion"); else _explicitNullProperties?.Remove("completion"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.FinishRequiredCompletion? Completion { get => _explicitNullValueCompletion; set { _explicitNullValueCompletion = value; AdditionalData?.Remove("completion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion"); else _explicitNullProperties?.Remove("completion"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.FinishRequiredCompletion? _explicitNullValueCompletion = default!;
         /// <summary>The OAuth authorization URL to redirect the user to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
         private string? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
         private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "completion", n => { Completion = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.FinishRequiredCompletion>(); } },
+                { "completion", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.FinishRequiredCompletion>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCompletion = default; _explicitNullProperties?.Remove("completion"); AdditionalData["completion"] = unknown; } else { Completion = parsed; AdditionalData.Remove("completion"); } } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }

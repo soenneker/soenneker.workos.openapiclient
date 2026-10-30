@@ -17,24 +17,32 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("access_token") is { } nullNodeAccessToken && nullNodeAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessToken = null;
-            if (parseNode.GetChildNode("agent_instance_id") is { } nullNodeAgentInstanceId && nullNodeAgentInstanceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstanceId = null;
-            if (parseNode.GetChildNode("agent_instance_session_id") is { } nullNodeAgentInstanceSessionId && nullNodeAgentInstanceSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstanceSessionId = null;
-            if (parseNode.GetChildNode("expires_in") is { } nullNodeExpiresIn && nullNodeExpiresIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresIn = null;
-            if (parseNode.GetChildNode("new_instance") is { } nullNodeNewInstance && nullNodeNewInstance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewInstance = null;
-            if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
-            if (parseNode.GetChildNode("refresh_token") is { } nullNodeRefreshToken && nullNodeRefreshToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshToken = null;
-            if (parseNode.GetChildNode("token_type") is { } nullNodeTokenType && nullNodeTokenType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenType = null;
+            if (parseNode.GetChildNode("access_token") is null) { _explicitNullValueAccessToken = default!; _explicitNullProperties?.Remove("access_token"); }
+            else if (parseNode.GetChildNode("access_token") is { } nullNodeAccessToken && nullNodeAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessToken = null;
+            if (parseNode.GetChildNode("agent_instance_id") is null) { _explicitNullValueAgentInstanceId = default!; _explicitNullProperties?.Remove("agent_instance_id"); }
+            else if (parseNode.GetChildNode("agent_instance_id") is { } nullNodeAgentInstanceId && nullNodeAgentInstanceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstanceId = null;
+            if (parseNode.GetChildNode("agent_instance_session_id") is null) { _explicitNullValueAgentInstanceSessionId = default!; _explicitNullProperties?.Remove("agent_instance_session_id"); }
+            else if (parseNode.GetChildNode("agent_instance_session_id") is { } nullNodeAgentInstanceSessionId && nullNodeAgentInstanceSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstanceSessionId = null;
+            if (parseNode.GetChildNode("expires_in") is null) { _explicitNullValueExpiresIn = default!; _explicitNullProperties?.Remove("expires_in"); }
+            else if (parseNode.GetChildNode("expires_in") is { } nullNodeExpiresIn && nullNodeExpiresIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresIn = null;
+            if (parseNode.GetChildNode("new_instance") is null) { _explicitNullValueNewInstance = default!; _explicitNullProperties?.Remove("new_instance"); }
+            else if (parseNode.GetChildNode("new_instance") is { } nullNodeNewInstance && nullNodeNewInstance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewInstance = null;
+            if (parseNode.GetChildNode("permissions") is null) { _explicitNullValuePermissions = default!; _explicitNullProperties?.Remove("permissions"); }
+            else if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
+            if (parseNode.GetChildNode("refresh_token") is null) { _explicitNullValueRefreshToken = default!; _explicitNullProperties?.Remove("refresh_token"); }
+            else if (parseNode.GetChildNode("refresh_token") is { } nullNodeRefreshToken && nullNodeRefreshToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshToken = null;
+            if (parseNode.GetChildNode("token_type") is null) { _explicitNullValueTokenType = default!; _explicitNullProperties?.Remove("token_type"); }
+            else if (parseNode.GetChildNode("token_type") is { } nullNodeTokenType && nullNodeTokenType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenType = null;
         }
 
         /// <summary>The agent access token (a JWT) carrying the effective permissions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
+        public string? AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; AdditionalData?.Remove("access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
         private string? _explicitNullValueAccessToken = default!;
 #nullable restore
 #else
-        public string AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
+        public string AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; AdditionalData?.Remove("access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
         private string _explicitNullValueAccessToken = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -42,51 +50,51 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The agent instance the session belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentInstanceId { get => _explicitNullValueAgentInstanceId; set { _explicitNullValueAgentInstanceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_id"); else _explicitNullProperties?.Remove("agent_instance_id"); } }
+        public string? AgentInstanceId { get => _explicitNullValueAgentInstanceId; set { _explicitNullValueAgentInstanceId = value; AdditionalData?.Remove("agent_instance_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_id"); else _explicitNullProperties?.Remove("agent_instance_id"); } }
         private string? _explicitNullValueAgentInstanceId = default!;
 #nullable restore
 #else
-        public string AgentInstanceId { get => _explicitNullValueAgentInstanceId; set { _explicitNullValueAgentInstanceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_id"); else _explicitNullProperties?.Remove("agent_instance_id"); } }
+        public string AgentInstanceId { get => _explicitNullValueAgentInstanceId; set { _explicitNullValueAgentInstanceId = value; AdditionalData?.Remove("agent_instance_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_id"); else _explicitNullProperties?.Remove("agent_instance_id"); } }
         private string _explicitNullValueAgentInstanceId = default!;
 #endif
         /// <summary>The backing agent instance session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentInstanceSessionId { get => _explicitNullValueAgentInstanceSessionId; set { _explicitNullValueAgentInstanceSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_session_id"); else _explicitNullProperties?.Remove("agent_instance_session_id"); } }
+        public string? AgentInstanceSessionId { get => _explicitNullValueAgentInstanceSessionId; set { _explicitNullValueAgentInstanceSessionId = value; AdditionalData?.Remove("agent_instance_session_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_session_id"); else _explicitNullProperties?.Remove("agent_instance_session_id"); } }
         private string? _explicitNullValueAgentInstanceSessionId = default!;
 #nullable restore
 #else
-        public string AgentInstanceSessionId { get => _explicitNullValueAgentInstanceSessionId; set { _explicitNullValueAgentInstanceSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_session_id"); else _explicitNullProperties?.Remove("agent_instance_session_id"); } }
+        public string AgentInstanceSessionId { get => _explicitNullValueAgentInstanceSessionId; set { _explicitNullValueAgentInstanceSessionId = value; AdditionalData?.Remove("agent_instance_session_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instance_session_id"); else _explicitNullProperties?.Remove("agent_instance_session_id"); } }
         private string _explicitNullValueAgentInstanceSessionId = default!;
 #endif
         /// <summary>Number of seconds until the access token expires.</summary>
-        public int? ExpiresIn { get => _explicitNullValueExpiresIn; set { _explicitNullValueExpiresIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_in"); else _explicitNullProperties?.Remove("expires_in"); } }
+        public int? ExpiresIn { get => _explicitNullValueExpiresIn; set { _explicitNullValueExpiresIn = value; AdditionalData?.Remove("expires_in"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_in"); else _explicitNullProperties?.Remove("expires_in"); } }
         private int? _explicitNullValueExpiresIn = default!;
         /// <summary>Whether this mint created the agent instance: `true` only for the mint that inserted the row, `false` when an existing instance was reused (including when a concurrent mint inserted it first).</summary>
-        public bool? NewInstance { get => _explicitNullValueNewInstance; set { _explicitNullValueNewInstance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_instance"); else _explicitNullProperties?.Remove("new_instance"); } }
+        public bool? NewInstance { get => _explicitNullValueNewInstance; set { _explicitNullValueNewInstance = value; AdditionalData?.Remove("new_instance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_instance"); else _explicitNullProperties?.Remove("new_instance"); } }
         private bool? _explicitNullValueNewInstance = default!;
         /// <summary>The effective permission slugs carried by the token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        public List<string>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
         private List<string>? _explicitNullValuePermissions = default!;
 #nullable restore
 #else
-        public List<string> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        public List<string> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
         private List<string> _explicitNullValuePermissions = default!;
 #endif
         /// <summary>Single-use refresh token for rotating the access token within the session lifetime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }
+        public string? RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; AdditionalData?.Remove("refresh_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }
         private string? _explicitNullValueRefreshToken = default!;
 #nullable restore
 #else
-        public string RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }
+        public string RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; AdditionalData?.Remove("refresh_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }
         private string _explicitNullValueRefreshToken = default!;
 #endif
         /// <summary>Always `Bearer`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.BearerTokenType? TokenType { get => _explicitNullValueTokenType; set { _explicitNullValueTokenType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_type"); else _explicitNullProperties?.Remove("token_type"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.BearerTokenType? TokenType { get => _explicitNullValueTokenType; set { _explicitNullValueTokenType = value; AdditionalData?.Remove("token_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_type"); else _explicitNullProperties?.Remove("token_type"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.BearerTokenType? _explicitNullValueTokenType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentToken"/> and sets the default values.
@@ -120,7 +128,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "new_instance", n => { NewInstance = n.GetBoolValue(); } },
                 { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "refresh_token", n => { RefreshToken = n.GetStringValue(); } },
-                { "token_type", n => { TokenType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.BearerTokenType>(); } },
+                { "token_type", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.BearerTokenType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTokenType = default; _explicitNullProperties?.Remove("token_type"); AdditionalData["token_type"] = unknown; } else { TokenType = parsed; AdditionalData.Remove("token_type"); } } },
             };
         }
         /// <summary>

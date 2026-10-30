@@ -17,23 +17,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("locale") is { } nullNodeLocale && nullNodeLocale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Locale = null;
-            if (parseNode.GetChildNode("new_email") is { } nullNodeNewEmail && nullNodeNewEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewEmail = null;
+            if (parseNode.GetChildNode("locale") is null) { _explicitNullValueLocale = default!; _explicitNullProperties?.Remove("locale"); }
+            else if (parseNode.GetChildNode("locale") is { } nullNodeLocale && nullNodeLocale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Locale = null;
+            if (parseNode.GetChildNode("new_email") is null) { _explicitNullValueNewEmail = default!; _explicitNullProperties?.Remove("new_email"); }
+            else if (parseNode.GetChildNode("new_email") is { } nullNodeNewEmail && nullNodeNewEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewEmail = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The locale to use when rendering the email change email. Defaults to the environment&apos;s default locale. See [supported locales](/authkit/hosted-ui#localization).</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SendEmailChangeDtoLocale? Locale { get => _explicitNullValueLocale; set { _explicitNullValueLocale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale"); else _explicitNullProperties?.Remove("locale"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SendEmailChangeDtoLocale? Locale { get => _explicitNullValueLocale; set { _explicitNullValueLocale = value; AdditionalData?.Remove("locale"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locale"); else _explicitNullProperties?.Remove("locale"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.SendEmailChangeDtoLocale? _explicitNullValueLocale = default!;
         /// <summary>The new email address to change to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewEmail { get => _explicitNullValueNewEmail; set { _explicitNullValueNewEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_email"); else _explicitNullProperties?.Remove("new_email"); } }
+        public string? NewEmail { get => _explicitNullValueNewEmail; set { _explicitNullValueNewEmail = value; AdditionalData?.Remove("new_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_email"); else _explicitNullProperties?.Remove("new_email"); } }
         private string? _explicitNullValueNewEmail = default!;
 #nullable restore
 #else
-        public string NewEmail { get => _explicitNullValueNewEmail; set { _explicitNullValueNewEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_email"); else _explicitNullProperties?.Remove("new_email"); } }
+        public string NewEmail { get => _explicitNullValueNewEmail; set { _explicitNullValueNewEmail = value; AdditionalData?.Remove("new_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_email"); else _explicitNullProperties?.Remove("new_email"); } }
         private string _explicitNullValueNewEmail = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "locale", n => { Locale = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SendEmailChangeDtoLocale>(); } },
+                { "locale", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SendEmailChangeDtoLocale>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLocale = default; _explicitNullProperties?.Remove("locale"); AdditionalData["locale"] = unknown; } else { Locale = parsed; AdditionalData.Remove("locale"); } } },
                 { "new_email", n => { NewEmail = n.GetStringValue(); } },
             };
         }

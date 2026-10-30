@@ -17,11 +17,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attempt_id") is { } nullNodeAttemptId && nullNodeAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptId = null;
-            if (parseNode.GetChildNode("blocklist_type") is { } nullNodeBlocklistType && nullNodeBlocklistType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlocklistType = null;
-            if (parseNode.GetChildNode("control") is { } nullNodeControl && nullNodeControl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Control = null;
-            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
-            if (parseNode.GetChildNode("verdict") is { } nullNodeVerdict && nullNodeVerdict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verdict = null;
+            if (parseNode.GetChildNode("attempt_id") is null) { _explicitNullValueAttemptId = default!; _explicitNullProperties?.Remove("attempt_id"); }
+            else if (parseNode.GetChildNode("attempt_id") is { } nullNodeAttemptId && nullNodeAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptId = null;
+            if (parseNode.GetChildNode("blocklist_type") is null) { _explicitNullValueBlocklistType = default!; _explicitNullProperties?.Remove("blocklist_type"); }
+            else if (parseNode.GetChildNode("blocklist_type") is { } nullNodeBlocklistType && nullNodeBlocklistType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlocklistType = null;
+            if (parseNode.GetChildNode("control") is null) { _explicitNullValueControl = default!; _explicitNullProperties?.Remove("control"); }
+            else if (parseNode.GetChildNode("control") is { } nullNodeControl && nullNodeControl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Control = null;
+            if (parseNode.GetChildNode("reason") is null) { _explicitNullValueReason = default!; _explicitNullProperties?.Remove("reason"); }
+            else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("verdict") is null) { _explicitNullValueVerdict = default!; _explicitNullProperties?.Remove("verdict"); }
+            else if (parseNode.GetChildNode("verdict") is { } nullNodeVerdict && nullNodeVerdict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verdict = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,31 +34,31 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Unique identifier of the authentication attempt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AttemptId { get => _explicitNullValueAttemptId; set { _explicitNullValueAttemptId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_id"); else _explicitNullProperties?.Remove("attempt_id"); } }
+        public string? AttemptId { get => _explicitNullValueAttemptId; set { _explicitNullValueAttemptId = value; AdditionalData?.Remove("attempt_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_id"); else _explicitNullProperties?.Remove("attempt_id"); } }
         private string? _explicitNullValueAttemptId = default!;
 #nullable restore
 #else
-        public string AttemptId { get => _explicitNullValueAttemptId; set { _explicitNullValueAttemptId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_id"); else _explicitNullProperties?.Remove("attempt_id"); } }
+        public string AttemptId { get => _explicitNullValueAttemptId; set { _explicitNullValueAttemptId = value; AdditionalData?.Remove("attempt_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_id"); else _explicitNullProperties?.Remove("attempt_id"); } }
         private string _explicitNullValueAttemptId = default!;
 #endif
         /// <summary>The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType? BlocklistType { get => _explicitNullValueBlocklistType; set { _explicitNullValueBlocklistType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocklist_type"); else _explicitNullProperties?.Remove("blocklist_type"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType? BlocklistType { get => _explicitNullValueBlocklistType; set { _explicitNullValueBlocklistType = value; AdditionalData?.Remove("blocklist_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocklist_type"); else _explicitNullProperties?.Remove("blocklist_type"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType? _explicitNullValueBlocklistType = default!;
         /// <summary>The Radar control that triggered the verdict. Only present if the verdict is `block` or `challenge`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl? Control { get => _explicitNullValueControl; set { _explicitNullValueControl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("control"); else _explicitNullProperties?.Remove("control"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl? Control { get => _explicitNullValueControl; set { _explicitNullValueControl = value; AdditionalData?.Remove("control"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("control"); else _explicitNullProperties?.Remove("control"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl? _explicitNullValueControl = default!;
         /// <summary>A human-readable reason for the verdict.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private string _explicitNullValueReason = default!;
 #endif
         /// <summary>The verdict of the risk assessment.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict? Verdict { get => _explicitNullValueVerdict; set { _explicitNullValueVerdict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verdict"); else _explicitNullProperties?.Remove("verdict"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict? Verdict { get => _explicitNullValueVerdict; set { _explicitNullValueVerdict = value; AdditionalData?.Remove("verdict"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verdict"); else _explicitNullProperties?.Remove("verdict"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict? _explicitNullValueVerdict = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponse"/> and sets the default values.
@@ -81,10 +86,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attempt_id", n => { AttemptId = n.GetStringValue(); } },
-                { "blocklist_type", n => { BlocklistType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType>(); } },
-                { "control", n => { Control = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl>(); } },
+                { "blocklist_type", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBlocklistType = default; _explicitNullProperties?.Remove("blocklist_type"); AdditionalData["blocklist_type"] = unknown; } else { BlocklistType = parsed; AdditionalData.Remove("blocklist_type"); } } },
+                { "control", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseControl>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueControl = default; _explicitNullProperties?.Remove("control"); AdditionalData["control"] = unknown; } else { Control = parsed; AdditionalData.Remove("control"); } } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
-                { "verdict", n => { Verdict = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict>(); } },
+                { "verdict", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseVerdict>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueVerdict = default; _explicitNullProperties?.Remove("verdict"); AdditionalData["verdict"] = unknown; } else { Verdict = parsed; AdditionalData.Remove("verdict"); } } },
             };
         }
         /// <summary>

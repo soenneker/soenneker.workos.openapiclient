@@ -17,8 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("authentication_challenge") is { } nullNodeAuthenticationChallenge && nullNodeAuthenticationChallenge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationChallenge = null;
-            if (parseNode.GetChildNode("authentication_factor") is { } nullNodeAuthenticationFactor && nullNodeAuthenticationFactor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationFactor = null;
+            if (parseNode.GetChildNode("authentication_challenge") is null) { _explicitNullValueAuthenticationChallenge = default!; _explicitNullProperties?.Remove("authentication_challenge"); }
+            else if (parseNode.GetChildNode("authentication_challenge") is { } nullNodeAuthenticationChallenge && nullNodeAuthenticationChallenge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationChallenge = null;
+            if (parseNode.GetChildNode("authentication_factor") is null) { _explicitNullValueAuthenticationFactor = default!; _explicitNullProperties?.Remove("authentication_factor"); }
+            else if (parseNode.GetChildNode("authentication_factor") is { } nullNodeAuthenticationFactor && nullNodeAuthenticationFactor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationFactor = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The [authentication challenge](/reference/authkit/mfa/authentication-challenge) object that is used to complete the authentication process.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? AuthenticationChallenge { get => _explicitNullValueAuthenticationChallenge; set { _explicitNullValueAuthenticationChallenge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_challenge"); else _explicitNullProperties?.Remove("authentication_challenge"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? AuthenticationChallenge { get => _explicitNullValueAuthenticationChallenge; set { _explicitNullValueAuthenticationChallenge = value; AdditionalData?.Remove("authentication_challenge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_challenge"); else _explicitNullProperties?.Remove("authentication_challenge"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? _explicitNullValueAuthenticationChallenge = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge AuthenticationChallenge { get => _explicitNullValueAuthenticationChallenge; set { _explicitNullValueAuthenticationChallenge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_challenge"); else _explicitNullProperties?.Remove("authentication_challenge"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge AuthenticationChallenge { get => _explicitNullValueAuthenticationChallenge; set { _explicitNullValueAuthenticationChallenge = value; AdditionalData?.Remove("authentication_challenge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_challenge"); else _explicitNullProperties?.Remove("authentication_challenge"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge _explicitNullValueAuthenticationChallenge = default!;
 #endif
         /// <summary>The [authentication factor](/reference/authkit/mfa/authentication-factor) object that represents the additional authentication method used on top of the existing authentication strategy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled? AuthenticationFactor { get => _explicitNullValueAuthenticationFactor; set { _explicitNullValueAuthenticationFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_factor"); else _explicitNullProperties?.Remove("authentication_factor"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled? AuthenticationFactor { get => _explicitNullValueAuthenticationFactor; set { _explicitNullValueAuthenticationFactor = value; AdditionalData?.Remove("authentication_factor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_factor"); else _explicitNullProperties?.Remove("authentication_factor"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled? _explicitNullValueAuthenticationFactor = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled AuthenticationFactor { get => _explicitNullValueAuthenticationFactor; set { _explicitNullValueAuthenticationFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_factor"); else _explicitNullProperties?.Remove("authentication_factor"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled AuthenticationFactor { get => _explicitNullValueAuthenticationFactor; set { _explicitNullValueAuthenticationFactor = value; AdditionalData?.Remove("authentication_factor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_factor"); else _explicitNullProperties?.Remove("authentication_factor"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationFactorEnrolled _explicitNullValueAuthenticationFactor = default!;
 #endif
         /// <summary>

@@ -17,9 +17,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("password_hash") is { } nullNodePasswordHash && nullNodePasswordHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordHash = null;
-            if (parseNode.GetChildNode("password_hash_type") is { } nullNodePasswordHashType && nullNodePasswordHashType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordHashType = null;
-            if (parseNode.GetChildNode("password_salt_position") is { } nullNodePasswordSaltPosition && nullNodePasswordSaltPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordSaltPosition = null;
+            if (parseNode.GetChildNode("password_hash") is null) { _explicitNullValuePasswordHash = default!; _explicitNullProperties?.Remove("password_hash"); }
+            else if (parseNode.GetChildNode("password_hash") is { } nullNodePasswordHash && nullNodePasswordHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordHash = null;
+            if (parseNode.GetChildNode("password_hash_type") is null) { _explicitNullValuePasswordHashType = default!; _explicitNullProperties?.Remove("password_hash_type"); }
+            else if (parseNode.GetChildNode("password_hash_type") is { } nullNodePasswordHashType && nullNodePasswordHashType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordHashType = null;
+            if (parseNode.GetChildNode("password_salt_position") is null) { _explicitNullValuePasswordSaltPosition = default!; _explicitNullProperties?.Remove("password_salt_position"); }
+            else if (parseNode.GetChildNode("password_salt_position") is { } nullNodePasswordSaltPosition && nullNodePasswordSaltPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasswordSaltPosition = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,18 +30,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The hashed password to set for the user. Required with `password_hash_type`. Mutually exclusive with `password`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PasswordHash { get => _explicitNullValuePasswordHash; set { _explicitNullValuePasswordHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_hash"); else _explicitNullProperties?.Remove("password_hash"); } }
+        public string? PasswordHash { get => _explicitNullValuePasswordHash; set { _explicitNullValuePasswordHash = value; AdditionalData?.Remove("password_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_hash"); else _explicitNullProperties?.Remove("password_hash"); } }
         private string? _explicitNullValuePasswordHash = default!;
 #nullable restore
 #else
-        public string PasswordHash { get => _explicitNullValuePasswordHash; set { _explicitNullValuePasswordHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_hash"); else _explicitNullProperties?.Remove("password_hash"); } }
+        public string PasswordHash { get => _explicitNullValuePasswordHash; set { _explicitNullValuePasswordHash = value; AdditionalData?.Remove("password_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_hash"); else _explicitNullProperties?.Remove("password_hash"); } }
         private string _explicitNullValuePasswordHash = default!;
 #endif
         /// <summary>The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordHashType? PasswordHashType { get => _explicitNullValuePasswordHashType; set { _explicitNullValuePasswordHashType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_hash_type"); else _explicitNullProperties?.Remove("password_hash_type"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordHashType? PasswordHashType { get => _explicitNullValuePasswordHashType; set { _explicitNullValuePasswordHashType = value; AdditionalData?.Remove("password_hash_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_hash_type"); else _explicitNullProperties?.Remove("password_hash_type"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordHashType? _explicitNullValuePasswordHashType = default!;
         /// <summary>The position of the salt relative to the password when the `password_hash` digest was computed: `prefix` for `hash(salt + password)` or `suffix` for `hash(password + salt)`. Only supported with the `ssha256` hash type and only valid when a `password_hash` is provided. Defaults to `suffix`. Mutually exclusive with `password`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition? PasswordSaltPosition { get => _explicitNullValuePasswordSaltPosition; set { _explicitNullValuePasswordSaltPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_salt_position"); else _explicitNullProperties?.Remove("password_salt_position"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition? PasswordSaltPosition { get => _explicitNullValuePasswordSaltPosition; set { _explicitNullValuePasswordSaltPosition = value; AdditionalData?.Remove("password_salt_position"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password_salt_position"); else _explicitNullProperties?.Remove("password_salt_position"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition? _explicitNullValuePasswordSaltPosition = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3"/> and sets the default values.
@@ -66,8 +69,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "password_hash", n => { PasswordHash = n.GetStringValue(); } },
-                { "password_hash_type", n => { PasswordHashType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordHashType>(); } },
-                { "password_salt_position", n => { PasswordSaltPosition = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition>(); } },
+                { "password_hash_type", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordHashType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePasswordHashType = default; _explicitNullProperties?.Remove("password_hash_type"); AdditionalData["password_hash_type"] = unknown; } else { PasswordHashType = parsed; AdditionalData.Remove("password_hash_type"); } } },
+                { "password_salt_position", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateUserlandUserDtoAllOf2OneOf3PasswordSaltPosition>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePasswordSaltPosition = default; _explicitNullProperties?.Remove("password_salt_position"); AdditionalData["password_salt_position"] = unknown; } else { PasswordSaltPosition = parsed; AdditionalData.Remove("password_salt_position"); } } },
             };
         }
         /// <summary>

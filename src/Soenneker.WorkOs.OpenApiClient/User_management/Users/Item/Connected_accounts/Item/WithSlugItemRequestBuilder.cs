@@ -101,6 +101,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation404ResponseError">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation409ResponseError">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation422ResponseError">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -117,6 +118,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             {
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation404ResponseError.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation409ResponseError.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerCreateUserDataInstallation422ResponseError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
@@ -133,6 +135,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredErrorBody">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation422ResponseError">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -150,6 +153,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
                 { "400", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.WorkOs.OpenApiClient.Models.AccountSelectionRequiredErrorBody.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsUserManagementControllerUpdateUserDataInstallation422ResponseError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
@@ -170,7 +174,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.workos.com", "/user_management/users/{id}/connected_accounts/{slug}", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -189,7 +193,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_accounts.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.workos.com", "/user_management/users/{id}/connected_accounts/{slug}", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -210,7 +214,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.workos.com", "/user_management/users/{id}/connected_accounts/{slug}", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -232,7 +236,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.workos.com", "/user_management/users/{id}/connected_accounts/{slug}", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

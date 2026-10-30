@@ -17,12 +17,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("external_user_id") is { } nullNodeExternalUserId && nullNodeExternalUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalUserId = null;
-            if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
-            if (parseNode.GetChildNode("it_contact_emails") is { } nullNodeItContactEmails && nullNodeItContactEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItContactEmails = null;
-            if (parseNode.GetChildNode("organization") is { } nullNodeOrganization && nullNodeOrganization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Organization = null;
-            if (parseNode.GetChildNode("return_url") is { } nullNodeReturnUrl && nullNodeReturnUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnUrl = null;
-            if (parseNode.GetChildNode("success_url") is { } nullNodeSuccessUrl && nullNodeSuccessUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessUrl = null;
+            if (parseNode.GetChildNode("external_user_id") is null) { _explicitNullValueExternalUserId = default!; _explicitNullProperties?.Remove("external_user_id"); }
+            else if (parseNode.GetChildNode("external_user_id") is { } nullNodeExternalUserId && nullNodeExternalUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalUserId = null;
+            if (parseNode.GetChildNode("intent") is null) { _explicitNullValueIntent = default!; _explicitNullProperties?.Remove("intent"); }
+            else if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
+            if (parseNode.GetChildNode("it_contact_emails") is null) { _explicitNullValueItContactEmails = default!; _explicitNullProperties?.Remove("it_contact_emails"); }
+            else if (parseNode.GetChildNode("it_contact_emails") is { } nullNodeItContactEmails && nullNodeItContactEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItContactEmails = null;
+            if (parseNode.GetChildNode("organization") is null) { _explicitNullValueOrganization = default!; _explicitNullProperties?.Remove("organization"); }
+            else if (parseNode.GetChildNode("organization") is { } nullNodeOrganization && nullNodeOrganization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Organization = null;
+            if (parseNode.GetChildNode("return_url") is null) { _explicitNullValueReturnUrl = default!; _explicitNullProperties?.Remove("return_url"); }
+            else if (parseNode.GetChildNode("return_url") is { } nullNodeReturnUrl && nullNodeReturnUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnUrl = null;
+            if (parseNode.GetChildNode("success_url") is null) { _explicitNullValueSuccessUrl = default!; _explicitNullProperties?.Remove("success_url"); }
+            else if (parseNode.GetChildNode("success_url") is { } nullNodeSuccessUrl && nullNodeSuccessUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,54 +36,54 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The ID of the user in your application the link is generated for. The link and any Admin Portal sessions started from it can later be revoked by this ID, for example when that user is deprovisioned from your application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalUserId { get => _explicitNullValueExternalUserId; set { _explicitNullValueExternalUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_user_id"); else _explicitNullProperties?.Remove("external_user_id"); } }
+        public string? ExternalUserId { get => _explicitNullValueExternalUserId; set { _explicitNullValueExternalUserId = value; AdditionalData?.Remove("external_user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_user_id"); else _explicitNullProperties?.Remove("external_user_id"); } }
         private string? _explicitNullValueExternalUserId = default!;
 #nullable restore
 #else
-        public string ExternalUserId { get => _explicitNullValueExternalUserId; set { _explicitNullValueExternalUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_user_id"); else _explicitNullProperties?.Remove("external_user_id"); } }
+        public string ExternalUserId { get => _explicitNullValueExternalUserId; set { _explicitNullValueExternalUserId = value; AdditionalData?.Remove("external_user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_user_id"); else _explicitNullProperties?.Remove("external_user_id"); } }
         private string _explicitNullValueExternalUserId = default!;
 #endif
         /// <summary>      The intent of the Admin Portal.        - `sso` - Launch Admin Portal for creating SSO connections        - `dsync` - Launch Admin Portal for creating Directory Sync connections        - `audit_logs` - Launch Admin Portal for viewing Audit Logs        - `log_streams` - Launch Admin Portal for creating Log Streams        - `domain_verification` - Launch Admin Portal for Domain Verification        - `certificate_renewal` - Launch Admin Portal for renewing SAML Certificates        - `bring_your_own_key` - Launch Admin Portal for configuring Bring Your Own Key</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDtoIntent? Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDtoIntent? Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; AdditionalData?.Remove("intent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDtoIntent? _explicitNullValueIntent = default!;
         /// <summary>The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ItContactEmails { get => _explicitNullValueItContactEmails; set { _explicitNullValueItContactEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("it_contact_emails"); else _explicitNullProperties?.Remove("it_contact_emails"); } }
+        public List<string>? ItContactEmails { get => _explicitNullValueItContactEmails; set { _explicitNullValueItContactEmails = value; AdditionalData?.Remove("it_contact_emails"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("it_contact_emails"); else _explicitNullProperties?.Remove("it_contact_emails"); } }
         private List<string>? _explicitNullValueItContactEmails = default!;
 #nullable restore
 #else
-        public List<string> ItContactEmails { get => _explicitNullValueItContactEmails; set { _explicitNullValueItContactEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("it_contact_emails"); else _explicitNullProperties?.Remove("it_contact_emails"); } }
+        public List<string> ItContactEmails { get => _explicitNullValueItContactEmails; set { _explicitNullValueItContactEmails = value; AdditionalData?.Remove("it_contact_emails"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("it_contact_emails"); else _explicitNullProperties?.Remove("it_contact_emails"); } }
         private List<string> _explicitNullValueItContactEmails = default!;
 #endif
         /// <summary>An [Organization](/reference/organization) identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Organization { get => _explicitNullValueOrganization; set { _explicitNullValueOrganization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization"); else _explicitNullProperties?.Remove("organization"); } }
+        public string? Organization { get => _explicitNullValueOrganization; set { _explicitNullValueOrganization = value; AdditionalData?.Remove("organization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization"); else _explicitNullProperties?.Remove("organization"); } }
         private string? _explicitNullValueOrganization = default!;
 #nullable restore
 #else
-        public string Organization { get => _explicitNullValueOrganization; set { _explicitNullValueOrganization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization"); else _explicitNullProperties?.Remove("organization"); } }
+        public string Organization { get => _explicitNullValueOrganization; set { _explicitNullValueOrganization = value; AdditionalData?.Remove("organization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization"); else _explicitNullProperties?.Remove("organization"); } }
         private string _explicitNullValueOrganization = default!;
 #endif
         /// <summary>The URL to go to when an admin clicks on your logo in the Admin Portal. If not specified, the return URL configured on the [Admin Portal](https://dashboard.workos.com/admin-portal) page will be used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReturnUrl { get => _explicitNullValueReturnUrl; set { _explicitNullValueReturnUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_url"); else _explicitNullProperties?.Remove("return_url"); } }
+        public string? ReturnUrl { get => _explicitNullValueReturnUrl; set { _explicitNullValueReturnUrl = value; AdditionalData?.Remove("return_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_url"); else _explicitNullProperties?.Remove("return_url"); } }
         private string? _explicitNullValueReturnUrl = default!;
 #nullable restore
 #else
-        public string ReturnUrl { get => _explicitNullValueReturnUrl; set { _explicitNullValueReturnUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_url"); else _explicitNullProperties?.Remove("return_url"); } }
+        public string ReturnUrl { get => _explicitNullValueReturnUrl; set { _explicitNullValueReturnUrl = value; AdditionalData?.Remove("return_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_url"); else _explicitNullProperties?.Remove("return_url"); } }
         private string _explicitNullValueReturnUrl = default!;
 #endif
         /// <summary>The URL to redirect the admin to when they finish setup. If not specified, the success URL configured on the [Admin Portal](https://dashboard.workos.com/admin-portal) page will be used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuccessUrl { get => _explicitNullValueSuccessUrl; set { _explicitNullValueSuccessUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_url"); else _explicitNullProperties?.Remove("success_url"); } }
+        public string? SuccessUrl { get => _explicitNullValueSuccessUrl; set { _explicitNullValueSuccessUrl = value; AdditionalData?.Remove("success_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_url"); else _explicitNullProperties?.Remove("success_url"); } }
         private string? _explicitNullValueSuccessUrl = default!;
 #nullable restore
 #else
-        public string SuccessUrl { get => _explicitNullValueSuccessUrl; set { _explicitNullValueSuccessUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_url"); else _explicitNullProperties?.Remove("success_url"); } }
+        public string SuccessUrl { get => _explicitNullValueSuccessUrl; set { _explicitNullValueSuccessUrl = value; AdditionalData?.Remove("success_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_url"); else _explicitNullProperties?.Remove("success_url"); } }
         private string _explicitNullValueSuccessUrl = default!;
 #endif
         /// <summary>
@@ -106,7 +112,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "external_user_id", n => { ExternalUserId = n.GetStringValue(); } },
-                { "intent", n => { Intent = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDtoIntent>(); } },
+                { "intent", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDtoIntent>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueIntent = default; _explicitNullProperties?.Remove("intent"); AdditionalData["intent"] = unknown; } else { Intent = parsed; AdditionalData.Remove("intent"); } } },
                 { "it_contact_emails", n => { ItContactEmails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "organization", n => { Organization = n.GetStringValue(); } },
                 { "return_url", n => { ReturnUrl = n.GetStringValue(); } },

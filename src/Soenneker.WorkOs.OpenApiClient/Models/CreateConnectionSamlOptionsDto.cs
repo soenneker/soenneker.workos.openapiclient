@@ -17,24 +17,32 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("acs_url") is { } nullNodeAcsUrl && nullNodeAcsUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcsUrl = null;
-            if (parseNode.GetChildNode("idp_entity_id") is { } nullNodeIdpEntityId && nullNodeIdpEntityId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpEntityId = null;
-            if (parseNode.GetChildNode("idp_metadata_url") is { } nullNodeIdpMetadataUrl && nullNodeIdpMetadataUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpMetadataUrl = null;
-            if (parseNode.GetChildNode("idp_signing_certs") is { } nullNodeIdpSigningCerts && nullNodeIdpSigningCerts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpSigningCerts = null;
-            if (parseNode.GetChildNode("idp_sso_url") is { } nullNodeIdpSsoUrl && nullNodeIdpSsoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpSsoUrl = null;
-            if (parseNode.GetChildNode("sp_encryption_key_pairs") is { } nullNodeSpEncryptionKeyPairs && nullNodeSpEncryptionKeyPairs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpEncryptionKeyPairs = null;
-            if (parseNode.GetChildNode("sp_entity_id") is { } nullNodeSpEntityId && nullNodeSpEntityId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpEntityId = null;
-            if (parseNode.GetChildNode("sp_signing_key_pair") is { } nullNodeSpSigningKeyPair && nullNodeSpSigningKeyPair.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpSigningKeyPair = null;
+            if (parseNode.GetChildNode("acs_url") is null) { _explicitNullValueAcsUrl = default!; _explicitNullProperties?.Remove("acs_url"); }
+            else if (parseNode.GetChildNode("acs_url") is { } nullNodeAcsUrl && nullNodeAcsUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcsUrl = null;
+            if (parseNode.GetChildNode("idp_entity_id") is null) { _explicitNullValueIdpEntityId = default!; _explicitNullProperties?.Remove("idp_entity_id"); }
+            else if (parseNode.GetChildNode("idp_entity_id") is { } nullNodeIdpEntityId && nullNodeIdpEntityId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpEntityId = null;
+            if (parseNode.GetChildNode("idp_metadata_url") is null) { _explicitNullValueIdpMetadataUrl = default!; _explicitNullProperties?.Remove("idp_metadata_url"); }
+            else if (parseNode.GetChildNode("idp_metadata_url") is { } nullNodeIdpMetadataUrl && nullNodeIdpMetadataUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpMetadataUrl = null;
+            if (parseNode.GetChildNode("idp_signing_certs") is null) { _explicitNullValueIdpSigningCerts = default!; _explicitNullProperties?.Remove("idp_signing_certs"); }
+            else if (parseNode.GetChildNode("idp_signing_certs") is { } nullNodeIdpSigningCerts && nullNodeIdpSigningCerts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpSigningCerts = null;
+            if (parseNode.GetChildNode("idp_sso_url") is null) { _explicitNullValueIdpSsoUrl = default!; _explicitNullProperties?.Remove("idp_sso_url"); }
+            else if (parseNode.GetChildNode("idp_sso_url") is { } nullNodeIdpSsoUrl && nullNodeIdpSsoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdpSsoUrl = null;
+            if (parseNode.GetChildNode("sp_encryption_key_pairs") is null) { _explicitNullValueSpEncryptionKeyPairs = default!; _explicitNullProperties?.Remove("sp_encryption_key_pairs"); }
+            else if (parseNode.GetChildNode("sp_encryption_key_pairs") is { } nullNodeSpEncryptionKeyPairs && nullNodeSpEncryptionKeyPairs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpEncryptionKeyPairs = null;
+            if (parseNode.GetChildNode("sp_entity_id") is null) { _explicitNullValueSpEntityId = default!; _explicitNullProperties?.Remove("sp_entity_id"); }
+            else if (parseNode.GetChildNode("sp_entity_id") is { } nullNodeSpEntityId && nullNodeSpEntityId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpEntityId = null;
+            if (parseNode.GetChildNode("sp_signing_key_pair") is null) { _explicitNullValueSpSigningKeyPair = default!; _explicitNullProperties?.Remove("sp_signing_key_pair"); }
+            else if (parseNode.GetChildNode("sp_signing_key_pair") is { } nullNodeSpSigningKeyPair && nullNodeSpSigningKeyPair.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpSigningKeyPair = null;
         }
 
         /// <summary>A custom Assertion Consumer Service (ACS) URL override. When omitted, the standard WorkOS-generated ACS URL is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AcsUrl { get => _explicitNullValueAcsUrl; set { _explicitNullValueAcsUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acs_url"); else _explicitNullProperties?.Remove("acs_url"); } }
+        public string? AcsUrl { get => _explicitNullValueAcsUrl; set { _explicitNullValueAcsUrl = value; AdditionalData?.Remove("acs_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acs_url"); else _explicitNullProperties?.Remove("acs_url"); } }
         private string? _explicitNullValueAcsUrl = default!;
 #nullable restore
 #else
-        public string AcsUrl { get => _explicitNullValueAcsUrl; set { _explicitNullValueAcsUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acs_url"); else _explicitNullProperties?.Remove("acs_url"); } }
+        public string AcsUrl { get => _explicitNullValueAcsUrl; set { _explicitNullValueAcsUrl = value; AdditionalData?.Remove("acs_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acs_url"); else _explicitNullProperties?.Remove("acs_url"); } }
         private string _explicitNullValueAcsUrl = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -42,71 +50,71 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The Identity Provider Entity ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdpEntityId { get => _explicitNullValueIdpEntityId; set { _explicitNullValueIdpEntityId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_entity_id"); else _explicitNullProperties?.Remove("idp_entity_id"); } }
+        public string? IdpEntityId { get => _explicitNullValueIdpEntityId; set { _explicitNullValueIdpEntityId = value; AdditionalData?.Remove("idp_entity_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_entity_id"); else _explicitNullProperties?.Remove("idp_entity_id"); } }
         private string? _explicitNullValueIdpEntityId = default!;
 #nullable restore
 #else
-        public string IdpEntityId { get => _explicitNullValueIdpEntityId; set { _explicitNullValueIdpEntityId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_entity_id"); else _explicitNullProperties?.Remove("idp_entity_id"); } }
+        public string IdpEntityId { get => _explicitNullValueIdpEntityId; set { _explicitNullValueIdpEntityId = value; AdditionalData?.Remove("idp_entity_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_entity_id"); else _explicitNullProperties?.Remove("idp_entity_id"); } }
         private string _explicitNullValueIdpEntityId = default!;
 #endif
         /// <summary>The Identity Provider metadata URL. When provided, the IdP fields and signing certificates are imported from the metadata document. Mutually exclusive with the manual IdP fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdpMetadataUrl { get => _explicitNullValueIdpMetadataUrl; set { _explicitNullValueIdpMetadataUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_metadata_url"); else _explicitNullProperties?.Remove("idp_metadata_url"); } }
+        public string? IdpMetadataUrl { get => _explicitNullValueIdpMetadataUrl; set { _explicitNullValueIdpMetadataUrl = value; AdditionalData?.Remove("idp_metadata_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_metadata_url"); else _explicitNullProperties?.Remove("idp_metadata_url"); } }
         private string? _explicitNullValueIdpMetadataUrl = default!;
 #nullable restore
 #else
-        public string IdpMetadataUrl { get => _explicitNullValueIdpMetadataUrl; set { _explicitNullValueIdpMetadataUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_metadata_url"); else _explicitNullProperties?.Remove("idp_metadata_url"); } }
+        public string IdpMetadataUrl { get => _explicitNullValueIdpMetadataUrl; set { _explicitNullValueIdpMetadataUrl = value; AdditionalData?.Remove("idp_metadata_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_metadata_url"); else _explicitNullProperties?.Remove("idp_metadata_url"); } }
         private string _explicitNullValueIdpMetadataUrl = default!;
 #endif
         /// <summary>The X.509 certificates used to verify signed SAML responses from the Identity Provider. Required when configuring the connection with manual IdP fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IdpSigningCerts { get => _explicitNullValueIdpSigningCerts; set { _explicitNullValueIdpSigningCerts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_signing_certs"); else _explicitNullProperties?.Remove("idp_signing_certs"); } }
+        public List<string>? IdpSigningCerts { get => _explicitNullValueIdpSigningCerts; set { _explicitNullValueIdpSigningCerts = value; AdditionalData?.Remove("idp_signing_certs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_signing_certs"); else _explicitNullProperties?.Remove("idp_signing_certs"); } }
         private List<string>? _explicitNullValueIdpSigningCerts = default!;
 #nullable restore
 #else
-        public List<string> IdpSigningCerts { get => _explicitNullValueIdpSigningCerts; set { _explicitNullValueIdpSigningCerts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_signing_certs"); else _explicitNullProperties?.Remove("idp_signing_certs"); } }
+        public List<string> IdpSigningCerts { get => _explicitNullValueIdpSigningCerts; set { _explicitNullValueIdpSigningCerts = value; AdditionalData?.Remove("idp_signing_certs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_signing_certs"); else _explicitNullProperties?.Remove("idp_signing_certs"); } }
         private List<string> _explicitNullValueIdpSigningCerts = default!;
 #endif
         /// <summary>The Identity Provider SSO URL. Required when configuring the connection with manual IdP fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdpSsoUrl { get => _explicitNullValueIdpSsoUrl; set { _explicitNullValueIdpSsoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_sso_url"); else _explicitNullProperties?.Remove("idp_sso_url"); } }
+        public string? IdpSsoUrl { get => _explicitNullValueIdpSsoUrl; set { _explicitNullValueIdpSsoUrl = value; AdditionalData?.Remove("idp_sso_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_sso_url"); else _explicitNullProperties?.Remove("idp_sso_url"); } }
         private string? _explicitNullValueIdpSsoUrl = default!;
 #nullable restore
 #else
-        public string IdpSsoUrl { get => _explicitNullValueIdpSsoUrl; set { _explicitNullValueIdpSsoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_sso_url"); else _explicitNullProperties?.Remove("idp_sso_url"); } }
+        public string IdpSsoUrl { get => _explicitNullValueIdpSsoUrl; set { _explicitNullValueIdpSsoUrl = value; AdditionalData?.Remove("idp_sso_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idp_sso_url"); else _explicitNullProperties?.Remove("idp_sso_url"); } }
         private string _explicitNullValueIdpSsoUrl = default!;
 #endif
         /// <summary>The customer-owned key pairs used to decrypt encrypted SAML responses from the Identity Provider. When omitted, WorkOS generates and manages the encryption key pair.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto>? SpEncryptionKeyPairs { get => _explicitNullValueSpEncryptionKeyPairs; set { _explicitNullValueSpEncryptionKeyPairs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_encryption_key_pairs"); else _explicitNullProperties?.Remove("sp_encryption_key_pairs"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto>? SpEncryptionKeyPairs { get => _explicitNullValueSpEncryptionKeyPairs; set { _explicitNullValueSpEncryptionKeyPairs = value; AdditionalData?.Remove("sp_encryption_key_pairs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_encryption_key_pairs"); else _explicitNullProperties?.Remove("sp_encryption_key_pairs"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto>? _explicitNullValueSpEncryptionKeyPairs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto> SpEncryptionKeyPairs { get => _explicitNullValueSpEncryptionKeyPairs; set { _explicitNullValueSpEncryptionKeyPairs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_encryption_key_pairs"); else _explicitNullProperties?.Remove("sp_encryption_key_pairs"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto> SpEncryptionKeyPairs { get => _explicitNullValueSpEncryptionKeyPairs; set { _explicitNullValueSpEncryptionKeyPairs = value; AdditionalData?.Remove("sp_encryption_key_pairs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_encryption_key_pairs"); else _explicitNullProperties?.Remove("sp_encryption_key_pairs"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto> _explicitNullValueSpEncryptionKeyPairs = default!;
 #endif
         /// <summary>A custom Service Provider Entity ID (audience) override. When omitted, the connection external key is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SpEntityId { get => _explicitNullValueSpEntityId; set { _explicitNullValueSpEntityId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_entity_id"); else _explicitNullProperties?.Remove("sp_entity_id"); } }
+        public string? SpEntityId { get => _explicitNullValueSpEntityId; set { _explicitNullValueSpEntityId = value; AdditionalData?.Remove("sp_entity_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_entity_id"); else _explicitNullProperties?.Remove("sp_entity_id"); } }
         private string? _explicitNullValueSpEntityId = default!;
 #nullable restore
 #else
-        public string SpEntityId { get => _explicitNullValueSpEntityId; set { _explicitNullValueSpEntityId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_entity_id"); else _explicitNullProperties?.Remove("sp_entity_id"); } }
+        public string SpEntityId { get => _explicitNullValueSpEntityId; set { _explicitNullValueSpEntityId = value; AdditionalData?.Remove("sp_entity_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_entity_id"); else _explicitNullProperties?.Remove("sp_entity_id"); } }
         private string _explicitNullValueSpEntityId = default!;
 #endif
         /// <summary>The customer-owned key pair used to sign SAML requests sent to the Identity Provider. When omitted, WorkOS generates and manages the signing key pair.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto? SpSigningKeyPair { get => _explicitNullValueSpSigningKeyPair; set { _explicitNullValueSpSigningKeyPair = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_signing_key_pair"); else _explicitNullProperties?.Remove("sp_signing_key_pair"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto? SpSigningKeyPair { get => _explicitNullValueSpSigningKeyPair; set { _explicitNullValueSpSigningKeyPair = value; AdditionalData?.Remove("sp_signing_key_pair"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_signing_key_pair"); else _explicitNullProperties?.Remove("sp_signing_key_pair"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto? _explicitNullValueSpSigningKeyPair = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto SpSigningKeyPair { get => _explicitNullValueSpSigningKeyPair; set { _explicitNullValueSpSigningKeyPair = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_signing_key_pair"); else _explicitNullProperties?.Remove("sp_signing_key_pair"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto SpSigningKeyPair { get => _explicitNullValueSpSigningKeyPair; set { _explicitNullValueSpSigningKeyPair = value; AdditionalData?.Remove("sp_signing_key_pair"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sp_signing_key_pair"); else _explicitNullProperties?.Remove("sp_signing_key_pair"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto _explicitNullValueSpSigningKeyPair = default!;
 #endif
         /// <summary>

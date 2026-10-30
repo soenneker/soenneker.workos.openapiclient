@@ -80,7 +80,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organizati
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Authorization.Resources.Item.Organization_memberships.Organization_membershipsRequestBuilder.Organization_membershipsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.workos.com", "/authorization/resources/{resourceId}/organization_memberships", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

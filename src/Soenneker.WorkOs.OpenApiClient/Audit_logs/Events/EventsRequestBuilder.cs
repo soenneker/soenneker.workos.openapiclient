@@ -40,6 +40,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Events
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventsControllerCreate400ResponseError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCodeFieldErrors">When receiving a 422 status code</exception>
@@ -57,6 +58,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Events
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogEventsControllerCreate400ResponseError.CreateFromDiscriminatorValue },
                 { "402", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCodeFieldErrors.CreateFromDiscriminatorValue },
@@ -82,7 +84,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Audit_logs.Events
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.workos.com", "/audit_logs/events", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

@@ -17,10 +17,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("log_stream") is { } nullNodeLogStream && nullNodeLogStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogStream = null;
-            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
-            if (parseNode.GetChildNode("retention_period_in_days") is { } nullNodeRetentionPeriodInDays && nullNodeRetentionPeriodInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriodInDays = null;
-            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("log_stream") is null) { _explicitNullValueLogStream = default!; _explicitNullProperties?.Remove("log_stream"); }
+            else if (parseNode.GetChildNode("log_stream") is { } nullNodeLogStream && nullNodeLogStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogStream = null;
+            if (parseNode.GetChildNode("organization_id") is null) { _explicitNullValueOrganizationId = default!; _explicitNullProperties?.Remove("organization_id"); }
+            else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("retention_period_in_days") is null) { _explicitNullValueRetentionPeriodInDays = default!; _explicitNullProperties?.Remove("retention_period_in_days"); }
+            else if (parseNode.GetChildNode("retention_period_in_days") is { } nullNodeRetentionPeriodInDays && nullNodeRetentionPeriodInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriodInDays = null;
+            if (parseNode.GetChildNode("state") is null) { _explicitNullValueState = default!; _explicitNullProperties?.Remove("state"); }
+            else if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,28 +32,28 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The Audit Log Stream currently configured for the organization, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream? LogStream { get => _explicitNullValueLogStream; set { _explicitNullValueLogStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_stream"); else _explicitNullProperties?.Remove("log_stream"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream? LogStream { get => _explicitNullValueLogStream; set { _explicitNullValueLogStream = value; AdditionalData?.Remove("log_stream"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_stream"); else _explicitNullProperties?.Remove("log_stream"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream? _explicitNullValueLogStream = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream LogStream { get => _explicitNullValueLogStream; set { _explicitNullValueLogStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_stream"); else _explicitNullProperties?.Remove("log_stream"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream LogStream { get => _explicitNullValueLogStream; set { _explicitNullValueLogStream = value; AdditionalData?.Remove("log_stream"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_stream"); else _explicitNullProperties?.Remove("log_stream"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream _explicitNullValueLogStream = default!;
 #endif
         /// <summary>Unique identifier of the Organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>The number of days Audit Log events will be retained before being permanently deleted.</summary>
-        public int? RetentionPeriodInDays { get => _explicitNullValueRetentionPeriodInDays; set { _explicitNullValueRetentionPeriodInDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period_in_days"); else _explicitNullProperties?.Remove("retention_period_in_days"); } }
+        public int? RetentionPeriodInDays { get => _explicitNullValueRetentionPeriodInDays; set { _explicitNullValueRetentionPeriodInDays = value; AdditionalData?.Remove("retention_period_in_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period_in_days"); else _explicitNullProperties?.Remove("retention_period_in_days"); } }
         private int? _explicitNullValueRetentionPeriodInDays = default!;
         /// <summary>The current state of the audit log configuration for the organization.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState? _explicitNullValueState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfiguration"/> and sets the default values.
@@ -79,7 +83,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "log_stream", n => { LogStream = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream>(global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationLogStream.CreateFromDiscriminatorValue); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "retention_period_in_days", n => { RetentionPeriodInDays = n.GetIntValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState>(); } },
+                { "state", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuditLogConfigurationState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueState = default; _explicitNullProperties?.Remove("state"); AdditionalData["state"] = unknown; } else { State = parsed; AdditionalData.Remove("state"); } } },
             };
         }
         /// <summary>

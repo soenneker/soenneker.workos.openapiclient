@@ -17,18 +17,20 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("add") is { } nullNodeAdd && nullNodeAdd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Add = null;
-            if (parseNode.GetChildNode("remove") is { } nullNodeRemove && nullNodeRemove.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Remove = null;
+            if (parseNode.GetChildNode("add") is null) { _explicitNullValueAdd = default!; _explicitNullProperties?.Remove("add"); }
+            else if (parseNode.GetChildNode("add") is { } nullNodeAdd && nullNodeAdd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Add = null;
+            if (parseNode.GetChildNode("remove") is null) { _explicitNullValueRemove = default!; _explicitNullProperties?.Remove("remove"); }
+            else if (parseNode.GetChildNode("remove") is { } nullNodeRemove && nullNodeRemove.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Remove = null;
         }
 
         /// <summary>Role assignments to add to the group. Assignments that already exist are skipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto>? Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto>? Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; AdditionalData?.Remove("add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto>? _explicitNullValueAdd = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto> Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto> Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; AdditionalData?.Remove("add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto> _explicitNullValueAdd = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -36,11 +38,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Role assignments to remove from the group. Entries that match no assignment are skipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto>? Remove { get => _explicitNullValueRemove; set { _explicitNullValueRemove = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove"); else _explicitNullProperties?.Remove("remove"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto>? Remove { get => _explicitNullValueRemove; set { _explicitNullValueRemove = value; AdditionalData?.Remove("remove"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove"); else _explicitNullProperties?.Remove("remove"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto>? _explicitNullValueRemove = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto> Remove { get => _explicitNullValueRemove; set { _explicitNullValueRemove = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove"); else _explicitNullProperties?.Remove("remove"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto> Remove { get => _explicitNullValueRemove; set { _explicitNullValueRemove = value; AdditionalData?.Remove("remove"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove"); else _explicitNullProperties?.Remove("remove"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.ReplaceGroupRoleAssignmentEntryDto> _explicitNullValueRemove = default!;
 #endif
         /// <summary>

@@ -18,7 +18,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
             base.CaptureExplicitNulls(parseNode);
-            if (parseNode.GetChildNode("permission_slug") is { } nullNodePermissionSlug && nullNodePermissionSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PermissionSlug = null;
+            if (parseNode.GetChildNode("permission_slug") is null) { _explicitNullValuePermissionSlug = default!; _explicitNullProperties?.Remove("permission_slug"); }
+            else if (parseNode.GetChildNode("permission_slug") is { } nullNodePermissionSlug && nullNodePermissionSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PermissionSlug = null;
         }
 
         /// <summary>The slug of the permission to check.</summary>

@@ -17,7 +17,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("saml_options") is { } nullNodeSamlOptions && nullNodeSamlOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamlOptions = null;
+            if (parseNode.GetChildNode("saml_options") is null) { _explicitNullValueSamlOptions = default!; _explicitNullProperties?.Remove("saml_options"); }
+            else if (parseNode.GetChildNode("saml_options") is { } nullNodeSamlOptions && nullNodeSamlOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamlOptions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Protocol configuration for SAML connections. Only the provided fields are updated. Mutually exclusive with `oidc_options`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionSamlOptionsDto? SamlOptions { get => _explicitNullValueSamlOptions; set { _explicitNullValueSamlOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_options"); else _explicitNullProperties?.Remove("saml_options"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionSamlOptionsDto? SamlOptions { get => _explicitNullValueSamlOptions; set { _explicitNullValueSamlOptions = value; AdditionalData?.Remove("saml_options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_options"); else _explicitNullProperties?.Remove("saml_options"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionSamlOptionsDto? _explicitNullValueSamlOptions = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionSamlOptionsDto SamlOptions { get => _explicitNullValueSamlOptions; set { _explicitNullValueSamlOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_options"); else _explicitNullProperties?.Remove("saml_options"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionSamlOptionsDto SamlOptions { get => _explicitNullValueSamlOptions; set { _explicitNullValueSamlOptions = value; AdditionalData?.Remove("saml_options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_options"); else _explicitNullProperties?.Remove("saml_options"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionSamlOptionsDto _explicitNullValueSamlOptions = default!;
 #endif
         /// <summary>

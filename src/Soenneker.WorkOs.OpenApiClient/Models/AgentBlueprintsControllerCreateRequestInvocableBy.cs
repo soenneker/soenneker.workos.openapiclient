@@ -18,8 +18,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_ids") is { } nullNodeOrganizationIds && nullNodeOrganizationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationIds = null;
-            if (parseNode.GetChildNode("role_slugs") is { } nullNodeRoleSlugs && nullNodeRoleSlugs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleSlugs = null;
+            if (parseNode.GetChildNode("organization_ids") is null) { _explicitNullValueOrganizationIds = default!; _explicitNullProperties?.Remove("organization_ids"); }
+            else if (parseNode.GetChildNode("organization_ids") is { } nullNodeOrganizationIds && nullNodeOrganizationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationIds = null;
+            if (parseNode.GetChildNode("role_slugs") is null) { _explicitNullValueRoleSlugs = default!; _explicitNullProperties?.Remove("role_slugs"); }
+            else if (parseNode.GetChildNode("role_slugs") is { } nullNodeRoleSlugs && nullNodeRoleSlugs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleSlugs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OrganizationIds { get => _explicitNullValueOrganizationIds; set { _explicitNullValueOrganizationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_ids"); else _explicitNullProperties?.Remove("organization_ids"); } }
+        public List<string>? OrganizationIds { get => _explicitNullValueOrganizationIds; set { _explicitNullValueOrganizationIds = value; AdditionalData?.Remove("organization_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_ids"); else _explicitNullProperties?.Remove("organization_ids"); } }
         private List<string>? _explicitNullValueOrganizationIds = default!;
 #nullable restore
 #else
-        public List<string> OrganizationIds { get => _explicitNullValueOrganizationIds; set { _explicitNullValueOrganizationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_ids"); else _explicitNullProperties?.Remove("organization_ids"); } }
+        public List<string> OrganizationIds { get => _explicitNullValueOrganizationIds; set { _explicitNullValueOrganizationIds = value; AdditionalData?.Remove("organization_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_ids"); else _explicitNullProperties?.Remove("organization_ids"); } }
         private List<string> _explicitNullValueOrganizationIds = default!;
 #endif
         /// <summary>Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RoleSlugs { get => _explicitNullValueRoleSlugs; set { _explicitNullValueRoleSlugs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slugs"); else _explicitNullProperties?.Remove("role_slugs"); } }
+        public List<string>? RoleSlugs { get => _explicitNullValueRoleSlugs; set { _explicitNullValueRoleSlugs = value; AdditionalData?.Remove("role_slugs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slugs"); else _explicitNullProperties?.Remove("role_slugs"); } }
         private List<string>? _explicitNullValueRoleSlugs = default!;
 #nullable restore
 #else
-        public List<string> RoleSlugs { get => _explicitNullValueRoleSlugs; set { _explicitNullValueRoleSlugs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slugs"); else _explicitNullProperties?.Remove("role_slugs"); } }
+        public List<string> RoleSlugs { get => _explicitNullValueRoleSlugs; set { _explicitNullValueRoleSlugs = value; AdditionalData?.Remove("role_slugs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_slugs"); else _explicitNullProperties?.Remove("role_slugs"); } }
         private List<string> _explicitNullValueRoleSlugs = default!;
 #endif
         /// <summary>

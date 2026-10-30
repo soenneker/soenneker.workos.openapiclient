@@ -17,8 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("logout_token") is { } nullNodeLogoutToken && nullNodeLogoutToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogoutToken = null;
-            if (parseNode.GetChildNode("logout_url") is { } nullNodeLogoutUrl && nullNodeLogoutUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogoutUrl = null;
+            if (parseNode.GetChildNode("logout_token") is null) { _explicitNullValueLogoutToken = default!; _explicitNullProperties?.Remove("logout_token"); }
+            else if (parseNode.GetChildNode("logout_token") is { } nullNodeLogoutToken && nullNodeLogoutToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogoutToken = null;
+            if (parseNode.GetChildNode("logout_url") is null) { _explicitNullValueLogoutUrl = default!; _explicitNullProperties?.Remove("logout_url"); }
+            else if (parseNode.GetChildNode("logout_url") is { } nullNodeLogoutUrl && nullNodeLogoutUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogoutUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The logout token to be used in the [Logout Redirect](/reference/sso/logout) endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LogoutToken { get => _explicitNullValueLogoutToken; set { _explicitNullValueLogoutToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_token"); else _explicitNullProperties?.Remove("logout_token"); } }
+        public string? LogoutToken { get => _explicitNullValueLogoutToken; set { _explicitNullValueLogoutToken = value; AdditionalData?.Remove("logout_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_token"); else _explicitNullProperties?.Remove("logout_token"); } }
         private string? _explicitNullValueLogoutToken = default!;
 #nullable restore
 #else
-        public string LogoutToken { get => _explicitNullValueLogoutToken; set { _explicitNullValueLogoutToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_token"); else _explicitNullProperties?.Remove("logout_token"); } }
+        public string LogoutToken { get => _explicitNullValueLogoutToken; set { _explicitNullValueLogoutToken = value; AdditionalData?.Remove("logout_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_token"); else _explicitNullProperties?.Remove("logout_token"); } }
         private string _explicitNullValueLogoutToken = default!;
 #endif
         /// <summary>The URL to redirect the user to in order to log out ([Logout Redirect](/reference/sso/logout) endpoint ready to use).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LogoutUrl { get => _explicitNullValueLogoutUrl; set { _explicitNullValueLogoutUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_url"); else _explicitNullProperties?.Remove("logout_url"); } }
+        public string? LogoutUrl { get => _explicitNullValueLogoutUrl; set { _explicitNullValueLogoutUrl = value; AdditionalData?.Remove("logout_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_url"); else _explicitNullProperties?.Remove("logout_url"); } }
         private string? _explicitNullValueLogoutUrl = default!;
 #nullable restore
 #else
-        public string LogoutUrl { get => _explicitNullValueLogoutUrl; set { _explicitNullValueLogoutUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_url"); else _explicitNullProperties?.Remove("logout_url"); } }
+        public string LogoutUrl { get => _explicitNullValueLogoutUrl; set { _explicitNullValueLogoutUrl = value; AdditionalData?.Remove("logout_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logout_url"); else _explicitNullProperties?.Remove("logout_url"); } }
         private string _explicitNullValueLogoutUrl = default!;
 #endif
         /// <summary>

@@ -17,17 +17,19 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attempt_status") is { } nullNodeAttemptStatus && nullNodeAttemptStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptStatus = null;
-            if (parseNode.GetChildNode("challenge_status") is { } nullNodeChallengeStatus && nullNodeChallengeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChallengeStatus = null;
+            if (parseNode.GetChildNode("attempt_status") is null) { _explicitNullValueAttemptStatus = default!; _explicitNullProperties?.Remove("attempt_status"); }
+            else if (parseNode.GetChildNode("attempt_status") is { } nullNodeAttemptStatus && nullNodeAttemptStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptStatus = null;
+            if (parseNode.GetChildNode("challenge_status") is null) { _explicitNullValueChallengeStatus = default!; _explicitNullProperties?.Remove("challenge_status"); }
+            else if (parseNode.GetChildNode("challenge_status") is { } nullNodeChallengeStatus && nullNodeChallengeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChallengeStatus = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set to `&quot;success&quot;` to mark the authentication attempt as successful.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus? AttemptStatus { get => _explicitNullValueAttemptStatus; set { _explicitNullValueAttemptStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_status"); else _explicitNullProperties?.Remove("attempt_status"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus? AttemptStatus { get => _explicitNullValueAttemptStatus; set { _explicitNullValueAttemptStatus = value; AdditionalData?.Remove("attempt_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_status"); else _explicitNullProperties?.Remove("attempt_status"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus? _explicitNullValueAttemptStatus = default!;
         /// <summary>Set to `&quot;success&quot;` to mark the challenge as completed.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus? ChallengeStatus { get => _explicitNullValueChallengeStatus; set { _explicitNullValueChallengeStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("challenge_status"); else _explicitNullProperties?.Remove("challenge_status"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus? ChallengeStatus { get => _explicitNullValueChallengeStatus; set { _explicitNullValueChallengeStatus = value; AdditionalData?.Remove("challenge_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("challenge_status"); else _explicitNullProperties?.Remove("challenge_status"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus? _explicitNullValueChallengeStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneControllerUpdateRadarAttemptRequest"/> and sets the default values.
@@ -54,8 +56,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attempt_status", n => { AttemptStatus = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus>(); } },
-                { "challenge_status", n => { ChallengeStatus = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus>(); } },
+                { "attempt_status", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessAttemptStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAttemptStatus = default; _explicitNullProperties?.Remove("attempt_status"); AdditionalData["attempt_status"] = unknown; } else { AttemptStatus = parsed; AdditionalData.Remove("attempt_status"); } } },
+                { "challenge_status", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SuccessChallengeStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueChallengeStatus = default; _explicitNullProperties?.Remove("challenge_status"); AdditionalData["challenge_status"] = unknown; } else { ChallengeStatus = parsed; AdditionalData.Remove("challenge_status"); } } },
             };
         }
         /// <summary>

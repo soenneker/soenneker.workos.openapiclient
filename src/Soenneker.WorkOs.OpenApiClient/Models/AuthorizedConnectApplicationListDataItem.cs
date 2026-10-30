@@ -17,11 +17,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("application") is { } nullNodeApplication && nullNodeApplication.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Application = null;
-            if (parseNode.GetChildNode("granted_scopes") is { } nullNodeGrantedScopes && nullNodeGrantedScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrantedScopes = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("oauth_resource") is { } nullNodeOauthResource && nullNodeOauthResource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthResource = null;
-            if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("application") is null) { _explicitNullValueApplication = default!; _explicitNullProperties?.Remove("application"); }
+            else if (parseNode.GetChildNode("application") is { } nullNodeApplication && nullNodeApplication.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Application = null;
+            if (parseNode.GetChildNode("granted_scopes") is null) { _explicitNullValueGrantedScopes = default!; _explicitNullProperties?.Remove("granted_scopes"); }
+            else if (parseNode.GetChildNode("granted_scopes") is { } nullNodeGrantedScopes && nullNodeGrantedScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrantedScopes = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("oauth_resource") is null) { _explicitNullValueOauthResource = default!; _explicitNullProperties?.Remove("oauth_resource"); }
+            else if (parseNode.GetChildNode("oauth_resource") is { } nullNodeOauthResource && nullNodeOauthResource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthResource = null;
+            if (parseNode.GetChildNode("object") is null) { _explicitNullValueObject = default!; _explicitNullProperties?.Remove("object"); }
+            else if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,45 +34,45 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The application property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication? Application { get => _explicitNullValueApplication; set { _explicitNullValueApplication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application"); else _explicitNullProperties?.Remove("application"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication? Application { get => _explicitNullValueApplication; set { _explicitNullValueApplication = value; AdditionalData?.Remove("application"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application"); else _explicitNullProperties?.Remove("application"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication? _explicitNullValueApplication = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication Application { get => _explicitNullValueApplication; set { _explicitNullValueApplication = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application"); else _explicitNullProperties?.Remove("application"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication Application { get => _explicitNullValueApplication; set { _explicitNullValueApplication = value; AdditionalData?.Remove("application"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application"); else _explicitNullProperties?.Remove("application"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication _explicitNullValueApplication = default!;
 #endif
         /// <summary>The scopes granted by the user to the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? GrantedScopes { get => _explicitNullValueGrantedScopes; set { _explicitNullValueGrantedScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granted_scopes"); else _explicitNullProperties?.Remove("granted_scopes"); } }
+        public List<string>? GrantedScopes { get => _explicitNullValueGrantedScopes; set { _explicitNullValueGrantedScopes = value; AdditionalData?.Remove("granted_scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granted_scopes"); else _explicitNullProperties?.Remove("granted_scopes"); } }
         private List<string>? _explicitNullValueGrantedScopes = default!;
 #nullable restore
 #else
-        public List<string> GrantedScopes { get => _explicitNullValueGrantedScopes; set { _explicitNullValueGrantedScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granted_scopes"); else _explicitNullProperties?.Remove("granted_scopes"); } }
+        public List<string> GrantedScopes { get => _explicitNullValueGrantedScopes; set { _explicitNullValueGrantedScopes = value; AdditionalData?.Remove("granted_scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granted_scopes"); else _explicitNullProperties?.Remove("granted_scopes"); } }
         private List<string> _explicitNullValueGrantedScopes = default!;
 #endif
         /// <summary>The unique ID of the authorized connect application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>The OAuth resource associated with the authorized connect application, if one was requested.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OauthResource { get => _explicitNullValueOauthResource; set { _explicitNullValueOauthResource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_resource"); else _explicitNullProperties?.Remove("oauth_resource"); } }
+        public string? OauthResource { get => _explicitNullValueOauthResource; set { _explicitNullValueOauthResource = value; AdditionalData?.Remove("oauth_resource"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_resource"); else _explicitNullProperties?.Remove("oauth_resource"); } }
         private string? _explicitNullValueOauthResource = default!;
 #nullable restore
 #else
-        public string OauthResource { get => _explicitNullValueOauthResource; set { _explicitNullValueOauthResource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_resource"); else _explicitNullProperties?.Remove("oauth_resource"); } }
+        public string OauthResource { get => _explicitNullValueOauthResource; set { _explicitNullValueOauthResource = value; AdditionalData?.Remove("oauth_resource"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_resource"); else _explicitNullProperties?.Remove("oauth_resource"); } }
         private string _explicitNullValueOauthResource = default!;
 #endif
         /// <summary>Distinguishes the authorized connect application object.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; AdditionalData?.Remove("object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationObject? _explicitNullValueObject = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationListDataItem"/> and sets the default values.
@@ -98,7 +103,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "granted_scopes", n => { GrantedScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "oauth_resource", n => { OauthResource = n.GetStringValue(); } },
-                { "object", n => { Object = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationObject>(); } },
+                { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizedConnectApplicationObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
             };
         }
         /// <summary>

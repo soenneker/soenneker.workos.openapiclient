@@ -17,50 +17,55 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("access_token") is { } nullNodeAccessToken && nullNodeAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessToken = null;
-            if (parseNode.GetChildNode("expires_in") is { } nullNodeExpiresIn && nullNodeExpiresIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresIn = null;
-            if (parseNode.GetChildNode("oauth_tokens") is { } nullNodeOauthTokens && nullNodeOauthTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthTokens = null;
-            if (parseNode.GetChildNode("profile") is { } nullNodeProfile && nullNodeProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Profile = null;
-            if (parseNode.GetChildNode("token_type") is { } nullNodeTokenType && nullNodeTokenType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenType = null;
+            if (parseNode.GetChildNode("access_token") is null) { _explicitNullValueAccessToken = default!; _explicitNullProperties?.Remove("access_token"); }
+            else if (parseNode.GetChildNode("access_token") is { } nullNodeAccessToken && nullNodeAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessToken = null;
+            if (parseNode.GetChildNode("expires_in") is null) { _explicitNullValueExpiresIn = default!; _explicitNullProperties?.Remove("expires_in"); }
+            else if (parseNode.GetChildNode("expires_in") is { } nullNodeExpiresIn && nullNodeExpiresIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresIn = null;
+            if (parseNode.GetChildNode("oauth_tokens") is null) { _explicitNullValueOauthTokens = default!; _explicitNullProperties?.Remove("oauth_tokens"); }
+            else if (parseNode.GetChildNode("oauth_tokens") is { } nullNodeOauthTokens && nullNodeOauthTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthTokens = null;
+            if (parseNode.GetChildNode("profile") is null) { _explicitNullValueProfile = default!; _explicitNullProperties?.Remove("profile"); }
+            else if (parseNode.GetChildNode("profile") is { } nullNodeProfile && nullNodeProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Profile = null;
+            if (parseNode.GetChildNode("token_type") is null) { _explicitNullValueTokenType = default!; _explicitNullProperties?.Remove("token_type"); }
+            else if (parseNode.GetChildNode("token_type") is { } nullNodeTokenType && nullNodeTokenType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenType = null;
         }
 
         /// <summary>An access token that can be exchanged for a user profile. Access tokens are short-lived — see the `expires_in` field for the exact lifetime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
+        public string? AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; AdditionalData?.Remove("access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
         private string? _explicitNullValueAccessToken = default!;
 #nullable restore
 #else
-        public string AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
+        public string AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; AdditionalData?.Remove("access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
         private string _explicitNullValueAccessToken = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The lifetime of the access token in seconds.</summary>
-        public int? ExpiresIn { get => _explicitNullValueExpiresIn; set { _explicitNullValueExpiresIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_in"); else _explicitNullProperties?.Remove("expires_in"); } }
+        public int? ExpiresIn { get => _explicitNullValueExpiresIn; set { _explicitNullValueExpiresIn = value; AdditionalData?.Remove("expires_in"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_in"); else _explicitNullProperties?.Remove("expires_in"); } }
         private int? _explicitNullValueExpiresIn = default!;
         /// <summary>OAuth tokens issued by the identity provider, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens? OauthTokens { get => _explicitNullValueOauthTokens; set { _explicitNullValueOauthTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_tokens"); else _explicitNullProperties?.Remove("oauth_tokens"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens? OauthTokens { get => _explicitNullValueOauthTokens; set { _explicitNullValueOauthTokens = value; AdditionalData?.Remove("oauth_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_tokens"); else _explicitNullProperties?.Remove("oauth_tokens"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens? _explicitNullValueOauthTokens = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens OauthTokens { get => _explicitNullValueOauthTokens; set { _explicitNullValueOauthTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_tokens"); else _explicitNullProperties?.Remove("oauth_tokens"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens OauthTokens { get => _explicitNullValueOauthTokens; set { _explicitNullValueOauthTokens = value; AdditionalData?.Remove("oauth_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_tokens"); else _explicitNullProperties?.Remove("oauth_tokens"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens _explicitNullValueOauthTokens = default!;
 #endif
         /// <summary>The user profile returned by the identity provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Profile? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.Profile? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; AdditionalData?.Remove("profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.Profile? _explicitNullValueProfile = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.Profile Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.Profile Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; AdditionalData?.Remove("profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.Profile _explicitNullValueProfile = default!;
 #endif
         /// <summary>The type of token issued.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseTokenType? TokenType { get => _explicitNullValueTokenType; set { _explicitNullValueTokenType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_type"); else _explicitNullProperties?.Remove("token_type"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseTokenType? TokenType { get => _explicitNullValueTokenType; set { _explicitNullValueTokenType = value; AdditionalData?.Remove("token_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_type"); else _explicitNullProperties?.Remove("token_type"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseTokenType? _explicitNullValueTokenType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponse"/> and sets the default values.
@@ -91,7 +96,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "expires_in", n => { ExpiresIn = n.GetIntValue(); } },
                 { "oauth_tokens", n => { OauthTokens = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens>(global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseOAuthTokens.CreateFromDiscriminatorValue); } },
                 { "profile", n => { Profile = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.Profile>(global::Soenneker.WorkOs.OpenApiClient.Models.Profile.CreateFromDiscriminatorValue); } },
-                { "token_type", n => { TokenType = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseTokenType>(); } },
+                { "token_type", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.SsoTokenResponseTokenType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTokenType = default; _explicitNullProperties?.Remove("token_type"); AdditionalData["token_type"] = unknown; } else { TokenType = parsed; AdditionalData.Remove("token_type"); } } },
             };
         }
         /// <summary>

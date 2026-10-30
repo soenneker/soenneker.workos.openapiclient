@@ -11,7 +11,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
     /// Additional data associated with the event or entity.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AuditLogEventTargetDtoMetadata : IParsable
+    public partial class AuditLogEventTargetDtoMetadata : IParsable, global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -19,6 +19,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
         }
+
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,8 +48,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
         }
     }
 }

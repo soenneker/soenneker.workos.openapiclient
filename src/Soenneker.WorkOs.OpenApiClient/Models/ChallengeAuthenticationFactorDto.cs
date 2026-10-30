@@ -17,7 +17,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("sms_template") is { } nullNodeSmsTemplate && nullNodeSmsTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SmsTemplate = null;
+            if (parseNode.GetChildNode("sms_template") is null) { _explicitNullValueSmsTemplate = default!; _explicitNullProperties?.Remove("sms_template"); }
+            else if (parseNode.GetChildNode("sms_template") is { } nullNodeSmsTemplate && nullNodeSmsTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SmsTemplate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>A custom template for the SMS message. Use the {{code}} placeholder to include the verification code. Must not contain URLs or domain names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SmsTemplate { get => _explicitNullValueSmsTemplate; set { _explicitNullValueSmsTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sms_template"); else _explicitNullProperties?.Remove("sms_template"); } }
+        public string? SmsTemplate { get => _explicitNullValueSmsTemplate; set { _explicitNullValueSmsTemplate = value; AdditionalData?.Remove("sms_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sms_template"); else _explicitNullProperties?.Remove("sms_template"); } }
         private string? _explicitNullValueSmsTemplate = default!;
 #nullable restore
 #else
-        public string SmsTemplate { get => _explicitNullValueSmsTemplate; set { _explicitNullValueSmsTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sms_template"); else _explicitNullProperties?.Remove("sms_template"); } }
+        public string SmsTemplate { get => _explicitNullValueSmsTemplate; set { _explicitNullValueSmsTemplate = value; AdditionalData?.Remove("sms_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sms_template"); else _explicitNullProperties?.Remove("sms_template"); } }
         private string _explicitNullValueSmsTemplate = default!;
 #endif
         /// <summary>

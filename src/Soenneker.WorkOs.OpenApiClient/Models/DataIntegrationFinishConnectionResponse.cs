@@ -17,7 +17,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("connected_account") is { } nullNodeConnectedAccount && nullNodeConnectedAccount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectedAccount = null;
+            if (parseNode.GetChildNode("connected_account") is null) { _explicitNullValueConnectedAccount = default!; _explicitNullProperties?.Remove("connected_account"); }
+            else if (parseNode.GetChildNode("connected_account") is { } nullNodeConnectedAccount && nullNodeConnectedAccount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectedAccount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The connected account that was saved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount? ConnectedAccount { get => _explicitNullValueConnectedAccount; set { _explicitNullValueConnectedAccount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account"); else _explicitNullProperties?.Remove("connected_account"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount? ConnectedAccount { get => _explicitNullValueConnectedAccount; set { _explicitNullValueConnectedAccount = value; AdditionalData?.Remove("connected_account"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account"); else _explicitNullProperties?.Remove("connected_account"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount? _explicitNullValueConnectedAccount = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount ConnectedAccount { get => _explicitNullValueConnectedAccount; set { _explicitNullValueConnectedAccount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account"); else _explicitNullProperties?.Remove("connected_account"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount ConnectedAccount { get => _explicitNullValueConnectedAccount; set { _explicitNullValueConnectedAccount = value; AdditionalData?.Remove("connected_account"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account"); else _explicitNullProperties?.Remove("connected_account"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount _explicitNullValueConnectedAccount = default!;
 #endif
         /// <summary>

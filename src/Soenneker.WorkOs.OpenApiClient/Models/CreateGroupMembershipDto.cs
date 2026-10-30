@@ -17,7 +17,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_membership_id") is { } nullNodeOrganizationMembershipId && nullNodeOrganizationMembershipId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMembershipId = null;
+            if (parseNode.GetChildNode("organization_membership_id") is null) { _explicitNullValueOrganizationMembershipId = default!; _explicitNullProperties?.Remove("organization_membership_id"); }
+            else if (parseNode.GetChildNode("organization_membership_id") is { } nullNodeOrganizationMembershipId && nullNodeOrganizationMembershipId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMembershipId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The ID of the Organization Membership to add to the group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationMembershipId { get => _explicitNullValueOrganizationMembershipId; set { _explicitNullValueOrganizationMembershipId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_membership_id"); else _explicitNullProperties?.Remove("organization_membership_id"); } }
+        public string? OrganizationMembershipId { get => _explicitNullValueOrganizationMembershipId; set { _explicitNullValueOrganizationMembershipId = value; AdditionalData?.Remove("organization_membership_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_membership_id"); else _explicitNullProperties?.Remove("organization_membership_id"); } }
         private string? _explicitNullValueOrganizationMembershipId = default!;
 #nullable restore
 #else
-        public string OrganizationMembershipId { get => _explicitNullValueOrganizationMembershipId; set { _explicitNullValueOrganizationMembershipId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_membership_id"); else _explicitNullProperties?.Remove("organization_membership_id"); } }
+        public string OrganizationMembershipId { get => _explicitNullValueOrganizationMembershipId; set { _explicitNullValueOrganizationMembershipId = value; AdditionalData?.Remove("organization_membership_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_membership_id"); else _explicitNullProperties?.Remove("organization_membership_id"); } }
         private string _explicitNullValueOrganizationMembershipId = default!;
 #endif
         /// <summary>

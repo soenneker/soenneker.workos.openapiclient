@@ -18,7 +18,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("instance_types") is { } nullNodeInstanceTypes && nullNodeInstanceTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceTypes = null;
+            if (parseNode.GetChildNode("instance_types") is null) { _explicitNullValueInstanceTypes = default!; _explicitNullProperties?.Remove("instance_types"); }
+            else if (parseNode.GetChildNode("instance_types") is { } nullNodeInstanceTypes && nullNodeInstanceTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceTypes = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. At least one is required; existing sessions of a removed type are refused at their next refresh.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?>? InstanceTypes { get => _explicitNullValueInstanceTypes; set { _explicitNullValueInstanceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_types"); else _explicitNullProperties?.Remove("instance_types"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?>? InstanceTypes { get => _explicitNullValueInstanceTypes; set { _explicitNullValueInstanceTypes = value; AdditionalData?.Remove("instance_types"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_types"); else _explicitNullProperties?.Remove("instance_types"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?>? _explicitNullValueInstanceTypes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?> InstanceTypes { get => _explicitNullValueInstanceTypes; set { _explicitNullValueInstanceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_types"); else _explicitNullProperties?.Remove("instance_types"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?> InstanceTypes { get => _explicitNullValueInstanceTypes; set { _explicitNullValueInstanceTypes = value; AdditionalData?.Remove("instance_types"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_types"); else _explicitNullProperties?.Remove("instance_types"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerUpdateRequestInvocableAsInstanceTypesItem?> _explicitNullValueInstanceTypes = default!;
 #endif
         /// <summary>

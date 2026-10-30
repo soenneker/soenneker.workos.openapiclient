@@ -17,8 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("parent_resource_external_id") is { } nullNodeParentResourceExternalId && nullNodeParentResourceExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentResourceExternalId = null;
-            if (parseNode.GetChildNode("parent_resource_type_slug") is { } nullNodeParentResourceTypeSlug && nullNodeParentResourceTypeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentResourceTypeSlug = null;
+            if (parseNode.GetChildNode("parent_resource_external_id") is null) { _explicitNullValueParentResourceExternalId = default!; _explicitNullProperties?.Remove("parent_resource_external_id"); }
+            else if (parseNode.GetChildNode("parent_resource_external_id") is { } nullNodeParentResourceExternalId && nullNodeParentResourceExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentResourceExternalId = null;
+            if (parseNode.GetChildNode("parent_resource_type_slug") is null) { _explicitNullValueParentResourceTypeSlug = default!; _explicitNullProperties?.Remove("parent_resource_type_slug"); }
+            else if (parseNode.GetChildNode("parent_resource_type_slug") is { } nullNodeParentResourceTypeSlug && nullNodeParentResourceTypeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentResourceTypeSlug = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The external ID of the parent resource. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ParentResourceExternalId { get => _explicitNullValueParentResourceExternalId; set { _explicitNullValueParentResourceExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_external_id"); else _explicitNullProperties?.Remove("parent_resource_external_id"); } }
+        public string? ParentResourceExternalId { get => _explicitNullValueParentResourceExternalId; set { _explicitNullValueParentResourceExternalId = value; AdditionalData?.Remove("parent_resource_external_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_external_id"); else _explicitNullProperties?.Remove("parent_resource_external_id"); } }
         private string? _explicitNullValueParentResourceExternalId = default!;
 #nullable restore
 #else
-        public string ParentResourceExternalId { get => _explicitNullValueParentResourceExternalId; set { _explicitNullValueParentResourceExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_external_id"); else _explicitNullProperties?.Remove("parent_resource_external_id"); } }
+        public string ParentResourceExternalId { get => _explicitNullValueParentResourceExternalId; set { _explicitNullValueParentResourceExternalId = value; AdditionalData?.Remove("parent_resource_external_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_external_id"); else _explicitNullProperties?.Remove("parent_resource_external_id"); } }
         private string _explicitNullValueParentResourceExternalId = default!;
 #endif
         /// <summary>The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ParentResourceTypeSlug { get => _explicitNullValueParentResourceTypeSlug; set { _explicitNullValueParentResourceTypeSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_type_slug"); else _explicitNullProperties?.Remove("parent_resource_type_slug"); } }
+        public string? ParentResourceTypeSlug { get => _explicitNullValueParentResourceTypeSlug; set { _explicitNullValueParentResourceTypeSlug = value; AdditionalData?.Remove("parent_resource_type_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_type_slug"); else _explicitNullProperties?.Remove("parent_resource_type_slug"); } }
         private string? _explicitNullValueParentResourceTypeSlug = default!;
 #nullable restore
 #else
-        public string ParentResourceTypeSlug { get => _explicitNullValueParentResourceTypeSlug; set { _explicitNullValueParentResourceTypeSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_type_slug"); else _explicitNullProperties?.Remove("parent_resource_type_slug"); } }
+        public string ParentResourceTypeSlug { get => _explicitNullValueParentResourceTypeSlug; set { _explicitNullValueParentResourceTypeSlug = value; AdditionalData?.Remove("parent_resource_type_slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_type_slug"); else _explicitNullProperties?.Remove("parent_resource_type_slug"); } }
         private string _explicitNullValueParentResourceTypeSlug = default!;
 #endif
         /// <summary>

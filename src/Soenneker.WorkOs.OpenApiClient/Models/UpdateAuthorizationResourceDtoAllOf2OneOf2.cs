@@ -17,7 +17,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("parent_resource_id") is { } nullNodeParentResourceId && nullNodeParentResourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentResourceId = null;
+            if (parseNode.GetChildNode("parent_resource_id") is null) { _explicitNullValueParentResourceId = default!; _explicitNullProperties?.Remove("parent_resource_id"); }
+            else if (parseNode.GetChildNode("parent_resource_id") is { } nullNodeParentResourceId && nullNodeParentResourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentResourceId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The ID of the parent resource. Mutually exclusive with `parent_resource_external_id` and `parent_resource_type_slug`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ParentResourceId { get => _explicitNullValueParentResourceId; set { _explicitNullValueParentResourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_id"); else _explicitNullProperties?.Remove("parent_resource_id"); } }
+        public string? ParentResourceId { get => _explicitNullValueParentResourceId; set { _explicitNullValueParentResourceId = value; AdditionalData?.Remove("parent_resource_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_id"); else _explicitNullProperties?.Remove("parent_resource_id"); } }
         private string? _explicitNullValueParentResourceId = default!;
 #nullable restore
 #else
-        public string ParentResourceId { get => _explicitNullValueParentResourceId; set { _explicitNullValueParentResourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_id"); else _explicitNullProperties?.Remove("parent_resource_id"); } }
+        public string ParentResourceId { get => _explicitNullValueParentResourceId; set { _explicitNullValueParentResourceId = value; AdditionalData?.Remove("parent_resource_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_resource_id"); else _explicitNullProperties?.Remove("parent_resource_id"); } }
         private string _explicitNullValueParentResourceId = default!;
 #endif
         /// <summary>

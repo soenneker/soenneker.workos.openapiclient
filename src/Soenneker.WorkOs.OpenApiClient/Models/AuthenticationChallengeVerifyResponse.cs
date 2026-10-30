@@ -17,8 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("challenge") is { } nullNodeChallenge && nullNodeChallenge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Challenge = null;
-            if (parseNode.GetChildNode("valid") is { } nullNodeValid && nullNodeValid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Valid = null;
+            if (parseNode.GetChildNode("challenge") is null) { _explicitNullValueChallenge = default!; _explicitNullProperties?.Remove("challenge"); }
+            else if (parseNode.GetChildNode("challenge") is { } nullNodeChallenge && nullNodeChallenge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Challenge = null;
+            if (parseNode.GetChildNode("valid") is null) { _explicitNullValueValid = default!; _explicitNullProperties?.Remove("valid"); }
+            else if (parseNode.GetChildNode("valid") is { } nullNodeValid && nullNodeValid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Valid = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The authentication challenge object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? Challenge { get => _explicitNullValueChallenge; set { _explicitNullValueChallenge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("challenge"); else _explicitNullProperties?.Remove("challenge"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? Challenge { get => _explicitNullValueChallenge; set { _explicitNullValueChallenge = value; AdditionalData?.Remove("challenge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("challenge"); else _explicitNullProperties?.Remove("challenge"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge? _explicitNullValueChallenge = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge Challenge { get => _explicitNullValueChallenge; set { _explicitNullValueChallenge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("challenge"); else _explicitNullProperties?.Remove("challenge"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge Challenge { get => _explicitNullValueChallenge; set { _explicitNullValueChallenge = value; AdditionalData?.Remove("challenge"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("challenge"); else _explicitNullProperties?.Remove("challenge"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallenge _explicitNullValueChallenge = default!;
 #endif
         /// <summary>Whether the code was valid.</summary>
-        public bool? Valid { get => _explicitNullValueValid; set { _explicitNullValueValid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valid"); else _explicitNullProperties?.Remove("valid"); } }
+        public bool? Valid { get => _explicitNullValueValid; set { _explicitNullValueValid = value; AdditionalData?.Remove("valid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valid"); else _explicitNullProperties?.Remove("valid"); } }
         private bool? _explicitNullValueValid = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthenticationChallengeVerifyResponse"/> and sets the default values.

@@ -17,8 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("endpoint_url") is { } nullNodeEndpointUrl && nullNodeEndpointUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointUrl = null;
-            if (parseNode.GetChildNode("events") is { } nullNodeEvents && nullNodeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Events = null;
+            if (parseNode.GetChildNode("endpoint_url") is null) { _explicitNullValueEndpointUrl = default!; _explicitNullProperties?.Remove("endpoint_url"); }
+            else if (parseNode.GetChildNode("endpoint_url") is { } nullNodeEndpointUrl && nullNodeEndpointUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointUrl = null;
+            if (parseNode.GetChildNode("events") is null) { _explicitNullValueEvents = default!; _explicitNullProperties?.Remove("events"); }
+            else if (parseNode.GetChildNode("events") is { } nullNodeEvents && nullNodeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Events = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The HTTPS URL where webhooks will be sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndpointUrl { get => _explicitNullValueEndpointUrl; set { _explicitNullValueEndpointUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_url"); else _explicitNullProperties?.Remove("endpoint_url"); } }
+        public string? EndpointUrl { get => _explicitNullValueEndpointUrl; set { _explicitNullValueEndpointUrl = value; AdditionalData?.Remove("endpoint_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_url"); else _explicitNullProperties?.Remove("endpoint_url"); } }
         private string? _explicitNullValueEndpointUrl = default!;
 #nullable restore
 #else
-        public string EndpointUrl { get => _explicitNullValueEndpointUrl; set { _explicitNullValueEndpointUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_url"); else _explicitNullProperties?.Remove("endpoint_url"); } }
+        public string EndpointUrl { get => _explicitNullValueEndpointUrl; set { _explicitNullValueEndpointUrl = value; AdditionalData?.Remove("endpoint_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_url"); else _explicitNullProperties?.Remove("endpoint_url"); } }
         private string _explicitNullValueEndpointUrl = default!;
 #endif
         /// <summary>The events that the Webhook Endpoint is subscribed to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem?>? Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem?>? Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; AdditionalData?.Remove("events"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem?>? _explicitNullValueEvents = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem?> Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem?> Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; AdditionalData?.Remove("events"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.CreateWebhookEndpointDtoEventsItem?> _explicitNullValueEvents = default!;
 #endif
         /// <summary>

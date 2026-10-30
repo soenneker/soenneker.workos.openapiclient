@@ -17,8 +17,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agent_registration_id") is { } nullNodeAgentRegistrationId && nullNodeAgentRegistrationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentRegistrationId = null;
-            if (parseNode.GetChildNode("api_key") is { } nullNodeApiKey && nullNodeApiKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiKey = null;
+            if (parseNode.GetChildNode("agent_registration_id") is null) { _explicitNullValueAgentRegistrationId = default!; _explicitNullProperties?.Remove("agent_registration_id"); }
+            else if (parseNode.GetChildNode("agent_registration_id") is { } nullNodeAgentRegistrationId && nullNodeAgentRegistrationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentRegistrationId = null;
+            if (parseNode.GetChildNode("api_key") is null) { _explicitNullValueApiKey = default!; _explicitNullProperties?.Remove("api_key"); }
+            else if (parseNode.GetChildNode("api_key") is { } nullNodeApiKey && nullNodeApiKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiKey = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The ID of the agent registration this API Key was issued for. Present only when the API Key is assigned to an agent registration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentRegistrationId { get => _explicitNullValueAgentRegistrationId; set { _explicitNullValueAgentRegistrationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_registration_id"); else _explicitNullProperties?.Remove("agent_registration_id"); } }
+        public string? AgentRegistrationId { get => _explicitNullValueAgentRegistrationId; set { _explicitNullValueAgentRegistrationId = value; AdditionalData?.Remove("agent_registration_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_registration_id"); else _explicitNullProperties?.Remove("agent_registration_id"); } }
         private string? _explicitNullValueAgentRegistrationId = default!;
 #nullable restore
 #else
-        public string AgentRegistrationId { get => _explicitNullValueAgentRegistrationId; set { _explicitNullValueAgentRegistrationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_registration_id"); else _explicitNullProperties?.Remove("agent_registration_id"); } }
+        public string AgentRegistrationId { get => _explicitNullValueAgentRegistrationId; set { _explicitNullValueAgentRegistrationId = value; AdditionalData?.Remove("agent_registration_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_registration_id"); else _explicitNullProperties?.Remove("agent_registration_id"); } }
         private string _explicitNullValueAgentRegistrationId = default!;
 #endif
         /// <summary>The api_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey? ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey? ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; AdditionalData?.Remove("api_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey? _explicitNullValueApiKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; AdditionalData?.Remove("api_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.ApiKey _explicitNullValueApiKey = default!;
 #endif
         /// <summary>

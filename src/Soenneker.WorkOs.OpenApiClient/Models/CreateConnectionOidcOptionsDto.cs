@@ -17,15 +17,24 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
-            if (parseNode.GetChildNode("client_secret") is { } nullNodeClientSecret && nullNodeClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecret = null;
-            if (parseNode.GetChildNode("discovery_endpoint") is { } nullNodeDiscoveryEndpoint && nullNodeDiscoveryEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiscoveryEndpoint = null;
-            if (parseNode.GetChildNode("fetch_user_info") is { } nullNodeFetchUserInfo && nullNodeFetchUserInfo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FetchUserInfo = null;
-            if (parseNode.GetChildNode("id_token_signature_algorithm") is { } nullNodeIdTokenSignatureAlgorithm && nullNodeIdTokenSignatureAlgorithm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdTokenSignatureAlgorithm = null;
-            if (parseNode.GetChildNode("jwt_signing_key_pair") is { } nullNodeJwtSigningKeyPair && nullNodeJwtSigningKeyPair.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JwtSigningKeyPair = null;
-            if (parseNode.GetChildNode("pkce") is { } nullNodePkce && nullNodePkce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pkce = null;
-            if (parseNode.GetChildNode("redirect_uri") is { } nullNodeRedirectUri && nullNodeRedirectUri.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedirectUri = null;
-            if (parseNode.GetChildNode("token_authentication_method") is { } nullNodeTokenAuthenticationMethod && nullNodeTokenAuthenticationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenAuthenticationMethod = null;
+            if (parseNode.GetChildNode("client_id") is null) { _explicitNullValueClientId = default!; _explicitNullProperties?.Remove("client_id"); }
+            else if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
+            if (parseNode.GetChildNode("client_secret") is null) { _explicitNullValueClientSecret = default!; _explicitNullProperties?.Remove("client_secret"); }
+            else if (parseNode.GetChildNode("client_secret") is { } nullNodeClientSecret && nullNodeClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecret = null;
+            if (parseNode.GetChildNode("discovery_endpoint") is null) { _explicitNullValueDiscoveryEndpoint = default!; _explicitNullProperties?.Remove("discovery_endpoint"); }
+            else if (parseNode.GetChildNode("discovery_endpoint") is { } nullNodeDiscoveryEndpoint && nullNodeDiscoveryEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiscoveryEndpoint = null;
+            if (parseNode.GetChildNode("fetch_user_info") is null) { _explicitNullValueFetchUserInfo = default!; _explicitNullProperties?.Remove("fetch_user_info"); }
+            else if (parseNode.GetChildNode("fetch_user_info") is { } nullNodeFetchUserInfo && nullNodeFetchUserInfo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FetchUserInfo = null;
+            if (parseNode.GetChildNode("id_token_signature_algorithm") is null) { _explicitNullValueIdTokenSignatureAlgorithm = default!; _explicitNullProperties?.Remove("id_token_signature_algorithm"); }
+            else if (parseNode.GetChildNode("id_token_signature_algorithm") is { } nullNodeIdTokenSignatureAlgorithm && nullNodeIdTokenSignatureAlgorithm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdTokenSignatureAlgorithm = null;
+            if (parseNode.GetChildNode("jwt_signing_key_pair") is null) { _explicitNullValueJwtSigningKeyPair = default!; _explicitNullProperties?.Remove("jwt_signing_key_pair"); }
+            else if (parseNode.GetChildNode("jwt_signing_key_pair") is { } nullNodeJwtSigningKeyPair && nullNodeJwtSigningKeyPair.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JwtSigningKeyPair = null;
+            if (parseNode.GetChildNode("pkce") is null) { _explicitNullValuePkce = default!; _explicitNullProperties?.Remove("pkce"); }
+            else if (parseNode.GetChildNode("pkce") is { } nullNodePkce && nullNodePkce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pkce = null;
+            if (parseNode.GetChildNode("redirect_uri") is null) { _explicitNullValueRedirectUri = default!; _explicitNullProperties?.Remove("redirect_uri"); }
+            else if (parseNode.GetChildNode("redirect_uri") is { } nullNodeRedirectUri && nullNodeRedirectUri.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedirectUri = null;
+            if (parseNode.GetChildNode("token_authentication_method") is null) { _explicitNullValueTokenAuthenticationMethod = default!; _explicitNullProperties?.Remove("token_authentication_method"); }
+            else if (parseNode.GetChildNode("token_authentication_method") is { } nullNodeTokenAuthenticationMethod && nullNodeTokenAuthenticationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenAuthenticationMethod = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,64 +42,64 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>The OIDC client ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        public string? ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; AdditionalData?.Remove("client_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
         private string? _explicitNullValueClientId = default!;
 #nullable restore
 #else
-        public string ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
+        public string ClientId { get => _explicitNullValueClientId; set { _explicitNullValueClientId = value; AdditionalData?.Remove("client_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_id"); else _explicitNullProperties?.Remove("client_id"); } }
         private string _explicitNullValueClientId = default!;
 #endif
         /// <summary>The OIDC client secret. Required for `client_secret_basic` and `client_secret_post`, and rejected for `private_key_jwt`, which authenticates with a key pair instead. This value is write-only and is never returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
+        public string? ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; AdditionalData?.Remove("client_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
         private string? _explicitNullValueClientSecret = default!;
 #nullable restore
 #else
-        public string ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
+        public string ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; AdditionalData?.Remove("client_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
         private string _explicitNullValueClientSecret = default!;
 #endif
         /// <summary>The OIDC discovery endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DiscoveryEndpoint { get => _explicitNullValueDiscoveryEndpoint; set { _explicitNullValueDiscoveryEndpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discovery_endpoint"); else _explicitNullProperties?.Remove("discovery_endpoint"); } }
+        public string? DiscoveryEndpoint { get => _explicitNullValueDiscoveryEndpoint; set { _explicitNullValueDiscoveryEndpoint = value; AdditionalData?.Remove("discovery_endpoint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discovery_endpoint"); else _explicitNullProperties?.Remove("discovery_endpoint"); } }
         private string? _explicitNullValueDiscoveryEndpoint = default!;
 #nullable restore
 #else
-        public string DiscoveryEndpoint { get => _explicitNullValueDiscoveryEndpoint; set { _explicitNullValueDiscoveryEndpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discovery_endpoint"); else _explicitNullProperties?.Remove("discovery_endpoint"); } }
+        public string DiscoveryEndpoint { get => _explicitNullValueDiscoveryEndpoint; set { _explicitNullValueDiscoveryEndpoint = value; AdditionalData?.Remove("discovery_endpoint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discovery_endpoint"); else _explicitNullProperties?.Remove("discovery_endpoint"); } }
         private string _explicitNullValueDiscoveryEndpoint = default!;
 #endif
         /// <summary>Whether to fetch additional profile attributes from the userinfo endpoint.</summary>
-        public bool? FetchUserInfo { get => _explicitNullValueFetchUserInfo; set { _explicitNullValueFetchUserInfo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fetch_user_info"); else _explicitNullProperties?.Remove("fetch_user_info"); } }
+        public bool? FetchUserInfo { get => _explicitNullValueFetchUserInfo; set { _explicitNullValueFetchUserInfo = value; AdditionalData?.Remove("fetch_user_info"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fetch_user_info"); else _explicitNullProperties?.Remove("fetch_user_info"); } }
         private bool? _explicitNullValueFetchUserInfo = default!;
         /// <summary>The ID-token signing algorithm.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm? IdTokenSignatureAlgorithm { get => _explicitNullValueIdTokenSignatureAlgorithm; set { _explicitNullValueIdTokenSignatureAlgorithm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_token_signature_algorithm"); else _explicitNullProperties?.Remove("id_token_signature_algorithm"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm? IdTokenSignatureAlgorithm { get => _explicitNullValueIdTokenSignatureAlgorithm; set { _explicitNullValueIdTokenSignatureAlgorithm = value; AdditionalData?.Remove("id_token_signature_algorithm"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_token_signature_algorithm"); else _explicitNullProperties?.Remove("id_token_signature_algorithm"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm? _explicitNullValueIdTokenSignatureAlgorithm = default!;
         /// <summary>A key pair for WorkOS to sign `private_key_jwt` client assertions with. Only accepted when `token_authentication_method` is `private_key_jwt`; when omitted, WorkOS generates one and returns its certificate in `oidc_options.jwt_signing_certs`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto? JwtSigningKeyPair { get => _explicitNullValueJwtSigningKeyPair; set { _explicitNullValueJwtSigningKeyPair = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jwt_signing_key_pair"); else _explicitNullProperties?.Remove("jwt_signing_key_pair"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto? JwtSigningKeyPair { get => _explicitNullValueJwtSigningKeyPair; set { _explicitNullValueJwtSigningKeyPair = value; AdditionalData?.Remove("jwt_signing_key_pair"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jwt_signing_key_pair"); else _explicitNullProperties?.Remove("jwt_signing_key_pair"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto? _explicitNullValueJwtSigningKeyPair = default!;
 #nullable restore
 #else
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto JwtSigningKeyPair { get => _explicitNullValueJwtSigningKeyPair; set { _explicitNullValueJwtSigningKeyPair = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jwt_signing_key_pair"); else _explicitNullProperties?.Remove("jwt_signing_key_pair"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto JwtSigningKeyPair { get => _explicitNullValueJwtSigningKeyPair; set { _explicitNullValueJwtSigningKeyPair = value; AdditionalData?.Remove("jwt_signing_key_pair"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jwt_signing_key_pair"); else _explicitNullProperties?.Remove("jwt_signing_key_pair"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto _explicitNullValueJwtSigningKeyPair = default!;
 #endif
         /// <summary>Whether PKCE is enabled for the connection.</summary>
-        public bool? Pkce { get => _explicitNullValuePkce; set { _explicitNullValuePkce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pkce"); else _explicitNullProperties?.Remove("pkce"); } }
+        public bool? Pkce { get => _explicitNullValuePkce; set { _explicitNullValuePkce = value; AdditionalData?.Remove("pkce"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pkce"); else _explicitNullProperties?.Remove("pkce"); } }
         private bool? _explicitNullValuePkce = default!;
         /// <summary>A custom OAuth callback URL override. When omitted, the standard WorkOS-generated redirect URI is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RedirectUri { get => _explicitNullValueRedirectUri; set { _explicitNullValueRedirectUri = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uri"); else _explicitNullProperties?.Remove("redirect_uri"); } }
+        public string? RedirectUri { get => _explicitNullValueRedirectUri; set { _explicitNullValueRedirectUri = value; AdditionalData?.Remove("redirect_uri"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uri"); else _explicitNullProperties?.Remove("redirect_uri"); } }
         private string? _explicitNullValueRedirectUri = default!;
 #nullable restore
 #else
-        public string RedirectUri { get => _explicitNullValueRedirectUri; set { _explicitNullValueRedirectUri = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uri"); else _explicitNullProperties?.Remove("redirect_uri"); } }
+        public string RedirectUri { get => _explicitNullValueRedirectUri; set { _explicitNullValueRedirectUri = value; AdditionalData?.Remove("redirect_uri"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uri"); else _explicitNullProperties?.Remove("redirect_uri"); } }
         private string _explicitNullValueRedirectUri = default!;
 #endif
         /// <summary>The token-endpoint client authentication method.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoTokenAuthenticationMethod? TokenAuthenticationMethod { get => _explicitNullValueTokenAuthenticationMethod; set { _explicitNullValueTokenAuthenticationMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_authentication_method"); else _explicitNullProperties?.Remove("token_authentication_method"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoTokenAuthenticationMethod? TokenAuthenticationMethod { get => _explicitNullValueTokenAuthenticationMethod; set { _explicitNullValueTokenAuthenticationMethod = value; AdditionalData?.Remove("token_authentication_method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_authentication_method"); else _explicitNullProperties?.Remove("token_authentication_method"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoTokenAuthenticationMethod? _explicitNullValueTokenAuthenticationMethod = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDto"/> and sets the default values.
@@ -122,11 +131,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "discovery_endpoint", n => { DiscoveryEndpoint = n.GetStringValue(); } },
                 { "fetch_user_info", n => { FetchUserInfo = n.GetBoolValue(); } },
-                { "id_token_signature_algorithm", n => { IdTokenSignatureAlgorithm = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm>(); } },
+                { "id_token_signature_algorithm", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueIdTokenSignatureAlgorithm = default; _explicitNullProperties?.Remove("id_token_signature_algorithm"); AdditionalData["id_token_signature_algorithm"] = unknown; } else { IdTokenSignatureAlgorithm = parsed; AdditionalData.Remove("id_token_signature_algorithm"); } } },
                 { "jwt_signing_key_pair", n => { JwtSigningKeyPair = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto>(global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionKeyPairDto.CreateFromDiscriminatorValue); } },
                 { "pkce", n => { Pkce = n.GetBoolValue(); } },
                 { "redirect_uri", n => { RedirectUri = n.GetStringValue(); } },
-                { "token_authentication_method", n => { TokenAuthenticationMethod = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoTokenAuthenticationMethod>(); } },
+                { "token_authentication_method", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CreateConnectionOidcOptionsDtoTokenAuthenticationMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTokenAuthenticationMethod = default; _explicitNullProperties?.Remove("token_authentication_method"); AdditionalData["token_authentication_method"] = unknown; } else { TokenAuthenticationMethod = parsed; AdditionalData.Remove("token_authentication_method"); } } },
             };
         }
         /// <summary>

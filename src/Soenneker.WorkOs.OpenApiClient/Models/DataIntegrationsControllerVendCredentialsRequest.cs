@@ -17,11 +17,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("connected_account_id") is { } nullNodeConnectedAccountId && nullNodeConnectedAccountId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectedAccountId = null;
-            if (parseNode.GetChildNode("connection_owner") is { } nullNodeConnectionOwner && nullNodeConnectionOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectionOwner = null;
-            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
-            if (parseNode.GetChildNode("supports_multiple_connections") is { } nullNodeSupportsMultipleConnections && nullNodeSupportsMultipleConnections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsMultipleConnections = null;
-            if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
+            if (parseNode.GetChildNode("connected_account_id") is null) { _explicitNullValueConnectedAccountId = default!; _explicitNullProperties?.Remove("connected_account_id"); }
+            else if (parseNode.GetChildNode("connected_account_id") is { } nullNodeConnectedAccountId && nullNodeConnectedAccountId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectedAccountId = null;
+            if (parseNode.GetChildNode("connection_owner") is null) { _explicitNullValueConnectionOwner = default!; _explicitNullProperties?.Remove("connection_owner"); }
+            else if (parseNode.GetChildNode("connection_owner") is { } nullNodeConnectionOwner && nullNodeConnectionOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectionOwner = null;
+            if (parseNode.GetChildNode("organization_id") is null) { _explicitNullValueOrganizationId = default!; _explicitNullProperties?.Remove("organization_id"); }
+            else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("supports_multiple_connections") is null) { _explicitNullValueSupportsMultipleConnections = default!; _explicitNullProperties?.Remove("supports_multiple_connections"); }
+            else if (parseNode.GetChildNode("supports_multiple_connections") is { } nullNodeSupportsMultipleConnections && nullNodeSupportsMultipleConnections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsMultipleConnections = null;
+            if (parseNode.GetChildNode("user_id") is null) { _explicitNullValueUserId = default!; _explicitNullProperties?.Remove("user_id"); }
+            else if (parseNode.GetChildNode("user_id") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,37 +34,37 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectedAccountId { get => _explicitNullValueConnectedAccountId; set { _explicitNullValueConnectedAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account_id"); else _explicitNullProperties?.Remove("connected_account_id"); } }
+        public string? ConnectedAccountId { get => _explicitNullValueConnectedAccountId; set { _explicitNullValueConnectedAccountId = value; AdditionalData?.Remove("connected_account_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account_id"); else _explicitNullProperties?.Remove("connected_account_id"); } }
         private string? _explicitNullValueConnectedAccountId = default!;
 #nullable restore
 #else
-        public string ConnectedAccountId { get => _explicitNullValueConnectedAccountId; set { _explicitNullValueConnectedAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account_id"); else _explicitNullProperties?.Remove("connected_account_id"); } }
+        public string ConnectedAccountId { get => _explicitNullValueConnectedAccountId; set { _explicitNullValueConnectedAccountId = value; AdditionalData?.Remove("connected_account_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_account_id"); else _explicitNullProperties?.Remove("connected_account_id"); } }
         private string _explicitNullValueConnectedAccountId = default!;
 #endif
         /// <summary>Which connection to vend from. `user` (the default) vends the user&apos;s own connection and requires `user_id`. `organization` vends the organization&apos;s shared connection and requires `organization_id`.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner? ConnectionOwner { get => _explicitNullValueConnectionOwner; set { _explicitNullValueConnectionOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection_owner"); else _explicitNullProperties?.Remove("connection_owner"); } }
+        public global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner? ConnectionOwner { get => _explicitNullValueConnectionOwner; set { _explicitNullValueConnectionOwner = value; AdditionalData?.Remove("connection_owner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection_owner"); else _explicitNullProperties?.Remove("connection_owner"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner? _explicitNullValueConnectionOwner = default!;
         /// <summary>An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. Required when `connection_owner` is `organization`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>Set to `true` to use the plural connection contract. If no `connected_account_id` is supplied and several connections match, the request returns `account_selection_required`. When omitted or `false`, only the compatibility connection is considered.</summary>
-        public bool? SupportsMultipleConnections { get => _explicitNullValueSupportsMultipleConnections; set { _explicitNullValueSupportsMultipleConnections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_multiple_connections"); else _explicitNullProperties?.Remove("supports_multiple_connections"); } }
+        public bool? SupportsMultipleConnections { get => _explicitNullValueSupportsMultipleConnections; set { _explicitNullValueSupportsMultipleConnections = value; AdditionalData?.Remove("supports_multiple_connections"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_multiple_connections"); else _explicitNullProperties?.Remove("supports_multiple_connections"); } }
         private bool? _explicitNullValueSupportsMultipleConnections = default!;
         /// <summary>A [User](/reference/authkit/user) identifier. When `connection_owner` is `organization`, this is the user the credentials are vended on behalf of; they must be an active member of the organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
         private string? _explicitNullValueUserId = default!;
 #nullable restore
 #else
-        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
+        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; AdditionalData?.Remove("user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_id"); else _explicitNullProperties?.Remove("user_id"); } }
         private string _explicitNullValueUserId = default!;
 #endif
         /// <summary>
@@ -88,7 +93,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
-                { "connection_owner", n => { ConnectionOwner = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner>(); } },
+                { "connection_owner", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueConnectionOwner = default; _explicitNullProperties?.Remove("connection_owner"); AdditionalData["connection_owner"] = unknown; } else { ConnectionOwner = parsed; AdditionalData.Remove("connection_owner"); } } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "supports_multiple_connections", n => { SupportsMultipleConnections = n.GetBoolValue(); } },
                 { "user_id", n => { UserId = n.GetStringValue(); } },
