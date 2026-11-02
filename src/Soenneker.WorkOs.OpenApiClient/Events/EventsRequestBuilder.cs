@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Events
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/events?events={events}{&after*,before*,limit*,order*,organization_id*,range_end*,range_start*}", pathParameters)
+        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/events?events={events}{&after*,limit*,organization_id*,range_end*,range_start*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Events
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/events?events={events}{&after*,before*,limit*,order*,organization_id*,range_end*,range_start*}", rawUrl)
+        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/events?events={events}{&after*,limit*,organization_id*,range_end*,range_start*}", rawUrl)
         {
         }
         /// <summary>
-        /// List events for the current environment.
+        /// List events for the current environment. Events are returned oldest first; use `after` to page forward.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.EventList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Events
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.EventList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.EventList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List events for the current environment.
+        /// List events for the current environment. Events are returned oldest first; use `after` to page forward.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Events
             return new global::Soenneker.WorkOs.OpenApiClient.Events.EventsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List events for the current environment.
+        /// List events for the current environment. Events are returned oldest first; use `after` to page forward.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EventsRequestBuilderGetQueryParameters 
@@ -104,16 +104,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Events
             [QueryParameter("after")]
             public string After { get; set; }
 #endif
-            /// <summary>An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `&quot;obj_123&quot;`, your subsequent call can include `before=&quot;obj_123&quot;` to fetch a new batch of objects before `&quot;obj_123&quot;`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("before")]
-            public string? Before { get; set; }
-#nullable restore
-#else
-            [QueryParameter("before")]
-            public string Before { get; set; }
-#endif
             /// <summary>Filter events by one or more event types (e.g. `dsync.user.created`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,9 +117,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Events
             /// <summary>Upper limit on the number of objects to return, between `1` and `100`.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>Order the results by the creation time. Supported values are `&quot;asc&quot;` (ascending), `&quot;desc&quot;` (descending), and `&quot;normal&quot;` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`.</summary>
-            [QueryParameter("order")]
-            public global::Soenneker.WorkOs.OpenApiClient.Models.PaginationOrder? Order { get; set; }
             /// <summary>Filter events by the [Organization](/reference/organization) that the event is associated with.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

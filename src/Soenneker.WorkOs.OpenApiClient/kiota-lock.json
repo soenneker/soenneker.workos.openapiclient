@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "0104268D6D08FE7C8B867DF71D5B9BFFF66DD5F18779077A75666A1401D5D1145AB84F3227ACFAA389410D0D994495BDC3C94D4DC0CD7AF422D451E50CB418EB",
+  "descriptionHash": "B43A1BFD394C252153337E9A5F02275859F369DF2B58360523317982BD644D37EDC2992CC35BD05D5B3EC51A89CB0A7E9E0334E6B232550B501CD63764B3D966",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.37.0",
+  "kiotaVersion": "1.38.0",
   "clientClassName": "WorkOsOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.WorkOs.OpenApiClient",

@@ -10255,18 +10255,9 @@
           "events"
         ],
         "summary": "List events",
-        "description": "List events for the current environment.",
+        "description": "List events for the current environment. Events are returned oldest first; use \u0060after\u0060 to page forward.",
         "operationId": "EventsControllerList",
         "parameters": [
-          {
-            "name": "before",
-            "in": "query",
-            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
-            "schema": {
-              "type": "string",
-              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
-            }
-          },
           {
             "name": "after",
             "in": "query",
@@ -10286,14 +10277,6 @@
               "type": "integer",
               "default": 10,
               "example": 10
-            }
-          },
-          {
-            "name": "order",
-            "in": "query",
-            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records). Defaults to \u0060normal\u0060.",
-            "schema": {
-              "$ref": "#/components/schemas/PaginationOrder"
             }
           },
           {
@@ -23835,7 +23818,6 @@
           "role_not_invocable",
           "role_slug_conflict",
           "saml_options_required",
-          "saml_request_binding_unsupported_for_signing",
           "session_expired",
           "session_revoked",
           "session_settings_not_found",
@@ -24456,10 +24438,6 @@
             {
               "value": "saml_options_required",
               "name": "SamlOptionsRequired"
-            },
-            {
-              "value": "saml_request_binding_unsupported_for_signing",
-              "name": "SamlRequestBindingUnsupportedForSigning"
             },
             {
               "value": "session_expired",

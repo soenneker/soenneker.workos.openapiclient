@@ -599,10 +599,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         SamlOptionsRequired,
         #pragma warning restore CS1591
-        [EnumMember(Value = "saml_request_binding_unsupported_for_signing")]
-        #pragma warning disable CS1591
-        SamlRequestBindingUnsupportedForSigning,
-        #pragma warning restore CS1591
         [EnumMember(Value = "session_expired")]
         #pragma warning disable CS1591
         SessionExpired,
