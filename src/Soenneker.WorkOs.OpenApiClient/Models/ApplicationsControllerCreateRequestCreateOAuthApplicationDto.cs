@@ -9,16 +9,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreateOAuthApplicationDto : IAdditionalDataHolder, IParsable
+    public partial class ApplicationsControllerCreateRequestCreateOAuthApplicationDto : global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreateRequest, IParsable
     #pragma warning restore CS1591
-    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+    {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("application_type") is null) { _explicitNullValueApplicationType = default!; _explicitNullProperties?.Remove("application_type"); }
-            else if (parseNode.GetChildNode("application_type") is { } nullNodeApplicationType && nullNodeApplicationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApplicationType = null;
+            base.CaptureExplicitNulls(parseNode);
             if (parseNode.GetChildNode("cors_origins") is null) { _explicitNullValueCorsOrigins = default!; _explicitNullProperties?.Remove("cors_origins"); }
             else if (parseNode.GetChildNode("cors_origins") is { } nullNodeCorsOrigins && nullNodeCorsOrigins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorsOrigins = null;
             if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
@@ -37,103 +36,90 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if (parseNode.GetChildNode("uses_pkce") is { } nullNodeUsesPkce && nullNodeUsesPkce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsesPkce = null;
         }
 
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type of application to create.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.OAuthApplicationType? ApplicationType { get => _explicitNullValueApplicationType; set { _explicitNullValueApplicationType = value; AdditionalData?.Remove("application_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application_type"); else _explicitNullProperties?.Remove("application_type"); } }
-        private global::Soenneker.WorkOs.OpenApiClient.Models.OAuthApplicationType? _explicitNullValueApplicationType = default!;
         /// <summary>Origins allowed to call the OAuth token endpoint for this application from a browser.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CorsOrigins { get => _explicitNullValueCorsOrigins; set { _explicitNullValueCorsOrigins = value; AdditionalData?.Remove("cors_origins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cors_origins"); else _explicitNullProperties?.Remove("cors_origins"); } }
+        public List<string>? CorsOrigins { get => _explicitNullValueCorsOrigins; set { _explicitNullValueCorsOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cors_origins"); else _explicitNullProperties?.Remove("cors_origins"); } }
         private List<string>? _explicitNullValueCorsOrigins = default!;
 #nullable restore
 #else
-        public List<string> CorsOrigins { get => _explicitNullValueCorsOrigins; set { _explicitNullValueCorsOrigins = value; AdditionalData?.Remove("cors_origins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cors_origins"); else _explicitNullProperties?.Remove("cors_origins"); } }
+        public List<string> CorsOrigins { get => _explicitNullValueCorsOrigins; set { _explicitNullValueCorsOrigins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cors_origins"); else _explicitNullProperties?.Remove("cors_origins"); } }
         private List<string> _explicitNullValueCorsOrigins = default!;
 #endif
         /// <summary>A description for the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Whether this is a first-party application. Third-party applications require an organization_id.</summary>
-        public bool? IsFirstParty { get => _explicitNullValueIsFirstParty; set { _explicitNullValueIsFirstParty = value; AdditionalData?.Remove("is_first_party"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_first_party"); else _explicitNullProperties?.Remove("is_first_party"); } }
+        public bool? IsFirstParty { get => _explicitNullValueIsFirstParty; set { _explicitNullValueIsFirstParty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_first_party"); else _explicitNullProperties?.Remove("is_first_party"); } }
         private bool? _explicitNullValueIsFirstParty = default!;
         /// <summary>The name of the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The organization ID this application belongs to. Required when is_first_party is false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>Redirect URIs for the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto>? RedirectUris { get => _explicitNullValueRedirectUris; set { _explicitNullValueRedirectUris = value; AdditionalData?.Remove("redirect_uris"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uris"); else _explicitNullProperties?.Remove("redirect_uris"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto>? RedirectUris { get => _explicitNullValueRedirectUris; set { _explicitNullValueRedirectUris = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uris"); else _explicitNullProperties?.Remove("redirect_uris"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto>? _explicitNullValueRedirectUris = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto> RedirectUris { get => _explicitNullValueRedirectUris; set { _explicitNullValueRedirectUris = value; AdditionalData?.Remove("redirect_uris"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uris"); else _explicitNullProperties?.Remove("redirect_uris"); } }
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto> RedirectUris { get => _explicitNullValueRedirectUris; set { _explicitNullValueRedirectUris = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redirect_uris"); else _explicitNullProperties?.Remove("redirect_uris"); } }
         private List<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto> _explicitNullValueRedirectUris = default!;
 #endif
         /// <summary>The OAuth scopes granted to the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Scopes { get => _explicitNullValueScopes; set { _explicitNullValueScopes = value; AdditionalData?.Remove("scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes"); else _explicitNullProperties?.Remove("scopes"); } }
+        public List<string>? Scopes { get => _explicitNullValueScopes; set { _explicitNullValueScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes"); else _explicitNullProperties?.Remove("scopes"); } }
         private List<string>? _explicitNullValueScopes = default!;
 #nullable restore
 #else
-        public List<string> Scopes { get => _explicitNullValueScopes; set { _explicitNullValueScopes = value; AdditionalData?.Remove("scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes"); else _explicitNullProperties?.Remove("scopes"); } }
+        public List<string> Scopes { get => _explicitNullValueScopes; set { _explicitNullValueScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scopes"); else _explicitNullProperties?.Remove("scopes"); } }
         private List<string> _explicitNullValueScopes = default!;
 #endif
         /// <summary>Whether the application uses PKCE (Proof Key for Code Exchange).</summary>
-        public bool? UsesPkce { get => _explicitNullValueUsesPkce; set { _explicitNullValueUsesPkce = value; AdditionalData?.Remove("uses_pkce"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uses_pkce"); else _explicitNullProperties?.Remove("uses_pkce"); } }
+        public bool? UsesPkce { get => _explicitNullValueUsesPkce; set { _explicitNullValueUsesPkce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uses_pkce"); else _explicitNullProperties?.Remove("uses_pkce"); } }
         private bool? _explicitNullValueUsesPkce = default!;
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto"/> and sets the default values.
-        /// </summary>
-        public CreateOAuthApplicationDto()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreateRequestCreateOAuthApplicationDto"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreateRequestCreateOAuthApplicationDto CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.CreateOAuthApplicationDto(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.ApplicationsControllerCreateRequestCreateOAuthApplicationDto(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "application_type", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OAuthApplicationType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueApplicationType = default; _explicitNullProperties?.Remove("application_type"); AdditionalData["application_type"] = unknown; } else { ApplicationType = parsed; AdditionalData.Remove("application_type"); } } },
                 { "cors_origins", n => { CorsOrigins = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "is_first_party", n => { IsFirstParty = n.GetBoolValue(); } },
@@ -148,10 +134,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer)
+        public override void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.OAuthApplicationType>("application_type", ApplicationType);
+            base.Serialize(writer);
             writer.WriteCollectionOfPrimitiveValues<string>("cors_origins", CorsOrigins);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("is_first_party", IsFirstParty);
@@ -159,9 +145,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("organization_id", OrganizationId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.RedirectUriDto>("redirect_uris", RedirectUris);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
-            writer.WriteBoolValue("uses_pkce", UsesPkce);
-            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteBoolValue("uses_pkce", UsesPkce);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }
