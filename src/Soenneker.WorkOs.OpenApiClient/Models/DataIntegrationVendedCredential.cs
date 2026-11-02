@@ -51,9 +51,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("auth_method")?.GetStringValue();
             return mappingValue switch
             {
-                "api_key" => new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf2(),
-                "client_credentials" => new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf3(),
-                "oauth" => new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf1(),
+                "api_key" => new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf2Variant(),
+                "client_credentials" => new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf3Variant(),
+                "oauth" => new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredentialOneOf1Variant(),
                 _ => new global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationVendedCredential(),
             };
         }

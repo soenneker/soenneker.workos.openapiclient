@@ -52,8 +52,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "access_token" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestAgentAdminControllerValidateCredentialRequestOneOf2(),
-                "api_key" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestAgentAdminControllerValidateCredentialRequestOneOf1(),
+                "access_token" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf2Variant(),
+                "api_key" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequestOneOf1Variant(),
                 _ => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentAdminControllerValidateCredentialRequest(),
             };
         }

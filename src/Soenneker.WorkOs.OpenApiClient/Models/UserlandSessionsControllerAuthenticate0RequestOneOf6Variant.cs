@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf9 : global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request, IParsable
+    public partial class UserlandSessionsControllerAuthenticate0RequestOneOf6Variant : global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -18,6 +18,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
             base.CaptureExplicitNulls(parseNode);
+            if (parseNode.GetChildNode("authentication_challenge_id") is null) { _explicitNullValueAuthenticationChallengeId = default!; _explicitNullProperties?.Remove("authentication_challenge_id"); }
+            else if (parseNode.GetChildNode("authentication_challenge_id") is { } nullNodeAuthenticationChallengeId && nullNodeAuthenticationChallengeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthenticationChallengeId = null;
             if (parseNode.GetChildNode("client_id") is null) { _explicitNullValueClientId = default!; _explicitNullProperties?.Remove("client_id"); }
             else if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
             if (parseNode.GetChildNode("client_secret") is null) { _explicitNullValueClientSecret = default!; _explicitNullProperties?.Remove("client_secret"); }
@@ -30,12 +32,20 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if (parseNode.GetChildNode("ip_address") is { } nullNodeIpAddress && nullNodeIpAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IpAddress = null;
             if (parseNode.GetChildNode("pending_authentication_token") is null) { _explicitNullValuePendingAuthenticationToken = default!; _explicitNullProperties?.Remove("pending_authentication_token"); }
             else if (parseNode.GetChildNode("pending_authentication_token") is { } nullNodePendingAuthenticationToken && nullNodePendingAuthenticationToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingAuthenticationToken = null;
-            if (parseNode.GetChildNode("radar_challenge_id") is null) { _explicitNullValueRadarChallengeId = default!; _explicitNullProperties?.Remove("radar_challenge_id"); }
-            else if (parseNode.GetChildNode("radar_challenge_id") is { } nullNodeRadarChallengeId && nullNodeRadarChallengeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RadarChallengeId = null;
             if (parseNode.GetChildNode("user_agent") is null) { _explicitNullValueUserAgent = default!; _explicitNullProperties?.Remove("user_agent"); }
             else if (parseNode.GetChildNode("user_agent") is { } nullNodeUserAgent && nullNodeUserAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserAgent = null;
         }
 
+        /// <summary>The ID of the MFA authentication challenge.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AuthenticationChallengeId { get => _explicitNullValueAuthenticationChallengeId; set { _explicitNullValueAuthenticationChallengeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_challenge_id"); else _explicitNullProperties?.Remove("authentication_challenge_id"); } }
+        private string? _explicitNullValueAuthenticationChallengeId = default!;
+#nullable restore
+#else
+        public string AuthenticationChallengeId { get => _explicitNullValueAuthenticationChallengeId; set { _explicitNullValueAuthenticationChallengeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authentication_challenge_id"); else _explicitNullProperties?.Remove("authentication_challenge_id"); } }
+        private string _explicitNullValueAuthenticationChallengeId = default!;
+#endif
         /// <summary>The client ID of the application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,7 +66,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
         private string _explicitNullValueClientSecret = default!;
 #endif
-        /// <summary>The one-time code from the Radar email challenge.</summary>
+        /// <summary>The TOTP code from the authenticator app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
@@ -96,16 +106,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string PendingAuthenticationToken { get => _explicitNullValuePendingAuthenticationToken; set { _explicitNullValuePendingAuthenticationToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_authentication_token"); else _explicitNullProperties?.Remove("pending_authentication_token"); } }
         private string _explicitNullValuePendingAuthenticationToken = default!;
 #endif
-        /// <summary>The ID of the Radar email challenge being verified.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? RadarChallengeId { get => _explicitNullValueRadarChallengeId; set { _explicitNullValueRadarChallengeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("radar_challenge_id"); else _explicitNullProperties?.Remove("radar_challenge_id"); } }
-        private string? _explicitNullValueRadarChallengeId = default!;
-#nullable restore
-#else
-        public string RadarChallengeId { get => _explicitNullValueRadarChallengeId; set { _explicitNullValueRadarChallengeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("radar_challenge_id"); else _explicitNullProperties?.Remove("radar_challenge_id"); } }
-        private string _explicitNullValueRadarChallengeId = default!;
-#endif
         /// <summary>The user agent string from the user&apos;s browser.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -119,12 +119,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf9"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6Variant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf9 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6Variant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf9(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6Variant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -134,13 +134,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
+                { "authentication_challenge_id", n => { AuthenticationChallengeId = n.GetStringValue(); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "device_id", n => { DeviceId = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
                 { "pending_authentication_token", n => { PendingAuthenticationToken = n.GetStringValue(); } },
-                { "radar_challenge_id", n => { RadarChallengeId = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
         }
@@ -152,13 +152,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
+            writer.WriteStringValue("authentication_challenge_id", AuthenticationChallengeId);
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("device_id", DeviceId);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteStringValue("pending_authentication_token", PendingAuthenticationToken);
-            writer.WriteStringValue("radar_challenge_id", RadarChallengeId);
             writer.WriteStringValue("user_agent", UserAgent);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

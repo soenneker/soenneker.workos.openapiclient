@@ -51,17 +51,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("grant_type")?.GetStringValue();
             return mappingValue switch
             {
-                "authorization_code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf1(),
-                "password" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf2(),
-                "refresh_token" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf3(),
-                "urn:ietf:params:oauth:grant-type:device_code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf11(),
-                "urn:workos:oauth:grant-type:email-completion" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf7(),
-                "urn:workos:oauth:grant-type:email-verification:code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf5(),
-                "urn:workos:oauth:grant-type:magic-auth:code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf4(),
-                "urn:workos:oauth:grant-type:mfa-totp" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf6(),
-                "urn:workos:oauth:grant-type:organization-selection" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf8(),
-                "urn:workos:oauth:grant-type:radar-email-challenge:code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf9(),
-                "urn:workos:oauth:grant-type:radar-sms-challenge:code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf10(),
+                "authorization_code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf1Variant(),
+                "password" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf2Variant(),
+                "refresh_token" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf3Variant(),
+                "urn:ietf:params:oauth:grant-type:device_code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf11Variant(),
+                "urn:workos:oauth:grant-type:email-completion" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf7Variant(),
+                "urn:workos:oauth:grant-type:email-verification:code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf5Variant(),
+                "urn:workos:oauth:grant-type:magic-auth:code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf4Variant(),
+                "urn:workos:oauth:grant-type:mfa-totp" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf6Variant(),
+                "urn:workos:oauth:grant-type:organization-selection" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf8Variant(),
+                "urn:workos:oauth:grant-type:radar-email-challenge:code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9Variant(),
+                "urn:workos:oauth:grant-type:radar-sms-challenge:code" => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf10Variant(),
                 _ => new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request(),
             };
         }

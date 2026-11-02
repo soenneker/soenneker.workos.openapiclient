@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf7 : global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request, IParsable
+    public partial class UserlandSessionsControllerAuthenticate0RequestOneOf9Variant : global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0Request, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -22,16 +22,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if (parseNode.GetChildNode("client_id") is { } nullNodeClientId && nullNodeClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientId = null;
             if (parseNode.GetChildNode("client_secret") is null) { _explicitNullValueClientSecret = default!; _explicitNullProperties?.Remove("client_secret"); }
             else if (parseNode.GetChildNode("client_secret") is { } nullNodeClientSecret && nullNodeClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecret = null;
+            if (parseNode.GetChildNode("code") is null) { _explicitNullValueCode = default!; _explicitNullProperties?.Remove("code"); }
+            else if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
             if (parseNode.GetChildNode("device_id") is null) { _explicitNullValueDeviceId = default!; _explicitNullProperties?.Remove("device_id"); }
             else if (parseNode.GetChildNode("device_id") is { } nullNodeDeviceId && nullNodeDeviceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceId = null;
-            if (parseNode.GetChildNode("email") is null) { _explicitNullValueEmail = default!; _explicitNullProperties?.Remove("email"); }
-            else if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
-            if (parseNode.GetChildNode("email_completion_token") is null) { _explicitNullValueEmailCompletionToken = default!; _explicitNullProperties?.Remove("email_completion_token"); }
-            else if (parseNode.GetChildNode("email_completion_token") is { } nullNodeEmailCompletionToken && nullNodeEmailCompletionToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailCompletionToken = null;
             if (parseNode.GetChildNode("ip_address") is null) { _explicitNullValueIpAddress = default!; _explicitNullProperties?.Remove("ip_address"); }
             else if (parseNode.GetChildNode("ip_address") is { } nullNodeIpAddress && nullNodeIpAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IpAddress = null;
-            if (parseNode.GetChildNode("signals_id") is null) { _explicitNullValueSignalsId = default!; _explicitNullProperties?.Remove("signals_id"); }
-            else if (parseNode.GetChildNode("signals_id") is { } nullNodeSignalsId && nullNodeSignalsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalsId = null;
+            if (parseNode.GetChildNode("pending_authentication_token") is null) { _explicitNullValuePendingAuthenticationToken = default!; _explicitNullProperties?.Remove("pending_authentication_token"); }
+            else if (parseNode.GetChildNode("pending_authentication_token") is { } nullNodePendingAuthenticationToken && nullNodePendingAuthenticationToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingAuthenticationToken = null;
+            if (parseNode.GetChildNode("radar_challenge_id") is null) { _explicitNullValueRadarChallengeId = default!; _explicitNullProperties?.Remove("radar_challenge_id"); }
+            else if (parseNode.GetChildNode("radar_challenge_id") is { } nullNodeRadarChallengeId && nullNodeRadarChallengeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RadarChallengeId = null;
             if (parseNode.GetChildNode("user_agent") is null) { _explicitNullValueUserAgent = default!; _explicitNullProperties?.Remove("user_agent"); }
             else if (parseNode.GetChildNode("user_agent") is { } nullNodeUserAgent && nullNodeUserAgent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserAgent = null;
         }
@@ -56,6 +56,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
         private string _explicitNullValueClientSecret = default!;
 #endif
+        /// <summary>The one-time code from the Radar email challenge.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private string? _explicitNullValueCode = default!;
+#nullable restore
+#else
+        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private string _explicitNullValueCode = default!;
+#endif
         /// <summary>A unique identifier for the device.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,26 +75,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public string DeviceId { get => _explicitNullValueDeviceId; set { _explicitNullValueDeviceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_id"); else _explicitNullProperties?.Remove("device_id"); } }
         private string _explicitNullValueDeviceId = default!;
-#endif
-        /// <summary>The email address the user supplied for a profile the identity provider left without one.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
-        private string? _explicitNullValueEmail = default!;
-#nullable restore
-#else
-        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
-        private string _explicitNullValueEmail = default!;
-#endif
-        /// <summary>The token from the `email_completion_required` response.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EmailCompletionToken { get => _explicitNullValueEmailCompletionToken; set { _explicitNullValueEmailCompletionToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_completion_token"); else _explicitNullProperties?.Remove("email_completion_token"); } }
-        private string? _explicitNullValueEmailCompletionToken = default!;
-#nullable restore
-#else
-        public string EmailCompletionToken { get => _explicitNullValueEmailCompletionToken; set { _explicitNullValueEmailCompletionToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_completion_token"); else _explicitNullProperties?.Remove("email_completion_token"); } }
-        private string _explicitNullValueEmailCompletionToken = default!;
 #endif
         /// <summary>The IP address of the user&apos;s request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,15 +86,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string IpAddress { get => _explicitNullValueIpAddress; set { _explicitNullValueIpAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_address"); else _explicitNullProperties?.Remove("ip_address"); } }
         private string _explicitNullValueIpAddress = default!;
 #endif
-        /// <summary>An optional Radar signals ID to correlate client-side signals with this authentication attempt.</summary>
+        /// <summary>The pending authentication token from a previous authentication attempt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SignalsId { get => _explicitNullValueSignalsId; set { _explicitNullValueSignalsId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals_id"); else _explicitNullProperties?.Remove("signals_id"); } }
-        private string? _explicitNullValueSignalsId = default!;
+        public string? PendingAuthenticationToken { get => _explicitNullValuePendingAuthenticationToken; set { _explicitNullValuePendingAuthenticationToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_authentication_token"); else _explicitNullProperties?.Remove("pending_authentication_token"); } }
+        private string? _explicitNullValuePendingAuthenticationToken = default!;
 #nullable restore
 #else
-        public string SignalsId { get => _explicitNullValueSignalsId; set { _explicitNullValueSignalsId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals_id"); else _explicitNullProperties?.Remove("signals_id"); } }
-        private string _explicitNullValueSignalsId = default!;
+        public string PendingAuthenticationToken { get => _explicitNullValuePendingAuthenticationToken; set { _explicitNullValuePendingAuthenticationToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_authentication_token"); else _explicitNullProperties?.Remove("pending_authentication_token"); } }
+        private string _explicitNullValuePendingAuthenticationToken = default!;
+#endif
+        /// <summary>The ID of the Radar email challenge being verified.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RadarChallengeId { get => _explicitNullValueRadarChallengeId; set { _explicitNullValueRadarChallengeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("radar_challenge_id"); else _explicitNullProperties?.Remove("radar_challenge_id"); } }
+        private string? _explicitNullValueRadarChallengeId = default!;
+#nullable restore
+#else
+        public string RadarChallengeId { get => _explicitNullValueRadarChallengeId; set { _explicitNullValueRadarChallengeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("radar_challenge_id"); else _explicitNullProperties?.Remove("radar_challenge_id"); } }
+        private string _explicitNullValueRadarChallengeId = default!;
 #endif
         /// <summary>The user agent string from the user&apos;s browser.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -119,12 +119,12 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf7"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9Variant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf7 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9Variant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf7(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0RequestOneOf9Variant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -136,11 +136,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             {
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetStringValue(); } },
                 { "device_id", n => { DeviceId = n.GetStringValue(); } },
-                { "email", n => { Email = n.GetStringValue(); } },
-                { "email_completion_token", n => { EmailCompletionToken = n.GetStringValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
-                { "signals_id", n => { SignalsId = n.GetStringValue(); } },
+                { "pending_authentication_token", n => { PendingAuthenticationToken = n.GetStringValue(); } },
+                { "radar_challenge_id", n => { RadarChallengeId = n.GetStringValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
         }
@@ -154,11 +154,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             base.Serialize(writer);
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
+            writer.WriteStringValue("code", Code);
             writer.WriteStringValue("device_id", DeviceId);
-            writer.WriteStringValue("email", Email);
-            writer.WriteStringValue("email_completion_token", EmailCompletionToken);
             writer.WriteStringValue("ip_address", IpAddress);
-            writer.WriteStringValue("signals_id", SignalsId);
+            writer.WriteStringValue("pending_authentication_token", PendingAuthenticationToken);
+            writer.WriteStringValue("radar_challenge_id", RadarChallengeId);
             writer.WriteStringValue("user_agent", UserAgent);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

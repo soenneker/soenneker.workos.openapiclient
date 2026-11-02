@@ -52,10 +52,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "agent_delegated" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf3(),
-                "autonomous" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf2(),
-                "refresh" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf4(),
-                "user_delegated" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf1(),
+                "agent_delegated" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf3Variant(),
+                "autonomous" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf2Variant(),
+                "refresh" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf4Variant(),
+                "user_delegated" => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf1Variant(),
                 _ => new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequest(),
             };
         }

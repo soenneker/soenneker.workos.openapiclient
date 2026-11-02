@@ -9,7 +9,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf1 : global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequest, IParsable
+    public partial class AgentBlueprintsTokenControllerMintTokenRequestOneOf2Variant : global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequest, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -20,8 +20,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             base.CaptureExplicitNulls(parseNode);
             if (parseNode.GetChildNode("intent") is null) { _explicitNullValueIntent = default!; _explicitNullProperties?.Remove("intent"); }
             else if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
-            if (parseNode.GetChildNode("user_access_token") is null) { _explicitNullValueUserAccessToken = default!; _explicitNullProperties?.Remove("user_access_token"); }
-            else if (parseNode.GetChildNode("user_access_token") is { } nullNodeUserAccessToken && nullNodeUserAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserAccessToken = null;
+            if (parseNode.GetChildNode("organization_id") is null) { _explicitNullValueOrganizationId = default!; _explicitNullProperties?.Remove("organization_id"); }
+            else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
         }
 
         /// <summary>Optional caller-supplied context, echoed as an object with a `text` field in the `intent` claim of the minted access token.</summary>
@@ -34,25 +34,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
         private string _explicitNullValueIntent = default!;
 #endif
-        /// <summary>The access token of the user delegating to the agent. The token identifies the user and organization; effective permissions are resolved server-side.</summary>
+        /// <summary>The organization the agent acts within when operating as itself.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserAccessToken { get => _explicitNullValueUserAccessToken; set { _explicitNullValueUserAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_access_token"); else _explicitNullProperties?.Remove("user_access_token"); } }
-        private string? _explicitNullValueUserAccessToken = default!;
+        public string? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string? _explicitNullValueOrganizationId = default!;
 #nullable restore
 #else
-        public string UserAccessToken { get => _explicitNullValueUserAccessToken; set { _explicitNullValueUserAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_access_token"); else _explicitNullProperties?.Remove("user_access_token"); } }
-        private string _explicitNullValueUserAccessToken = default!;
+        public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        private string _explicitNullValueOrganizationId = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf1"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf2Variant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf1 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf2Variant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf1(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsTokenControllerMintTokenRequestOneOf2Variant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,7 +63,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "intent", n => { Intent = n.GetStringValue(); } },
-                { "user_access_token", n => { UserAccessToken = n.GetStringValue(); } },
+                { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteStringValue("intent", Intent);
-            writer.WriteStringValue("user_access_token", UserAccessToken);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteStringValue("organization_id", OrganizationId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

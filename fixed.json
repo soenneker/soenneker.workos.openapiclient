@@ -29689,9 +29689,9 @@
         "discriminator": {
           "propertyName": "auth_method",
           "mapping": {
-            "oauth": "#/components/schemas/DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf1",
-            "api_key": "#/components/schemas/DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf2",
-            "client_credentials": "#/components/schemas/DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf3"
+            "oauth": "#/components/schemas/DataIntegrationVendedCredentialOneOf1Variant",
+            "api_key": "#/components/schemas/DataIntegrationVendedCredentialOneOf2Variant",
+            "client_credentials": "#/components/schemas/DataIntegrationVendedCredentialOneOf3Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -37151,8 +37151,8 @@
         "discriminator": {
           "propertyName": "kind",
           "mapping": {
-            "api_key": "#/components/schemas/EventSchemaAllOf2OneOf13DataDetailEventSchemaAllOf2OneOf13DataDetailOneOf1",
-            "access_token": "#/components/schemas/EventSchemaAllOf2OneOf13DataDetailEventSchemaAllOf2OneOf13DataDetailOneOf2"
+            "api_key": "#/components/schemas/EventSchemaAllOf2OneOf13DataDetailOneOf1Variant",
+            "access_token": "#/components/schemas/EventSchemaAllOf2OneOf13DataDetailOneOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -37188,8 +37188,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "organization": "#/components/schemas/EventSchemaAllOf2OneOf19DataOwnerEventSchemaAllOf2OneOf19DataOwnerOneOf1",
-            "user": "#/components/schemas/EventSchemaAllOf2OneOf19DataOwnerEventSchemaAllOf2OneOf19DataOwnerOneOf2"
+            "organization": "#/components/schemas/EventSchemaAllOf2OneOf19DataOwnerOneOf1Variant",
+            "user": "#/components/schemas/EventSchemaAllOf2OneOf19DataOwnerOneOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -37225,8 +37225,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "organization": "#/components/schemas/EventSchemaAllOf2OneOf20DataOwnerEventSchemaAllOf2OneOf20DataOwnerOneOf1",
-            "user": "#/components/schemas/EventSchemaAllOf2OneOf20DataOwnerEventSchemaAllOf2OneOf20DataOwnerOneOf2"
+            "organization": "#/components/schemas/EventSchemaAllOf2OneOf20DataOwnerOneOf1Variant",
+            "user": "#/components/schemas/EventSchemaAllOf2OneOf20DataOwnerOneOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -37262,8 +37262,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "organization": "#/components/schemas/EventSchemaAllOf2OneOf21DataOwnerEventSchemaAllOf2OneOf21DataOwnerOneOf1",
-            "user": "#/components/schemas/EventSchemaAllOf2OneOf21DataOwnerEventSchemaAllOf2OneOf21DataOwnerOneOf2"
+            "organization": "#/components/schemas/EventSchemaAllOf2OneOf21DataOwnerOneOf1Variant",
+            "user": "#/components/schemas/EventSchemaAllOf2OneOf21DataOwnerOneOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -47527,10 +47527,10 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "user_delegated": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf1",
-            "autonomous": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf2",
-            "agent_delegated": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf3",
-            "refresh": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf4"
+            "user_delegated": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestOneOf1Variant",
+            "autonomous": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestOneOf2Variant",
+            "agent_delegated": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestOneOf3Variant",
+            "refresh": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequestOneOf4Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -47623,8 +47623,8 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "api_key": "#/components/schemas/AgentAdminControllerValidateCredentialRequestAgentAdminControllerValidateCredentialRequestOneOf1",
-            "access_token": "#/components/schemas/AgentAdminControllerValidateCredentialRequestAgentAdminControllerValidateCredentialRequestOneOf2"
+            "api_key": "#/components/schemas/AgentAdminControllerValidateCredentialRequestOneOf1Variant",
+            "access_token": "#/components/schemas/AgentAdminControllerValidateCredentialRequestOneOf2Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -49469,17 +49469,17 @@
         "discriminator": {
           "propertyName": "grant_type",
           "mapping": {
-            "authorization_code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf1",
-            "password": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf2",
-            "refresh_token": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf3",
-            "urn:workos:oauth:grant-type:magic-auth:code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf4",
-            "urn:workos:oauth:grant-type:email-verification:code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf5",
-            "urn:workos:oauth:grant-type:mfa-totp": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf6",
-            "urn:workos:oauth:grant-type:email-completion": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf7",
-            "urn:workos:oauth:grant-type:organization-selection": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf8",
-            "urn:workos:oauth:grant-type:radar-email-challenge:code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf9",
-            "urn:workos:oauth:grant-type:radar-sms-challenge:code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf10",
-            "urn:ietf:params:oauth:grant-type:device_code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf11"
+            "authorization_code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf1Variant",
+            "password": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf2Variant",
+            "refresh_token": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf3Variant",
+            "urn:workos:oauth:grant-type:magic-auth:code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf4Variant",
+            "urn:workos:oauth:grant-type:email-verification:code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf5Variant",
+            "urn:workos:oauth:grant-type:mfa-totp": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf6Variant",
+            "urn:workos:oauth:grant-type:email-completion": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf7Variant",
+            "urn:workos:oauth:grant-type:organization-selection": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf8Variant",
+            "urn:workos:oauth:grant-type:radar-email-challenge:code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf9Variant",
+            "urn:workos:oauth:grant-type:radar-sms-challenge:code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf10Variant",
+            "urn:ietf:params:oauth:grant-type:device_code": "#/components/schemas/UserlandSessionsControllerAuthenticate0RequestOneOf11Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -76608,7 +76608,7 @@
           "$ref": "#/components/schemas/WidgetsPublicControllerIssueWidgetSessionToken400Response"
         }
       },
-      "DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf1": {
+      "DataIntegrationVendedCredentialOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/DataIntegrationVendedCredential"
@@ -76675,7 +76675,7 @@
           }
         ]
       },
-      "DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf2": {
+      "DataIntegrationVendedCredentialOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/DataIntegrationVendedCredential"
@@ -76708,7 +76708,7 @@
           }
         ]
       },
-      "DataIntegrationVendedCredentialDataIntegrationVendedCredentialOneOf3": {
+      "DataIntegrationVendedCredentialOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/DataIntegrationVendedCredential"
@@ -76774,7 +76774,7 @@
           }
         ]
       },
-      "EventSchemaAllOf2OneOf13DataDetailEventSchemaAllOf2OneOf13DataDetailOneOf1": {
+      "EventSchemaAllOf2OneOf13DataDetailOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf13DataDetail"
@@ -76798,7 +76798,7 @@
           }
         ]
       },
-      "EventSchemaAllOf2OneOf13DataDetailEventSchemaAllOf2OneOf13DataDetailOneOf2": {
+      "EventSchemaAllOf2OneOf13DataDetailOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf13DataDetail"
@@ -76826,7 +76826,7 @@
           }
         ]
       },
-      "EventSchemaAllOf2OneOf19DataOwnerEventSchemaAllOf2OneOf19DataOwnerOneOf1": {
+      "EventSchemaAllOf2OneOf19DataOwnerOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf19DataOwner"
@@ -76850,7 +76850,7 @@
           }
         ]
       },
-      "EventSchemaAllOf2OneOf19DataOwnerEventSchemaAllOf2OneOf19DataOwnerOneOf2": {
+      "EventSchemaAllOf2OneOf19DataOwnerOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf19DataOwner"
@@ -76880,7 +76880,7 @@
           }
         ]
       },
-      "EventSchemaAllOf2OneOf20DataOwnerEventSchemaAllOf2OneOf20DataOwnerOneOf1": {
+      "EventSchemaAllOf2OneOf20DataOwnerOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf20DataOwner"
@@ -76904,7 +76904,7 @@
           }
         ]
       },
-      "EventSchemaAllOf2OneOf20DataOwnerEventSchemaAllOf2OneOf20DataOwnerOneOf2": {
+      "EventSchemaAllOf2OneOf20DataOwnerOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf20DataOwner"
@@ -76934,7 +76934,7 @@
           }
         ]
       },
-      "EventSchemaAllOf2OneOf21DataOwnerEventSchemaAllOf2OneOf21DataOwnerOneOf1": {
+      "EventSchemaAllOf2OneOf21DataOwnerOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf21DataOwner"
@@ -76958,7 +76958,7 @@
           }
         ]
       },
-      "EventSchemaAllOf2OneOf21DataOwnerEventSchemaAllOf2OneOf21DataOwnerOneOf2": {
+      "EventSchemaAllOf2OneOf21DataOwnerOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf21DataOwner"
@@ -76988,7 +76988,7 @@
           }
         ]
       },
-      "AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf1": {
+      "AgentBlueprintsTokenControllerMintTokenRequestOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequest"
@@ -77020,7 +77020,7 @@
           }
         ]
       },
-      "AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf2": {
+      "AgentBlueprintsTokenControllerMintTokenRequestOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequest"
@@ -77052,7 +77052,7 @@
           }
         ]
       },
-      "AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf3": {
+      "AgentBlueprintsTokenControllerMintTokenRequestOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequest"
@@ -77084,7 +77084,7 @@
           }
         ]
       },
-      "AgentBlueprintsTokenControllerMintTokenRequestAgentBlueprintsTokenControllerMintTokenRequestOneOf4": {
+      "AgentBlueprintsTokenControllerMintTokenRequestOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AgentBlueprintsTokenControllerMintTokenRequest"
@@ -77116,7 +77116,7 @@
           }
         ]
       },
-      "AgentAdminControllerValidateCredentialRequestAgentAdminControllerValidateCredentialRequestOneOf1": {
+      "AgentAdminControllerValidateCredentialRequestOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AgentAdminControllerValidateCredentialRequest"
@@ -77142,7 +77142,7 @@
           }
         ]
       },
-      "AgentAdminControllerValidateCredentialRequestAgentAdminControllerValidateCredentialRequestOneOf2": {
+      "AgentAdminControllerValidateCredentialRequestOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AgentAdminControllerValidateCredentialRequest"
@@ -77307,7 +77307,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf1": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77374,7 +77374,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf2": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77446,7 +77446,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf3": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77501,7 +77501,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf4": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77569,7 +77569,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf5": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf5Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77627,7 +77627,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf6": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf6Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77691,7 +77691,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf7": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf7Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77753,7 +77753,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf8": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf8Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77810,7 +77810,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf9": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf9Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77874,7 +77874,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf10": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf10Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -77942,7 +77942,7 @@
           }
         ]
       },
-      "UserlandSessionsControllerAuthenticate0RequestUserlandSessionsControllerAuthenticate0RequestOneOf11": {
+      "UserlandSessionsControllerAuthenticate0RequestOneOf11Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0Request"
@@ -81571,7 +81571,7 @@
       "discriminator": {
         "propertyName": "code",
         "mapping": {
-          "organization_selection_required": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOrganizationSelectionRequiredErrorBodyWithOrganizations",
+          "organization_selection_required": "#/components/schemas/TaggedOrganizationSelectionRequiredVariant01C61CCE841E4E83",
           "email_already_in_use": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseEmailAlreadyInUseErrorBody",
           "already_claimed": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseAlreadyClaimedErrorBody"
         }
@@ -81859,10 +81859,10 @@
       "discriminator": {
         "propertyName": "code",
         "mapping": {
-          "invalid_token_combination": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseOrganizationConnectedAccountImportErrorBody",
-          "invalid_data_integration_state": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseOrganizationConnectedAccountImportErrorBody",
-          "client_credentials_not_configured": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseOrganizationConnectedAccountImportErrorBody",
-          "invalid_request_parameters": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseInvalidRequestParametersErrorBodyWithErrors"
+          "invalid_token_combination": "#/components/schemas/TaggedClientCredentialsNotConfiguredVariantB3358861713D8E6D",
+          "invalid_data_integration_state": "#/components/schemas/TaggedClientCredentialsNotConfiguredVariantB3358861713D8E6D",
+          "client_credentials_not_configured": "#/components/schemas/TaggedClientCredentialsNotConfiguredVariantB3358861713D8E6D",
+          "invalid_request_parameters": "#/components/schemas/TaggedInvalidRequestParametersVariantE25A32D780C3B054"
         }
       },
       "x-client-original-tagged-union": {
@@ -82010,7 +82010,7 @@
           "mfa_enrollment": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseMfaEnrollmentErrorBody",
           "mfa_challenge": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseMfaChallengeErrorBody",
           "authentication_method_not_allowed": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseAuthenticationMethodNotAllowedErrorBody",
-          "email_completion_required": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseEmailCompletionRequiredErrorBodyWithEmailCompletionToken",
+          "email_completion_required": "#/components/schemas/TaggedEmailCompletionRequiredVariant6C8B3B803C136BFD",
           "email_verification_required": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseEmailVerificationRequiredErrorBody",
           "email_password_auth_disabled": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseEmailPasswordAuthDisabledErrorBody",
           "organization_selection_required": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseOrganizationSelectionRequiredErrorBody",
@@ -82131,7 +82131,7 @@
           "invalid_request_parameters": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate422ResponseInvalidRequestParametersErrorBody",
           "invalid_role": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate422ResponseInvalidRoleErrorBody",
           "multiple_roles_not_enabled": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate422ResponseMultipleRolesNotEnabledErrorBody",
-          "sub_resource_scoped_role_not_allowed": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate422ResponseSubResourceScopedRoleNotAllowedErrorBodyWithRoleSlug"
+          "sub_resource_scoped_role_not_allowed": "#/components/schemas/TaggedSubResourceScopedRoleNotAllowedVariant1522745AA3317274"
         }
       },
       "x-client-original-tagged-union": {
@@ -84942,7 +84942,7 @@
         ]
       }
     },
-    "AgentAdminControllerLinkClaimAttemptToExternalUser409ResponseOrganizationSelectionRequiredErrorBodyWithOrganizations": {
+    "TaggedOrganizationSelectionRequiredVariant01C61CCE841E4E83": {
       "allOf": [
         {
           "$ref": "#/components/schemas/AgentAdminControllerLinkClaimAttemptToExternalUser409Response"
@@ -85100,7 +85100,7 @@
         }
       ]
     },
-    "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseOrganizationConnectedAccountImportErrorBody": {
+    "TaggedClientCredentialsNotConfiguredVariantB3358861713D8E6D": {
       "allOf": [
         {
           "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response"
@@ -85124,7 +85124,7 @@
         }
       ]
     },
-    "DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422ResponseInvalidRequestParametersErrorBodyWithErrors": {
+    "TaggedInvalidRequestParametersVariantE25A32D780C3B054": {
       "allOf": [
         {
           "$ref": "#/components/schemas/DataIntegrationsOrganizationControllerCreateOrganizationDataInstallation422Response"
@@ -85228,7 +85228,7 @@
         }
       ]
     },
-    "UserlandSessionsControllerAuthenticate0403ResponseEmailCompletionRequiredErrorBodyWithEmailCompletionToken": {
+    "TaggedEmailCompletionRequiredVariant6C8B3B803C136BFD": {
       "allOf": [
         {
           "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0403Response"
@@ -85570,7 +85570,7 @@
         }
       ]
     },
-    "UserlandUserOrganizationMembershipsControllerCreate422ResponseSubResourceScopedRoleNotAllowedErrorBodyWithRoleSlug": {
+    "TaggedSubResourceScopedRoleNotAllowedVariant1522745AA3317274": {
       "allOf": [
         {
           "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate422Response"
