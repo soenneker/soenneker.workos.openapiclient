@@ -16147,7 +16147,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorBody"
+                  "$ref": "#/components/schemas/ErrorBodyWithCode"
                 }
               }
             }
@@ -23157,7 +23157,7 @@
           },
           "ip_address": {
             "type": "string",
-            "description": "The IP address of the user\u0027s request.",
+            "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
             "example": "203.0.113.42"
           },
           "user_agent": {
@@ -23771,6 +23771,7 @@
           "invite_has_accepted_user_id",
           "invite_not_pending",
           "invite_revoked",
+          "ip_address_required",
           "it_contact_already_exists",
           "it_contact_invitation_already_active",
           "key_pair_not_accepted",
@@ -24250,6 +24251,10 @@
             {
               "value": "invite_revoked",
               "name": "InviteRevoked"
+            },
+            {
+              "value": "ip_address_required",
+              "name": "IpAddressRequired"
             },
             {
               "value": "it_contact_already_exists",
@@ -29597,7 +29602,8 @@
       },
       "DataIntegrationAuthorizeUrlResponse": {
         "required": [
-          "url"
+          "url",
+          "state"
         ],
         "type": "object",
         "properties": {
@@ -29605,6 +29611,11 @@
             "type": "string",
             "description": "The OAuth authorization URL to redirect the user to.",
             "example": "https://api.workos.com/data-integrations/q2czJKmVAraSBg8xFpT7M9uR/authorize-redirect"
+          },
+          "state": {
+            "type": "string",
+            "description": "Identifies this authorization. WorkOS adds it to \u0060return_to\u0060 alongside \u0060connect_code\u0060 or \u0060error\u0060. Store it in the user\u0027s session with the \u0060code_verifier\u0060 and compare it when the user returns.",
+            "example": "01K8ZQ6Y3J4N5P7R9T2V4W6X8Z"
           },
           "completion": {
             "$ref": "#/components/schemas/FinishRequiredCompletion"
@@ -74439,7 +74450,7 @@
               "null",
               "string"
             ],
-            "description": "The IP address of the user\u0027s request.",
+            "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
             "example": "203.0.113.42"
           },
           "user_agent": {
@@ -74524,7 +74535,7 @@
               "null",
               "string"
             ],
-            "description": "The IP address of the user\u0027s request.",
+            "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
             "example": "203.0.113.42"
           },
           "user_agent": {
@@ -74609,7 +74620,7 @@
               "null",
               "string"
             ],
-            "description": "The IP address of the user\u0027s request.",
+            "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
             "example": "203.0.113.42"
           },
           "user_agent": {
@@ -77330,7 +77341,7 @@
               },
               "ip_address": {
                 "type": "string",
-                "description": "The IP address of the user\u0027s request.",
+                "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
                 "example": "203.0.113.42"
               },
               "device_id": {
@@ -77397,7 +77408,7 @@
               },
               "ip_address": {
                 "type": "string",
-                "description": "The IP address of the user\u0027s request.",
+                "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
                 "example": "203.0.113.42"
               },
               "device_id": {
@@ -77709,7 +77720,7 @@
               },
               "ip_address": {
                 "type": "string",
-                "description": "The IP address of the user\u0027s request.",
+                "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
                 "example": "203.0.113.42"
               },
               "device_id": {
@@ -80266,7 +80277,7 @@
             "null",
             "string"
           ],
-          "description": "The IP address of the user\u0027s request.",
+          "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
           "example": "203.0.113.42"
         },
         "user_agent": {
@@ -82584,7 +82595,7 @@
         },
         "ip_address": {
           "type": "string",
-          "description": "The IP address of the user\u0027s request.",
+          "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
           "example": "203.0.113.42"
         },
         "device_id": {
@@ -82644,7 +82655,7 @@
         },
         "ip_address": {
           "type": "string",
-          "description": "The IP address of the user\u0027s request.",
+          "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
           "example": "203.0.113.42"
         },
         "device_id": {
@@ -82921,7 +82932,7 @@
         },
         "ip_address": {
           "type": "string",
-          "description": "The IP address of the user\u0027s request.",
+          "description": "The IP address of the user\u0027s request. Required when Radar is in Decision mode.",
           "example": "203.0.113.42"
         },
         "device_id": {

@@ -86,7 +86,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string EmailCompletionToken { get => _explicitNullValueEmailCompletionToken; set { _explicitNullValueEmailCompletionToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_completion_token"); else _explicitNullProperties?.Remove("email_completion_token"); } }
         private string _explicitNullValueEmailCompletionToken = default!;
 #endif
-        /// <summary>The IP address of the user&apos;s request.</summary>
+        /// <summary>The IP address of the user&apos;s request. Required when Radar is in Decision mode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? IpAddress { get => _explicitNullValueIpAddress; set { _explicitNullValueIpAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ip_address"); else _explicitNullProperties?.Remove("ip_address"); } }

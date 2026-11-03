@@ -411,6 +411,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         InviteRevoked,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ip_address_required")]
+        #pragma warning disable CS1591
+        IpAddressRequired,
+        #pragma warning restore CS1591
         [EnumMember(Value = "it_contact_already_exists")]
         #pragma warning disable CS1591
         ItContactAlreadyExists,

@@ -13254,7 +13254,9 @@ paths:
                       example: inv_tok_01HXYZ123456789ABCDEFGHIJ
                     ip_address:
                       type: string
-                      description: The IP address of the user's request.
+                      description: >-
+                        The IP address of the user's request. Required when
+                        Radar is in Decision mode.
                       example: 203.0.113.42
                     device_id:
                       type: string
@@ -13301,7 +13303,9 @@ paths:
                       example: inv_tok_01HXYZ123456789ABCDEFGHIJ
                     ip_address:
                       type: string
-                      description: The IP address of the user's request.
+                      description: >-
+                        The IP address of the user's request. Required when
+                        Radar is in Decision mode.
                       example: 203.0.113.42
                     device_id:
                       type: string
@@ -13533,7 +13537,9 @@ paths:
                       example: marcelina@example.com
                     ip_address:
                       type: string
-                      description: The IP address of the user's request.
+                      description: >-
+                        The IP address of the user's request. Required when
+                        Radar is in Decision mode.
                       example: 203.0.113.42
                     device_id:
                       type: string
@@ -15105,7 +15111,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorBody'
+                $ref: '#/components/schemas/ErrorBodyWithCode'
         '429':
           description: ''
           content:
@@ -22196,7 +22202,9 @@ components:
           example: Z1Y2X3W4V5U6T7S8R9Q0P1O2N3
         ip_address:
           type: string
-          description: The IP address of the user's request.
+          description: >-
+            The IP address of the user's request. Required when Radar is in
+            Decision mode.
           example: 203.0.113.42
         user_agent:
           type: string
@@ -22763,7 +22771,9 @@ components:
               type:
                 - string
                 - 'null'
-              description: The IP address of the user's request.
+              description: >-
+                The IP address of the user's request. Required when Radar is in
+                Decision mode.
               example: 203.0.113.42
             user_agent:
               type:
@@ -23772,6 +23782,7 @@ components:
         - invite_has_accepted_user_id
         - invite_not_pending
         - invite_revoked
+        - ip_address_required
         - it_contact_already_exists
         - it_contact_invitation_already_active
         - key_pair_not_accepted
@@ -40857,6 +40868,13 @@ components:
           description: The OAuth authorization URL to redirect the user to.
           example: >-
             https://api.workos.com/data-integrations/q2czJKmVAraSBg8xFpT7M9uR/authorize-redirect
+        state:
+          type: string
+          description: >-
+            Identifies this authorization. WorkOS adds it to `return_to`
+            alongside `connect_code` or `error`. Store it in the user's session
+            with the `code_verifier` and compare it when the user returns.
+          example: 01K8ZQ6Y3J4N5P7R9T2V4W6X8Z
         completion:
           type: string
           description: >-
@@ -40868,6 +40886,7 @@ components:
           const: finish_required
       required:
         - url
+        - state
     AuthMethodMismatchError:
       type: object
       properties: *ref_46
