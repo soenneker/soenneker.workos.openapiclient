@@ -643,6 +643,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         TokenAuthenticationMethodNotSupported,
         #pragma warning restore CS1591
+        [EnumMember(Value = "too_many_failed_verification_attempts")]
+        #pragma warning disable CS1591
+        TooManyFailedVerificationAttempts,
+        #pragma warning restore CS1591
         [EnumMember(Value = "too_many_sp_encryption_certs")]
         #pragma warning disable CS1591
         TooManySpEncryptionCerts,

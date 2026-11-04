@@ -5,11 +5,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>The error code identifying the type of error.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DailyQuotaExceededCode
+    public enum TooManyFailedVerificationAttemptsCode
     {
-        [EnumMember(Value = "daily_quota_exceeded")]
+        [EnumMember(Value = "too_many_failed_verification_attempts")]
         #pragma warning disable CS1591
-        DailyQuotaExceeded,
+        TooManyFailedVerificationAttempts,
         #pragma warning restore CS1591
     }
 }

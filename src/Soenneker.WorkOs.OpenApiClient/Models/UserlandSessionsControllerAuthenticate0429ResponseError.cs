@@ -26,13 +26,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if (parseNode.GetChildNode("error_description") is { } nullNodeErrorDescription && nullNodeErrorDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorDescription = null;
             if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessageEscaped = default!; _explicitNullProperties?.Remove("message"); }
             else if (parseNode.GetChildNode("message") is { } nullNodeMessageEscaped && nullNodeMessageEscaped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageEscaped = null;
+            if (parseNode.GetChildNode("retry_after") is null) { _explicitNullValueRetryAfter = default!; _explicitNullProperties?.Remove("retry_after"); }
+            else if (parseNode.GetChildNode("retry_after") is { } nullNodeRetryAfter && nullNodeRetryAfter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetryAfter = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The error code identifying the type of error.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.DailyQuotaExceededCode? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
-        private global::Soenneker.WorkOs.OpenApiClient.Models.DailyQuotaExceededCode? _explicitNullValueCode = default!;
+        /// <summary>The code property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseError_code? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseError_code? _explicitNullValueCode = default!;
         /// <summary>The OAuth error code.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.TooManyRequestsError? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; AdditionalData?.Remove("error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.TooManyRequestsError? _explicitNullValueError = default!;
@@ -58,6 +60,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string MessageEscaped { get => _explicitNullValueMessageEscaped; set { _explicitNullValueMessageEscaped = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string _explicitNullValueMessageEscaped = default!;
 #endif
+        /// <summary>How many seconds to wait before verification can be retried.</summary>
+        public int? RetryAfter { get => _explicitNullValueRetryAfter; set { _explicitNullValueRetryAfter = value; AdditionalData?.Remove("retry_after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retry_after"); else _explicitNullProperties?.Remove("retry_after"); } }
+        private int? _explicitNullValueRetryAfter = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseError"/> and sets the default values.
         /// </summary>
@@ -83,10 +88,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DailyQuotaExceededCode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCode = default; _explicitNullProperties?.Remove("code"); AdditionalData["code"] = unknown; } else { Code = parsed; AdditionalData.Remove("code"); } } },
+                { "code", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseError_code>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCode = default; _explicitNullProperties?.Remove("code"); AdditionalData["code"] = unknown; } else { Code = parsed; AdditionalData.Remove("code"); } } },
                 { "error", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TooManyRequestsError>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueError = default; _explicitNullProperties?.Remove("error"); AdditionalData["error"] = unknown; } else { Error = parsed; AdditionalData.Remove("error"); } } },
                 { "error_description", n => { ErrorDescription = n.GetStringValue(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
+                { "retry_after", n => { RetryAfter = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -96,10 +102,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DailyQuotaExceededCode>("code", Code);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0429ResponseError_code>("code", Code);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.TooManyRequestsError>("error", Error);
             writer.WriteStringValue("error_description", ErrorDescription);
             writer.WriteStringValue("message", MessageEscaped);
+            writer.WriteIntValue("retry_after", RetryAfter);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -252,6 +252,38 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         FlagRuleUpdated,
         #pragma warning restore CS1591
+        [EnumMember(Value = "feature_flags.flag.created")]
+        #pragma warning disable CS1591
+        FeatureFlagsFlagCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "feature_flags.flag.updated")]
+        #pragma warning disable CS1591
+        FeatureFlagsFlagUpdated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "feature_flags.flag.deleted")]
+        #pragma warning disable CS1591
+        FeatureFlagsFlagDeleted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "feature_flags.flag_rule.created")]
+        #pragma warning disable CS1591
+        FeatureFlagsFlagRuleCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "feature_flags.flag_rule.updated")]
+        #pragma warning disable CS1591
+        FeatureFlagsFlagRuleUpdated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "feature_flags.flag_target.created")]
+        #pragma warning disable CS1591
+        FeatureFlagsFlagTargetCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "feature_flags.flag_rule.deleted")]
+        #pragma warning disable CS1591
+        FeatureFlagsFlagRuleDeleted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "feature_flags.flag_target.deleted")]
+        #pragma warning disable CS1591
+        FeatureFlagsFlagTargetDeleted,
+        #pragma warning restore CS1591
         [EnumMember(Value = "invitation.accepted")]
         #pragma warning disable CS1591
         InvitationAccepted,
