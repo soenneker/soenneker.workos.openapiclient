@@ -128,7 +128,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates an organization&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// Updates an organization&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, state, or provider configuration for a specific provider.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount"/></returns>
         /// <param name="body">The request body</param>
@@ -223,7 +223,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             return requestInfo;
         }
         /// <summary>
-        /// Updates an organization&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// Updates an organization&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, state, or provider configuration for a specific provider.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -294,7 +294,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Connected_accounts.I
             public bool? SupportsMultipleConnections { get; set; }
         }
         /// <summary>
-        /// Updates an organization&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// Updates an organization&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, state, or provider configuration for a specific provider.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithSlugItemRequestBuilderPutQueryParameters 

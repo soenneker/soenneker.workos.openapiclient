@@ -126,7 +126,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, state, or provider configuration for a specific provider.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ConnectedAccount"/></returns>
         /// <param name="body">The request body</param>
@@ -221,7 +221,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
             return requestInfo;
         }
         /// <summary>
-        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, state, or provider configuration for a specific provider.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -329,7 +329,7 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users.Item.Connected_ac
 #endif
         }
         /// <summary>
-        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider.
+        /// Updates a user&apos;s [connected account](/reference/pipes/connected-account) tokens, scopes, state, or provider configuration for a specific provider.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithSlugItemRequestBuilderPutQueryParameters 
