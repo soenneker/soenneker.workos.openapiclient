@@ -41765,6 +41765,11 @@
             "type": "string",
             "description": "The email address of the user.",
             "example": "user@example.com"
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that challenged the authentication.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "The event payload."
@@ -47142,6 +47147,11 @@
             "type": "string",
             "description": "A human-readable error message.",
             "example": "The MFA challenge has failed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "Details about the authentication error."
@@ -47162,6 +47172,11 @@
             "type": "string",
             "description": "A human-readable error message.",
             "example": "The MFA challenge has failed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "Details about the authentication error."
@@ -47182,6 +47197,11 @@
             "type": "string",
             "description": "A human-readable error message.",
             "example": "The MFA challenge has failed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "Details about the authentication error."
@@ -47202,6 +47222,11 @@
             "type": "string",
             "description": "A human-readable error message.",
             "example": "The MFA challenge has failed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "Details about the authentication error."
@@ -47222,6 +47247,11 @@
             "type": "string",
             "description": "A human-readable error message.",
             "example": "The MFA challenge has failed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "Details about the authentication error."
@@ -47242,6 +47272,11 @@
             "type": "string",
             "description": "A human-readable error message.",
             "example": "The MFA challenge has failed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "Details about the authentication error."
@@ -47297,6 +47332,11 @@
             "type": "string",
             "description": "A human-readable error message.",
             "example": "The MFA challenge has failed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "Details about the authentication error."
@@ -47422,6 +47462,11 @@
             "type": "string",
             "description": "A human-readable error message.",
             "example": "The MFA challenge has failed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "description": "Details about the authentication error."
