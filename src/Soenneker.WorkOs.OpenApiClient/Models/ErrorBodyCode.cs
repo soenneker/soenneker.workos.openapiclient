@@ -543,10 +543,6 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         PhoneNumberRequired,
         #pragma warning restore CS1591
-        [EnumMember(Value = "policy_denied")]
-        #pragma warning disable CS1591
-        PolicyDenied,
-        #pragma warning restore CS1591
         [EnumMember(Value = "production_feature_requires_billing")]
         #pragma warning disable CS1591
         ProductionFeatureRequiresBilling,

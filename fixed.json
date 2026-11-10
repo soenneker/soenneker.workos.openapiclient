@@ -6458,8 +6458,8 @@
         "tags": [
           "client"
         ],
-        "summary": "Generate a Client API token",
-        "description": "Generate a short-lived, session-bound token for the Client GraphQL API, scoped to an organization and user.",
+        "summary": "Generate a Widgets API token",
+        "description": "Generate a short-lived, session-bound token for the Widgets API, scoped to an organization and user.",
         "operationId": "ClientApiTokenControllerIssueClientApiToken",
         "requestBody": {
           "content": {
@@ -16155,7 +16155,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorBodyWithCode"
+                  "$ref": "#/components/schemas/PolicyDeniedErrorBody"
                 }
               }
             }
@@ -17589,7 +17589,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorBodyWithCode"
+                  "$ref": "#/components/schemas/PolicyDeniedErrorBody"
                 }
               }
             }
@@ -23646,12 +23646,12 @@
         "properties": {
           "organization_id": {
             "type": "string",
-            "description": "The ID of the organization to scope the Client API token to.",
+            "description": "The ID of the organization to scope the Widgets API token to.",
             "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
           },
           "user_id": {
             "type": "string",
-            "description": "The ID of the user to issue the Client API token for.",
+            "description": "The ID of the user to issue the Widgets API token for.",
             "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
           }
         }
@@ -23840,7 +23840,6 @@
           "permission_not_found",
           "permission_slug_conflict",
           "phone_number_required",
-          "policy_denied",
           "production_feature_requires_billing",
           "radar_challenge",
           "radar_sign_up_challenge",
@@ -24422,10 +24421,6 @@
               "name": "PhoneNumberRequired"
             },
             {
-              "value": "policy_denied",
-              "name": "PolicyDenied"
-            },
-            {
               "value": "production_feature_requires_billing",
               "name": "ProductionFeatureRequiresBilling"
             },
@@ -24842,6 +24837,28 @@
             "type": "string",
             "description": "A human-readable description of the error.",
             "example": "The request failed due to: invitation_invalid."
+          }
+        }
+      },
+      "PolicyDeniedErrorBody": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/PolicyDeniedCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the request. Only set when Radar blocked it.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         }
       },
@@ -31409,7 +31426,7 @@
         "properties": {
           "token": {
             "type": "string",
-            "description": "The Client API token.",
+            "description": "The Widgets API token.",
             "example": "eyJhbGciOiJSUzI1NiIsImtpZCI6InNlc3Npb24..."
           }
         }
@@ -40642,6 +40659,11 @@
             "type": "string",
             "description": "The ID of the agent registration.",
             "example": "agent_reg_01EHWNCE74X7JSDV0X3SZ3KJNY"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The ID of the organization the registration belongs to.",
+            "example": "org_01EHWNCE74X7JSDV0X3SZ3KJNY"
           },
           "completed_by_attempt_id": {
             "type": "string",
@@ -58493,6 +58515,25 @@
             {
               "value": "idempotency_key_conflict",
               "name": "IdempotencyKeyConflict"
+            }
+          ]
+        }
+      },
+      "PolicyDeniedCode": {
+        "enum": [
+          "policy_denied"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "policy_denied",
+        "x-client-original-const": "policy_denied",
+        "x-ms-enum": {
+          "name": "PolicyDeniedCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "policy_denied",
+              "name": "PolicyDenied"
             }
           ]
         }
@@ -78278,6 +78319,11 @@
             "type": "string",
             "description": "Pass this to the \u0060email-completion\u0060 grant, with the address the user supplies, to finish authenticating.",
             "example": "JZ8kQ2mR5vT7wX1yA3bC6dE9f"
+          },
+          "radar_detection_id": {
+            "type": "string",
+            "description": "The ID of the Radar detection that blocked the request. Only set when Radar blocked it.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
         "required": [
@@ -80370,7 +80416,7 @@
     },
     {
       "name": "client",
-      "description": "Client GraphQL API token management."
+      "description": "Widgets API token management."
     },
     {
       "name": "connections",
@@ -82263,23 +82309,6 @@
       "properties": {
         "code": {
           "$ref": "#/components/schemas/ApplicationConsentRequiredCode"
-        },
-        "message": {
-          "type": "string",
-          "description": "A human-readable description of the error.",
-          "example": "Request could not be processed."
-        }
-      }
-    },
-    "PolicyDeniedErrorBody": {
-      "required": [
-        "code",
-        "message"
-      ],
-      "type": "object",
-      "properties": {
-        "code": {
-          "$ref": "#/components/schemas/PolicyDeniedCode"
         },
         "message": {
           "type": "string",
@@ -87219,25 +87248,6 @@
         ]
       }
     },
-    "PolicyDeniedCode": {
-      "enum": [
-        "policy_denied"
-      ],
-      "type": "string",
-      "description": "The error code identifying the type of error.",
-      "example": "policy_denied",
-      "x-client-original-const": "policy_denied",
-      "x-ms-enum": {
-        "name": "PolicyDeniedCode",
-        "modelAsString": false,
-        "values": [
-          {
-            "value": "policy_denied",
-            "name": "PolicyDenied"
-          }
-        ]
-      }
-    },
     "ActionDeniedCode": {
       "enum": [
         "action_denied"
@@ -87841,6 +87851,11 @@
               "type": "string",
               "description": "A human-readable description of the error.",
               "example": "Request could not be processed."
+            },
+            "radar_detection_id": {
+              "type": "string",
+              "description": "The ID of the Radar detection that blocked the request. Only set when Radar blocked it.",
+              "example": "detection_01HZBC6N1EB1ZY7KG32X"
             }
           }
         }

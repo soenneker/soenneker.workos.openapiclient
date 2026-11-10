@@ -34,7 +34,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Client.Token
         {
         }
         /// <summary>
-        /// Generate a short-lived, session-bound token for the Client GraphQL API, scoped to an organization and user.
+        /// Generate a short-lived, session-bound token for the Widgets API, scoped to an organization and user.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.ClientApiTokenResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -65,7 +65,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Client.Token
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.ClientApiTokenResponse>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.ClientApiTokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Generate a short-lived, session-bound token for the Client GraphQL API, scoped to an organization and user.
+        /// Generate a short-lived, session-bound token for the Widgets API, scoped to an organization and user.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

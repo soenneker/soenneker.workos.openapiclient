@@ -24,6 +24,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if (parseNode.GetChildNode("email_completion_token") is { } nullNodeEmailCompletionToken && nullNodeEmailCompletionToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailCompletionToken = null;
             if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessageEscaped = default!; _explicitNullProperties?.Remove("message"); }
             else if (parseNode.GetChildNode("message") is { } nullNodeMessageEscaped && nullNodeMessageEscaped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageEscaped = null;
+            if (parseNode.GetChildNode("radar_detection_id") is null) { _explicitNullValueRadarDetectionId = default!; _explicitNullProperties?.Remove("radar_detection_id"); }
+            else if (parseNode.GetChildNode("radar_detection_id") is { } nullNodeRadarDetectionId && nullNodeRadarDetectionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RadarDetectionId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -53,6 +55,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string MessageEscaped { get => _explicitNullValueMessageEscaped; set { _explicitNullValueMessageEscaped = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string _explicitNullValueMessageEscaped = default!;
 #endif
+        /// <summary>The ID of the Radar detection that blocked the request. Only set when Radar blocked it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RadarDetectionId { get => _explicitNullValueRadarDetectionId; set { _explicitNullValueRadarDetectionId = value; AdditionalData?.Remove("radar_detection_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("radar_detection_id"); else _explicitNullProperties?.Remove("radar_detection_id"); } }
+        private string? _explicitNullValueRadarDetectionId = default!;
+#nullable restore
+#else
+        public string RadarDetectionId { get => _explicitNullValueRadarDetectionId; set { _explicitNullValueRadarDetectionId = value; AdditionalData?.Remove("radar_detection_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("radar_detection_id"); else _explicitNullProperties?.Remove("radar_detection_id"); } }
+        private string _explicitNullValueRadarDetectionId = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0403ResponseError"/> and sets the default values.
         /// </summary>
@@ -81,6 +93,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "code", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0403ResponseError_code>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCode = default; _explicitNullProperties?.Remove("code"); AdditionalData["code"] = unknown; } else { Code = parsed; AdditionalData.Remove("code"); } } },
                 { "email_completion_token", n => { EmailCompletionToken = n.GetStringValue(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
+                { "radar_detection_id", n => { RadarDetectionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -93,6 +106,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandSessionsControllerAuthenticate0403ResponseError_code>("code", Code);
             writer.WriteStringValue("email_completion_token", EmailCompletionToken);
             writer.WriteStringValue("message", MessageEscaped);
+            writer.WriteStringValue("radar_detection_id", RadarDetectionId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
