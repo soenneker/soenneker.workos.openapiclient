@@ -21168,15 +21168,15 @@
           },
           "range_start": {
             "type": "string",
-            "description": "ISO-8601 value for start of the export range.",
+            "description": "ISO-8601 value for start of the export range. The range must span no more than 31 days.",
             "format": "date-time",
             "example": "2022-07-02T18:09:06.996Z"
           },
           "range_end": {
             "type": "string",
-            "description": "ISO-8601 value for end of the export range.",
+            "description": "ISO-8601 value for end of the export range. Must be no more than 31 days after the start.",
             "format": "date-time",
-            "example": "2022-09-02T18:09:06.996Z"
+            "example": "2022-08-02T18:09:06.996Z"
           },
           "actions": {
             "type": "array",

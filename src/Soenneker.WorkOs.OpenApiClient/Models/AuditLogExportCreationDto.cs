@@ -88,10 +88,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private string _explicitNullValueOrganizationId = default!;
 #endif
-        /// <summary>ISO-8601 value for end of the export range.</summary>
+        /// <summary>ISO-8601 value for end of the export range. Must be no more than 31 days after the start.</summary>
         public DateTimeOffset? RangeEnd { get => _explicitNullValueRangeEnd; set { _explicitNullValueRangeEnd = value; AdditionalData?.Remove("range_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range_end"); else _explicitNullProperties?.Remove("range_end"); } }
         private DateTimeOffset? _explicitNullValueRangeEnd = default!;
-        /// <summary>ISO-8601 value for start of the export range.</summary>
+        /// <summary>ISO-8601 value for start of the export range. The range must span no more than 31 days.</summary>
         public DateTimeOffset? RangeStart { get => _explicitNullValueRangeStart; set { _explicitNullValueRangeStart = value; AdditionalData?.Remove("range_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range_start"); else _explicitNullProperties?.Remove("range_start"); } }
         private DateTimeOffset? _explicitNullValueRangeStart = default!;
         /// <summary>List of target types to filter against.</summary>
