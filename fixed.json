@@ -9687,7 +9687,375 @@
         }
       }
     },
-    "/directories/{id}": {
+    "/directories/{directoryId}/groups": {
+      "get": {
+        "tags": [
+          "directory-groups"
+        ],
+        "summary": "List Groups for a Directory",
+        "description": "Get a list of the Directory Groups in a Directory, optionally filtered to the groups a Directory User belongs to.",
+        "operationId": "DirectoriesGroupsControllerList",
+        "parameters": [
+          {
+            "name": "directoryId",
+            "in": "path",
+            "description": "Unique identifier of the Directory.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "directory_01ECAZ4NV9QMV47GW873HDCX74"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060after=\u0022obj_123\u0022\u0060 to fetch a new batch of objects after \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ987654321KJIHGFEDCBA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Upper limit on the number of objects to return, between \u00601\u0060 and \u0060100\u0060.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10,
+              "example": 10
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records). Defaults to \u0060normal\u0060.",
+            "schema": {
+              "$ref": "#/components/schemas/PaginationOrder"
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Filter Directory Groups to those this Directory User belongs to.",
+            "schema": {
+              "type": "string",
+              "example": "directory_user_01E1JG7J09H96KYP8HM9B0G5SJ"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoriesGroupsControllerList200Response"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/directories/{directoryId}/groups/{groupId}": {
+      "get": {
+        "tags": [
+          "directory-groups"
+        ],
+        "summary": "Get a Group for a Directory",
+        "description": "Get the details of a Directory Group in a Directory.",
+        "operationId": "DirectoriesGroupsControllerFind",
+        "parameters": [
+          {
+            "name": "directoryId",
+            "in": "path",
+            "description": "Unique identifier of the Directory.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "directory_01ECAZ4NV9QMV47GW873HDCX74"
+            }
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "description": "Unique identifier for the Directory Group.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "directory_group_01E1JJS84MFPPQ3G655FHTKX6Z"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoryGroup"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/directories/{directoryId}/users": {
+      "get": {
+        "tags": [
+          "directory-users"
+        ],
+        "summary": "List Users for a Directory",
+        "description": "Get a list of the Directory Users in a Directory, optionally filtered to the members of a Directory Group.",
+        "operationId": "DirectoriesUsersControllerList",
+        "parameters": [
+          {
+            "name": "directoryId",
+            "in": "path",
+            "description": "Unique identifier of the Directory.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "directory_01ECAZ4NV9QMV47GW873HDCX74"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060after=\u0022obj_123\u0022\u0060 to fetch a new batch of objects after \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ987654321KJIHGFEDCBA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Upper limit on the number of objects to return, between \u00601\u0060 and \u0060100\u0060.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10,
+              "example": 10
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records). Defaults to \u0060normal\u0060.",
+            "schema": {
+              "$ref": "#/components/schemas/PaginationOrder"
+            }
+          },
+          {
+            "name": "group",
+            "in": "query",
+            "description": "Filter Directory Users to the members of this Directory Group.",
+            "schema": {
+              "type": "string",
+              "example": "directory_group_01E64QTDNS0EGJ0FMCVY9BWGZT"
+            }
+          },
+          {
+            "name": "idp_id",
+            "in": "query",
+            "description": "Filter Directory Users by the identity provider\u0027s unique identifier (\u0060idp_id\u0060).",
+            "schema": {
+              "type": "string",
+              "example": "2836"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Filter Directory Users by their primary email address.",
+            "schema": {
+              "type": "string",
+              "example": "jane.doe@example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoriesUsersControllerList200Response"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/directories/{directoryId}/users/{userId}": {
+      "get": {
+        "tags": [
+          "directory-users"
+        ],
+        "summary": "Get a User for a Directory",
+        "description": "Get the details of a Directory User in a Directory.",
+        "operationId": "DirectoriesUsersControllerFind",
+        "parameters": [
+          {
+            "name": "directoryId",
+            "in": "path",
+            "description": "Unique identifier of the Directory.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "directory_01ECAZ4NV9QMV47GW873HDCX74"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Unique identifier for the Directory User.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "directory_user_01E1JG7J09H96KYP8HM9B0G5SJ"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectoryUser"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/directories/{directoryId}": {
       "get": {
         "tags": [
           "directories"
@@ -9697,7 +10065,7 @@
         "operationId": "DirectoriesControllerFind",
         "parameters": [
           {
-            "name": "id",
+            "name": "directoryId",
             "in": "path",
             "description": "Unique identifier for the Directory.",
             "required": true,
@@ -9749,7 +10117,7 @@
         "operationId": "DirectoriesControllerDeleteDirectory",
         "parameters": [
           {
-            "name": "id",
+            "name": "directoryId",
             "in": "path",
             "description": "Unique identifier for the Directory.",
             "required": true,
@@ -9797,7 +10165,7 @@
         }
       }
     },
-    "/directories/{id}/sync": {
+    "/directories/{directoryId}/sync": {
       "post": {
         "tags": [
           "directories"
@@ -9807,7 +10175,7 @@
         "operationId": "DirectoriesControllerSyncDirectory",
         "parameters": [
           {
-            "name": "id",
+            "name": "directoryId",
             "in": "path",
             "description": "Unique identifier for the Directory.",
             "required": true,
@@ -9917,7 +10285,7 @@
           "directory-groups"
         ],
         "summary": "List Directory Groups",
-        "description": "Get a list of all of existing directory groups matching the criteria specified.",
+        "description": "Get a list of all of existing directory groups matching the criteria specified. Deprecated: use \u0060GET /directories/{directoryId}/groups\u0060 instead.",
         "operationId": "DirectoryGroupsControllerList",
         "parameters": [
           {
@@ -10018,7 +10386,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/directory_groups/{id}": {
@@ -10027,7 +10396,7 @@
           "directory-groups"
         ],
         "summary": "Get a Directory Group",
-        "description": "Get the details of an existing Directory Group.",
+        "description": "Get the details of an existing Directory Group. Deprecated: use \u0060GET /directories/{directoryId}/groups/{groupId}\u0060 instead.",
         "operationId": "DirectoryGroupsControllerFind",
         "parameters": [
           {
@@ -10072,7 +10441,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/directory_users": {
@@ -10081,7 +10451,7 @@
           "directory-users"
         ],
         "summary": "List Directory Users",
-        "description": "Get a list of all of existing Directory Users matching the criteria specified.",
+        "description": "Get a list of all of existing Directory Users matching the criteria specified. Deprecated: use \u0060GET /directories/{directoryId}/users\u0060 instead.",
         "operationId": "DirectoryUsersControllerList",
         "parameters": [
           {
@@ -10210,7 +10580,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/directory_users/{id}": {
@@ -10219,7 +10590,7 @@
           "directory-users"
         ],
         "summary": "Get a Directory User",
-        "description": "Get the details of an existing Directory User.",
+        "description": "Get the details of an existing Directory User. Deprecated: use \u0060GET /directories/{directoryId}/users/{userId}\u0060 instead.",
         "operationId": "DirectoryUsersControllerFind",
         "parameters": [
           {
@@ -10264,7 +10635,8 @@
               }
             }
           }
-        }
+        },
+        "deprecated": true
       }
     },
     "/events": {
@@ -27343,6 +27715,137 @@
           }
         }
       },
+      "DirectoryUser": {
+        "required": [
+          "object",
+          "id",
+          "directory_id",
+          "organization_id",
+          "idp_id",
+          "email",
+          "state",
+          "raw_attributes",
+          "custom_attributes",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/DirectoryUserObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the Directory User.",
+            "example": "directory_user_01E1JG7J09H96KYP8HM9B0G5SJ"
+          },
+          "directory_id": {
+            "type": "string",
+            "description": "The identifier of the Directory the Directory User belongs to.",
+            "example": "directory_01ECAZ4NV9QMV47GW873HDCX74"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The identifier for the Organization in which the Directory resides.",
+            "example": "org_01EZTR6WYX1A0DSE2CYMGXQ24Y"
+          },
+          "idp_id": {
+            "type": "string",
+            "description": "Unique identifier for the user, assigned by the Directory Provider. Different Directory Providers use different ID formats.",
+            "example": "2836"
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The email address of the user.",
+            "example": "marcelina.davis@example.com"
+          },
+          "first_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The first name of the user.",
+            "example": "Marcelina"
+          },
+          "last_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The last name of the user.",
+            "example": "Davis"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The full name of the user.",
+            "example": "Marcelina Davis"
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DirectoryUserEmailsItem"
+            },
+            "description": "A list of email addresses for the user.",
+            "deprecated": true
+          },
+          "job_title": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The job title of the user.",
+            "example": "Software Engineer",
+            "deprecated": true
+          },
+          "username": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The username of the user.",
+            "example": "mdavis",
+            "deprecated": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/DirectoryUserState"
+          },
+          "raw_attributes": {
+            "$ref": "#/components/schemas/DirectoryUserRawAttributesProperty"
+          },
+          "custom_attributes": {
+            "$ref": "#/components/schemas/DirectoryUserCustomAttributesProperty"
+          },
+          "role": {
+            "description": "The primary role assigned to the user.",
+            "$ref": "#/components/schemas/SlimRole"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlimRole"
+            },
+            "description": "All roles assigned to the user."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        }
+      },
       "DirectoryUserWithGroups": {
         "required": [
           "object",
@@ -27361,7 +27864,7 @@
         "type": "object",
         "properties": {
           "object": {
-            "$ref": "#/components/schemas/DirectoryUserObject"
+            "$ref": "#/components/schemas/DirectoryUserWithGroupsObject"
           },
           "id": {
             "type": "string",
@@ -27478,7 +27981,7 @@
             "items": {
               "$ref": "#/components/schemas/DirectoryGroup"
             },
-            "description": "The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance \u2014 the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a \u0060user\u0060 filter to fetch a user\u0027s group memberships.",
+            "description": "The directory groups the user belongs to. Deprecated: use \u0060GET /directories/{directoryId}/groups?user={userId}\u0060 instead.",
             "deprecated": true
           }
         }
@@ -27665,137 +28168,6 @@
           }
         },
         "description": "Additional context about the event."
-      },
-      "DirectoryUser": {
-        "required": [
-          "object",
-          "id",
-          "directory_id",
-          "organization_id",
-          "idp_id",
-          "email",
-          "state",
-          "raw_attributes",
-          "custom_attributes",
-          "created_at",
-          "updated_at"
-        ],
-        "type": "object",
-        "properties": {
-          "object": {
-            "$ref": "#/components/schemas/DirectoryUserObjectEnum"
-          },
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the Directory User.",
-            "example": "directory_user_01E1JG7J09H96KYP8HM9B0G5SJ"
-          },
-          "directory_id": {
-            "type": "string",
-            "description": "The identifier of the Directory the Directory User belongs to.",
-            "example": "directory_01ECAZ4NV9QMV47GW873HDCX74"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "The identifier for the Organization in which the Directory resides.",
-            "example": "org_01EZTR6WYX1A0DSE2CYMGXQ24Y"
-          },
-          "idp_id": {
-            "type": "string",
-            "description": "Unique identifier for the user, assigned by the Directory Provider. Different Directory Providers use different ID formats.",
-            "example": "2836"
-          },
-          "email": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The email address of the user.",
-            "example": "marcelina.davis@example.com"
-          },
-          "first_name": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The first name of the user.",
-            "example": "Marcelina"
-          },
-          "last_name": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The last name of the user.",
-            "example": "Davis"
-          },
-          "name": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The full name of the user.",
-            "example": "Marcelina Davis"
-          },
-          "emails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DirectoryUserEmailsItem"
-            },
-            "description": "A list of email addresses for the user.",
-            "deprecated": true
-          },
-          "job_title": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The job title of the user.",
-            "example": "Software Engineer",
-            "deprecated": true
-          },
-          "username": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The username of the user.",
-            "example": "mdavis",
-            "deprecated": true
-          },
-          "state": {
-            "$ref": "#/components/schemas/DirectoryUserState"
-          },
-          "raw_attributes": {
-            "$ref": "#/components/schemas/DirectoryUserRawAttributesProperty"
-          },
-          "custom_attributes": {
-            "$ref": "#/components/schemas/DirectoryUserCustomAttributesProperty"
-          },
-          "role": {
-            "description": "The primary role assigned to the user.",
-            "$ref": "#/components/schemas/SlimRole"
-          },
-          "roles": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SlimRole"
-            },
-            "description": "All roles assigned to the user."
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          },
-          "updated_at": {
-            "type": "string",
-            "description": "An ISO 8601 timestamp.",
-            "format": "date-time",
-            "example": "2026-01-15T12:00:00.000Z"
-          }
-        }
       },
       "FlagRule": {
         "required": [
@@ -38803,6 +39175,29 @@
         },
         "description": "Pagination cursors for navigating between pages of results."
       },
+      "DirectoryUserEmailsItem": {
+        "type": "object",
+        "properties": {
+          "primary": {
+            "type": "boolean",
+            "description": "Whether this is the primary email address.",
+            "example": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of email address.",
+            "example": "work"
+          },
+          "value": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The email address value.",
+            "example": "marcelina.davis@example.com"
+          }
+        }
+      },
       "DirectoryUserWithGroupsEmailsItem": {
         "type": "object",
         "properties": {
@@ -38985,29 +39380,6 @@
             "type": "string",
             "description": "The Google Analytics session number.",
             "example": "1"
-          }
-        }
-      },
-      "DirectoryUserEmailsItem": {
-        "type": "object",
-        "properties": {
-          "primary": {
-            "type": "boolean",
-            "description": "Whether this is the primary email address.",
-            "example": true
-          },
-          "type": {
-            "type": "string",
-            "description": "The type of email address.",
-            "example": "work"
-          },
-          "value": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The email address value.",
-            "example": "marcelina.davis@example.com"
           }
         }
       },
@@ -50657,6 +51029,42 @@
           }
         }
       },
+      "DirectoriesGroupsControllerList200Response": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/DirectoriesGroupsControllerList200ResponseObject"
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/DirectoriesGroupsControllerList200ResponseListMetadata"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DirectoryGroup"
+            },
+            "description": "The list of records for the current page."
+          }
+        }
+      },
+      "DirectoriesUsersControllerList200Response": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/DirectoriesUsersControllerList200ResponseObject"
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/DirectoriesUsersControllerList200ResponseListMetadata"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DirectoryUser"
+            },
+            "description": "The list of records for the current page."
+          }
+        }
+      },
       "FeatureFlagsControllerDisableFlag200Response": {
         "required": [
           "object",
@@ -52249,6 +52657,21 @@
         "additionalProperties": {},
         "description": "The raw attributes received from the directory provider."
       },
+      "DirectoryUserRawAttributesProperty": {
+        "type": "object",
+        "additionalProperties": {},
+        "description": "The raw attributes received from the directory provider.",
+        "deprecated": true
+      },
+      "DirectoryUserCustomAttributesProperty": {
+        "type": "object",
+        "additionalProperties": {},
+        "description": "An object containing the custom attribute mapping for the Directory Provider.",
+        "example": {
+          "department": "Engineering",
+          "job_title": "Software Engineer"
+        }
+      },
       "DirectoryUserWithGroupsRawAttributesProperty": {
         "type": "object",
         "additionalProperties": {},
@@ -52268,21 +52691,6 @@
         "type": "object",
         "additionalProperties": {},
         "description": "Attributes that changed from their previous values."
-      },
-      "DirectoryUserRawAttributesProperty": {
-        "type": "object",
-        "additionalProperties": {},
-        "description": "The raw attributes received from the directory provider.",
-        "deprecated": true
-      },
-      "DirectoryUserCustomAttributesProperty": {
-        "type": "object",
-        "additionalProperties": {},
-        "description": "An object containing the custom attribute mapping for the Directory Provider.",
-        "example": {
-          "department": "Engineering",
-          "job_title": "Software Engineer"
-        }
       },
       "WaitlistUserAdditionalFieldsProperty": {
         "type": "object",
@@ -52981,6 +53389,58 @@
         "example": {
           "salesforce_host": "acme.my.salesforce.com"
         }
+      },
+      "DirectoriesGroupsControllerList200ResponseListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "directory_group_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "directory_group_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
+      },
+      "DirectoriesUsersControllerList200ResponseListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "directory_user_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "directory_user_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
       },
       "FeatureFlagsControllerDisableFlag200ResponseOwner": {
         "required": [
@@ -60008,6 +60468,52 @@
           ]
         }
       },
+      "DirectoryUserState": {
+        "enum": [
+          "active",
+          "suspended",
+          "inactive"
+        ],
+        "type": "string",
+        "description": "The state of the user.",
+        "example": "active",
+        "x-ms-enum": {
+          "name": "DirectoryUserState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "active",
+              "name": "Active"
+            },
+            {
+              "value": "suspended",
+              "name": "Suspended"
+            },
+            {
+              "value": "inactive",
+              "name": "Inactive"
+            }
+          ]
+        }
+      },
+      "DirectoryUserWithGroupsObject": {
+        "enum": [
+          "directory_user"
+        ],
+        "type": "string",
+        "description": "Distinguishes the Directory User object.",
+        "x-client-original-const": "directory_user",
+        "x-ms-enum": {
+          "name": "DirectoryUserWithGroupsObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "directory_user",
+              "name": "DirectoryUser"
+            }
+          ]
+        }
+      },
       "DirectoryUserWithGroupsState": {
         "enum": [
           "active",
@@ -60137,52 +60643,6 @@
             {
               "value": "system",
               "name": "System"
-            }
-          ]
-        }
-      },
-      "DirectoryUserObjectEnum": {
-        "enum": [
-          "directory_user"
-        ],
-        "type": "string",
-        "description": "Distinguishes the Directory User object.",
-        "x-client-original-const": "directory_user",
-        "x-ms-enum": {
-          "name": "DirectoryUserObjectEnum",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "directory_user",
-              "name": "DirectoryUser"
-            }
-          ]
-        }
-      },
-      "DirectoryUserState": {
-        "enum": [
-          "active",
-          "suspended",
-          "inactive"
-        ],
-        "type": "string",
-        "description": "The state of the user.",
-        "example": "active",
-        "x-ms-enum": {
-          "name": "DirectoryUserState",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "active",
-              "name": "Active"
-            },
-            {
-              "value": "suspended",
-              "name": "Suspended"
-            },
-            {
-              "value": "inactive",
-              "name": "Inactive"
             }
           ]
         }
@@ -74185,6 +74645,42 @@
           ]
         }
       },
+      "DirectoriesGroupsControllerList200ResponseObject": {
+        "enum": [
+          "list"
+        ],
+        "type": "string",
+        "description": "Indicates this is a list response.",
+        "x-client-original-const": "list",
+        "x-ms-enum": {
+          "name": "DirectoriesGroupsControllerList200ResponseObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
+            }
+          ]
+        }
+      },
+      "DirectoriesUsersControllerList200ResponseObject": {
+        "enum": [
+          "list"
+        ],
+        "type": "string",
+        "description": "Indicates this is a list response.",
+        "x-client-original-const": "list",
+        "x-ms-enum": {
+          "name": "DirectoriesUsersControllerList200ResponseObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
+            }
+          ]
+        }
+      },
       "FeatureFlagsControllerDisableFlag200ResponseObject": {
         "enum": [
           "feature_flag"
@@ -83531,6 +84027,21 @@
       "additionalProperties": {},
       "description": "The raw attributes received from the directory provider."
     },
+    "DirectoryUserRawAttributes": {
+      "type": "object",
+      "additionalProperties": {},
+      "description": "The raw attributes received from the directory provider.",
+      "deprecated": true
+    },
+    "DirectoryUserCustomAttributes": {
+      "type": "object",
+      "additionalProperties": {},
+      "description": "An object containing the custom attribute mapping for the Directory Provider.",
+      "example": {
+        "department": "Engineering",
+        "job_title": "Software Engineer"
+      }
+    },
     "DirectoryUserWithGroupsRawAttributes": {
       "type": "object",
       "additionalProperties": {},
@@ -83550,21 +84061,6 @@
       "type": "object",
       "additionalProperties": {},
       "description": "Attributes that changed from their previous values."
-    },
-    "DirectoryUserRawAttributes": {
-      "type": "object",
-      "additionalProperties": {},
-      "description": "The raw attributes received from the directory provider.",
-      "deprecated": true
-    },
-    "DirectoryUserCustomAttributes": {
-      "type": "object",
-      "additionalProperties": {},
-      "description": "An object containing the custom attribute mapping for the Directory Provider.",
-      "example": {
-        "department": "Engineering",
-        "job_title": "Software Engineer"
-      }
     },
     "WaitlistUserAdditionalFields": {
       "type": "object",

@@ -21,6 +21,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.directory_users.item collection</summary>
         /// <param name="position">Unique identifier for the Directory User.</param>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Directory_users.Item.Directory_usersItemRequestBuilder"/></returns>
+        [Obsolete("")]
         public global::Soenneker.WorkOs.OpenApiClient.Directory_users.Item.Directory_usersItemRequestBuilder this[string position]
         {
             get
@@ -47,7 +48,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
         {
         }
         /// <summary>
-        /// Get a list of all of existing Directory Users matching the criteria specified.
+        /// Get a list of all of existing Directory Users matching the criteria specified. Deprecated: use `GET /directories/{directoryId}/users` instead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -56,6 +57,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUsersControllerList429ResponseSchemaError">When receiving a 429 status code</exception>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Directory_users.Directory_usersRequestBuilder.Directory_usersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -78,10 +80,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryUserList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a list of all of existing Directory Users matching the criteria specified.
+        /// Get a list of all of existing Directory Users matching the criteria specified. Deprecated: use `GET /directories/{directoryId}/users` instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Directory_users.Directory_usersRequestBuilder.Directory_usersRequestBuilderGetQueryParameters>>? requestConfiguration = default)
@@ -101,12 +104,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_users
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Directory_users.Directory_usersRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        [Obsolete("")]
         public global::Soenneker.WorkOs.OpenApiClient.Directory_users.Directory_usersRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.WorkOs.OpenApiClient.Directory_users.Directory_usersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a list of all of existing Directory Users matching the criteria specified.
+        /// Get a list of all of existing Directory Users matching the criteria specified. Deprecated: use `GET /directories/{directoryId}/users` instead.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Directory_usersRequestBuilderGetQueryParameters 

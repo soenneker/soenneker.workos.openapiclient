@@ -20,14 +20,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories
     {
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.directories.item collection</summary>
         /// <param name="position">Unique identifier for the Directory.</param>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder"/></returns>
-        public global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.WithDirectoryItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.Directories.Item.WithDirectoryItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("directoryId", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.Directories.Item.WithDirectoryItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

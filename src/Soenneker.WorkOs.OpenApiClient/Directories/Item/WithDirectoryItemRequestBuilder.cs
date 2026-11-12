@@ -3,7 +3,9 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.WorkOs.OpenApiClient.Directories.Item.Groups;
 using Soenneker.WorkOs.OpenApiClient.Directories.Item.Sync;
+using Soenneker.WorkOs.OpenApiClient.Directories.Item.Users;
 using Soenneker.WorkOs.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -13,30 +15,40 @@ using System;
 namespace Soenneker.WorkOs.OpenApiClient.Directories.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \directories\{id}
+    /// Builds and executes requests for operations under \directories\{directoryId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DirectoriesItemRequestBuilder : BaseRequestBuilder
+    public partial class WithDirectoryItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The groups property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Directories.Item.Groups.GroupsRequestBuilder Groups
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Directories.Item.Groups.GroupsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The sync property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Directories.Item.Sync.SyncRequestBuilder Sync
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Directories.Item.Sync.SyncRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The users property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Directories.Item.Users.UsersRequestBuilder Users
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Directories.Item.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.WithDirectoryItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DirectoriesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directories/{id}", pathParameters)
+        public WithDirectoryItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directories/{directoryId}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.WithDirectoryItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DirectoriesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directories/{id}", rawUrl)
+        public WithDirectoryItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directories/{directoryId}", rawUrl)
         {
         }
         /// <summary>
@@ -132,11 +144,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Directories.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Directories.Item.WithDirectoryItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.WorkOs.OpenApiClient.Directories.Item.WithDirectoryItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.WorkOs.OpenApiClient.Directories.Item.DirectoriesItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.WorkOs.OpenApiClient.Directories.Item.WithDirectoryItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

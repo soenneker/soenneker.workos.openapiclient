@@ -21,6 +21,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_groups
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.directory_groups.item collection</summary>
         /// <param name="position">Unique identifier for the Directory Group.</param>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Item.Directory_groupsItemRequestBuilder"/></returns>
+        [Obsolete("")]
         public global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Item.Directory_groupsItemRequestBuilder this[string position]
         {
             get
@@ -47,7 +48,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_groups
         {
         }
         /// <summary>
-        /// Get a list of all of existing directory groups matching the criteria specified.
+        /// Get a list of all of existing directory groups matching the criteria specified. Deprecated: use `GET /directories/{directoryId}/groups` instead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -55,6 +56,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_groups
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 422 status code</exception>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupList?> GetAsync(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Directory_groupsRequestBuilder.Directory_groupsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -76,10 +78,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_groups
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.DirectoryGroupList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a list of all of existing directory groups matching the criteria specified.
+        /// Get a list of all of existing directory groups matching the criteria specified. Deprecated: use `GET /directories/{directoryId}/groups` instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Directory_groupsRequestBuilder.Directory_groupsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
@@ -99,12 +102,13 @@ namespace Soenneker.WorkOs.OpenApiClient.Directory_groups
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Directory_groupsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        [Obsolete("")]
         public global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Directory_groupsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Directory_groupsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a list of all of existing directory groups matching the criteria specified.
+        /// Get a list of all of existing directory groups matching the criteria specified. Deprecated: use `GET /directories/{directoryId}/groups` instead.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Directory_groupsRequestBuilderGetQueryParameters 

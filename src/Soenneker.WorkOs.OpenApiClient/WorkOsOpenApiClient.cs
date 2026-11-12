@@ -99,11 +99,13 @@ namespace Soenneker.WorkOs.OpenApiClient
             get => new global::Soenneker.WorkOs.OpenApiClient.Directories.DirectoriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The directory_groups property</summary>
+        [Obsolete("")]
         public global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Directory_groupsRequestBuilder Directory_groups
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Directory_groups.Directory_groupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The directory_users property</summary>
+        [Obsolete("")]
         public global::Soenneker.WorkOs.OpenApiClient.Directory_users.Directory_usersRequestBuilder Directory_users
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Directory_users.Directory_usersRequestBuilder(PathParameters, RequestAdapter);
