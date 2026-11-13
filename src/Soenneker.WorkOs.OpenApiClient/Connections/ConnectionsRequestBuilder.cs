@@ -35,7 +35,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ConnectionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections{?after*,before*,connection_type*,domain*,limit*,order*,organization_id*,search*}", pathParameters)
+        public ConnectionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections{?after*,before*,connection_type*,domain*,limit*,order*,organization_id*,search*,state*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ConnectionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections{?after*,before*,connection_type*,domain*,limit*,order*,organization_id*,search*}", rawUrl)
+        public ConnectionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/connections{?after*,before*,connection_type*,domain*,limit*,order*,organization_id*,search*,state*}", rawUrl)
         {
         }
         /// <summary>
@@ -223,6 +223,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Connections
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
+            /// <summary>Filter Connections by their state.</summary>
+            [QueryParameter("state")]
+            public global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionsControllerListStateParameter? State { get; set; }
         }
     }
 }

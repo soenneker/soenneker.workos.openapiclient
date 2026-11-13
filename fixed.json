@@ -7164,6 +7164,14 @@
               "type": "string",
               "example": "Foo Corp"
             }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Filter Connections by their state.",
+            "schema": {
+              "$ref": "#/components/schemas/ConnectionsControllerListStateParameter"
+            }
           }
         ],
         "responses": {
@@ -12137,6 +12145,14 @@
               "type": "string",
               "example": "org_01EHZNVPK3SFK441A1RGBFSHRT"
             }
+          },
+          {
+            "name": "ownership",
+            "in": "query",
+            "description": "Select the provider configuration for \u0060user\u0060 connections or \u0060organization\u0060 shared connections. Defaults to \u0060user\u0060; never falls back to the other ownership.",
+            "schema": {
+              "$ref": "#/components/schemas/ProviderControllerListForOrganizationOwnershipParameter"
+            }
           }
         ],
         "responses": {
@@ -12155,6 +12171,16 @@
           },
           "404": {
             "description": "The organization was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The ownership selector is invalid.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12194,6 +12220,14 @@
               "type": "string",
               "example": "github"
             }
+          },
+          {
+            "name": "ownership",
+            "in": "query",
+            "description": "Select the provider configuration for \u0060user\u0060 connections or \u0060organization\u0060 shared connections. Defaults to \u0060user\u0060; never falls back to the other ownership.",
+            "schema": {
+              "$ref": "#/components/schemas/ProviderControllerConfigureOwnershipParameter"
+            }
           }
         ],
         "requestBody": {
@@ -12231,7 +12265,7 @@
             "description": "The request is missing a valid API key."
           },
           "404": {
-            "description": "The organization or provider was not found.",
+            "description": "The organization or selected provider was not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12241,7 +12275,7 @@
             }
           },
           "422": {
-            "description": "One or more of the supplied \u0060scopes\u0060 are not valid for the provider. Only scopes configured on the provider may be used.",
+            "description": "The ownership selector is invalid, or one or more of the supplied \u0060scopes\u0060 are not valid for the provider.",
             "content": {
               "application/json": {
                 "schema": {
@@ -76060,6 +76094,33 @@
           ]
         }
       },
+      "ConnectionsControllerListStateParameter": {
+        "enum": [
+          "active",
+          "inactive",
+          "validating"
+        ],
+        "type": "string",
+        "example": "active",
+        "x-ms-enum": {
+          "name": "ConnectionsControllerListStateParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "active",
+              "name": "Active"
+            },
+            {
+              "value": "inactive",
+              "name": "Inactive"
+            },
+            {
+              "value": "validating",
+              "name": "Validating"
+            }
+          ]
+        }
+      },
       "DataIntegrationsManagementControllerListDataIntegrationsOwnershipParameter": {
         "enum": [
           "user",
@@ -76069,6 +76130,50 @@
         "example": "user",
         "x-ms-enum": {
           "name": "DataIntegrationsManagementControllerListDataIntegrationsOwnershipParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "ProviderControllerListForOrganizationOwnershipParameter": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "ProviderControllerListForOrganizationOwnershipParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "user",
+              "name": "User"
+            },
+            {
+              "value": "organization",
+              "name": "Organization"
+            }
+          ]
+        }
+      },
+      "ProviderControllerConfigureOwnershipParameter": {
+        "enum": [
+          "user",
+          "organization"
+        ],
+        "type": "string",
+        "example": "user",
+        "x-ms-enum": {
+          "name": "ProviderControllerConfigureOwnershipParameter",
           "modelAsString": false,
           "values": [
             {

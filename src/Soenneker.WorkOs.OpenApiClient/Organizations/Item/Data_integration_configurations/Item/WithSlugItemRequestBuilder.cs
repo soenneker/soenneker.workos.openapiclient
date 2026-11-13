@@ -22,7 +22,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_con
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/data_integration_configurations/{slug}", pathParameters)
+        public WithSlugItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/data_integration_configurations/{slug}{?ownership*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_con
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/data_integration_configurations/{slug}", rawUrl)
+        public WithSlugItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/organizations/{id}/data_integration_configurations/{slug}{?ownership*}", rawUrl)
         {
         }
         /// <summary>
@@ -45,11 +45,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_con
         /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponse?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponse?> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponse> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationConfigurationResponse> PutAsync(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -72,11 +72,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_con
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.ConfigureDataIntegrationBody body, Action<RequestConfiguration<global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations.Item.WithSlugItemRequestBuilder.WithSlugItemRequestBuilderPutQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -94,6 +94,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_con
         public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations.Item.WithSlugItemRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configurations.Item.WithSlugItemRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Creates or updates an organization&apos;s provider configuration. Use this endpoint to enable or disable a provider, set custom OAuth scopes, or supply organization-managed OAuth credentials.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class WithSlugItemRequestBuilderPutQueryParameters 
+        {
+            /// <summary>Select the provider configuration for `user` connections or `organization` shared connections. Defaults to `user`; never falls back to the other ownership.</summary>
+            [QueryParameter("ownership")]
+            public global::Soenneker.WorkOs.OpenApiClient.Models.ProviderControllerConfigureOwnershipParameter? Ownership { get; set; }
         }
     }
 }
