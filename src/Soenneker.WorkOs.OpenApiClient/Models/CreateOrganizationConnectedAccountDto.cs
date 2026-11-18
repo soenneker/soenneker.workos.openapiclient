@@ -155,7 +155,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "access_token", n => { AccessToken = n.GetStringValue(); } },
                 { "account_display_name", n => { AccountDisplayName = n.GetStringValue(); } },

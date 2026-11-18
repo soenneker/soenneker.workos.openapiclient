@@ -83,7 +83,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "attempt_id", n => { AttemptId = n.GetStringValue(); } },
                 { "blocklist_type", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.RadarStandaloneResponseBlocklistType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBlocklistType = default; _explicitNullProperties?.Remove("blocklist_type"); AdditionalData["blocklist_type"] = unknown; } else { BlocklistType = parsed; AdditionalData.Remove("blocklist_type"); } } },

@@ -150,7 +150,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "api_key", n => { ApiKey = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto>(global::Soenneker.WorkOs.OpenApiClient.Models.ApiKeyInstallationDto.CreateFromDiscriminatorValue); } },
                 { "auth_methods", n => { AuthMethods = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.CreateDataIntegrationDtoAuthMethodsItem>()?.AsList(); } },

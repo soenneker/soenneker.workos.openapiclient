@@ -90,7 +90,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "connected_account_id", n => { ConnectedAccountId = n.GetStringValue(); } },
                 { "connection_owner", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsControllerVendCredentialsRequestConnectionOwner>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueConnectionOwner = default; _explicitNullProperties?.Remove("connection_owner"); AdditionalData["connection_owner"] = unknown; } else { ConnectionOwner = parsed; AdditionalData.Remove("connection_owner"); } } },

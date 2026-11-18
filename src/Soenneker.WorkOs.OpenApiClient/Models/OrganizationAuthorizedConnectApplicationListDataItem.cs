@@ -109,7 +109,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "application", n => { Application = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication>(global::Soenneker.WorkOs.OpenApiClient.Models.ConnectApplication.CreateFromDiscriminatorValue); } },
                 { "granted_scopes", n => { GrantedScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },

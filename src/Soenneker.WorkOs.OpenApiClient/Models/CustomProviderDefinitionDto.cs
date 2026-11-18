@@ -148,7 +148,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "additional_authorization_parameters", n => { AdditionalAuthorizationParameters = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDtoAdditionalAuthorizationParametersProperty.CreateFromDiscriminatorValue); } },
                 { "authenticate_via", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.CustomProviderDefinitionDtoAuthenticateVia>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAuthenticateVia = default; _explicitNullProperties?.Remove("authenticate_via"); AdditionalData["authenticate_via"] = unknown; } else { AuthenticateVia = parsed; AdditionalData.Remove("authenticate_via"); } } },

@@ -122,7 +122,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "context", n => { Context = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadataContextProperty>(global::Soenneker.WorkOs.OpenApiClient.Models.ObjectMetadataContextProperty.CreateFromDiscriminatorValue); } },
                 { "environment_id", n => { EnvironmentId = n.GetStringValue(); } },

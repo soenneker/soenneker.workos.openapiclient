@@ -256,7 +256,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(19)
             {
                 { "auth_methods", n => { AuthMethods = n.GetCollectionOfEnumValues<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemAuthMethodsItem>()?.AsList(); } },
                 { "connected_account", n => { ConnectedAccount = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount>(global::Soenneker.WorkOs.OpenApiClient.Models.DataIntegrationsListResponseDataItemConnectedAccount.CreateFromDiscriminatorValue); } },

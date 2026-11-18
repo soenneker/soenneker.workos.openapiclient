@@ -3390,7 +3390,7 @@
           "authorization"
         ],
         "summary": "Assign a role",
-        "description": "Assign a role to an organization membership on a specific resource.",
+        "description": "Assign a role to an organization membership on a specific resource. If the role is already assigned to the membership on that resource, the existing role assignment is returned and no changes are made.",
         "operationId": "AuthorizationRoleAssignmentsControllerAssignRole",
         "parameters": [
           {
@@ -3528,6 +3528,101 @@
                 "resource_external_id",
                 "resource_type_slug"
               ]
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "Update role assignments for an organization membership",
+        "description": "Add and remove role assignments for an organization membership in a single atomic operation. Each entry identifies a role and a resource, either by \u0060resource_id\u0060 or by \u0060resource_type_slug\u0060 and \u0060resource_external_id\u0060; to change an organization-level role, target the organization resource. Additions that already exist and removals that match no assignment are skipped. An assignment in both lists is rejected, as is a removal of a role granted only through a group. \u0060add\u0060 and \u0060remove\u0060 must contain between 1 and 100 entries combined.",
+        "operationId": "AuthorizationRoleAssignmentsControllerPatchRoleAssignments",
+        "parameters": [
+          {
+            "name": "organizationMembershipId",
+            "in": "path",
+            "description": "The ID of the organization membership.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "om_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchRoleAssignmentsDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationRoleAssignmentsControllerPatchRoleAssignments400ResponseError"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBodyWithCode"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "409 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBodyWithCode"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
             }
           }
         }
@@ -21905,6 +22000,64 @@
           }
         ]
       },
+      "PatchRoleAssignmentEntryDto": {
+        "x-mutually-exclusive-body-groups": {
+          "resource_target": {
+            "optional": false,
+            "variants": {
+              "by_id": [
+                "resource_id"
+              ],
+              "by_external_id": [
+                "resource_external_id",
+                "resource_type_slug"
+              ]
+            }
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PatchRoleAssignmentEntryDtoOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/PatchRoleAssignmentEntryDtoOneOf2"
+          }
+        ]
+      },
+      "PatchRoleAssignmentsDto": {
+        "type": "object",
+        "properties": {
+          "add": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PatchRoleAssignmentEntryDto"
+            },
+            "description": "Role assignments to add to the organization membership. Assignments that already exist are skipped.",
+            "default": [],
+            "example": [
+              {
+                "role_slug": "editor",
+                "resource_id": "authz_resource_01HXYZ123456789ABCDEFGH"
+              }
+            ]
+          },
+          "remove": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PatchRoleAssignmentEntryDto"
+            },
+            "description": "Role assignments to remove from the organization membership. Entries that match no assignment are skipped. Roles granted through a group cannot be removed.",
+            "default": [],
+            "example": [
+              {
+                "role_slug": "viewer",
+                "resource_type_slug": "project",
+                "resource_external_id": "project-ext-456"
+              }
+            ]
+          }
+        }
+      },
       "RemoveRoleDto": {
         "x-mutually-exclusive-body-groups": {
           "resource_target": {
@@ -24126,6 +24279,7 @@
           "cannot_deactivate_pending_organization_membership",
           "cannot_delete_last_certificate",
           "cannot_reactivate_pending_organization_membership",
+          "cannot_remove_group_sourced_role",
           "certificate_expired",
           "chain_depth_exceeded",
           "claim_denied",
@@ -24253,6 +24407,7 @@
           "resource_has_dependents",
           "resource_limit_exceeded",
           "resource_type_update_in_progress",
+          "role_assignment_update_overlap",
           "role_has_assignments",
           "role_has_group_role_mappings",
           "role_not_found",
@@ -24348,6 +24503,10 @@
             {
               "value": "cannot_reactivate_pending_organization_membership",
               "name": "CannotReactivatePendingOrganizationMembership"
+            },
+            {
+              "value": "cannot_remove_group_sourced_role",
+              "name": "CannotRemoveGroupSourcedRole"
             },
             {
               "value": "certificate_expired",
@@ -24856,6 +25015,10 @@
             {
               "value": "resource_type_update_in_progress",
               "name": "ResourceTypeUpdateInProgress"
+            },
+            {
+              "value": "role_assignment_update_overlap",
+              "name": "RoleAssignmentUpdateOverlap"
             },
             {
               "value": "role_has_assignments",
@@ -32171,6 +32334,72 @@
         }
       },
       "AssignRoleDtoAllOf2OneOf2": {
+        "required": [
+          "resource_external_id",
+          "resource_type_slug"
+        ],
+        "type": "object",
+        "not": {
+          "required": [
+            "resource_id"
+          ],
+          "properties": {
+            "resource_id": {
+              "x-exclude-from-lint": true
+            }
+          }
+        },
+        "properties": {
+          "resource_external_id": {
+            "type": "string",
+            "description": "The external ID of the resource. Required with \u0060resource_type_slug\u0060. Mutually exclusive with \u0060resource_id\u0060.",
+            "example": "project-ext-456"
+          },
+          "resource_type_slug": {
+            "type": "string",
+            "description": "The resource type slug. Required with \u0060resource_external_id\u0060. Mutually exclusive with \u0060resource_id\u0060.",
+            "example": "project"
+          }
+        }
+      },
+      "PatchRoleAssignmentEntryDtoAllOf2OneOf1": {
+        "required": [
+          "resource_id"
+        ],
+        "type": "object",
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "resource_external_id"
+              ],
+              "properties": {
+                "resource_external_id": {
+                  "x-exclude-from-lint": true
+                }
+              }
+            },
+            {
+              "required": [
+                "resource_type_slug"
+              ],
+              "properties": {
+                "resource_type_slug": {
+                  "x-exclude-from-lint": true
+                }
+              }
+            }
+          ]
+        },
+        "properties": {
+          "resource_id": {
+            "type": "string",
+            "description": "The ID of the resource. Mutually exclusive with \u0060resource_external_id\u0060 and \u0060resource_type_slug\u0060.",
+            "example": "authz_resource_01HXYZ123456789ABCDEFGH"
+          }
+        }
+      },
+      "PatchRoleAssignmentEntryDtoAllOf2OneOf2": {
         "required": [
           "resource_external_id",
           "resource_type_slug"
@@ -59038,6 +59267,25 @@
         "type": "string",
         "x-client-original-const": "Unauthorized"
       },
+      "RoleAssignmentUpdateOverlapCode": {
+        "enum": [
+          "role_assignment_update_overlap"
+        ],
+        "type": "string",
+        "description": "The error code identifying the type of error.",
+        "example": "role_assignment_update_overlap",
+        "x-client-original-const": "role_assignment_update_overlap",
+        "x-ms-enum": {
+          "name": "RoleAssignmentUpdateOverlapCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "role_assignment_update_overlap",
+              "name": "RoleAssignmentUpdateOverlap"
+            }
+          ]
+        }
+      },
       "ConnectedAccountLimitReachedCode": {
         "enum": [
           "connected_account_limit_reached"
@@ -76662,6 +76910,42 @@
           "role_slug"
         ]
       },
+      "PatchRoleAssignmentEntryDtoOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PatchRoleAssignmentEntryDtoAllOf2OneOf1"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role.",
+            "example": "editor"
+          }
+        },
+        "required": [
+          "role_slug"
+        ]
+      },
+      "PatchRoleAssignmentEntryDtoOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PatchRoleAssignmentEntryDtoAllOf2OneOf2"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "role_slug": {
+            "type": "string",
+            "description": "The slug of the role.",
+            "example": "editor"
+          }
+        },
+        "required": [
+          "role_slug"
+        ]
+      },
       "RemoveRoleDtoOneOf1": {
         "allOf": [
           {
@@ -78200,6 +78484,30 @@
         ],
         "x-client-original-error-schema": {
           "$ref": "#/components/schemas/ExternalAuthControllerCompleteLogin400Response"
+        }
+      },
+      "AuthorizationRoleAssignmentsControllerPatchRoleAssignments400ResponseError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/RoleAssignmentUpdateOverlapCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          },
+          "error": {
+            "type": "string",
+            "description": "The HTTP error type.",
+            "example": "Bad Request"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/AuthorizationRoleAssignmentsControllerPatchRoleAssignments400Response"
         }
       },
       "ConnectionsControllerCreate422ResponseError": {
@@ -81339,7 +81647,7 @@
         "message": {
           "type": "string",
           "description": "A human-readable description of the error.",
-          "example": "Claim \u0022sub\u0022 is reserved and cannot be used."
+          "example": "Request could not be processed."
         }
       }
     },
@@ -81752,6 +82060,23 @@
       "properties": {
         "code": {
           "$ref": "#/components/schemas/SmsChallengeQuotaReachedCode"
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable description of the error.",
+          "example": "Request could not be processed."
+        }
+      }
+    },
+    "RoleAssignmentUpdateOverlapErrorBody": {
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/components/schemas/RoleAssignmentUpdateOverlapCode"
         },
         "message": {
           "type": "string",
@@ -83007,6 +83332,19 @@
         "role_slug": {
           "type": "string",
           "description": "The slug of the role to assign.",
+          "example": "editor"
+        }
+      }
+    },
+    "PatchRoleAssignmentEntryDtoAllOf1": {
+      "required": [
+        "role_slug"
+      ],
+      "type": "object",
+      "properties": {
+        "role_slug": {
+          "type": "string",
+          "description": "The slug of the role.",
           "example": "editor"
         }
       }
@@ -84662,6 +85000,16 @@
         },
         {
           "$ref": "#/components/schemas/InvalidEmailErrorBody"
+        },
+        {
+          "$ref": "#/components/schemas/ErrorBodyWithError"
+        }
+      ]
+    },
+    "AuthorizationRoleAssignmentsControllerPatchRoleAssignments400Response": {
+      "anyOf": [
+        {
+          "$ref": "#/components/schemas/RoleAssignmentUpdateOverlapErrorBody"
         },
         {
           "$ref": "#/components/schemas/ErrorBodyWithError"

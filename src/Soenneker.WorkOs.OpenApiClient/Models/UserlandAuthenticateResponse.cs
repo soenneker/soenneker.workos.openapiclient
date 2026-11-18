@@ -133,7 +133,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "access_token", n => { AccessToken = n.GetStringValue(); } },
                 { "authentication_method", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandAuthenticateResponseAuthenticationMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAuthenticationMethod = default; _explicitNullProperties?.Remove("authentication_method"); AdditionalData["authentication_method"] = unknown; } else { AuthenticationMethod = parsed; AdditionalData.Remove("authentication_method"); } } },

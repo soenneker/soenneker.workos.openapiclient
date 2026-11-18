@@ -67,6 +67,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         CannotReactivatePendingOrganizationMembership,
         #pragma warning restore CS1591
+        [EnumMember(Value = "cannot_remove_group_sourced_role")]
+        #pragma warning disable CS1591
+        CannotRemoveGroupSourcedRole,
+        #pragma warning restore CS1591
         [EnumMember(Value = "certificate_expired")]
         #pragma warning disable CS1591
         CertificateExpired,
@@ -574,6 +578,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "resource_type_update_in_progress")]
         #pragma warning disable CS1591
         ResourceTypeUpdateInProgress,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "role_assignment_update_overlap")]
+        #pragma warning disable CS1591
+        RoleAssignmentUpdateOverlap,
         #pragma warning restore CS1591
         [EnumMember(Value = "role_has_assignments")]
         #pragma warning disable CS1591

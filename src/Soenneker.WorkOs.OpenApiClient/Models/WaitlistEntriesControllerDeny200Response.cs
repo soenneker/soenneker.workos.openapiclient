@@ -117,7 +117,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "additional_fields", n => { AdditionalFields = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerDeny200ResponseAdditionalFields>(global::Soenneker.WorkOs.OpenApiClient.Models.WaitlistEntriesControllerDeny200ResponseAdditionalFields.CreateFromDiscriminatorValue); } },
                 { "approved_at", n => { ApprovedAt = n.GetDateTimeOffsetValue(); } },

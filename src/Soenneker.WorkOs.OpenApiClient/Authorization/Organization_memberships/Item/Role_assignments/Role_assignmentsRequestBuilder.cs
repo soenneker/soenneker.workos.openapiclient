@@ -106,7 +106,43 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignmentList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Assign a role to an organization membership on a specific resource.
+        /// Add and remove role assignments for an organization membership in a single atomic operation. Each entry identifies a role and a resource, either by `resource_id` or by `resource_type_slug` and `resource_external_id`; to change an organization-level role, target the organization resource. Additions that already exist and removals that match no assignment are skipped. An assignment in both lists is rejected, as is a removal of a role granted only through a group. `add` and `remove` must contain between 1 and 100 entries combined.
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerPatchRoleAssignments400ResponseError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode">When receiving a 402 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody">When receiving a 422 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.PatchRoleAssignmentsDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task PatchAsync(global::Soenneker.WorkOs.OpenApiClient.Models.PatchRoleAssignmentsDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.WorkOs.OpenApiClient.Models.AuthorizationRoleAssignmentsControllerPatchRoleAssignments400ResponseError.CreateFromDiscriminatorValue },
+                { "402", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBody.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Assign a role to an organization membership on a specific resource. If the role is already assigned to the membership on that resource, the existing role assignment is returned and no changes are made.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.UserRoleAssignment"/></returns>
         /// <param name="body">The request body</param>
@@ -180,7 +216,29 @@ namespace Soenneker.WorkOs.OpenApiClient.Authorization.Organization_memberships.
             return requestInfo;
         }
         /// <summary>
-        /// Assign a role to an organization membership on a specific resource.
+        /// Add and remove role assignments for an organization membership in a single atomic operation. Each entry identifies a role and a resource, either by `resource_id` or by `resource_type_slug` and `resource_external_id`; to change an organization-level role, target the organization resource. Additions that already exist and removals that match no assignment are skipped. An assignment in both lists is rejected, as is a removal of a role granted only through a group. `add` and `remove` must contain between 1 and 100 entries combined.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.PatchRoleAssignmentsDto body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.WorkOs.OpenApiClient.Models.PatchRoleAssignmentsDto body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
+        }
+        /// <summary>
+        /// Assign a role to an organization membership on a specific resource. If the role is already assigned to the membership on that resource, the existing role assignment is returned and no changes are made.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

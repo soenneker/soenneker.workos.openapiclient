@@ -123,7 +123,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "connection_type", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.ConnectionConnectionType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueConnectionType = default; _explicitNullProperties?.Remove("connection_type"); AdditionalData["connection_type"] = unknown; } else { ConnectionType = parsed; AdditionalData.Remove("connection_type"); } } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },

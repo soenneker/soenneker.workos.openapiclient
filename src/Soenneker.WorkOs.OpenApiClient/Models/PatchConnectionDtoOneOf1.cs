@@ -92,7 +92,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "attribute_maps", n => { AttributeMaps = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionAttributeMapsDto>(global::Soenneker.WorkOs.OpenApiClient.Models.PatchConnectionAttributeMapsDto.CreateFromDiscriminatorValue); } },
                 { "connection_type", n => { ConnectionType = n.GetStringValue(); } },

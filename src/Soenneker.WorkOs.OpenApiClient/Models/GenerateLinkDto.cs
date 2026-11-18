@@ -109,7 +109,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "external_user_id", n => { ExternalUserId = n.GetStringValue(); } },
                 { "intent", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.GenerateLinkDtoIntent>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueIntent = default; _explicitNullProperties?.Remove("intent"); AdditionalData["intent"] = unknown; } else { Intent = parsed; AdditionalData.Remove("intent"); } } },

@@ -117,7 +117,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "agent_identity", n => { AgentIdentity = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationAgentIdentity>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationAgentIdentity.CreateFromDiscriminatorValue); } },
                 { "claim", n => { Claim = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaim>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentRegistrationClaim.CreateFromDiscriminatorValue); } },

@@ -151,7 +151,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(13)
             {
                 { "auth_method", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.UserlandUserSessionsControllerList200ResponseDataItemAuthMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAuthMethod = default; _explicitNullProperties?.Remove("auth_method"); AdditionalData["auth_method"] = unknown; } else { AuthMethod = parsed; AdditionalData.Remove("auth_method"); } } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
