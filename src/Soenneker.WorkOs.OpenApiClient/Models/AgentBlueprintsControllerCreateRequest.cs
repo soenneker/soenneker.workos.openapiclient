@@ -74,15 +74,15 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment.</summary>
+        /// <summary>Permissions forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment and may appear once.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
-        private List<string>? _explicitNullValuePermissions = default!;
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValuePermissions = default!;
 #nullable restore
 #else
-        public List<string> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
-        private List<string> _explicitNullValuePermissions = default!;
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
+        private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValuePermissions = default!;
 #endif
         /// <summary>Token and session lifetimes for sessions minted from this blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -123,7 +123,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "invocable_as", n => { InvocableAs = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs.CreateFromDiscriminatorValue); } },
                 { "invocable_by", n => { InvocableBy = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "permissions", n => { Permissions = n.GetCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "session_settings", n => { SessionSettings = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings.CreateFromDiscriminatorValue); } },
             };
         }
@@ -138,7 +138,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableAs>("invocable_as", InvocableAs);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestInvocableBy>("invocable_by", InvocableBy);
             writer.WriteStringValue("name", Name);
-            writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
+            writer.WriteCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("permissions", Permissions);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintsControllerCreateRequestSessionSettings>("session_settings", SessionSettings);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

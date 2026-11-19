@@ -33,6 +33,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             else if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
             if (parseNode.GetChildNode("permissions") is null) { _explicitNullValuePermissions = default!; _explicitNullProperties?.Remove("permissions"); }
             else if (parseNode.GetChildNode("permissions") is { } nullNodePermissions && nullNodePermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Permissions = null;
+            if (parseNode.GetChildNode("scoped_permissions") is null) { _explicitNullValueScopedPermissions = default!; _explicitNullProperties?.Remove("scoped_permissions"); }
+            else if (parseNode.GetChildNode("scoped_permissions") is { } nullNodeScopedPermissions && nullNodeScopedPermissions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopedPermissions = null;
             if (parseNode.GetChildNode("session_settings") is null) { _explicitNullValueSessionSettings = default!; _explicitNullProperties?.Remove("session_settings"); }
             else if (parseNode.GetChildNode("session_settings") is { } nullNodeSessionSettings && nullNodeSessionSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionSettings = null;
             if (parseNode.GetChildNode("updated_at") is null) { _explicitNullValueUpdatedAt = default!; _explicitNullProperties?.Remove("updated_at"); }
@@ -97,7 +99,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Distinguishes the agent blueprint object.</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintObject? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; AdditionalData?.Remove("object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
         private global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintObject? _explicitNullValueObject = default!;
-        /// <summary>Permission slugs forming the ceiling on what sessions minted from this blueprint may do.</summary>
+        /// <summary>Deprecated: use `scoped_permissions`. Slugs of every permission in the ceiling, across all instance types.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
@@ -106,6 +109,16 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 #else
         public List<string> Permissions { get => _explicitNullValuePermissions; set { _explicitNullValuePermissions = value; AdditionalData?.Remove("permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("permissions"); else _explicitNullProperties?.Remove("permissions"); } }
         private List<string> _explicitNullValuePermissions = default!;
+#endif
+        /// <summary>Permissions forming the ceiling on what sessions minted from this blueprint may do, with the instance types that receive each one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintScopedPermissionsItem>? ScopedPermissions { get => _explicitNullValueScopedPermissions; set { _explicitNullValueScopedPermissions = value; AdditionalData?.Remove("scoped_permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scoped_permissions"); else _explicitNullProperties?.Remove("scoped_permissions"); } }
+        private List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintScopedPermissionsItem>? _explicitNullValueScopedPermissions = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintScopedPermissionsItem> ScopedPermissions { get => _explicitNullValueScopedPermissions; set { _explicitNullValueScopedPermissions = value; AdditionalData?.Remove("scoped_permissions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scoped_permissions"); else _explicitNullProperties?.Remove("scoped_permissions"); } }
+        private List<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintScopedPermissionsItem> _explicitNullValueScopedPermissions = default!;
 #endif
         /// <summary>Token and session lifetimes for sessions minted from this blueprint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -143,7 +156,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(10)
+            return new Dictionary<string, Action<IParseNode>>(11)
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -153,6 +166,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintObject>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObject = default; _explicitNullProperties?.Remove("object"); AdditionalData["object"] = unknown; } else { Object = parsed; AdditionalData.Remove("object"); } } },
                 { "permissions", n => { Permissions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "scoped_permissions", n => { ScopedPermissions = n.GetCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintScopedPermissionsItem>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintScopedPermissionsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "session_settings", n => { SessionSettings = n.GetObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintSessionSettings>(global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintSessionSettings.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -172,6 +186,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintObject>("object", Object);
             writer.WriteCollectionOfPrimitiveValues<string>("permissions", Permissions);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintScopedPermissionsItem>("scoped_permissions", ScopedPermissions);
             writer.WriteObjectValue<global::Soenneker.WorkOs.OpenApiClient.Models.AgentBlueprintSessionSettings>("session_settings", SessionSettings);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

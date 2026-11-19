@@ -163,6 +163,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         DiscoveryEndpointMustUseHttps,
         #pragma warning restore CS1591
+        [EnumMember(Value = "discovery_endpoint_tenant_not_allowed")]
+        #pragma warning disable CS1591
+        DiscoveryEndpointTenantNotAllowed,
+        #pragma warning restore CS1591
         [EnumMember(Value = "domain_already_exists")]
         #pragma warning disable CS1591
         DomainAlreadyExists,

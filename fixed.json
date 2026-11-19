@@ -24303,6 +24303,7 @@
           "directory_sync_rate_limited",
           "directory_sync_unsupported",
           "discovery_endpoint_must_use_https",
+          "discovery_endpoint_tenant_not_allowed",
           "domain_already_exists",
           "domain_already_verified",
           "duplicate_endpoint",
@@ -24599,6 +24600,10 @@
             {
               "value": "discovery_endpoint_must_use_https",
               "name": "DiscoveryEndpointMustUseHttps"
+            },
+            {
+              "value": "discovery_endpoint_tenant_not_allowed",
+              "name": "DiscoveryEndpointTenantNotAllowed"
             },
             {
               "value": "domain_already_exists",
@@ -26028,6 +26033,7 @@
           "name",
           "description",
           "permissions",
+          "scoped_permissions",
           "invocable_by",
           "invocable_as",
           "session_settings",
@@ -26062,10 +26068,33 @@
             "items": {
               "type": "string"
             },
-            "description": "Permission slugs forming the ceiling on what sessions minted from this blueprint may do.",
+            "description": "Deprecated: use \u0060scoped_permissions\u0060. Slugs of every permission in the ceiling, across all instance types.",
             "example": [
               "crm:read",
               "email:send"
+            ],
+            "deprecated": true
+          },
+          "scoped_permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentBlueprintScopedPermissionsItem"
+            },
+            "description": "Permissions forming the ceiling on what sessions minted from this blueprint may do, with the instance types that receive each one.",
+            "example": [
+              {
+                "slug": "crm:read",
+                "instance_types": [
+                  "delegated",
+                  "autonomous"
+                ]
+              },
+              {
+                "slug": "email:send",
+                "instance_types": [
+                  "delegated"
+                ]
+              }
             ]
           },
           "invocable_by": {
@@ -38746,6 +38775,31 @@
           }
         }
       },
+      "AgentBlueprintScopedPermissionsItem": {
+        "required": [
+          "slug",
+          "instance_types"
+        ],
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Slug of the permission.",
+            "example": "email:send"
+          },
+          "instance_types": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentBlueprintScopedPermissionsItemInstanceTypesItem"
+            },
+            "description": "Instance types whose sessions receive the permission: \u0060delegated\u0060, \u0060autonomous\u0060, or both.",
+            "example": [
+              "delegated"
+            ]
+          }
+        }
+      },
       "AgentBlueprintInvocableBy": {
         "required": [
           "role_slugs",
@@ -40846,10 +40900,33 @@
             "items": {
               "type": "string"
             },
-            "description": "Permission slugs forming the ceiling on what sessions minted from this blueprint may do.",
+            "description": "Deprecated: use \u0060scoped_permissions\u0060. Slugs of every permission in the ceiling, across all instance types.",
             "example": [
               "crm:read",
               "email:send"
+            ],
+            "deprecated": true
+          },
+          "scoped_permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventSchemaAllOf2OneOf3DataScopedPermissionsItem"
+            },
+            "description": "Permissions forming the ceiling on what sessions minted from this blueprint may do, with the instance types that receive each one. Absent from events emitted before this field was added.",
+            "example": [
+              {
+                "slug": "crm:read",
+                "instance_types": [
+                  "delegated",
+                  "autonomous"
+                ]
+              },
+              {
+                "slug": "email:send",
+                "instance_types": [
+                  "delegated"
+                ]
+              }
             ]
           },
           "invocable_by": {
@@ -40951,10 +41028,33 @@
             "items": {
               "type": "string"
             },
-            "description": "Permission slugs forming the ceiling on what sessions minted from this blueprint may do.",
+            "description": "Deprecated: use \u0060scoped_permissions\u0060. Slugs of every permission in the ceiling, across all instance types.",
             "example": [
               "crm:read",
               "email:send"
+            ],
+            "deprecated": true
+          },
+          "scoped_permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventSchemaAllOf2OneOf5DataScopedPermissionsItem"
+            },
+            "description": "Permissions forming the ceiling on what sessions minted from this blueprint may do, with the instance types that receive each one. Absent from events emitted before this field was added.",
+            "example": [
+              {
+                "slug": "crm:read",
+                "instance_types": [
+                  "delegated",
+                  "autonomous"
+                ]
+              },
+              {
+                "slug": "email:send",
+                "instance_types": [
+                  "delegated"
+                ]
+              }
             ]
           },
           "invocable_by": {
@@ -47577,6 +47677,31 @@
           "updatedAt": "2024-01-16T14:20:00.000Z"
         }
       },
+      "EventSchemaAllOf2OneOf3DataScopedPermissionsItem": {
+        "required": [
+          "slug",
+          "instance_types"
+        ],
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Slug of the permission.",
+            "example": "email:send"
+          },
+          "instance_types": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventSchemaAllOf2OneOf3DataScopedPermissionsItemInstanceTypesItem"
+            },
+            "description": "Instance types whose sessions receive the permission: \u0060delegated\u0060, \u0060autonomous\u0060, or both.",
+            "example": [
+              "delegated"
+            ]
+          }
+        }
+      },
       "EventSchemaAllOf2OneOf3DataInvocableBy": {
         "required": [
           "role_slugs",
@@ -47652,6 +47777,31 @@
           }
         },
         "description": "Token and session lifetimes for sessions minted from this blueprint."
+      },
+      "EventSchemaAllOf2OneOf5DataScopedPermissionsItem": {
+        "required": [
+          "slug",
+          "instance_types"
+        ],
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Slug of the permission.",
+            "example": "email:send"
+          },
+          "instance_types": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventSchemaAllOf2OneOf5DataScopedPermissionsItemInstanceTypesItem"
+            },
+            "description": "Instance types whose sessions receive the permission: \u0060delegated\u0060, \u0060autonomous\u0060, or both.",
+            "example": [
+              "delegated"
+            ]
+          }
+        }
       },
       "EventSchemaAllOf2OneOf5DataInvocableBy": {
         "required": [
@@ -49569,14 +49719,24 @@
             "maxItems": 1000,
             "type": "array",
             "items": {
-              "minLength": 1,
-              "type": "string"
+              "$ref": "#/components/schemas/AgentBlueprintsControllerCreateRequestPermissionsItem"
             },
-            "description": "Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment.",
+            "description": "Permissions forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment and may appear once.",
             "default": [],
             "example": [
-              "crm:read",
-              "email:send"
+              {
+                "slug": "crm:read",
+                "instance_types": [
+                  "delegated",
+                  "autonomous"
+                ]
+              },
+              {
+                "slug": "email:send",
+                "instance_types": [
+                  "delegated"
+                ]
+              }
             ]
           },
           "invocable_by": {
@@ -49633,13 +49793,23 @@
             "maxItems": 1000,
             "type": "array",
             "items": {
-              "minLength": 1,
-              "type": "string"
+              "$ref": "#/components/schemas/AgentBlueprintsControllerUpdateRequestPermissionsItem"
             },
-            "description": "Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment.",
+            "description": "Permissions forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment and may appear once.",
             "example": [
-              "crm:read",
-              "email:send"
+              {
+                "slug": "crm:read",
+                "instance_types": [
+                  "delegated",
+                  "autonomous"
+                ]
+              },
+              {
+                "slug": "email:send",
+                "instance_types": [
+                  "delegated"
+                ]
+              }
             ]
           },
           "invocable_by": {
@@ -52591,6 +52761,90 @@
             "$ref": "#/components/schemas/ConnectApplicationAllOf1OneOf1OneOf3"
           }
         ]
+      },
+      "AgentBlueprintsControllerCreateRequestPermissionsItem": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AgentBlueprintsControllerCreateRequestPermissionsItemOneOf1"
+          },
+          {
+            "minLength": 1,
+            "type": "string",
+            "description": "Deprecated: a bare permission slug. An existing permission keeps its instance types; a new one applies to both \u0060delegated\u0060 and \u0060autonomous\u0060. Pass an object instead.",
+            "example": "crm:read",
+            "deprecated": true
+          }
+        ]
+      },
+      "AgentBlueprintsControllerUpdateRequestPermissionsItem": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/AgentBlueprintsControllerUpdateRequestPermissionsItemOneOf1"
+          },
+          {
+            "minLength": 1,
+            "type": "string",
+            "description": "Deprecated: a bare permission slug. An existing permission keeps its instance types; a new one applies to both \u0060delegated\u0060 and \u0060autonomous\u0060. Pass an object instead.",
+            "example": "crm:read",
+            "deprecated": true
+          }
+        ]
+      },
+      "AgentBlueprintsControllerCreateRequestPermissionsItemOneOf1": {
+        "required": [
+          "slug",
+          "instance_types"
+        ],
+        "type": "object",
+        "properties": {
+          "slug": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Slug of a permission in the environment.",
+            "example": "email:send"
+          },
+          "instance_types": {
+            "maxItems": 2,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentBlueprintsControllerCreateRequestPermissionsItemOneOf1InstanceTypesItem"
+            },
+            "description": "Instance types whose sessions receive the permission: \u0060delegated\u0060, \u0060autonomous\u0060, or both. Agent-delegated chaining and refreshes use the type of the presenting instance.",
+            "example": [
+              "delegated"
+            ]
+          }
+        },
+        "description": "A permission in the blueprint ceiling and the sessions it applies to."
+      },
+      "AgentBlueprintsControllerUpdateRequestPermissionsItemOneOf1": {
+        "required": [
+          "slug",
+          "instance_types"
+        ],
+        "type": "object",
+        "properties": {
+          "slug": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Slug of a permission in the environment.",
+            "example": "email:send"
+          },
+          "instance_types": {
+            "maxItems": 2,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentBlueprintsControllerUpdateRequestPermissionsItemOneOf1InstanceTypesItem"
+            },
+            "description": "Instance types whose sessions receive the permission: \u0060delegated\u0060, \u0060autonomous\u0060, or both. Agent-delegated chaining and refreshes use the type of the presenting instance.",
+            "example": [
+              "delegated"
+            ]
+          }
+        },
+        "description": "A permission in the blueprint ceiling and the sessions it applies to."
       },
       "UserObjectMetadataProperty": {
         "propertyNames": {
@@ -68347,6 +68601,27 @@
           ]
         }
       },
+      "AgentBlueprintScopedPermissionsItemInstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AgentBlueprintScopedPermissionsItemInstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
+            }
+          ]
+        }
+      },
       "AgentBlueprintInvocableAsInstanceTypesItem": {
         "enum": [
           "delegated",
@@ -73302,6 +73577,27 @@
           ]
         }
       },
+      "EventSchemaAllOf2OneOf3DataScopedPermissionsItemInstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf3DataScopedPermissionsItemInstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
+            }
+          ]
+        }
+      },
       "EventSchemaAllOf2OneOf3DataInvocableAsInstanceTypesItem": {
         "enum": [
           "delegated",
@@ -73310,6 +73606,27 @@
         "type": "string",
         "x-ms-enum": {
           "name": "EventSchemaAllOf2OneOf3DataInvocableAsInstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
+            }
+          ]
+        }
+      },
+      "EventSchemaAllOf2OneOf5DataScopedPermissionsItemInstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EventSchemaAllOf2OneOf5DataScopedPermissionsItemInstanceTypesItem",
           "modelAsString": false,
           "values": [
             {
@@ -75874,6 +76191,48 @@
             {
               "value": "urn:ietf:params:oauth:grant-type:device_code",
               "name": "UrnColonIetfColonParamsColonOauthColonGrantTypeColonDeviceCode"
+            }
+          ]
+        }
+      },
+      "AgentBlueprintsControllerCreateRequestPermissionsItemOneOf1InstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AgentBlueprintsControllerCreateRequestPermissionsItemOneOf1InstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
+            }
+          ]
+        }
+      },
+      "AgentBlueprintsControllerUpdateRequestPermissionsItemOneOf1InstanceTypesItem": {
+        "enum": [
+          "delegated",
+          "autonomous"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AgentBlueprintsControllerUpdateRequestPermissionsItemOneOf1InstanceTypesItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "delegated",
+              "name": "Delegated"
+            },
+            {
+              "value": "autonomous",
+              "name": "Autonomous"
             }
           ]
         }
