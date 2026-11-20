@@ -152,6 +152,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         ApiKeyUpdated,
         #pragma warning restore CS1591
+        [EnumMember(Value = "application.token_exchange_failed")]
+        #pragma warning disable CS1591
+        ApplicationTokenExchangeFailed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "application.token_exchange_succeeded")]
+        #pragma warning disable CS1591
+        ApplicationTokenExchangeSucceeded,
+        #pragma warning restore CS1591
         [EnumMember(Value = "connection.activated")]
         #pragma warning disable CS1591
         ConnectionActivated,
