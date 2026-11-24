@@ -36,5 +36,9 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         InvalidMetadata,
         #pragma warning restore CS1591
+        [EnumMember(Value = "email_domain_not_deliverable")]
+        #pragma warning disable CS1591
+        EmailDomainNotDeliverable,
+        #pragma warning restore CS1591
     }
 }

@@ -48,6 +48,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         RadarSignUpChallenge,
         #pragma warning restore CS1591
+        [EnumMember(Value = "radar_sms_challenge")]
+        #pragma warning disable CS1591
+        RadarSmsChallenge,
+        #pragma warning restore CS1591
         [EnumMember(Value = "radar_sms_sign_in_challenge")]
         #pragma warning disable CS1591
         RadarSmsSignInChallenge,

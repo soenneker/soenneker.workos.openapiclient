@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.Models;
+using Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +18,18 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Cors_originsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.user_management.cors_origins.item collection</summary>
+        /// <param name="position">The ID of the CORS origin to delete.</param>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Item.Cors_originsItemRequestBuilder"/></returns>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Item.Cors_originsItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Item.Cors_originsItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.WorkOs.OpenApiClient.User_management.Cors_origins.Cors_originsRequestBuilder"/> and sets the default values.
         /// </summary>

@@ -5,7 +5,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
 {
     /// <summary>The error code identifying the type of error.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum EntityNotFoundCode
+    public enum EntityNotFoundErrorBodyCode
     {
         [EnumMember(Value = "entity_not_found")]
         #pragma warning disable CS1591

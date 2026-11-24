@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.Radar.Attempts;
+using Soenneker.WorkOs.OpenApiClient.Radar.Detections;
 using Soenneker.WorkOs.OpenApiClient.Radar.Lists;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Radar
         public global::Soenneker.WorkOs.OpenApiClient.Radar.Attempts.AttemptsRequestBuilder Attempts
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Radar.Attempts.AttemptsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The detections property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Radar.Detections.DetectionsRequestBuilder Detections
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Radar.Detections.DetectionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The lists property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Radar.Lists.ListsRequestBuilder Lists

@@ -58,6 +58,31 @@ namespace Soenneker.WorkOs.OpenApiClient.Webhook_endpoints.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Get the details of an existing webhook endpoint.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode">When receiving a 404 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Soenneker.WorkOs.OpenApiClient.Models.ErrorBodyWithCode.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson>(requestInfo, global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Update the properties of an existing webhook endpoint.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.WorkOs.OpenApiClient.Models.WebhookEndpointJson"/></returns>
@@ -103,6 +128,25 @@ namespace Soenneker.WorkOs.OpenApiClient.Webhook_endpoints.Item
         {
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Get the details of an existing webhook endpoint.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

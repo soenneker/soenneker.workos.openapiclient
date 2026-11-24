@@ -14756,6 +14756,60 @@
         }
       }
     },
+    "/radar/detections/{id}": {
+      "get": {
+        "tags": [
+          "radar"
+        ],
+        "summary": "Get a Radar detection",
+        "description": "Get a Radar detection from the last 30 days, including the evidence for why Radar fired.",
+        "operationId": "RadarDetectionsControllerFind",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique ID of the Radar detection.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "detection_01HZBC6N1EB1ZY7KG32X"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RadarDetection"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "402 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBodyWithCode"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/radar/lists/{type}/{action}": {
       "post": {
         "tags": [
@@ -16072,6 +16126,59 @@
         }
       }
     },
+    "/user_management/cors_origins/{id}": {
+      "delete": {
+        "tags": [
+          "user-management.cors-origins"
+        ],
+        "summary": "Delete a CORS origin",
+        "description": "Deletes a CORS origin from the API key\u0027s application.",
+        "operationId": "CorsOriginsControllerDelete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the CORS origin to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "cors_origin_01HXYZ123456789ABCDEFGHIJ"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "CORS origin deleted successfully."
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                },
+                "example": {
+                  "message": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CORS origin not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                },
+                "example": {
+                  "message": "CORS origin not found: \u0027cors_origin_01HXYZ123456789ABCDEFGHIJ\u0027."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user_management/email_verification/{id}": {
       "get": {
         "tags": [
@@ -16907,7 +17014,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorBody"
+                  "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate404ResponseError"
                 }
               }
             }
@@ -21110,6 +21217,48 @@
       }
     },
     "/webhook_endpoints/{id}": {
+      "get": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Get a Webhook Endpoint",
+        "description": "Get the details of an existing webhook endpoint.",
+        "operationId": "WebhookEndpointsControllerGet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the Webhook Endpoint.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "we_0123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Webhook endpoint retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookEndpointJson"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Webhook endpoint not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBodyWithCode"
+                }
+              }
+            }
+          }
+        }
+      },
       "patch": {
         "tags": [
           "webhooks"
@@ -24328,6 +24477,7 @@
           "email_verification_code_incorrect",
           "email_verification_code_previously_used",
           "email_verification_required",
+          "entities_not_found",
           "entity_not_found",
           "expires_in_days_too_long",
           "expires_in_days_too_short",
@@ -24403,6 +24553,7 @@
           "production_feature_requires_billing",
           "radar_challenge",
           "radar_sign_up_challenge",
+          "radar_sms_challenge",
           "radar_sms_sign_in_challenge",
           "rate_limit_exceeded",
           "resource_has_dependents",
@@ -24700,6 +24851,10 @@
             {
               "value": "email_verification_required",
               "name": "EmailVerificationRequired"
+            },
+            {
+              "value": "entities_not_found",
+              "name": "EntitiesNotFound"
             },
             {
               "value": "entity_not_found",
@@ -25000,6 +25155,10 @@
             {
               "value": "radar_sign_up_challenge",
               "name": "RadarSignUpChallenge"
+            },
+            {
+              "value": "radar_sms_challenge",
+              "name": "RadarSmsChallenge"
             },
             {
               "value": "radar_sms_sign_in_challenge",
@@ -30645,6 +30804,507 @@
             "type": "string",
             "description": "The phone number the verification code was sent to.",
             "example": "\u002B15555550123"
+          }
+        }
+      },
+      "RadarDetectionAllowedBy": {
+        "required": [
+          "list_id",
+          "list"
+        ],
+        "type": "object",
+        "properties": {
+          "list_id": {
+            "type": "string",
+            "description": "The ID of the matched list.",
+            "example": "radar_list_01HZBC6N1EB1ZY7KG32X"
+          },
+          "list": {
+            "$ref": "#/components/schemas/RadarDetectionAllowedByList"
+          },
+          "entry": {
+            "type": "string",
+            "description": "The list entry that matched.",
+            "example": "example.com"
+          }
+        }
+      },
+      "RadarDetectionBotDetectionSignal": {
+        "required": [
+          "signal"
+        ],
+        "type": "object",
+        "properties": {
+          "signal": {
+            "$ref": "#/components/schemas/RadarDetectionBotDetectionSignalSignal"
+          },
+          "action": {
+            "$ref": "#/components/schemas/RadarDetectionBotDetectionSignalAction"
+          }
+        }
+      },
+      "RadarDetectionIpSignUps": {
+        "required": [
+          "count",
+          "window_minutes"
+        ],
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "The number of sign-ups.",
+            "example": 6
+          },
+          "window_minutes": {
+            "type": "integer",
+            "description": "The window the sign-ups were counted in.",
+            "example": 5
+          }
+        }
+      },
+      "RadarDetectionDomainSignUps": {
+        "required": [
+          "root_domain"
+        ],
+        "type": "object",
+        "properties": {
+          "root_domain": {
+            "type": "string",
+            "description": "The root domain of the email address.",
+            "example": "example.com"
+          },
+          "count": {
+            "type": "integer",
+            "description": "The number of sign-ups.",
+            "example": 44
+          }
+        }
+      },
+      "RadarDetectionBotDetectionDetails": {
+        "required": [
+          "signals"
+        ],
+        "type": "object",
+        "properties": {
+          "signals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RadarDetectionBotDetectionSignal"
+            },
+            "description": "Every bot detection signal that fired."
+          },
+          "decided_by": {
+            "$ref": "#/components/schemas/RadarDetectionBotDetectionDetailsDecidedBy"
+          },
+          "ip_risk": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RadarDetectionBotDetectionDetailsIpRiskItem"
+            },
+            "description": "Why the IP address is risky."
+          },
+          "email_pattern": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RadarDetectionBotDetectionDetailsEmailPatternItem"
+            },
+            "description": "Why the email address looks suspicious."
+          },
+          "browser_signals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RadarDetectionBotDetectionDetailsBrowserSignalsItem"
+            },
+            "description": "Why the browser looks automated."
+          },
+          "ip_sign_ups": {
+            "description": "Recent sign-ups from this IP address.",
+            "$ref": "#/components/schemas/RadarDetectionIpSignUps"
+          },
+          "domain_sign_ups": {
+            "description": "Recent sign-ups from this email domain.",
+            "$ref": "#/components/schemas/RadarDetectionDomainSignUps"
+          }
+        }
+      },
+      "RadarDetectionBruteForceAttackDetails": {
+        "required": [
+          "attempts",
+          "window_minutes",
+          "matched_on"
+        ],
+        "type": "object",
+        "properties": {
+          "attempts": {
+            "type": "integer",
+            "description": "The number of sign-in attempts.",
+            "example": 11
+          },
+          "window_minutes": {
+            "type": "integer",
+            "description": "The window the attempts were counted in.",
+            "example": 1
+          },
+          "matched_on": {
+            "$ref": "#/components/schemas/RadarDetectionBruteForceAttackDetailsMatchedOn"
+          }
+        }
+      },
+      "RadarDetectionDomainProtectionsDetails": {
+        "required": [
+          "list_id",
+          "list"
+        ],
+        "type": "object",
+        "properties": {
+          "list_id": {
+            "type": "string",
+            "description": "The ID of the matched list.",
+            "example": "radar_list_01HZBC6N1EB1ZY7KG32X"
+          },
+          "list": {
+            "$ref": "#/components/schemas/RadarDetectionAllowedByList"
+          },
+          "also_matched_list_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The ID of another matched list.",
+              "example": "radar_list_01HZBC6N1EB1ZY7KG32Y"
+            },
+            "description": "The IDs of other lists the domain is on."
+          },
+          "also_matched_lists": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RadarDetectionAllowedByList"
+            },
+            "description": "Other lists the domain is on."
+          },
+          "matched_domain": {
+            "type": "string",
+            "description": "The domain that matched the list.",
+            "example": "example.com"
+          }
+        }
+      },
+      "RadarDetectionPreviousAttempt": {
+        "required": [
+          "attempt_id",
+          "location",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "attempt_id": {
+            "type": "string",
+            "description": "The ID of the authentication attempt.",
+            "example": "radar_att_01HZBC6N1EB1ZY7KG32X"
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the earlier attempt.",
+            "example": "198.51.100.7"
+          },
+          "user_agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user agent of the earlier attempt.",
+            "example": "Mozilla/5.0"
+          },
+          "location": {
+            "$ref": "#/components/schemas/RadarDetectionPreviousAttemptLocation"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When that earlier sign-in happened.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        }
+      },
+      "RadarDetectionImpossibleTravelDetails": {
+        "required": [
+          "previous",
+          "distance_km",
+          "speed_km_per_s"
+        ],
+        "type": "object",
+        "properties": {
+          "previous": {
+            "description": "The previous successful sign-in.",
+            "$ref": "#/components/schemas/RadarDetectionPreviousAttempt"
+          },
+          "distance_km": {
+            "type": "number",
+            "description": "The distance from the previous sign-in, in kilometers.",
+            "example": 8543
+          },
+          "speed_km_per_s": {
+            "type": "number",
+            "description": "The speed needed to travel that distance, in km per second.",
+            "example": 4.07
+          }
+        }
+      },
+      "RadarDetectionRepeatSignUpDetails": {
+        "type": "object",
+        "allOf": [
+          {
+            "required": [
+              "matched_on"
+            ],
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RadarDetectionRepeatSignUpDetailsAllOf2OneOf1"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionRepeatSignUpDetailsAllOf2OneOf2"
+              }
+            ],
+            "properties": {
+              "matched_on": {
+                "type": "string"
+              }
+            },
+            "discriminator": {
+              "propertyName": "matched_on"
+            }
+          }
+        ]
+      },
+      "RadarDetectionStaleAccountDetails": {
+        "required": [
+          "last_activity_at"
+        ],
+        "type": "object",
+        "properties": {
+          "last_activity_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the user was last active. \u0060null\u0060 if unknown.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        }
+      },
+      "RadarDetectionUnrecognizedDeviceDetails": {
+        "required": [
+          "previous_device"
+        ],
+        "type": "object",
+        "properties": {
+          "previous_device": {
+            "$ref": "#/components/schemas/RadarDetectionUnrecognizedDeviceDetailsPreviousDevice"
+          }
+        }
+      },
+      "RadarDetectionRestrictionDetails": {
+        "type": "object",
+        "allOf": [
+          {
+            "required": [
+              "type"
+            ],
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RadarDetectionRestrictionDetailsAllOf2OneOf1"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionRestrictionDetailsAllOf2OneOf2"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionRestrictionDetailsAllOf2OneOf3"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionRestrictionDetailsAllOf2OneOf4"
+              }
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              }
+            },
+            "discriminator": {
+              "propertyName": "type"
+            }
+          }
+        ]
+      },
+      "RadarDetectionEvidence": {
+        "required": [
+          "summary"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "required": [
+              "control"
+            ],
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RadarDetectionEvidenceAllOf2OneOf1"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionEvidenceAllOf2OneOf2"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionEvidenceAllOf2OneOf3"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionEvidenceAllOf2OneOf4"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionEvidenceAllOf2OneOf5"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionEvidenceAllOf2OneOf6"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionEvidenceAllOf2OneOf7"
+              },
+              {
+                "$ref": "#/components/schemas/RadarDetectionEvidenceAllOf2OneOf8"
+              }
+            ],
+            "properties": {
+              "control": {
+                "type": "string"
+              }
+            },
+            "discriminator": {
+              "propertyName": "control"
+            }
+          }
+        ],
+        "properties": {
+          "summary": {
+            "type": "string",
+            "description": "A human-readable explanation of why Radar fired.",
+            "example": "Sign-up from a Tor exit node with an email format shared by many recent sign-ups. The action was decided by the risky IP. The email pattern would also have challenged."
+          },
+          "allowed_by": {
+            "description": "The allowlist that overrode the verdict. Only present when an allowlist allowed the attempt.",
+            "$ref": "#/components/schemas/RadarDetectionAllowedBy"
+          }
+        },
+        "example": {
+          "control": "bot_detection",
+          "summary": "Sign-up from a Tor exit node with an email format shared by many recent sign-ups. The action was decided by the risky IP. The email pattern would also have challenged.",
+          "details": {
+            "signals": [
+              {
+                "signal": "risky_ip",
+                "action": "challenge"
+              },
+              {
+                "signal": "suspicious_email_pattern",
+                "action": "challenge"
+              }
+            ],
+            "decided_by": "risky_ip",
+            "ip_risk": [
+              "tor"
+            ],
+            "email_pattern": [
+              "repeated_format"
+            ]
+          }
+        }
+      },
+      "RadarDetection": {
+        "required": [
+          "object",
+          "id",
+          "attempt_id",
+          "control",
+          "verdict",
+          "challenge_type",
+          "evidence",
+          "ip_address",
+          "location",
+          "user_agent",
+          "email",
+          "user_id",
+          "action",
+          "auth_method",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/RadarDetectionObject"
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the detection.",
+            "example": "detection_01HZBC6N1EB1ZY7KG32X"
+          },
+          "attempt_id": {
+            "type": "string",
+            "description": "The ID of the authentication attempt.",
+            "example": "radar_att_01HZBC6N1EB1ZY7KG32X"
+          },
+          "control": {
+            "$ref": "#/components/schemas/RadarDetectionControl"
+          },
+          "verdict": {
+            "$ref": "#/components/schemas/RadarDetectionVerdict"
+          },
+          "challenge_type": {
+            "$ref": "#/components/schemas/RadarDetectionChallengeType"
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/RadarDetectionEvidenceComposed"
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the attempt.",
+            "example": "203.0.113.42"
+          },
+          "location": {
+            "$ref": "#/components/schemas/RadarDetectionLocation"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "The user agent of the attempt.",
+            "example": "Mozilla/5.0"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address used in the attempt.",
+            "example": "user@example.com"
+          },
+          "user_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the user, if one exists.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          },
+          "action": {
+            "$ref": "#/components/schemas/RadarDetectionAction"
+          },
+          "auth_method": {
+            "$ref": "#/components/schemas/RadarDetectionAuthMethod"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An ISO 8601 timestamp.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
           }
         }
       },
@@ -38415,6 +39075,360 @@
         "description": "Why WorkOS put the connection in its current \u0060state\u0060, or \u0060null\u0060 when there is no WorkOS-recorded reason:\n- \u0060establishing_member_membership_ended\u0060: The member who established this organization-owned connection is no longer an active member of the organization, so its credentials were cleared. An organization admin must provide new credentials.\n\nAdditional values may be added; treat an unrecognized value as an unknown reason.",
         "example": null
       },
+      "RadarDetectionAllowedByList": {
+        "required": [
+          "type",
+          "action",
+          "name",
+          "workos_managed"
+        ],
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/RadarDetectionListType"
+          },
+          "action": {
+            "$ref": "#/components/schemas/RadarDetectionListAction"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The name of the list.",
+            "example": "Disposable email domains"
+          },
+          "workos_managed": {
+            "type": "boolean",
+            "description": "Whether WorkOS maintains the list.",
+            "example": true
+          }
+        },
+        "description": "The list as it is now. \u0060null\u0060 if the list has since been deleted.",
+        "x-client-original-nullable-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/RadarDetectionList"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The list as it is now. \u0060null\u0060 if the list has since been deleted."
+        }
+      },
+      "RadarDetectionRepeatSignUpDetailsAllOf2OneOf1": {
+        "required": [
+          "matched_on",
+          "prior_sign_ups",
+          "window_days"
+        ],
+        "type": "object",
+        "properties": {
+          "matched_on": {
+            "$ref": "#/components/schemas/EmailMatchedOn"
+          },
+          "prior_sign_ups": {
+            "type": "integer",
+            "description": "The number of earlier sign-ups.",
+            "example": 8
+          },
+          "window_days": {
+            "type": "integer",
+            "description": "The window the sign-ups were counted in.",
+            "example": 60
+          }
+        }
+      },
+      "RadarDetectionRepeatSignUpDetailsAllOf2OneOf2": {
+        "required": [
+          "matched_on",
+          "matched_user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "matched_on": {
+            "$ref": "#/components/schemas/NormalizedEmailMatchedOn"
+          },
+          "matched_user_id": {
+            "type": "string",
+            "description": "The existing user whose email this sign-up is an alias of.",
+            "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+          }
+        }
+      },
+      "RadarDetectionUnrecognizedDeviceDetailsPreviousDevice": {
+        "required": [
+          "attempt_id",
+          "location",
+          "created_at"
+        ],
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "attempt_id": {
+            "type": "string",
+            "description": "The ID of the authentication attempt.",
+            "example": "radar_att_01HZBC6N1EB1ZY7KG32X"
+          },
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address of the earlier attempt.",
+            "example": "198.51.100.7"
+          },
+          "user_agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The user agent of the earlier attempt.",
+            "example": "Mozilla/5.0"
+          },
+          "location": {
+            "$ref": "#/components/schemas/RadarDetectionPreviousAttemptLocation"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When that earlier sign-in happened.",
+            "format": "date-time",
+            "example": "2026-01-15T12:00:00.000Z"
+          }
+        },
+        "description": "The device the user last signed in from.",
+        "x-client-original-nullable-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/RadarDetectionPreviousAttempt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The device the user last signed in from."
+        }
+      },
+      "RadarDetectionRestrictionDetailsAllOf2OneOf1": {
+        "required": [
+          "type",
+          "list_id",
+          "list"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ListType"
+          },
+          "list_id": {
+            "type": "string",
+            "description": "The ID of the matched list.",
+            "example": "radar_list_01HZBC6N1EB1ZY7KG32X"
+          },
+          "list": {
+            "$ref": "#/components/schemas/RadarDetectionAllowedByList"
+          },
+          "entry": {
+            "type": "string",
+            "description": "The list entry that matched.",
+            "example": "example.com"
+          }
+        }
+      },
+      "RadarDetectionRestrictionDetailsAllOf2OneOf2": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/BlockedTldType"
+          }
+        }
+      },
+      "RadarDetectionRestrictionDetailsAllOf2OneOf3": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/SignUpType"
+          }
+        }
+      },
+      "RadarDetectionRestrictionDetailsAllOf2OneOf4": {
+        "required": [
+          "type",
+          "trigger"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/SmsSignInType"
+          },
+          "trigger": {
+            "$ref": "#/components/schemas/RadarDetectionRestrictionDetailsAllOf2OneOf4Trigger"
+          },
+          "phone_country": {
+            "type": "string",
+            "description": "The country of the phone number. Only when \u0060trigger\u0060 is \u0060country_mismatch\u0060.",
+            "example": "US"
+          },
+          "line_type": {
+            "type": "string",
+            "description": "The line type of the phone number. Only when \u0060trigger\u0060 is \u0060non_mobile_line\u0060.",
+            "example": "voip"
+          },
+          "masked_phone_number": {
+            "type": "string",
+            "description": "The phone number, masked to its last four digits.",
+            "example": "\u2022\u2022\u2022\u20220123"
+          }
+        }
+      },
+      "RadarDetectionEvidenceAllOf2OneOf1": {
+        "required": [
+          "control",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "control": {
+            "$ref": "#/components/schemas/BotDetectionControl"
+          },
+          "details": {
+            "description": "Facts specific to the control. See the [Radar detection object](/reference/radar/detections#evidence-details) for the fields each control reports.",
+            "$ref": "#/components/schemas/RadarDetectionBotDetectionDetails"
+          }
+        }
+      },
+      "RadarDetectionEvidenceAllOf2OneOf2": {
+        "required": [
+          "control",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "control": {
+            "$ref": "#/components/schemas/BruteForceAttackControl"
+          },
+          "details": {
+            "description": "Facts specific to the control. See the [Radar detection object](/reference/radar/detections#evidence-details) for the fields each control reports.",
+            "$ref": "#/components/schemas/RadarDetectionBruteForceAttackDetails"
+          }
+        }
+      },
+      "RadarDetectionEvidenceAllOf2OneOf3": {
+        "required": [
+          "control",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "control": {
+            "$ref": "#/components/schemas/DomainProtectionsControl"
+          },
+          "details": {
+            "description": "Facts specific to the control. See the [Radar detection object](/reference/radar/detections#evidence-details) for the fields each control reports.",
+            "$ref": "#/components/schemas/RadarDetectionDomainProtectionsDetails"
+          }
+        }
+      },
+      "RadarDetectionEvidenceAllOf2OneOf4": {
+        "required": [
+          "control",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "control": {
+            "$ref": "#/components/schemas/ImpossibleTravelControl"
+          },
+          "details": {
+            "description": "Facts specific to the control. See the [Radar detection object](/reference/radar/detections#evidence-details) for the fields each control reports.",
+            "$ref": "#/components/schemas/RadarDetectionImpossibleTravelDetails"
+          }
+        }
+      },
+      "RadarDetectionEvidenceAllOf2OneOf5": {
+        "required": [
+          "control",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "control": {
+            "$ref": "#/components/schemas/RepeatSignUpControl"
+          },
+          "details": {
+            "description": "Facts specific to the control. See the [Radar detection object](/reference/radar/detections#evidence-details) for the fields each control reports.",
+            "$ref": "#/components/schemas/RadarDetectionRepeatSignUpDetails"
+          }
+        }
+      },
+      "RadarDetectionEvidenceAllOf2OneOf6": {
+        "required": [
+          "control",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "control": {
+            "$ref": "#/components/schemas/StaleAccountControl"
+          },
+          "details": {
+            "description": "Facts specific to the control. See the [Radar detection object](/reference/radar/detections#evidence-details) for the fields each control reports.",
+            "$ref": "#/components/schemas/RadarDetectionStaleAccountDetails"
+          }
+        }
+      },
+      "RadarDetectionEvidenceAllOf2OneOf7": {
+        "required": [
+          "control",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "control": {
+            "$ref": "#/components/schemas/UnrecognizedDeviceControl"
+          },
+          "details": {
+            "description": "Facts specific to the control. See the [Radar detection object](/reference/radar/detections#evidence-details) for the fields each control reports.",
+            "$ref": "#/components/schemas/RadarDetectionUnrecognizedDeviceDetails"
+          }
+        }
+      },
+      "RadarDetectionEvidenceAllOf2OneOf8": {
+        "required": [
+          "control",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "control": {
+            "$ref": "#/components/schemas/RestrictionControl"
+          },
+          "details": {
+            "description": "Facts specific to the control. See the [Radar detection object](/reference/radar/detections#evidence-details) for the fields each control reports.",
+            "$ref": "#/components/schemas/RadarDetectionRestrictionDetails"
+          }
+        }
+      },
+      "RadarDetectionEvidenceComposed": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RadarDetectionEvidence"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "Why Radar fired. \u0060null\u0060 for detections recorded before evidence was captured."
+      },
       "ProfileRole": {
         "required": [
           "slug"
@@ -40419,6 +41433,58 @@
             "description": "The user\u0027s connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless \u0060supports_multiple_connections\u0060 is \u0060true\u0060."
           }
         }
+      },
+      "RadarDetectionPreviousAttemptLocation": {
+        "required": [
+          "city",
+          "country"
+        ],
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The city the IP address is located in.",
+            "example": "San Francisco"
+          },
+          "country": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "example": "US"
+          }
+        },
+        "description": "Where the IP address of the earlier attempt is located."
+      },
+      "RadarDetectionLocation": {
+        "required": [
+          "city",
+          "country"
+        ],
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The city the IP address is located in.",
+            "example": "San Francisco"
+          },
+          "country": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "example": "US"
+          }
+        },
+        "description": "Where the IP address is located."
       },
       "UserlandUserAuthenticationFactorListListMetadata": {
         "required": [
@@ -42660,8 +43726,8 @@
               "null",
               "string"
             ],
-            "description": "The control action taken for the detected risk.",
-            "example": "block"
+            "description": "The Radar control that detected the risk.",
+            "example": "bot_detection"
           },
           "blocklist_type": {
             "type": [
@@ -42669,7 +43735,7 @@
               "string"
             ],
             "description": "The type of blocklist that triggered the risk detection.",
-            "example": "ip"
+            "example": "ip_address"
           },
           "ip_address": {
             "type": [
@@ -42699,7 +43765,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that challenged the authentication.",
+            "description": "The ID of the Radar detection that challenged the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -48151,7 +49217,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "description": "The ID of the Radar detection that blocked the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted. Only set on \u0060policy_denied\u0060 errors that a Radar detection caused.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -48176,7 +49242,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "description": "The ID of the Radar detection that blocked the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted. Only set on \u0060policy_denied\u0060 errors that a Radar detection caused.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -48201,7 +49267,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "description": "The ID of the Radar detection that blocked the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted. Only set on \u0060policy_denied\u0060 errors that a Radar detection caused.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -48226,7 +49292,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "description": "The ID of the Radar detection that blocked the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted. Only set on \u0060policy_denied\u0060 errors that a Radar detection caused.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -48251,7 +49317,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "description": "The ID of the Radar detection that blocked the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted. Only set on \u0060policy_denied\u0060 errors that a Radar detection caused.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -48276,7 +49342,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "description": "The ID of the Radar detection that blocked the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted. Only set on \u0060policy_denied\u0060 errors that a Radar detection caused.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -48336,7 +49402,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "description": "The ID of the Radar detection that blocked the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted. Only set on \u0060policy_denied\u0060 errors that a Radar detection caused.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -48466,7 +49532,7 @@
           },
           "radar_detection_id": {
             "type": "string",
-            "description": "The ID of the Radar detection that blocked the authentication. Only set on \u0060policy_denied\u0060 errors.",
+            "description": "The ID of the Radar detection that blocked the authentication. Retrieve the detection with \u0060GET /radar/detections/:id\u0060 to see why Radar acted. Only set on \u0060policy_denied\u0060 errors that a Radar detection caused.",
             "example": "detection_01HZBC6N1EB1ZY7KG32X"
           }
         },
@@ -59774,7 +60840,7 @@
           ]
         }
       },
-      "EntityNotFoundCode": {
+      "EntityNotFoundErrorBodyCode": {
         "enum": [
           "entity_not_found"
         ],
@@ -59783,7 +60849,7 @@
         "example": "entity_not_found",
         "x-client-original-const": "entity_not_found",
         "x-ms-enum": {
-          "name": "EntityNotFoundCode",
+          "name": "EntityNotFoundErrorBodyCode",
           "modelAsString": false,
           "values": [
             {
@@ -62280,6 +63346,570 @@
             }
           ]
         }
+      },
+      "RadarDetectionListType": {
+        "enum": [
+          "ip_address",
+          "domain",
+          "email",
+          "device",
+          "user_agent",
+          "device_fingerprint",
+          "country"
+        ],
+        "type": "string",
+        "description": "The type of values the list holds.",
+        "example": "domain",
+        "x-ms-enum": {
+          "name": "RadarDetectionListType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "ip_address",
+              "name": "IpAddress"
+            },
+            {
+              "value": "domain",
+              "name": "Domain"
+            },
+            {
+              "value": "email",
+              "name": "Email"
+            },
+            {
+              "value": "device",
+              "name": "Device"
+            },
+            {
+              "value": "user_agent",
+              "name": "UserAgent"
+            },
+            {
+              "value": "device_fingerprint",
+              "name": "DeviceFingerprint"
+            },
+            {
+              "value": "country",
+              "name": "Country"
+            }
+          ]
+        }
+      },
+      "RadarDetectionListAction": {
+        "description": "The action the list applies to matching values. \u0060null\u0060 for WorkOS-managed lists.",
+        "example": "block",
+        "anyOf": [
+          {
+            "enum": [
+              "allow",
+              "block",
+              "challenge",
+              "log"
+            ],
+            "type": "string",
+            "description": "The action the list applies to matching values. \u0060null\u0060 for WorkOS-managed lists.",
+            "example": "block",
+            "x-ms-enum": {
+              "name": "RadarDetectionListAction",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "allow",
+                  "name": "Allow"
+                },
+                {
+                  "value": "block",
+                  "name": "Block"
+                },
+                {
+                  "value": "challenge",
+                  "name": "Challenge"
+                },
+                {
+                  "value": "log",
+                  "name": "Log"
+                }
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "RadarDetectionBotDetectionSignalSignal": {
+        "enum": [
+          "risky_ip",
+          "anomalous_ip",
+          "excessive_domain_sign_ups",
+          "suspicious_browser_signals",
+          "missing_device_fingerprint",
+          "suspicious_email_pattern",
+          "automated_client",
+          "workos_risk_model"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "RadarDetectionBotDetectionSignalSignal",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "risky_ip",
+              "name": "RiskyIp"
+            },
+            {
+              "value": "anomalous_ip",
+              "name": "AnomalousIp"
+            },
+            {
+              "value": "excessive_domain_sign_ups",
+              "name": "ExcessiveDomainSignUps"
+            },
+            {
+              "value": "suspicious_browser_signals",
+              "name": "SuspiciousBrowserSignals"
+            },
+            {
+              "value": "missing_device_fingerprint",
+              "name": "MissingDeviceFingerprint"
+            },
+            {
+              "value": "suspicious_email_pattern",
+              "name": "SuspiciousEmailPattern"
+            },
+            {
+              "value": "automated_client",
+              "name": "AutomatedClient"
+            },
+            {
+              "value": "workos_risk_model",
+              "name": "WorkosRiskModel"
+            }
+          ]
+        }
+      },
+      "RadarDetectionBotDetectionSignalAction": {
+        "enum": [
+          "block",
+          "challenge"
+        ],
+        "type": "string",
+        "description": "The action this signal would take on its own.",
+        "x-ms-enum": {
+          "name": "RadarDetectionBotDetectionSignalAction",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "block",
+              "name": "Block"
+            },
+            {
+              "value": "challenge",
+              "name": "Challenge"
+            }
+          ]
+        }
+      },
+      "RadarDetectionBotDetectionDetailsDecidedBy": {
+        "enum": [
+          "risky_ip",
+          "anomalous_ip",
+          "excessive_domain_sign_ups",
+          "suspicious_browser_signals",
+          "missing_device_fingerprint",
+          "suspicious_email_pattern",
+          "automated_client",
+          "workos_risk_model"
+        ],
+        "type": "string",
+        "description": "The signal that determined the verdict.",
+        "x-ms-enum": {
+          "name": "RadarDetectionBotDetectionDetailsDecidedBy",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "risky_ip",
+              "name": "RiskyIp"
+            },
+            {
+              "value": "anomalous_ip",
+              "name": "AnomalousIp"
+            },
+            {
+              "value": "excessive_domain_sign_ups",
+              "name": "ExcessiveDomainSignUps"
+            },
+            {
+              "value": "suspicious_browser_signals",
+              "name": "SuspiciousBrowserSignals"
+            },
+            {
+              "value": "missing_device_fingerprint",
+              "name": "MissingDeviceFingerprint"
+            },
+            {
+              "value": "suspicious_email_pattern",
+              "name": "SuspiciousEmailPattern"
+            },
+            {
+              "value": "automated_client",
+              "name": "AutomatedClient"
+            },
+            {
+              "value": "workos_risk_model",
+              "name": "WorkosRiskModel"
+            }
+          ]
+        }
+      },
+      "RadarDetectionBotDetectionDetailsIpRiskItem": {
+        "enum": [
+          "abuser",
+          "anonymous",
+          "vpn",
+          "tor",
+          "proxy"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "RadarDetectionBotDetectionDetailsIpRiskItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "abuser",
+              "name": "Abuser"
+            },
+            {
+              "value": "anonymous",
+              "name": "Anonymous"
+            },
+            {
+              "value": "vpn",
+              "name": "Vpn"
+            },
+            {
+              "value": "tor",
+              "name": "Tor"
+            },
+            {
+              "value": "proxy",
+              "name": "Proxy"
+            }
+          ]
+        }
+      },
+      "RadarDetectionBotDetectionDetailsEmailPatternItem": {
+        "enum": [
+          "generated_looking",
+          "repeated_format",
+          "suspicious_domain"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "RadarDetectionBotDetectionDetailsEmailPatternItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "generated_looking",
+              "name": "GeneratedLooking"
+            },
+            {
+              "value": "repeated_format",
+              "name": "RepeatedFormat"
+            },
+            {
+              "value": "suspicious_domain",
+              "name": "SuspiciousDomain"
+            }
+          ]
+        }
+      },
+      "RadarDetectionBotDetectionDetailsBrowserSignalsItem": {
+        "enum": [
+          "automation_framework",
+          "headless_browser",
+          "tampered_signals",
+          "inconsistent_hardware",
+          "missing_signals"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "RadarDetectionBotDetectionDetailsBrowserSignalsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "automation_framework",
+              "name": "AutomationFramework"
+            },
+            {
+              "value": "headless_browser",
+              "name": "HeadlessBrowser"
+            },
+            {
+              "value": "tampered_signals",
+              "name": "TamperedSignals"
+            },
+            {
+              "value": "inconsistent_hardware",
+              "name": "InconsistentHardware"
+            },
+            {
+              "value": "missing_signals",
+              "name": "MissingSignals"
+            }
+          ]
+        }
+      },
+      "RadarDetectionBruteForceAttackDetailsMatchedOn": {
+        "enum": [
+          "device_fingerprint_and_email",
+          "ip_and_email"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "RadarDetectionBruteForceAttackDetailsMatchedOn",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "device_fingerprint_and_email",
+              "name": "DeviceFingerprintAndEmail"
+            },
+            {
+              "value": "ip_and_email",
+              "name": "IpAndEmail"
+            }
+          ]
+        }
+      },
+      "RadarDetectionObject": {
+        "enum": [
+          "radar_detection"
+        ],
+        "type": "string",
+        "description": "Distinguishes the Radar detection object.",
+        "x-client-original-const": "radar_detection",
+        "x-ms-enum": {
+          "name": "RadarDetectionObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "radar_detection",
+              "name": "RadarDetection"
+            }
+          ]
+        }
+      },
+      "RadarDetectionControl": {
+        "enum": [
+          "bot_detection",
+          "brute_force_attack",
+          "domain_protections",
+          "impossible_travel",
+          "repeat_sign_up",
+          "stale_account",
+          "unrecognized_device",
+          "restriction"
+        ],
+        "type": "string",
+        "description": "The Radar control that determined the verdict.",
+        "example": "bot_detection",
+        "x-ms-enum": {
+          "name": "RadarDetectionControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "bot_detection",
+              "name": "BotDetection"
+            },
+            {
+              "value": "brute_force_attack",
+              "name": "BruteForceAttack"
+            },
+            {
+              "value": "domain_protections",
+              "name": "DomainProtections"
+            },
+            {
+              "value": "impossible_travel",
+              "name": "ImpossibleTravel"
+            },
+            {
+              "value": "repeat_sign_up",
+              "name": "RepeatSignUp"
+            },
+            {
+              "value": "stale_account",
+              "name": "StaleAccount"
+            },
+            {
+              "value": "unrecognized_device",
+              "name": "UnrecognizedDevice"
+            },
+            {
+              "value": "restriction",
+              "name": "Restriction"
+            }
+          ]
+        }
+      },
+      "RadarDetectionVerdict": {
+        "enum": [
+          "allow",
+          "block",
+          "challenge",
+          "log"
+        ],
+        "type": "string",
+        "description": "The verdict Radar reached for the attempt.",
+        "example": "challenge",
+        "x-ms-enum": {
+          "name": "RadarDetectionVerdict",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "allow",
+              "name": "Allow"
+            },
+            {
+              "value": "block",
+              "name": "Block"
+            },
+            {
+              "value": "challenge",
+              "name": "Challenge"
+            },
+            {
+              "value": "log",
+              "name": "Log"
+            }
+          ]
+        }
+      },
+      "RadarDetectionChallengeType": {
+        "description": "The challenge Radar issued, if the verdict is \u0060challenge\u0060.",
+        "example": "email",
+        "anyOf": [
+          {
+            "enum": [
+              "email",
+              "sms"
+            ],
+            "type": "string",
+            "description": "The challenge Radar issued, if the verdict is \u0060challenge\u0060.",
+            "example": "email",
+            "x-ms-enum": {
+              "name": "RadarDetectionChallengeType",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email",
+                  "name": "Email"
+                },
+                {
+                  "value": "sms",
+                  "name": "Sms"
+                }
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "RadarDetectionAction": {
+        "description": "Whether the attempt was a sign-up or a sign-in, as on the \u0060authentication.radar_risk_detected\u0060 event. \u0060null\u0060 if unknown.",
+        "example": "signup",
+        "anyOf": [
+          {
+            "enum": [
+              "signup",
+              "login"
+            ],
+            "type": "string",
+            "description": "Whether the attempt was a sign-up or a sign-in, as on the \u0060authentication.radar_risk_detected\u0060 event. \u0060null\u0060 if unknown.",
+            "example": "signup",
+            "x-ms-enum": {
+              "name": "RadarDetectionAction",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "signup",
+                  "name": "Signup"
+                },
+                {
+                  "value": "login",
+                  "name": "Login"
+                }
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "RadarDetectionAuthMethod": {
+        "description": "The authentication method used for the attempt.",
+        "example": "password",
+        "anyOf": [
+          {
+            "enum": [
+              "password",
+              "passkey",
+              "magic_auth",
+              "oauth",
+              "sso",
+              "authenticator",
+              "sms_otp",
+              "other"
+            ],
+            "type": "string",
+            "description": "The authentication method used for the attempt.",
+            "example": "password",
+            "x-ms-enum": {
+              "name": "RadarDetectionAuthMethod",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "password",
+                  "name": "Password"
+                },
+                {
+                  "value": "passkey",
+                  "name": "Passkey"
+                },
+                {
+                  "value": "magic_auth",
+                  "name": "MagicAuth"
+                },
+                {
+                  "value": "oauth",
+                  "name": "OAuth"
+                },
+                {
+                  "value": "sso",
+                  "name": "Sso"
+                },
+                {
+                  "value": "authenticator",
+                  "name": "Authenticator"
+                },
+                {
+                  "value": "sms_otp",
+                  "name": "SmsOtp"
+                },
+                {
+                  "value": "other",
+                  "name": "Other"
+                }
+              ]
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "RadarStandaloneResponseVerdict": {
         "enum": [
@@ -68649,6 +70279,289 @@
             {
               "value": "establishing_member_membership_ended",
               "name": "EstablishingMemberMembershipEnded"
+            }
+          ]
+        }
+      },
+      "EmailMatchedOn": {
+        "enum": [
+          "email"
+        ],
+        "type": "string",
+        "x-client-original-const": "email",
+        "x-ms-enum": {
+          "name": "EmailMatchedOn",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email",
+              "name": "Email"
+            }
+          ]
+        }
+      },
+      "NormalizedEmailMatchedOn": {
+        "enum": [
+          "normalized_email"
+        ],
+        "type": "string",
+        "x-client-original-const": "normalized_email",
+        "x-ms-enum": {
+          "name": "NormalizedEmailMatchedOn",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "normalized_email",
+              "name": "NormalizedEmail"
+            }
+          ]
+        }
+      },
+      "ListType": {
+        "enum": [
+          "list"
+        ],
+        "type": "string",
+        "x-client-original-const": "list",
+        "x-ms-enum": {
+          "name": "ListType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
+            }
+          ]
+        }
+      },
+      "BlockedTldType": {
+        "enum": [
+          "blocked_tld"
+        ],
+        "type": "string",
+        "x-client-original-const": "blocked_tld",
+        "x-ms-enum": {
+          "name": "BlockedTldType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "blocked_tld",
+              "name": "BlockedTld"
+            }
+          ]
+        }
+      },
+      "SignUpType": {
+        "enum": [
+          "sign_up"
+        ],
+        "type": "string",
+        "x-client-original-const": "sign_up",
+        "x-ms-enum": {
+          "name": "SignUpType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "sign_up",
+              "name": "SignUp"
+            }
+          ]
+        }
+      },
+      "SmsSignInType": {
+        "enum": [
+          "sms_sign_in"
+        ],
+        "type": "string",
+        "x-client-original-const": "sms_sign_in",
+        "x-ms-enum": {
+          "name": "SmsSignInType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "sms_sign_in",
+              "name": "SmsSignIn"
+            }
+          ]
+        }
+      },
+      "RadarDetectionRestrictionDetailsAllOf2OneOf4Trigger": {
+        "enum": [
+          "country_mismatch",
+          "non_mobile_line",
+          "previously_selected",
+          "unknown_line_type",
+          "missing_signals"
+        ],
+        "type": "string",
+        "description": "Why SMS sign-in was restricted.",
+        "x-ms-enum": {
+          "name": "RadarDetectionRestrictionDetailsAllOf2OneOf4Trigger",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "country_mismatch",
+              "name": "CountryMismatch"
+            },
+            {
+              "value": "non_mobile_line",
+              "name": "NonMobileLine"
+            },
+            {
+              "value": "previously_selected",
+              "name": "PreviouslySelected"
+            },
+            {
+              "value": "unknown_line_type",
+              "name": "UnknownLineType"
+            },
+            {
+              "value": "missing_signals",
+              "name": "MissingSignals"
+            }
+          ]
+        }
+      },
+      "BotDetectionControl": {
+        "enum": [
+          "bot_detection"
+        ],
+        "type": "string",
+        "description": "The control the evidence is for. Always the same as the detection\u0027s \u0060control\u0060.",
+        "x-client-original-const": "bot_detection",
+        "x-ms-enum": {
+          "name": "BotDetectionControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "bot_detection",
+              "name": "BotDetection"
+            }
+          ]
+        }
+      },
+      "BruteForceAttackControl": {
+        "enum": [
+          "brute_force_attack"
+        ],
+        "type": "string",
+        "description": "The control the evidence is for. Always the same as the detection\u0027s \u0060control\u0060.",
+        "x-client-original-const": "brute_force_attack",
+        "x-ms-enum": {
+          "name": "BruteForceAttackControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "brute_force_attack",
+              "name": "BruteForceAttack"
+            }
+          ]
+        }
+      },
+      "DomainProtectionsControl": {
+        "enum": [
+          "domain_protections"
+        ],
+        "type": "string",
+        "description": "The control the evidence is for. Always the same as the detection\u0027s \u0060control\u0060.",
+        "x-client-original-const": "domain_protections",
+        "x-ms-enum": {
+          "name": "DomainProtectionsControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "domain_protections",
+              "name": "DomainProtections"
+            }
+          ]
+        }
+      },
+      "ImpossibleTravelControl": {
+        "enum": [
+          "impossible_travel"
+        ],
+        "type": "string",
+        "description": "The control the evidence is for. Always the same as the detection\u0027s \u0060control\u0060.",
+        "x-client-original-const": "impossible_travel",
+        "x-ms-enum": {
+          "name": "ImpossibleTravelControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "impossible_travel",
+              "name": "ImpossibleTravel"
+            }
+          ]
+        }
+      },
+      "RepeatSignUpControl": {
+        "enum": [
+          "repeat_sign_up"
+        ],
+        "type": "string",
+        "description": "The control the evidence is for. Always the same as the detection\u0027s \u0060control\u0060.",
+        "x-client-original-const": "repeat_sign_up",
+        "x-ms-enum": {
+          "name": "RepeatSignUpControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "repeat_sign_up",
+              "name": "RepeatSignUp"
+            }
+          ]
+        }
+      },
+      "StaleAccountControl": {
+        "enum": [
+          "stale_account"
+        ],
+        "type": "string",
+        "description": "The control the evidence is for. Always the same as the detection\u0027s \u0060control\u0060.",
+        "x-client-original-const": "stale_account",
+        "x-ms-enum": {
+          "name": "StaleAccountControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "stale_account",
+              "name": "StaleAccount"
+            }
+          ]
+        }
+      },
+      "UnrecognizedDeviceControl": {
+        "enum": [
+          "unrecognized_device"
+        ],
+        "type": "string",
+        "description": "The control the evidence is for. Always the same as the detection\u0027s \u0060control\u0060.",
+        "x-client-original-const": "unrecognized_device",
+        "x-ms-enum": {
+          "name": "UnrecognizedDeviceControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "unrecognized_device",
+              "name": "UnrecognizedDevice"
+            }
+          ]
+        }
+      },
+      "RestrictionControl": {
+        "enum": [
+          "restriction"
+        ],
+        "type": "string",
+        "description": "The control the evidence is for. Always the same as the detection\u0027s \u0060control\u0060.",
+        "x-client-original-const": "restriction",
+        "x-ms-enum": {
+          "name": "RestrictionControl",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "restriction",
+              "name": "Restriction"
             }
           ]
         }
@@ -79269,7 +81182,7 @@
         "type": "object",
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/EntityNotFoundCode"
+            "$ref": "#/components/schemas/EntityNotFoundErrorBodyCode"
           },
           "message": {
             "type": "string",
@@ -79391,7 +81304,7 @@
         "type": "object",
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/EntityNotFoundCode"
+            "$ref": "#/components/schemas/EntityNotFoundErrorBodyCode"
           },
           "message": {
             "type": "string",
@@ -79794,6 +81707,7 @@
               "passkey_progressive_enrollment",
               "radar_challenge",
               "radar_sign_up_challenge",
+              "radar_sms_challenge",
               "radar_sms_sign_in_challenge",
               "application_consent_required",
               "policy_denied",
@@ -79842,6 +81756,10 @@
                 {
                   "value": "radar_sign_up_challenge",
                   "name": "RadarSignUpChallenge"
+                },
+                {
+                  "value": "radar_sms_challenge",
+                  "name": "RadarSmsChallenge"
                 },
                 {
                   "value": "radar_sms_sign_in_challenge",
@@ -79980,6 +81898,60 @@
           "$ref": "#/components/schemas/UserlandMagicAuthControllerSendMagicAuthCodeAndReturn400Response"
         }
       },
+      "UserlandUserOrganizationMembershipsControllerCreate404ResponseError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "entities_not_found",
+              "entity_not_found"
+            ],
+            "x-ms-enum": {
+              "name": "Code",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "entities_not_found",
+                  "name": "EntitiesNotFound"
+                },
+                {
+                  "value": "entity_not_found",
+                  "name": "EntityNotFound"
+                }
+              ]
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of the error.",
+            "example": "Request could not be processed."
+          },
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The requested user and organization IDs, in that order.",
+            "example": [
+              "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E",
+              "org_01E4ZCR3C56J083X43JQXF3JK5"
+            ]
+          },
+          "entity_id": {
+            "type": "string",
+            "description": "The ID of the organization that was not found.",
+            "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate404Response"
+        }
+      },
       "UserlandUserOrganizationMembershipsControllerCreate422ResponseError": {
         "type": "object",
         "properties": {
@@ -80098,7 +82070,8 @@
               "password_and_password_hash_provided",
               "password_and_password_hash_type_provided",
               "password_salt_position_requires_password_hash",
-              "invalid_metadata"
+              "invalid_metadata",
+              "email_domain_not_deliverable"
             ],
             "x-ms-enum": {
               "name": "Code",
@@ -80131,6 +82104,10 @@
                 {
                   "value": "invalid_metadata",
                   "name": "InvalidMetadata"
+                },
+                {
+                  "value": "email_domain_not_deliverable",
+                  "name": "EmailDomainNotDeliverable"
                 }
               ]
             }
@@ -82536,6 +84513,58 @@
         }
       }
     },
+    "EntitiesNotFoundErrorBodyWithIdsList": {
+      "required": [
+        "code",
+        "message",
+        "ids"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/components/schemas/EntitiesNotFoundCode"
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable description of the error.",
+          "example": "Request could not be processed."
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The requested user and organization IDs, in that order.",
+          "example": [
+            "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E",
+            "org_01E4ZCR3C56J083X43JQXF3JK5"
+          ]
+        }
+      }
+    },
+    "EntityNotFoundErrorBodyWithEntityId": {
+      "required": [
+        "code",
+        "message",
+        "entity_id"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/components/schemas/EntityNotFoundCode"
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable description of the error.",
+          "example": "Request could not be processed."
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "The ID of the organization that was not found.",
+          "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
+        }
+      }
+    },
     "EmailCompletionRequiredErrorBodyWithEmailCompletionToken": {
       "required": [
         "code",
@@ -82822,7 +84851,7 @@
       "type": "object",
       "properties": {
         "code": {
-          "$ref": "#/components/schemas/EntityNotFoundCode"
+          "$ref": "#/components/schemas/EntityNotFoundErrorBodyCode"
         },
         "message": {
           "type": "string",
@@ -83852,6 +85881,23 @@
         }
       }
     },
+    "RadarSmsChallengeErrorBody": {
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/components/schemas/RadarSmsChallengeCode"
+        },
+        "message": {
+          "type": "string",
+          "description": "A human-readable description of the error.",
+          "example": "Request could not be processed."
+        }
+      }
+    },
     "RadarSmsSignInChallengeErrorBody": {
       "required": [
         "code",
@@ -83951,6 +85997,36 @@
           "type": "string",
           "description": "A human-readable description of the error.",
           "example": "Request could not be processed."
+        }
+      }
+    },
+    "RadarDetectionList": {
+      "required": [
+        "type",
+        "action",
+        "name",
+        "workos_managed"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/RadarDetectionListType"
+        },
+        "action": {
+          "$ref": "#/components/schemas/RadarDetectionListAction"
+        },
+        "name": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The name of the list.",
+          "example": "Disposable email domains"
+        },
+        "workos_managed": {
+          "type": "boolean",
+          "description": "Whether WorkOS maintains the list.",
+          "example": true
         }
       }
     },
@@ -84662,6 +86738,158 @@
         "config": {
           "$ref": "#/components/schemas/DataIntegrationVendedCredentialOneOf3ConfigProperty"
         }
+      }
+    },
+    "RadarDetectionDomainProtectionsDetailsList": {
+      "required": [
+        "type",
+        "action",
+        "name",
+        "workos_managed"
+      ],
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/RadarDetectionListType"
+        },
+        "action": {
+          "$ref": "#/components/schemas/RadarDetectionListAction"
+        },
+        "name": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The name of the list.",
+          "example": "Disposable email domains"
+        },
+        "workos_managed": {
+          "type": "boolean",
+          "description": "Whether WorkOS maintains the list.",
+          "example": true
+        }
+      },
+      "description": "The list as it is now. \u0060null\u0060 if the list has since been deleted.",
+      "x-client-original-nullable-union": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RadarDetectionList"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "The list as it is now. \u0060null\u0060 if the list has since been deleted."
+      }
+    },
+    "RadarDetectionDomainProtectionsDetailsAlsoMatchedListsItem": {
+      "required": [
+        "type",
+        "action",
+        "name",
+        "workos_managed"
+      ],
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/RadarDetectionListType"
+        },
+        "action": {
+          "$ref": "#/components/schemas/RadarDetectionListAction"
+        },
+        "name": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The name of the list.",
+          "example": "Disposable email domains"
+        },
+        "workos_managed": {
+          "type": "boolean",
+          "description": "Whether WorkOS maintains the list.",
+          "example": true
+        }
+      },
+      "description": "The list as it is now. \u0060null\u0060 if the list has since been deleted.",
+      "x-client-original-nullable-union": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RadarDetectionList"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "The list as it is now. \u0060null\u0060 if the list has since been deleted."
+      }
+    },
+    "RadarDetectionEvidenceAllOf1": {
+      "required": [
+        "summary"
+      ],
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "A human-readable explanation of why Radar fired.",
+          "example": "Sign-up from a Tor exit node with an email format shared by many recent sign-ups. The action was decided by the risky IP. The email pattern would also have challenged."
+        },
+        "allowed_by": {
+          "description": "The allowlist that overrode the verdict. Only present when an allowlist allowed the attempt.",
+          "$ref": "#/components/schemas/RadarDetectionAllowedBy"
+        }
+      }
+    },
+    "RadarDetectionRestrictionDetailsAllOf2OneOf1List": {
+      "required": [
+        "type",
+        "action",
+        "name",
+        "workos_managed"
+      ],
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/RadarDetectionListType"
+        },
+        "action": {
+          "$ref": "#/components/schemas/RadarDetectionListAction"
+        },
+        "name": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The name of the list.",
+          "example": "Disposable email domains"
+        },
+        "workos_managed": {
+          "type": "boolean",
+          "description": "Whether WorkOS maintains the list.",
+          "example": true
+        }
+      },
+      "description": "The list as it is now. \u0060null\u0060 if the list has since been deleted.",
+      "x-client-original-nullable-union": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RadarDetectionList"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "The list as it is now. \u0060null\u0060 if the list has since been deleted."
       }
     },
     "EventSchemaAllOf2OneOf13DataDetailOneOf1": {
@@ -85988,6 +88216,7 @@
           "passkey_progressive_enrollment": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponsePasskeyProgressiveEnrollmentErrorBody",
           "radar_challenge": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseRadarChallengeErrorBody",
           "radar_sign_up_challenge": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseRadarSignUpChallengeErrorBody",
+          "radar_sms_challenge": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseRadarSmsChallengeErrorBody",
           "radar_sms_sign_in_challenge": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseRadarSmsSignInChallengeErrorBody",
           "application_consent_required": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponseApplicationConsentRequiredErrorBody",
           "policy_denied": "#/components/schemas/UserlandSessionsControllerAuthenticate0403ResponsePolicyDeniedErrorBody",
@@ -86027,6 +88256,9 @@
             "$ref": "#/components/schemas/RadarSignUpChallengeErrorBody"
           },
           {
+            "$ref": "#/components/schemas/RadarSmsChallengeErrorBody"
+          },
+          {
             "$ref": "#/components/schemas/RadarSmsSignInChallengeErrorBody"
           },
           {
@@ -86052,6 +88284,7 @@
             "passkey_progressive_enrollment": "#/components/schemas/PasskeyProgressiveEnrollmentErrorBody",
             "radar_challenge": "#/components/schemas/RadarChallengeErrorBody",
             "radar_sign_up_challenge": "#/components/schemas/RadarSignUpChallengeErrorBody",
+            "radar_sms_challenge": "#/components/schemas/RadarSmsChallengeErrorBody",
             "radar_sms_sign_in_challenge": "#/components/schemas/RadarSmsSignInChallengeErrorBody",
             "application_consent_required": "#/components/schemas/ApplicationConsentRequiredErrorBody",
             "policy_denied": "#/components/schemas/PolicyDeniedErrorBody",
@@ -86096,6 +88329,41 @@
         {
           "$ref": "#/components/schemas/EmailDomainNotDeliverableErrorBody"
         }
+      ]
+    },
+    "UserlandUserOrganizationMembershipsControllerCreate404Response": {
+      "discriminator": {
+        "propertyName": "code",
+        "mapping": {
+          "entities_not_found": "#/components/schemas/TaggedEntitiesNotFoundVariant7D13C5014520C86E",
+          "entity_not_found": "#/components/schemas/TaggedEntityNotFoundVariant99F732FB4D846281"
+        }
+      },
+      "x-client-original-tagged-union": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/EntitiesNotFoundErrorBodyWithIdsList"
+          },
+          {
+            "$ref": "#/components/schemas/EntityNotFoundErrorBodyWithEntityId"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "code",
+          "mapping": {
+            "entities_not_found": "#/components/schemas/EntitiesNotFoundErrorBodyWithIdsList",
+            "entity_not_found": "#/components/schemas/EntityNotFoundErrorBodyWithEntityId"
+          }
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code"
       ]
     },
     "UserlandUserOrganizationMembershipsControllerCreate422Response": {
@@ -86178,7 +88446,8 @@
           "password_and_password_hash_provided": "#/components/schemas/UserlandUsersControllerCreate0400ResponsePasswordAndPasswordHashProvidedErrorBody",
           "password_and_password_hash_type_provided": "#/components/schemas/UserlandUsersControllerCreate0400ResponsePasswordAndPasswordHashTypeProvidedErrorBody",
           "password_salt_position_requires_password_hash": "#/components/schemas/UserlandUsersControllerCreate0400ResponsePasswordSaltPositionRequiresPasswordHashErrorBody",
-          "invalid_metadata": "#/components/schemas/UserlandUsersControllerCreate0400ResponseInvalidMetadataErrorBody"
+          "invalid_metadata": "#/components/schemas/UserlandUsersControllerCreate0400ResponseInvalidMetadataErrorBody",
+          "email_domain_not_deliverable": "#/components/schemas/UserlandUsersControllerCreate0400ResponseEmailDomainNotDeliverableErrorBody"
         }
       },
       "x-client-original-tagged-union": {
@@ -86203,6 +88472,9 @@
           },
           {
             "$ref": "#/components/schemas/InvalidMetadataErrorBody"
+          },
+          {
+            "$ref": "#/components/schemas/EmailDomainNotDeliverableErrorBody"
           }
         ],
         "discriminator": {
@@ -86214,7 +88486,8 @@
             "password_and_password_hash_provided": "#/components/schemas/PasswordAndPasswordHashProvidedErrorBody",
             "password_and_password_hash_type_provided": "#/components/schemas/PasswordAndPasswordHashTypeProvidedErrorBody",
             "password_salt_position_requires_password_hash": "#/components/schemas/PasswordSaltPositionRequiresPasswordHashErrorBody",
-            "invalid_metadata": "#/components/schemas/InvalidMetadataErrorBody"
+            "invalid_metadata": "#/components/schemas/InvalidMetadataErrorBody",
+            "email_domain_not_deliverable": "#/components/schemas/EmailDomainNotDeliverableErrorBody"
           }
         }
       },
@@ -87432,6 +89705,44 @@
           {
             "value": "sub_resource_scoped_role_not_allowed",
             "name": "SubResourceScopedRoleNotAllowed"
+          }
+        ]
+      }
+    },
+    "EntitiesNotFoundCode": {
+      "enum": [
+        "entities_not_found"
+      ],
+      "type": "string",
+      "description": "The error code identifying the type of error.",
+      "example": "entities_not_found",
+      "x-client-original-const": "entities_not_found",
+      "x-ms-enum": {
+        "name": "EntitiesNotFoundCode",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "entities_not_found",
+            "name": "EntitiesNotFound"
+          }
+        ]
+      }
+    },
+    "EntityNotFoundCode": {
+      "enum": [
+        "entity_not_found"
+      ],
+      "type": "string",
+      "description": "The error code identifying the type of error.",
+      "example": "entity_not_found",
+      "x-client-original-const": "entity_not_found",
+      "x-ms-enum": {
+        "name": "EntityNotFoundCode",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "entity_not_found",
+            "name": "EntityNotFound"
           }
         ]
       }
@@ -88802,6 +91113,25 @@
         ]
       }
     },
+    "RadarSmsChallengeCode": {
+      "enum": [
+        "radar_sms_challenge"
+      ],
+      "type": "string",
+      "description": "The error code identifying the type of error.",
+      "example": "radar_sms_challenge",
+      "x-client-original-const": "radar_sms_challenge",
+      "x-ms-enum": {
+        "name": "RadarSmsChallengeCode",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "radar_sms_challenge",
+            "name": "RadarSmsChallenge"
+          }
+        ]
+      }
+    },
     "RadarSmsSignInChallengeCode": {
       "enum": [
         "radar_sms_sign_in_challenge"
@@ -89376,6 +91706,30 @@
         }
       ]
     },
+    "UserlandSessionsControllerAuthenticate0403ResponseRadarSmsChallengeErrorBody": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UserlandSessionsControllerAuthenticate0403Response"
+        },
+        {
+          "required": [
+            "code",
+            "message"
+          ],
+          "type": "object",
+          "properties": {
+            "code": {
+              "$ref": "#/components/schemas/RadarSmsChallengeCode"
+            },
+            "message": {
+              "type": "string",
+              "description": "A human-readable description of the error.",
+              "example": "Request could not be processed."
+            }
+          }
+        }
+      ]
+    },
     "UserlandSessionsControllerAuthenticate0403ResponseRadarSmsSignInChallengeErrorBody": {
       "allOf": [
         {
@@ -89472,6 +91826,72 @@
               "type": "string",
               "description": "A human-readable description of the error.",
               "example": "Request could not be processed."
+            }
+          }
+        }
+      ]
+    },
+    "TaggedEntitiesNotFoundVariant7D13C5014520C86E": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate404Response"
+        },
+        {
+          "required": [
+            "code",
+            "message",
+            "ids"
+          ],
+          "type": "object",
+          "properties": {
+            "code": {
+              "$ref": "#/components/schemas/EntitiesNotFoundCode"
+            },
+            "message": {
+              "type": "string",
+              "description": "A human-readable description of the error.",
+              "example": "Request could not be processed."
+            },
+            "ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The requested user and organization IDs, in that order.",
+              "example": [
+                "user_01E4ZCR3C5A4QZ2Z2JQXGKZJ9E",
+                "org_01E4ZCR3C56J083X43JQXF3JK5"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "TaggedEntityNotFoundVariant99F732FB4D846281": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UserlandUserOrganizationMembershipsControllerCreate404Response"
+        },
+        {
+          "required": [
+            "code",
+            "message",
+            "entity_id"
+          ],
+          "type": "object",
+          "properties": {
+            "code": {
+              "$ref": "#/components/schemas/EntityNotFoundCode"
+            },
+            "message": {
+              "type": "string",
+              "description": "A human-readable description of the error.",
+              "example": "Request could not be processed."
+            },
+            "entity_id": {
+              "type": "string",
+              "description": "The ID of the organization that was not found.",
+              "example": "org_01E4ZCR3C56J083X43JQXF3JK5"
             }
           }
         }
@@ -89753,6 +92173,30 @@
           "properties": {
             "code": {
               "$ref": "#/components/schemas/InvalidMetadataCode"
+            },
+            "message": {
+              "type": "string",
+              "description": "A human-readable description of the error.",
+              "example": "Request could not be processed."
+            }
+          }
+        }
+      ]
+    },
+    "UserlandUsersControllerCreate0400ResponseEmailDomainNotDeliverableErrorBody": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UserlandUsersControllerCreate0400Response"
+        },
+        {
+          "required": [
+            "code",
+            "message"
+          ],
+          "type": "object",
+          "properties": {
+            "code": {
+              "$ref": "#/components/schemas/EmailDomainNotDeliverableCode"
             },
             "message": {
               "type": "string",

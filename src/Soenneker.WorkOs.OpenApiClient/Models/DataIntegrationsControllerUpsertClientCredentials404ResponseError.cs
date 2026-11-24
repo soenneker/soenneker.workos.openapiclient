@@ -27,8 +27,8 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The error code identifying the type of error.</summary>
-        public global::Soenneker.WorkOs.OpenApiClient.Models.EntityNotFoundCode? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
-        private global::Soenneker.WorkOs.OpenApiClient.Models.EntityNotFoundCode? _explicitNullValueCode = default!;
+        public global::Soenneker.WorkOs.OpenApiClient.Models.EntityNotFoundErrorBodyCode? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private global::Soenneker.WorkOs.OpenApiClient.Models.EntityNotFoundErrorBodyCode? _explicitNullValueCode = default!;
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
         /// <summary>A human-readable description of the error.</summary>
@@ -66,7 +66,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EntityNotFoundCode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCode = default; _explicitNullProperties?.Remove("code"); AdditionalData["code"] = unknown; } else { Code = parsed; AdditionalData.Remove("code"); } } },
+                { "code", n => { var parsed = n.GetEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EntityNotFoundErrorBodyCode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCode = default; _explicitNullProperties?.Remove("code"); AdditionalData["code"] = unknown; } else { Code = parsed; AdditionalData.Remove("code"); } } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
             };
         }
@@ -77,7 +77,7 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EntityNotFoundCode>("code", Code);
+            writer.WriteEnumValue<global::Soenneker.WorkOs.OpenApiClient.Models.EntityNotFoundErrorBodyCode>("code", Code);
             writer.WriteStringValue("message", MessageEscaped);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
