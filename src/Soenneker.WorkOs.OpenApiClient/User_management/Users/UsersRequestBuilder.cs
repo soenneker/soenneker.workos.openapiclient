@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.WorkOs.OpenApiClient.Models;
 using Soenneker.WorkOs.OpenApiClient.User_management.Users.External_id;
+using Soenneker.WorkOs.OpenApiClient.User_management.Users.Identities;
 using Soenneker.WorkOs.OpenApiClient.User_management.Users.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,11 @@ namespace Soenneker.WorkOs.OpenApiClient.User_management.Users
         public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.External_id.External_idRequestBuilder External_id
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Users.External_id.External_idRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The identities property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Identities.IdentitiesRequestBuilder Identities
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.User_management.Users.Identities.IdentitiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.WorkOs.OpenApiClient.user_management.users.item collection</summary>
         /// <param name="position">The unique ID of the user.</param>

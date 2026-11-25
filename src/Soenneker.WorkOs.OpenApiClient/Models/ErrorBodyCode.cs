@@ -343,6 +343,14 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         InvalidInvite,
         #pragma warning restore CS1591
+        [EnumMember(Value = "invalid_issuer_metadata")]
+        #pragma warning disable CS1591
+        InvalidIssuerMetadata,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "invalid_issuer_url")]
+        #pragma warning disable CS1591
+        InvalidIssuerUrl,
+        #pragma warning restore CS1591
         [EnumMember(Value = "invalid_locale")]
         #pragma warning disable CS1591
         InvalidLocale,
@@ -427,6 +435,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         IpAddressRequired,
         #pragma warning restore CS1591
+        [EnumMember(Value = "issuer_already_trusted")]
+        #pragma warning disable CS1591
+        IssuerAlreadyTrusted,
+        #pragma warning restore CS1591
         [EnumMember(Value = "it_contact_already_exists")]
         #pragma warning disable CS1591
         ItContactAlreadyExists,
@@ -475,6 +487,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         NoPendingEmailChange,
         #pragma warning restore CS1591
+        [EnumMember(Value = "not_claude_issuer")]
+        #pragma warning disable CS1591
+        NotClaudeIssuer,
+        #pragma warning restore CS1591
         [EnumMember(Value = "oidc_options_required")]
         #pragma warning disable CS1591
         OidcOptionsRequired,
@@ -491,9 +507,17 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         OneTimeCodeTooManyAttempts,
         #pragma warning restore CS1591
+        [EnumMember(Value = "organization_already_has_trust")]
+        #pragma warning disable CS1591
+        OrganizationAlreadyHasTrust,
+        #pragma warning restore CS1591
         [EnumMember(Value = "organization_blocked_from_sending_invites")]
         #pragma warning disable CS1591
         OrganizationBlockedFromSendingInvites,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "organization_has_idp_managed_ema")]
+        #pragma warning disable CS1591
+        OrganizationHasIdpManagedEma,
         #pragma warning restore CS1591
         [EnumMember(Value = "organization_membership_directory_managed")]
         #pragma warning disable CS1591
@@ -514,6 +538,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "organization_selection_required")]
         #pragma warning disable CS1591
         OrganizationSelectionRequired,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "organization_without_verified_domain")]
+        #pragma warning disable CS1591
+        OrganizationWithoutVerifiedDomain,
         #pragma warning restore CS1591
         [EnumMember(Value = "passkey_progressive_enrollment")]
         #pragma warning disable CS1591
@@ -562,6 +590,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "radar_challenge")]
         #pragma warning disable CS1591
         RadarChallenge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "radar_email_challenge")]
+        #pragma warning disable CS1591
+        RadarEmailChallenge,
         #pragma warning restore CS1591
         [EnumMember(Value = "radar_sign_up_challenge")]
         #pragma warning disable CS1591

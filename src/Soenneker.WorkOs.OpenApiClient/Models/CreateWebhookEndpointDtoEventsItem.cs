@@ -176,6 +176,10 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         #pragma warning disable CS1591
         ConnectionSamlCertificateRenewed,
         #pragma warning restore CS1591
+        [EnumMember(Value = "connection.saml_certificate_replaced")]
+        #pragma warning disable CS1591
+        ConnectionSamlCertificateReplaced,
+        #pragma warning restore CS1591
         [EnumMember(Value = "connection.deleted")]
         #pragma warning disable CS1591
         ConnectionDeleted,
@@ -307,6 +311,18 @@ namespace Soenneker.WorkOs.OpenApiClient.Models
         [EnumMember(Value = "invitation.revoked")]
         #pragma warning disable CS1591
         InvitationRevoked,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "issuer_trust.created")]
+        #pragma warning disable CS1591
+        IssuerTrustCreated,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "issuer_trust.deleted")]
+        #pragma warning disable CS1591
+        IssuerTrustDeleted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "issuer_trust.updated")]
+        #pragma warning disable CS1591
+        IssuerTrustUpdated,
         #pragma warning restore CS1591
         [EnumMember(Value = "magic_auth.created")]
         #pragma warning disable CS1591

@@ -13,6 +13,7 @@ using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_integration_configu
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Data_providers;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.FeatureFlags;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups;
+using Soenneker.WorkOs.OpenApiClient.Organizations.Item.Issuer_trusts;
 using Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts;
 using System.Collections.Generic;
 using System.IO;
@@ -71,6 +72,11 @@ namespace Soenneker.WorkOs.OpenApiClient.Organizations.Item
         public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupsRequestBuilder Groups
         {
             get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Groups.GroupsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The issuer_trusts property</summary>
+        public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Issuer_trusts.Issuer_trustsRequestBuilder Issuer_trusts
+        {
+            get => new global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.Issuer_trusts.Issuer_trustsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The it_contacts property</summary>
         public global::Soenneker.WorkOs.OpenApiClient.Organizations.Item.It_contacts.It_contactsRequestBuilder It_contacts
