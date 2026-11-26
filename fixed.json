@@ -43736,8 +43736,21 @@
               "null",
               "string"
             ],
-            "description": "The issuer the presented token claims. It is not verified, and is \u0060null\u0060 when the token could not be read.",
+            "description": "The issuer the presented token claims. It is verified only when \u0060signature_verified\u0060 is \u0060true\u0060, and is \u0060null\u0060 when the token could not be read.",
             "example": "https://example.okta.com"
+          },
+          "unverified_email_domain": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The domain of the email address the presented token names. WorkOS has not verified the domain, and it is \u0060null\u0060 when the token could not be read or names no email address.",
+            "example": "example.com"
+          },
+          "signature_verified": {
+            "type": "boolean",
+            "description": "Whether the signature of the presented token was verified before the exchange failed.",
+            "example": false
           },
           "error": {
             "$ref": "#/components/schemas/EventSchemaAllOf2OneOf22DataError"
