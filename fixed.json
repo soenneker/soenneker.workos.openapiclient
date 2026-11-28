@@ -756,6 +756,96 @@
         "x-feature-flag": "agent-blueprints-public-api"
       }
     },
+    "/agents/registrations": {
+      "get": {
+        "tags": [
+          "agents.registrations"
+        ],
+        "summary": "List agent registrations",
+        "description": "List the agent registrations in the environment of the API key used to authenticate the request, optionally filtered by organization or user.",
+        "operationId": "AgentAdminControllerListRegistrations",
+        "parameters": [
+          {
+            "name": "before",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060before=\u0022obj_123\u0022\u0060 to fetch a new batch of objects before \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ123456789ABCDEFGHIJ"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with \u0060\u0022obj_123\u0022\u0060, your subsequent call can include \u0060after=\u0022obj_123\u0022\u0060 to fetch a new batch of objects after \u0060\u0022obj_123\u0022\u0060.",
+            "schema": {
+              "type": "string",
+              "example": "xxx_01HXYZ987654321KJIHGFEDCBA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Upper limit on the number of objects to return, between \u00601\u0060 and \u0060100\u0060.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10,
+              "example": 10
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order the results by the creation time. Supported values are \u0060\u0022asc\u0022\u0060 (ascending), \u0060\u0022desc\u0022\u0060 (descending), and \u0060\u0022normal\u0022\u0060 (descending with reversed cursor semantics where \u0060before\u0060 fetches older records and \u0060after\u0060 fetches newer records). Defaults to \u0060normal\u0060.",
+            "schema": {
+              "$ref": "#/components/schemas/PaginationOrder"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "Only return registrations whose agent identity is bound to this user.",
+            "schema": {
+              "type": "string",
+              "example": "user_01E4ZCR3C56J083X43JQXF3JK5"
+            }
+          },
+          {
+            "name": "organization_id",
+            "in": "query",
+            "description": "Only return registrations belonging to this organization.",
+            "schema": {
+              "type": "string",
+              "example": "org_01EHQMYV6MBK39QC5PZXHY59C3"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentAdminControllerListRegistrations200Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/agents/registrations/{id}": {
       "get": {
         "tags": [
@@ -52054,6 +52144,24 @@
           }
         }
       },
+      "AgentAdminControllerListRegistrations200Response": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "$ref": "#/components/schemas/AgentAdminControllerListRegistrations200ResponseObject"
+          },
+          "list_metadata": {
+            "$ref": "#/components/schemas/AgentAdminControllerListRegistrations200ResponseListMetadata"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgentRegistration"
+            },
+            "description": "The list of records for the current page."
+          }
+        }
+      },
       "AgentInstanceSessionsControllerList200Response": {
         "type": "object",
         "properties": {
@@ -55898,6 +56006,32 @@
             ],
             "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
             "example": "agent_01HXYZ987654321KJIHGFEDCBA"
+          }
+        },
+        "description": "Pagination cursors for navigating between pages of results."
+      },
+      "AgentAdminControllerListRegistrations200ResponseListMetadata": {
+        "required": [
+          "before",
+          "after"
+        ],
+        "type": "object",
+        "properties": {
+          "before": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the start of the list.",
+            "example": "agent_reg_01HXYZ123456789ABCDEFGHIJ"
+          },
+          "after": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "An object ID that defines your place in the list. When the ID is not present, you are at the end of the list.",
+            "example": "agent_reg_01HXYZ987654321KJIHGFEDCBA"
           }
         },
         "description": "Pagination cursors for navigating between pages of results."
@@ -77851,6 +77985,24 @@
         "x-client-original-const": "list",
         "x-ms-enum": {
           "name": "AgentInstancesControllerList200ResponseObject",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "list",
+              "name": "List"
+            }
+          ]
+        }
+      },
+      "AgentAdminControllerListRegistrations200ResponseObject": {
+        "enum": [
+          "list"
+        ],
+        "type": "string",
+        "description": "Indicates this is a list response.",
+        "x-client-original-const": "list",
+        "x-ms-enum": {
+          "name": "AgentAdminControllerListRegistrations200ResponseObject",
           "modelAsString": false,
           "values": [
             {
